@@ -28,15 +28,20 @@ interface CaseStudy {
 }
 
 export async function generateStaticParams() {
-  const caseStudies = await client.fetch<Array<{ slug: string }>>(`*[_type == "caseStudy"] {
-    "slug": slug.current
-  }`);
+  try {
+    const caseStudies = await client.fetch<Array<{ slug: string }>>(`*[_type == "caseStudy"] {
+      "slug": slug.current
+    }`);
 
-  return caseStudies
-    .filter((study) => study.slug)
-    .map((study) => ({
-      slug: study.slug,
-    }));
+    return caseStudies
+      .filter((study) => study.slug)
+      .map((study) => ({
+        slug: study.slug,
+      }));
+  } catch (error) {
+    console.error('Error fetching case studies for static params:', error);
+    return [];
+  }
 }
 
 export default async function CaseStudyPage({
@@ -46,31 +51,37 @@ export default async function CaseStudyPage({
 }) {
   const { slug, locale } = await params;
 
-  const caseStudy = await client.fetch<CaseStudy>(
-    `*[_type == "caseStudy" && slug.current == $slug][0] {
-      _id,
-      "title": coalesce(title[$locale], title.pl),
-      slug,
-      "category": coalesce(category[$locale], category.pl),
-      "description": coalesce(description[$locale], description.pl),
-      image,
-      "solution": coalesce(solution[$locale], solution.pl),
-      "results": coalesce(results[$locale], results.pl),
-      technologies,
-      modules[] {
-        icon,
+  let caseStudy: CaseStudy | null = null;
+
+  try {
+    caseStudy = await client.fetch<CaseStudy>(
+      `*[_type == "caseStudy" && slug.current == $slug][0] {
+        _id,
         "title": coalesce(title[$locale], title.pl),
+        slug,
+        "category": coalesce(category[$locale], category.pl),
         "description": coalesce(description[$locale], description.pl),
-        image
-      },
-      stats[] {
-        value,
-        "label": coalesce(label[$locale], label.pl),
-        icon
-      }
-    }`,
-    { slug, locale }
-  );
+        image,
+        "solution": coalesce(solution[$locale], solution.pl),
+        "results": coalesce(results[$locale], results.pl),
+        technologies,
+        modules[] {
+          icon,
+          "title": coalesce(title[$locale], title.pl),
+          "description": coalesce(description[$locale], description.pl),
+          image
+        },
+        stats[] {
+          value,
+          "label": coalesce(label[$locale], label.pl),
+          icon
+        }
+      }`,
+      { slug, locale }
+    );
+  } catch (error) {
+    console.error('Error fetching case study:', error);
+  }
 
   if (!caseStudy) {
     return (

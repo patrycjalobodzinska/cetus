@@ -22,14 +22,20 @@ export default async function CaseStudiesPage({
 }) {
   const { locale } = await params;
 
-  const caseStudies = await client.fetch<CaseStudy[]>(`*[_type == "caseStudy"] | order(_createdAt desc) {
-    _id,
-    "title": coalesce(title[$locale], title.pl),
-    slug,
-    "category": coalesce(category[$locale], category.pl),
-    "description": coalesce(description[$locale], description.pl),
-    image
-  }`, { locale });
+  let caseStudies: CaseStudy[] = [];
+
+  try {
+    caseStudies = await client.fetch<CaseStudy[]>(`*[_type == "caseStudy"] | order(_createdAt desc) {
+      _id,
+      "title": coalesce(title[$locale], title.pl),
+      slug,
+      "category": coalesce(category[$locale], category.pl),
+      "description": coalesce(description[$locale], description.pl),
+      image
+    }`, { locale });
+  } catch (error) {
+    console.error('Error fetching case studies:', error);
+  }
 
   return (
     <div className="min-h-screen ">
