@@ -23,4 +23,6 @@ export default defineConfig({
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({defaultApiVersion: apiVersion || '2021-06-07'}),
   ],
+  // Disable authentication check for public access
+  // Users will need to authenticate when they try to save changes
 })
