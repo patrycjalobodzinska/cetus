@@ -8,35 +8,29 @@ export default defineType({
     defineField({
       name: 'title',
       title: 'Tytuł',
-      type: 'string',
-      validation: (Rule) => Rule.required(),
+      type: 'localeString',
     }),
     defineField({
       name: 'titleHighlight',
       title: 'Podświetlony fragment tytułu',
-      type: 'string',
+      type: 'localeString',
       description: 'Fragment tytułu, który będzie podświetlony (np. "Ecosystem")',
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'description',
       title: 'Opis',
-      type: 'text',
-      validation: (Rule) => Rule.required(),
+      type: 'localeText',
     }),
     defineField({
       name: 'buttonText',
       title: 'Tekst przycisku',
-      type: 'string',
-      default: 'Get Started',
-      validation: (Rule) => Rule.required(),
+      type: 'localeString',
     }),
     defineField({
       name: 'buttonLink',
       title: 'Link przycisku',
       type: 'string',
       description: 'Link do strony (np. /oferta lub pełny URL)',
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'projects',
@@ -49,14 +43,12 @@ export default defineType({
             defineField({
               name: 'title',
               title: 'Tytuł',
-              type: 'string',
-              validation: (Rule) => Rule.required(),
+              type: 'localeString',
             }),
             defineField({
               name: 'description',
               title: 'Opis',
-              type: 'text',
-              validation: (Rule) => Rule.required(),
+              type: 'localeText',
             }),
             defineField({
               name: 'image',
@@ -65,14 +57,12 @@ export default defineType({
               options: {
                 hotspot: true,
               },
-              validation: (Rule) => Rule.required(),
             }),
             defineField({
               name: 'order',
               title: 'Kolejność',
               type: 'number',
               description: 'Kolejność wyświetlania',
-              validation: (Rule) => Rule.required().min(1),
             }),
             defineField({
               name: 'slug',
@@ -80,7 +70,7 @@ export default defineType({
               type: 'slug',
               description: 'Unikalny identyfikator URL (np. strategy-discovery)',
               options: {
-                source: 'title',
+                source: (doc: any) => doc?.title?.pl || doc?.title?.en || '',
                 maxLength: 96,
                 slugify: (input: string) => input
                   .toLowerCase()
@@ -91,7 +81,6 @@ export default defineType({
                   .replace(/-+$/, '')
                   .slice(0, 96),
               },
-              validation: (Rule) => Rule.required(),
             }),
             defineField({
               name: 'link',
@@ -102,19 +91,18 @@ export default defineType({
           ],
           preview: {
             select: {
-              title: 'title',
+              title: 'title.pl',
               media: 'image',
             },
           },
         },
       ],
-      validation: (Rule) => Rule.required().min(1),
     }),
   ],
   preview: {
     select: {
-      title: 'title',
-      subtitle: 'titleHighlight',
+      title: 'title.pl',
+      subtitle: 'titleHighlight.pl',
     },
     prepare({ title, subtitle }) {
       return {

@@ -88,11 +88,11 @@ export default function DecorativeImage({ src, alt, overlay }: DecorativeImagePr
       </svg>
 
       {/* Image container */}
-      <div className="relative p-5 rounded-md overflow-hidden">
+      <div className="relative p-2 md:p-3 rounded-md overflow-hidden">
         <img
           src={src}
           alt={alt}
-          className="w-full h-auto object-cover"
+          className="w-full h-auto object-cover rounded-xl md:rounded-2xl"
         />
 
         {/* Optional overlay (for statistics) */}

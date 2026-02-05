@@ -1,0 +1,226 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "caseStudies": "Case Studies",
+    "contact": "Contact",
+    "freeConsultation": "Free Consultation"
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "contactUs": "Contact us to discuss your project and learn how we can help grow your business.",
+    "getStarted": "Ready to get started?",
+    "letsTalk": "Let's Talk",
+    "loading": "Loading...",
+    "noData": "No data"
+  },
+  "hero": {
+    "title": "We create modern",
+    "titleHighlight": "software",
+    "titleAfterHighlight": "that",
+    "titleThirdLine": "helps companies grow",
+    "subtitle": "Check it yourself",
+    "subtitleHighlight": "",
+    "description": "",
+    "buttonText": "Schedule a consultation"
+  },
+  "stats": {
+    "loading": "Loading statistics...",
+    "projects": {
+      "title": "COMPLETED PROJECTS",
+      "count": "50"
+    },
+    "clients": {
+      "title": "SATISFIED CLIENTS",
+      "count": "30"
+    },
+    "experts": {
+      "title": "EXPERTS IN THE TEAM",
+      "count": "40"
+    },
+    "experience": {
+      "title": "YEARS OF EXPERIENCE",
+      "count": "5"
+    }
+  },
+  "offer": {
+    "title": "We advise, build and",
+    "titleHighlight": "support",
+    "description": "Comprehensive IT solutions tailored to your business needs",
+    "buttonText": "See",
+    "buttonLink": "/oferta",
+    "pageTitle": "Our offer",
+    "pageDescription": "Comprehensive technological solutions tailored to your business needs",
+    "noOffers": "No offers to display.",
+    "cta": {
+      "title": "Want to learn more?",
+      "description": "Contact us and let's discuss how we can help grow your business.",
+      "buttonText": "Contact us"
+    },
+    "projects": {
+      "webApps": {
+        "title": "Web applications",
+        "description": "Intuitive and scalable applications improving business processes and increasing efficiency.",
+        "slug": "aplikacje-webowe",
+        "order": 1,
+        "image": "https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=1200"
+      },
+      "mobileApps": {
+        "title": "Mobile applications",
+        "description": "Modern mobile applications for iOS and Android that increase user engagement.",
+        "slug": "aplikacje-mobilne",
+        "order": 2,
+        "image": "https://images.pexels.com/photos/699122/pexels-photo-699122.jpeg?auto=compress&cs=tinysrgb&w=1200"
+      },
+      "uiUx": {
+        "title": "UX/UI Design",
+        "description": "Designing user interfaces that are beautiful, intuitive and functional.",
+        "slug": "ui-ux-design",
+        "order": 3,
+        "image": "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=1200"
+      },
+      "ai": {
+        "title": "AI and process automation",
+        "description": "Use the potential of artificial intelligence to automate business processes.",
+        "slug": "aI-i-automatyzacja-procesow",
+        "order": 4,
+        "image": "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1200"
+      },
+      "cybersecurity": {
+        "title": "Cybersecurity",
+        "description": "Comprehensive protection of your IT infrastructure against cyber threats.",
+        "slug": "cybersecurity",
+        "order": 5,
+        "image": "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=1200"
+      },
+      "transformation": {
+        "title": "Technological transformation",
+        "description": "We help companies with digital transformation and IT system modernization.",
+        "slug": "transformacja-technologiczna",
+        "order": 6,
+        "image": "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=1200"
+      },
+      "outsourcing": {
+        "title": "Programmer outsourcing",
+        "description": "Access to experienced programmers without the need for permanent employment.",
+        "slug": "outsourcing-programistow",
+        "order": 7,
+        "image": "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200"
+      },
+      "academy": {
+        "title": "Academy and training",
+        "description": "Training and courses in programming, design and IT project management.",
+        "slug": "akademia-i-szkolenia",
+        "order": 8,
+        "image": "https://images.pexels.com/photos/1181533/pexels-photo-1181533.jpeg?auto=compress&cs=tinysrgb&w=1200"
+      },
+      "venture": {
+        "title": "Cetus Venture Capital",
+        "description": "Investments in innovative technology projects with growth potential.",
+        "slug": "cetus-venture-capital",
+        "order": 9,
+        "image": "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1200"
+      }
+    }
+  },
+  "skipToContent": {
+    "skipToContent": "Skip to main content"
+  },
+  "home": {
+    "metadata": {
+      "title": "Home",
+      "description": "CetusPro - We create modern web applications, mobile apps and IT solutions. We specialize in UX/UI design, cybersecurity, AI and business process automation.",
+      "ogTitle": "CetusPro - Modern IT solutions and web applications",
+      "ogDescription": "We create modern web applications, mobile apps and IT solutions. We specialize in UX/UI design, cybersecurity, AI and process automation."
+    }
+  },
+  "webApps": {
+    "hero": {
+      "title": "We create",
+      "highlight": "web applications",
+      "subtitle": " that drive your business",
+      "description": "From concept to deployment - we create modern web applications that are fast, secure and easy to use.",
+      "buttonText": "Let's talk about your project"
+    },
+    "whyFeatures": {
+      "title": "Why choose our solutions?",
+      "subtitle": "Modern solutions that drive your business",
+      "modernTech": {
+        "title": "Modern technologies",
+        "description": "We use the latest frameworks and tools to ensure speed, security and scalability of your application."
+      },
+      "responsiveDesign": {
+        "title": "Responsive design",
+        "description": "Your application will look and work perfectly on every device - from phone to large desktop screen."
+      },
+      "performance": {
+        "title": "Performance optimization",
+        "description": "We optimize every aspect of the application to ensure fast loading and smooth operation even under heavy load."
+      },
+      "security": {
+        "title": "Security",
+        "description": "We implement best security practices to protect your users' data and your company's data."
+      },
+      "seo": {
+        "title": "SEO and accessibility",
+        "description": "Your application will be easily found in search engines and accessible to all users."
+      },
+      "support": {
+        "title": "Support and maintenance",
+        "description": "We provide continuous technical support and updates so your application always works perfectly."
+      }
+    },
+    "modules": {
+      "title": "Web application modules",
+      "security": {
+        "title": "Login and security",
+        "item1": "OAuth2 authorization",
+        "item2": "Two-factor authentication (2FA)",
+        "item3": "Session management",
+        "item4": "CSRF attack protection"
+      },
+      "payments": {
+        "title": "Payments and monetization",
+        "item1": "Stripe/PayPal integration",
+        "item2": "Subscriptions and recurring payments",
+        "item3": "Invoice management",
+        "item4": "Financial dashboard"
+      },
+      "communication": {
+        "title": "Communication and notifications",
+        "item1": "Real-time chat",
+        "item2": "Push notifications",
+        "item3": "Transactional emails",
+        "item4": "SMS integration"
+      },
+      "navigation": {
+        "title": "Navigation and location",
+        "item1": "Interactive maps",
+        "item2": "Geolocation",
+        "item3": "Multilingual (i18n)",
+        "item4": "Geographic search"
+      },
+      "analytics": {
+        "title": "Data analysis",
+        "item1": "Analytics dashboard",
+        "item2": "Real-time reports",
+        "item3": "Data export",
+        "item4": "Data visualization"
+      },
+      "personalization": {
+        "title": "UX personalization",
+        "item1": "Themes and color schemes",
+        "item2": "Interface customization",
+        "item3": "User preferences",
+        "item4": "Dark mode"
+      }
+    },
+    "cta": {
+      "title": "Ready to get started?",
+      "description": "Contact us to discuss your project and learn how we can help grow your business.",
+      "buttonText": "Let's talk about your project",
+      "emailLabel": "or write directly"
+    }
+  }
+}

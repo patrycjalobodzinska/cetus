@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Phone, Mail, MapPin, Linkedin, Dribbble, Twitter, Facebook, Instagram } from 'lucide-react';
 import { client } from '@/sanity/lib/client';
+import { useLocale } from 'next-intl';
 import StarGradientButton from './ui/gradientBackground';
 import Image from 'next/image';
 
@@ -43,35 +44,36 @@ export default function Footer() {
   const [footerData, setFooterData] = useState<FooterData | null>(null);
   const [offerProjects, setOfferProjects] = useState<OfferProject[]>([]);
   const [loading, setLoading] = useState(true);
+  const locale = useLocale();
 
   useEffect(() => {
     async function fetchFooter() {
       try {
         const query = `*[_type == "footer"][0] {
-          contactTitle,
-          contactDescription,
+          "contactTitle": coalesce(contactTitle[$locale], contactTitle.pl),
+          "contactDescription": coalesce(contactDescription[$locale], contactDescription.pl),
           phone,
           email,
           address,
-          primaryButtonText,
+          "primaryButtonText": coalesce(primaryButtonText[$locale], primaryButtonText.pl),
           primaryButtonLink,
-          secondaryButtonText,
+          "secondaryButtonText": coalesce(secondaryButtonText[$locale], secondaryButtonText.pl),
           secondaryButtonLink,
           companyLinks[] {
-            text,
+            "text": coalesce(text[$locale], text.pl),
             url
           },
           documentLinks[] {
-            text,
+            "text": coalesce(text[$locale], text.pl),
             url
           },
           socialMedia[] {
             platform,
             url
           },
-          copyright
+          "copyright": coalesce(copyright[$locale], copyright.pl)
         }`;
-        const data = await client.fetch<FooterData>(query);
+        const data = await client.fetch<FooterData>(query, { locale });
         setFooterData(data);
       } catch (error) {
         console.error('Błąd podczas pobierania footera:', error);
@@ -84,12 +86,12 @@ export default function Footer() {
       try {
         const query = `*[_type == "offer"][0] {
           projects[] | order(order asc) {
-            title,
+            "title": coalesce(title[$locale], title.pl),
             slug,
             order
           }
         }`;
-        const data = await client.fetch<{ projects?: OfferProject[] }>(query);
+        const data = await client.fetch<{ projects?: OfferProject[] }>(query, { locale });
         if (data?.projects) {
           setOfferProjects(data.projects);
         }
@@ -100,7 +102,7 @@ export default function Footer() {
 
     fetchFooter();
     fetchOfferProjects();
-  }, []);
+  }, [locale]);
 
   if (loading) {
     return (
@@ -123,9 +125,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Kontakt Column */}
           <div className="space-y-6">
-            <h3 className="text-xl font-bold text-white">
-              {footerData.contactTitle || 'Kontakt'}
-            </h3>
+            {footerData.contactTitle && (
+              <h3 className="text-xl font-bold text-white">
+                {footerData.contactTitle}
+              </h3>
+            )}
             {footerData.contactDescription && (
               <p className="text-slate-300 leading-relaxed">
                 {footerData.contactDescription}
@@ -176,94 +180,61 @@ export default function Footer() {
           </div>
 
           {/* Oferta Column */}
-          <div>
-            <h3 className="text-xl font-bold text-white mb-6">Oferta</h3>
+          {offerProjects.length > 0 && (
+            <div>
+              <h3 className="text-xl font-bold text-white mb-6">Oferta</h3>
             <ul className="space-y-3">
-              {offerProjects.length > 0 ? (
-                offerProjects.map((project, index) => (
-                  <li key={index}>
-                    <Link
-                      href={project.slug?.current ? `/oferta/${project.slug.current}` : '#'}
-                      className="text-slate-300 hover:text-white transition-colors"
-                    >
-                      {project.title}
-                    </Link>
-                  </li>
-                ))
-              ) : (
-                <li className="text-slate-400 text-sm">Brak ofert</li>
-              )}
+              {offerProjects.map((project, index) => (
+                <li key={index}>
+                  <Link
+                    href={project.slug?.current ? `/oferta/${project.slug.current}` : '#'}
+                    className="text-slate-300 hover:text-white transition-colors"
+                  >
+                    {project.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
+          )}
 
           {/* Firma Column */}
-          <div>
-            <h3 className="text-xl font-bold text-white mb-6">Firma</h3>
+          {(footerData.companyLinks && footerData.companyLinks.length > 0) && (
+            <div>
+              <h3 className="text-xl font-bold text-white mb-6">Firma</h3>
             <ul className="space-y-3">
-              {footerData.companyLinks && footerData.companyLinks.length > 0 ? (
-                footerData.companyLinks.map((link, index) => (
-                  <li key={index}>
-                    <Link
-                      href={link.url || '#'}
-                      className="text-slate-300 hover:text-white transition-colors"
-                    >
-                      {link.text}
-                    </Link>
-                  </li>
-                ))
-              ) : (
-                <>
-                  <li>
-                    <Link href="/case-studies" className="text-slate-300 hover:text-white transition-colors">
-                      Case Studies
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/o-nas" className="text-slate-300 hover:text-white transition-colors">
-                      O nas
-                    </Link>
-                  </li>
-                </>
-              )}
+              {footerData.companyLinks.map((link, index) => (
+                <li key={index}>
+                  <Link
+                    href={link.url || '#'}
+                    className="text-slate-300 hover:text-white transition-colors"
+                  >
+                    {link.text}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
+          )}
 
           {/* Dokumenty Column */}
-          <div>
-            <h3 className="text-xl font-bold text-white mb-6">Dokumenty</h3>
+          {(footerData.documentLinks && footerData.documentLinks.length > 0) && (
+            <div>
+              <h3 className="text-xl font-bold text-white mb-6">Dokumenty</h3>
             <ul className="space-y-3">
-              {footerData.documentLinks && footerData.documentLinks.length > 0 ? (
-                footerData.documentLinks.map((link, index) => (
-                  <li key={index}>
-                    <Link
-                      href={link.url || '#'}
-                      className="text-slate-300 hover:text-white transition-colors"
-                    >
-                      {link.text}
-                    </Link>
-                  </li>
-                ))
-              ) : (
-                <>
-                  <li>
-                    <Link href="/regulamin" className="text-slate-300 hover:text-white transition-colors">
-                      Regulamin
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/polityka-prywatnosci" className="text-slate-300 hover:text-white transition-colors">
-                      Polityka prywatności
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/pliki-cookies" className="text-slate-300 hover:text-white transition-colors">
-                      Pliki cookies
-                    </Link>
-                  </li>
-                </>
-              )}
+              {footerData.documentLinks.map((link, index) => (
+                <li key={index}>
+                  <Link
+                    href={link.url || '#'}
+                    className="text-slate-300 hover:text-white transition-colors"
+                  >
+                    {link.text}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
+          )}
         </div>
       </div>
 
@@ -277,9 +248,9 @@ export default function Footer() {
        <Link href="/">      <Image src="/logocetus.png"  alt="CetusPro" className='bg-white w-40 rounded-lg' width={100} height={100} />   </Link>   </div>
 
             {/* Social Media Icons */}
-            <div className="flex items-center gap-4">
-              {footerData.socialMedia && footerData.socialMedia.length > 0 ? (
-                footerData.socialMedia.map((social, index) => {
+            {(footerData.socialMedia && footerData.socialMedia.length > 0) && (
+              <div className="flex items-center gap-4">
+                {footerData.socialMedia.map((social, index) => {
                   const Icon = socialIcons[social.platform.toLowerCase()];
                   if (!Icon) return null;
                   return (
@@ -294,32 +265,16 @@ export default function Footer() {
                       <Icon className="w-5 h-5" />
                     </a>
                   );
-                })
-              ) : (
-                <>
-                  <a href="#" className="text-white hover:text-blue-400 transition-colors" aria-label="LinkedIn">
-                    <Linkedin className="w-5 h-5" />
-                  </a>
-                  <a href="#" className="text-white hover:text-blue-400 transition-colors" aria-label="Dribbble">
-                    <Dribbble className="w-5 h-5" />
-                  </a>
-                  <a href="#" className="text-white hover:text-blue-400 transition-colors" aria-label="Twitter">
-                    <Twitter className="w-5 h-5" />
-                  </a>
-                  <a href="#" className="text-white hover:text-blue-400 transition-colors" aria-label="Facebook">
-                    <Facebook className="w-5 h-5" />
-                  </a>
-                  <a href="#" className="text-white hover:text-blue-400 transition-colors" aria-label="Instagram">
-                    <Instagram className="w-5 h-5" />
-                  </a>
-                </>
-              )}
-            </div>
+                })}
+              </div>
+            )}
 
             {/* Copyright */}
-            <p className="text-slate-400 text-sm text-center md:text-right">
-              {footerData.copyright || '© 2025 CetusPro. Wszelkie prawa zastrzeżone.'}
-            </p>
+            {footerData.copyright && (
+              <p className="text-slate-400 text-sm text-center md:text-right">
+                {footerData.copyright}
+              </p>
+            )}
           </div>
         </div>
       </div>

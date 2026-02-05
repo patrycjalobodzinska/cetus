@@ -8,27 +8,27 @@ export default defineType({
     defineField({
       name: 'title',
       title: 'Tytuł',
-      type: 'string',
+      type: 'localeString',
     }),
     defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
       options: {
-        source: 'title',
+        source: (doc: any) => doc?.title?.pl || doc?.title?.en || '',
         maxLength: 96,
       },
     }),
     defineField({
       name: 'category',
       title: 'Kategoria',
-      type: 'string',
+      type: 'localeString',
       description: 'Kategoria projektu (np. Rolnictwo & Winiarstwo)',
     }),
     defineField({
       name: 'description',
       title: 'Opis',
-      type: 'text',
+      type: 'localeText',
       description: 'Krótki opis projektu',
     }),
     defineField({
@@ -42,14 +42,13 @@ export default defineType({
     defineField({
       name: 'solution',
       title: 'Rozwiązanie',
-      type: 'text',
+      type: 'localeText',
       description: 'Opis rozwiązania',
     }),
     defineField({
       name: 'results',
       title: 'Efekty',
-      type: 'array',
-      of: [{ type: 'string' }],
+      type: 'localeStringArray',
       description: 'Lista efektów projektu',
     }),
     defineField({
@@ -76,13 +75,12 @@ export default defineType({
             defineField({
               name: 'title',
               title: 'Tytuł modułu',
-              type: 'string',
+              type: 'localeString',
             }),
             defineField({
               name: 'description',
               title: 'Lista',
-              type: 'array',
-              of: [{ type: 'string' }],
+              type: 'localeStringArray',
               description: 'Lista funkcji/cech modułu',
             }),
             defineField({
@@ -114,7 +112,7 @@ export default defineType({
             defineField({
               name: 'label',
               title: 'Etykieta',
-              type: 'string',
+              type: 'localeString',
             }),
             defineField({
               name: 'icon',
@@ -129,8 +127,8 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: 'title',
-      subtitle: 'category',
+      title: 'title.pl',
+      subtitle: 'category.pl',
       media: 'image',
     },
   },

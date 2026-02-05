@@ -18,10 +18,10 @@ interface CaseStudy {
 export default async function CaseStudiesPage() {
   const caseStudies = await client.fetch<CaseStudy[]>(`*[_type == "caseStudy"] | order(_createdAt desc) {
     _id,
-    title,
+    "title": coalesce(title.en, title.pl),
     slug,
-    category,
-    description,
+    "category": coalesce(category.en, category.pl),
+    "description": coalesce(description.en, description.pl),
     image
   }`);
 
@@ -108,7 +108,7 @@ export default async function CaseStudiesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-2">
+      <section className="py-2 lg:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2
             className="text-4xl md:text-5xl font-bold text-slate-900 mb-6"

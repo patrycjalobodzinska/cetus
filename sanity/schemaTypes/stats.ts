@@ -8,26 +8,23 @@ export default defineType({
     defineField({
       name: 'title',
       title: 'Tytuł',
-      type: 'string',
-      validation: (Rule) => Rule.required(),
+      type: 'localeString',
     }),
     defineField({
       name: 'count',
       title: 'Liczba',
       type: 'number',
-      validation: (Rule) => Rule.required().min(0),
     }),
     defineField({
       name: 'order',
       title: 'Kolejność',
       type: 'number',
       description: 'Kolejność wyświetlania (1, 2, 3, 4)',
-      validation: (Rule) => Rule.required().min(1).max(4),
     }),
   ],
   preview: {
     select: {
-      title: 'title',
+      title: 'title.pl',
       count: 'count',
     },
     prepare({ title, count }) {

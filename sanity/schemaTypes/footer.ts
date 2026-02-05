@@ -8,13 +8,12 @@ export default defineType({
     defineField({
       name: 'contactTitle',
       title: 'Tytuł sekcji Kontakt',
-      type: 'string',
-      initialValue: 'Kontakt',
+      type: 'localeString',
     }),
     defineField({
       name: 'contactDescription',
       title: 'Opis sekcji Kontakt',
-      type: 'text',
+      type: 'localeText',
     }),
     defineField({
       name: 'phone',
@@ -34,8 +33,7 @@ export default defineType({
     defineField({
       name: 'primaryButtonText',
       title: 'Tekst głównego przycisku',
-      type: 'string',
-      initialValue: 'Napisz do nas',
+      type: 'localeString',
     }),
     defineField({
       name: 'primaryButtonLink',
@@ -46,8 +44,7 @@ export default defineType({
     defineField({
       name: 'secondaryButtonText',
       title: 'Tekst drugiego przycisku',
-      type: 'string',
-      initialValue: 'Umów konsultację',
+      type: 'localeString',
     }),
     defineField({
       name: 'secondaryButtonLink',
@@ -66,7 +63,7 @@ export default defineType({
             defineField({
               name: 'text',
               title: 'Tekst linku',
-              type: 'string',
+              type: 'localeString',
             }),
             defineField({
               name: 'url',
@@ -88,7 +85,7 @@ export default defineType({
             defineField({
               name: 'text',
               title: 'Tekst linku',
-              type: 'string',
+              type: 'localeString',
             }),
             defineField({
               name: 'url',
@@ -133,13 +130,12 @@ export default defineType({
     defineField({
       name: 'copyright',
       title: 'Tekst copyright',
-      type: 'string',
-      initialValue: '© 2025 CetusPro. Wszelkie prawa zastrzeżone.',
+      type: 'localeString',
     }),
   ],
   preview: {
     select: {
-      title: 'contactTitle',
+      title: 'contactTitle.pl',
     },
     prepare({ title }) {
       return {

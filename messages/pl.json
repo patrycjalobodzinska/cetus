@@ -1,0 +1,226 @@
+{
+  "nav": {
+    "home": "Strona główna",
+    "about": "O nas",
+    "services": "Usługi",
+    "caseStudies": "Realizacje",
+    "contact": "Kontakt",
+    "freeConsultation": "Darmowa konsultacja"
+  },
+  "common": {
+    "learnMore": "Dowiedz się więcej",
+    "contactUs": "Skontaktuj się z nami, aby omówić Twój projekt i dowiedzieć się, jak możemy pomóc w rozwoju Twojego biznesu.",
+    "getStarted": "Gotowy na start?",
+    "letsTalk": "Porozmawiajmy",
+    "loading": "Ładowanie...",
+    "noData": "Brak danych"
+  },
+  "hero": {
+    "title": "Tworzymy nowoczesne",
+    "titleHighlight": "oprogramowania",
+    "titleAfterHighlight": "które",
+    "titleThirdLine": "pomagają firmom się rozwijać",
+    "subtitle": "Sprawdź sam",
+    "subtitleHighlight": "",
+    "description": "",
+    "buttonText": "Umów konsultację"
+  },
+  "stats": {
+    "loading": "Ładowanie statystyk...",
+    "projects": {
+      "title": "ZREALIZOWANYCH PROJEKTÓW",
+      "count": "50"
+    },
+    "clients": {
+      "title": "ZADOWOLONYCH KLIENTÓW",
+      "count": "30"
+    },
+    "experts": {
+      "title": "EKSPERTÓW W ZESPOLE",
+      "count": "40"
+    },
+    "experience": {
+      "title": "LAT DOŚWIADCZENIA",
+      "count": "5"
+    }
+  },
+  "offer": {
+    "title": "Doradzamy, budujemy i",
+    "titleHighlight": "wspieramy",
+    "description": "Kompleksowe rozwiązania IT dostosowane do potrzeb Twojego biznesu",
+    "buttonText": "Zobacz",
+    "buttonLink": "/oferta",
+    "pageTitle": "Nasza oferta",
+    "pageDescription": "Kompleksowe rozwiązania technologiczne dostosowane do potrzeb Twojego biznesu",
+    "noOffers": "Brak ofert do wyświetlenia.",
+    "cta": {
+      "title": "Chcesz dowiedzieć się więcej?",
+      "description": "Skontaktuj się z nami i omówmy, jak możemy pomóc w rozwoju Twojego biznesu.",
+      "buttonText": "Skontaktuj się z nami"
+    },
+    "projects": {
+      "webApps": {
+        "title": "Aplikacje webowe",
+        "description": "Intuicyjne i skalowalne aplikacje usprawniające procesy biznesowe i zwiększające efektywność.",
+        "slug": "aplikacje-webowe",
+        "order": 1,
+        "image": "https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=1200"
+      },
+      "mobileApps": {
+        "title": "Aplikacje mobilne",
+        "description": "Nowoczesne aplikacje mobilne dla iOS i Android, które zwiększają zaangażowanie użytkowników.",
+        "slug": "aplikacje-mobilne",
+        "order": 2,
+        "image": "https://images.pexels.com/photos/699122/pexels-photo-699122.jpeg?auto=compress&cs=tinysrgb&w=1200"
+      },
+      "uiUx": {
+        "title": "UX/UI Design",
+        "description": "Projektowanie interfejsów użytkownika, które są piękne, intuicyjne i funkcjonalne.",
+        "slug": "ui-ux-design",
+        "order": 3,
+        "image": "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=1200"
+      },
+      "ai": {
+        "title": "AI i automatyzacja procesów",
+        "description": "Wykorzystaj potencjał sztucznej inteligencji do automatyzacji procesów biznesowych.",
+        "slug": "aI-i-automatyzacja-procesow",
+        "order": 4,
+        "image": "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1200"
+      },
+      "cybersecurity": {
+        "title": "Cybersecurity",
+        "description": "Kompleksowa ochrona Twojej infrastruktury IT przed zagrożeniami cybernetycznymi.",
+        "slug": "cybersecurity",
+        "order": 5,
+        "image": "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=1200"
+      },
+      "transformation": {
+        "title": "Transformacja technologiczna",
+        "description": "Pomagamy firmom w transformacji cyfrowej i modernizacji systemów IT.",
+        "slug": "transformacja-technologiczna",
+        "order": 6,
+        "image": "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=1200"
+      },
+      "outsourcing": {
+        "title": "Outsourcing programistów",
+        "description": "Dostęp do doświadczonych programistów bez konieczności zatrudniania na stałe.",
+        "slug": "outsourcing-programistow",
+        "order": 7,
+        "image": "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200"
+      },
+      "academy": {
+        "title": "Akademia i szkolenia",
+        "description": "Szkolenia i kursy z zakresu programowania, projektowania i zarządzania projektami IT.",
+        "slug": "akademia-i-szkolenia",
+        "order": 8,
+        "image": "https://images.pexels.com/photos/1181533/pexels-photo-1181533.jpeg?auto=compress&cs=tinysrgb&w=1200"
+      },
+      "venture": {
+        "title": "Cetus Venture Capital",
+        "description": "Inwestycje w innowacyjne projekty technologiczne z potencjałem wzrostu.",
+        "slug": "cetus-venture-capital",
+        "order": 9,
+        "image": "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1200"
+      }
+    }
+  },
+  "skipToContent": {
+    "skipToContent": "Przejdź do głównej treści"
+  },
+  "home": {
+    "metadata": {
+      "title": "Strona główna",
+      "description": "CetusPro - Tworzymy nowoczesne aplikacje webowe, mobilne i rozwiązania IT. Specjalizujemy się w projektowaniu UX/UI, cyberbezpieczeństwie, AI i automatyzacji procesów biznesowych.",
+      "ogTitle": "CetusPro - Nowoczesne rozwiązania IT i aplikacje webowe",
+      "ogDescription": "Tworzymy nowoczesne aplikacje webowe, mobilne i rozwiązania IT. Specjalizujemy się w projektowaniu UX/UI, cyberbezpieczeństwie, AI i automatyzacji procesów."
+    }
+  },
+  "webApps": {
+    "hero": {
+      "title": "Tworzymy aplikacje",
+      "highlight": "webowe",
+      "subtitle": ", które napędzają Twój biznes",
+      "description": "Od koncepcji do wdrożenia - tworzymy nowoczesne aplikacje webowe, które są szybkie, bezpieczne i łatwe w użyciu.",
+      "buttonText": "Porozmawiajmy o projekcie"
+    },
+    "whyFeatures": {
+      "title": "Dlaczego warto wybrać nasze rozwiązania?",
+      "subtitle": "Nowoczesne rozwiązania, które napędzają Twój biznes",
+      "modernTech": {
+        "title": "Nowoczesne technologie",
+        "description": "Wykorzystujemy najnowsze frameworki i narzędzia, aby zapewnić szybkość, bezpieczeństwo i skalowalność Twojej aplikacji."
+      },
+      "responsiveDesign": {
+        "title": "Responsywny design",
+        "description": "Twoja aplikacja będzie doskonale wyglądać i działać na każdym urządzeniu - od telefonu po duży ekran desktopowy."
+      },
+      "performance": {
+        "title": "Optymalizacja wydajności",
+        "description": "Zoptymalizujemy każdy aspekt aplikacji, aby zapewnić szybkie ładowanie i płynne działanie nawet przy dużym obciążeniu."
+      },
+      "security": {
+        "title": "Bezpieczeństwo",
+        "description": "Implementujemy najlepsze praktyki bezpieczeństwa, aby chronić dane Twoich użytkowników i Twojej firmy."
+      },
+      "seo": {
+        "title": "SEO i dostępność",
+        "description": "Twoja aplikacja będzie łatwo znajdowana w wyszukiwarkach i dostępna dla wszystkich użytkowników."
+      },
+      "support": {
+        "title": "Wsparcie i utrzymanie",
+        "description": "Zapewniamy ciągłe wsparcie techniczne i aktualizacje, aby Twoja aplikacja zawsze działała perfekcyjnie."
+      }
+    },
+    "modules": {
+      "title": "Moduły aplikacji webowej",
+      "security": {
+        "title": "Logowanie i bezpieczeństwo",
+        "item1": "Autoryzacja OAuth2",
+        "item2": "Dwuskładnikowe uwierzytelnianie (2FA)",
+        "item3": "Zarządzanie sesjami",
+        "item4": "Ochrona przed atakami CSRF"
+      },
+      "payments": {
+        "title": "Płatności i monetyzacja",
+        "item1": "Integracja z Stripe/PayPal",
+        "item2": "Subskrypcje i płatności cykliczne",
+        "item3": "Zarządzanie fakturami",
+        "item4": "Dashboard finansowy"
+      },
+      "communication": {
+        "title": "Komunikacja i powiadomienia",
+        "item1": "Czat w czasie rzeczywistym",
+        "item2": "Powiadomienia push",
+        "item3": "E-maile transakcyjne",
+        "item4": "Integracja z SMS"
+      },
+      "navigation": {
+        "title": "Nawigacja i lokalizacja",
+        "item1": "Mapy interaktywne",
+        "item2": "Geolokalizacja",
+        "item3": "Wielojęzyczność (i18n)",
+        "item4": "Wyszukiwanie geograficzne"
+      },
+      "analytics": {
+        "title": "Analiza danych",
+        "item1": "Dashboard analityczny",
+        "item2": "Raporty w czasie rzeczywistym",
+        "item3": "Eksport danych",
+        "item4": "Wizualizacja danych"
+      },
+      "personalization": {
+        "title": "Personalizacja UX",
+        "item1": "Motywy i kolorystyka",
+        "item2": "Dostosowanie interfejsu",
+        "item3": "Preferencje użytkownika",
+        "item4": "Tryb ciemny"
+      }
+    },
+    "cta": {
+      "title": "Gotowy na start?",
+      "description": "Skontaktuj się z nami, aby omówić Twój projekt i dowiedzieć się, jak możemy pomóc w rozwoju Twojego biznesu.",
+      "buttonText": "Porozmawiajmy o projekcie",
+      "emailLabel": "lub napisz bezpośrednio"
+    }
+  }
+}

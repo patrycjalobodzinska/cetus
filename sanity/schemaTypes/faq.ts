@@ -8,14 +8,12 @@ export default defineType({
     defineField({
       name: 'title',
       title: 'Pytanie',
-      type: 'string',
-      validation: (Rule) => Rule.required(),
+      type: 'localeString',
     }),
     defineField({
       name: 'description',
       title: 'Odpowiedź',
-      type: 'text',
-      validation: (Rule) => Rule.required(),
+      type: 'localeText',
     }),
     defineField({
       name: 'order',
@@ -27,8 +25,8 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: 'title',
-      subtitle: 'description',
+      title: 'title.pl',
+      subtitle: 'description.pl',
     },
     prepare({ title, subtitle }) {
       return {

@@ -24,7 +24,7 @@ export const StarGradientButton = ({
   return (
     <button
       className={cn(
-        "group relative inline-block overflow-hidden rounded-[20px] p-[1.5px] bg-transparent border-none cursor-pointer",
+        "group relative inline-block overflow-hidden rounded-[20px] p-[1.5px] bg-transparent border-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2",
         containerClassName
       )}
     >

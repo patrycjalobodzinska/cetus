@@ -9,19 +9,16 @@ export default defineType({
       name: 'firstName',
       title: 'Imię',
       type: 'string',
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'lastName',
       title: 'Nazwisko',
       type: 'string',
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'position',
       title: 'Stanowisko',
-      type: 'string',
-      validation: (Rule) => Rule.required(),
+      type: 'localeString',
     }),
     defineField({
       name: 'image',
@@ -30,7 +27,13 @@ export default defineType({
       options: {
         hotspot: true,
       },
-      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'hidden',
+      title: 'Ukryj na stronie',
+      type: 'boolean',
+      description: 'Jeśli zaznaczone, ta osoba nie będzie widoczna na stronie O nas',
+      initialValue: false,
     }),
     defineField({
       name: 'order',
@@ -44,7 +47,7 @@ export default defineType({
     select: {
       firstName: 'firstName',
       lastName: 'lastName',
-      position: 'position',
+      position: 'position.pl',
       media: 'image',
     },
     prepare({ firstName, lastName, position, media }) {

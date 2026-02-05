@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { useTransition } from 'react';
 import { useNavigation } from './NavigationProvider';
+import { cn } from '@/lib/utils';
 
 interface NavigationLinkProps {
   href: string;
@@ -38,7 +39,11 @@ export default function NavigationLink({
   };
 
   return (
-    <a href={href} onClick={handleClick} className={className}>
+    <a
+      href={href}
+      onClick={handleClick}
+      className={cn("focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:rounded", className)}
+    >
       {children}
     </a>
   );
