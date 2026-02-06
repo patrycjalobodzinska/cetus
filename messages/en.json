@@ -222,5 +222,78 @@
       "buttonText": "Let's talk about your project",
       "emailLabel": "or write directly"
     }
+  },
+  "mobileApps": {
+    "hero": {
+      "title": "We create mobile apps that users will love",
+      "description": "From concept to publication in App Store and Google Play - we create modern mobile applications that are fast, secure and intuitive to use."
+    },
+    "howWeHelp": {
+      "title": "How we can help",
+      "services": [
+        {
+          "title": "Native iOS and Android apps",
+          "description": "We create efficient native applications that leverage the full potential of iOS and Android systems, ensuring the best performance and user experience."
+        },
+        {
+          "title": "Cross-platform applications",
+          "description": "Cross-platform solutions with React Native or Flutter that work on all platforms while maintaining native performance and appearance."
+        },
+        {
+          "title": "Progressive Web Apps (PWA)",
+          "description": "Modern web applications that work like native mobile apps, with installation capability and offline functionality."
+        }
+      ]
+    },
+    "whyFeatures": {
+      "title": "Why choose our solutions?",
+      "features": [
+        {
+          "title": "Modular architecture",
+          "description": "Applications built from independent modules that can be easily expanded and updated without affecting the entire system."
+        },
+        {
+          "title": "High performance",
+          "description": "Optimization of every aspect of the application to ensure fast operation and smooth animations even on older devices."
+        },
+        {
+          "title": "Data security",
+          "description": "Implementation of best security practices, data encryption and secure API connections."
+        },
+        {
+          "title": "Fast loading",
+          "description": "Optimization of application size and loading time so users can quickly start using the application."
+        },
+        {
+          "title": "Purposeful design",
+          "description": "Designing with specific business goals and user needs in mind, not just technology."
+        },
+        {
+          "title": "Continuous development",
+          "description": "Regular updates and new features that keep the application up to date with user and market needs."
+        }
+      ]
+    },
+    "whyUs": {
+      "title": "Why us?",
+      "reasons": [
+        {
+          "title": "Experience in various industries",
+          "description": "We have experience in creating mobile applications for various industries - from e-commerce to finance and healthcare."
+        },
+        {
+          "title": "Full development cycle",
+          "description": "We offer comprehensive service from concept, through design, development, testing, to publication in stores."
+        },
+        {
+          "title": "Post-deployment support",
+          "description": "We provide continuous technical support, updates and application optimization after its launch."
+        },
+        {
+          "title": "Compliance with guidelines",
+          "description": "We ensure full compliance with App Store and Google Play guidelines so your application is quickly accepted."
+        }
+      ]
+    }
   }
 }

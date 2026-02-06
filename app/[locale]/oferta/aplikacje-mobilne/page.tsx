@@ -6,70 +6,15 @@ import { useState } from 'react';
 import StarGradientButton from '@/app/components/ui/gradientBackground';
 import DecorativeImage from '@/app/components/DecorativeImage';
 import PolygonAccordion from '@/app/components/PolygonAccordion';
+import { useTranslations, useLocale } from 'next-intl';
 
 export default function MobileAppsPage() {
+  const t = useTranslations('mobileApps');
+  const locale = useLocale();
 
-  const howWeHelpServices = [
-    {
-      title: 'Aplikacje natywne iOS i Android',
-      description: 'Tworzymy wydajne aplikacje natywne wykorzystujące pełny potencjał systemów iOS i Android, zapewniając najlepszą wydajność i doświadczenie użytkownika.'
-    },
-    {
-      title: 'Aplikacje multiplatformowe',
-      description: 'Rozwiązania cross-platformowe z React Native lub Flutter, które działają na wszystkich platformach przy zachowaniu natywnej wydajności i wyglądu.'
-    },
-    {
-      title: 'Progressive Web Apps (PWA)',
-      description: 'Nowoczesne aplikacje webowe, które działają jak natywne aplikacje mobilne, z możliwością instalacji i pracy offline.'
-    }
-  ];
-
-  const whyFeatures = [
-    {
-      title: 'Modularna architektura',
-      description: 'Aplikacje zbudowane z niezależnych modułów, które można łatwo rozbudowywać i aktualizować bez wpływu na cały system.'
-    },
-    {
-      title: 'Wysoka wydajność',
-      description: 'Optymalizacja każdego aspektu aplikacji, aby zapewnić szybkie działanie i płynne animacje nawet na starszych urządzeniach.'
-    },
-    {
-      title: 'Bezpieczeństwo danych',
-      description: 'Implementacja najlepszych praktyk bezpieczeństwa, szyfrowanie danych i bezpieczne połączenia API.'
-    },
-    {
-      title: 'Szybkie ładowanie',
-      description: 'Optymalizacja rozmiaru aplikacji i czasu ładowania, aby użytkownicy mogli szybko rozpocząć korzystanie z aplikacji.'
-    },
-    {
-      title: 'Celowe projektowanie',
-      description: 'Projektowanie z myślą o konkretnych celach biznesowych i potrzebach użytkowników, a nie tylko o technologii.'
-    },
-    {
-      title: 'Ciągły rozwój',
-      description: 'Regularne aktualizacje i nowe funkcje, które utrzymują aplikację na bieżąco z potrzebami użytkowników i rynku.'
-    }
-  ];
-
-  const whyUsReasons = [
-    {
-      title: 'Doświadczenie w różnych branżach',
-      description: 'Mamy doświadczenie w tworzeniu aplikacji mobilnych dla różnych branż - od e-commerce po finanse i zdrowie.'
-    },
-    {
-      title: 'Pełny cykl rozwoju',
-      description: 'Oferujemy kompleksową obsługę od koncepcji, przez projektowanie, rozwój, testowanie, aż po publikację w sklepach.'
-    },
-    {
-      title: 'Wsparcie po wdrożeniu',
-      description: 'Zapewniamy ciągłe wsparcie techniczne, aktualizacje i optymalizację aplikacji po jej uruchomieniu.'
-    },
-    {
-      title: 'Zgodność z wytycznymi',
-      description: 'Zapewniamy pełną zgodność z wytycznymi App Store i Google Play, aby Twoja aplikacja została szybko zaakceptowana.'
-    }
-  ];
-
+  const howWeHelpServices = t.raw('howWeHelp.services') as Array<{ title: string; description: string }>;
+  const whyFeatures = t.raw('whyFeatures.features') as Array<{ title: string; description: string }>;
+  const whyUsReasons = t.raw('whyUs.reasons') as Array<{ title: string; description: string }>;
 
   const whyFeaturesIcons = [Puzzle, Gauge, Shield, Zap, Target, TrendingUp];
 
@@ -87,11 +32,11 @@ export default function MobileAppsPage() {
                 className="text-5xl md:text-6xl lg:text-6xl font-bold text-slate-900 leading-tight"
                 style={{ fontFamily: "var(--font-michroma)" }}
               >
-                Tworzymy aplikacje mobilne, które użytkownicy pokochają
+                {t('hero.title')}
               </h1>
 
               <p className="text-xl text-slate-600 leading-relaxed max-w-xl">
-                Od koncepcji do publikacji w App Store i Google Play - tworzymy nowoczesne aplikacje mobilne, które są szybkie, bezpieczne i intuicyjne w użyciu.
+                {t('hero.description')}
               </p>
 
 
@@ -115,7 +60,7 @@ export default function MobileAppsPage() {
               className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight"
               style={{ fontFamily: "var(--font-michroma)" }}
             >
-              Jak możemy pomóc
+              {t('howWeHelp.title')}
             </h2>
           </div>
 
@@ -159,7 +104,7 @@ export default function MobileAppsPage() {
               className="text-4xl md:text-5xl font-bold text-slate-900 mb-4"
               style={{ fontFamily: "var(--font-michroma)" }}
             >
-              Dlaczego warto wybrać nasze rozwiązania?
+              {t('whyFeatures.title')}
             </h2>
           </div>
 
@@ -257,7 +202,7 @@ export default function MobileAppsPage() {
               className="text-4xl md:text-5xl font-bold text-slate-900 mb-4"
               style={{ fontFamily: "var(--font-michroma)" }}
             >
-              Dlaczego my?
+              {t('whyUs.title')}
             </h2>
           </div>
 

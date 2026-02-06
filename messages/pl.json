@@ -222,5 +222,78 @@
       "buttonText": "Porozmawiajmy o projekcie",
       "emailLabel": "lub napisz bezpośrednio"
     }
+  },
+  "mobileApps": {
+    "hero": {
+      "title": "Tworzymy aplikacje mobilne, które użytkownicy pokochają",
+      "description": "Od koncepcji do publikacji w App Store i Google Play - tworzymy nowoczesne aplikacje mobilne, które są szybkie, bezpieczne i intuicyjne w użyciu."
+    },
+    "howWeHelp": {
+      "title": "Jak możemy pomóc",
+      "services": [
+        {
+          "title": "Aplikacje natywne iOS i Android",
+          "description": "Tworzymy wydajne aplikacje natywne wykorzystujące pełny potencjał systemów iOS i Android, zapewniając najlepszą wydajność i doświadczenie użytkownika."
+        },
+        {
+          "title": "Aplikacje multiplatformowe",
+          "description": "Rozwiązania cross-platformowe z React Native lub Flutter, które działają na wszystkich platformach przy zachowaniu natywnej wydajności i wyglądu."
+        },
+        {
+          "title": "Progressive Web Apps (PWA)",
+          "description": "Nowoczesne aplikacje webowe, które działają jak natywne aplikacje mobilne, z możliwością instalacji i pracy offline."
+        }
+      ]
+    },
+    "whyFeatures": {
+      "title": "Dlaczego warto wybrać nasze rozwiązania?",
+      "features": [
+        {
+          "title": "Modularna architektura",
+          "description": "Aplikacje zbudowane z niezależnych modułów, które można łatwo rozbudowywać i aktualizować bez wpływu na cały system."
+        },
+        {
+          "title": "Wysoka wydajność",
+          "description": "Optymalizacja każdego aspektu aplikacji, aby zapewnić szybkie działanie i płynne animacje nawet na starszych urządzeniach."
+        },
+        {
+          "title": "Bezpieczeństwo danych",
+          "description": "Implementacja najlepszych praktyk bezpieczeństwa, szyfrowanie danych i bezpieczne połączenia API."
+        },
+        {
+          "title": "Szybkie ładowanie",
+          "description": "Optymalizacja rozmiaru aplikacji i czasu ładowania, aby użytkownicy mogli szybko rozpocząć korzystanie z aplikacji."
+        },
+        {
+          "title": "Celowe projektowanie",
+          "description": "Projektowanie z myślą o konkretnych celach biznesowych i potrzebach użytkowników, a nie tylko o technologii."
+        },
+        {
+          "title": "Ciągły rozwój",
+          "description": "Regularne aktualizacje i nowe funkcje, które utrzymują aplikację na bieżąco z potrzebami użytkowników i rynku."
+        }
+      ]
+    },
+    "whyUs": {
+      "title": "Dlaczego my?",
+      "reasons": [
+        {
+          "title": "Doświadczenie w różnych branżach",
+          "description": "Mamy doświadczenie w tworzeniu aplikacji mobilnych dla różnych branż - od e-commerce po finanse i zdrowie."
+        },
+        {
+          "title": "Pełny cykl rozwoju",
+          "description": "Oferujemy kompleksową obsługę od koncepcji, przez projektowanie, rozwój, testowanie, aż po publikację w sklepach."
+        },
+        {
+          "title": "Wsparcie po wdrożeniu",
+          "description": "Zapewniamy ciągłe wsparcie techniczne, aktualizacje i optymalizację aplikacji po jej uruchomieniu."
+        },
+        {
+          "title": "Zgodność z wytycznymi",
+          "description": "Zapewniamy pełną zgodność z wytycznymi App Store i Google Play, aby Twoja aplikacja została szybko zaakceptowana."
+        }
+      ]
+    }
   }
 }
