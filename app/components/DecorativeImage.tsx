@@ -78,7 +78,7 @@ export default function DecorativeImage({ src, alt, overlay, noRadius }: Decorat
       </svg>
 
       {/* Image container */}
-      <div className={`relative p-2 md:p-3 ${noRadius ? '' : 'rounded-md'} overflow-hidden`}>
+      <div className={`relative p-4 md:p-4 ${noRadius ? '' : 'rounded-md'} overflow-hidden`}>
         <img
           src={src}
           alt={alt}
