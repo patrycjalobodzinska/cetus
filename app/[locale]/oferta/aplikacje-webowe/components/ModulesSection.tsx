@@ -40,7 +40,8 @@ export default function ModulesSection() {
           </h2>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        {/* Desktop Layout */}
+        <div className="hidden lg:grid lg:grid-cols-2 gap-12">
           <div className="space-y-3">
             {modules.map((module, index) => {
               const Icon = getIcon(module.icon);
@@ -63,6 +64,29 @@ export default function ModulesSection() {
           </div>
 
           <ModulePreviewCard activeModule={activeModule} modules={modules} />
+        </div>
+
+        {/* Mobile - Title and Indicators Only */}
+        <div className="lg:hidden">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold text-slate-900 mb-6">
+              {modules[activeModule]?.title}
+            </h3>
+            <div className="flex items-center justify-center gap-2">
+              {modules.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveModule(index)}
+                  className={`w-3 h-3 rounded-full transition-all ${
+                    activeModule === index
+                      ? 'bg-blue-600 w-8'
+                      : 'bg-gray-300 hover:bg-gray-400'
+                  }`}
+                  aria-label={`Przejdź do modułu ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

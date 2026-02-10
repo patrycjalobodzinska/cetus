@@ -1,17 +1,7 @@
 import React from 'react';
+import type { DecorativeImageProps } from '@/types/components';
 
-interface DecorativeImageProps {
-  src: string;
-  alt: string;
-  overlay?: {
-    value: string;
-    label?: string;
-    subLabel?: string;
-    icon?: React.ReactNode;
-  };
-}
-
-export default function DecorativeImage({ src, alt, overlay }: DecorativeImageProps) {
+export default function DecorativeImage({ src, alt, overlay, noRadius }: DecorativeImageProps) {
   // Generate unique IDs for SVG gradients and filters to avoid conflicts
   const uniqueId = React.useId();
   const gradientId = `neonGradient-${uniqueId}`;
@@ -88,11 +78,11 @@ export default function DecorativeImage({ src, alt, overlay }: DecorativeImagePr
       </svg>
 
       {/* Image container */}
-      <div className="relative p-2 md:p-3 rounded-md overflow-hidden">
+      <div className={`relative p-2 md:p-3 ${noRadius ? '' : 'rounded-md'} overflow-hidden`}>
         <img
           src={src}
           alt={alt}
-          className="w-full h-auto object-cover rounded-xl md:rounded-2xl"
+          className={`w-full h-auto object-cover ${noRadius ? '' : 'rounded-xl md:rounded-2xl'}`}
         />
 
         {/* Optional overlay (for statistics) */}

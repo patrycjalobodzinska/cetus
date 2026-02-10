@@ -2,14 +2,7 @@
 
 import React from "react";
 import { cn } from "@/lib/utils";
-
-interface StarGradientButtonProps {
-  children?: React.ReactNode;
-  className?: string;
-  containerClassName?: string;
-  speed?: string;
-  starColor?: string;
-}
+import type { StarGradientButtonProps } from '@/types/components';
 
 export const StarGradientButton = ({
   children,
@@ -22,9 +15,9 @@ export const StarGradientButton = ({
   const halfSpeed = parseFloat(speed) / 2 + "s";
 
   return (
-    <button
+    <div
       className={cn(
-        "group relative inline-block overflow-hidden rounded-[20px] p-[1.5px] bg-transparent border-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2",
+        "group text-center relative inline-block overflow-hidden rounded-[20px] p-[1.5px] bg-transparent border-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2",
         containerClassName
       )}
     >
@@ -126,7 +119,7 @@ export const StarGradientButton = ({
           animation: shimmer 3s linear infinite;
         }
       `}</style>
-    </button>
+    </div>
   );
 };
 

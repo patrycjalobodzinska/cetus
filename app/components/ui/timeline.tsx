@@ -19,50 +19,11 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
   const [height, setHeight] = useState(0);
 
   useEffect(() => {
-    const updateHeight = () => {
-      if (ref.current) {
-        const scrollHeight = ref.current.scrollHeight;
-        const offsetHeight = ref.current.offsetHeight;
-        setHeight(Math.max(scrollHeight, offsetHeight));
-      }
-    };
-
-    updateHeight();
-
-    const resizeObserver = new ResizeObserver(() => {
-      updateHeight();
-    });
-
     if (ref.current) {
-      resizeObserver.observe(ref.current);
-
-      const images = ref.current.querySelectorAll('img');
-      images.forEach((img) => {
-        if (img.complete) {
-          updateHeight();
-        } else {
-          img.addEventListener('load', updateHeight, { once: true });
-        }
-      });
+      const rect = ref.current.getBoundingClientRect();
+      setHeight(rect.height);
     }
-
-    const timeoutIds = [
-      setTimeout(() => updateHeight(), 100),
-      setTimeout(() => updateHeight(), 500),
-      setTimeout(() => updateHeight(), 1000),
-    ];
-
-    return () => {
-      resizeObserver.disconnect();
-      timeoutIds.forEach(clearTimeout);
-      if (ref.current) {
-        const images = ref.current.querySelectorAll('img');
-        images.forEach((img) => {
-          img.removeEventListener('load', updateHeight);
-        });
-      }
-    };
-  }, [ref, data]);
+  }, [ref]);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -84,7 +45,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
             key={index}
             className="flex justify-start pt-10 md:pt-40 md:gap-10"
           >
-            <div className="sticky flex flex-col md:flex-row z-10 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
+            <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
               <div className="lg:h-8 h-6 w-6 absolute left-5 md:left-4 lg:w-8 rotate-45 bg-blue-100  flex items-center justify-center">
                 <div className="lg:h-4 lg:w-4 h-2 w-2  bg-white  border border-neutral-300 p-1" />
               </div>
@@ -106,21 +67,14 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
           style={{
             height: height + "px",
           }}
-          className="absolute md:left-8 left-8 top-0 z-0 overflow-hidden w-[2px] bg-gradient-to-b from-transparent via-neutral-300 to-transparent"
+          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-0% via-neutral-200 dark:via-neutral-700 to-transparent to-99% mask-[linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]"
         >
           <motion.div
             style={{
               height: heightTransform,
               opacity: opacityTransform,
             }}
-            className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-blue-600 via-blue-500 via-blue-400/60 to-transparent"
-          />
-          <motion.div
-            style={{
-              height: heightTransform,
-              opacity: opacityTransform,
-            }}
-            className="absolute inset-x-0 top-0 w-[3px] bg-gradient-to-t from-transparent via-blue-400/20 to-transparent blur-sm -translate-x-[0.5px]"
+            className="absolute inset-x-0 top-0  w-[2px] bg-linear-to-t from-blue-600 via-blue-500 to-transparent from-0% via-10% rounded-full"
           />
         </div>
       </div>

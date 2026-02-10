@@ -5,6 +5,7 @@ import { ArrowRight, CheckCircle, TrendingUp, Target, Users, Lightbulb, Rocket, 
 import { useState } from 'react';
 import StarGradientButton from '@/app/components/ui/gradientBackground';
 import PolygonAccordion from '@/app/components/PolygonAccordion';
+import CTASection from '@/app/components/CTASection';
 
 export default function CetusVentureCapitalPage() {
   const [activePhase, setActivePhase] = useState(0);
@@ -375,40 +376,15 @@ export default function CetusVentureCapitalPage() {
         </div>
       </section>
 
-      <section className="py-32 relative overflow-hidden bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center">
-            <h2
-              className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight"
-              style={{ fontFamily: "var(--font-michroma)" }}
-            >
-              Masz obiecujący startup?
-            </h2>
-
-            <p className="text-xl text-slate-600 mb-12 max-w-2xl mx-auto leading-relaxed">
-              Skontaktuj się z nami i wyślij swój pitch deck. Odezwiemy się w ciągu 48 godzin.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <Link href="/kontakt">
-                <StarGradientButton>
-                  Wyślij pitch deck
-                </StarGradientButton>
-              </Link>
-            </div>
-
-            <div className="flex flex-col items-center gap-3">
-              <p className="text-slate-500 text-sm">lub napisz bezpośrednio</p>
-              <a
-                href="mailto:vc@cetuspro.pl"
-                className="text-lg font-semibold text-blue-600 hover:opacity-70 transition-opacity"
-              >
-                vc@cetuspro.pl
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CTASection
+        title="Masz obiecujący startup?"
+        description="Skontaktuj się z nami i wyślij swój pitch deck. Odezwiemy się w ciągu 48 godzin."
+        buttonText="Wyślij pitch deck"
+        buttonLink="/kontakt"
+        emailLabel="lub napisz bezpośrednio"
+        email="vc@cetuspro.pl"
+        showDivider={false}
+      />
     </div>
   );
 }

@@ -6,6 +6,9 @@
     "caseStudies": "Case Studies",
     "contact": "Contact",
     "freeConsultation": "Free Consultation"
+
+
+
   },
   "common": {
     "learnMore": "Learn More",
@@ -127,14 +130,7 @@
   "skipToContent": {
     "skipToContent": "Skip to main content"
   },
-  "home": {
-    "metadata": {
-      "title": "Home",
-      "description": "CetusPro - We create modern web applications, mobile apps and IT solutions. We specialize in UX/UI design, cybersecurity, AI and business process automation.",
-      "ogTitle": "CetusPro - Modern IT solutions and web applications",
-      "ogDescription": "We create modern web applications, mobile apps and IT solutions. We specialize in UX/UI design, cybersecurity, AI and process automation."
-    }
-  },
+
   "webApps": {
     "hero": {
       "title": "We create",
@@ -294,6 +290,292 @@
           "description": "We ensure full compliance with App Store and Google Play guidelines so your application is quickly accepted."
         }
       ]
+    }
+  },
+  "home": {
+    "metadata": {
+      "title": "Home",
+      "description": "CetusPro - We create modern web applications, mobile apps and IT solutions. We specialize in UX/UI design, cybersecurity, AI and business process automation.",
+      "ogTitle": "CetusPro - Modern IT solutions and web applications",
+      "ogDescription": "We create modern web applications, mobile apps and IT solutions. We specialize in UX/UI design, cybersecurity, AI and process automation."
+    },
+    "process": {
+      "title": "From chaos to structure. We give you peace and guidance",
+      "description": "You don't have to explain to us how your business works - just tell us where you want to go. We organize the process, set priorities, and deliver measurable results. You make the decisions, and we take responsibility for the implementation. Thanks to this, you gain more time, clarity, and predictable effects.",
+      "cta": {
+        "caseStudies": "Our Case Studies",
+        "designIdea": "Design your Idea in 5 minutes!"
+      },
+      "steps": {
+        "audit": {
+          "stepLabel": "STEP 1",
+          "question": "Do you feel that your system lives its own life?",
+          "title": "Audit",
+          "description": "Before we start building anything, we analyze your system, processes, and data. As a result, you receive a complete picture of the situation, awareness of risks, and concrete recommendations that help you make informed decisions instead of acting blindly."
+        },
+        "roadmap": {
+          "stepLabel": "STEP 2",
+          "question": "Don't know where to start - because everything seems important?",
+          "title": "Roadmap",
+          "description": "We create a roadmap with clear priorities, dependencies, and business goals. Thanks to this, everyone knows what is truly important, and the team works in one direction, without wasting energy on random tasks."
+        },
+        "management": {
+          "stepLabel": "STEP 3",
+          "question": "Are you tired of chaotic development without control and purpose?",
+          "title": "Project Management",
+          "description": "We build the solution step by step, according to a previously established map. Effect: controlled product development, without accidental features and unnecessary costs."
+        },
+        "acceptance": {
+          "stepLabel": "STEP 4",
+          "question": "Surprises at the acceptance stage? Not with us.",
+          "title": "Acceptance",
+          "description": "We regularly show work results and check compliance with business goals. Effect: zero surprises at the end of the project and full predictability at every stage of cooperation."
+        },
+        "maintenance": {
+          "stepLabel": "STEP 5",
+          "question": "Does your system require constant \"firefighting\"?",
+          "title": "Maintenance",
+          "description": "We monitor, update, and ensure the stability of the infrastructure. Effect: You focus on business development, we take care of the rest."
+        }
+      }
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Find answers to questions about our services and cooperation process",
+      "loading": "Loading...",
+      "q1": {
+        "question": "How long does project implementation take?",
+        "answer": "Implementation time depends on project complexity. Simple web applications can be ready in 2-3 months, while more complex systems require 6-12 months. After the audit, we prepare a detailed schedule with specific dates."
+      },
+      "q2": {
+        "question": "What technologies do you use?",
+        "answer": "We work with the latest technologies tailored to project needs. In web applications, we use React, Next.js, TypeScript. In mobile applications, React Native, Flutter, and native iOS and Android solutions. Technology choice is always consulted with the client."
+      },
+      "q3": {
+        "question": "Do you provide support after deployment?",
+        "answer": "Yes, we offer comprehensive technical support after deployment. This includes monitoring, security updates, performance optimization, and adding new features. We can also provide full system maintenance."
+      },
+      "q4": {
+        "question": "What does the cooperation process look like?",
+        "answer": "We start with an audit and needs analysis. Then we create a roadmap with priorities and schedule. During implementation, we regularly present progress and conduct acceptance tests. After deployment, we provide support and maintenance."
+      },
+      "q5": {
+        "question": "How much does a project cost?",
+        "answer": "Project cost depends on its scope, complexity, and requirements. After the audit, we prepare a detailed quote broken down into stages. We also offer flexible cooperation models - from one-time projects to long-term contracts."
+      },
+      "q6": {
+        "question": "Can I see examples of your work?",
+        "answer": "Of course! In the Case Studies section, you'll find detailed descriptions of our projects along with results. We can also organize a presentation of selected solutions during consultation."
+      }
+    },
+    "partners": {
+      "title": "Strategic Partners",
+      "description": "We deliver real value through cooperation with leading organizations and innovative startups.",
+      "loading": "Loading partners..."
+    }
+  },
+  "caseStudies": {
+    "hero": {
+      "titlePrefix": "Our",
+      "titleHighlight": "case studies",
+      "description": "See how we helped our clients achieve success with modern technological solutions."
+    },
+    "introduction": "See our Case Studies and see for yourself that a difficult task can be turned into a simple solution.",
+    "noCaseStudies": "No case studies to display.",
+    "effect": "Effect?",
+    "cta": {
+      "text": "See our Case Studies and see for yourself that a difficult task can be turned into a simple solution.",
+      "button": "Check",
+      "title": "Want to create a similar solution?",
+      "description": "Contact us and tell us about your needs – we'll create a solution tailored to your business.",
+      "buttonText": "Contact us"
+    },
+    "methodology": {
+      "label": "METHODOLOGY V1.0",
+      "title": "Software creation process",
+      "description": "Our systematic approach to building efficient digital products. We don't just write code; we design solutions that scale with your business.",
+      "steps": {
+        "analysis": {
+          "title": "ANALYSIS",
+          "subtitle": "Discovery and Planning",
+          "description": "We analyze business requirements, target audience, and technical limitations to define a clear roadmap."
+        },
+        "design": {
+          "title": "DESIGN",
+          "subtitle": "System Architecture",
+          "description": "Creating the foundations of your application. We design scalable database schemas and robust API structures."
+        },
+        "launch": {
+          "title": "LAUNCH",
+          "subtitle": "CI/CD & Deployment",
+          "description": "Safe and automated delivery of your product to cloud environments with zero-downtime strategies."
+        },
+        "deployment": {
+          "title": "DEPLOYMENT",
+          "subtitle": "CI/CD and Deployment",
+          "description": "Safe and automated delivery of the product to cloud environments while maintaining zero-downtime."
+        }
+      }
+    }
+  },
+  "caseStudyDetail": {
+    "backToList": "Back to case studies",
+    "ctaButton": "See how we can help",
+    "modulesTitle": "System modules",
+    "resultsTitle": "Results",
+    "resultsDescription": "A summary of the most important outcomes of the implementation, felt by both users and the business.",
+    "technologiesTitle": "Technologies used in the project",
+    "mockupLabel": "Mockup: {title}",
+    "imageAltFallback": "Case Study",
+    "moduleImageAltFallback": "Module"
+  },
+  "aiAutomation": {
+    "hero": {
+      "badge": "AI and Automation",
+      "title": "Automate and optimize with AI",
+      "description": "Leverage the potential of artificial intelligence and automation to accelerate business processes, increase efficiency, and achieve better results.",
+      "buttonText": "Let's talk about your project",
+      "caseStudiesButton": "See case studies",
+      "aiSystemLabel": "AI System"
+    },
+    "benefits": {
+      "title": "Benefits of AI and automation",
+      "subtitle": "Modern solutions that transform your business",
+      "items": [
+        {
+          "title": "Process automation",
+          "description": "Automate repetitive tasks and business processes, saving time and resources while increasing efficiency and accuracy of operations."
+        },
+        {
+          "title": "Intelligent solutions",
+          "description": "Leverage the potential of artificial intelligence for data analysis, trend prediction, and making intelligent business decisions."
+        },
+        {
+          "title": "Speed and efficiency",
+          "description": "Accelerate business processes through automation and AI, enabling faster response to customer and market needs."
+        },
+        {
+          "title": "Security and compliance",
+          "description": "We ensure full compliance with GDPR regulations and security standards, protecting your company's data and processes."
+        }
+      ]
+    },
+    "services": {
+      "title": "Our services",
+      "applicationsLabel": "Applications:",
+      "effectLabel": "Effect:",
+      "items": [
+        {
+          "title": "Chatbots and AI assistants",
+          "description": "Intelligent chatbots and virtual assistants that answer customer questions, support sales, and automate customer service 24/7.",
+          "applications": [
+            "Chatbots on websites",
+            "Assistants in mobile applications",
+            "Customer service automation",
+            "Sales support and lead generation",
+            "CRM system integration"
+          ],
+          "effect": "60% reduction in customer service costs and increased customer satisfaction"
+        },
+        {
+          "title": "Workflow automation",
+          "description": "Automation of complex business processes, workflows, and system integrations, eliminating manual tasks and errors.",
+          "applications": [
+            "Business process automation",
+            "System and application integration",
+            "Reporting automation",
+            "Workflow management",
+            "Task orchestration"
+          ],
+          "effect": "Savings of 20+ hours per week on repetitive tasks"
+        },
+        {
+          "title": "Data analysis and predictions",
+          "description": "Advanced data analytics using AI to predict trends, identify patterns, and support business decisions.",
+          "applications": [
+            "Predictive analysis",
+            "Machine Learning for business",
+            "Anomaly detection",
+            "Forecasting and trend analysis",
+            "Personalization and recommendations"
+          ],
+          "effect": "40% improvement in forecast accuracy and better business decisions"
+        },
+        {
+          "title": "Computer Vision",
+          "description": "Solutions based on image recognition and computer vision for automating visual processes and analyzing image data.",
+          "applications": [
+            "Image recognition and classification",
+            "OCR and data extraction",
+            "Quality control automation",
+            "Facial recognition",
+            "Object detection"
+          ],
+          "effect": "Quality control automation with 99% accuracy"
+        },
+        {
+          "title": "Natural Language Processing",
+          "description": "Natural language processing for text analysis, sentiment analysis, information extraction, and automation of text-based processes.",
+          "applications": [
+            "Sentiment analysis",
+            "Information extraction from documents",
+            "Automatic tagging and categorization",
+            "Machine translation",
+            "Summarization and content generation"
+          ],
+          "effect": "Processing 1000+ documents daily automatically"
+        }
+      ]
+    },
+    "caseStudy": {
+      "title": "Case Study",
+      "goal": {
+        "label": "Goal:",
+        "text": "Automation of business processes in a medium-sized manufacturing company, reducing order processing time and eliminating manual errors."
+      },
+      "solution": {
+        "label": "Solution:",
+        "text": "Implementation of a comprehensive automation system using AI for order processing, warehouse management, and report generation."
+      },
+      "effects": {
+        "label": "Effects:",
+        "items": [
+          "70% reduction in order processing time",
+          "Automation of 80% of repetitive tasks",
+          "95% improvement in accuracy",
+          "Savings of 30h per week on administrative processes"
+        ]
+      },
+      "result": "Result: 300% increase in process efficiency and savings of 30h per week"
+    },
+    "process": {
+      "title": "Our process",
+      "compliance": "Full compliance with GDPR and security standards",
+      "steps": [
+        {
+          "title": "Needs analysis",
+          "description": "We thoroughly analyze your business processes, identify areas for automation, and define project goals."
+        },
+        {
+          "title": "Solution design",
+          "description": "We create the architecture of the AI/automation solution, select appropriate technologies, and plan implementation."
+        },
+        {
+          "title": "Implementation and testing",
+          "description": "We implement the solution, conduct tests, and optimize system performance, ensuring full functionality."
+        },
+        {
+          "title": "Deployment and support",
+          "description": "We deploy the solution in production, provide training and continuous technical support, and monitor operations."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready for transformation?",
+      "description": "Contact us to discuss automation and AI opportunities for your company.",
+      "buttonText": "Let's talk",
+      "emailLabel": "or write directly",
+      "email": "kontakt@cetuspro.pl"
     }
   }
 }

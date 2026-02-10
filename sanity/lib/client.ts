@@ -6,5 +6,6 @@ export const client = createClient({
   projectId,
   dataset,
   apiVersion,
-  useCdn: false, // Set to false for Studio to avoid caching issues
+  useCdn: process.env.NODE_ENV === 'production',
+  perspective: 'published',
 })

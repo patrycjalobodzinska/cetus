@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import StarGradientButton from '@/app/components/ui/gradientBackground';
-import { urlFor } from '@/sanity/lib/image';
+import Link from "next/link";
+import StarGradientButton from "@/app/components/ui/gradientBackground";
+import { urlFor } from "@/sanity/lib/image";
 import {
   ArrowLeft,
   CheckCircle2,
@@ -12,9 +12,10 @@ import {
   Zap,
   Users,
   Shield,
-} from 'lucide-react';
+} from "lucide-react";
+import { useTranslations } from "next-intl";
 
-// Mapowanie ikon
+"// Mapowanie ikon"
 const iconMap: Record<string, any> = {
   TrendingUp,
   Clock,
@@ -51,6 +52,7 @@ interface CaseStudy {
 }
 
 export default function CaseStudyDetail({ caseStudy }: { caseStudy: CaseStudy }) {
+  const t = useTranslations("caseStudyDetail");
 
   return (
     <div className="min-h-screen bg-white">
@@ -62,7 +64,7 @@ export default function CaseStudyDetail({ caseStudy }: { caseStudy: CaseStudy })
             className="inline-flex items-center gap-2 px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-all mb-8"
           >
             <ArrowLeft className="w-4 h-4" />
-            Powrót do Case Studies
+            {t("backToList")}
           </Link>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -75,7 +77,7 @@ export default function CaseStudyDetail({ caseStudy }: { caseStudy: CaseStudy })
 
               {caseStudy.title && (
                 <h1
-                  className="text-4xl lg:text-6xl tracking-tighter text-slate-900 leading-[0.9] font-bold"
+                  className="text-4xl lg:text-5xl  text-slate-900  font-bold"
                   style={{ fontFamily: "var(--font-michroma)" }}
                 >
                   {caseStudy.title}
@@ -91,7 +93,7 @@ export default function CaseStudyDetail({ caseStudy }: { caseStudy: CaseStudy })
               <div className="flex flex-wrap gap-4">
                 <Link href="/kontakt">
                   <StarGradientButton>
-                    Zobacz, jak możemy pomóc
+                    {t("ctaButton")}
                   </StarGradientButton>
                 </Link>
               </div>
@@ -101,10 +103,10 @@ export default function CaseStudyDetail({ caseStudy }: { caseStudy: CaseStudy })
               <div className="relative">
                 <div className="relative bg-gradient-to-b from-gray-800 to-gray-900 rounded-t-3xl p-3 shadow-2xl">
                   <div className="relative bg-black rounded-lg p-2">
-                    <div className="relative bg-white rounded-sm overflow-hidden aspect-[16/10]">
+                    <div className="relative bg-white rounded-sm overflow-hidden">
                       <img
                         src={urlFor(caseStudy.image).width(1200).height(750).url()}
-                        alt={caseStudy.title || 'Case Study'}
+                        alt={caseStudy.title || t("imageAltFallback")}
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -166,14 +168,14 @@ export default function CaseStudyDetail({ caseStudy }: { caseStudy: CaseStudy })
                 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4"
                 style={{ fontFamily: "var(--font-michroma)" }}
               >
-                Moduły systemu
+                {t("modulesTitle")}
               </h2>
             </div>
 
             <div className="space-y-20">
               {caseStudy.modules.map((module, index) => {
                 if (!module.title) return null;
-                const Icon = module.icon ? iconMap[module.icon] || CheckCircle2 : CheckCircle2;
+
                 const isEven = index % 2 === 0;
 
                 return (
@@ -186,9 +188,7 @@ export default function CaseStudyDetail({ caseStudy }: { caseStudy: CaseStudy })
                     <div className={isEven ? 'order-1' : 'order-1 lg:order-2'}>
                       <div className="bg-white p-8 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200 hover:border-blue-600/30 group">
                         <div className="flex items-center gap-4 mb-6">
-                          <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
-                            <Icon className="w-6 h-6 text-white" />
-                          </div>
+
                           <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-300">
                             {module.title}
                           </h3>
@@ -213,15 +213,16 @@ export default function CaseStudyDetail({ caseStudy }: { caseStudy: CaseStudy })
                           <div className="relative rounded-3xl shadow-2xl overflow-hidden">
                             <img
                               src={urlFor(module.image).width(800).height(600).url()}
-                              alt={module.title || 'Moduł'}
+                              alt={module.title || t("moduleImageAltFallback")}
                               className="w-full h-auto object-cover rounded-3xl"
                             />
                           </div>
                         ) : (
                           <div className="relative bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl shadow-2xl p-16 flex items-center justify-center aspect-video">
                             <div className="text-center">
-                              <Icon className="w-24 h-24 text-white/20 mx-auto mb-4" />
-                              <p className="text-white/60 text-sm">Mockup: {module.title}</p>
+                                                       <p className="text-white/60 text-sm">
+                                {t("mockupLabel", { title: module.title })}
+                              </p>
                             </div>
                           </div>
                         )}
@@ -244,22 +245,45 @@ export default function CaseStudyDetail({ caseStudy }: { caseStudy: CaseStudy })
                 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4"
                 style={{ fontFamily: "var(--font-michroma)" }}
               >
-                Efekty
+                {t("resultsTitle")}
               </h2>
+              <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+                {t("resultsDescription")}
+              </p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
               {caseStudy.results.map((result, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-blue-600/30 p-10"
+                  className="group relative"
                 >
-                  <div className="flex items-start gap-6">
-                    <div className="text-5xl font-bold text-blue-600 leading-none select-none shrink-0">
-                      {(index + 1).toString().padStart(2, '0')}
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-slate-600 leading-relaxed text-lg">{result}</p>
+                  {/* Gradient border jak w kartach na stronie głównej / oferta */}
+                  <div
+                    className="p-[1.5px] rounded-tr-xl rounded-bl-xl bg-gradient-to-br from-blue-600 via-sky-400 to-blue-900 "
+                    style={{
+                      clipPath:
+                        "polygon(16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%, 0 16px)",
+                    }}
+                  >
+                    <div
+                      className="h-full w-full rounded-tr-[11px] rounded-bl-[11px] bg-white backdrop-blur-sm border border-white/60 px-8 py-8 flex items-start gap-6 transition-colors duration-300"
+                      style={{
+                        clipPath:
+                          "polygon(16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%, 0 16px)",
+                      }}
+                    >
+                      <div className="relative flex items-center justify-center shrink-0">
+                        <div className="absolute inset-0 rounded-full bg-blue-100 blur-xl opacity-60 group-hover:opacity-80 transition-opacity" />
+                        <div className="relative flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-600 text-white font-bold text-2xl shadow-lg">
+                          {(index + 1).toString().padStart(2, "0")}
+                        </div>
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-slate-700 leading-relaxed text-lg">
+                          {result}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -278,7 +302,7 @@ export default function CaseStudyDetail({ caseStudy }: { caseStudy: CaseStudy })
                 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4"
                 style={{ fontFamily: "var(--font-michroma)" }}
               >
-                Technologie użyte w projekcie
+                {t("technologiesTitle")}
               </h2>
             </div>
             <div className="relative w-full mx-auto lg:mb-10 px-4 overflow-visible">

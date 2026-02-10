@@ -6,6 +6,7 @@ import { useState } from 'react';
 import StarGradientButton from '@/app/components/ui/gradientBackground';
 import DecorativeImage from '@/app/components/DecorativeImage';
 import PolygonAccordion from '@/app/components/PolygonAccordion';
+import CTASection from '@/app/components/CTASection';
 
 export default function AcademyPage() {
   const [activeCategory, setActiveCategory] = useState(0);
@@ -351,49 +352,24 @@ export default function AcademyPage() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-32 relative overflow-hidden bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center">
-            <div className="w-20 h-1 bg-blue-600 rounded-full mx-auto mb-8"></div>
-
-            <h2
-              className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight"
-              style={{ fontFamily: "var(--font-michroma)" }}
-            >
-              Gotowy na start?
-            </h2>
-
-            <p className="text-xl text-slate-600 mb-12 max-w-2xl mx-auto leading-relaxed">
-              Skontaktuj się z nami i dowiedz się więcej o naszych kursach. Pomóżemy Ci wybrać najlepszą ścieżkę rozwoju.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <Link href="/kontakt">
-                <StarGradientButton>
-                  Zapisz się na kurs
-                </StarGradientButton>
-              </Link>
-
-              <Link
-                href="#categories"
-                className="inline-flex items-center justify-center px-9 py-4 bg-white text-slate-900 border-2 border-gray-300 rounded-2xl font-semibold hover:border-blue-600 hover:text-blue-600 transition-all duration-300"
-              >
-                Zobacz ofertę kursów
-              </Link>
-            </div>
-
-            <div className="flex flex-col items-center gap-3">
-              <p className="text-slate-500 text-sm">lub napisz bezpośrednio</p>
-              <a
-                href="mailto:kontakt@cetuspro.pl"
-                className="text-lg font-semibold text-blue-600 hover:opacity-70 transition-opacity"
-              >
-                kontakt@cetuspro.pl
-              </a>
-            </div>
-          </div>
+      <CTASection
+        title="Gotowy na start?"
+        description="Skontaktuj się z nami i dowiedz się więcej o naszych kursach. Pomóżemy Ci wybrać najlepszą ścieżkę rozwoju."
+        buttonText="Zapisz się na kurs"
+        buttonLink="/kontakt"
+        emailLabel="lub napisz bezpośrednio"
+        email="kontakt@cetuspro.pl"
+      />
+      <div className="py-8 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <Link
+            href="#categories"
+            className="inline-flex items-center justify-center px-9 py-4 bg-white text-slate-900 border-2 border-gray-300 rounded-2xl font-semibold hover:border-blue-600 hover:text-blue-600 transition-all duration-300"
+          >
+            Zobacz ofertę kursów
+          </Link>
         </div>
-      </section>
+      </div>
     </div>
   );
 }

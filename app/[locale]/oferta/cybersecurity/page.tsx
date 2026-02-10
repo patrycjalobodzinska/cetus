@@ -23,6 +23,7 @@ import {
 import { useState } from 'react';
 import StarGradientButton from '@/app/components/ui/gradientBackground';
 import DecorativeImage from '@/app/components/DecorativeImage';
+import CTASection from '@/app/components/CTASection';
 import PolygonAccordion from '@/app/components/PolygonAccordion';
 
 export default function CybersecurityPage() {
@@ -320,35 +321,12 @@ export default function CybersecurityPage() {
 
 
       {/* Final CTA */}
-      <section className="py-32 relative overflow-hidden bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center">
-            <div className="w-20 h-1 bg-blue-600 rounded-full mx-auto mb-8"></div>
-
-            <h2
-              className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight"
-              style={{ fontFamily: "var(--font-michroma)" }}
-            >
-              Chcesz zabezpieczyć swoją firmę?
-            </h2>
-
-            <p className="text-xl text-slate-600 mb-12 max-w-2xl mx-auto leading-relaxed">
-              Skontaktuj się z nami, aby omówić potrzeby bezpieczeństwa Twojej firmy i otrzymać spersonalizowaną ofertę ochrony cybernetycznej.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <Link href="/kontakt">
-                <StarGradientButton>
-                  Porozmawiajmy
-                </StarGradientButton>
-              </Link>
-
-             </div>
-
-
-          </div>
-        </div>
-      </section>
+      <CTASection
+        title="Chcesz zabezpieczyć swoją firmę?"
+        description="Skontaktuj się z nami, aby omówić potrzeby bezpieczeństwa Twojej firmy i otrzymać spersonalizowaną ofertę ochrony cybernetycznej."
+        buttonText="Porozmawiajmy"
+        buttonLink="/kontakt"
+      />
     </div>
   );
 }

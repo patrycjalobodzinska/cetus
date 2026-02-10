@@ -5,6 +5,7 @@ import { ArrowRight, CheckCircle, Cloud, Layers, Zap, Shield, TrendingUp, Target
 import { useState } from 'react';
 import StarGradientButton from '@/app/components/ui/gradientBackground';
 import PolygonAccordion from '@/app/components/PolygonAccordion';
+import CTASection from '@/app/components/CTASection';
 
 export default function TechnologyTransformationPage() {
   const [activeService, setActiveService] = useState(0);
@@ -361,40 +362,15 @@ export default function TechnologyTransformationPage() {
         </div>
       </section>
 
-      <section className="py-32 relative overflow-hidden bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center">
-            <h2
-              className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight"
-              style={{ fontFamily: "var(--font-michroma)" }}
-            >
-              Gotowy na transformację?
-            </h2>
-
-            <p className="text-xl text-slate-600 mb-12 max-w-2xl mx-auto leading-relaxed">
-              Skontaktuj się z nami, aby omówić Twój projekt transformacji technologicznej i otrzymać bezpłatną konsultację.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <Link href="/kontakt">
-                <StarGradientButton>
-                  Rozpocznij transformację
-                </StarGradientButton>
-              </Link>
-            </div>
-
-            <div className="flex flex-col items-center gap-3">
-              <p className="text-slate-500 text-sm">lub napisz bezpośrednio</p>
-              <a
-                href="mailto:kontakt@cetuspro.pl"
-                className="text-lg font-semibold text-blue-600 hover:opacity-70 transition-opacity"
-              >
-                kontakt@cetuspro.pl
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CTASection
+        title="Gotowy na transformację?"
+        description="Skontaktuj się z nami, aby omówić Twój projekt transformacji technologicznej i otrzymać bezpłatną konsultację."
+        buttonText="Rozpocznij transformację"
+        buttonLink="/kontakt"
+        emailLabel="lub napisz bezpośrednio"
+        email="kontakt@cetuspro.pl"
+        showDivider={false}
+      />
     </div>
   );
 }

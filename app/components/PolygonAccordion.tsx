@@ -1,18 +1,8 @@
 'use client';
 
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { Plus } from 'lucide-react';
-
-interface PolygonAccordionProps {
-  title: string;
-  children: ReactNode;
-  isOpen: boolean;
-  onToggle: () => void;
-  className?: string;
-  icon?: ReactNode;
-  variant?: 'default' | 'button';
-  isActive?: boolean;
-}
+import type { PolygonAccordionProps } from '@/types/components';
 
 const POLYGON_CLIP_PATH = "polygon(0% 0px, 20px 0%, 95% 0%, 100% 20px, 100% 80%, 100% 100%, calc(100% - 20px) 100%, 5% 100%, 0% 80%)";
 
@@ -33,7 +23,7 @@ export default function PolygonAccordion({
           clipPath: POLYGON_CLIP_PATH
         }}
         onClick={onToggle}
-        className={`w-full text-left cursor-pointer p-0.5 rounded-md transition-all duration-300 ${
+        className={`w-full text-left cursor-pointer p-0.5 rounded-md transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 ${
           isActive
             ? 'bg-blue-600 text-white shadow-xl scale-105'
             : 'bg-gray-100 text-slate-900 hover:bg-blue-100'
@@ -93,7 +83,7 @@ export default function PolygonAccordion({
         >
           <button
             onClick={onToggle}
-            className="w-full text-left cursor-pointer p-4 px-8 flex items-center justify-between hover:bg-gray-50 transition-colors duration-300"
+            className="w-full text-left cursor-pointer p-4 px-8 flex items-center justify-between hover:bg-gray-50 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:bg-blue-50"
             aria-expanded={isOpen}
           >
             <h3 className="text-lg md:text-xl font-bold text-slate-900 pr-8">

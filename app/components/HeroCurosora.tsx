@@ -19,22 +19,22 @@ export default function HeroCurosora() {
         <div className="flex flex-col z-30 lg:pt-10 xl:pt-0 items-center justify-center relative px-4 lg:pl-10 lg:pr-0">
           <div className="relative lg:min-h-[280px] xl:min-h-[320px]">
             <h1
-              className="text-4xl lg:text-7xl tracking-tighter text-slate-900 leading-[0.9] font-bold"
+              className="text-4xl  text-center lg:text-7xl tracking-tighter text-slate-900 leading-[1.1] font-bold"
               style={{ fontFamily: "var(--font-michroma)" }}
             >
-              <div className="flex items-center justify-center gap-4 min-h-[1.2em]">
+              <div className="flex items-center justify-center  min-h-[1.2em]">
                 <span>{t('title')}</span>
               </div>
-              <span className="block text-slate-900 min-h-[1.2em] text-center">
-                <span><span className="text-blue-600">{t('titleHighlight')}</span> {t('titleAfterHighlight')}</span>
+              <span className="md:block text-slate-900 text-center">
+                <span><span className="text-blue-600">{t('titleHighlight')}</span> {t('titleAfterHighlight')} </span>
               </span>
-              <span className="block text-slate-900 min-h-[1.2em] text-center">
+              <span className="md:block text-slate-900 min-h-[1.2em] text-center">
                 <span>{t('titleThirdLine')}</span>
               </span>
             </h1>
           </div>
 
-          <div className="text-center space-y-2 items-center justify-center flex flex-col max-w-lg relative w-full px-4">
+          <div className="text-center space-y-2 items-center justify-center flex flex-col max-w-lg relative w-full px-4 my-4">
             {(t('subtitle') || t('subtitleHighlight')) && (
               <h2 className="text-lg lg:text-xl text-slate-600 leading-relaxed">
                 {t('subtitleHighlight') && <span className="font-bold text-blue-600">{t('subtitleHighlight')}</span>}

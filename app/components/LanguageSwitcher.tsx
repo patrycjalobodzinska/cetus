@@ -15,6 +15,7 @@ export default function LanguageSwitcher() {
   const [isOpen, setIsOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
   const [focusedIndex, setFocusedIndex] = useState(-1);
+  const [isUsingKeyboard, setIsUsingKeyboard] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -40,9 +41,11 @@ export default function LanguageSwitcher() {
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
+    setIsUsingKeyboard(true);
     if (e.key === 'Escape') {
       setIsOpen(false);
       setFocusedIndex(-1);
+      setIsUsingKeyboard(false);
       buttonRef.current?.focus();
     } else if (e.key === 'ArrowDown') {
       e.preventDefault();
@@ -93,7 +96,18 @@ export default function LanguageSwitcher() {
   }, [isOpen]);
 
   return (
-    <div className="relative">
+    <div
+      className="relative"
+      onMouseLeave={() => {
+        if (!isUsingKeyboard) {
+          setIsOpen(false);
+          setFocusedIndex(-1);
+        }
+      }}
+      onMouseEnter={() => {
+        setIsUsingKeyboard(false);
+      }}
+    >
       <button
         ref={buttonRef}
         className="flex items-center text-gray-800 gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
@@ -102,10 +116,14 @@ export default function LanguageSwitcher() {
         aria-haspopup="true"
         onClick={() => setIsOpen(!isOpen)}
         onKeyDown={handleKeyDown}
-        onMouseEnter={() => setIsOpen(true)}
-        onMouseLeave={() => {
-          if (focusedIndex === -1) {
-            setIsOpen(false);
+        onMouseEnter={() => {
+          setIsUsingKeyboard(false);
+          setIsOpen(true);
+        }}
+        onBlur={(e) => {
+          if (!menuRef.current?.contains(e.relatedTarget as Node) &&
+              !buttonRef.current?.contains(e.relatedTarget as Node)) {
+            setIsUsingKeyboard(false);
           }
         }}
       >
@@ -118,10 +136,14 @@ export default function LanguageSwitcher() {
           isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
         }`}
         role="menu"
-        onMouseEnter={() => setIsOpen(true)}
-        onMouseLeave={() => {
-          if (focusedIndex === -1) {
-            setIsOpen(false);
+        onMouseEnter={() => {
+          setIsUsingKeyboard(false);
+          setIsOpen(true);
+        }}
+        onBlur={(e) => {
+          if (!buttonRef.current?.contains(e.relatedTarget as Node) &&
+              !menuRef.current?.contains(e.relatedTarget as Node)) {
+            setIsUsingKeyboard(false);
           }
         }}
       >
@@ -130,7 +152,14 @@ export default function LanguageSwitcher() {
             key={loc}
             onClick={() => switchLocale(loc)}
             onKeyDown={handleKeyDown}
-            onFocus={() => setFocusedIndex(index)}
+            onFocus={() => {
+              setFocusedIndex(index);
+              setIsUsingKeyboard(true);
+            }}
+            onMouseEnter={() => {
+              setIsUsingKeyboard(false);
+              setFocusedIndex(-1);
+            }}
             className={`block w-full text-left px-4 py-2 text-sm hover:bg-blue-50 transition-colors first:rounded-t-lg last:rounded-b-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 ${
               currentLocale === loc ? 'bg-blue-50 text-blue-600 font-semibold' : 'text-gray-700'
             }`}

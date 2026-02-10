@@ -1,39 +1,6 @@
 import { useEffect, useMemo, useRef, useCallback } from 'react';
 import { useGesture } from '@use-gesture/react';
-
-type ImageItem = string | { src: string; alt?: string; name?: string; description?: string };
-
-type DomeGalleryProps = {
-  images?: ImageItem[];
-  fit?: number;
-  fitBasis?: 'auto' | 'min' | 'max' | 'width' | 'height';
-  minRadius?: number;
-  maxRadius?: number;
-  padFactor?: number;
-  overlayBlurColor?: string;
-  maxVerticalRotationDeg?: number;
-  dragSensitivity?: number;
-  enlargeTransitionMs?: number;
-  segments?: number;
-  dragDampening?: number;
-  openedImageWidth?: string;
-  openedImageHeight?: string;
-  imageBorderRadius?: string;
-  openedImageBorderRadius?: string;
-  grayscale?: boolean;
-  title?: string;
-};
-
-type ItemDef = {
-  src: string;
-  alt: string;
-  name?: string;
-  description?: string;
-  x: number;
-  y: number;
-  sizeX: number;
-  sizeY: number;
-};
+import type { DomeGalleryProps, ItemDef, ImageItem } from '@/types/components';
 
 const DEFAULT_IMAGES: ImageItem[] = [
   {
@@ -189,6 +156,7 @@ export default function DomeGallery({
   const cancelTapRef = useRef(false);
   const movedRef = useRef(false);
   const inertiaRAF = useRef<number | null>(null);
+  const autoRotateRAF = useRef<number | null>(null);
   const pointerTypeRef = useRef<'mouse' | 'pen' | 'touch'>('mouse');
   const tapTargetRef = useRef<HTMLElement | null>(null);
   const openingRef = useRef(false);
@@ -303,16 +271,48 @@ export default function DomeGallery({
     openedImageHeight
   ]);
 
-  useEffect(() => {
-    applyTransform(rotationRef.current.x, rotationRef.current.y);
-  }, []);
-
   const stopInertia = useCallback(() => {
     if (inertiaRAF.current) {
       cancelAnimationFrame(inertiaRAF.current);
       inertiaRAF.current = null;
     }
   }, []);
+
+  const stopAutoRotate = useCallback(() => {
+    if (autoRotateRAF.current) {
+      cancelAnimationFrame(autoRotateRAF.current);
+      autoRotateRAF.current = null;
+    }
+  }, []);
+
+  const startAutoRotate = useCallback(() => {
+    if (autoRotateRAF.current) return;
+
+    const rotationSpeed = 0.05;
+    const step = () => {
+      if (draggingRef.current || focusedElRef.current || inertiaRAF.current) {
+        autoRotateRAF.current = null;
+        return;
+      }
+
+      const nextY = wrapAngleSigned(rotationRef.current.y + rotationSpeed);
+      rotationRef.current = { ...rotationRef.current, y: nextY };
+      applyTransform(rotationRef.current.x, nextY);
+      autoRotateRAF.current = requestAnimationFrame(step);
+    };
+
+    autoRotateRAF.current = requestAnimationFrame(step);
+  }, [applyTransform]);
+
+  useEffect(() => {
+    applyTransform(rotationRef.current.x, rotationRef.current.y);
+    startAutoRotate();
+
+    return () => {
+      stopAutoRotate();
+      stopInertia();
+    };
+  }, [startAutoRotate, stopAutoRotate, stopInertia]);
 
   const startInertia = useCallback(
     (vx: number, vy: number) => {
@@ -329,10 +329,20 @@ export default function DomeGallery({
         vY *= frictionMul;
         if (Math.abs(vX) < stopThreshold && Math.abs(vY) < stopThreshold) {
           inertiaRAF.current = null;
+          setTimeout(() => {
+            if (!draggingRef.current && !focusedElRef.current && !inertiaRAF.current) {
+              startAutoRotate();
+            }
+          }, 500);
           return;
         }
         if (++frames > maxFrames) {
           inertiaRAF.current = null;
+          setTimeout(() => {
+            if (!draggingRef.current && !focusedElRef.current && !inertiaRAF.current) {
+              startAutoRotate();
+            }
+          }, 500);
           return;
         }
         const nextX = clamp(rotationRef.current.x - vY / 200, -maxVerticalRotationDeg, maxVerticalRotationDeg);
@@ -352,6 +362,7 @@ export default function DomeGallery({
       onDragStart: ({ event }) => {
         if (focusedElRef.current) return;
         stopInertia();
+        stopAutoRotate();
 
         const evt = event as PointerEvent;
         pointerTypeRef.current = (evt.pointerType as any) || 'mouse';
@@ -419,6 +430,12 @@ export default function DomeGallery({
 
           if (!isTap && (Math.abs(vx) > 0.005 || Math.abs(vy) > 0.005)) {
             startInertia(vx, vy);
+          } else {
+            setTimeout(() => {
+              if (!draggingRef.current && !focusedElRef.current && !inertiaRAF.current) {
+                startAutoRotate();
+              }
+            }, 1000);
           }
           startPosRef.current = null;
           cancelTapRef.current = !isTap;
@@ -463,6 +480,11 @@ export default function DomeGallery({
         focusedElRef.current = null;
         rootRef.current?.removeAttribute('data-enlarging');
         openingRef.current = false;
+        setTimeout(() => {
+          if (!draggingRef.current && !focusedElRef.current && !inertiaRAF.current) {
+            startAutoRotate();
+          }
+        }, 500);
         return;
       }
 
@@ -525,6 +547,11 @@ export default function DomeGallery({
           (el.style as any).zIndex = 0;
           focusedElRef.current = null;
           rootRef.current?.removeAttribute('data-enlarging');
+          setTimeout(() => {
+            if (!draggingRef.current && !focusedElRef.current && !inertiaRAF.current) {
+              startAutoRotate();
+            }
+          }, 500);
 
           requestAnimationFrame(() => {
             parent.style.transition = '';

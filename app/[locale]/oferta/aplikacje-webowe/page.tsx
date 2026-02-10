@@ -3,7 +3,7 @@
 import HeroSection from './components/HeroSection';
 import WhyFeaturesSection from './components/WhyFeaturesSection';
 import ModulesSection from './components/ModulesSection';
-import CTASection from './components/CTASection';
+import WebAppsCTASection from './components/CTASection';
 
 export default function WebAppsPage() {
   return (
@@ -11,7 +11,7 @@ export default function WebAppsPage() {
       <HeroSection />
       <WhyFeaturesSection />
       <ModulesSection />
-      <CTASection />
+      <WebAppsCTASection />
     </div>
   );
 }

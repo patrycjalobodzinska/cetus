@@ -3,6 +3,10 @@ import { getTranslations } from 'next-intl/server';
 import HeroCurosora from "../components/HeroCurosora";
 import Skiper16 from "../components/OfferWrapper";
 import HomeCTASection from "./components/HomeCTASection";
+import ProcessSection from "./components/ProcessSection";
+import FAQSection from "./components/FAQSection";
+import PartnersSection from "./components/PartnersSection";
+import HomepageModulesSection from "./components/HomepageModulesSection";
 
 export async function generateMetadata({
   params
@@ -10,11 +14,16 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'home.metadata' });
+  const t = await getTranslations({ locale, namespace: 'home' });
+
+  const title = t('metadata.title', { defaultValue: 'CetusPro - Nowoczesne rozwiązania IT' });
+  const description = t('metadata.description', { defaultValue: 'CetusPro - Tworzymy nowoczesne aplikacje webowe, mobilne i rozwiązania IT.' });
+  const ogTitle = t('metadata.ogTitle', { defaultValue: 'CetusPro - Nowoczesne rozwiązania IT i aplikacje webowe' });
+  const ogDescription = t('metadata.ogDescription', { defaultValue: 'Tworzymy nowoczesne aplikacje webowe, mobilne i rozwiązania IT.' });
 
   return {
-    title: t('title'),
-    description: t('description'),
+    title,
+    description,
     keywords: [
       "aplikacje webowe",
       "aplikacje mobilne",
@@ -28,22 +37,22 @@ export async function generateMetadata({
       "aplikacje na zamówienie"
     ],
     openGraph: {
-      title: t('ogTitle'),
-      description: t('ogDescription'),
+      title: ogTitle,
+      description: ogDescription,
       url: "/",
       images: [
         {
           url: "/og-image.png",
           width: 1200,
           height: 630,
-          alt: t('ogTitle'),
+          alt: ogTitle,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: t('ogTitle'),
-      description: t('ogDescription'),
+      title: ogTitle,
+      description: ogDescription,
       images: ["/og-image.png"],
     },
     alternates: {
@@ -62,6 +71,10 @@ export default async function Home({
       <main className="w-full max-w-7xl">
         <HeroCurosora />
         <Skiper16 />
+        <ProcessSection />
+        <HomepageModulesSection />
+        <PartnersSection />
+        <FAQSection />
         <HomeCTASection />
       </main>
     </div>

@@ -127,14 +127,14 @@ export default async function RootLayout({
                 {t('skipToContent.skipToContent')}
               </a>
               <NavbarCurosora />
-              <div className="fixed top-0" style={{ width: '100%', height: '180vh', position: 'fixed', top: 0, left: 0, zIndex: -10 }}>
+              <div className="fixed top-0" style={{ width: '100%', height: '120vh', position: 'fixed', top: 0, left: 0, zIndex: -10 }}>
                 <Plasma
                   color="#0073ff"
-                  speed={0.6}
-                  direction="forward"
+                  speed={1.2}
+                  direction="pingpong"
                   scale={0.4}
                   mouseInteractive={false}
-                  opacity={0.15}
+                  opacity={0.35}
                 />
               </div>
               <main id="main-content" className=" top-0 left-0 w-full h-full">

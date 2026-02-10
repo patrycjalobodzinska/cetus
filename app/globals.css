@@ -44,6 +44,31 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Global custom blue scrollbar */
+html {
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #3b82f6 #e5e7eb; /* thumb, track */
+}
+
+/* WebKit (Chrome, Edge, Safari) */
+html::-webkit-scrollbar {
+  width: 8px;
+}
+
+html::-webkit-scrollbar-track {
+  background: #e5e7eb; /* gray-200 */
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #3b82f6; /* blue-500 */
+  border-radius: 9999px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: #1d4ed8; /* blue-700 */
+}
+
 /* Smooth Scroll Styles */
 html.lenis {
   height: auto;
@@ -147,4 +172,14 @@ html.lenis {
 
 .animate-fade-out {
   animation: fade-out 3s ease-out forwards;
+}
+
+/* Hide scrollbar */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }

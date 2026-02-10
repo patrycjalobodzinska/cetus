@@ -26,6 +26,7 @@ export default function NavbarCurosora() {
             <NavigationLink className="w-32 h-12 rounded-lg flex cursor-pointer items-center justify-center " href={`/${locale}`}>     <img src="/logocetus.png" alt="Logo" className="w-full h-full object-contain" /></NavigationLink>
             </div>
           </div>
+<div className="flex items-center justify-center">       <LanguageSwitcher />
 
           {/* Burger Button */}
           <button
@@ -38,12 +39,12 @@ export default function NavbarCurosora() {
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d={isMobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"} />
             </svg>
-          </button>
+          </button></div>
         </div>
       </div>
 
       {/* Main Navbar Container (Desktop) */}
-      <div className="hidden lg:flex flex-row gap-2 w-full max-w-[1300px]">
+      <div className="hidden lg:flex flex-row gap-4 w-full max-w-[1300px]">
 
         {/* --- LEFT SECTION (LOGO) --- */}
         <div className="relative transform -skew-x-12 bg-white/60 backdrop-blur-md border border-emerald-100/50 shadow-sm  rounded-sm ">
@@ -101,7 +102,7 @@ export default function NavbarCurosora() {
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div className=" shadow-2xl h-screen inset-0 top-0 fixed  flex flex-col gap-6 lg:hidden mt-24 border backdrop-blur-md animate-in fade-in slide-in-from-top-4 duration-200" id="mobile-menu" role="dialog" aria-modal="true" aria-labelledby="mobile-menu-title">
-           <nav className=" shadow-2xl min- h-[450px] bg-white inset-0 top-0 fixed p-6 flex flex-col gap-6 mt-2 lg:hidden border mx-4 animate-in fade-in slide-in-from-top-4 duration-200">
+           <nav className=" shadow-2xl h-[400px] backdrop-blur-md bg-white/60 inset-0 top-0 fixed p-6 flex flex-col gap-6 mt-2 lg:hidden border mx-4 animate-in fade-in slide-in-from-top-4 duration-200">
              <h2 id="mobile-menu-title" className="sr-only">Menu nawigacyjne</h2>
           <NavigationLink
             href={`/${locale}`}
@@ -144,9 +145,7 @@ export default function NavbarCurosora() {
           </NavigationLink>
 
           {/* Language Switcher */}
-          <div className="pt-4 border-t border-gray-100">
-            <LanguageSwitcher />
-          </div>
+
 
           {/* Action Button with StarBorder */}
           <div className="flex items-center justify-center">

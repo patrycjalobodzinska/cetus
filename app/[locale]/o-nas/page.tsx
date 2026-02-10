@@ -191,6 +191,7 @@ export default function AboutUsPage() {
               <DecorativeImage
                 src={urlFor(aboutUsData.image).width(1200).height(800).url()}
                 alt={aboutUsData.title}
+                noRadius
                 overlay={
                   aboutUsData.statValue
                     ? {

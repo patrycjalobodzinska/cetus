@@ -1,0 +1,95 @@
+'use client';
+
+import { useTranslations } from 'next-intl';
+
+export default function MethodologySection() {
+  const t = useTranslations('caseStudies.methodology');
+
+  const steps = [
+    { key: 'analysis' },
+    { key: 'design' },
+    { key: 'launch' },
+    { key: 'deployment' }
+  ];
+
+  return (
+    <section className="md:pb-36  pb-12 pt-36">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mb-12 flex flex-col items-center justify-center">
+
+          <h1
+            className="text-4xl md:text-7xl text-center font-bold text-slate-900 mt-2 md:mb-12 mb-6"
+            style={{ fontFamily: "var(--font-michroma)" }}
+          >
+            {t('title')}
+          </h1>
+          <p className="text-lg text-slate-600 max-w-3xl text-center leading-relaxed">
+            {t('description')}
+          </p>
+        </div>
+
+        <div className="relative mt-16">
+          {/* Connection Line */}
+          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 -translate-y-1/2 z-0">
+            <div className="absolute inset-0 border-t-2 border-dashed border-gray-300"></div>
+            {steps.map((_, index) => (
+              <div
+                key={index}
+                className="absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-white border-2 border-gray-300 rounded-full"
+                style={{
+                  left: `${(index + 1) * (100 / (steps.length + 1))}%`,
+                  transform: 'translate(-50%, -50%)'
+                }}
+              ></div>
+            ))}
+          </div>
+
+          {/* Steps Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+            {steps.map((step, index) => {
+              return (
+                <div
+                  key={step.key}
+                  className="group"
+                >
+                  <div
+                    style={{
+                      background: "linear-gradient(0deg, hsla(215, 69%, 36%, 1) 0%, hsla(190, 94%, 76%, 1) 100%)",
+                    }}
+                    className="rounded-2xl shadow-md shadow-blue-300/50 p-0.5 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-blue-400/50 h-full"
+                  >
+                    <div
+                      className="bg-white rounded-2xl p-6 h-full flex flex-col"
+                    >
+                      {/* Step Number */}
+                      <div className="flex items-center gap-2 mb-4">
+                        <span className="text-xs font-semibold text-slate-600 uppercase tracking-wider">
+                          {index + 1}
+                        </span>
+                      </div>
+
+                      {/* Title */}
+                      <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
+                        {t(`steps.${step.key}.title`)}
+                      </h3>
+
+                      {/* Subtitle */}
+                      <p className="text-sm text-slate-500 mb-3 font-medium">
+                        {t(`steps.${step.key}.subtitle`)}
+                      </p>
+
+                      {/* Description */}
+                      <p className="text-slate-600 leading-relaxed flex-1 text-sm">
+                        {t(`steps.${step.key}.description`)}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

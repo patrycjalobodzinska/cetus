@@ -1,15 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { User } from 'lucide-react';
-
-interface PolygonCardProps {
-  imageUrl?: string;
-  title: string;
-  description: string;
-  href?: string;
-  className?: string;
-  fallbackIcon?: React.ReactNode;
-}
+import type { PolygonCardProps } from '@/types/components';
 
 export default function PolygonCard({ imageUrl, title, description, href, className = '', fallbackIcon }: PolygonCardProps) {
   const clipPath = "polygon(17% 0, 100% 0, 100% 89%, 83% 100%, 0 100%, 0 11%)";

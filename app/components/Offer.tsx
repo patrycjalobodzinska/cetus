@@ -7,23 +7,7 @@ import Link from "next/link";
 import StarGradientButton from "./ui/gradientBackground";
 import { useLocale, useTranslations } from "next-intl";
 
-interface Project {
-  title: string;
-  description: string;
-  src: string;
-  order: number;
-  slug?: string;
-  link?: string;
-}
-
-interface OfferData {
-  title: string;
-  titleHighlight: string;
-  description: string;
-  buttonText: string;
-  buttonLink: string;
-  projects: Project[];
-}
+import type { Project, OfferData } from '@/types/pages';
 
 const POLYGON_CLIP_PATH = "polygon(0% 0px, 20px 0%, 95% 0%, 100% 20px, 100% 80%, 100% 100%, calc(100% - 20px) 100%, 5% 100%, 0% 80%)";
 
@@ -36,6 +20,7 @@ const StickyCard_001 = ({
   progress,
   range,
   targetScale,
+  cardTop,
 }: {
   i: number;
   title: string;
@@ -46,6 +31,7 @@ const StickyCard_001 = ({
   progress: MotionValue<number>;
   range: [number, number];
   targetScale: number;
+  cardTop?: number;
 }) => {
   const t = useTranslations('common');
   const locale = useLocale();
@@ -55,10 +41,10 @@ const StickyCard_001 = ({
   return (
     <div
       style={{
-        top: `calc(155px + ${i * 20}px)`,
+        top: cardTop ? `${cardTop}px` : `calc(155px + ${i * 20}px)`,
       }}
       ref={container}
-      className="sticky w-full mb-6 top-0 flex flex-col items-start justify-start"
+      className="sticky z-20 w-full mb-6 flex flex-col items-start justify-start"
     >
       <div
         className="p-px w-full rounded-md transition-all duration-300"
@@ -74,11 +60,7 @@ const StickyCard_001 = ({
           className="relative w-full h-full origin-top overflow-hidden bg-white"
         >
           <div className="flex h-full w-full flex-col">
-            {src && (
-              <div className="h-1/2 w-full overflow-hidden" style={{ clipPath: POLYGON_CLIP_PATH }}>
-                <img src={src} alt={title || ''} className="h-full max-h-[300px] w-full object-cover" />
-              </div>
-            )}
+
             <div className="flex h-1/2 cursor-pointer flex-col p-8">
               {title && <h3 className="mb-3 text-2xl font-bold text-gray-900">{title}</h3>}
               {description && <p className="text-gray-600 leading-relaxed text-sm">{description}</p>}
@@ -103,6 +85,16 @@ const Skiper16Content = ({
   offerData: OfferData;
 }) => {
   const projects = offerData.projects;
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const lastCardIndex = projects.length - 1;
   const lastCardStartPos = lastCardIndex * (1 / projects.length);
@@ -116,7 +108,7 @@ const Skiper16Content = ({
         <div className="lg:flex lg:gap-20">
           <motion.div
             style={{ opacity: leftColumnOpacity, y: leftColumnY }}
-            className="sticky lg:top-[100px] flex-col justify-center lg:py-20 pt-10 flex-1 self-start"
+            className="sticky top-[80px] lg:top-[100px] flex-col justify-center lg:py-20 pt-4 pb-4 lg:pt-10 flex-1 self-start z-10 lg:bg-transparent  lg:shadow-none"
           >
             <div className="flex lg:gap-8">
               <div className="shrink-0 lg:flex hidden">
@@ -143,15 +135,16 @@ const Skiper16Content = ({
                 </svg>
               </div>
 
-              <div className="ml-8 lg:ml-0">
+              <div className="px-4 z-0 pt-6 md:pt-0 lg:ml-0 w-full">
                 {(offerData.title || offerData.titleHighlight) && (
-                  <h2 style={{ fontFamily: "var(--font-michroma)" }} className="mb-3 text-2xl lg:text-5xl font-black tracking-tight text-gray-900 sm:text-6xl">
-                    {offerData.title && <>{offerData.title} <br /></>}
+                  <h2 style={{ fontFamily: "var(--font-michroma)" }} className="text-center md:text-left mb-3 text-2xl lg:text-5xl font-black tracking-tight text-gray-900 sm:text-3xl">
+                    {offerData.title && <>{offerData.title}{" "}
+                    </>}
                     {offerData.titleHighlight && <span className="text-blue-600">{offerData.titleHighlight}</span>}
                   </h2>
                 )}
                 {offerData.description && (
-                  <p className="max-w-md text-xl md:text-2xl leading-relaxed text-gray-600 lg:mt-16">
+                  <p className="max-w-md text-base md:text-xl lg:text-2xl leading-relaxed text-gray-600 lg:mt-16 mt-2">
                     {offerData.description}
                   </p>
                 )}
@@ -166,21 +159,25 @@ const Skiper16Content = ({
             </div>
           </motion.div>
 
-          <div className="relative mt-6 lg:mt-0 flex-1 px-4 min-h-[200vh]">
+          <div className="relative mt-6 lg:mt-0 flex-1 px-4 min-h-[200vh] lg:pt-0 pt-[320px]">
             {projects.map((project, i) => {
               const targetScale = 1 - (projects.length - i) * 0.04;
               const startRange = i * (1 / projects.length);
+              const cardTop = isMobile ? 360 + (i * 20) : 155 + (i * 20);
 
               return (
                 <StickyCard_001
-                  slug={project.slug}
                   key={`p_${i}`}
                   i={i}
-                  {...project}
+                  title={project.title}
+                  slug={project.slug}
+                  description={project.description}
+                  src={project.src || project.image || ''}
                   isLast={i === projects.length - 1}
                   progress={scrollYProgress}
                   range={[startRange, 1]}
                   targetScale={targetScale}
+                  cardTop={cardTop}
                 />
               )
             })}
@@ -200,7 +197,7 @@ const Skiper16WithScroll = ({
 }) => {
   const { scrollYProgress } = useScroll({
     target: container,
-    offset: ["start start", "end end"],
+    offset: ["start start", "end start"],
   });
 
   return <Skiper16Content container={container} scrollYProgress={scrollYProgress} offerData={offerData} />;
@@ -221,13 +218,25 @@ const Skiper16 = () => {
     description: t('description'),
     buttonText: t('buttonText'),
     buttonLink: t('buttonLink'),
-    projects: projectKeys.map((key) => ({
-      title: t(`projects.${key}.title`),
-      description: t(`projects.${key}.description`),
-      slug: t(`projects.${key}.slug`),
-      src: t(`projects.${key}.image`),
-      order: Number(t(`projects.${key}.order`)),
-    })).sort((a, b) => a.order - b.order)
+    projects: projectKeys.map((key, index) => {
+      const projectData = t.raw(`projects.${key}`) as { title: string; description: string; slug: string; image: string; order?: number } | undefined;
+      if (projectData) {
+        return {
+          title: projectData.title,
+          description: projectData.description,
+          slug: projectData.slug,
+          src: projectData.image,
+          order: projectData.order ?? index + 1,
+        };
+      }
+      return {
+        title: t(`projects.${key}.title`),
+        description: t(`projects.${key}.description`),
+        slug: t(`projects.${key}.slug`),
+        src: t(`projects.${key}.image`),
+        order: index + 1,
+      };
+    }).sort((a, b) => a.order - b.order)
   };
 
   useEffect(() => {

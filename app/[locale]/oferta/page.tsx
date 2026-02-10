@@ -5,46 +5,11 @@ import Link from 'next/link';
 import PolygonCard from '@/app/components/PolygonCard';
 import StarGradientButton from '@/app/components/ui/gradientBackground';
 import StatsPanel from '@/app/components/StatsPanel';
+import CTASection from '@/app/components/CTASection';
 import { useLocale, useTranslations } from 'next-intl';
 import { client } from '@/sanity/lib/client';
 
-interface TechnologyCategory {
-  title: { pl?: string; en?: string };
-  items: { pl?: string[]; en?: string[] };
-  order?: number;
-}
-
-interface TechnologiesData {
-  title: { pl?: string; en?: string };
-  description: { pl?: string; en?: string };
-  categories?: TechnologyCategory[];
-}
-
-interface Industry {
-  name: { pl?: string; en?: string };
-  order?: number;
-}
-
-interface IndustriesData {
-  title: { pl?: string; en?: string };
-  description: { pl?: string; en?: string };
-  items?: Industry[];
-  buttonText?: { pl?: string; en?: string };
-  buttonLink?: string;
-}
-
-interface Stat {
-  value: string;
-  label: { pl?: string; en?: string };
-  icon?: string;
-  order?: number;
-}
-
-interface OfferStatsData {
-  title: { pl?: string; en?: string };
-  description: { pl?: string; en?: string };
-  stats?: Stat[];
-}
+import type { TechnologiesData, IndustriesData, OfferStatsData } from '@/lib/sanity/types';
 
 export default function OfferPage() {
   const t = useTranslations('offer');
@@ -57,11 +22,11 @@ export default function OfferPage() {
   const projectKeys = ['webApps', 'mobileApps', 'uiUx', 'ai', 'cybersecurity', 'transformation', 'outsourcing', 'academy', 'venture'];
 
   const projects = projectKeys.map((key, index) => {
-    let orderValue: string | number = index + 1;
+    let orderValue: number = index + 1;
     try {
-      const orderStr = t(`projects.${key}.order`, { defaultValue: String(index + 1) });
-      if (orderStr && orderStr !== `projects.${key}.order`) {
-        orderValue = Number(orderStr) || index + 1;
+      const projectData = t.raw(`projects.${key}`) as { order?: number } | undefined;
+      if (projectData && typeof projectData.order === 'number') {
+        orderValue = projectData.order;
       }
     } catch (e) {
       orderValue = index + 1;
@@ -186,7 +151,7 @@ export default function OfferPage() {
                 if (!project.slug) return null;
                 return (
                   <PolygonCard
-                    className='w-full mb-4 max-h-[400px] h-full'
+                    className='w-full mb-4 h-full'
                     key={index}
                     imageUrl={project.image || undefined}
                     title={project.title || ''}
@@ -290,26 +255,13 @@ export default function OfferPage() {
       )}
 
 
-      <section className="py-24 border-t border-gray-200">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2
-            className="text-4xl md:text-5xl font-bold text-slate-900 mb-6"
-            style={{ fontFamily: "var(--font-michroma)" }}
-          >
-            {t('cta.title')}
-          </h2>
-          <p className="text-xl text-slate-600 mb-10 leading-relaxed">
-            {t('cta.description')}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href={`/${locale}/kontakt`}>
-              <StarGradientButton>
-                {t('cta.buttonText')}
-              </StarGradientButton>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <CTASection
+        title={t('cta.title')}
+        description={t('cta.description')}
+        buttonText={t('cta.buttonText')}
+        buttonLink="/kontakt"
+        className="py-24 border-t border-gray-200"
+      />
     </div>
   );
 }

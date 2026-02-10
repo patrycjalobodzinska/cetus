@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -10,6 +11,9 @@ if (typeof window !== "undefined") {
 }
 
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
+  const lenisRef = useRef<Lenis | null>(null);
+
+  // Inicjalizacja Lenis + integracja z GSAP
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
@@ -22,22 +26,37 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       infinite: false,
     });
 
+    lenisRef.current = lenis;
+
     // Integracja z GSAP ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
 
-    gsap.ticker.add((time) => {
+    const raf = (time: number) => {
       lenis.raf(time * 1000);
-    });
+    };
 
+    gsap.ticker.add(raf);
     gsap.ticker.lagSmoothing(0);
 
     return () => {
       lenis.destroy();
-      gsap.ticker.remove((time) => {
-        lenis.raf(time * 1000);
-      });
+      lenisRef.current = null;
+      gsap.ticker.remove(raf);
     };
   }, []);
+
+  // Przy każdej zmianie ścieżki przewiń do góry (bez inercji)
+  const pathname = usePathname();
+  useEffect(() => {
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(0, { immediate: true });
+    } else {
+      // Fallback gdyby Lenis nie był jeszcze zainicjalizowany
+      if (typeof window !== "undefined") {
+        window.scrollTo(0, 0);
+      }
+    }
+  }, [pathname]);
 
   return <>{children}</>;
 }

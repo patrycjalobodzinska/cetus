@@ -14,7 +14,7 @@ export default function StatsPanel() {
   ];
 
   return (
-    <div className="relative w-full mx-auto lg:mb-10 px-4 overflow-visible">
+    <div className="relative w-full mx-auto lg:mb-10 md:px-4 overflow-visible">
       <div className="relative max-w-6xl mx-auto flex justify-center items-center py-12 overflow-visible">
         <div
           className="relative w-full mx-6 md:mx-16 max-w-5xl min-h-40 py-6 md:h-28 bg-gray-50 border border-gray-100 text-gray-900 flex flex-col md:flex-row items-center justify-around sm:px-12 px-6 md:px-16 drop-shadow-xl z-10 stats-polygon"
@@ -65,7 +65,58 @@ export default function StatsPanel() {
             <rect x="7" y="62" width="6" height="6" fill="#3b82f6" transform="rotate(45 10 65)" filter="url(#softNeon)" />
           </svg>
         </div>
-
+        <div className="absolute md:hidden  left-0 bottom-0 w-[80px] h-[200px] pointer-events-none  z-0" style={{ left: '0px', top: 'calc(5px)' }}>
+          <svg className="w-full h-full" viewBox="0 0 70 200" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="neonGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#3b82f6" />
+                <stop offset="100%" stopColor="#93c5fd" />
+              </linearGradient>
+              <filter id="softNeon" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="1.5" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+            <path
+              d="M25 35 L10 55 L10 150 "
+              fill="none"
+              stroke="url(#neonGradient1)"
+              strokeWidth="2"
+              filter="url(#softNeon)"
+              strokeLinecap="round"
+            />
+            <rect x="25" y="30" width="6" height="6" fill="#3b82f6"  filter="url(#softNeon)" />
+          </svg>
+        </div>
+        <div className="absolute md:hidden rotate-180  right-10 bottom-10 w-[80px] h-[200px] pointer-events-none  z-0" style={{ right: '0', bottom: 'calc(5px)' }}>
+          <svg className="w-full h-full" viewBox="0 0 70 200" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="neonGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#3b82f6" />
+                <stop offset="100%" stopColor="#93c5fd" />
+              </linearGradient>
+              <filter id="softNeon" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="1.5" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+            <path
+              d="M25 35 L10 55 L10 150 "
+              fill="none"
+              stroke="url(#neonGradient1)"
+              strokeWidth="2"
+              filter="url(#softNeon)"
+              strokeLinecap="round"
+            />
+            <rect x="25" y="30" width="6" height="6" fill="#3b82f6"  filter="url(#softNeon)" />
+          </svg>
+        </div>
         <div className="absolute hidden md:block w-[400px] h-[80px] pointer-events-none z-0" style={{ right: '0px', bottom: 'calc(20px)' }}>
           <svg className="w-full h-full" viewBox="0 0 300 70" preserveAspectRatio="none" aria-hidden="true">
             <path

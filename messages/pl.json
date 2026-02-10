@@ -127,14 +127,7 @@
   "skipToContent": {
     "skipToContent": "Przejdź do głównej treści"
   },
-  "home": {
-    "metadata": {
-      "title": "Strona główna",
-      "description": "CetusPro - Tworzymy nowoczesne aplikacje webowe, mobilne i rozwiązania IT. Specjalizujemy się w projektowaniu UX/UI, cyberbezpieczeństwie, AI i automatyzacji procesów biznesowych.",
-      "ogTitle": "CetusPro - Nowoczesne rozwiązania IT i aplikacje webowe",
-      "ogDescription": "Tworzymy nowoczesne aplikacje webowe, mobilne i rozwiązania IT. Specjalizujemy się w projektowaniu UX/UI, cyberbezpieczeństwie, AI i automatyzacji procesów."
-    }
-  },
+
   "webApps": {
     "hero": {
       "title": "Tworzymy aplikacje",
@@ -294,6 +287,292 @@
           "description": "Zapewniamy pełną zgodność z wytycznymi App Store i Google Play, aby Twoja aplikacja została szybko zaakceptowana."
         }
       ]
+    }
+  },
+  "home": {
+    "metadata": {
+      "title": "Strona główna",
+      "description": "CetusPro - Tworzymy nowoczesne aplikacje webowe, mobilne i rozwiązania IT. Specjalizujemy się w projektowaniu UX/UI, cyberbezpieczeństwie, AI i automatyzacji procesów biznesowych.",
+      "ogTitle": "CetusPro - Nowoczesne rozwiązania IT i aplikacje webowe",
+      "ogDescription": "Tworzymy nowoczesne aplikacje webowe, mobilne i rozwiązania IT. Specjalizujemy się w projektowaniu UX/UI, cyberbezpieczeństwie, AI i automatyzacji procesów."
+    },
+    "process": {
+      "title": "Z chaosu do struktury. Dajemy Ci spokój i prowadzenie",
+      "description": "Nie musisz tłumaczyć nam, jak działa Twój biznes - wystarczy, że powiesz, dokąd chcesz dojść. My porządkujemy proces, ustalamy priorytety i dowozimy wyniki, które możesz mierzyć. Ty podejmujesz decyzje, a my bierzemy odpowiedzialność za realizację. Dzięki temu zyskujesz więcej czasu, klarowność i przewidywalne efekty.",
+      "cta": {
+        "caseStudies": "Nasze realizacje",
+        "designIdea": "Zaprojektuj swój Pomysł w 5 minut!"
+      },
+      "steps": {
+        "audit": {
+          "stepLabel": "Krok 1",
+          "question": "Czy masz wrażenie, że Twój system żyje własnym życiem?",
+          "title": "Audyt",
+          "description": "Zanim zaczniemy cokolwiek budować, analizujemy Twój system, procesy i dane. W efekcie otrzymujesz pełny obraz sytuacji, świadomość ryzyk i konkretne rekomendacje, które pomagają podejmować trafne decyzje zamiast działać w ciemno."
+        },
+        "roadmap": {
+          "stepLabel": "Krok 2",
+          "question": "Nie wiesz, od czego zacząć - bo wszystko wydaje się ważne?",
+          "title": "Roadmapa",
+          "description": "Tworzymy roadmapę z jasnymi priorytetami, zależnościami i celami biznesowymi. Dzięki temu każdy wie, co jest naprawdę ważne, a zespół działa w jednym kierunku, bez marnowania energii na przypadkowe zadania."
+        },
+        "management": {
+          "stepLabel": "Krok 3",
+          "question": "Masz dość chaotycznego developmentu bez kontroli i celu?",
+          "title": "Management Projektu",
+          "description": "Budujemy rozwiązanie krok po kroku, zgodnie z wcześniej ustaloną mapą. Efekt: kontrolowany rozwój produktu, bez przypadkowych funkcji i niepotrzebnych kosztów."
+        },
+        "acceptance": {
+          "stepLabel": "Krok 4",
+          "question": "Zaskoczenia na etapie odbiorów? Nie u nas.",
+          "title": "Odbiory",
+          "description": "Regularnie pokazujemy wyniki pracy i sprawdzamy zgodność z celami biznesowymi. Efekt: zero niespodzianek na końcu projektu i pełna przewidywalność w każdym etapie współpracy."
+        },
+        "maintenance": {
+          "stepLabel": "Krok 5",
+          "question": "Czy Twój system wymaga ciągłego 'gaszenia pożarów'?",
+          "title": "Utrzymanie",
+          "description": "Monitorujemy, aktualizujemy i dbamy o stabilność infrastruktury. Efekt: Ty skupiasz się na rozwoju biznesu, my zajmujemy się resztą."
+        }
+      }
+    },
+    "faq": {
+      "title": "Najczęściej zadawane pytania",
+      "subtitle": "Znajdź odpowiedzi na pytania dotyczące naszych usług i procesu współpracy",
+      "loading": "Ładowanie...",
+      "q1": {
+        "question": "Jak długo trwa realizacja projektu?",
+        "answer": "Czas realizacji zależy od złożoności projektu. Proste aplikacje webowe mogą być gotowe w ciągu 2-3 miesięcy, podczas gdy bardziej złożone systemy wymagają 6-12 miesięcy. Po audycie przygotowujemy szczegółowy harmonogram z konkretnymi datami."
+      },
+      "q2": {
+        "question": "Jakie technologie wykorzystujecie?",
+        "answer": "Pracujemy z najnowszymi technologiami dostosowanymi do potrzeb projektu. W aplikacjach webowych używamy React, Next.js, TypeScript. W aplikacjach mobilnych React Native, Flutter oraz natywnych rozwiązań iOS i Android. Wybór technologii zawsze konsultujemy z klientem."
+      },
+      "q3": {
+        "question": "Czy zapewniacie wsparcie po wdrożeniu?",
+        "answer": "Tak, oferujemy kompleksowe wsparcie techniczne po wdrożeniu. Obejmuje to monitoring, aktualizacje bezpieczeństwa, optymalizację wydajności oraz dodawanie nowych funkcji. Możemy również zapewnić pełne utrzymanie systemu."
+      },
+      "q4": {
+        "question": "Jak wygląda proces współpracy?",
+        "answer": "Zaczynamy od audytu i analizy potrzeb. Następnie tworzymy roadmapę z priorytetami i harmonogramem. W trakcie realizacji regularnie prezentujemy postępy i przeprowadzamy odbiory. Po wdrożeniu zapewniamy wsparcie i utrzymanie."
+      },
+      "q5": {
+        "question": "Ile kosztuje projekt?",
+        "answer": "Koszt projektu zależy od jego zakresu, złożoności i wymagań. Po audycie przygotowujemy szczegółową wycenę z podziałem na etapy. Oferujemy również elastyczne modele współpracy - od projektów jednorazowych po długoterminowe kontrakty."
+      },
+      "q6": {
+        "question": "Czy mogę zobaczyć przykłady waszych realizacji?",
+        "answer": "Oczywiście! W sekcji Case Studies znajdziesz szczegółowe opisy naszych projektów wraz z efektami. Możemy również zorganizować prezentację wybranych rozwiązań podczas konsultacji."
+      }
+    },
+    "partners": {
+      "title": "Zaufali nam",
+      "description": "",
+      "loading": "Ładowanie partnerów..."
+    }
+  },
+  "caseStudies": {
+    "hero": {
+      "titlePrefix": "Nasze",
+      "titleHighlight": "realizacje",
+      "description": "Zobacz, jak pomogliśmy naszym klientom osiągnąć sukces dzięki nowoczesnym rozwiązaniom technologicznym."
+    },
+    "introduction": "Zobacz nasze realizacje i przekonaj się, że trudne zadanie można przekuć w proste rozwiązanie.",
+    "noCaseStudies": "Brak case studies do wyświetlenia.",
+    "effect": "Efekt?",
+    "cta": {
+      "text": "Zobacz nasze realizacje i przekonaj się, że trudne zadanie można przekuć w proste rozwiązanie.",
+      "button": "Sprawdź",
+      "title": "Chcesz stworzyć podobne rozwiązanie?",
+      "description": "Skontaktuj się z nami i opowiedz o swoich potrzebach – stworzymy rozwiązanie dopasowane do Twojego biznesu.",
+      "buttonText": "Skontaktuj się z nami"
+    },
+    "methodology": {
+      "label": "METHODOLOGY V1.0",
+      "title": "Proces tworzenia oprogramowania",
+      "description": "Nasze systematyczne podejście do budowania wydajnych produktów cyfrowych. Nie tylko piszemy kod; projektujemy rozwiązania, które skalują się wraz z Twoim biznesem.",
+      "steps": {
+        "analysis": {
+          "title": "ANALIZA",
+          "subtitle": "Discovery i Planowanie",
+          "description": "Analizujemy wymagania biznesowe, grupę docelową i ograniczenia techniczne, aby zdefiniować jasną mapę drogową."
+        },
+        "design": {
+          "title": "PROJEKTOWANIE",
+          "subtitle": "Architektura Systemów",
+          "description": "Tworzenie fundamentów Twojej aplikacji. Projektujemy skalowalne schematy baz danych i solidne struktury API."
+        },
+        "launch": {
+          "title": "LAUNCH",
+          "subtitle": "CI/CD & Deployment",
+          "description": "Bezpieczne i zautomatyzowane dostarczanie produktu do środowisk chmurowych przy zachowaniu zero-downtime."
+        },
+        "deployment": {
+          "title": "WDROŻENIE",
+          "subtitle": "CI/CD i Deployment",
+          "description": "Bezpieczne i zautomatyzowane dostarczanie produktu do środowisk chmurowych przy zachowaniu zero-downtime."
+        }
+      }
+    }
+  },
+  "caseStudyDetail": {
+    "backToList": "Powrót do realizacji",
+    "ctaButton": "Zobacz, jak możemy pomóc",
+    "modulesTitle": "Moduły systemu",
+    "resultsTitle": "Efekty",
+    "resultsDescription": "Podsumowanie najważniejszych rezultatów wdrożenia, które odczuli użytkownicy i biznes.",
+    "technologiesTitle": "Technologie użyte w projekcie",
+    "mockupLabel": "Mockup: {title}",
+    "imageAltFallback": "Case Study",
+    "moduleImageAltFallback": "Moduł"
+  },
+  "aiAutomation": {
+    "hero": {
+      "badge": "AI i Automatyzacja",
+      "title": "Automatyzuj i optymalizuj z pomocą AI",
+      "description": "Wykorzystaj potencjał sztucznej inteligencji i automatyzacji, aby przyspieszyć procesy biznesowe, zwiększyć wydajność i osiągnąć lepsze wyniki.",
+      "buttonText": "Porozmawiajmy o projekcie",
+      "caseStudiesButton": "Zobacz realizacje",
+      "aiSystemLabel": "AI System"
+    },
+    "benefits": {
+      "title": "Korzyści z AI i automatyzacji",
+      "subtitle": "Nowoczesne rozwiązania, które transformują Twój biznes",
+      "items": [
+        {
+          "title": "Automatyzacja procesów",
+          "description": "Zautomatyzuj powtarzalne zadania i procesy biznesowe, oszczędzając czas i zasoby, a jednocześnie zwiększając wydajność i dokładność operacji."
+        },
+        {
+          "title": "Inteligentne rozwiązania",
+          "description": "Wykorzystaj potencjał sztucznej inteligencji do analizy danych, przewidywania trendów i podejmowania inteligentnych decyzji biznesowych."
+        },
+        {
+          "title": "Szybkość i wydajność",
+          "description": "Przyspiesz procesy biznesowe dzięki automatyzacji i AI, umożliwiając szybsze reagowanie na potrzeby klientów i rynku."
+        },
+        {
+          "title": "Bezpieczeństwo i zgodność",
+          "description": "Zapewniamy pełną zgodność z przepisami RODO i standardami bezpieczeństwa, chroniąc dane i procesy Twojej firmy."
+        }
+      ]
+    },
+    "services": {
+      "title": "Nasze usługi",
+      "applicationsLabel": "Zastosowania:",
+      "effectLabel": "Efekt:",
+      "items": [
+        {
+          "title": "Chatboty i asystenci AI",
+          "description": "Inteligentne chatboty i wirtualni asystenci, którzy odpowiadają na pytania klientów, wspierają sprzedaż i automatyzują obsługę klienta 24/7.",
+          "applications": [
+            "Chatboty na stronie internetowej",
+            "Asystenci w aplikacjach mobilnych",
+            "Automatyzacja obsługi klienta",
+            "Wsparcie sprzedaży i lead generation",
+            "Integracja z systemami CRM"
+          ],
+          "effect": "Redukcja kosztów obsługi klienta o 60% i zwiększenie satysfakcji klientów"
+        },
+        {
+          "title": "Automatyzacja workflow",
+          "description": "Automatyzacja złożonych procesów biznesowych, przepływów pracy i integracji między systemami, eliminując ręczne zadania i błędy.",
+          "applications": [
+            "Automatyzacja procesów biznesowych",
+            "Integracja systemów i aplikacji",
+            "Automatyzacja raportowania",
+            "Workflow management",
+            "Orchestracja zadań"
+          ],
+          "effect": "Oszczędność 20+ godzin tygodniowo na powtarzalnych zadaniach"
+        },
+        {
+          "title": "Analiza danych i predykcje",
+          "description": "Zaawansowana analityka danych z wykorzystaniem AI do przewidywania trendów, identyfikacji wzorców i wspierania decyzji biznesowych.",
+          "applications": [
+            "Analiza predykcyjna",
+            "Machine Learning dla biznesu",
+            "Anomalia detection",
+            "Forecasting i trend analysis",
+            "Personalizacja i rekomendacje"
+          ],
+          "effect": "Poprawa dokładności prognoz o 40% i lepsze decyzje biznesowe"
+        },
+        {
+          "title": "Computer Vision",
+          "description": "Rozwiązania oparte na rozpoznawaniu obrazów i wizji komputerowej do automatyzacji procesów wizualnych i analizy danych obrazowych.",
+          "applications": [
+            "Rozpoznawanie i klasyfikacja obrazów",
+            "OCR i ekstrakcja danych",
+            "Quality control automation",
+            "Facial recognition",
+            "Object detection"
+          ],
+          "effect": "Automatyzacja kontroli jakości z dokładnością 99%"
+        },
+        {
+          "title": "Natural Language Processing",
+          "description": "Przetwarzanie języka naturalnego do analizy tekstu, sentymentu, ekstrakcji informacji i automatyzacji procesów opartych na tekście.",
+          "applications": [
+            "Analiza sentymentu",
+            "Ekstrakcja informacji z dokumentów",
+            "Automatyczne tagowanie i kategoryzacja",
+            "Tłumaczenie automatyczne",
+            "Summarization i content generation"
+          ],
+          "effect": "Przetwarzanie 1000+ dokumentów dziennie automatycznie"
+        }
+      ]
+    },
+    "caseStudy": {
+      "title": "Case Study",
+      "goal": {
+        "label": "Cel:",
+        "text": "Automatyzacja procesów biznesowych w średniej firmie produkcyjnej, redukcja czasu przetwarzania zamówień i eliminacja błędów manualnych."
+      },
+      "solution": {
+        "label": "Rozwiązanie:",
+        "text": "Wdrożenie kompleksowego systemu automatyzacji z wykorzystaniem AI do przetwarzania zamówień, zarządzania magazynem i generowania raportów."
+      },
+      "effects": {
+        "label": "Efekty:",
+        "items": [
+          "Redukcja czasu przetwarzania zamówień o 70%",
+          "Automatyzacja 80% powtarzalnych zadań",
+          "Poprawa dokładności o 95%",
+          "Oszczędność 30h tygodniowo na procesach administracyjnych"
+        ]
+      },
+      "result": "Wynik: 300% wzrost wydajności procesów i oszczędność 30h tygodniowo"
+    },
+    "process": {
+      "title": "Nasz proces",
+      "compliance": "Pełna zgodność z RODO i standardami bezpieczeństwa",
+      "steps": [
+        {
+          "title": "Analiza potrzeb",
+          "description": "Dokładnie analizujemy Twoje procesy biznesowe, identyfikujemy obszary do automatyzacji i określamy cele projektu."
+        },
+        {
+          "title": "Projektowanie rozwiązania",
+          "description": "Tworzymy architekturę rozwiązania AI/automatyzacji, wybieramy odpowiednie technologie i planujemy implementację."
+        },
+        {
+          "title": "Implementacja i testy",
+          "description": "Wdrażamy rozwiązanie, przeprowadzamy testy i optymalizujemy działanie systemu, zapewniając pełną funkcjonalność."
+        },
+        {
+          "title": "Wdrożenie i wsparcie",
+          "description": "Wdrażamy rozwiązanie w produkcji, zapewniamy szkolenia i ciągłe wsparcie techniczne oraz monitoring działania."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Gotowy na transformację?",
+      "description": "Skontaktuj się z nami, aby omówić możliwości automatyzacji i AI dla Twojej firmy.",
+      "buttonText": "Porozmawiajmy",
+      "emailLabel": "lub napisz bezpośrednio",
+      "email": "kontakt@cetuspro.pl"
     }
   }
 }
