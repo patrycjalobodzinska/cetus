@@ -23,3 +23,4 @@ export interface ImageOverlay {
   subLabel?: string;
   icon?: ReactNode;
 }
+

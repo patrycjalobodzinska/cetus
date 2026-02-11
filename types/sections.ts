@@ -144,3 +144,4 @@ export interface HowWeHelpSectionProps {
   icons?: LucideIcon[];
   className?: string;
 }
+

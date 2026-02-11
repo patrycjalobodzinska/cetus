@@ -57,3 +57,4 @@ export default function TechnologiesSection({ data }: TechnologiesSectionProps) 
     </section>
   );
 }
+

@@ -51,3 +51,4 @@ export interface ContactInfo {
   address: string;
   hours?: string;
 }
+

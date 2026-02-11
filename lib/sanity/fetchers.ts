@@ -145,3 +145,4 @@ export async function fetchFooterOfferProjects(locale: string): Promise<OfferPro
     return [];
   }
 }
+

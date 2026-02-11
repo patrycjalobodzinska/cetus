@@ -170,3 +170,4 @@ export function useFooterOfferProjects(locale: string) {
 
   return { data, loading };
 }
+

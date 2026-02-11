@@ -101,3 +101,4 @@ export default function CaseStudyItem({ caseStudy, index }: CaseStudyItemProps) 
     </section>
   );
 }
+

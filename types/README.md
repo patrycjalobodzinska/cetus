@@ -99,3 +99,4 @@ export default function MyComponent({ title, description }: PolygonCardProps) {
 2. Dodaj typ do odpowiedniego pliku
 3. Eksportuj typ w `index.ts`
 4. Zaktualizuj tę dokumentację jeśli potrzeba
+

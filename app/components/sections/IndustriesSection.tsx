@@ -59,3 +59,4 @@ export default function IndustriesSection({ data }: IndustriesSectionProps) {
     </section>
   );
 }
+

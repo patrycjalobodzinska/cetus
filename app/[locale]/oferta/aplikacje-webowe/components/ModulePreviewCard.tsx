@@ -73,3 +73,4 @@ export default function ModulePreviewCard({ activeModule, modules }: ModulePrevi
     </div>
   );
 }
+

@@ -14,3 +14,4 @@ export const iconMap: Record<string, any> = {
 export const getIcon = (iconName: string) => {
   return iconMap[iconName] || CheckCircle;
 };
+

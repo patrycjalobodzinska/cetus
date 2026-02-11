@@ -193,3 +193,4 @@ export const renderModuleMockup = (moduleIndex: number) => {
       return null;
   }
 };
+

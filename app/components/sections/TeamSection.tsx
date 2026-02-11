@@ -56,3 +56,4 @@ export default function TeamSection({ members, loading }: TeamSectionProps) {
     </section>
   );
 }
+

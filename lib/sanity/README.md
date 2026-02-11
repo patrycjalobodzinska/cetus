@@ -131,3 +131,4 @@ import type { TechnologiesData, IndustriesData, FAQ } from '@/lib/sanity/types';
 ## Cache
 
 Wszystkie funkcje fetch korzystają z cache CDN Sanity w produkcji (zobacz `sanity/lib/client.ts`).
+

@@ -36,3 +36,4 @@ export default function OfferStatsSection({ data }: OfferStatsSectionProps) {
     </section>
   );
 }
+

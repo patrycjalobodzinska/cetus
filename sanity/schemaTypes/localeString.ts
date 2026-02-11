@@ -23,3 +23,4 @@ export default defineType({
     select: { title: 'pl', subtitle: 'en' },
   },
 })
+
