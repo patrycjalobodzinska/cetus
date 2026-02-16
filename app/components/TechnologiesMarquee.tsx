@@ -85,7 +85,7 @@ function MarqueeRow({
     direction === "left" ? "animate-marquee-left" : "animate-marquee-right";
 
   return (
-    <div className="overflow-hidden w-full">
+    <div className="overflow-hidden py-2 w-full">
       <div
         className={`flex gap-4 ${animationClass}`}
         style={{ width: "max-content" }}>
@@ -115,7 +115,7 @@ export default function TechnologiesMarquee({
   const row3 = allItems.slice(third * 2);
 
   return (
-    <div className="w-full space-y-4 py-8">
+    <div className="w-full  py-8">
       <MarqueeRow items={row1} direction="left" />
       <MarqueeRow items={row2} direction="right" />
       <MarqueeRow items={row3} direction="left" />
