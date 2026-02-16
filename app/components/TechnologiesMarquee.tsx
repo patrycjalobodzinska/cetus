@@ -21,7 +21,6 @@ function flattenTechnologies(
     const items = category.items;
     if (!items) continue;
 
-    // Stary format: items to obiekt { pl: string[], en: string[] }
     if (
       !Array.isArray(items) &&
       typeof items === "object" &&
@@ -36,7 +35,6 @@ function flattenTechnologies(
       continue;
     }
 
-    // Nowy format: items to tablica [{ name, logo }, ...]
     if (Array.isArray(items)) {
       for (const item of items) {
         if (!item) continue;

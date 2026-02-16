@@ -10,10 +10,13 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-export default function SmoothScroll({ children }: { children: React.ReactNode }) {
+export default function SmoothScroll({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const lenisRef = useRef<Lenis | null>(null);
 
-  // Inicjalizacja Lenis + integracja z GSAP
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
@@ -28,7 +31,6 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
 
     lenisRef.current = lenis;
 
-    // Integracja z GSAP ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
 
     const raf = (time: number) => {
@@ -45,13 +47,11 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     };
   }, []);
 
-  // Przy każdej zmianie ścieżki przewiń do góry (bez inercji)
   const pathname = usePathname();
   useEffect(() => {
     if (lenisRef.current) {
       lenisRef.current.scrollTo(0, { immediate: true });
     } else {
-      // Fallback gdyby Lenis nie był jeszcze zainicjalizowany
       if (typeof window !== "undefined") {
         window.scrollTo(0, 0);
       }

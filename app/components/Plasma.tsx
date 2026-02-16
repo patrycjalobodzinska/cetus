@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from "react";
 
 declare global {
   interface Window {
@@ -11,7 +11,7 @@ declare global {
 interface PlasmaProps {
   color?: string;
   speed?: number;
-  direction?: 'forward' | 'reverse' | 'pingpong';
+  direction?: "forward" | "reverse" | "pingpong";
   scale?: number;
   opacity?: number;
   mouseInteractive?: boolean;
@@ -20,7 +20,11 @@ interface PlasmaProps {
 const hexToRgb = (hex: string): [number, number, number] => {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   if (!result) return [1, 0.5, 0.2];
-  return [parseInt(result[1], 16) / 255, parseInt(result[2], 16) / 255, parseInt(result[3], 16) / 255];
+  return [
+    parseInt(result[1], 16) / 255,
+    parseInt(result[2], 16) / 255,
+    parseInt(result[3], 16) / 255,
+  ];
 };
 
 const vertex = `#version 300 es
@@ -33,8 +37,6 @@ void main() {
   gl_Position = vec4(position, 0.0, 1.0);
 }
 `;
-
-// Zoptymalizowany fragment shader (mniej iteracji pętli)
 const fragment = `#version 300 es
 precision highp float;
 uniform vec2 iResolution;
@@ -58,7 +60,6 @@ void mainImage(out vec4 o, vec2 C) {
   float i = 0.0, d, z, T = iTime * uSpeed * uDirection;
   vec3 O = vec3(0.0), p, S;
 
-  // Zredukowano liczbę iteracji z 40 do 24 dla wydajności
   for (vec2 r = iResolution.xy, Q; i < 24.0; i++) {
     p = z * normalize(vec3(C - 0.5 * r, r.y));
     p.z -= 4.0;
@@ -85,12 +86,12 @@ void main() {
 }`;
 
 export const Plasma: React.FC<PlasmaProps> = ({
-  color = '#ffffff',
+  color = "#ffffff",
   speed = 1,
-  direction = 'forward',
+  direction = "forward",
   scale = 1,
   opacity = 1,
-  mouseInteractive = true
+  mouseInteractive = true,
 }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const isVisible = useRef(true);
@@ -100,13 +101,12 @@ export const Plasma: React.FC<PlasmaProps> = ({
 
     let renderer: any, program: any, raf: number;
 
-    import('ogl').then((ogl) => {
+    import("ogl").then((ogl) => {
       const { Renderer, Program, Mesh, Triangle } = ogl;
 
       renderer = new Renderer({
         webgl: 2,
         alpha: true,
-        // KLUCZ: Stały DPR 1.0 lub mniejszy. Nie renderuj w wysokiej gęstości pikseli.
         dpr: 0.75,
         antialias: false,
       });
@@ -124,20 +124,22 @@ export const Plasma: React.FC<PlasmaProps> = ({
           uCustomColor: { value: new Float32Array(hexToRgb(color)) },
           uUseCustomColor: { value: 1.0 },
           uSpeed: { value: speed * 0.4 },
-          uDirection: { value: direction === 'reverse' ? -1.0 : 1.0 },
+          uDirection: { value: direction === "reverse" ? -1.0 : 1.0 },
           uScale: { value: scale },
           uOpacity: { value: opacity },
           uMouse: { value: new Float32Array([0, 0]) },
-          uMouseInteractive: { value: mouseInteractive ? 1.0 : 0.0 }
-        }
+          uMouseInteractive: { value: mouseInteractive ? 1.0 : 0.0 },
+        },
       });
 
       const mesh = new Mesh(gl, { geometry, program });
 
-      // Intersection Observer - stop animacji gdy nie widać elementu
-      const observer = new IntersectionObserver(([entry]) => {
-        isVisible.current = entry.isIntersecting;
-      }, { threshold: 0.1 });
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          isVisible.current = entry.isIntersecting;
+        },
+        { threshold: 0.1 },
+      );
       observer.observe(containerRef.current!);
 
       const setSize = () => {
@@ -149,13 +151,12 @@ export const Plasma: React.FC<PlasmaProps> = ({
         }
       };
 
-      window.addEventListener('resize', setSize);
+      window.addEventListener("resize", setSize);
       setSize();
 
       const loop = (t: number) => {
         raf = requestAnimationFrame(loop);
 
-        // Jeśli elementu nie ma w widoku, nie renderuj klatki
         if (!isVisible.current) return;
 
         program.uniforms.iTime.value = t * 0.001;
@@ -166,9 +167,11 @@ export const Plasma: React.FC<PlasmaProps> = ({
 
       return () => {
         cancelAnimationFrame(raf);
-        window.removeEventListener('resize', setSize);
+        window.removeEventListener("resize", setSize);
         observer.disconnect();
-        try { gl.canvas.remove(); } catch {}
+        try {
+          gl.canvas.remove();
+        } catch {}
       };
     });
   }, [color, speed, direction, scale, opacity, mouseInteractive]);
@@ -177,7 +180,7 @@ export const Plasma: React.FC<PlasmaProps> = ({
     <div
       ref={containerRef}
       className="absolute inset-0 h-full w-full overflow-hidden"
-      style={{ contain: 'strict', zIndex: -1 }}
+      style={{ contain: "strict", zIndex: -1 }}
     />
   );
 };

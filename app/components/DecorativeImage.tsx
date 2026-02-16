@@ -1,23 +1,25 @@
-import React from 'react';
-import type { DecorativeImageProps } from '@/types/components';
+import React from "react";
+import type { DecorativeImageProps } from "@/types/components";
 
-export default function DecorativeImage({ src, alt, overlay, noRadius }: DecorativeImageProps) {
-  // Generate unique IDs for SVG gradients and filters to avoid conflicts
+export default function DecorativeImage({
+  src,
+  alt,
+  overlay,
+  noRadius,
+}: DecorativeImageProps) {
   const uniqueId = React.useId();
   const gradientId = `neonGradient-${uniqueId}`;
   const filterId = `softNeon-${uniqueId}`;
 
   return (
     <div className="relative">
-      {/* Bottom right SVG decoration */}
       <svg
         width="100"
         height="100"
         viewBox="0 0 100 100"
         className="absolute rotate-180 -bottom-3 right-0"
         preserveAspectRatio="none"
-        aria-hidden="true"
-      >
+        aria-hidden="true">
         <defs>
           <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="#3b82f6" />
@@ -39,8 +41,23 @@ export default function DecorativeImage({ src, alt, overlay, noRadius }: Decorat
           filter={`url(#${filterId})`}
           strokeLinecap="round"
         />
-        <rect x="92" y="0" width="8" height="8" fill="#3b82f6" filter={`url(#${filterId})`} />
-        <rect x="27" y="82" width="8" height="8" fill="#3b82f6" transform="rotate(45 10 65)" filter={`url(#${filterId})`} />
+        <rect
+          x="92"
+          y="0"
+          width="8"
+          height="8"
+          fill="#3b82f6"
+          filter={`url(#${filterId})`}
+        />
+        <rect
+          x="27"
+          y="82"
+          width="8"
+          height="8"
+          fill="#3b82f6"
+          transform="rotate(45 10 65)"
+          filter={`url(#${filterId})`}
+        />
       </svg>
 
       {/* Top left SVG decoration */}
@@ -50,14 +67,23 @@ export default function DecorativeImage({ src, alt, overlay, noRadius }: Decorat
         viewBox="0 0 100 100"
         className="absolute -top-3 left-0"
         preserveAspectRatio="none"
-        aria-hidden="true"
-      >
+        aria-hidden="true">
         <defs>
-          <linearGradient id={`${gradientId}-2`} x1="0%" y1="0%" x2="100%" y2="0%">
+          <linearGradient
+            id={`${gradientId}-2`}
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="0%">
             <stop offset="0%" stopColor="#3b82f6" />
             <stop offset="100%" stopColor="#93c5fd" />
           </linearGradient>
-          <filter id={`${filterId}-2`} x="-20%" y="-20%" width="140%" height="140%">
+          <filter
+            id={`${filterId}-2`}
+            x="-20%"
+            y="-20%"
+            width="140%"
+            height="140%">
             <feGaussianBlur stdDeviation="1.5" result="blur" />
             <feMerge>
               <feMergeNode in="blur" />
@@ -73,16 +99,32 @@ export default function DecorativeImage({ src, alt, overlay, noRadius }: Decorat
           filter={`url(#${filterId}-2)`}
           strokeLinecap="round"
         />
-        <rect x="92" y="0" width="8" height="8" fill="#3b82f6" filter={`url(#${filterId}-2)`} />
-        <rect x="27" y="82" width="8" height="8" fill="#3b82f6" transform="rotate(45 10 65)" filter={`url(#${filterId}-2)`} />
+        <rect
+          x="92"
+          y="0"
+          width="8"
+          height="8"
+          fill="#3b82f6"
+          filter={`url(#${filterId}-2)`}
+        />
+        <rect
+          x="27"
+          y="82"
+          width="8"
+          height="8"
+          fill="#3b82f6"
+          transform="rotate(45 10 65)"
+          filter={`url(#${filterId}-2)`}
+        />
       </svg>
 
       {/* Image container */}
-      <div className={`relative p-4 md:p-4 ${noRadius ? '' : 'rounded-md'} overflow-hidden`}>
+      <div
+        className={`relative p-4 md:p-4 ${noRadius ? "" : "rounded-md"} overflow-hidden`}>
         <img
           src={src}
           alt={alt}
-          className={`w-full h-auto object-cover ${noRadius ? '' : 'rounded-xl md:rounded-2xl'}`}
+          className={`w-full h-auto object-cover ${noRadius ? "" : "rounded-xl md:rounded-2xl"}`}
         />
 
         {/* Optional overlay (for statistics) */}

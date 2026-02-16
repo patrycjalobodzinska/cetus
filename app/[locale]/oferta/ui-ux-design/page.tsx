@@ -1,93 +1,121 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { ArrowRight, Palette, Pencil, RefreshCw, FlaskConical, Eye, Lightbulb, Sparkles, Target, TrendingUp, Layers, Zap, Shield } from 'lucide-react';
-import StarGradientButton from '@/app/components/ui/gradientBackground';
-import DecorativeImage from '@/app/components/DecorativeImage';
+import Link from "next/link";
+import {
+  ArrowRight,
+  Palette,
+  Pencil,
+  RefreshCw,
+  FlaskConical,
+  Eye,
+  Lightbulb,
+  Sparkles,
+  Target,
+  TrendingUp,
+  Layers,
+  Zap,
+  Shield,
+} from "lucide-react";
+import StarGradientButton from "@/app/components/ui/gradientBackground";
+import DecorativeImage from "@/app/components/DecorativeImage";
 
 export default function UxUiDesignPage() {
   const howWeHelpServices = [
     {
-      title: 'Projektowanie szyte na miarę',
-      description: 'Tworzymy unikalne interfejsy dopasowane do Twojej marki i potrzeb użytkowników, zapewniając spójność wizualną i funkcjonalną na wszystkich platformach.'
+      title: "Projektowanie szyte na miarę",
+      description:
+        "Tworzymy unikalne interfejsy dopasowane do Twojej marki i potrzeb użytkowników, zapewniając spójność wizualną i funkcjonalną na wszystkich platformach.",
     },
     {
-      title: 'Intuicyjne i przyjazne interfejsy',
-      description: 'Projektujemy interfejsy z myślą o użytkowniku, zapewniając łatwą nawigację, czytelność i przyjemne doświadczenie podczas korzystania z aplikacji.'
+      title: "Intuicyjne i przyjazne interfejsy",
+      description:
+        "Projektujemy interfejsy z myślą o użytkowniku, zapewniając łatwą nawigację, czytelność i przyjemne doświadczenie podczas korzystania z aplikacji.",
     },
     {
-      title: 'Estetyczne i nowoczesne rozwiązania',
-      description: 'Tworzymy wizualnie atrakcyjne projekty wykorzystujące najnowsze trendy w designie, zachowując przy tym funkcjonalność i użyteczność.'
-    }
+      title: "Estetyczne i nowoczesne rozwiązania",
+      description:
+        "Tworzymy wizualnie atrakcyjne projekty wykorzystujące najnowsze trendy w designie, zachowując przy tym funkcjonalność i użyteczność.",
+    },
   ];
 
   const whyFeatures = [
     {
-      title: 'Projektowanie szyte na miarę',
-      description: 'Każdy projekt jest tworzony indywidualnie z myślą o Twojej marce, użytkownikach i celach biznesowych. Nie używamy szablonów - każdy interfejs jest unikalny.'
+      title: "Projektowanie szyte na miarę",
+      description:
+        "Każdy projekt jest tworzony indywidualnie z myślą o Twojej marce, użytkownikach i celach biznesowych. Nie używamy szablonów - każdy interfejs jest unikalny.",
     },
     {
-      title: 'Intuicyjne i przyjazne interfejsy',
-      description: 'Projektujemy z myślą o użytkowniku, zapewniając łatwą nawigację, czytelność i przyjemne doświadczenie podczas korzystania z aplikacji.'
+      title: "Intuicyjne i przyjazne interfejsy",
+      description:
+        "Projektujemy z myślą o użytkowniku, zapewniając łatwą nawigację, czytelność i przyjemne doświadczenie podczas korzystania z aplikacji.",
     },
     {
-      title: 'Estetyczne i nowoczesne rozwiązania',
-      description: 'Tworzymy wizualnie atrakcyjne projekty wykorzystujące najnowsze trendy w designie, zachowując przy tym funkcjonalność i użyteczność.'
+      title: "Estetyczne i nowoczesne rozwiązania",
+      description:
+        "Tworzymy wizualnie atrakcyjne projekty wykorzystujące najnowsze trendy w designie, zachowując przy tym funkcjonalność i użyteczność.",
     },
     {
-      title: 'Efektywne procesy projektowe',
-      description: 'Stosujemy sprawdzone metodyki projektowe (Design Thinking, User-Centered Design), które zapewniają szybkie iteracje i wysoką jakość rozwiązań.'
+      title: "Efektywne procesy projektowe",
+      description:
+        "Stosujemy sprawdzone metodyki projektowe (Design Thinking, User-Centered Design), które zapewniają szybkie iteracje i wysoką jakość rozwiązań.",
     },
     {
-      title: 'Optymalizacja doświadczenia użytkownika',
-      description: 'Analizujemy zachowania użytkowników i optymalizujemy interfejsy, aby zapewnić najlepsze możliwe doświadczenie i osiągnąć cele biznesowe.'
-    }
+      title: "Optymalizacja doświadczenia użytkownika",
+      description:
+        "Analizujemy zachowania użytkowników i optymalizujemy interfejsy, aby zapewnić najlepsze możliwe doświadczenie i osiągnąć cele biznesowe.",
+    },
   ];
 
   const whyUsReasons = [
     {
-      title: 'Doświadczenie w różnych branżach',
-      description: 'Mamy doświadczenie w projektowaniu interfejsów dla różnych branż - od e-commerce po finanse, zdrowie i edukację.'
+      title: "Doświadczenie w różnych branżach",
+      description:
+        "Mamy doświadczenie w projektowaniu interfejsów dla różnych branż - od e-commerce po finanse, zdrowie i edukację.",
     },
     {
-      title: 'Pełny cykl projektowy',
-      description: 'Oferujemy kompleksową obsługę od researchu i analizy potrzeb, przez wireframy, prototypy, aż po finalne projekty wizualne.'
+      title: "Pełny cykl projektowy",
+      description:
+        "Oferujemy kompleksową obsługę od researchu i analizy potrzeb, przez wireframy, prototypy, aż po finalne projekty wizualne.",
     },
     {
-      title: 'Współpraca z zespołem deweloperskim',
-      description: 'Pracujemy w ścisłej współpracy z zespołem deweloperskim, zapewniając płynne przejście od projektu do implementacji.'
+      title: "Współpraca z zespołem deweloperskim",
+      description:
+        "Pracujemy w ścisłej współpracy z zespołem deweloperskim, zapewniając płynne przejście od projektu do implementacji.",
     },
     {
-      title: 'Wsparcie po wdrożeniu',
-      description: 'Zapewniamy ciągłe wsparcie w zakresie designu, aktualizacji interfejsów i optymalizacji doświadczenia użytkownika.'
-    }
+      title: "Wsparcie po wdrożeniu",
+      description:
+        "Zapewniamy ciągłe wsparcie w zakresie designu, aktualizacji interfejsów i optymalizacji doświadczenia użytkownika.",
+    },
   ];
 
   const caseStudies = [
     {
-      title: 'Redesign platformy e-commerce',
-      goal: 'Poprawa konwersji i doświadczenia użytkownika w sklepie internetowym',
-      solution: 'Kompleksowy redesign interfejsu z nowoczesnym designem, uproszczoną nawigacją i zoptymalizowanym procesem zakupów',
-      result: '40% wzrost konwersji w pierwszym kwartale'
+      title: "Redesign platformy e-commerce",
+      goal: "Poprawa konwersji i doświadczenia użytkownika w sklepie internetowym",
+      solution:
+        "Kompleksowy redesign interfejsu z nowoczesnym designem, uproszczoną nawigacją i zoptymalizowanym procesem zakupów",
+      result: "40% wzrost konwersji w pierwszym kwartale",
     },
     {
-      title: 'Aplikacja mobilna dla banku',
-      goal: 'Stworzenie intuicyjnej aplikacji mobilnej do zarządzania finansami',
-      solution: 'Projekt interfejsu z naciskiem na bezpieczeństwo, czytelność i szybkość działania, z biometrią i personalizacją',
-      result: '50,000+ aktywnych użytkowników w pierwszym miesiącu'
+      title: "Aplikacja mobilna dla banku",
+      goal: "Stworzenie intuicyjnej aplikacji mobilnej do zarządzania finansami",
+      solution:
+        "Projekt interfejsu z naciskiem na bezpieczeństwo, czytelność i szybkość działania, z biometrią i personalizacją",
+      result: "50,000+ aktywnych użytkowników w pierwszym miesiącu",
     },
     {
-      title: 'Dashboard analityczny',
-      goal: 'Stworzenie przejrzystego interfejsu do wizualizacji danych biznesowych',
-      solution: 'Projekt dashboardu z interaktywnymi wykresami, filtrami i spersonalizowanymi widokami dla różnych ról użytkowników',
-      result: 'Oszczędność 15h tygodniowo na analizie danych'
-    }
+      title: "Dashboard analityczny",
+      goal: "Stworzenie przejrzystego interfejsu do wizualizacji danych biznesowych",
+      solution:
+        "Projekt dashboardu z interaktywnymi wykresami, filtrami i spersonalizowanymi widokami dla różnych ról użytkowników",
+      result: "Oszczędność 15h tygodniowo na analizie danych",
+    },
   ];
 
   const howWeHelpIcons = [Pencil, RefreshCw, FlaskConical];
 
   const mockupLayouts = [
-    // Mockup 1: Szyte na miarę - Wireframe/design components
     <div key="mock1" className="bg-white rounded-2xl p-8 shadow-xl">
       <div className="grid grid-cols-3 gap-4 mb-6">
         <div className="bg-linear-to-br from-gray-100 to-gray-50 rounded-xl p-4 h-24"></div>
@@ -105,7 +133,6 @@ export default function UxUiDesignPage() {
       </div>
     </div>,
 
-    // Mockup 2: Intuicyjne i przyjazne - User flow
     <div key="mock2" className="bg-white rounded-2xl p-8 shadow-xl">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center space-x-4">
@@ -133,8 +160,9 @@ export default function UxUiDesignPage() {
       </div>
     </div>,
 
-    // Mockup 3: Estetyczne i nowoczesne - Visual design
-    <div key="mock3" className="bg-linear-to-br from-slate-900 to-slate-800 rounded-2xl p-8 shadow-xl">
+    <div
+      key="mock3"
+      className="bg-linear-to-br from-slate-900 to-slate-800 rounded-2xl p-8 shadow-xl">
       <div className="flex justify-between items-center mb-6">
         <div className="flex space-x-2">
           <div className="w-3 h-3 bg-red-400 rounded-full"></div>
@@ -159,20 +187,23 @@ export default function UxUiDesignPage() {
       </div>
     </div>,
 
-    // Mockup 4: Efektywne procesy - Timeline/workflow
     <div key="mock4" className="bg-white rounded-2xl p-8 shadow-xl">
       <div className="space-y-4">
         {[1, 2, 3].map((step) => (
           <div key={step} className="flex items-center space-x-4">
-            <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
-              step === 2 ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-400'
-            }`}>
+            <div
+              className={`w-10 h-10 rounded-full flex items-center justify-center ${
+                step === 2
+                  ? "bg-blue-600 text-white"
+                  : "bg-gray-100 text-gray-400"
+              }`}>
               <span className="font-bold">{step}</span>
             </div>
             <div className="flex-1">
-              <div className={`h-3 rounded ${
-                step === 2 ? 'bg-blue-600 w-full' : 'bg-gray-200 w-2/3'
-              }`}></div>
+              <div
+                className={`h-3 rounded ${
+                  step === 2 ? "bg-blue-600 w-full" : "bg-gray-200 w-2/3"
+                }`}></div>
               <div className="h-2 bg-gray-100 rounded w-1/2 mt-2"></div>
             </div>
             {step < 3 && <ArrowRight className="w-5 h-5 text-gray-300" />}
@@ -181,7 +212,6 @@ export default function UxUiDesignPage() {
       </div>
     </div>,
 
-    // Mockup 5: Optymalizacja UX - Analytics/metrics
     <div key="mock5" className="bg-white rounded-2xl p-8 shadow-xl">
       <div className="grid grid-cols-2 gap-6 mb-6">
         <div className="text-center">
@@ -202,11 +232,10 @@ export default function UxUiDesignPage() {
           <div
             key={idx}
             className="w-8 bg-blue-600 rounded-t"
-            style={{ height: `${height}%` }}
-          ></div>
+            style={{ height: `${height}%` }}></div>
         ))}
       </div>
-    </div>
+    </div>,
   ];
 
   return (
@@ -217,27 +246,23 @@ export default function UxUiDesignPage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left - Content */}
             <div className="space-y-8">
-
-
               <h1
                 className="heading-hero text-slate-900 leading-tight"
-                style={{ fontFamily: "var(--font-michroma)" }}
-              >
+                style={{ fontFamily: "var(--font-michroma)" }}>
                 Projektujemy interfejsy, które użytkownicy pokochają
               </h1>
 
               <p className="text-xl text-slate-600 leading-relaxed max-w-xl">
-                Od koncepcji do finalnego projektu - tworzymy nowoczesne, intuicyjne i estetyczne interfejsy, które zapewniają doskonałe doświadczenie użytkownika.
+                Od koncepcji do finalnego projektu - tworzymy nowoczesne,
+                intuicyjne i estetyczne interfejsy, które zapewniają doskonałe
+                doświadczenie użytkownika.
               </p>
-
-
             </div>
 
             {/* Right - Hero Image */}
             <DecorativeImage
               src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
               alt="UX/UI Design"
-
             />
           </div>
         </div>
@@ -249,8 +274,7 @@ export default function UxUiDesignPage() {
           <div className="text-center mb-20">
             <h2
               className="heading-1 text-slate-900 mb-6 leading-tight"
-              style={{ fontFamily: "var(--font-michroma)" }}
-            >
+              style={{ fontFamily: "var(--font-michroma)" }}>
               Jak możemy pomóc
             </h2>
           </div>
@@ -262,8 +286,7 @@ export default function UxUiDesignPage() {
               return (
                 <div
                   key={index}
-                  className="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-blue-600/30"
-                >
+                  className="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-blue-600/30">
                   <div className="relative p-12">
                     <div className="flex items-center gap-4 mb-6">
                       <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
@@ -293,8 +316,7 @@ export default function UxUiDesignPage() {
           <div className="text-center mb-16">
             <h2
               className="heading-1 text-slate-900 mb-4"
-              style={{ fontFamily: "var(--font-michroma)" }}
-            >
+              style={{ fontFamily: "var(--font-michroma)" }}>
               Dlaczego warto wybrać nasze rozwiązania?
             </h2>
           </div>
@@ -305,14 +327,15 @@ export default function UxUiDesignPage() {
                 <div
                   key={index}
                   className={`grid lg:grid-cols-2 gap-12 items-center ${
-                    index % 2 === 1 ? 'lg:flex-row-reverse' : ''
-                  }`}
-                >
+                    index % 2 === 1 ? "lg:flex-row-reverse" : ""
+                  }`}>
                   {/* Content */}
-                  <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
+                  <div className={index % 2 === 1 ? "lg:order-2" : ""}>
                     <div className="flex items-center space-x-4 mb-6">
                       <div className="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center">
-                        <span className="text-2xl font-bold text-white">{index + 1}</span>
+                        <span className="text-2xl font-bold text-white">
+                          {index + 1}
+                        </span>
                       </div>
                       <h3 className="text-3xl font-bold text-slate-900">
                         {feature.title}
@@ -325,7 +348,8 @@ export default function UxUiDesignPage() {
                   </div>
 
                   {/* Mockup */}
-                  <div className={`relative ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
+                  <div
+                    className={`relative ${index % 2 === 1 ? "lg:order-1" : ""}`}>
                     <div className="relative">
                       {mockupLayouts[index]}
                       <div className="absolute -top-6 -right-6 w-24 h-24 bg-blue-600/10 rounded-full blur-xl"></div>
@@ -341,8 +365,7 @@ export default function UxUiDesignPage() {
 
       {/* Why Us Section */}
 
-
       {/* Case Studies Section */}
-        </div>
+    </div>
   );
 }

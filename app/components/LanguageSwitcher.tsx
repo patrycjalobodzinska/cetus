@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useLocale } from 'next-intl';
-import { usePathname, useRouter } from 'next/navigation';
-import { useParams } from 'next/navigation';
-import { locales } from '@/i18n';
-import { Globe } from 'lucide-react';
-import { useState, useTransition, useRef, useEffect } from 'react';
+import { useLocale } from "next-intl";
+import { usePathname, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
+import { locales } from "@/i18n";
+import { Globe } from "lucide-react";
+import { useState, useTransition, useRef, useEffect } from "react";
 
 export default function LanguageSwitcher() {
   const params = useParams();
@@ -19,13 +19,12 @@ export default function LanguageSwitcher() {
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  // Get pathname without locale prefix
   const getPathnameWithoutLocale = () => {
-    const segments = pathname.split('/').filter(Boolean);
+    const segments = pathname.split("/").filter(Boolean);
     if (locales.includes(segments[0] as any)) {
       segments.shift();
     }
-    return segments.length > 0 ? '/' + segments.join('/') : '/';
+    return segments.length > 0 ? "/" + segments.join("/") : "/";
   };
 
   const pathnameWithoutLocale = getPathnameWithoutLocale();
@@ -33,7 +32,7 @@ export default function LanguageSwitcher() {
   const switchLocale = (newLocale: string) => {
     setIsOpen(false);
     setFocusedIndex(-1);
-    const newPath = `/${newLocale}${pathnameWithoutLocale === '/' ? '' : pathnameWithoutLocale}`;
+    const newPath = `/${newLocale}${pathnameWithoutLocale === "/" ? "" : pathnameWithoutLocale}`;
     startTransition(() => {
       router.push(newPath);
       router.refresh();
@@ -42,12 +41,12 @@ export default function LanguageSwitcher() {
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     setIsUsingKeyboard(true);
-    if (e.key === 'Escape') {
+    if (e.key === "Escape") {
       setIsOpen(false);
       setFocusedIndex(-1);
       setIsUsingKeyboard(false);
       buttonRef.current?.focus();
-    } else if (e.key === 'ArrowDown') {
+    } else if (e.key === "ArrowDown") {
       e.preventDefault();
       if (!isOpen) {
         setIsOpen(true);
@@ -55,12 +54,12 @@ export default function LanguageSwitcher() {
       } else {
         setFocusedIndex((prev) => (prev < locales.length - 1 ? prev + 1 : 0));
       }
-    } else if (e.key === 'ArrowUp') {
+    } else if (e.key === "ArrowUp") {
       e.preventDefault();
       if (isOpen) {
         setFocusedIndex((prev) => (prev > 0 ? prev - 1 : locales.length - 1));
       }
-    } else if (e.key === 'Enter' || e.key === ' ') {
+    } else if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
       if (isOpen && focusedIndex >= 0) {
         switchLocale(locales[focusedIndex]);
@@ -82,16 +81,21 @@ export default function LanguageSwitcher() {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node) &&
-          buttonRef.current && !buttonRef.current.contains(event.target as Node)) {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target as Node) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
         setFocusedIndex(-1);
       }
     };
 
     if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-      return () => document.removeEventListener('mousedown', handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
+      return () =>
+        document.removeEventListener("mousedown", handleClickOutside);
     }
   }, [isOpen]);
 
@@ -106,8 +110,7 @@ export default function LanguageSwitcher() {
       }}
       onMouseEnter={() => {
         setIsUsingKeyboard(false);
-      }}
-    >
+      }}>
       <button
         ref={buttonRef}
         className="flex items-center text-gray-800 gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
@@ -121,19 +124,20 @@ export default function LanguageSwitcher() {
           setIsOpen(true);
         }}
         onBlur={(e) => {
-          if (!menuRef.current?.contains(e.relatedTarget as Node) &&
-              !buttonRef.current?.contains(e.relatedTarget as Node)) {
+          if (
+            !menuRef.current?.contains(e.relatedTarget as Node) &&
+            !buttonRef.current?.contains(e.relatedTarget as Node)
+          ) {
             setIsUsingKeyboard(false);
           }
-        }}
-      >
+        }}>
         <Globe className="w-4 h-4" aria-hidden="true" />
         <span className="text-sm font-medium uppercase">{currentLocale}</span>
       </button>
       <div
         ref={menuRef}
         className={`absolute right-0 top-full mt-2 z-9999 bg-white rounded-lg shadow-lg border border-gray-200 transition-all duration-200 ${
-          isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+          isOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
         role="menu"
         onMouseEnter={() => {
@@ -141,12 +145,13 @@ export default function LanguageSwitcher() {
           setIsOpen(true);
         }}
         onBlur={(e) => {
-          if (!buttonRef.current?.contains(e.relatedTarget as Node) &&
-              !menuRef.current?.contains(e.relatedTarget as Node)) {
+          if (
+            !buttonRef.current?.contains(e.relatedTarget as Node) &&
+            !menuRef.current?.contains(e.relatedTarget as Node)
+          ) {
             setIsUsingKeyboard(false);
           }
-        }}
-      >
+        }}>
         {locales.map((loc, index) => (
           <button
             key={loc}
@@ -161,12 +166,13 @@ export default function LanguageSwitcher() {
               setFocusedIndex(-1);
             }}
             className={`block w-full text-left px-4 py-2 text-sm hover:bg-blue-50 transition-colors first:rounded-t-lg last:rounded-b-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 ${
-              currentLocale === loc ? 'bg-blue-50 text-blue-600 font-semibold' : 'text-gray-700'
+              currentLocale === loc
+                ? "bg-blue-50 text-blue-600 font-semibold"
+                : "text-gray-700"
             }`}
             role="menuitem"
-            tabIndex={isOpen ? 0 : -1}
-          >
-            {loc === 'pl' ? 'Polski' : 'English'}
+            tabIndex={isOpen ? 0 : -1}>
+            {loc === "pl" ? "Polski" : "English"}
           </button>
         ))}
       </div>

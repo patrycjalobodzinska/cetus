@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useEffect, useState, useRef } from 'react';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { useEffect, useState, useRef } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
 
 export default function PageProgressBar() {
   const pathname = usePathname();
@@ -13,7 +13,6 @@ export default function PageProgressBar() {
   const startTimeRef = useRef<number | null>(null);
 
   useEffect(() => {
-    // Cleanup previous timers
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
     }
@@ -21,12 +20,10 @@ export default function PageProgressBar() {
       clearTimeout(timeoutRef.current);
     }
 
-    // Reset and start progress
     setProgress(0);
     setIsLoading(true);
     startTimeRef.current = Date.now();
 
-    // Simulate progress - szybko do 30%, potem wolniej
     intervalRef.current = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 90) {
@@ -35,14 +32,11 @@ export default function PageProgressBar() {
           }
           return 90;
         }
-        // Szybko do 30%, potem wolniej
         const increment = prev < 30 ? 15 : prev < 70 ? 8 : 3;
         return Math.min(prev + increment, 90);
       });
     }, 80);
 
-    // Complete progress when page is loaded
-    // Używamy requestAnimationFrame dla lepszej synchronizacji
     const completeProgress = () => {
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
@@ -55,12 +49,10 @@ export default function PageProgressBar() {
       }, 200);
     };
 
-    // Sprawdzamy, czy strona jest już załadowana
-    if (document.readyState === 'complete') {
+    if (document.readyState === "complete") {
       completeProgress();
     } else {
-      window.addEventListener('load', completeProgress, { once: true });
-      // Fallback timeout
+      window.addEventListener("load", completeProgress, { once: true });
       timeoutRef.current = setTimeout(completeProgress, 1000);
     }
 
@@ -71,29 +63,36 @@ export default function PageProgressBar() {
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
       }
-      window.removeEventListener('load', completeProgress);
+      window.removeEventListener("load", completeProgress);
     };
   }, [pathname, searchParams]);
 
-  // Wykrywanie kliknięć w linki
   useEffect(() => {
     const handleLinkClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      const link = target.closest('a');
+      const link = target.closest("a");
 
-      if (link && link.href && !link.href.startsWith('#') && !link.href.startsWith('mailto:') && !link.href.startsWith('tel:')) {
+      if (
+        link &&
+        link.href &&
+        !link.href.startsWith("#") &&
+        !link.href.startsWith("mailto:") &&
+        !link.href.startsWith("tel:")
+      ) {
         const url = new URL(link.href);
-        // Sprawdzamy, czy link prowadzi do innej strony w tej samej domenie
-        if (url.origin === window.location.origin && url.pathname !== pathname) {
+        if (
+          url.origin === window.location.origin &&
+          url.pathname !== pathname
+        ) {
           setProgress(0);
           setIsLoading(true);
         }
       }
     };
 
-    document.addEventListener('click', handleLinkClick);
+    document.addEventListener("click", handleLinkClick);
     return () => {
-      document.removeEventListener('click', handleLinkClick);
+      document.removeEventListener("click", handleLinkClick);
     };
   }, [pathname]);
 
@@ -106,14 +105,13 @@ export default function PageProgressBar() {
       className="fixed top-0 left-0 right-0 z-[9999] h-[1.5px] pointer-events-none"
       style={{
         opacity: isLoading ? 0.2 : 0, // Bardzo ledwo widoczny
-        transition: 'opacity 0.2s ease-in-out',
-      }}
-    >
+        transition: "opacity 0.2s ease-in-out",
+      }}>
       <div
         className="h-full bg-blue-600 transition-all duration-200 ease-out"
         style={{
           width: `${progress}%`,
-          boxShadow: '0 0 8px rgba(37, 99, 235, 0.2)',
+          boxShadow: "0 0 8px rgba(37, 99, 235, 0.2)",
         }}
       />
     </div>

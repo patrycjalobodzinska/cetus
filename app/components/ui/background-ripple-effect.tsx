@@ -24,8 +24,7 @@ export const BackgroundRippleEffect = ({
       className={cn(
         "absolute inset-0  h-full w-full ",
         "[--cell-border-color:var(--color-blue-300)]  [--cell-shadow-color:var(--color-blue-100)]",
-      )}
-    >
+      )}>
       <div className="relative h-auto  overflow-hidden">
         <div className="pointer-events-none absolute inset-0 z-[2] h-full w-full overflow-hidden" />
         <DivGrid
@@ -52,7 +51,7 @@ type DivGridProps = {
   className?: string;
   rows: number;
   cols: number;
-  cellSize: number; // in pixels
+  cellSize: number;
   borderColor: string;
   fillColor: string;
   clickedCell: { row: number; col: number } | null;
@@ -99,7 +98,7 @@ const DivGrid = ({
           ? Math.hypot(clickedCell.row - rowIdx, clickedCell.col - colIdx)
           : 0;
         const delay = clickedCell ? Math.max(0, distance * 55) : 0; // ms
-        const duration = 200 + distance * 80; // ms
+        const duration = 200 + distance * 80;
 
         const style: CellStyle = clickedCell
           ? {

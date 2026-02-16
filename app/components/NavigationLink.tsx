@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useRouter } from 'next/navigation';
-import { useTransition } from 'react';
-import { useNavigation } from './NavigationProvider';
-import { cn } from '@/lib/utils';
+import { useRouter } from "next/navigation";
+import { useTransition } from "react";
+import { useNavigation } from "./NavigationProvider";
+import { cn } from "@/lib/utils";
 
 interface NavigationLinkProps {
   href: string;
@@ -16,7 +16,7 @@ export default function NavigationLink({
   href,
   children,
   className,
-  onClick
+  onClick,
 }: NavigationLinkProps) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
@@ -29,10 +29,8 @@ export default function NavigationLink({
       onClick();
     }
 
-    // Start navigation progress
     startNavigation();
 
-    // Navigate using Next.js router with transition
     startTransition(() => {
       router.push(href);
     });
@@ -42,8 +40,10 @@ export default function NavigationLink({
     <a
       href={href}
       onClick={handleClick}
-      className={cn("focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:rounded", className)}
-    >
+      className={cn(
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:rounded",
+        className,
+      )}>
       {children}
     </a>
   );

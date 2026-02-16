@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
+import Link from "next/link";
 import {
   ArrowRight,
   CheckCircle,
@@ -18,95 +18,125 @@ import {
   Bug,
   Activity,
   FileText,
-  Users
-} from 'lucide-react';
-import { useState } from 'react';
-import StarGradientButton from '@/app/components/ui/gradientBackground';
-import DecorativeImage from '@/app/components/DecorativeImage';
-import CTASection from '@/app/components/CTASection';
-import PolygonAccordion from '@/app/components/PolygonAccordion';
+  Users,
+} from "lucide-react";
+import { useState } from "react";
+import StarGradientButton from "@/app/components/ui/gradientBackground";
+import DecorativeImage from "@/app/components/DecorativeImage";
+import CTASection from "@/app/components/CTASection";
+import PolygonAccordion from "@/app/components/PolygonAccordion";
 
 export default function CybersecurityPage() {
   const [activeService, setActiveService] = useState(0);
 
   const whyBenefits = [
     {
-      title: 'Ochrona przed cyberatakami',
-      description: 'Kompleksowa ochrona Twojej infrastruktury przed najnowszymi zagrożeniami cybernetycznymi, w tym ransomware, phishing i atakami DDoS.'
+      title: "Ochrona przed cyberatakami",
+      description:
+        "Kompleksowa ochrona Twojej infrastruktury przed najnowszymi zagrożeniami cybernetycznymi, w tym ransomware, phishing i atakami DDoS.",
     },
     {
-      title: 'Zgodność z przepisami',
-      description: 'Pomagamy spełnić wymagania RODO, ISO 27001 i innych standardów bezpieczeństwa, chroniąc dane osobowe i wrażliwe informacje.'
+      title: "Zgodność z przepisami",
+      description:
+        "Pomagamy spełnić wymagania RODO, ISO 27001 i innych standardów bezpieczeństwa, chroniąc dane osobowe i wrażliwe informacje.",
     },
     {
-      title: 'Ciągły monitoring',
-      description: '24/7 monitoring bezpieczeństwa z automatycznym wykrywaniem i reagowaniem na incydenty, zapewniający spokój ducha.'
+      title: "Ciągły monitoring",
+      description:
+        "24/7 monitoring bezpieczeństwa z automatycznym wykrywaniem i reagowaniem na incydenty, zapewniający spokój ducha.",
     },
     {
-      title: 'Szkolenia i świadomość',
-      description: 'Edukujemy Twój zespół w zakresie najlepszych praktyk bezpieczeństwa, tworząc pierwszą linię obrony przed cyberzagrożeniami.'
-    }
+      title: "Szkolenia i świadomość",
+      description:
+        "Edukujemy Twój zespół w zakresie najlepszych praktyk bezpieczeństwa, tworząc pierwszą linię obrony przed cyberzagrożeniami.",
+    },
   ];
 
   const auditScope = [
-    'Analiza infrastruktury IT',
-    'Przegląd polityk bezpieczeństwa',
-    'Testy penetracyjne',
-    'Ocena zgodności z RODO',
-    'Analiza podatności',
-    'Rekomendacje poprawy'
+    "Analiza infrastruktury IT",
+    "Przegląd polityk bezpieczeństwa",
+    "Testy penetracyjne",
+    "Ocena zgodności z RODO",
+    "Analiza podatności",
+    "Rekomendacje poprawy",
   ];
 
   const pentestingScope = [
-    'Testy aplikacji webowych',
-    'Testy aplikacji mobilnych',
-    'Testy infrastruktury sieciowej',
-    'Testy socjotechniczne',
-    'Testy fizycznego bezpieczeństwa',
-    'Raportowanie i rekomendacje'
+    "Testy aplikacji webowych",
+    "Testy aplikacji mobilnych",
+    "Testy infrastruktury sieciowej",
+    "Testy socjotechniczne",
+    "Testy fizycznego bezpieczeństwa",
+    "Raportowanie i rekomendacje",
   ];
 
   const monitoringBenefits = [
-    'Wykrywanie zagrożeń w czasie rzeczywistym',
-    'Automatyczne reagowanie na incydenty',
-    'Analiza logów i zdarzeń',
-    'Alerty i powiadomienia',
-    'Raporty bezpieczeństwa',
-    'Integracja z istniejącymi systemami'
+    "Wykrywanie zagrożeń w czasie rzeczywistym",
+    "Automatyczne reagowanie na incydenty",
+    "Analiza logów i zdarzeń",
+    "Alerty i powiadomienia",
+    "Raporty bezpieczeństwa",
+    "Integracja z istniejącymi systemami",
   ];
 
   const gdprServices = [
-    'Audyt zgodności z RODO',
-    'Przygotowanie dokumentacji',
-    'Wdrożenie procedur',
-    'Szkolenia dla pracowników',
-    'Wsparcie w raportowaniu incydentów',
-    'Aktualizacja zgodności'
+    "Audyt zgodności z RODO",
+    "Przygotowanie dokumentacji",
+    "Wdrożenie procedur",
+    "Szkolenia dla pracowników",
+    "Wsparcie w raportowaniu incydentów",
+    "Aktualizacja zgodności",
   ];
 
   const trainingTopics = [
-    'Świadomość cyberbezpieczeństwa',
-    'Rozpoznawanie phishingu',
-    'Bezpieczne hasła i uwierzytelnianie',
-    'Ochrona danych osobowych',
-    'Zarządzanie incydentami',
-    'Najlepsze praktyki bezpieczeństwa'
+    "Świadomość cyberbezpieczeństwa",
+    "Rozpoznawanie phishingu",
+    "Bezpieczne hasła i uwierzytelnianie",
+    "Ochrona danych osobowych",
+    "Zarządzanie incydentami",
+    "Najlepsze praktyki bezpieczeństwa",
   ];
 
   const caseStudyResults = [
-    '100% zgodność z RODO',
-    '60% redukcja incydentów bezpieczeństwa',
-    '24/7 monitoring wdrożony',
-    'Szkolenia dla 200+ pracowników'
+    "100% zgodność z RODO",
+    "60% redukcja incydentów bezpieczeństwa",
+    "24/7 monitoring wdrożony",
+    "Szkolenia dla 200+ pracowników",
   ];
 
-  // Combine all services
   const services = [
-    { icon: FileCheck, title: 'Audyty bezpieczeństwa', items: auditScope, result: 'Kompleksowa ocena bezpieczeństwa z szczegółowym raportem i rekomendacjami' },
-    { icon: Bug, title: 'Testy penetracyjne', items: pentestingScope, result: 'Identyfikacja rzeczywistych podatności przed atakującymi' },
-    { icon: Activity, title: 'Monitoring bezpieczeństwa', items: monitoringBenefits, result: 'Ciągła ochrona z automatycznym wykrywaniem zagrożeń' },
-    { icon: FileText, title: 'Zgodność z RODO', items: gdprServices, result: 'Pełna zgodność z przepisami ochrony danych osobowych' },
-    { icon: GraduationCap, title: 'Szkolenia bezpieczeństwa', items: trainingTopics, result: 'Zwiększona świadomość i umiejętności zespołu w zakresie bezpieczeństwa' }
+    {
+      icon: FileCheck,
+      title: "Audyty bezpieczeństwa",
+      items: auditScope,
+      result:
+        "Kompleksowa ocena bezpieczeństwa z szczegółowym raportem i rekomendacjami",
+    },
+    {
+      icon: Bug,
+      title: "Testy penetracyjne",
+      items: pentestingScope,
+      result: "Identyfikacja rzeczywistych podatności przed atakującymi",
+    },
+    {
+      icon: Activity,
+      title: "Monitoring bezpieczeństwa",
+      items: monitoringBenefits,
+      result: "Ciągła ochrona z automatycznym wykrywaniem zagrożeń",
+    },
+    {
+      icon: FileText,
+      title: "Zgodność z RODO",
+      items: gdprServices,
+      result: "Pełna zgodność z przepisami ochrony danych osobowych",
+    },
+    {
+      icon: GraduationCap,
+      title: "Szkolenia bezpieczeństwa",
+      items: trainingTopics,
+      result:
+        "Zwiększona świadomość i umiejętności zespołu w zakresie bezpieczeństwa",
+    },
   ];
 
   return (
@@ -117,17 +147,16 @@ export default function CybersecurityPage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left - Content */}
             <div className="space-y-8">
-
-
               <h1
                 className="heading-hero text-slate-900 leading-tight"
-                style={{ fontFamily: "var(--font-michroma)" }}
-              >
+                style={{ fontFamily: "var(--font-michroma)" }}>
                 Kompleksowa ochrona cybernetyczna dla Twojej firmy
               </h1>
 
               <p className="text-xl text-slate-600 leading-relaxed max-w-xl">
-                Chronimy Twoją firmę przed cyberzagrożeniami dzięki zaawansowanym rozwiązaniom bezpieczeństwa, audytom i ciągłemu monitoringowi.
+                Chronimy Twoją firmę przed cyberzagrożeniami dzięki
+                zaawansowanym rozwiązaniom bezpieczeństwa, audytom i ciągłemu
+                monitoringowi.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -139,8 +168,7 @@ export default function CybersecurityPage() {
 
                 <Link
                   href="/case-studies"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-slate-900 border-2 border-gray-200 rounded-2xl font-semibold hover:border-blue-600 hover:text-blue-600 transition-all duration-300"
-                >
+                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-slate-900 border-2 border-gray-200 rounded-2xl font-semibold hover:border-blue-600 hover:text-blue-600 transition-all duration-300">
                   Zobacz realizacje
                 </Link>
               </div>
@@ -161,12 +189,12 @@ export default function CybersecurityPage() {
           <div className="text-center mb-20">
             <h2
               className="heading-1 text-slate-900 mb-6 leading-tight"
-              style={{ fontFamily: "var(--font-michroma)" }}
-            >
+              style={{ fontFamily: "var(--font-michroma)" }}>
               Dlaczego warto wybrać nasze rozwiązania?
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Kompleksowa ochrona cybernetyczna dostosowana do potrzeb Twojej firmy
+              Kompleksowa ochrona cybernetyczna dostosowana do potrzeb Twojej
+              firmy
             </p>
           </div>
 
@@ -178,8 +206,7 @@ export default function CybersecurityPage() {
               return (
                 <div
                   key={index}
-                  className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-blue-600/30"
-                >
+                  className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-blue-600/30">
                   <div className="relative p-8">
                     <div className="flex items-center gap-4 mb-6">
                       <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
@@ -209,12 +236,12 @@ export default function CybersecurityPage() {
           <div className="text-center mb-16">
             <h2
               className="heading-1 text-slate-900 mb-4"
-              style={{ fontFamily: "var(--font-michroma)" }}
-            >
+              style={{ fontFamily: "var(--font-michroma)" }}>
               Nasze usługi
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Kompleksowa ochrona Twojej firmy przed zagrożeniami cybernetycznymi
+              Kompleksowa ochrona Twojej firmy przed zagrożeniami
+              cybernetycznymi
             </p>
           </div>
 
@@ -232,9 +259,12 @@ export default function CybersecurityPage() {
                     isOpen={false}
                     onToggle={() => setActiveService(index)}
                     variant="button"
-                    icon={<Icon className={`w-6 h-6 ${isActive ? 'text-white' : 'text-blue-600'}`} />}
-                    isActive={isActive}
-                  >
+                    icon={
+                      <Icon
+                        className={`w-6 h-6 ${isActive ? "text-white" : "text-blue-600"}`}
+                      />
+                    }
+                    isActive={isActive}>
                     {null}
                   </PolygonAccordion>
                 );
@@ -242,8 +272,12 @@ export default function CybersecurityPage() {
             </div>
 
             {/* Right - Service Details */}
-            <div style={{  background: "linear-gradient(0deg, hsla(215, 69%, 36%, 1) 0%, hsla(190, 94%, 76%, 1) 100%)",
-       }} className=" rounded-md  shadow-md shadow-blue-300 p-0.5 ">
+            <div
+              style={{
+                background:
+                  "linear-gradient(0deg, hsla(215, 69%, 36%, 1) 0%, hsla(190, 94%, 76%, 1) 100%)",
+              }}
+              className=" rounded-md  shadow-md shadow-blue-300 p-0.5 ">
               <div className="space-y-6 bg-white rounded-md p-8">
                 <div className="flex items-center space-x-4 mb-6">
                   {(() => {
@@ -293,15 +327,14 @@ export default function CybersecurityPage() {
                 {/* Service items */}
                 <div className="bg-gray-50 rounded-2xl p-6 border border-gray-200">
                   <ul className="space-y-3">
-                    {services[activeService].items.slice(0, 5).map((item, idx) => (
-                      <li
-                        key={idx}
-                        className="flex items-start space-x-3"
-                      >
-                        <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 shrink-0" />
-                        <span className="text-slate-700 text-sm">{item}</span>
-                      </li>
-                    ))}
+                    {services[activeService].items
+                      .slice(0, 5)
+                      .map((item, idx) => (
+                        <li key={idx} className="flex items-start space-x-3">
+                          <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 shrink-0" />
+                          <span className="text-slate-700 text-sm">{item}</span>
+                        </li>
+                      ))}
                   </ul>
                 </div>
 
@@ -317,8 +350,6 @@ export default function CybersecurityPage() {
           </div>
         </div>
       </section>
-
-
 
       {/* Final CTA */}
       <CTASection
