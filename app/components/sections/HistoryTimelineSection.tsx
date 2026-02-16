@@ -20,7 +20,7 @@ export default function HistoryTimelineSection({ items, loading }: HistoryTimeli
           <p className="text-sm font-semibold uppercase tracking-wide text-blue-600 mb-2">
             {item.year}
           </p>
-          <h3 className="text-2xl font-bold text-slate-900 mb-3">
+          <h3 className="heading-3 text-slate-900 mb-3">
             {item.title}
           </h3>
           <p className="text-slate-600 leading-relaxed mb-4">
@@ -45,7 +45,7 @@ export default function HistoryTimelineSection({ items, loading }: HistoryTimeli
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2
-            className="text-4xl md:text-5xl lg:mt-0 mt-12 font-bold text-slate-900 mb-4"
+            className="heading-1 lg:mt-0 mt-12 text-slate-900 mb-4"
             style={{ fontFamily: "var(--font-michroma)" }}
           >
             Nasza historia
@@ -61,7 +61,7 @@ export default function HistoryTimelineSection({ items, loading }: HistoryTimeli
             <p className="mt-4 text-slate-600">Ładowanie historii...</p>
           </div>
         ) : timelineData.length > 0 ? (
-          <div className="relative w-full overflow-clip">
+          <div className="relative w-full overflow-visible">
             <Timeline data={timelineData} />
           </div>
         ) : (

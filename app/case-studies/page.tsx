@@ -35,11 +35,11 @@ export default async function CaseStudiesPage() {
     <div className="min-h-screen ">
       {/* Hero Section */}
       <section className="relative overflow-x-hidden max-w-[100vw] w-full flex flex-col items-center justify-start overflow-hidden">
-        <div className="mt-36 w-full justify-center container mx-auto pb-12 flex flex-col items-center relative overflow-x-hidden px-4">
+        <div className="pt-[var(--page-top-offset)] w-full justify-center container mx-auto pb-12 flex flex-col items-center relative overflow-x-hidden px-4">
           <div className="flex flex-col z-30 items-center justify-center relative">
             <div className="relative">
               <h1
-                className="text-4xl lg:text-7xl tracking-tighter text-slate-900 leading-[0.9] font-bold text-center"
+                className="heading-hero tracking-tighter text-slate-900 text-center"
                 style={{ fontFamily: "var(--font-michroma)" }}
               >
                 <span>Nasze </span>
@@ -117,7 +117,7 @@ export default async function CaseStudiesPage() {
       <section className="py-2 lg:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2
-            className="text-4xl md:text-5xl font-bold text-slate-900 mb-6"
+            className="heading-1 text-slate-900 mb-6"
             style={{ fontFamily: "var(--font-michroma)" }}
           >
             Chcesz stworzyć podobne rozwiązanie?

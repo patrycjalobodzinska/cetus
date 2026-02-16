@@ -3,6 +3,87 @@
 :root {
   --background: #ffffff;
   --foreground: #ffffff;
+  --page-top-offset: 10rem; /* 160px mobile - większy odstęp od headera */
+}
+
+@media (min-width: 768px) {
+  :root {
+    --page-top-offset: 11rem; /* 176px tablet */
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --page-top-offset: 12rem; /* 192px desktop */
+  }
+}
+
+/* Spójna typografia nagłówków - mniejsza na mobile */
+:root {
+  --heading-hero: 1.875rem; /* 30px - duże hero, mobile */
+  --heading-1: 1.5rem;     /* 24px - h1 */
+  --heading-2: 1.25rem;    /* 20px - h2 */
+  --heading-3: 1.125rem;   /* 18px - h3 */
+  --heading-4: 1rem;       /* 16px - h4 */
+}
+
+@media (min-width: 768px) {
+  :root {
+    --heading-hero: 2.5rem;  /* 40px */
+    --heading-1: 2rem;       /* 32px */
+    --heading-2: 1.5rem;     /* 24px */
+    --heading-3: 1.25rem;    /* 20px */
+    --heading-4: 1.125rem;   /* 18px */
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --heading-hero: 3.75rem; /* 60px - desktop hero */
+    --heading-1: 2.25rem;   /* 36px */
+    --heading-2: 1.875rem;  /* 30px */
+    --heading-3: 1.5rem;     /* 24px */
+    --heading-4: 1.25rem;   /* 20px */
+  }
+}
+
+/* Utility classes dla spójnych nagłówków */
+.heading-hero,
+.heading-1,
+.heading-2,
+.heading-3,
+.heading-4 {
+  font-family: var(--font-michroma), sans-serif;
+}
+
+.heading-hero {
+  font-size: var(--heading-hero);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.heading-1 {
+  font-size: var(--heading-1);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.heading-2 {
+  font-size: var(--heading-2);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.heading-3 {
+  font-size: var(--heading-3);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.heading-4 {
+  font-size: var(--heading-4);
+  font-weight: 700;
+  line-height: 1.35;
 }
 
 /* WCAG 2.1 AA Compliance */
@@ -182,4 +263,32 @@ html.lenis {
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+/* Technologies Marquee - infinite scroll left (4x duplicated content) */
+@keyframes marquee-scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-25%);
+  }
+}
+
+/* Technologies Marquee - infinite scroll right (4x duplicated content) */
+@keyframes marquee-scroll-right {
+  0% {
+    transform: translateX(-25%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee-left {
+  animation: marquee-scroll-left 40s linear infinite;
+}
+
+.animate-marquee-right {
+  animation: marquee-scroll-right 40s linear infinite;
 }

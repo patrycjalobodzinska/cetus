@@ -1,6 +1,17 @@
+export interface TechnologyItem {
+  name?: { pl?: string; en?: string };
+  logo?: any;
+}
+
+/** @deprecated legacy format - items as parallel pl/en arrays */
+export interface TechnologyCategoryLegacyItems {
+  pl?: string[];
+  en?: string[];
+}
+
 export interface TechnologyCategory {
   title: { pl?: string; en?: string };
-  items: { pl?: string[]; en?: string[] };
+  items?: (TechnologyItem | TechnologyCategoryLegacyItems)[];
   order?: number;
 }
 

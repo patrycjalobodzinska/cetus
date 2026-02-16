@@ -1,17 +1,26 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import StarBorder from './StarBorder';
 import StarGradientButton from './ui/gradientBackground';
 import NavigationLink from './NavigationLink';
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
+import { usePathname } from 'next/navigation';
 import LanguageSwitcher from './LanguageSwitcher';
+import { cn } from '@/lib/utils';
 
 export default function NavbarCurosora() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const t = useTranslations('nav');
   const locale = useLocale();
+  const pathname = usePathname();
+
+  const navLinkClass = (isActive: boolean) =>
+    cn(
+      'transition-colors',
+      isActive ? 'text-blue-600 font-semibold' : 'hover:text-blue-600 text-slate-700'
+    );
 
   return (
     <div className={`sticky  top-0 z-50 w-full -mb-34  flex justify-center px-4 py-6 transition-all max-w-[1300px] mx-auto duration-700 ease-out ${
@@ -65,23 +74,26 @@ export default function NavbarCurosora() {
                 {/* Content Container (Un-skewed) */}
                 <div className="w-full h-full flex items-center justify-between px-8 transform skew-x-12">
                     {/* Links */}
-                    <nav className="flex items-center gap-6 text-[15px] font-medium text-slate-700">
-                        <NavigationLink href={`/${locale}`} className="flex items-center gap-2 hover:text-blue-600 transition-colors group">
-                         {t('home')}
-                            <span className="w-1.5 h-1.5 rounded-full bg-blue-400 opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true"></span>
+                    <nav className="flex items-center gap-6 text-[15px] font-medium">
+                        <NavigationLink
+                          href={`/${locale}`}
+                          className={cn('flex items-center gap-2 group', navLinkClass(pathname === `/${locale}` || pathname === `/${locale}/`))}
+                        >
+                          {t('home')}
+                          <span className={cn('w-1.5 h-1.5 rounded-full bg-blue-400 transition-opacity', (pathname === `/${locale}` || pathname === `/${locale}/`) ? 'opacity-100' : 'opacity-0 group-hover:opacity-100')} aria-hidden="true"></span>
                         </NavigationLink>
                         <span className="text-slate-300 text-xs" aria-hidden="true">/</span>
 
-                        <NavigationLink href={`/${locale}/o-nas`} className="hover:text-blue-600 transition-colors">{t('about')}</NavigationLink>
+                        <NavigationLink href={`/${locale}/o-nas`} className={navLinkClass(pathname?.startsWith(`/${locale}/o-nas`) ?? false)}>{t('about')}</NavigationLink>
                         <span className="text-slate-300 text-xs" aria-hidden="true">/</span>
 
-                        <NavigationLink href={`/${locale}/oferta`} className="hover:text-blue-600 transition-colors">{t('services')}</NavigationLink>
+                        <NavigationLink href={`/${locale}/oferta`} className={navLinkClass(pathname?.startsWith(`/${locale}/oferta`) ?? false)}>{t('services')}</NavigationLink>
                         <span className="text-slate-300 text-xs" aria-hidden="true">/</span>
 
-                        <NavigationLink href={`/${locale}/case-studies`} className="hover:text-blue-600 transition-colors" >{t('caseStudies')}</NavigationLink>
+                        <NavigationLink href={`/${locale}/case-studies`} className={navLinkClass(pathname?.startsWith(`/${locale}/case-studies`) ?? false)}>{t('caseStudies')}</NavigationLink>
                         <span className="text-slate-300 text-xs" aria-hidden="true">/</span>
 
-                        <NavigationLink href={`/${locale}/kontakt`} className="hover:text-blue-600 transition-colors">{t('contact')}</NavigationLink>
+                        <NavigationLink href={`/${locale}/kontakt`} className={navLinkClass(pathname?.startsWith(`/${locale}/kontakt`) ?? false)}>{t('contact')}</NavigationLink>
                         <span className="text-slate-300 text-xs" aria-hidden="true">/</span>
 
                     </nav>
@@ -106,7 +118,7 @@ export default function NavbarCurosora() {
              <h2 id="mobile-menu-title" className="sr-only">Menu nawigacyjne</h2>
           <NavigationLink
             href={`/${locale}`}
-            className="text-lg font-medium hover:text-blue-600 text-slate-900 border-b border-gray-100 pb-2"
+            className={cn('text-lg font-medium border-b border-gray-100 pb-2', (pathname === `/${locale}` || pathname === `/${locale}/`) ? 'text-blue-600 font-semibold' : 'text-slate-900 hover:text-blue-600')}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             {t('home')}
@@ -114,7 +126,7 @@ export default function NavbarCurosora() {
 
           <NavigationLink
             href={`/${locale}/o-nas`}
-            className="text-lg hover:text-blue-600 font-medium text-slate-900"
+            className={cn('text-lg font-medium', pathname?.startsWith(`/${locale}/o-nas`) ? 'text-blue-600 font-semibold' : 'text-slate-900 hover:text-blue-600')}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             {t('about')}
@@ -122,7 +134,7 @@ export default function NavbarCurosora() {
 
           <NavigationLink
             href={`/${locale}/oferta`}
-            className="text-lg hover:text-blue-600 font-medium text-slate-900"
+            className={cn('text-lg font-medium', pathname?.startsWith(`/${locale}/oferta`) ? 'text-blue-600 font-semibold' : 'text-slate-900 hover:text-blue-600')}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             {t('services')}
@@ -130,7 +142,7 @@ export default function NavbarCurosora() {
 
           <NavigationLink
             href={`/${locale}/case-studies`}
-            className="hover:text-blue-600 transition-colors text-lg font-medium text-slate-900"
+            className={cn('text-lg font-medium', pathname?.startsWith(`/${locale}/case-studies`) ? 'text-blue-600 font-semibold' : 'text-slate-900 hover:text-blue-600')}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             {t('caseStudies')}
@@ -138,7 +150,7 @@ export default function NavbarCurosora() {
 
           <NavigationLink
             href={`/${locale}/kontakt`}
-            className="hover:text-blue-600 text-lg font-medium text-slate-900"
+            className={cn('text-lg font-medium', pathname?.startsWith(`/${locale}/kontakt`) ? 'text-blue-600 font-semibold' : 'text-slate-900 hover:text-blue-600')}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             {t('contact')}

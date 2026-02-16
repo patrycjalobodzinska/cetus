@@ -19,11 +19,17 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
   const [height, setHeight] = useState(0);
 
   useEffect(() => {
-    if (ref.current) {
-      const rect = ref.current.getBoundingClientRect();
+    const el = ref.current;
+    if (!el) return;
+    const updateHeight = () => {
+      const rect = el.getBoundingClientRect();
       setHeight(rect.height);
-    }
-  }, [ref]);
+    };
+    updateHeight();
+    const observer = new ResizeObserver(updateHeight);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [data.length]);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -50,7 +56,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
                 <div className="lg:h-4 lg:w-4 h-2 w-2  bg-white  border border-neutral-300 p-1" />
               </div>
               <h3    style={{ fontFamily: "var(--font-michroma)" }}
-              className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold text-slate-500">
+              className="hidden md:block heading-2 md:pl-20 text-slate-500">
                 {item.title}
               </h3>
             </div>
@@ -67,14 +73,14 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
           style={{
             height: height + "px",
           }}
-          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-0% via-neutral-200 dark:via-neutral-700 to-transparent to-99% mask-[linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]"
+          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] z-0 bg-linear-to-b from-transparent via-neutral-200 to-transparent dark:via-neutral-600 mask-[linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]"
         >
           <motion.div
             style={{
               height: heightTransform,
               opacity: opacityTransform,
             }}
-            className="absolute inset-x-0 top-0  w-[2px] bg-linear-to-t from-blue-600 via-blue-500 to-transparent from-0% via-10% rounded-full"
+            className="absolute inset-x-0 top-0 w-[2px] z-10 bg-linear-to-t from-blue-600 via-blue-500 to-transparent rounded-full"
           />
         </div>
       </div>

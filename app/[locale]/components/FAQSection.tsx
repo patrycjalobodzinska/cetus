@@ -60,7 +60,7 @@ export default function FAQSection() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2
-            className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight"
+            className="heading-1 text-slate-900 mb-6 leading-tight"
             style={{ fontFamily: "var(--font-michroma)" }}
           >
             {t('title')}

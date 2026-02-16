@@ -9,7 +9,7 @@ export default function ContactInfoSection() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <h2
-              className="text-3xl md:text-4xl font-bold text-slate-900 mb-6"
+              className="heading-2 text-slate-900 mb-6"
               style={{ fontFamily: "var(--font-michroma)" }}
             >
               Dane kontaktowe

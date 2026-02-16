@@ -126,7 +126,7 @@ export default function AboutUsPage() {
     title: item.year,
     content: (
       <div>
-        <h3 className="mb-4 text-xl font-bold text-slate-900 md:text-2xl">
+        <h3 className="heading-3 mb-4 text-slate-900">
           {item.title}
         </h3>
         <p className="mb-8 text-sm font-normal text-slate-600 md:text-base leading-relaxed">
@@ -160,15 +160,12 @@ export default function AboutUsPage() {
           </div>
         </section>
       ) : aboutUsData ? (
-        <section className="lg:pt-40 pt-32 flex flex-col justify-between  min-h-[calc(100vh-90px)] ">
+        <section className="pt-[var(--page-top-offset)] flex flex-col justify-between min-h-[calc(100vh-90px)]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Left - Text and Buttons */}
               <div className="lg:space-y-8 mix-blend-darken space-y-4">
-                <h1
-                  className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight"
-                  style={{ fontFamily: "var(--font-michroma)" }}
-                >
+                <h1 className="heading-hero text-slate-900 leading-tight">
                   {aboutUsData.title}
                 </h1>
                 <p className="text-lg text-slate-600 leading-relaxed">
@@ -214,7 +211,7 @@ export default function AboutUsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center ">
             <h2
-              className="text-4xl md:text-5xl lg:mt-0 mt-12 font-bold text-slate-900 mb-4"
+              className="heading-1 lg:mt-0 mt-12 text-slate-900 mb-4"
               style={{ fontFamily: "var(--font-michroma)" }}
             >
               Nasza historia
@@ -230,7 +227,7 @@ export default function AboutUsPage() {
               <p className="mt-4 text-slate-600">Ładowanie historii...</p>
             </div>
           ) : historyItems.length > 0 ? (
-            <div className="relative w-full overflow-clip">
+            <div className="relative w-full overflow-visible">
               <Timeline data={timelineData} />
             </div>
           ) : (
@@ -271,7 +268,7 @@ export default function AboutUsPage() {
 
               <div className="text-center lg:text-left">
                 <h2
-                  className="text-4xl md:text-5xl font-bold text-slate-900 mb-4"
+                  className="heading-1 text-slate-900 mb-4"
                   style={{ fontFamily: "var(--font-michroma)" }}
                 >
                   Nasz zespół
@@ -343,7 +340,7 @@ export default function AboutUsPage() {
       <section className="pb-24 bg-[#f4f4f4]">
         <div className="max-w-4xl  mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2
-            className="text-4xl md:text-5xl font-bold text-slate-900 mb-6"
+            className="heading-1 text-slate-900 mb-6"
             style={{ fontFamily: "var(--font-michroma)" }}
           >
             Chcesz dołączyć do naszej historii?

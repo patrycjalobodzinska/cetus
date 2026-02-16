@@ -57,7 +57,7 @@ export default function CaseStudyDetail({ caseStudy }: { caseStudy: CaseStudy })
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-white">
+      <section className="pt-[var(--page-top-offset)] pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/case-studies"
@@ -77,7 +77,7 @@ export default function CaseStudyDetail({ caseStudy }: { caseStudy: CaseStudy })
 
               {caseStudy.title && (
                 <h1
-                  className="text-4xl lg:text-5xl  text-slate-900  font-bold"
+                  className="heading-1 text-slate-900"
                   style={{ fontFamily: "var(--font-michroma)" }}
                 >
                   {caseStudy.title}
@@ -135,7 +135,7 @@ export default function CaseStudyDetail({ caseStudy }: { caseStudy: CaseStudy })
                         <Icon className="w-8 h-8 text-white" />
                       </div>
                       {stat.value && (
-                        <div className="text-5xl md:text-6xl font-bold text-blue-600 mb-4">
+                        <div className="heading-hero font-bold text-blue-600 mb-4">
                           {stat.value}
                         </div>
                       )}
@@ -165,7 +165,7 @@ export default function CaseStudyDetail({ caseStudy }: { caseStudy: CaseStudy })
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-20">
               <h2
-                className="text-4xl md:text-5xl font-bold text-slate-900 mb-4"
+                className="heading-1 text-slate-900 mb-4"
                 style={{ fontFamily: "var(--font-michroma)" }}
               >
                 {t("modulesTitle")}
@@ -242,7 +242,7 @@ export default function CaseStudyDetail({ caseStudy }: { caseStudy: CaseStudy })
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2
-                className="text-4xl md:text-5xl font-bold text-slate-900 mb-4"
+                className="heading-1 text-slate-900 mb-4"
                 style={{ fontFamily: "var(--font-michroma)" }}
               >
                 {t("resultsTitle")}
@@ -299,7 +299,7 @@ export default function CaseStudyDetail({ caseStudy }: { caseStudy: CaseStudy })
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2
-                className="text-4xl md:text-5xl font-bold text-slate-900 mb-4"
+                className="heading-1 text-slate-900 mb-4"
                 style={{ fontFamily: "var(--font-michroma)" }}
               >
                 {t("technologiesTitle")}
@@ -386,7 +386,7 @@ export default function CaseStudyDetail({ caseStudy }: { caseStudy: CaseStudy })
       <section className="py-24 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2
-            className="text-4xl md:text-5xl font-bold text-slate-900 mb-6"
+            className="heading-1 text-slate-900 mb-6"
             style={{ fontFamily: "var(--font-michroma)" }}
           >
             Chcesz stworzyć podobne rozwiązanie?

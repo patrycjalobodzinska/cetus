@@ -13,12 +13,12 @@ export default function MethodologySection() {
   ];
 
   return (
-    <section className="md:pb-36  pb-12 pt-36">
+    <section className="md:pb-36 pb-12 pt-[var(--page-top-offset)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12 flex flex-col items-center justify-center">
 
           <h1
-            className="text-4xl md:text-7xl text-center font-bold text-slate-900 mt-2 md:mb-12 mb-6"
+            className="heading-hero text-center text-slate-900 mt-2 md:mb-12 mb-6"
             style={{ fontFamily: "var(--font-michroma)" }}
           >
             {t('title')}

@@ -95,7 +95,7 @@ export default function HomepageModulesSection() {
 
                   {module.title && (
                     <h3
-                      className="text-3xl md:text-4xl font-bold text-slate-900 leading-tight"
+                      className="heading-2 text-slate-900 leading-tight"
                       style={{ fontFamily: "var(--font-michroma)" }}
                     >
                       {module.title}

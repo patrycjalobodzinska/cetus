@@ -112,7 +112,7 @@ export default function CybersecurityPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="min-h-screen py-12 flex items-center relative overflow-hidden bg-white">
+      <section className="pt-[var(--page-top-offset)] min-h-screen pb-12 flex items-center relative overflow-hidden bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left - Content */}
@@ -120,7 +120,7 @@ export default function CybersecurityPage() {
 
 
               <h1
-                className="text-5xl md:text-6xl lg:text-6xl font-bold text-slate-900 leading-tight"
+                className="heading-hero text-slate-900 leading-tight"
                 style={{ fontFamily: "var(--font-michroma)" }}
               >
                 Kompleksowa ochrona cybernetyczna dla Twojej firmy
@@ -160,7 +160,7 @@ export default function CybersecurityPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20">
             <h2
-              className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight"
+              className="heading-1 text-slate-900 mb-6 leading-tight"
               style={{ fontFamily: "var(--font-michroma)" }}
             >
               Dlaczego warto wybrać nasze rozwiązania?
@@ -185,7 +185,7 @@ export default function CybersecurityPage() {
                       <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
                         <Icon className="w-6 h-6 text-white" />
                       </div>
-                      <h3 className="text-3xl md:text-4xl font-bold text-slate-900 leading-tight group-hover:text-blue-600 transition-colors duration-300">
+                      <h3 className="heading-2 text-slate-900 leading-tight group-hover:text-blue-600 transition-colors duration-300">
                         {benefit.title}
                       </h3>
                     </div>
@@ -208,7 +208,7 @@ export default function CybersecurityPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2
-              className="text-4xl md:text-5xl font-bold text-slate-900 mb-4"
+              className="heading-1 text-slate-900 mb-4"
               style={{ fontFamily: "var(--font-michroma)" }}
             >
               Nasze usługi

@@ -31,12 +31,12 @@ export default function AboutHeroSection({ data, loading }: AboutHeroSectionProp
   }
 
   return (
-    <section className="lg:pt-40 pt-32 flex flex-col justify-between min-h-[calc(100vh-90px)]">
+    <section className="pt-[var(--page-top-offset)] flex flex-col justify-between min-h-[calc(100vh-90px)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="lg:space-y-8 mix-blend-darken space-y-4">
             <h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight"
+              className="heading-1 text-slate-900 leading-tight"
               style={{ fontFamily: "var(--font-michroma)" }}
             >
               {data.title}

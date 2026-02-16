@@ -23,7 +23,7 @@ export default function ProcessSection() {
         {/* Hero Section */}
         <div className="text-center mb-20">
           <h2
-            className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight"
+            className="heading-1 text-slate-900 mb-6 leading-tight"
             style={{ fontFamily: "var(--font-michroma)" }}
           >
             {t('title')}

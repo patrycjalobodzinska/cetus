@@ -1,44 +1,65 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import PolygonCard from '@/app/components/PolygonCard';
-import StarGradientButton from '@/app/components/ui/gradientBackground';
-import StatsPanel from '@/app/components/StatsPanel';
-import CTASection from '@/app/components/CTASection';
-import { useLocale, useTranslations } from 'next-intl';
-import { client } from '@/sanity/lib/client';
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import PolygonCard from "@/app/components/PolygonCard";
+import TechnologiesMarquee from "@/app/components/TechnologiesMarquee";
+import StarGradientButton from "@/app/components/ui/gradientBackground";
+import StatsPanel from "@/app/components/StatsPanel";
+import CTASection from "@/app/components/CTASection";
+import { useLocale, useTranslations } from "next-intl";
+import { client } from "@/sanity/lib/client";
 
-import type { TechnologiesData, IndustriesData, OfferStatsData } from '@/lib/sanity/types';
+import type {
+  TechnologiesData,
+  IndustriesData,
+  OfferStatsData,
+} from "@/lib/sanity/types";
 
 export default function OfferPage() {
-  const t = useTranslations('offer');
+  const t = useTranslations("offer");
   const locale = useLocale();
-  const [technologies, setTechnologies] = useState<TechnologiesData | null>(null);
+  const [technologies, setTechnologies] = useState<TechnologiesData | null>(
+    null,
+  );
   const [industries, setIndustries] = useState<IndustriesData | null>(null);
   const [offerStats, setOfferStats] = useState<OfferStatsData | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const projectKeys = ['webApps', 'mobileApps', 'uiUx', 'ai', 'cybersecurity', 'transformation', 'outsourcing', 'academy', 'venture'];
+  const projectKeys = [
+    "webApps",
+    "mobileApps",
+    "uiUx",
+    "ai",
+    "cybersecurity",
+    "transformation",
+    "outsourcing",
+    "academy",
+    "venture",
+  ];
 
-  const projects = projectKeys.map((key, index) => {
-    let orderValue: number = index + 1;
-    try {
-      const projectData = t.raw(`projects.${key}`) as { order?: number } | undefined;
-      if (projectData && typeof projectData.order === 'number') {
-        orderValue = projectData.order;
+  const projects = projectKeys
+    .map((key, index) => {
+      let orderValue: number = index + 1;
+      try {
+        const projectData = t.raw(`projects.${key}`) as
+          | { order?: number }
+          | undefined;
+        if (projectData && typeof projectData.order === "number") {
+          orderValue = projectData.order;
+        }
+      } catch (e) {
+        orderValue = index + 1;
       }
-    } catch (e) {
-      orderValue = index + 1;
-    }
-    return {
-      title: t(`projects.${key}.title`, { defaultValue: '' }),
-      description: t(`projects.${key}.description`, { defaultValue: '' }),
-      slug: t(`projects.${key}.slug`, { defaultValue: '' }),
-      image: t(`projects.${key}.image`, { defaultValue: '' }),
-      order: orderValue,
-    };
-  }).sort((a, b) => a.order - b.order);
+      return {
+        title: t(`projects.${key}.title`, { defaultValue: "" }),
+        description: t(`projects.${key}.description`, { defaultValue: "" }),
+        slug: t(`projects.${key}.slug`, { defaultValue: "" }),
+        image: t(`projects.${key}.image`, { defaultValue: "" }),
+        order: orderValue,
+      };
+    })
+    .sort((a, b) => a.order - b.order);
 
   useEffect(() => {
     async function fetchTechnologies() {
@@ -55,7 +76,7 @@ export default function OfferPage() {
         const data = await client.fetch<TechnologiesData>(query);
         setTechnologies(data);
       } catch (error) {
-        console.error('Błąd podczas pobierania technologii:', error);
+        console.error("Błąd podczas pobierania technologii:", error);
       }
     }
 
@@ -74,7 +95,7 @@ export default function OfferPage() {
         const data = await client.fetch<IndustriesData>(query);
         setIndustries(data);
       } catch (error) {
-        console.error('Błąd podczas pobierania branż:', error);
+        console.error("Błąd podczas pobierania branż:", error);
       }
     }
 
@@ -93,7 +114,7 @@ export default function OfferPage() {
         const data = await client.fetch<OfferStatsData>(query);
         setOfferStats(data);
       } catch (error) {
-        console.error('Błąd podczas pobierania statystyk oferty:', error);
+        console.error("Błąd podczas pobierania statystyk oferty:", error);
       } finally {
         setLoading(false);
       }
@@ -106,24 +127,18 @@ export default function OfferPage() {
 
   return (
     <div className="min-h-screen">
-      <section className="md:pt-46 pt-32 pb-20 border-t border-gray-200">
+      <section className="pt-[var(--page-top-offset)] pb-20 border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-              <h2
-                className="text-3xl md:text-5xl font-bold text-slate-900 mb-6"
-                style={{ fontFamily: "var(--font-michroma)" }}
-              >
+          <div className="text-center mb-16">
+            <h2 className="heading-hero text-slate-900 mb-6">
               Technologia szyta na miarę
-              </h2>
+            </h2>
 
-                <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-                 worzymy dedykowane rozwiązania – od aplikacji webowych i mobilnych, przez integracje systemów, po rozwój i utrzymanie.
-
-
-
-                </p>
-
-            </div>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+              worzymy dedykowane rozwiązania – od aplikacji webowych i
+              mobilnych, przez integracje systemów, po rozwój i utrzymanie.
+            </p>
+          </div>
           <StatsPanel />
         </div>
       </section>
@@ -132,13 +147,12 @@ export default function OfferPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2
-              className="text-3xl md:text-5xl font-bold text-slate-900 mb-6"
-              style={{ fontFamily: "var(--font-michroma)" }}
-            >
-              {t('pageTitle')}
+              className="heading-1 text-slate-900 mb-6"
+              style={{ fontFamily: "var(--font-michroma)" }}>
+              {t("pageTitle")}
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              {t('pageDescription')}
+              {t("pageDescription")}
             </p>
           </div>
         </div>
@@ -151,11 +165,11 @@ export default function OfferPage() {
                 if (!project.slug) return null;
                 return (
                   <PolygonCard
-                    className='w-full mb-4 h-full'
+                    className="w-full mb-4 h-full"
                     key={index}
                     imageUrl={project.image || undefined}
-                    title={project.title || ''}
-                    description={project.description || ''}
+                    title={project.title || ""}
+                    description={project.description || ""}
                     href={`/${locale}/oferta/${project.slug}`}
                   />
                 );
@@ -163,79 +177,62 @@ export default function OfferPage() {
             </div>
           ) : (
             <div className="text-center py-12">
-              <p className="text-slate-600">{t('noOffers')}</p>
+              <p className="text-slate-600">{t("noOffers")}</p>
             </div>
           )}
         </div>
       </section>
 
-      {technologies && technologies.categories && technologies.categories.length > 0 && (
-        <section className="py-24 border-t border-gray-200">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2
-                className="text-3xl md:text-5xl font-bold text-slate-900 mb-6"
-                style={{ fontFamily: "var(--font-michroma)" }}
-              >
-                {technologies.title?.[locale as 'pl' | 'en'] || technologies.title?.pl}
-              </h2>
-              {technologies.description && (
-                <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-                  {technologies.description[locale as 'pl' | 'en'] || technologies.description.pl}
-                </p>
-              )}
+      {technologies &&
+        technologies.categories &&
+        technologies.categories.length > 0 && (
+          <section className="py-24 border-t flex flex-col items-center justify-center border-gray-200  w-full">
+            <div className=" max-w-[2000px] flex flex-col items-center justify-centew-full">
+              <div className="max-w-7xl lg:px-8 px-4 sm:px-6 text-center mb-16">
+                <h2
+                  className="heading-1 text-slate-900 mb-6"
+                  style={{ fontFamily: "var(--font-michroma)" }}>
+                  {technologies.title?.[locale as "pl" | "en"] ||
+                    technologies.title?.pl}
+                </h2>
+                {technologies.description && (
+                  <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                    {technologies.description[locale as "pl" | "en"] ||
+                      technologies.description.pl}
+                  </p>
+                )}
+              </div>
+              <TechnologiesMarquee data={technologies} />
             </div>
-            <div className='flex flex-col items-center justify-center gap-8 mx-auto'>
-            <div className="grid md:grid-cols-2  w-full max-w-5xl  gap-8">
-              {technologies.categories.map((category, index) => {
-                const categoryTitle = category.title?.[locale as 'pl' | 'en'] || category.title?.pl;
-                const categoryItems = category.items?.[locale as 'pl' | 'en'] || category.items?.pl || [];
-                if (!categoryTitle || categoryItems.length === 0) return null;
-                return (
-                  <div key={index} className="bg-white p-6 rounded-lg border border-gray-200">
-                    <h3 className="text-xl font-bold text-slate-900 mb-4" lang="en">
-                      {categoryTitle}
-                    </h3>
-                    <ul className="space-y-2">
-                      {categoryItems.map((item, itemIndex) => (
-                        <li key={itemIndex} className="text-slate-600" lang="en">
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                );
-              })}</div>
-            </div>
-          </div>
-        </section>
-      )}
+          </section>
+        )}
 
       {industries && industries.items && industries.items.length > 0 && (
         <section className="py-24 border-t border-gray-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2
-                className="text-3xl md:text-5xl font-bold text-slate-900 mb-6"
-                style={{ fontFamily: "var(--font-michroma)" }}
-              >
-                {industries.title?.[locale as 'pl' | 'en'] || industries.title?.pl}
+                className="heading-1 text-slate-900 mb-6"
+                style={{ fontFamily: "var(--font-michroma)" }}>
+                {industries.title?.[locale as "pl" | "en"] ||
+                  industries.title?.pl}
               </h2>
               {industries.description && (
                 <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-                  {industries.description[locale as 'pl' | 'en'] || industries.description.pl}
+                  {industries.description[locale as "pl" | "en"] ||
+                    industries.description.pl}
                 </p>
               )}
             </div>
             <div className="flex flex-wrap justify-center gap-4 mb-12">
               {industries.items.map((industry, index) => {
-                const industryName = industry.name?.[locale as 'pl' | 'en'] || industry.name?.pl;
+                const industryName =
+                  industry.name?.[locale as "pl" | "en"] || industry.name?.pl;
                 if (!industryName) return null;
                 return (
                   <div
                     key={index}
-                    className="px-6 py-3 bg-blue-50 text-blue-900 rounded-full font-medium"
-                  >
+                    className="px-6 py-3 bg-blue-50 text-blue-900 rounded-full font-medium">
                     {industryName}
                   </div>
                 );
@@ -245,7 +242,8 @@ export default function OfferPage() {
               <div className="text-center">
                 <Link href={industries.buttonLink}>
                   <StarGradientButton>
-                    {industries.buttonText[locale as 'pl' | 'en'] || industries.buttonText.pl}
+                    {industries.buttonText[locale as "pl" | "en"] ||
+                      industries.buttonText.pl}
                   </StarGradientButton>
                 </Link>
               </div>
@@ -254,11 +252,10 @@ export default function OfferPage() {
         </section>
       )}
 
-
       <CTASection
-        title={t('cta.title')}
-        description={t('cta.description')}
-        buttonText={t('cta.buttonText')}
+        title={t("cta.title")}
+        description={t("cta.description")}
+        buttonText={t("cta.buttonText")}
         buttonLink="/kontakt"
         className="py-24 border-t border-gray-200"
       />

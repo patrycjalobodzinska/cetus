@@ -91,11 +91,11 @@ export default function TechnologyTransformationPage() {
   return (
     <div className="min-h-screen bg-white">
       <section className="relative overflow-x-hidden max-w-[100vw] w-full flex flex-col items-center justify-start overflow-hidden">
-        <div className="mt-36 w-full justify-center container mx-auto pb-12 flex flex-col lg:flex-row items-center relative overflow-x-hidden">
+        <div className="pt-[var(--page-top-offset)] w-full justify-center container mx-auto pb-12 flex flex-col lg:flex-row items-center relative overflow-x-hidden">
           <div className="flex flex-col z-30 lg:pt-10 xl:pt-0 items-center justify-center relative px-4 lg:pl-10 lg:pr-0">
             <div className="relative lg:min-h-[280px] xl:min-h-[320px]">
               <h1
-                className="text-4xl lg:text-7xl tracking-tighter text-slate-900 leading-[0.9] font-bold text-center"
+                className="heading-hero tracking-tighter text-slate-900 text-center"
                 style={{ fontFamily: "var(--font-michroma)" }}
               >
                 <div className="flex items-center justify-center gap-4 min-h-[1.2em]">
@@ -131,7 +131,7 @@ export default function TechnologyTransformationPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20">
             <h2
-              className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight"
+              className="heading-1 text-slate-900 mb-6 leading-tight"
               style={{ fontFamily: "var(--font-michroma)" }}
             >
               Dlaczego transformacja cyfrowa?
@@ -149,7 +149,7 @@ export default function TechnologyTransformationPage() {
                   className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-blue-600/30"
                 >
                   <div className="relative p-8">
-                    <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4 leading-tight group-hover:text-blue-600 transition-colors duration-300">
+                    <h3 className="heading-2 text-slate-900 mb-4 leading-tight group-hover:text-blue-600 transition-colors duration-300">
                       {benefit.title}
                     </h3>
 
@@ -170,7 +170,7 @@ export default function TechnologyTransformationPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2
-              className="text-4xl md:text-5xl font-bold text-slate-900 mb-4"
+              className="heading-1 text-slate-900 mb-4"
               style={{ fontFamily: "var(--font-michroma)" }}
             >
               Nasze usługi
@@ -262,7 +262,7 @@ export default function TechnologyTransformationPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2
-              className="text-4xl md:text-5xl font-bold text-slate-900 mb-4"
+              className="heading-1 text-slate-900 mb-4"
               style={{ fontFamily: "var(--font-michroma)" }}
             >
               Proces transformacji
@@ -302,7 +302,7 @@ export default function TechnologyTransformationPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2
-              className="text-4xl md:text-5xl font-bold text-slate-900 mb-4"
+              className="heading-1 text-slate-900 mb-4"
               style={{ fontFamily: "var(--font-michroma)" }}
             >
               Historia sukcesu

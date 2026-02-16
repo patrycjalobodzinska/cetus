@@ -19,7 +19,7 @@ export default function HeroCurosora() {
 
 
       {/* --- MAIN HERO CONTENT --- */}
-      <div className=" mt-26 w-full  container mx-auto lg:pt-16 pb-12 flex flex-col lg:flex-row items-center relative overflow-x-hidden ">
+      <div className="pt-[var(--page-top-offset)] w-full container mx-auto pb-12 flex flex-col lg:flex-row items-center relative overflow-x-hidden">
 
         {/* Background Text Layer (CETUSPRO) */}
 
@@ -43,7 +43,7 @@ export default function HeroCurosora() {
           </div>
 
           <div className="relative   lg:min-h-[280px] xl:min-h-[320px]">
-        <h1 className="text-4xl lg:text-7xl font-bold tracking-tighter text-slate-900 leading-[0.9]">
+        <h1 className="heading-hero tracking-tighter text-slate-900">
         <span className=" text-6xl lg:hidden   font-black text-gray-200 opacity-80 ">
           CETUSPRO
         </span>     <div className="flex items-center gap-4 min-h-[1.2em]">

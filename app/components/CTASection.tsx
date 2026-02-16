@@ -27,7 +27,7 @@ export default function CTASection({
           )}
 
           <h2
-            className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight"
+            className="heading-hero text-slate-900 mb-6 leading-tight"
             style={{ fontFamily: "var(--font-michroma)" }}
           >
             {title}

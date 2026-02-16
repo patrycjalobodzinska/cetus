@@ -19,7 +19,7 @@ export default function WhyFeaturesSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-20">
           <h2
-            className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight"
+            className="heading-1 text-slate-900 mb-6 leading-tight"
             style={{ fontFamily: "var(--font-michroma)" }}
           >
             {t('title')}
@@ -36,7 +36,7 @@ export default function WhyFeaturesSection() {
               className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-blue-600/30"
             >
               <div className="relative p-8">
-                <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4 leading-tight group-hover:text-blue-600 transition-colors duration-300">
+                <h3 className="heading-2 text-slate-900 mb-4 leading-tight group-hover:text-blue-600 transition-colors duration-300">
                   {t(`${feature.key}.title`)}
                 </h3>
 

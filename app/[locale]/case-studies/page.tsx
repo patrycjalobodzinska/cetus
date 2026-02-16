@@ -52,7 +52,7 @@ export default async function CaseStudiesPage({
     <div className="flex flex-col z-30 pt-12 items-center justify-center relative">
             <div className="relative">
               <h2
-                className="text-4xl lg:text-6xl tracking-tighter text-slate-900 leading-[0.9] font-bold text-center"
+                className="heading-hero tracking-tighter text-slate-900 text-center"
                 style={{ fontFamily: "var(--font-michroma)" }}
               >
                 <span>{t('hero.titlePrefix')} </span>

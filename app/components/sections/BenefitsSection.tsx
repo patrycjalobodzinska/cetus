@@ -8,7 +8,7 @@ export default function BenefitsSection({ title, benefits, icons, className = ''
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2
-            className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight"
+            className="heading-1 text-slate-900 mb-6 leading-tight"
             style={{ fontFamily: "var(--font-michroma)" }}
           >
             {title}
@@ -29,7 +29,7 @@ export default function BenefitsSection({ title, benefits, icons, className = ''
                       <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                         <Icon className="w-8 h-8 text-white" />
                       </div>
-                      <h3 className="text-3xl md:text-4xl font-bold text-slate-900 leading-tight group-hover:text-blue-600 transition-colors duration-300">
+                      <h3 className="heading-2 text-slate-900 leading-tight group-hover:text-blue-600 transition-colors duration-300">
                         {benefit.title}
                       </h3>
                     </div>

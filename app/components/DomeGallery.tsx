@@ -854,7 +854,7 @@ export default function DomeGallery({
       >
         {title && (
           <h2
-            className="text-4xl md:text-5xl font-bold text-slate-900 py-16 text-center relative z-20"
+            className="heading-1 text-slate-900 py-16 text-center relative z-20"
             style={{ fontFamily: 'var(--font-michroma)' }}
           >
             {title}

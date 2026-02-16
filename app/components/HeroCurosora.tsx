@@ -15,11 +15,11 @@ export default function HeroCurosora() {
 
   return (
     <section className="relative overflow-x-hidden max-w-[100vw] w-full flex flex-col items-center justify-start overflow-hidden">
-      <div className="mt-36 w-full justify-center container mx-auto lg:pb-12 flex flex-col lg:flex-row items-center relative overflow-x-hidden">
+      <div className="pt-[var(--page-top-offset)] w-full justify-center container mx-auto lg:pb-12 flex flex-col lg:flex-row items-center relative overflow-x-hidden">
         <div className="flex flex-col z-30 lg:pt-10 xl:pt-0 items-center justify-center relative px-4 lg:pl-10 lg:pr-0">
           <div className="relative lg:min-h-[280px] xl:min-h-[320px]">
             <h1
-              className="text-4xl  text-center lg:text-7xl tracking-tighter text-slate-900 leading-[1.1] font-bold"
+              className="heading-hero text-center tracking-tighter text-slate-900"
               style={{ fontFamily: "var(--font-michroma)" }}
             >
               <div className="flex items-center justify-center  min-h-[1.2em]">

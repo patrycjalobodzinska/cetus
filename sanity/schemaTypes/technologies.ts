@@ -34,8 +34,34 @@ export default defineType({
             defineField({
               name: 'items',
               title: 'Lista technologii',
-              type: 'localeStringArray',
-              description: 'Lista technologii w danej kategorii',
+              type: 'array',
+              of: [
+                {
+                  type: 'object',
+                  fields: [
+                    defineField({
+                      name: 'name',
+                      title: 'Nazwa',
+                      type: 'localeString',
+                      description: 'Nazwa technologii (np. React, Next.js)',
+                    }),
+                    defineField({
+                      name: 'logo',
+                      title: 'Logo',
+                      type: 'image',
+                      options: { hotspot: true },
+                      description: 'Logo technologii (opcjonalne)',
+                    }),
+                  ],
+                  preview: {
+                    select: { title: 'name.pl' },
+                    prepare({ title }) {
+                      return { title: title || 'Technologia' };
+                    },
+                  },
+                },
+              ],
+              description: 'Lista technologii z logo',
             }),
             defineField({
               name: 'order',

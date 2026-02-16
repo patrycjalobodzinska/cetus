@@ -54,10 +54,10 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen ">
       <section className="relative overflow-x-hidden max-w-[100vw] w-full flex flex-col items-center justify-start overflow-hidden">
-        <div className="mt-36 w-full justify-center container mx-auto pb-12 flex flex-col items-center relative overflow-x-hidden px-4">
+        <div className="pt-[var(--page-top-offset)] w-full justify-center container mx-auto pb-12 flex flex-col items-center relative overflow-x-hidden px-4">
           <div className="flex flex-col z-30 items-center justify-center relative max-w-4xl mx-auto text-center">
             <h1
-              className="text-4xl lg:text-7xl tracking-tighter text-slate-900 leading-[0.9] font-bold mb-6"
+              className="heading-hero tracking-tighter text-slate-900 mb-6"
               style={{ fontFamily: "var(--font-michroma)" }}
             >
               Skontaktuj się <span className="text-blue-600">z nami</span>
@@ -73,10 +73,7 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
-              <h2
-                className="text-3xl md:text-4xl font-bold text-slate-900 mb-6"
-                style={{ fontFamily: "var(--font-michroma)" }}
-              >
+              <h2 className="heading-1 text-slate-900 mb-6">
                 Dane kontaktowe
               </h2>
               <p className="text-slate-600 leading-relaxed mb-12 max-w-2xl mx-auto">
@@ -127,7 +124,7 @@ export default function ContactPage() {
             </div>
 
             <div className="bg-linear-to-br from-blue-600 to-blue-500 rounded-2xl p-8 text-white text-center">
-              <h3 className="text-2xl font-bold mb-4">Bezpłatna konsultacja</h3>
+              <h3 className="heading-3 mb-4">Bezpłatna konsultacja</h3>
               <p className="text-white/90 leading-relaxed mb-6 max-w-2xl mx-auto">
                 Umów się na bezpłatną 30-minutową konsultację, podczas której omówimy Twoje potrzeby i zaproponujemy najlepsze rozwiązania.
               </p>
@@ -148,7 +145,7 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2
-              className="text-4xl md:text-5xl font-bold text-slate-900 mb-4"
+              className="heading-1 text-slate-900 mb-4"
               style={{ fontFamily: "var(--font-michroma)" }}
             >
               Najczęściej zadawane pytania
