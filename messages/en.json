@@ -432,7 +432,10 @@
   "caseStudyDetail": {
     "backToList": "Back to case studies",
     "ctaButton": "See how we can help",
+    "visitSite": "Visit website",
     "modulesTitle": "System modules",
+    "challengeTitle": "Challenge",
+    "scopeTitle": "Project scope",
     "resultsTitle": "Results",
     "resultsDescription": "A summary of the most important outcomes of the implementation, felt by both users and the business.",
     "technologiesTitle": "Technologies used in the project",

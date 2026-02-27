@@ -429,7 +429,10 @@
   "caseStudyDetail": {
     "backToList": "Powrót do realizacji",
     "ctaButton": "Zobacz, jak możemy pomóc",
+    "visitSite": "Odwiedź stronę",
     "modulesTitle": "Moduły systemu",
+    "challengeTitle": "Wyzwanie",
+    "scopeTitle": "Zakres projektu",
     "resultsTitle": "Efekty",
     "resultsDescription": "Podsumowanie najważniejszych rezultatów wdrożenia, które odczuli użytkownicy i biznes.",
     "technologiesTitle": "Technologie użyte w projekcie",

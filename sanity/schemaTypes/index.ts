@@ -16,6 +16,17 @@ import homepageModules from './homepageModules'
 import localeString from './localeString'
 import localeText from './localeText'
 import localeStringArray from './localeStringArray'
+import {
+  csHeroSection,
+  csStatsSection,
+  csChallengeSection,
+  csModulesSection,
+  csResultsSection,
+  csTechnologiesSection,
+  csQuoteSection,
+  csScopeSection,
+  csCtaSection,
+} from './caseStudySections'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -36,5 +47,14 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     offerStats,
     partner,
     homepageModules,
+    csHeroSection,
+    csStatsSection,
+    csChallengeSection,
+    csModulesSection,
+    csResultsSection,
+    csTechnologiesSection,
+    csQuoteSection,
+    csScopeSection,
+    csCtaSection,
   ],
 }

@@ -1,43 +1,14 @@
 import { client } from '@/sanity/lib/client';
-import { urlFor } from '@/sanity/lib/image';
 import CaseStudyDetail from './CaseStudyDetail';
-
-interface CaseStudy {
-  _id: string;
-  title?: string;
-  slug?: {
-    current: string;
-  };
-  category?: string;
-  description?: string;
-  image?: any;
-  solution?: string;
-  results?: string[];
-  technologies?: string[];
-  modules?: Array<{
-    icon?: string;
-    title?: string;
-    description?: string[];
-    image?: any;
-  }>;
-  stats?: Array<{
-    value?: string;
-    label?: string;
-    icon?: string;
-  }>;
-}
 
 export async function generateStaticParams() {
   try {
     const caseStudies = await client.fetch<Array<{ slug: string }>>(`*[_type == "caseStudy"] {
       "slug": slug.current
     }`);
-
     return caseStudies
-      .filter((study) => study.slug)
-      .map((study) => ({
-        slug: study.slug,
-      }));
+      .filter((s) => s.slug)
+      .map((s) => ({ slug: s.slug }));
   } catch (error) {
     console.error('Error fetching case studies for static params:', error);
     return [];
@@ -51,30 +22,46 @@ export default async function CaseStudyPage({
 }) {
   const { slug, locale } = await params;
 
-  let caseStudy: CaseStudy | null = null;
+  let caseStudy: any = null;
 
   try {
-    caseStudy = await client.fetch<CaseStudy>(
+    caseStudy = await client.fetch(
       `*[_type == "caseStudy" && slug.current == $slug][0] {
         _id,
-        "title": coalesce(title[$locale], title.pl),
-        slug,
-        "category": coalesce(category[$locale], category.pl),
-        "description": coalesce(description[$locale], description.pl),
-        image,
-        "solution": coalesce(solution[$locale], solution.pl),
-        "results": coalesce(results[$locale], results.pl),
-        technologies,
-        modules[] {
-          icon,
+        sections[] {
+          _key,
+          _type,
+          variant,
+          // csHeroSection
           "title": coalesce(title[$locale], title.pl),
+          "category": coalesce(category[$locale], category.pl),
           "description": coalesce(description[$locale], description.pl),
-          image
-        },
-        stats[] {
-          value,
-          "label": coalesce(label[$locale], label.pl),
-          icon
+          iframeUrl,
+          // csChallengeSection
+          "intro": coalesce(intro[$locale], intro.pl),
+          "bullets": coalesce(bullets[$locale], bullets.pl),
+          "consequence": coalesce(consequence[$locale], consequence.pl),
+          // csScopeSection / csModulesSection / csResultsSection / csTechnologiesSection
+          "sectionTitle": coalesce(sectionTitle[$locale], sectionTitle.pl),
+          "note": coalesce(note[$locale], note.pl),
+          // csCtaSection
+          "heading": coalesce(heading[$locale], heading.pl),
+          "buttonLabel": coalesce(buttonLabel[$locale], buttonLabel.pl),
+          buttonHref,
+          // csQuoteSection
+          "quote": coalesce(quote[$locale], quote.pl),
+          author,
+          // items (stats / modules / scope / results / technologies)
+          items[]{
+            _key,
+            icon,
+            value,
+            "text": coalesce(text[$locale], text.pl),
+            "label": coalesce(label[$locale], label.pl),
+            "title": coalesce(title[$locale], title.pl),
+            "description": coalesce(description[$locale], description.pl),
+            image
+          },
         }
       }`,
       { slug, locale }

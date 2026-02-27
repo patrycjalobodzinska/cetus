@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity'
+import { defineField, defineType, defineArrayMember } from 'sanity'
 
 export default defineType({
   name: 'caseStudy',
@@ -7,128 +7,47 @@ export default defineType({
   fields: [
     defineField({
       name: 'title',
-      title: 'Tytuł',
+      title: 'Tytuł projektu',
       type: 'localeString',
+      description: 'Używany do generowania sluga i na karcie listingu.',
     }),
     defineField({
       name: 'slug',
-      title: 'Slug',
+      title: 'Slug (URL)',
       type: 'slug',
       options: {
         source: (doc: any) => doc?.title?.pl || doc?.title?.en || '',
         maxLength: 96,
       },
-    }),
-    defineField({
-      name: 'category',
-      title: 'Kategoria',
-      type: 'localeString',
-      description: 'Kategoria projektu (np. Rolnictwo & Winiarstwo)',
-    }),
-    defineField({
-      name: 'description',
-      title: 'Opis',
-      type: 'localeText',
-      description: 'Krótki opis projektu',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'image',
-      title: 'Obraz główny',
+      title: 'Miniatura (karta listingu)',
       type: 'image',
-      options: {
-        hotspot: true,
-      },
+      description: 'Zdjęcie wyświetlane na liście case studies. Nie pojawia się na stronie projektu.',
+      options: { hotspot: true },
     }),
     defineField({
-      name: 'solution',
-      title: 'Rozwiązanie',
-      type: 'localeText',
-      description: 'Opis rozwiązania',
-    }),
-    defineField({
-      name: 'results',
-      title: 'Efekty',
-      type: 'localeStringArray',
-      description: 'Lista efektów projektu',
-    }),
-    defineField({
-      name: 'technologies',
-      title: 'Technologie',
-      type: 'array',
-      of: [{ type: 'string' }],
-      description: 'Lista użytych technologii',
-    }),
-    defineField({
-      name: 'modules',
-      title: 'Moduły',
+      name: 'sections',
+      title: 'Sekcje strony',
       type: 'array',
       of: [
-        {
-          type: 'object',
-          fields: [
-            defineField({
-              name: 'icon',
-              title: 'Ikona',
-              type: 'string',
-              description: 'Nazwa ikony z lucide-react',
-            }),
-            defineField({
-              name: 'title',
-              title: 'Tytuł modułu',
-              type: 'localeString',
-            }),
-            defineField({
-              name: 'description',
-              title: 'Lista',
-              type: 'localeStringArray',
-              description: 'Lista funkcji/cech modułu',
-            }),
-            defineField({
-              name: 'image',
-              title: 'Zdjęcie',
-              type: 'image',
-              options: {
-                hotspot: true,
-              },
-              description: 'Zdjęcie modułu',
-            }),
-          ],
-        },
-      ],
-    }),
-    defineField({
-      name: 'stats',
-      title: 'Statystyki',
-      type: 'array',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            defineField({
-              name: 'value',
-              title: 'Wartość',
-              type: 'string',
-            }),
-            defineField({
-              name: 'label',
-              title: 'Etykieta',
-              type: 'localeString',
-            }),
-            defineField({
-              name: 'icon',
-              title: 'Ikona',
-              type: 'string',
-              description: 'Nazwa ikony z lucide-react',
-            }),
-          ],
-        },
+        defineArrayMember({ type: 'csHeroSection', title: 'Hero — nagłówek projektu' }),
+        defineArrayMember({ type: 'csStatsSection', title: 'Statystyki' }),
+        defineArrayMember({ type: 'csChallengeSection', title: 'Wyzwanie' }),
+        defineArrayMember({ type: 'csScopeSection', title: 'Zakres projektu' }),
+        defineArrayMember({ type: 'csModulesSection', title: 'Moduły systemu' }),
+        defineArrayMember({ type: 'csResultsSection', title: 'Rezultaty' }),
+        defineArrayMember({ type: 'csTechnologiesSection', title: 'Technologie' }),
+        defineArrayMember({ type: 'csQuoteSection', title: 'Cytat' }),
+        defineArrayMember({ type: 'csCtaSection', title: 'CTA' }),
       ],
     }),
   ],
   preview: {
     select: {
       title: 'title.pl',
-      subtitle: 'category.pl',
       media: 'image',
     },
   },
