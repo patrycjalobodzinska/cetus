@@ -1,4 +1,15 @@
 {
+  "footer": {
+    "navigation": "Nawigacja",
+    "services": "Usługi",
+    "company": "Firma",
+    "documents": "Dokumenty",
+    "tagline": "Tworzymy nowoczesne rozwiązania IT, które napędzają rozwój Twojego biznesu.",
+    "stayInTouch": "Bądź na bieżąco",
+    "followUs": "Obserwuj nas w mediach społecznościowych",
+    "workingHours": "Godziny pracy",
+    "workingHoursValue": "Pn–Pt: 9:00–17:00"
+  },
   "nav": {
     "home": "Strona główna",
     "about": "O nas",

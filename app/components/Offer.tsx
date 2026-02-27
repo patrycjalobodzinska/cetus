@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import ReactLenis from "lenis/react";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useLayoutEffect } from "react";
 import Link from "next/link";
 import StarGradientButton from "./ui/gradientBackground";
 import { useLocale, useTranslations } from "next-intl";
@@ -10,6 +10,46 @@ import { useLocale, useTranslations } from "next-intl";
 import type { Project, OfferData } from '@/types/pages';
 
 const POLYGON_CLIP_PATH = "polygon(0% 0px, 20px 0%, 95% 0%, 100% 20px, 100% 80%, 100% 100%, calc(100% - 20px) 100%, 5% 100%, 0% 80%)";
+
+const SMALL_HEIGHT_BREAKPOINT = 500;
+
+const SimpleCard = ({
+  title,
+  slug,
+  description,
+}: {
+  title: string;
+  slug?: string;
+  description: string;
+}) => {
+  const t = useTranslations('common');
+  const locale = useLocale();
+
+  return (
+    <div className="w-full mb-4">
+      <div
+        className="p-px w-full rounded-md"
+        style={{
+          background: "linear-gradient(135deg, rgba(59, 130, 246, 0.5) 0%, rgba(147, 197, 253, 0.5) 100%)",
+          clipPath: POLYGON_CLIP_PATH
+        }}
+      >
+        <div
+          style={{ clipPath: POLYGON_CLIP_PATH }}
+          className="relative w-full h-full overflow-hidden bg-white"
+        >
+          <div className="flex h-full w-full flex-col p-6">
+            {title && <h3 className="mb-2 text-xl font-bold text-gray-900">{title}</h3>}
+            {description && <p className="text-gray-600 leading-relaxed text-sm mb-3">{description}</p>}
+            {slug && (
+              <Link className="hover:underline text-blue-600 font-medium" href={`/${locale}/oferta/${slug}`}>{t('learnMore')}</Link>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const StickyCard_001 = ({
   i,
@@ -86,14 +126,16 @@ const Skiper16Content = ({
 }) => {
   const projects = offerData.projects;
   const [isMobile, setIsMobile] = useState(false);
+  const [isSmallHeight, setIsSmallHeight] = useState(false);
 
-  useEffect(() => {
-    const checkMobile = () => {
+  useLayoutEffect(() => {
+    const checkViewport = () => {
       setIsMobile(window.innerWidth < 1024);
+      setIsSmallHeight(window.innerHeight < SMALL_HEIGHT_BREAKPOINT);
     };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    checkViewport();
+    window.addEventListener('resize', checkViewport);
+    return () => window.removeEventListener('resize', checkViewport);
   }, []);
 
   const lastCardIndex = projects.length - 1;
@@ -101,6 +143,41 @@ const Skiper16Content = ({
   const exitStart = lastCardStartPos + (0.3 / projects.length);
   const leftColumnOpacity = useTransform(scrollYProgress, [exitStart, 1], [1, 0]);
   const leftColumnY = useTransform(scrollYProgress, [exitStart, 1], [0, -100]);
+
+  if (isSmallHeight) {
+    return (
+      <div ref={container} className="relative">
+        <div className="flex flex-col gap-8 px-4 py-6">
+          <div>
+            {(offerData.title || offerData.titleHighlight) && (
+              <h2 style={{ fontFamily: "var(--font-michroma)" }} className="mb-3 text-2xl font-black tracking-tight text-gray-900">
+                {offerData.title && <>{offerData.title}{" "}</>}
+                {offerData.titleHighlight && <span className="text-blue-600">{offerData.titleHighlight}</span>}
+              </h2>
+            )}
+            {offerData.description && (
+              <p className="text-base text-gray-600 leading-relaxed mb-4">{offerData.description}</p>
+            )}
+            {offerData.buttonText && offerData.buttonLink && offerData.buttonLink !== '' && (
+              <Link href={offerData.buttonLink}>
+                <StarGradientButton>{offerData.buttonText}</StarGradientButton>
+              </Link>
+            )}
+          </div>
+          <div className="space-y-2">
+            {projects.map((project, i) => (
+              <SimpleCard
+                key={`p_${i}`}
+                title={project.title}
+                slug={project.slug}
+                description={project.description}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <ReactLenis root options={{ lerp: 0.1 }}>

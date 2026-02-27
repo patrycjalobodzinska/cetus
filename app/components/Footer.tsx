@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Phone, Mail, MapPin, Linkedin, Dribbble, Twitter, Facebook, Instagram } from 'lucide-react';
+import { Phone, Mail, MapPin, Linkedin, Dribbble, Twitter, Facebook, Instagram, ArrowRight } from 'lucide-react';
 import { client } from '@/sanity/lib/client';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import StarGradientButton from './ui/gradientBackground';
 import Image from 'next/image';
 
@@ -40,11 +40,26 @@ const socialIcons: Record<string, any> = {
   instagram: Instagram,
 };
 
+const DEFAULT_OFFER_LINKS = [
+  { titleKey: 'webApps', slug: 'aplikacje-webowe' },
+  { titleKey: 'mobileApps', slug: 'aplikacje-mobilne' },
+  { titleKey: 'uiUx', slug: 'ui-ux-design' },
+  { titleKey: 'ai', slug: 'aI-i-automatyzacja-procesow' },
+  { titleKey: 'cybersecurity', slug: 'cybersecurity' },
+  { titleKey: 'transformation', slug: 'transformacja-technologiczna' },
+  { titleKey: 'outsourcing', slug: 'outsourcing-programistow' },
+  { titleKey: 'academy', slug: 'akademia-i-szkolenia' },
+  { titleKey: 'venture', slug: 'cetus-venture-capital' },
+];
+
 export default function Footer() {
   const [footerData, setFooterData] = useState<FooterData | null>(null);
   const [offerProjects, setOfferProjects] = useState<OfferProject[]>([]);
   const [loading, setLoading] = useState(true);
   const locale = useLocale();
+  const t = useTranslations('footer');
+  const tNav = useTranslations('nav');
+  const tOffer = useTranslations('offer.projects');
 
   useEffect(() => {
     async function fetchFooter() {
@@ -118,20 +133,36 @@ export default function Footer() {
     return null;
   }
 
+  const offerLinks = offerProjects.length > 0
+    ? offerProjects.map((p) => ({ title: p.title, slug: p.slug?.current || '#' }))
+    : DEFAULT_OFFER_LINKS.map((item) => ({
+        title: tOffer(`${item.titleKey}.title`),
+        slug: item.slug,
+      }));
+
   return (
     <footer className="bg-slate-900 text-white">
+      {/* Tagline Banner */}
+      <div className="border-b border-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <p className="text-slate-300 text-center text-lg max-w-2xl mx-auto leading-relaxed">
+            {t('tagline')}
+          </p>
+        </div>
+      </div>
+
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Kontakt Column */}
-          <div className="space-y-6">
+          <div className="lg:col-span-2 space-y-6">
             {footerData.contactTitle && (
               <h3 className="text-xl font-bold text-white">
                 {footerData.contactTitle}
               </h3>
             )}
             {footerData.contactDescription && (
-              <p className="text-slate-300 leading-relaxed">
+              <p className="text-slate-300 leading-relaxed text-sm">
                 {footerData.contactDescription}
               </p>
             )}
@@ -159,18 +190,25 @@ export default function Footer() {
                   <span className="text-slate-300">{footerData.address}</span>
                 </div>
               )}
+              <div className="flex items-center gap-3 pt-2">
+                <span className="text-slate-500 text-sm">{t('workingHours')}:</span>
+                <span className="text-slate-400 text-sm">{t('workingHoursValue')}</span>
+              </div>
             </div>
 
-            <div className="flex flex-col gap-3 pt-4">
+            <div className="flex flex-col gap-3 pt-2">
               {footerData.primaryButtonText && (
-                <Link href={footerData.primaryButtonLink || '/kontakt'}>
-                  <button className="w-full px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors text-center">
-                    {footerData.primaryButtonText}
-                  </button>
+                <Link href={(footerData.primaryButtonLink?.startsWith('http') ? footerData.primaryButtonLink : `/${locale}${footerData.primaryButtonLink || '/kontakt'}`)}>
+                  <StarGradientButton>
+                    <span className="flex items-center gap-2 justify-center">
+                      {footerData.primaryButtonText}
+                      <ArrowRight className="w-4 h-4" />
+                    </span>
+                  </StarGradientButton>
                 </Link>
               )}
               {footerData.secondaryButtonText && (
-                <Link href={footerData.secondaryButtonLink || '/kontakt'}>
+                <Link href={(footerData.secondaryButtonLink?.startsWith('http') ? footerData.secondaryButtonLink : `/${locale}${footerData.secondaryButtonLink || '/kontakt'}`)}>
                   <button className="w-full px-6 py-3 bg-transparent text-blue-400 border-2 border-blue-400 font-semibold rounded-lg hover:bg-blue-400/10 transition-colors text-center">
                     {footerData.secondaryButtonText}
                   </button>
@@ -179,15 +217,26 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Oferta Column */}
-          {offerProjects.length > 0 && (
-            <div>
-              <h3 className="text-xl font-bold text-white mb-6">Oferta</h3>
+          {/* Nawigacja Column */}
+          <div>
+            <h3 className="text-xl font-bold text-white mb-6">{t('navigation')}</h3>
             <ul className="space-y-3">
-              {offerProjects.map((project, index) => (
+              <li><Link href={`/${locale}`} className="text-slate-300 hover:text-white transition-colors">{tNav('home')}</Link></li>
+              <li><Link href={`/${locale}/o-nas`} className="text-slate-300 hover:text-white transition-colors">{tNav('about')}</Link></li>
+              <li><Link href={`/${locale}/oferta`} className="text-slate-300 hover:text-white transition-colors">{tNav('services')}</Link></li>
+              <li><Link href={`/${locale}/case-studies`} className="text-slate-300 hover:text-white transition-colors">{tNav('caseStudies')}</Link></li>
+              <li><Link href={`/${locale}/kontakt`} className="text-slate-300 hover:text-white transition-colors">{tNav('contact')}</Link></li>
+            </ul>
+          </div>
+
+          {/* Oferta Column */}
+          <div>
+            <h3 className="text-xl font-bold text-white mb-6">{t('services')}</h3>
+            <ul className="space-y-3">
+              {offerLinks.map((project, index) => (
                 <li key={index}>
                   <Link
-                    href={project.slug?.current ? `/oferta/${project.slug.current}` : '#'}
+                    href={`/${locale}/oferta/${project.slug}`}
                     className="text-slate-300 hover:text-white transition-colors"
                   >
                     {project.title}
@@ -196,60 +245,63 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-          )}
 
           {/* Firma Column */}
-          {(footerData.companyLinks && footerData.companyLinks.length > 0) && (
-            <div>
-              <h3 className="text-xl font-bold text-white mb-6">Firma</h3>
-            <ul className="space-y-3">
-              {footerData.companyLinks.map((link, index) => (
-                <li key={index}>
-                  <Link
-                    href={link.url || '#'}
-                    className="text-slate-300 hover:text-white transition-colors"
-                  >
-                    {link.text}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          <div>
+            <h3 className="text-xl font-bold text-white mb-6">{t('company')}</h3>
+            {footerData.companyLinks && footerData.companyLinks.length > 0 ? (
+              <ul className="space-y-3">
+                {footerData.companyLinks.map((link, index) => (
+                  <li key={index}>
+                    <Link href={link.url || '#'} className="text-slate-300 hover:text-white transition-colors">
+                      {link.text}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <ul className="space-y-3">
+                <li><Link href={`/${locale}/o-nas`} className="text-slate-300 hover:text-white transition-colors">{tNav('about')}</Link></li>
+                <li><Link href={`/${locale}/case-studies`} className="text-slate-300 hover:text-white transition-colors">{tNav('caseStudies')}</Link></li>
+                <li><Link href={`/${locale}/kontakt`} className="text-slate-300 hover:text-white transition-colors">{tNav('contact')}</Link></li>
+              </ul>
+            )}
           </div>
-          )}
 
           {/* Dokumenty Column */}
           {(footerData.documentLinks && footerData.documentLinks.length > 0) && (
             <div>
-              <h3 className="text-xl font-bold text-white mb-6">Dokumenty</h3>
-            <ul className="space-y-3">
-              {footerData.documentLinks.map((link, index) => (
-                <li key={index}>
-                  <Link
-                    href={link.url || '#'}
-                    className="text-slate-300 hover:text-white transition-colors"
-                  >
-                    {link.text}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+              <h3 className="text-xl font-bold text-white mb-6">{t('documents')}</h3>
+              <ul className="space-y-3">
+                {footerData.documentLinks.map((link, index) => (
+                  <li key={index}>
+                    <Link href={link.url || '#'} className="text-slate-300 hover:text-white transition-colors">
+                      {link.text}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           )}
         </div>
       </div>
 
       {/* Bottom Section */}
       <div className="border-t border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            {/* Logo */}
-            <div className="flex items-center gap-3">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+            <div className="flex flex-col sm:flex-row items-center gap-6">
+              <Link href={`/${locale}`}>
+                <Image src="/logocetus.png" alt="CetusPro" className="bg-white w-36 rounded-lg" width={144} height={48} />
+              </Link>
+              <div className="text-center sm:text-left">
+                <p className="text-slate-400 text-sm font-medium mb-1">{t('stayInTouch')}</p>
+                <p className="text-slate-500 text-xs">{t('followUs')}</p>
+              </div>
+            </div>
 
-       <Link href="/">      <Image src="/logocetus.png"  alt="CetusPro" className='bg-white w-40 rounded-lg' width={100} height={100} />   </Link>   </div>
-
-            {/* Social Media Icons */}
             {(footerData.socialMedia && footerData.socialMedia.length > 0) && (
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-5">
                 {footerData.socialMedia.map((social, index) => {
                   const Icon = socialIcons[social.platform.toLowerCase()];
                   if (!Icon) return null;
@@ -259,19 +311,18 @@ export default function Footer() {
                       href={social.url || '#'}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-white hover:text-blue-400 transition-colors"
+                      className="text-slate-400 hover:text-blue-400 transition-colors p-2 rounded-lg hover:bg-slate-800"
                       aria-label={social.platform}
                     >
-                      <Icon className="w-5 h-5" />
+                      <Icon className="w-6 h-6" />
                     </a>
                   );
                 })}
               </div>
             )}
 
-            {/* Copyright */}
             {footerData.copyright && (
-              <p className="text-slate-400 text-sm text-center md:text-right">
+              <p className="text-slate-500 text-sm text-center lg:text-right">
                 {footerData.copyright}
               </p>
             )}

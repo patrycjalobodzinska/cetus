@@ -1,4 +1,15 @@
 {
+  "footer": {
+    "navigation": "Navigation",
+    "services": "Services",
+    "company": "Company",
+    "documents": "Documents",
+    "tagline": "We create modern IT solutions that drive your business growth.",
+    "stayInTouch": "Stay in touch",
+    "followUs": "Follow us on social media",
+    "workingHours": "Working hours",
+    "workingHoursValue": "Mon–Fri: 9:00 AM–5:00 PM"
+  },
   "nav": {
     "home": "Home",
     "about": "About Us",
