@@ -241,7 +241,27 @@ export const csTechnologiesSection = defineType({
       name: 'items',
       title: 'Technologie',
       type: 'array',
-      of: [defineArrayMember({ type: 'string' })],
+      of: [
+        defineArrayMember({
+          type: 'object',
+          fields: [
+            defineField({ name: 'name', title: 'Nazwa', type: 'string' }),
+            defineField({
+              name: 'logo',
+              title: 'Logo',
+              type: 'image',
+              options: { hotspot: true },
+              description: 'Logo technologii (opcjonalne)',
+            }),
+          ],
+          preview: {
+            select: { title: 'name', media: 'logo' },
+            prepare({ title, media }) {
+              return { title: title || 'Technologia', media }
+            },
+          },
+        }),
+      ],
     }),
   ],
   preview: {

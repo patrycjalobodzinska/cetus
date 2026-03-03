@@ -113,7 +113,7 @@ export default function TechnologiesMarquee({
   const row3 = allItems.slice(third * 2);
 
   return (
-    <div className="w-full  py-8">
+    <div className="w-full overflow-x-hidden py-8">
       <MarqueeRow items={row1} direction="left" />
       <MarqueeRow items={row2} direction="right" />
       <MarqueeRow items={row3} direction="left" />

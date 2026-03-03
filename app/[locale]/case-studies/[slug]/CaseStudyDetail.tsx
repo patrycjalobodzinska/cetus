@@ -3,6 +3,7 @@
 import React, { useRef, useEffect, useState, useLayoutEffect } from "react";
 import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import StarGradientButton from "@/app/components/ui/gradientBackground";
 import { urlFor } from "@/sanity/lib/image";
 import {
@@ -81,12 +82,18 @@ interface CsResultsSectionProps {
   items?: Array<{ _key: string; title?: string; description?: string }>;
 }
 
+interface TechItem {
+  _key: string;
+  name?: string;
+  logo?: any;
+}
+
 interface CsTechnologiesSectionProps {
   _type: "csTechnologiesSection";
   _key: string;
   variant?: "circuit" | "badges" | "carousel";
   sectionTitle?: string;
-  items?: string[];
+  items?: TechItem[];
 }
 
 interface CsQuoteSectionProps {
@@ -733,7 +740,6 @@ function CsTechnologiesSection({
   const title = sectionTitle || t("technologiesTitle");
 
   if (variant === "carousel") {
-    // Duplicate items so the marquee loops seamlessly
     const doubled = [...items, ...items];
     return (
       <section className="py-24 bg-white overflow-hidden">
@@ -751,9 +757,7 @@ function CsTechnologiesSection({
             {title}
           </h2>
         </div>
-        {/* Track */}
         <div className="relative w-full overflow-hidden">
-          {/* Fade edges */}
           <div className="pointer-events-none absolute inset-y-0 left-0 w-24 z-10 bg-gradient-to-r from-white to-transparent" />
           <div className="pointer-events-none absolute inset-y-0 right-0 w-24 z-10 bg-gradient-to-l from-white to-transparent" />
           <div
@@ -768,8 +772,18 @@ function CsTechnologiesSection({
                 key={index}
                 className="mx-4 flex items-center gap-3 px-6 py-3 bg-white border border-gray-200 rounded-2xl shadow-sm hover:border-blue-300 hover:shadow-md transition-all duration-200 whitespace-nowrap"
               >
-                <div className="w-2 h-2 rounded-full bg-blue-600 shrink-0" />
-                <span className="text-slate-700 font-semibold text-base">{tech}</span>
+                {tech.logo ? (
+                  <Image
+                    src={urlFor(tech.logo).width(48).height(48).url()}
+                    alt={tech.name || ""}
+                    width={24}
+                    height={24}
+                    className="object-contain shrink-0"
+                  />
+                ) : (
+                  <div className="w-2 h-2 rounded-full bg-blue-600 shrink-0" />
+                )}
+                <span className="text-slate-700 font-semibold text-base">{tech.name}</span>
               </div>
             ))}
           </div>
@@ -792,9 +806,18 @@ function CsTechnologiesSection({
           <div className="flex flex-wrap justify-center gap-3">
             {items.map((tech, index) => (
               <span
-                key={index}
-                className="px-5 py-2.5 bg-blue-50 border border-blue-200 text-blue-700 font-semibold rounded-full text-sm hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all duration-200">
-                {tech}
+                key={tech._key || index}
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-50 border border-blue-200 text-blue-700 font-semibold rounded-full text-sm hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all duration-200">
+                {tech.logo && (
+                  <Image
+                    src={urlFor(tech.logo).width(40).height(40).url()}
+                    alt={tech.name || ""}
+                    width={20}
+                    height={20}
+                    className="object-contain shrink-0"
+                  />
+                )}
+                {tech.name}
               </span>
             ))}
           </div>
@@ -823,11 +846,22 @@ function CsTechnologiesSection({
               }}>
               <div className="relative w-full md:grid-cols-4 grid grid-cols-2 md:py-4 gap-4 md:gap-8 z-10">
                 {items.map((tech, index) => (
-                  <span
-                    key={index}
-                    className="text-slate-700 text-center font-medium text-xl transition-all duration-300">
-                    {tech}
-                  </span>
+                  <div
+                    key={tech._key || index}
+                    className="flex items-center justify-center gap-2">
+                    {tech.logo && (
+                      <Image
+                        src={urlFor(tech.logo).width(48).height(48).url()}
+                        alt={tech.name || ""}
+                        width={24}
+                        height={24}
+                        className="object-contain shrink-0"
+                      />
+                    )}
+                    <span className="text-slate-700 text-center font-medium text-xl transition-all duration-300">
+                      {tech.name}
+                    </span>
+                  </div>
                 ))}
               </div>
             </div>

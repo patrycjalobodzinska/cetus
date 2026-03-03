@@ -186,8 +186,8 @@ export default function OfferPage() {
       {technologies &&
         technologies.categories &&
         technologies.categories.length > 0 && (
-          <section className="py-24 border-t flex flex-col items-center justify-center border-gray-200  w-full">
-            <div className=" max-w-[2000px] flex flex-col items-center justify-centew-full">
+          <section className="py-24 border-t flex flex-col items-center justify-center border-gray-200 w-full overflow-x-hidden">
+            <div className="max-w-[2000px] flex flex-col items-center justify-center w-full">
               <div className="max-w-7xl lg:px-8 px-4 sm:px-6 text-center mb-16">
                 <h2
                   className="heading-1 text-slate-900 mb-6"

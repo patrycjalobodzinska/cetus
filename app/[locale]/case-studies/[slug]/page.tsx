@@ -56,6 +56,8 @@ export default async function CaseStudyPage({
             _key,
             icon,
             value,
+            name,
+            logo,
             "text": coalesce(text[$locale], text.pl),
             "label": coalesce(label[$locale], label.pl),
             "title": coalesce(title[$locale], title.pl),
