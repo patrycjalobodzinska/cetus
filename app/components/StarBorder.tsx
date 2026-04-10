@@ -24,45 +24,48 @@ const StarBorder = <T extends React.ElementType = 'button'>({
 
   return (
     <Component
-      className={`relative inline-block overflow-hidden rounded-[20px] ${className}`}
+      className={`relative inline-block rounded-[20px] ${className}`}
       {...(rest as any)}
       style={{
         padding: `${thickness}px`,
         ...(rest as any).style
       }}
     >
-      {/* Multiple stars for continuous effect - Bottom */}
-      {[0, 1, 2, 3, 4].map((index) => {
-        const speedValue = parseFloat(speed.toString().replace('s', ''));
-        return (
-          <div
-            key={`bottom-${index}`}
-            className="absolute w-[800%] h-[50%] opacity-100 bottom-[-11px] right-[-700%] rounded-full animate-star-movement-bottom z-0"
-            style={{
-              background: `radial-gradient(circle, ${color}, transparent 8%)`,
-              animationDuration: speed,
-              animationDelay: `${(speedValue / 5) * index}s`
-            }}
-          ></div>
-        );
-      })}
-      {/* Multiple stars for continuous effect - Top */}
-      {[0, 1, 2, 3, 4].map((index) => {
-        const speedValue = parseFloat(speed.toString().replace('s', ''));
-        return (
-          <div
-            key={`top-${index}`}
-            className="absolute w-[800%] h-[50%] opacity-100 top-[-10px] left-[-700%] rounded-full animate-star-movement-top z-0"
-            style={{
-              background: `radial-gradient(circle, ${color}, transparent 8%)`,
-              animationDuration: speed,
-              animationDelay: `${(speedValue / 5) * index}s`
-            }}
-          ></div>
-        );
-      })}
-      {/* Updated inner container with override capability via classNameInner */}
-      <div className={`relative z-1 border border-gray-800 text-center text-[16px] py-[16px] px-[26px] rounded-[20px] w-full h-full flex items-center justify-center ${classNameInner ? classNameInner : 'bg-gradient-to-b from-black to-gray-900 text-white'}`}>
+      {/* Stars clipped inside their own container — nie na button, żeby box-shadow focus był widoczny */}
+      <div className="absolute inset-0 overflow-hidden rounded-[20px] z-0">
+        {/* Multiple stars for continuous effect - Bottom */}
+        {[0, 1, 2, 3, 4].map((index) => {
+          const speedValue = parseFloat(speed.toString().replace('s', ''));
+          return (
+            <div
+              key={`bottom-${index}`}
+              className="absolute w-[800%] h-[50%] opacity-100 bottom-[-11px] right-[-700%] rounded-full animate-star-movement-bottom"
+              style={{
+                background: `radial-gradient(circle, ${color}, transparent 8%)`,
+                animationDuration: speed,
+                animationDelay: `${(speedValue / 5) * index}s`
+              }}
+            ></div>
+          );
+        })}
+        {/* Multiple stars for continuous effect - Top */}
+        {[0, 1, 2, 3, 4].map((index) => {
+          const speedValue = parseFloat(speed.toString().replace('s', ''));
+          return (
+            <div
+              key={`top-${index}`}
+              className="absolute w-[800%] h-[50%] opacity-100 top-[-10px] left-[-700%] rounded-full animate-star-movement-top"
+              style={{
+                background: `radial-gradient(circle, ${color}, transparent 8%)`,
+                animationDuration: speed,
+                animationDelay: `${(speedValue / 5) * index}s`
+              }}
+            ></div>
+          );
+        })}
+      </div>
+      {/* Inner container */}
+      <div className={`relative z-[1] border border-gray-800 text-center text-[16px] py-[16px] px-[26px] rounded-[20px] w-full h-full flex items-center justify-center ${classNameInner ? classNameInner : 'bg-gradient-to-b from-black to-gray-900 text-white'}`}>
         {children}
       </div>
     </Component>

@@ -21,29 +21,29 @@
 /* Spójna typografia nagłówków - mniejsza na mobile */
 :root {
   --heading-hero: 1.875rem; /* 30px - duże hero, mobile */
-  --heading-1: 1.5rem;     /* 24px - h1 */
-  --heading-2: 1.25rem;    /* 20px - h2 */
-  --heading-3: 1.125rem;   /* 18px - h3 */
-  --heading-4: 1rem;       /* 16px - h4 */
+  --heading-1: 1.5rem; /* 24px - h1 */
+  --heading-2: 1.25rem; /* 20px - h2 */
+  --heading-3: 1.125rem; /* 18px - h3 */
+  --heading-4: 1rem; /* 16px - h4 */
 }
 
 @media (min-width: 768px) {
   :root {
-    --heading-hero: 2.5rem;  /* 40px */
-    --heading-1: 2rem;       /* 32px */
-    --heading-2: 1.5rem;     /* 24px */
-    --heading-3: 1.25rem;    /* 20px */
-    --heading-4: 1.125rem;   /* 18px */
+    --heading-hero: 2.5rem; /* 40px */
+    --heading-1: 2rem; /* 32px */
+    --heading-2: 1.5rem; /* 24px */
+    --heading-3: 1.25rem; /* 20px */
+    --heading-4: 1.125rem; /* 18px */
   }
 }
 
 @media (min-width: 1024px) {
   :root {
     --heading-hero: 3.75rem; /* 60px - desktop hero */
-    --heading-1: 2.25rem;   /* 36px */
-    --heading-2: 1.875rem;  /* 30px */
-    --heading-3: 1.5rem;     /* 24px */
-    --heading-4: 1.25rem;   /* 20px */
+    --heading-1: 2.25rem; /* 36px */
+    --heading-2: 1.875rem; /* 30px */
+    --heading-3: 1.5rem; /* 24px */
+    --heading-4: 1.25rem; /* 20px */
   }
 }
 
@@ -90,7 +90,14 @@
 /* Focus styles for keyboard navigation */
 *:focus-visible {
   outline: 2px solid #2563eb;
-  outline-offset: 2px;
+  outline-offset: 4px;
+}
+
+/* <a> owijające StarGradientButton — display:inline nie ma border-radius,
+   robimy inline-block + rounded żeby outline podążał za kształtem przycisku */
+a:has(> .sgb-outer) {
+  display: inline-block;
+  border-radius: 20px;
 }
 
 /* Reduced motion support */
@@ -173,13 +180,25 @@ html.lenis {
 
 /* Animations for StarBorder */
 @keyframes star-movement-bottom {
-  0% { transform: translate(0%, 0%); opacity: 1; }
-  100% { transform: translate(-87.5%, 0%); opacity: 1; }
+  0% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-87.5%, 0%);
+    opacity: 1;
+  }
 }
 
 @keyframes star-movement-top {
-  0% { transform: translate(0%, 0%); opacity: 1; }
-  100% { transform: translate(87.5%, 0%); opacity: 1; }
+  0% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(87.5%, 0%);
+    opacity: 1;
+  }
 }
 
 .animate-star-movement-bottom {
@@ -192,8 +211,14 @@ html.lenis {
 
 /* Blinking cursor animation */
 @keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
 }
 
 /* Image fade-in animation */
@@ -215,12 +240,28 @@ html.lenis {
 
 /* Stats Panel Polygon */
 .stats-polygon {
-  clip-path: polygon(20px 0, calc(100% - 20px) 0, 100% 20px, 100% calc(100% - 20px), calc(100% - 20px) 100%, 20px 100%, 0 calc(100% - 20px), 0 20px);
+  clip-path: polygon(
+    20px 0,
+    calc(100% - 20px) 0,
+    100% 20px,
+    100% calc(100% - 20px),
+    calc(100% - 20px) 100%,
+    20px 100%,
+    0 calc(100% - 20px),
+    0 20px
+  );
 }
 
 @media (min-width: 768px) {
   .stats-polygon {
-    clip-path: polygon(30px 0, calc(100% - 30px) 0, 100% 50%, calc(100% - 30px) 100%, 30px 100%, 0 50%);
+    clip-path: polygon(
+      30px 0,
+      calc(100% - 30px) 0,
+      100% 50%,
+      calc(100% - 30px) 100%,
+      30px 100%,
+      0 50%
+    );
   }
 }
 

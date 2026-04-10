@@ -16,17 +16,13 @@ export const StarGradientButton = ({
   return (
     <div
       className={cn(
-        "group text-center relative inline-block overflow-hidden rounded-[20px] p-[1.5px] bg-transparent border-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2",
+        "sgb-outer group text-center relative inline-block rounded-[20px] p-[1.5px] bg-transparent border-none cursor-pointer ",
         containerClassName,
       )}>
       {/* 1. SZARY BORDER */}
-      <div
-        className="absolute inset-0 bg-gray-200 transition-opacity duration-500 group-hover:opacity-0"
-        style={{ borderRadius: "inherit" }}
-      />
-
-      {/* 2. SYSTEM GWIAZD */}
-      <div className="absolute inset-0 z-0 transition-opacity duration-500 group-hover:opacity-0">
+      <div className="absolute inset-0 bg-gray-200 rounded-[20px] transition-opacity duration-500 group-hover:opacity-0" />
+      {/* 2. SYSTEM GWIAZD — overflow-hidden tu, nie na outer div */}
+      <div className="absolute inset-0 overflow-hidden rounded-[20px] z-0 transition-opacity duration-500 group-hover:opacity-0">
         {/* DOLNA LINIA */}
         <div
           className="star-glow animate-star-bottom"
@@ -64,7 +60,7 @@ export const StarGradientButton = ({
 
       {/* 3. GRADIENT BORDER NA HOVER */}
       <div
-        className="gradient-anim absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        className="gradient-anim absolute inset-0 rounded-[20px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
         style={{
           background: `linear-gradient(to right, #2563eb, #60a5fa, #1d4ed8, #3b82f6, #2563eb)`,
           backgroundSize: "200% 100%",

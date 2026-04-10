@@ -269,20 +269,23 @@ export default function Footer() {
           </div>
 
           {/* Dokumenty Column */}
-          {(footerData.documentLinks && footerData.documentLinks.length > 0) && (
-            <div>
-              <h3 className="text-xl font-bold text-white mb-6">{t('documents')}</h3>
-              <ul className="space-y-3">
-                {footerData.documentLinks.map((link, index) => (
-                  <li key={index}>
-                    <Link href={link.url || '#'} className="text-slate-300 hover:text-white transition-colors">
-                      {link.text}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+          <div>
+            <h3 className="text-xl font-bold text-white mb-6">{t('documents')}</h3>
+            <ul className="space-y-3">
+              <li>
+                <Link href={`/${locale}/polityka-jakosci`} className="text-slate-300 hover:text-white transition-colors">
+                  Polityka Jakości
+                </Link>
+              </li>
+              {footerData.documentLinks && footerData.documentLinks.map((link, index) => (
+                <li key={index}>
+                  <Link href={link.url || '#'} className="text-slate-300 hover:text-white transition-colors">
+                    {link.text}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
 

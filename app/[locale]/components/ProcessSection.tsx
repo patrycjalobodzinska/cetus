@@ -50,14 +50,15 @@ function StepCard({ step }: { step: ProcessStep }) {
 }
 
 // Linia pozioma między kartami w tym samym wierszu
+// Kształt: skos w prawo → prosta → skos w dół (jak w Offer/StatsPanel)
 function HorizontalArc({ id }: { id: string }) {
   const gradId = `grad-${id}`;
   const filterId = `neon-${id}`;
   return (
     <div className="hidden lg:flex items-center justify-center w-16 flex-shrink-0">
-      <svg viewBox="0 0 64 20" fill="none" className="w-16 h-5" overflow="visible">
+      <svg viewBox="0 0 64 24" fill="none" className="w-16 h-6" overflow="visible">
         <defs>
-          <linearGradient id={gradId} gradientUnits="userSpaceOnUse" x1="4" y1="10" x2="60" y2="10">
+          <linearGradient id={gradId} gradientUnits="userSpaceOnUse" x1="4" y1="12" x2="60" y2="12">
             <stop offset="0%" stopColor="#3b82f6" />
             <stop offset="100%" stopColor="#93c5fd" />
           </linearGradient>
@@ -69,25 +70,29 @@ function HorizontalArc({ id }: { id: string }) {
             </feMerge>
           </filter>
         </defs>
-        <rect x="2" y="8" width="4" height="4" fill="#3b82f6" transform="rotate(45 4 10)" filter={`url(#${filterId})`} />
+        {/* diament start */}
+        <rect x="2" y="10" width="4" height="4" fill="#3b82f6" transform="rotate(45 4 12)" filter={`url(#${filterId})`} />
+        {/* skos w prawo → prosta → skos w dół */}
         <path
-          d="M 4 10 L 60 10"
+          d="M 4 12 L 16 4 L 48 4 L 60 12"
           stroke={`url(#${gradId})`}
           strokeWidth="2"
-          strokeLinecap="square"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           filter={`url(#${filterId})`}
         />
-        <rect x="58" y="8" width="4" height="4" fill="#93c5fd" transform="rotate(45 60 10)" filter={`url(#${filterId})`} />
+        {/* diament koniec */}
+        <rect x="58" y="10" width="4" height="4" fill="#93c5fd" transform="rotate(45 60 12)" filter={`url(#${filterId})`} />
       </svg>
     </div>
   );
 }
 
 // Linia kątowa: wiersz 1 (prawa karta) → wiersz 2 (środek)
+// Kształt: skos w prawo → prosta → skos w dół (jak Offer.tsx)
 function ArcDownToCenter({ id }: { id: string }) {
   const gradId = `grad-${id}`;
   const filterId = `neon-${id}`;
-  // path: w dół → w lewo → w dół (L-kształt z ostrym narożnikiem)
   return (
     <div className="hidden lg:block w-full h-14 relative">
       <svg
@@ -97,7 +102,7 @@ function ArcDownToCenter({ id }: { id: string }) {
         preserveAspectRatio="none"
       >
         <defs>
-          <linearGradient id={gradId} gradientUnits="userSpaceOnUse" x1="560" y1="0" x2="500" y2="56">
+          <linearGradient id={gradId} gradientUnits="userSpaceOnUse" x1="560" y1="6" x2="500" y2="52">
             <stop offset="0%" stopColor="#3b82f6" />
             <stop offset="100%" stopColor="#93c5fd" />
           </linearGradient>
@@ -109,16 +114,19 @@ function ArcDownToCenter({ id }: { id: string }) {
             </feMerge>
           </filter>
         </defs>
+        {/* diament start */}
         <rect x="557" y="3" width="6" height="6" fill="#3b82f6" transform="rotate(45 560 6)" filter={`url(#${filterId})`} />
+        {/* skos w prawo → prosta → skos w dół */}
         <path
-          d="M 560 6 L 560 28 L 500 28 L 500 52"
+          d="M 560 6 L 540 20 L 520 20 L 500 52"
           stroke={`url(#${gradId})`}
           strokeWidth="2"
-          strokeLinecap="square"
-          strokeLinejoin="miter"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           filter={`url(#${filterId})`}
           vectorEffect="non-scaling-stroke"
         />
+        {/* diament koniec */}
         <rect x="497" y="49" width="6" height="6" fill="#93c5fd" transform="rotate(45 500 52)" filter={`url(#${filterId})`} />
       </svg>
     </div>
@@ -126,10 +134,10 @@ function ArcDownToCenter({ id }: { id: string }) {
 }
 
 // Linia kątowa: wiersz 2 (środek) → wiersz 3 (lewa karta)
+// Kształt: skos w prawo → prosta → skos w dół (jak Offer.tsx)
 function ArcDownFromCenter({ id }: { id: string }) {
   const gradId = `grad-${id}`;
   const filterId = `neon-${id}`;
-  // path: w dół → w lewo → w dół (L-kształt z ostrym narożnikiem)
   return (
     <div className="hidden lg:block w-full h-14 relative">
       <svg
@@ -139,7 +147,7 @@ function ArcDownFromCenter({ id }: { id: string }) {
         preserveAspectRatio="none"
       >
         <defs>
-          <linearGradient id={gradId} gradientUnits="userSpaceOnUse" x1="500" y1="0" x2="440" y2="56">
+          <linearGradient id={gradId} gradientUnits="userSpaceOnUse" x1="500" y1="6" x2="440" y2="52">
             <stop offset="0%" stopColor="#3b82f6" />
             <stop offset="100%" stopColor="#93c5fd" />
           </linearGradient>
@@ -151,16 +159,19 @@ function ArcDownFromCenter({ id }: { id: string }) {
             </feMerge>
           </filter>
         </defs>
+        {/* diament start */}
         <rect x="497" y="3" width="6" height="6" fill="#3b82f6" transform="rotate(45 500 6)" filter={`url(#${filterId})`} />
+        {/* skos w prawo → prosta → skos w dół */}
         <path
-          d="M 500 6 L 500 28 L 440 28 L 440 52"
+          d="M 500 6 L 480 20 L 460 20 L 440 52"
           stroke={`url(#${gradId})`}
           strokeWidth="2"
-          strokeLinecap="square"
-          strokeLinejoin="miter"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           filter={`url(#${filterId})`}
           vectorEffect="non-scaling-stroke"
         />
+        {/* diament koniec */}
         <rect x="437" y="49" width="6" height="6" fill="#93c5fd" transform="rotate(45 440 52)" filter={`url(#${filterId})`} />
       </svg>
     </div>
@@ -234,7 +245,7 @@ export default function ProcessSection() {
         </div>
 
         {/* Steps — układ 2-1-2 */}
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center gap-6 lg:gap-0">
 
           {/* Wiersz 1: 2 karty */}
           <div className="flex flex-col lg:flex-row lg:items-stretch gap-4 w-full max-w-4xl">
