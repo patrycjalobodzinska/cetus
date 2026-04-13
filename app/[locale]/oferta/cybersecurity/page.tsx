@@ -166,11 +166,6 @@ export default function CybersecurityPage() {
                   </StarGradientButton>
                 </Link>
 
-                <Link
-                  href="/case-studies"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-slate-900 border-2 border-gray-200 rounded-2xl font-semibold hover:border-blue-600 hover:text-blue-600 transition-all duration-300">
-                  Zobacz realizacje
-                </Link>
               </div>
             </div>
 

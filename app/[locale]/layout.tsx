@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import NavbarCurosora from "../components/NavbarCurosora";
 import NavigationProvider from "../components/NavigationProvider";
 import Plasma from "../components/Plasma";
+import HiddenCaseStudiesAccess from "../components/HiddenCaseStudiesAccess";
 import { NextIntlClientProvider } from "next-intl";
 import {
   getMessages,
@@ -117,10 +118,45 @@ export default async function RootLayout({
   const messages = await getMessages();
   const t = await getTranslations();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://cetuspro.pl/#organization",
+        name: "CetusPro",
+        url: "https://cetuspro.pl",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://cetuspro.pl/logocetus.png",
+        },
+        contactPoint: {
+          "@type": "ContactPoint",
+          email: "kontakt@cetuspro.pl",
+          contactType: "customer service",
+          availableLanguage: ["Polish", "English"],
+        },
+        sameAs: [],
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://cetuspro.pl/#website",
+        url: "https://cetuspro.pl",
+        name: "CetusPro",
+        publisher: { "@id": "https://cetuspro.pl/#organization" },
+        inLanguage: ["pl", "en"],
+      },
+    ],
+  };
+
   return (
     <html lang={locale}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${michroma.variable} antialiased bg-white`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <NavigationProvider>
             <SmoothScroll>
@@ -154,6 +190,7 @@ export default async function RootLayout({
                 {children}
                 <Footer />
               </main>
+              <HiddenCaseStudiesAccess />
             </SmoothScroll>
           </NavigationProvider>
         </NextIntlClientProvider>

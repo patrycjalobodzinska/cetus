@@ -238,8 +238,8 @@ export default function ProcessSection() {
             {sectionDesc}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href={`/${locale}/case-studies`}>
-              <StarGradientButton>{t("cta.caseStudies")}</StarGradientButton>
+            <Link href={`/${locale}/kontakt`}>
+              <StarGradientButton>{t("cta.designIdea")}</StarGradientButton>
             </Link>
           </div>
         </div>

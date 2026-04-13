@@ -224,7 +224,6 @@ export default function Footer() {
               <li><Link href={`/${locale}`} className="text-slate-300 hover:text-white transition-colors">{tNav('home')}</Link></li>
               <li><Link href={`/${locale}/o-nas`} className="text-slate-300 hover:text-white transition-colors">{tNav('about')}</Link></li>
               <li><Link href={`/${locale}/oferta`} className="text-slate-300 hover:text-white transition-colors">{tNav('services')}</Link></li>
-              <li><Link href={`/${locale}/case-studies`} className="text-slate-300 hover:text-white transition-colors">{tNav('caseStudies')}</Link></li>
               <li><Link href={`/${locale}/kontakt`} className="text-slate-300 hover:text-white transition-colors">{tNav('contact')}</Link></li>
             </ul>
           </div>
@@ -262,7 +261,6 @@ export default function Footer() {
             ) : (
               <ul className="space-y-3">
                 <li><Link href={`/${locale}/o-nas`} className="text-slate-300 hover:text-white transition-colors">{tNav('about')}</Link></li>
-                <li><Link href={`/${locale}/case-studies`} className="text-slate-300 hover:text-white transition-colors">{tNav('caseStudies')}</Link></li>
                 <li><Link href={`/${locale}/kontakt`} className="text-slate-300 hover:text-white transition-colors">{tNav('contact')}</Link></li>
               </ul>
             )}

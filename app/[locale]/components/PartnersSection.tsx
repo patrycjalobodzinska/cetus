@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import Link from 'next/link';
+
 import { client } from '@/sanity/lib/client';
 import { urlFor } from '@/sanity/lib/image';
 
@@ -121,13 +121,7 @@ export default function PartnersSection() {
                 key={partner._id}
                 className="group relative"
               >
-                {partner.caseStudySlug ? (
-                  <Link href={`/${locale}/case-studies/${partner.caseStudySlug}`}>
-                    {cardContent}
-                  </Link>
-                ) : (
-                  cardContent
-                )}
+                {cardContent}
               </div>
             );
           })}
