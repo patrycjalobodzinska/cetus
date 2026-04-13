@@ -13,6 +13,7 @@ const nextConfig: NextConfig = {
     ],
   },
   transpilePackages: ['next-sanity', '@sanity/vision'],
+  output: 'standalone'
 };
 
 

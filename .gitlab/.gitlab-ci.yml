@@ -1,0 +1,116 @@
+stages:
+  - build
+  - containerize
+  - deploy:stag
+
+default:
+  tags:
+    - cetusprocomv2
+
+variables:
+  NODE_BASE_IMAGE: "node:24-trixie-slim"
+  KANIKO_IMAGE: "registry.gitlab.com/gitlab-ci-utils/container-images/kaniko:v1.25.12-debug"
+  SSH_CLIENT_IMAGE: "kroniak/ssh-client:3.21"
+  PNPM_VERSION: "pnpm@latest-10"
+
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_TAG'
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+
+.x-setup-pnpm: &pnpm-template
+  - echo "Setting up pnpm..."
+  - echo "Updating corepack..."
+  - npm i -g corepack@latest
+  - corepack enable
+  - corepack prepare ${PNPM_VERSION} --activate
+  - pnpm config set store-dir .pnpm-store
+
+.x-run-only-on-default-branch: &run-on-push-to-default-branch-template
+  if: "$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH"
+
+.x-deploy-stag-script: &deploy-staging-script-template
+  - ssh ${SERVER_USER}@${SERVER_IP} "echo 'CI_COMMIT_SHA=${CI_COMMIT_SHA}' | tee ${PROJECT_PATH}/.env"
+  - ssh ${SERVER_USER}@${SERVER_IP} "docker compose -f ${PROJECT_PATH}/compose.yaml up --force-recreate -d"
+
+.x-default-build: &default-build-template
+  stage: build
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/${NODE_BASE_IMAGE}
+  variables:
+    ARTIFACT_PATH: unset
+  script:
+    - *pnpm-template
+    - pnpm install --prefer-offline --frozen-lockfile
+    - NEXT_TELEMETRY_DISABLED=1 pnpm build
+  artifacts:
+    when: on_success
+    expire_in: "1 hour"
+    paths:
+      - "${ARTIFACT_PATH}"
+
+.x-kaniko-containerize: &kaniko-build-template
+  stage: containerize
+  image:
+    name: ${KANIKO_IMAGE}
+    entrypoint: [""]
+  variables:
+    COMPONENT: unset
+    IMAGE_TAG: unset
+  before_script:
+    - mkdir -p /kaniko/.docker
+    - echo "{\"auths\":{\"${CI_REGISTRY}\":{\"auth\":\"$(printf "%s:%s" "${CI_REGISTRY_USER}" "${CI_REGISTRY_PASSWORD}" | base64 | tr -d '\n')\"},\"$(echo -n $CI_DEPENDENCY_PROXY_SERVER | awk -F[:] '{print $1}')\":{\"auth\":\"$(printf "%s:%s" ${CI_DEPENDENCY_PROXY_USER} "${CI_DEPENDENCY_PROXY_PASSWORD}" | base64 | tr -d '\n')\"}}}" > /kaniko/.docker/config.json
+  script:
+    - >
+      /kaniko/executor
+      --cache=true
+      --context "${CI_PROJECT_DIR}"
+      --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
+      --destination "${CI_REGISTRY_IMAGE}/${COMPONENT}:${IMAGE_TAG}"
+
+.x-ssh-setup: &ssh-setup-template
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/${SSH_CLIENT_IMAGE}
+  variables:
+    PROJECT_PATH: unset
+    COMPOSE_NAME: unset
+    PRIVATE_KEY: unset
+  before_script:
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    - printf "%s\n" "${PRIVATE_KEY}" > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+
+build-main:
+  <<: *default-build-template
+  variables:
+    ARTIFACT_PATH: ${CI_PROJECT_DIR}/.next
+  rules:
+    - <<: *run-on-push-to-default-branch-template
+  dependencies: []
+
+containerize-main:
+  <<: *kaniko-build-template
+  variables:
+    COMPONENT: next
+    IMAGE_TAG: latest
+  rules:
+    - <<: *run-on-push-to-default-branch-template
+  needs:
+    - build-main
+  dependencies:
+    - build-main
+
+deploy-main:
+  stage: deploy:stag
+  <<: *ssh-setup-template
+  variables:
+    PROJECT_PATH: /home/cetuspro/cetusprocomv2-stage
+    COMPOSE_NAME: app
+    PRIVATE_KEY: ${SSH_PRIVATE_KEY}
+  script:
+    - *deploy-staging-script-template
+  rules:
+    - <<: *run-on-push-to-default-branch-template
+  needs:
+    - containerize-main
+  dependencies: []

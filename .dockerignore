@@ -1,0 +1,39 @@
+# Docker files
+Dockerfile
+.dockerignore
+
+# Logs and databases
+*.log
+npm-debug.log
+
+# Dependency directories
+node_modules
+.cache
+
+# Build output
+dist
+site
+build
+
+# Git related
+.git
+.gitignore
+.gitattributes
+
+# CI/CD
+.gitlab
+.gitlab-ci.yml
+
+# Config files
+.editorconfig
+.prettierrc.*
+.eslint
+.eslint.*
+
+# Project information
+*.md
+README
+LICENSE
+
+# Other
+docker
