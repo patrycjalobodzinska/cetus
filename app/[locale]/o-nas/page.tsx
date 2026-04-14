@@ -10,7 +10,7 @@ import { ArrowRight, Users, User } from 'lucide-react';
 import DecorativeImage from '@/app/components/DecorativeImage';
 import PolygonCard from '@/app/components/PolygonCard';
 import DomeGallery from '@/app/components/DomeGallery';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 interface AboutUsData {
   title: string;
@@ -51,6 +51,7 @@ export default function AboutUsPage() {
   const [historyLoading, setHistoryLoading] = useState(true);
   const [teamLoading, setTeamLoading] = useState(true);
   const locale = useLocale();
+  const t = useTranslations('aboutUs');
 
   useEffect(() => {
     async function fetchAboutUs() {
@@ -155,7 +156,7 @@ export default function AboutUsPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center py-12">
               <div className="inline-block w-8 h-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
-              <p className="mt-4 text-slate-600">Ładowanie...</p>
+              <p className="mt-4 text-slate-600">{t('loading')}</p>
             </div>
           </div>
         </section>
@@ -175,7 +176,7 @@ export default function AboutUsPage() {
                   <Link href={aboutUsData.primaryButtonLink || '/kontakt'}>
                     <StarGradientButton>
                       <span className="flex items-center gap-2">
-                        {aboutUsData.primaryButtonText || 'Porozmawiajmy o projekcie'}
+                        {aboutUsData.primaryButtonText || t('fallbackButton')}
                         <ArrowRight className="w-5 h-5" />
                       </span>
                     </StarGradientButton>
@@ -214,17 +215,17 @@ export default function AboutUsPage() {
               className="heading-1 lg:mt-0 mt-12 text-slate-900 mb-4"
               style={{ fontFamily: "var(--font-michroma)" }}
             >
-              Nasza historia
+              {t('history.title')}
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Zobacz kluczowe momenty naszej podróży i osiągnięcia, które ukształtowały naszą firmę.
+              {t('history.description')}
             </p>
           </div>
 
           {historyLoading ? (
             <div className="text-center ">
               <div className="inline-block w-8 h-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
-              <p className="mt-4 text-slate-600">Ładowanie historii...</p>
+              <p className="mt-4 text-slate-600">{t('history.loading')}</p>
             </div>
           ) : historyItems.length > 0 ? (
             <div className="relative w-full overflow-visible">
@@ -232,7 +233,7 @@ export default function AboutUsPage() {
             </div>
           ) : (
             <div className="text-center py-12">
-              <p className="text-slate-600">Brak danych do wyświetlenia.</p>
+              <p className="text-slate-600">{t('history.noData')}</p>
             </div>
           )}
         </div>
@@ -271,10 +272,10 @@ export default function AboutUsPage() {
                   className="heading-1 text-slate-900 mb-4"
                   style={{ fontFamily: "var(--font-michroma)" }}
                 >
-                  Nasz zespół
+                  {t('team.title')}
                 </h2>
                 <p className="text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0">
-                  Poznaj ludzi, którzy tworzą naszą firmę i codziennie pracują nad najlepszymi rozwiązaniami dla naszych klientów.
+                  {t('team.description')}
                 </p>
               </div>
             </div>
@@ -283,7 +284,7 @@ export default function AboutUsPage() {
           {teamLoading ? (
             <div className="text-center py-12">
               <div className="inline-block w-8 h-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
-              <p className="mt-4 text-slate-600">Ładowanie zespołu...</p>
+              <p className="mt-4 text-slate-600">{t('team.loading')}</p>
             </div>
           ) : teamMembers.length > 0 ? (
             <>
@@ -296,7 +297,7 @@ export default function AboutUsPage() {
                     <PolygonCard
                       key={member._id}
                       imageUrl={imageUrl}
-                      title={`${member.firstName || ''} ${member.lastName || ''}`.trim() || 'Członek zespołu'}
+                      title={`${member.firstName || ''} ${member.lastName || ''}`.trim() || t('team.fallbackName')}
                       description={member.position || ''}
                       fallbackIcon={<User className="w-24 h-24 text-gray-400" />}
                     />
@@ -307,7 +308,7 @@ export default function AboutUsPage() {
             </>
           ) : (
             <div className="text-center py-12">
-              <p className="text-slate-600">Brak członków zespołu do wyświetlenia.</p>
+              <p className="text-slate-600">{t('team.noMembers')}</p>
             </div>
           )}
         </div>
@@ -318,12 +319,12 @@ export default function AboutUsPage() {
       <div className="absolute top-0  left-0 right-0 h-64 z-0 pointer-events-none bg-gradient-to-b from-transparent to-[#f4f4f4]"></div>
                 <div className="bg-[#f4f4f4] w-full" style={{ width: '100vw' , }}>
                   <DomeGallery
-                    title="Zespół w jednym ujęciu"
+                    title={t('team.galleryTitle')}
                     images={teamMembers
                       .filter((member) => member.image)
                       .map((member) => ({
                         src: urlFor(member.image).width(600).height(600).url(),
-                        alt: `${member.firstName || ''} ${member.lastName || ''}`.trim() || 'Członek zespołu',
+                        alt: `${member.firstName || ''} ${member.lastName || ''}`.trim() || t('team.fallbackName'),
                         name: `${member.firstName || ''} ${member.lastName || ''}`.trim() || undefined,
                         description: member.position || undefined,
                       }))}
@@ -343,15 +344,15 @@ export default function AboutUsPage() {
             className="heading-1 text-slate-900 mb-6"
             style={{ fontFamily: "var(--font-michroma)" }}
           >
-            Chcesz dołączyć do naszej historii?
+            {t('cta.title')}
           </h2>
           <p className="text-xl text-slate-600 mb-10 leading-relaxed">
-            Skontaktuj się z nami i dowiedz się, jak możemy pomóc w rozwoju Twojego biznesu.
+            {t('cta.description')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/kontakt">
               <StarGradientButton>
-                Skontaktuj się z nami
+                {t('cta.buttonText')}
               </StarGradientButton>
             </Link>
 

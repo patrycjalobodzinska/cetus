@@ -443,6 +443,56 @@
     "imageAltFallback": "Case Study",
     "moduleImageAltFallback": "Module"
   },
+  "qualityPolicy": {
+    "title": "Quality",
+    "titleHighlight": "Policy",
+    "subtitle": "CetusPro Sp. z o.o. - guarantee of the highest quality standards compliant with ISO 9001:2015",
+    "introduction": "The main goal of CetusPro Sp. z o.o. is to provide training services that meet the requirements and expectations of our Clients. The company's goal is also to strengthen its position as a leader in the training services market and to achieve financial results that enable continuous development.",
+    "guaranteesTitle": "Guarantee of achieving goals",
+    "guarantees": [
+      "Maintaining and improving the quality system compliant with ISO 9001:2015 standard requirements",
+      "Continuous analysis of Client satisfaction measurement and anticipating their expectations",
+      "Risk and opportunity analysis",
+      "Full commitment of owners and employees to the joint implementation of quality policy and quality objectives",
+      "Educated and experienced staff who systematically improve their qualifications",
+      "Modern technical equipment enabling the use of latest technologies",
+      "Team cooperation atmosphere, individual responsibility of employees for quality and their identification"
+    ],
+    "directionsTitle": "Development directions",
+    "directionsDescription": "The unchanging elements of our activity that determine development directions are:",
+    "directions": [
+      "The highest quality of offered services",
+      "Experience gained in the courses and training industry",
+      "Understanding and meeting the needs and expectations of current and future Clients"
+    ],
+    "statement": "The Management Board certifies that the Quality Policy is understood, implemented and maintained in all areas of the organization.",
+    "statementDate": "Rzeszów, 02.01.2025",
+    "statementAuthor": "CEO - Norbert Pisz",
+    "downloadPdf": "Download Quality Policy (PDF)"
+  },
+  "aboutUs": {
+    "loading": "Loading...",
+    "fallbackButton": "Let's talk about your project",
+    "history": {
+      "title": "Our history",
+      "description": "See the key moments of our journey and the achievements that shaped our company.",
+      "loading": "Loading history...",
+      "noData": "No data to display."
+    },
+    "team": {
+      "title": "Our team",
+      "description": "Meet the people who make our company and work daily on the best solutions for our clients.",
+      "loading": "Loading team...",
+      "noMembers": "No team members to display.",
+      "fallbackName": "Team member",
+      "galleryTitle": "The team in one shot"
+    },
+    "cta": {
+      "title": "Want to join our story?",
+      "description": "Contact us and find out how we can help grow your business.",
+      "buttonText": "Contact us"
+    }
+  },
   "aiAutomation": {
     "hero": {
       "badge": "AI and Automation",

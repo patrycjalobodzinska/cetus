@@ -1,28 +1,16 @@
 'use client';
 
 import Link from 'next/link';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { FileDown, Shield, CheckCircle, Award } from 'lucide-react';
 import StarGradientButton from '@/app/components/ui/gradientBackground';
 
 export default function PolitikaJakosciPage() {
   const locale = useLocale();
+  const t = useTranslations('qualityPolicy');
 
-  const guarantees = [
-    'Utrzymywanie i doskonalenie systemu jakości zgodnego z wymaganiami normy ISO 9001:2015',
-    'Ciągła analiza pomiaru satysfakcji Klientów oraz przewidywanie i wyprzedzanie ich oczekiwań',
-    'Analiza ryzyka i szans',
-    'Pełne zaangażowanie właścicieli oraz pracowników dla wspólnej realizacji polityki jakości oraz celów jakościowych',
-    'Wykształcona i doświadczona kadra, która systematycznie podnosi swoje kwalifikacje',
-    'Nowoczesne wyposażenie techniczne, pozwalające zastosować najnowsze technologie',
-    'Klimat zespołowej współpracy, indywidualna odpowiedzialność pracowników za jakość oraz ich identyfikacja',
-  ];
-
-  const directions = [
-    'Najwyższa jakość oferowanych usług',
-    'Doświadczenie zdobyte w branży kursów i szkoleń',
-    'Zrozumienie i spełnienie potrzeb oraz oczekiwań obecnych i przyszłych Klientów',
-  ];
+  const guarantees = [0, 1, 2, 3, 4, 5, 6].map((i) => t(`guarantees.${i}`));
+  const directions = [0, 1, 2].map((i) => t(`directions.${i}`));
 
   return (
     <div className="min-h-screen">
@@ -37,10 +25,10 @@ export default function PolitikaJakosciPage() {
               className="heading-hero tracking-tighter text-slate-900 mb-6"
               style={{ fontFamily: 'var(--font-michroma)' }}
             >
-              Polityka <span className="text-blue-600">Jakości</span>
+              {t('title')} <span className="text-blue-600">{t('titleHighlight')}</span>
             </h1>
             <p className="text-lg lg:text-xl text-slate-600 leading-relaxed max-w-2xl">
-              CetusPro Sp. z o.o. - gwarancja najwyższych standardów jakości zgodnych z normą ISO 9001:2015
+              {t('subtitle')}
             </p>
           </div>
         </div>
@@ -52,10 +40,7 @@ export default function PolitikaJakosciPage() {
           {/* Introduction */}
           <div className="bg-gray-50 rounded-2xl border border-gray-100 p-8 md:p-10 mb-12">
             <p className="text-lg text-slate-700 leading-relaxed">
-              Głównym celem działalności firmy CetusPro Sp. z o.o. jest świadczenie usług
-              szkoleniowych spełniających wymagania i oczekiwania naszych Klientów. Celem
-              firmy jest również umacnianie pozycji lidera na rynku usług szkoleń oraz uzyskiwanie
-              wyników finansowych pozwalających na ciągły rozwój.
+              {t('introduction')}
             </p>
           </div>
 
@@ -64,7 +49,7 @@ export default function PolitikaJakosciPage() {
             <div className="flex items-center gap-3 mb-8">
               <Award className="w-7 h-7 text-blue-600 shrink-0" />
               <h2 className="heading-3 text-slate-900">
-                Gwarancja osiągnięcia celów
+                {t('guaranteesTitle')}
               </h2>
             </div>
             <div className="space-y-4">
@@ -83,10 +68,10 @@ export default function PolitikaJakosciPage() {
           {/* Directions */}
           <div className="mb-16">
             <h2 className="heading-3 text-slate-900 mb-6">
-              Kierunki rozwoju
+              {t('directionsTitle')}
             </h2>
             <p className="text-slate-600 mb-6 leading-relaxed">
-              Niezmiennymi elementami naszej działalności, wyznaczającymi kierunki rozwoju są:
+              {t('directionsDescription')}
             </p>
             <div className="grid gap-4">
               {directions.map((item, index) => (
@@ -106,12 +91,11 @@ export default function PolitikaJakosciPage() {
           {/* Statement */}
           <div className="bg-gradient-to-br from-blue-600 to-blue-500 rounded-2xl p-8 md:p-10 text-white mb-12">
             <p className="text-lg leading-relaxed text-white/95">
-              Zarząd zaświadcza, że Polityka Jakości jest zrozumiała, wdrożona i utrzymywana
-              we wszystkich obszarach organizacji.
+              {t('statement')}
             </p>
             <div className="mt-6 pt-6 border-t border-white/20 flex flex-col sm:flex-row justify-between gap-4">
-              <p className="text-white/80">Rzeszów, 02.01.2025 r.</p>
-              <p className="text-white font-semibold">Prezes Zarządu - Norbert Pisz</p>
+              <p className="text-white/80">{t('statementDate')}</p>
+              <p className="text-white font-semibold">{t('statementAuthor')}</p>
             </div>
           </div>
 
@@ -125,7 +109,7 @@ export default function PolitikaJakosciPage() {
               <StarGradientButton>
                 <span className="flex items-center gap-2">
                   <FileDown className="w-5 h-5" />
-                  Pobierz Politykę Jakości (PDF)
+                  {t('downloadPdf')}
                 </span>
               </StarGradientButton>
             </a>
