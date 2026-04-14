@@ -3,7 +3,7 @@
 import { useLocale } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
 import { useParams } from "next/navigation";
-import { locales } from "@/i18n";
+import { locales, defaultLocale } from "@/i18n";
 import { Globe } from "lucide-react";
 import { useState, useTransition, useRef, useEffect } from "react";
 
@@ -32,7 +32,9 @@ export default function LanguageSwitcher() {
   const switchLocale = (newLocale: string) => {
     setIsOpen(false);
     setFocusedIndex(-1);
-    const newPath = `/${newLocale}${pathnameWithoutLocale === "/" ? "" : pathnameWithoutLocale}`;
+    const newPath = newLocale === defaultLocale
+      ? pathnameWithoutLocale
+      : `/${newLocale}${pathnameWithoutLocale === "/" ? "" : pathnameWithoutLocale}`;
     startTransition(() => {
       router.push(newPath);
       router.refresh();
