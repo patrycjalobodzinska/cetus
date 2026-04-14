@@ -118,17 +118,19 @@ export default async function RootLayout({
   const messages = await getMessages();
   const t = await getTranslations();
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://cetuspro.pl";
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Organization",
-        "@id": "https://cetuspro.pl/#organization",
+        "@id": `${siteUrl}/#organization`,
         name: "CetusPro",
-        url: "https://cetuspro.pl",
+        url: siteUrl,
         logo: {
           "@type": "ImageObject",
-          url: "https://cetuspro.pl/logocetus.png",
+          url: `${siteUrl}/logocetus.png`,
         },
         contactPoint: {
           "@type": "ContactPoint",
@@ -140,11 +142,63 @@ export default async function RootLayout({
       },
       {
         "@type": "WebSite",
-        "@id": "https://cetuspro.pl/#website",
-        url: "https://cetuspro.pl",
+        "@id": `${siteUrl}/#website`,
+        url: siteUrl,
         name: "CetusPro",
-        publisher: { "@id": "https://cetuspro.pl/#organization" },
+        publisher: { "@id": `${siteUrl}/#organization` },
         inLanguage: ["pl", "en"],
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "@id": `${siteUrl}/#navigation`,
+        name: "Main Navigation",
+        hasPart: [
+          {
+            "@type": "SiteNavigationElement",
+            name: locale === "pl" ? "Strona główna" : "Home",
+            url: siteUrl,
+          },
+          {
+            "@type": "SiteNavigationElement",
+            name: locale === "pl" ? "O nas" : "About Us",
+            url: `${siteUrl}/o-nas`,
+          },
+          {
+            "@type": "SiteNavigationElement",
+            name: locale === "pl" ? "Oferta" : "Services",
+            url: `${siteUrl}/oferta`,
+          },
+          {
+            "@type": "SiteNavigationElement",
+            name: locale === "pl" ? "Kontakt" : "Contact",
+            url: `${siteUrl}/kontakt`,
+          },
+          {
+            "@type": "SiteNavigationElement",
+            name: locale === "pl" ? "Aplikacje webowe" : "Web Applications",
+            url: `${siteUrl}/oferta/aplikacje-webowe`,
+          },
+          {
+            "@type": "SiteNavigationElement",
+            name: locale === "pl" ? "Aplikacje mobilne" : "Mobile Applications",
+            url: `${siteUrl}/oferta/aplikacje-mobilne`,
+          },
+          {
+            "@type": "SiteNavigationElement",
+            name: "UX/UI Design",
+            url: `${siteUrl}/oferta/ui-ux-design`,
+          },
+          {
+            "@type": "SiteNavigationElement",
+            name: locale === "pl" ? "AI i automatyzacja" : "AI and Automation",
+            url: `${siteUrl}/oferta/aI-i-automatyzacja-procesow`,
+          },
+          {
+            "@type": "SiteNavigationElement",
+            name: "Cybersecurity",
+            url: `${siteUrl}/oferta/cybersecurity`,
+          },
+        ],
       },
     ],
   };

@@ -1,9 +1,6 @@
 import { MetadataRoute } from "next";
-import { client } from "@/sanity/lib/client";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://cetuspro.pl";
-
-const locales = ["pl", "en"];
 
 const staticPages = [
   { path: "", priority: 1.0, changeFrequency: "weekly" as const },
@@ -22,23 +19,43 @@ const staticPages = [
   { path: "/oferta/cetus-venture-capital", priority: 0.7, changeFrequency: "monthly" as const },
 ];
 
+function getLocalizedUrl(path: string, locale: string): string {
+  // Polish (default) has no prefix, English has /en
+  const prefix = locale === "pl" ? "" : `/${locale}`;
+  return `${baseUrl}${prefix}${path}`;
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const entries: MetadataRoute.Sitemap = [];
 
   for (const page of staticPages) {
-    for (const locale of locales) {
-      entries.push({
-        url: `${baseUrl}/${locale}${page.path}`,
-        lastModified: new Date(),
-        changeFrequency: page.changeFrequency,
-        priority: page.priority,
-        alternates: {
-          languages: Object.fromEntries(
-            locales.map((l) => [l, `${baseUrl}/${l}${page.path}`]),
-          ),
+    // Primary entry for Polish (canonical, no prefix)
+    entries.push({
+      url: getLocalizedUrl(page.path, "pl"),
+      lastModified: new Date(),
+      changeFrequency: page.changeFrequency,
+      priority: page.priority,
+      alternates: {
+        languages: {
+          pl: getLocalizedUrl(page.path, "pl"),
+          en: getLocalizedUrl(page.path, "en"),
         },
-      });
-    }
+      },
+    });
+
+    // English entry
+    entries.push({
+      url: getLocalizedUrl(page.path, "en"),
+      lastModified: new Date(),
+      changeFrequency: page.changeFrequency,
+      priority: page.priority * 0.9,
+      alternates: {
+        languages: {
+          pl: getLocalizedUrl(page.path, "pl"),
+          en: getLocalizedUrl(page.path, "en"),
+        },
+      },
+    });
   }
 
   return entries;
