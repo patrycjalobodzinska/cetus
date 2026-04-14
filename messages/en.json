@@ -8,7 +8,8 @@
     "stayInTouch": "Stay in touch",
     "followUs": "Follow us on social media",
     "workingHours": "Working hours",
-    "workingHoursValue": "Mon–Fri: 9:00 AM–5:00 PM"
+    "workingHoursValue": "Mon–Fri: 9:00 AM–5:00 PM",
+    "qualityPolicy": "Quality Policy"
   },
   "nav": {
     "home": "Home",
@@ -59,6 +60,8 @@
     }
   },
   "offer": {
+    "heroTitle": "Technology tailored to your needs",
+    "heroDescription": "We create dedicated solutions – from web and mobile applications, through system integrations, to development and maintenance.",
     "title": "We advise, build and",
     "titleHighlight": "support",
     "description": "Comprehensive IT solutions tailored to your business needs",
@@ -442,6 +445,28 @@
     "mockupLabel": "Mockup: {title}",
     "imageAltFallback": "Case Study",
     "moduleImageAltFallback": "Module"
+  },
+  "contact": {
+    "title": "Get in",
+    "titleHighlight": "touch",
+    "subtitle": "Have questions? Want to discuss your project? Write to us or call - we'll respond within 24 hours.",
+    "contactDetails": "Contact details",
+    "contactDetailsDescription": "Choose the most convenient form of contact. We are available Monday to Friday from 9:00 AM to 5:00 PM.",
+    "email": "Email",
+    "emailResponse": "We respond within 24h",
+    "phone": "Phone",
+    "phoneHours": "Mon-Fri 9:00 AM - 5:00 PM",
+    "address": "Address",
+    "country": "Poland",
+    "freeConsultation": "Free consultation",
+    "freeConsultationDescription": "Schedule a free 30-minute consultation during which we'll discuss your needs and propose the best solutions.",
+    "bookConsultation": "Book a consultation",
+    "faq": {
+      "title": "Frequently asked questions",
+      "subtitle": "Answers to the most common questions about our offer and cooperation process",
+      "loading": "Loading FAQ...",
+      "noQuestions": "No questions to display."
+    }
   },
   "qualityPolicy": {
     "title": "Quality",

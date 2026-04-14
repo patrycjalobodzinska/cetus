@@ -163,7 +163,7 @@ export default function NavbarCurosora() {
             <div className="flex items-center gap-4">
               <LanguageSwitcher />
               <div className="relative overflow-visible">
-                <Link href="mailto:kontakt@cetuspro.pl">
+                <Link href={`/${locale}/kontakt`}>
                   <StarGradientButton>
                     {t("freeConsultation")}
                   </StarGradientButton>
@@ -177,12 +177,15 @@ export default function NavbarCurosora() {
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div
-          className=" shadow-2xl h-screen inset-0 top-0 fixed  flex flex-col gap-6 lg:hidden mt-24 border backdrop-blur-md animate-in fade-in slide-in-from-top-4 duration-200"
+          className="shadow-2xl inset-0 top-0 fixed flex flex-col lg:hidden mt-24 border backdrop-blur-md animate-in fade-in slide-in-from-top-4 duration-200 z-40"
           id="mobile-menu"
           role="dialog"
           aria-modal="true"
-          aria-labelledby="mobile-menu-title">
-          <nav className=" shadow-2xl h-[400px] backdrop-blur-md bg-white/60 inset-0 top-0 fixed p-6 flex flex-col gap-6 mt-2 lg:hidden border mx-4 animate-in fade-in slide-in-from-top-4 duration-200">
+          aria-labelledby="mobile-menu-title"
+          onClick={() => setIsMobileMenuOpen(false)}>
+          <nav
+            className="shadow-2xl max-h-[calc(100vh-6rem)] overflow-y-auto backdrop-blur-md bg-white/90 inset-x-0 top-0 fixed p-6 flex flex-col gap-6 mt-2 lg:hidden border mx-4 animate-in fade-in slide-in-from-top-4 duration-200"
+            onClick={(e) => e.stopPropagation()}>
             <h2 id="mobile-menu-title" className="sr-only">
               Menu nawigacyjne
             </h2>

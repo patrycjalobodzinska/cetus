@@ -272,7 +272,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link href={`/${locale}/polityka-jakosci`} className="text-slate-300 hover:text-white transition-colors">
-                  Polityka Jakości
+                  {t('qualityPolicy')}
                 </Link>
               </li>
               {footerData.documentLinks && footerData.documentLinks.map((link, index) => (

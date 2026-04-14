@@ -8,7 +8,8 @@
     "stayInTouch": "Bądź na bieżąco",
     "followUs": "Obserwuj nas w mediach społecznościowych",
     "workingHours": "Godziny pracy",
-    "workingHoursValue": "Pn–Pt: 9:00–17:00"
+    "workingHoursValue": "Pn–Pt: 9:00–17:00",
+    "qualityPolicy": "Polityka Jakości"
   },
   "nav": {
     "home": "Strona główna",
@@ -56,6 +57,8 @@
     }
   },
   "offer": {
+    "heroTitle": "Technologia szyta na miarę",
+    "heroDescription": "Tworzymy dedykowane rozwiązania – od aplikacji webowych i mobilnych, przez integracje systemów, po rozwój i utrzymanie.",
     "title": "Doradzamy, budujemy i",
     "titleHighlight": "wspieramy",
     "description": "Kompleksowe rozwiązania IT dostosowane do potrzeb Twojego biznesu",
@@ -439,6 +442,28 @@
     "mockupLabel": "Mockup: {title}",
     "imageAltFallback": "Case Study",
     "moduleImageAltFallback": "Moduł"
+  },
+  "contact": {
+    "title": "Skontaktuj się",
+    "titleHighlight": "z nami",
+    "subtitle": "Masz pytania? Chcesz omówić swój projekt? Napisz do nas lub zadzwoń - odpowiemy w ciągu 24 godzin.",
+    "contactDetails": "Dane kontaktowe",
+    "contactDetailsDescription": "Wybierz najwygodniejszą dla Ciebie formę kontaktu. Jesteśmy dostępni od poniedziałku do piątku w godzinach 9:00 - 17:00.",
+    "email": "Email",
+    "emailResponse": "Odpowiadamy w ciągu 24h",
+    "phone": "Telefon",
+    "phoneHours": "Pn-Pt 9:00 - 17:00",
+    "address": "Adres",
+    "country": "Polska",
+    "freeConsultation": "Bezpłatna konsultacja",
+    "freeConsultationDescription": "Umów się na bezpłatną 30-minutową konsultację, podczas której omówimy Twoje potrzeby i zaproponujemy najlepsze rozwiązania.",
+    "bookConsultation": "Umów konsultację",
+    "faq": {
+      "title": "Najczęściej zadawane pytania",
+      "subtitle": "Odpowiedzi na najczęstsze pytania dotyczące naszej oferty i procesu współpracy",
+      "loading": "Ładowanie FAQ...",
+      "noQuestions": "Brak pytań do wyświetlenia."
+    }
   },
   "qualityPolicy": {
     "title": "Polityka",

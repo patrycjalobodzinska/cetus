@@ -131,12 +131,11 @@ export default function OfferPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="heading-hero text-slate-900 mb-6">
-              Technologia szyta na miarę
+              {t("heroTitle")}
             </h2>
 
             <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              worzymy dedykowane rozwiązania – od aplikacji webowych i
-              mobilnych, przez integracje systemów, po rozwój i utrzymanie.
+              {t("heroDescription")}
             </p>
           </div>
           <StatsPanel />
