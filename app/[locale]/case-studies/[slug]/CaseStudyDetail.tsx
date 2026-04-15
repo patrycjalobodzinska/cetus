@@ -325,63 +325,137 @@ function CsHeroSection({
   );
 }
 
+function CsStatsSpark({ path, dur = '9s', begin = '0s', filterId }: { path: string; dur?: string; begin?: string; filterId: string }) {
+  return (
+    <circle r="2" fill="#3b82f6" filter={`url(#${filterId})`}>
+      <animateMotion dur={dur} begin={begin} repeatCount="indefinite" path={path} />
+    </circle>
+  );
+}
+
 function CsStatsSection({
   variant = "cards",
   items = [],
 }: CsStatsSectionProps) {
   if (!items.length) return null;
 
-  if (variant === "horizontal") {
-    return (
-      <section className="py-16  border-y border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap justify-around gap-8">
-            {items.map((stat) => (
-              <div key={stat._key} className="text-center">
-                <div className="heading-hero font-bold text-blue-600 mb-1">
-                  {stat.value}
-                </div>
-                <div className="text-slate-500 text-sm font-medium">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    );
-  }
-
   return (
-    <section className="py-24 ">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {items.map((stat) => {
-            const Icon = stat.icon
-              ? iconMap[stat.icon] || TrendingUp
-              : TrendingUp;
-            return (
-              <div
-                key={stat._key}
-                className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-blue-600/30 p-10">
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mb-6">
-                    <Icon className="w-8 h-8 text-white" />
+    <section className="py-12">
+      <div className="relative w-full mx-auto lg:mb-10 md:px-4 overflow-visible">
+        <div className="relative max-w-6xl mx-auto flex justify-center items-center py-12 overflow-visible">
+
+          {/* Stats box */}
+          <div
+            className="relative w-full mx-6 md:mx-16 max-w-5xl min-h-40 py-6 md:h-28 bg-gray-50 border border-gray-100 text-gray-900 flex flex-col md:flex-row items-center justify-around sm:px-12 px-6 md:px-16 drop-shadow-xl z-10 stats-polygon"
+            style={{ filter: 'drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1))' }}>
+            <div className={`relative w-full grid grid-cols-2 md:py-4 gap-4 md:gap-8 z-10 ${items.length <= 3 ? 'md:grid-cols-3' : 'md:grid-cols-4'}`}>
+              {items.map((stat, index) => (
+                <div key={stat._key || index} className="flex flex-col justify-between text-center min-w-[120px]">
+                  <div className="text-xs md:text-sm text-gray-500 mb-1 font-medium tracking-wide uppercase">
+                    {stat.label}
                   </div>
-                  {stat.value && (
-                    <div className="heading-hero font-bold text-blue-600 mb-4">
-                      {stat.value}
-                    </div>
-                  )}
-                  {stat.label && (
-                    <div className="text-slate-600 font-medium text-lg leading-relaxed">
-                      {stat.label}
-                    </div>
-                  )}
+                  <div className="text-2xl md:text-5xl font-medium text-gray-900 tracking-wider">
+                    {stat.value}
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop — left line */}
+          <div
+            className="absolute hidden md:block left-0 bottom-0 w-[400px] h-[80px] pointer-events-none z-0"
+            style={{ left: '0px', top: 'calc(5px)' }}>
+            <svg className="w-full h-full" viewBox="0 0 300 70" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="neonGradientCsS" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#3b82f6" />
+                  <stop offset="100%" stopColor="#93c5fd" />
+                </linearGradient>
+                <filter id="softNeonCsS" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="1.5" result="blur" />
+                  <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+                </filter>
+                <filter id="sparkGlowCsL" x="-300%" y="-300%" width="700%" height="700%">
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="b1" />
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="b2" />
+                  <feMerge><feMergeNode in="b1" /><feMergeNode in="b2" /><feMergeNode in="SourceGraphic" /></feMerge>
+                </filter>
+              </defs>
+              <path d="M10 65 L35 65 L60 20 L300 20 L400 20" fill="none" stroke="url(#neonGradientCsS)" strokeWidth="2" filter="url(#softNeonCsS)" strokeLinecap="round" />
+              <rect x="7" y="62" width="6" height="6" fill="#3b82f6" transform="rotate(45 10 65)" filter="url(#softNeonCsS)" />
+              <CsStatsSpark path="M300 20 L60 20 L35 65 L10 65" dur="9s" begin="0s" filterId="sparkGlowCsL" />
+            </svg>
+          </div>
+
+          {/* Mobile — left line */}
+          <div
+            className="absolute md:hidden left-0 bottom-0 w-[80px] h-[200px] pointer-events-none z-0"
+            style={{ left: '0px', top: 'calc(5px)' }}>
+            <svg className="w-full h-full" viewBox="0 0 70 200" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="neonGradientCsSMobL" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#3b82f6" /><stop offset="100%" stopColor="#93c5fd" />
+                </linearGradient>
+                <filter id="softNeonCsSMobL" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="1.5" result="blur" />
+                  <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+                </filter>
+                <filter id="sparkGlowCsSMobL" x="-300%" y="-300%" width="700%" height="700%">
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="b1" />
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="b2" />
+                  <feMerge><feMergeNode in="b1" /><feMergeNode in="b2" /><feMergeNode in="SourceGraphic" /></feMerge>
+                </filter>
+              </defs>
+              <path d="M25 35 L10 55 L10 150" fill="none" stroke="url(#neonGradientCsSMobL)" strokeWidth="2" filter="url(#softNeonCsSMobL)" strokeLinecap="round" />
+              <rect x="25" y="30" width="6" height="6" fill="#3b82f6" filter="url(#softNeonCsSMobL)" />
+              <CsStatsSpark path="M10 150 L10 55 L25 35" dur="9s" begin="0s" filterId="sparkGlowCsSMobL" />
+            </svg>
+          </div>
+
+          {/* Mobile — right line */}
+          <div
+            className="absolute md:hidden rotate-180 right-10 bottom-10 w-[80px] h-[200px] pointer-events-none z-0"
+            style={{ right: '0', bottom: 'calc(5px)' }}>
+            <svg className="w-full h-full" viewBox="0 0 70 200" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="neonGradientCsSMobR" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#3b82f6" /><stop offset="100%" stopColor="#93c5fd" />
+                </linearGradient>
+                <filter id="softNeonCsSMobR" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="1.5" result="blur" />
+                  <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+                </filter>
+                <filter id="sparkGlowCsSMobR" x="-300%" y="-300%" width="700%" height="700%">
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="b1" />
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="b2" />
+                  <feMerge><feMergeNode in="b1" /><feMergeNode in="b2" /><feMergeNode in="SourceGraphic" /></feMerge>
+                </filter>
+              </defs>
+              <path d="M25 35 L10 55 L10 150" fill="none" stroke="url(#neonGradientCsSMobR)" strokeWidth="2" filter="url(#softNeonCsSMobR)" strokeLinecap="round" />
+              <rect x="25" y="30" width="6" height="6" fill="#3b82f6" filter="url(#softNeonCsSMobR)" />
+              <CsStatsSpark path="M25 35 L10 55 L10 150" dur="9s" begin="4.5s" filterId="sparkGlowCsSMobR" />
+            </svg>
+          </div>
+
+          {/* Desktop — right line */}
+          <div
+            className="absolute hidden md:block w-[400px] h-[80px] pointer-events-none z-0"
+            style={{ right: '0px', bottom: 'calc(20px)' }}>
+            <svg className="w-full h-full" viewBox="0 0 300 70" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <filter id="sparkGlowCsR" x="-300%" y="-300%" width="700%" height="700%">
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="b1" />
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="b2" />
+                  <feMerge><feMergeNode in="b1" /><feMergeNode in="b2" /><feMergeNode in="SourceGraphic" /></feMerge>
+                </filter>
+              </defs>
+              <path d="M10 65 L240 65 L265 20 L290 20 L294 20" fill="none" stroke="url(#neonGradientCsS)" strokeWidth="2" filter="url(#softNeonCsS)" strokeLinecap="round" />
+              <rect x="287" y="17" width="6" height="6" fill="#93c5fd" transform="rotate(45 290 20)" filter="url(#softNeonCsS)" />
+              <CsStatsSpark path="M10 65 L240 65 L265 20 L290 20 L294 20" dur="9s" begin="4.5s" filterId="sparkGlowCsR" />
+            </svg>
+          </div>
+
         </div>
       </div>
     </section>
@@ -398,7 +472,7 @@ function CsChallengeSection({
 
   if (variant === "two-column") {
     return (
-      <section className="py-24 bg-gray-50">
+      <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2
             className="heading-1 text-slate-900 mb-12"
@@ -439,7 +513,7 @@ function CsChallengeSection({
   }
 
   return (
-    <section className="py-24 bg-gray-50">
+    <section className="py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2
           className="heading-1 text-slate-900 mb-8"
@@ -483,7 +557,7 @@ function CsModulesSection({
 
   if (variant === "cards") {
     return (
-      <section className="py-24 bg-white">
+      <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2
@@ -519,7 +593,7 @@ function CsModulesSection({
   }
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
           <h2
@@ -604,7 +678,7 @@ function CsResultsStackedSection({
   });
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="heading-1 text-slate-900 mb-4" style={{ fontFamily: "var(--font-michroma)" }}>
@@ -654,7 +728,7 @@ function CsResultsSection({
 
   if (variant === "checklist") {
     return (
-      <section className="py-24 bg-white">
+      <section className="py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2
@@ -682,7 +756,7 @@ function CsResultsSection({
   }
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2
@@ -729,6 +803,52 @@ function CsResultsSection({
   );
 }
 
+function CsTechPill({ name, logo }: { name: string; logo?: any }) {
+  return (
+    <div className="flex items-center gap-3 px-5 py-2.5 bg-[#f5f0e8] rounded-full shrink-0 border border-[#ebe6dd] shadow-sm">
+      {logo ? (
+        <div className="relative w-6 h-6 shrink-0">
+          <Image
+            src={urlFor(logo).width(48).height(48).url()}
+            alt={name}
+            width={24}
+            height={24}
+            className="object-contain"
+          />
+        </div>
+      ) : null}
+      <span className="text-slate-800 font-medium text-sm whitespace-nowrap">
+        {name}
+      </span>
+    </div>
+  );
+}
+
+function CsTechMarqueeRow({
+  items,
+  direction,
+}: {
+  items: Array<{ name?: string; logo?: any }>;
+  direction: "left" | "right";
+}) {
+  if (items.length === 0) return null;
+  const duplicated = [...items, ...items, ...items, ...items];
+  const animationClass =
+    direction === "left" ? "animate-marquee-left" : "animate-marquee-right";
+
+  return (
+    <div className="overflow-hidden py-2 w-full">
+      <div
+        className={`flex gap-4 ${animationClass}`}
+        style={{ width: "max-content" }}>
+        {duplicated.map((item, i) => (
+          <CsTechPill key={`${item.name}-${i}`} name={item.name || ""} logo={item.logo} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function CsTechnologiesSection({
   variant = "circuit",
   sectionTitle,
@@ -739,209 +859,24 @@ function CsTechnologiesSection({
 
   const title = sectionTitle || t("technologiesTitle");
 
-  if (variant === "carousel") {
-    const doubled = [...items, ...items];
-    return (
-      <section className="py-24 bg-white overflow-hidden">
-        <style>{`
-          @keyframes cs-marquee {
-            0%   { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-        `}</style>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-          <h2
-            className="heading-1 text-slate-900 text-center"
-            style={{ fontFamily: "var(--font-michroma)" }}
-          >
-            {title}
-          </h2>
-        </div>
-        <div className="relative w-full overflow-hidden">
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 z-10 bg-gradient-to-r from-white to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 z-10 bg-gradient-to-l from-white to-transparent" />
-          <div
-            style={{
-              display: "flex",
-              width: "max-content",
-              animation: "cs-marquee 28s linear infinite",
-            }}
-          >
-            {doubled.map((tech, index) => (
-              <div
-                key={index}
-                className="mx-4 flex items-center gap-3 px-6 py-3 bg-white border border-gray-200 rounded-2xl shadow-sm hover:border-blue-300 hover:shadow-md transition-all duration-200 whitespace-nowrap"
-              >
-                {tech.logo ? (
-                  <Image
-                    src={urlFor(tech.logo).width(48).height(48).url()}
-                    alt={tech.name || ""}
-                    width={24}
-                    height={24}
-                    className="object-contain shrink-0"
-                  />
-                ) : (
-                  <div className="w-2 h-2 rounded-full bg-blue-600 shrink-0" />
-                )}
-                <span className="text-slate-700 font-semibold text-base">{tech.name}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  if (variant === "badges") {
-    return (
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2
-              className="heading-1 text-slate-900 mb-4"
-              style={{ fontFamily: "var(--font-michroma)" }}>
-              {title}
-            </h2>
-          </div>
-          <div className="flex flex-wrap justify-center gap-3">
-            {items.map((tech, index) => (
-              <span
-                key={tech._key || index}
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-50 border border-blue-200 text-blue-700 font-semibold rounded-full text-sm hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all duration-200">
-                {tech.logo && (
-                  <Image
-                    src={urlFor(tech.logo).width(40).height(40).url()}
-                    alt={tech.name || ""}
-                    width={20}
-                    height={20}
-                    className="object-contain shrink-0"
-                  />
-                )}
-                {tech.name}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-    );
-  }
+  const third = Math.ceil(items.length / 3);
+  const row1 = items.slice(0, third);
+  const row2 = items.slice(third, third * 2);
+  const row3 = items.slice(third * 2);
 
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2
-            className="heading-1 text-slate-900 mb-4"
-            style={{ fontFamily: "var(--font-michroma)" }}>
-            {title}
-          </h2>
-        </div>
-        <div className="relative w-full mx-auto lg:mb-10 px-4 overflow-visible">
-          <div className="relative max-w-6xl mx-auto flex justify-center items-center py-12 overflow-visible">
-            <div
-              className="relative w-full mx-6 md:mx-16 max-w-5xl min-h-20 py-6 md:h-28 bg-gray-50 border border-gray-100 text-gray-900 flex flex-col md:flex-row items-center justify-around sm:px-12 px-6 md:px-16 drop-shadow-xl z-10 stats-polygon"
-              style={{
-                filter:
-                  "drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1))",
-              }}>
-              <div className="relative w-full md:grid-cols-4 grid grid-cols-2 md:py-4 gap-4 md:gap-8 z-10">
-                {items.map((tech, index) => (
-                  <div
-                    key={tech._key || index}
-                    className="flex items-center justify-center gap-2">
-                    {tech.logo && (
-                      <Image
-                        src={urlFor(tech.logo).width(48).height(48).url()}
-                        alt={tech.name || ""}
-                        width={24}
-                        height={24}
-                        className="object-contain shrink-0"
-                      />
-                    )}
-                    <span className="text-slate-700 text-center font-medium text-xl transition-all duration-300">
-                      {tech.name}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div
-              className="absolute hidden md:block left-0 bottom-0 w-[400px] h-[80px] pointer-events-none z-0"
-              style={{ left: "0px", top: "calc(5px)" }}>
-              <svg
-                className="w-full h-full"
-                viewBox="0 0 300 70"
-                preserveAspectRatio="none">
-                <defs>
-                  <linearGradient
-                    id="neonGradientCs"
-                    x1="0%"
-                    y1="0%"
-                    x2="100%"
-                    y2="0%">
-                    <stop offset="0%" stopColor="#3b82f6" />
-                    <stop offset="100%" stopColor="#93c5fd" />
-                  </linearGradient>
-                  <filter
-                    id="softNeonCs"
-                    x="-20%"
-                    y="-20%"
-                    width="140%"
-                    height="140%">
-                    <feGaussianBlur stdDeviation="1.5" result="blur" />
-                    <feMerge>
-                      <feMergeNode in="blur" />
-                      <feMergeNode in="SourceGraphic" />
-                    </feMerge>
-                  </filter>
-                </defs>
-                <path
-                  d="M10 65 L35 65 L60 20 L300 20 L400 20"
-                  fill="none"
-                  stroke="url(#neonGradientCs)"
-                  strokeWidth="2"
-                  filter="url(#softNeonCs)"
-                  strokeLinecap="round"
-                />
-                <rect
-                  x="7"
-                  y="62"
-                  width="6"
-                  height="6"
-                  fill="#3b82f6"
-                  transform="rotate(45 10 65)"
-                  filter="url(#softNeonCs)"
-                />
-              </svg>
-            </div>
-            <div
-              className="absolute hidden md:block w-[400px] h-[80px] pointer-events-none z-0"
-              style={{ right: "0px", bottom: "calc(20px)" }}>
-              <svg
-                className="w-full h-full"
-                viewBox="0 0 300 70"
-                preserveAspectRatio="none">
-                <path
-                  d="M10 65 L240 65 L265 20 L290 20 L294 20"
-                  fill="none"
-                  stroke="url(#neonGradientCs)"
-                  strokeWidth="2"
-                  filter="url(#softNeonCs)"
-                  strokeLinecap="round"
-                />
-                <rect
-                  x="287"
-                  y="17"
-                  width="6"
-                  height="6"
-                  fill="#93c5fd"
-                  transform="rotate(45 290 20)"
-                  filter="url(#softNeonCs)"
-                />
-              </svg>
-            </div>
-          </div>
-        </div>
+    <section className="py-24 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+        <h2
+          className="heading-1 text-slate-900 text-center"
+          style={{ fontFamily: "var(--font-michroma)" }}>
+          {title}
+        </h2>
+      </div>
+      <div className="w-full overflow-x-hidden py-8">
+        <CsTechMarqueeRow items={row1} direction="left" />
+        <CsTechMarqueeRow items={row2} direction="right" />
+        <CsTechMarqueeRow items={row3} direction="left" />
       </div>
     </section>
   );
@@ -956,7 +891,7 @@ function CsQuoteSection({
 
   if (variant === "blockquote") {
     return (
-      <section className="py-24 bg-gray-50">
+      <section className="py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <blockquote className="border-l-4 border-blue-600 pl-8">
             <p className="text-2xl text-slate-700 leading-relaxed italic mb-6">
@@ -972,7 +907,7 @@ function CsQuoteSection({
   }
 
   return (
-    <section className="py-24 bg-gray-50">
+    <section className="py-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <p className="text-3xl md:text-4xl text-slate-700 leading-relaxed italic font-light mb-8">
           "{quote}"
@@ -998,7 +933,7 @@ function CsScopeSection({
 
   if (variant === "grid") {
     return (
-      <section className="py-24 bg-white">
+      <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2
@@ -1028,7 +963,7 @@ function CsScopeSection({
   }
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2
           className="heading-1 text-slate-900 mb-10"
@@ -1088,7 +1023,7 @@ function CsCtaSection({
   }
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {heading && (
           <h2
