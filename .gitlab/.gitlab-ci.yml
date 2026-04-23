@@ -2,6 +2,7 @@ stages:
   - build
   - containerize
   - deploy:stag
+  - deploy:prod
 
 default:
   tags:
@@ -29,9 +30,16 @@ workflow:
 .x-run-only-on-default-branch: &run-on-push-to-default-branch-template
   if: "$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH"
 
+.x-run-only-on-tags: &run-on-tags-template
+  if: "$CI_COMMIT_TAG"
+
 .x-deploy-stag-script: &deploy-staging-script-template
   - ssh ${SERVER_USER}@${SERVER_IP} "echo 'CI_COMMIT_SHA=${CI_COMMIT_SHA}' | tee ${PROJECT_PATH}/.env"
   - ssh ${SERVER_USER}@${SERVER_IP} "docker compose -f ${PROJECT_PATH}/compose.yaml up --force-recreate -d"
+
+.x-deploy-production-script: &deploy-production-script-template
+  - ssh ${PROD_SERVER_USER}@${PROD_SERVER_IP} "echo 'CI_COMMIT_TAG=${CI_COMMIT_TAG}' | tee ${PROJECT_PATH}/.env"
+  - ssh ${PROD_SERVER_USER}@${PROD_SERVER_IP} "docker compose -f ${PROJECT_PATH}/compose.yaml up --force-recreate -d"
 
 .x-default-build: &default-build-template
   stage: build
@@ -88,6 +96,14 @@ build-main:
     - <<: *run-on-push-to-default-branch-template
   dependencies: []
 
+build-tag:
+  <<: *default-build-template
+  variables:
+    ARTIFACT_PATH: ${CI_PROJECT_DIR}/.next
+  rules:
+    - <<: *run-on-tags-template
+  dependencies: []
+
 containerize-main:
   <<: *kaniko-build-template
   variables:
@@ -99,6 +115,18 @@ containerize-main:
     - build-main
   dependencies:
     - build-main
+
+containerize-tag:
+  <<: *kaniko-build-template
+  variables:
+    COMPONENT: next
+    IMAGE_TAG: ${CI_COMMIT_TAG}
+  rules:
+    - <<: *run-on-tags-template
+  needs:
+    - build-tag
+  dependencies:
+    - build-tag
 
 deploy-main:
   stage: deploy:stag
@@ -113,4 +141,23 @@ deploy-main:
     - <<: *run-on-push-to-default-branch-template
   needs:
     - containerize-main
+  dependencies: []
+
+deploy-tag:
+  stage: deploy:prod
+  <<: *ssh-setup-template
+  variables:
+    PROJECT_PATH: /home/cetuspro/cetusprocomv2
+    COMPOSE_NAME: app
+    PRIVATE_KEY: ${PROD_SSH_PRIVATE_KEY}
+  script:
+    - *deploy-production-script-template
+  allow_failure: false
+  resource_group: production
+  environment:
+    name: production
+  rules:
+    - <<: *run-on-tags-template
+  needs:
+    - containerize-tag
   dependencies: []
