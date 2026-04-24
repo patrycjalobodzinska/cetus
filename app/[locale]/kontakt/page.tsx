@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, MapPin, Send } from 'lucide-react';
 import { client } from '@/sanity/lib/client';
 import PolygonAccordion from '@/app/components/PolygonAccordion';
 import { useLocale, useTranslations } from 'next-intl';
@@ -70,7 +70,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="py-24 ite">
+      <section className="md:py-24 py-10 ite">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
@@ -82,7 +82,7 @@ export default function ContactPage() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6 mb-12">
+            <div className="grid md:grid-cols-2 gap-6 mb-12">
               <div className="flex flex-col items-center text-center p-6 bg-gray-50 rounded-2xl border border-gray-100 hover:border-blue-600/30 transition-all duration-300">
                 <div className="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center mb-4 shrink-0">
                   <Mail className="w-8 h-8 text-white" aria-hidden="true" />
@@ -95,20 +95,6 @@ export default function ContactPage() {
                   kontakt@cetuspro.pl
                 </a>
                 <p className="text-sm text-slate-500">{t('emailResponse')}</p>
-              </div>
-
-              <div className="flex flex-col items-center text-center p-6 bg-gray-50 rounded-2xl border border-gray-100 hover:border-blue-600/30 transition-all duration-300">
-                <div className="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center mb-4 shrink-0">
-                  <Phone className="w-8 h-8 text-white" aria-hidden="true" />
-                </div>
-                <h3 className="text-lg font-bold text-slate-900 mb-2">{t('phone')}</h3>
-                <a
-                  href="tel:+48123456789"
-                  className="text-blue-600 hover:opacity-70 transition-opacity font-semibold mb-2"
-                >
-                  +48 123 456 789
-                </a>
-                <p className="text-sm text-slate-500">{t('phoneHours')}</p>
               </div>
 
               <div className="flex flex-col items-center text-center p-6 bg-gray-50 rounded-2xl border border-gray-100 hover:border-blue-600/30 transition-all duration-300">
@@ -142,7 +128,7 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ Section with Polygon Shape and Accordion */}
-      <section className="py-24 ">
+      <section className="md:py-24 py-10 ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2

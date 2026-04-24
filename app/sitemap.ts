@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://cetuspro.pl";
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://cetuspro.com";
 
 const staticPages = [
   { path: "", priority: 1.0, changeFrequency: "weekly" as const },

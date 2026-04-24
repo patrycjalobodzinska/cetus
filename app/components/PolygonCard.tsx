@@ -44,7 +44,7 @@ export default function PolygonCard({ imageUrl, title, description, href, classN
               <h4 className="text-gray-900 text-md font-semibold mb-1 truncate w-full group-hover:text-blue-600 transition-colors duration-300">
                 {title}
               </h4>
-              <p className="text-gray-400 text-sm overflow-hidden text-ellipsis line-clamp-2">
+              <p className="text-gray-600 text-sm overflow-hidden text-ellipsis line-clamp-2">
                 {description}
               </p>
             </div>

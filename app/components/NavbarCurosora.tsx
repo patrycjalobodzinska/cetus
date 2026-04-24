@@ -16,6 +16,11 @@ export default function NavbarCurosora() {
   const locale = useLocale();
   const pathname = usePathname();
 
+  const isContactPage = pathname?.startsWith(`/${locale}/kontakt`);
+  const consultationHref = isContactPage
+    ? "mailto:kontakt@cetuspro.pl?subject=Consultation"
+    : `/${locale}/kontakt`;
+
   const navLinkClass = (isActive: boolean) =>
     cn(
       "transition-colors",
@@ -163,11 +168,19 @@ export default function NavbarCurosora() {
             <div className="flex items-center gap-4">
               <LanguageSwitcher />
               <div className="relative overflow-visible">
-                <Link href={`/${locale}/kontakt`}>
-                  <StarGradientButton>
-                    {t("freeConsultation")}
-                  </StarGradientButton>
-                </Link>
+                {isContactPage ? (
+                  <a href={consultationHref}>
+                    <StarGradientButton>
+                      {t("freeConsultation")}
+                    </StarGradientButton>
+                  </a>
+                ) : (
+                  <Link href={consultationHref}>
+                    <StarGradientButton>
+                      {t("freeConsultation")}
+                    </StarGradientButton>
+                  </Link>
+                )}
               </div>
             </div>
           </div>
@@ -238,9 +251,15 @@ export default function NavbarCurosora() {
             </NavigationLink>
 
             <div className="flex items-center justify-center">
-              <Link href="/kontakt">
-                <StarGradientButton>{t("freeConsultation")}</StarGradientButton>
-              </Link>
+              {isContactPage ? (
+                <a href={consultationHref} onClick={() => setIsMobileMenuOpen(false)}>
+                  <StarGradientButton>{t("freeConsultation")}</StarGradientButton>
+                </a>
+              ) : (
+                <Link href={consultationHref} onClick={() => setIsMobileMenuOpen(false)}>
+                  <StarGradientButton>{t("freeConsultation")}</StarGradientButton>
+                </Link>
+              )}
             </div>
           </nav>
         </div>

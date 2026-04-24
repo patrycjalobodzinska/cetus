@@ -997,16 +997,20 @@ export default function DomeGallery({
                       borderRadius: `var(--tile-radius, ${imageBorderRadius})`,
                       backfaceVisibility: "hidden",
                     }}>
-                    <img
-                      src={it.src}
-                      draggable={false}
-                      alt={it.alt}
-                      className="w-full h-full object-cover pointer-events-none"
-                      style={{
-                        backfaceVisibility: "hidden",
-                        filter: `var(--image-filter, ${grayscale ? "grayscale(1)" : "none"})`,
-                      }}
-                    />
+                    {it.src && (
+                      <img
+                        src={it.src}
+                        draggable={false}
+                        alt={it.alt}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-cover pointer-events-none"
+                        style={{
+                          backfaceVisibility: "hidden",
+                          filter: `var(--image-filter, ${grayscale ? "grayscale(1)" : "none"})`,
+                        }}
+                      />
+                    )}
                   </div>
                 </div>
               ))}

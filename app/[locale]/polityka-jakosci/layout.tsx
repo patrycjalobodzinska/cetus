@@ -10,6 +10,11 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "/polityka-jakosci",
+    languages: {
+      pl: "/polityka-jakosci",
+      en: "/en/polityka-jakosci",
+      "x-default": "/polityka-jakosci",
+    },
   },
 };
 

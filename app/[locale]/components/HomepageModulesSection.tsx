@@ -51,7 +51,7 @@ export default function HomepageModulesSection() {
 
   if (loading) {
     return (
-      <section className="py-24  relative overflow-hidden">
+      <section className="md:py-24 py-6 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <p className="text-slate-600"></p>
@@ -66,7 +66,7 @@ export default function HomepageModulesSection() {
   }
 
   return (
-    <section className="py-24  relative overflow-hidden">
+    <section className="md:py-24 py-6 relative overflow-hidden">
       <div className="max-w-7xl mx-auto border-y md:border-y-0 border-y-gray-200 px-4 sm:px-6 lg:px-8">
         <div className={ clsx(modules.length > 2? "divide-y ":"divide-y md:divide-y-0","grid  md:divide-x divide-gray-300 md:grid-cols-2 divide-y")}>
           {modules.map((module, index) => (

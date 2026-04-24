@@ -56,7 +56,12 @@ export async function generateMetadata({
       images: ["/og-image.png"],
     },
     alternates: {
-      canonical: "/",
+      canonical: locale === "pl" ? "/" : `/${locale}`,
+      languages: {
+        pl: "/",
+        en: "/en",
+        "x-default": "/",
+      },
     },
   };
 }

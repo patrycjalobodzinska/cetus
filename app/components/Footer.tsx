@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Phone, Mail, MapPin, Linkedin, Dribbble, Twitter, Facebook, Instagram, ArrowRight } from 'lucide-react';
+import { Mail, MapPin, Linkedin, Dribbble, Twitter, Facebook, Instagram, ArrowRight } from 'lucide-react';
 import { client } from '@/sanity/lib/client';
 import { useLocale, useTranslations } from 'next-intl';
 import StarGradientButton from './ui/gradientBackground';
@@ -141,23 +141,34 @@ export default function Footer() {
       }));
 
   return (
-    <footer className="bg-slate-900 text-white">
+    <footer className="relative bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden">
+      {/* Decorative glow */}
+      <div aria-hidden="true" className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-blue-600/20 blur-[120px]" />
+      <div aria-hidden="true" className="pointer-events-none absolute bottom-0 right-0 w-[500px] h-[300px] rounded-full bg-blue-500/10 blur-[100px]" />
+
       {/* Tagline Banner */}
-      <div className="border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <p className="text-slate-300 text-center text-lg max-w-2xl mx-auto leading-relaxed">
+      <div className="relative border-b border-slate-800/60">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+          <p
+            style={{ fontFamily: "var(--font-michroma)" }}
+            className="text-white text-center text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed font-medium"
+          >
             {t('tagline')}
           </p>
+          <div aria-hidden="true" className="mt-6 mx-auto w-20 h-1 rounded-full bg-gradient-to-r from-blue-500 to-blue-300" />
         </div>
       </div>
 
       {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Kontakt Column */}
           <div className="lg:col-span-2 space-y-6">
             {footerData.contactTitle && (
-              <h3 className="text-xl font-bold text-white">
+              <h3
+                style={{ fontFamily: "var(--font-michroma)" }}
+                className="text-2xl md:text-3xl font-black text-white leading-tight"
+              >
                 {footerData.contactTitle}
               </h3>
             )}
@@ -168,14 +179,6 @@ export default function Footer() {
             )}
 
             <div className="space-y-4">
-              {footerData.phone && (
-                <div className="flex items-center gap-3">
-                  <Phone className="w-5 h-5 text-blue-400 shrink-0" />
-                  <a href={`tel:${footerData.phone}`} className="text-slate-300 hover:text-white transition-colors">
-                    {footerData.phone}
-                  </a>
-                </div>
-              )}
               {footerData.email && (
                 <div className="flex items-center gap-3">
                   <Mail className="w-5 h-5 text-blue-400 shrink-0" />
@@ -219,7 +222,7 @@ export default function Footer() {
 
           {/* Nawigacja Column */}
           <div>
-            <h3 className="text-xl font-bold text-white mb-6">{t('navigation')}</h3>
+            <h3 className="text-base font-bold text-white mb-6 uppercase tracking-wider flex items-center gap-2 before:content-[''] before:w-6 before:h-[2px] before:bg-blue-500 before:rounded-full">{t('navigation')}</h3>
             <ul className="space-y-3">
               <li><Link href={`/${locale}`} className="text-slate-300 hover:text-white transition-colors">{tNav('home')}</Link></li>
               <li><Link href={`/${locale}/o-nas`} className="text-slate-300 hover:text-white transition-colors">{tNav('about')}</Link></li>
@@ -230,7 +233,7 @@ export default function Footer() {
 
           {/* Oferta Column */}
           <div>
-            <h3 className="text-xl font-bold text-white mb-6">{t('services')}</h3>
+            <h3 className="text-base font-bold text-white mb-6 uppercase tracking-wider flex items-center gap-2 before:content-[''] before:w-6 before:h-[2px] before:bg-blue-500 before:rounded-full">{t('services')}</h3>
             <ul className="space-y-3">
               {offerLinks.map((project, index) => (
                 <li key={index}>
@@ -247,7 +250,7 @@ export default function Footer() {
 
           {/* Firma Column */}
           <div>
-            <h3 className="text-xl font-bold text-white mb-6">{t('company')}</h3>
+            <h3 className="text-base font-bold text-white mb-6 uppercase tracking-wider flex items-center gap-2 before:content-[''] before:w-6 before:h-[2px] before:bg-blue-500 before:rounded-full">{t('company')}</h3>
             {footerData.companyLinks && footerData.companyLinks.length > 0 ? (
               <ul className="space-y-3">
                 {footerData.companyLinks.map((link, index) => (
@@ -268,7 +271,7 @@ export default function Footer() {
 
           {/* Dokumenty Column */}
           <div>
-            <h3 className="text-xl font-bold text-white mb-6">{t('documents')}</h3>
+            <h3 className="text-base font-bold text-white mb-6 uppercase tracking-wider flex items-center gap-2 before:content-[''] before:w-6 before:h-[2px] before:bg-blue-500 before:rounded-full">{t('documents')}</h3>
             <ul className="space-y-3">
               <li>
                 <Link href={`/${locale}/polityka-jakosci`} className="text-slate-300 hover:text-white transition-colors">
@@ -288,7 +291,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Section */}
-      <div className="border-t border-slate-800">
+      <div className="relative border-t border-slate-800/60 bg-slate-950/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="flex flex-col sm:flex-row items-center gap-6">

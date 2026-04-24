@@ -32,6 +32,11 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "/o-nas",
+    languages: {
+      pl: "/o-nas",
+      en: "/en/o-nas",
+      "x-default": "/o-nas",
+    },
   },
 };
 

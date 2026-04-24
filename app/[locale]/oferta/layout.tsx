@@ -36,6 +36,11 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "/oferta",
+    languages: {
+      pl: "/oferta",
+      en: "/en/oferta",
+      "x-default": "/oferta",
+    },
   },
 };
 

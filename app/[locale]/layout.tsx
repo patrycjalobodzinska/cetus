@@ -34,7 +34,7 @@ const michroma = Michroma({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://cetuspro.pl",
+    process.env.NEXT_PUBLIC_SITE_URL || "https://cetuspro.com",
   ),
   title: {
     default: "CetusPro - Nowoczesne rozwiązania IT i aplikacje webowe",
@@ -93,6 +93,16 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "/",
+    languages: {
+      pl: "/",
+      en: "/en",
+      "x-default": "/",
+    },
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/logocetus.png",
   },
 };
 
@@ -118,7 +128,7 @@ export default async function RootLayout({
   const messages = await getMessages();
   const t = await getTranslations();
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://cetuspro.pl";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://cetuspro.com";
 
   const jsonLd = {
     "@context": "https://schema.org",

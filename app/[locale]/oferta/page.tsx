@@ -127,7 +127,7 @@ export default function OfferPage() {
 
   return (
     <div className="min-h-screen">
-      <section className="pt-[var(--page-top-offset)] pb-20 border-t border-gray-200">
+      <section className="pt-[var(--page-top-offset)] md:pb-20 pb-10 border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="heading-hero text-slate-900 mb-6">
@@ -185,7 +185,7 @@ export default function OfferPage() {
       {technologies &&
         technologies.categories &&
         technologies.categories.length > 0 && (
-          <section className="py-24 border-t flex flex-col items-center justify-center border-gray-200 w-full overflow-x-hidden">
+          <section className="md:py-24 py-10 border-t flex flex-col items-center justify-center border-gray-200 w-full overflow-x-hidden">
             <div className="max-w-[2000px] flex flex-col items-center justify-center w-full">
               <div className="max-w-7xl lg:px-8 px-4 sm:px-6 text-center mb-16">
                 <h2
@@ -207,7 +207,7 @@ export default function OfferPage() {
         )}
 
       {industries && industries.items && industries.items.length > 0 && (
-        <section className="py-24 border-t border-gray-200">
+        <section className="md:py-24 py-10 border-t border-gray-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2
@@ -256,7 +256,7 @@ export default function OfferPage() {
         description={t("cta.description")}
         buttonText={t("cta.buttonText")}
         buttonLink="/kontakt"
-        className="py-24 border-t border-gray-200"
+        className="md:py-24 py-10 border-t border-gray-200"
       />
     </div>
   );

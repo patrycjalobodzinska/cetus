@@ -10,6 +10,7 @@ import { ArrowRight, Users, User } from 'lucide-react';
 import DecorativeImage from '@/app/components/DecorativeImage';
 import PolygonCard from '@/app/components/PolygonCard';
 import DomeGallery from '@/app/components/DomeGallery';
+import TeamMarquee from '@/app/components/TeamMarquee';
 import { useLocale, useTranslations } from 'next-intl';
 
 interface AboutUsData {
@@ -50,8 +51,16 @@ export default function AboutUsPage() {
   const [aboutUsLoading, setAboutUsLoading] = useState(true);
   const [historyLoading, setHistoryLoading] = useState(true);
   const [teamLoading, setTeamLoading] = useState(true);
+  const [isDesktop, setIsDesktop] = useState(false);
   const locale = useLocale();
   const t = useTranslations('aboutUs');
+
+  useEffect(() => {
+    const check = () => setIsDesktop(window.innerWidth >= 1024);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
 
   useEffect(() => {
     async function fetchAboutUs() {
@@ -318,23 +327,38 @@ export default function AboutUsPage() {
 
       <div className="absolute top-0  left-0 right-0 h-64 z-0 pointer-events-none bg-gradient-to-b from-transparent to-[#f4f4f4]"></div>
                 <div className="bg-[#f4f4f4] w-full" style={{ width: '100vw' , }}>
-                  <DomeGallery
-                    title={t('team.galleryTitle')}
-                    images={teamMembers
-                      .filter((member) => member.image)
-                      .map((member) => ({
-                        src: urlFor(member.image).width(600).height(600).url(),
-                        alt: `${member.firstName || ''} ${member.lastName || ''}`.trim() || t('team.fallbackName'),
-                        name: `${member.firstName || ''} ${member.lastName || ''}`.trim() || undefined,
-                        description: member.position || undefined,
-                      }))}
-                    fit={0.8}
-                    minRadius={800}
-                    maxVerticalRotationDeg={0}
-                    segments={24}
-                    dragDampening={2}
-                    grayscale={false}
-                  />
+                  {isDesktop ? (
+                    <DomeGallery
+                      title={t('team.galleryTitle')}
+                      images={teamMembers
+                        .filter((member) => member.image)
+                        .map((member) => ({
+                          src: urlFor(member.image).width(400).height(400).quality(75).auto('format').url(),
+                          alt: `${member.firstName || ''} ${member.lastName || ''}`.trim() || t('team.fallbackName'),
+                          name: `${member.firstName || ''} ${member.lastName || ''}`.trim() || undefined,
+                          description: member.position || undefined,
+                        }))}
+                      fit={0.8}
+                      minRadius={800}
+                      maxVerticalRotationDeg={0}
+                      segments={24}
+                      dragDampening={2}
+                      grayscale={false}
+                    />
+                  ) : (
+                    <TeamMarquee
+                      title={t('team.galleryTitle')}
+                      images={teamMembers
+                        .filter((member) => member.image)
+                        .map((member) => ({
+                          src: urlFor(member.image).width(300).height(300).quality(75).auto('format').url(),
+                          alt: `${member.firstName || ''} ${member.lastName || ''}`.trim() || t('team.fallbackName'),
+                          name: `${member.firstName || ''} ${member.lastName || ''}`.trim() || undefined,
+                          description: member.position || undefined,
+                        }))}
+                      rows={3}
+                    />
+                  )}
                 </div>
               </div>
       {/* CTA Section */}

@@ -61,6 +61,7 @@ const StickyCard_001 = ({
   range,
   targetScale,
   cardTop,
+  exitY,
 }: {
   i: number;
   title: string;
@@ -72,6 +73,7 @@ const StickyCard_001 = ({
   range: [number, number];
   targetScale: number;
   cardTop?: number;
+  exitY?: MotionValue<number>;
 }) => {
   const t = useTranslations('common');
   const locale = useLocale();
@@ -79,9 +81,10 @@ const StickyCard_001 = ({
   const scale = useTransform(progress, range, [1, targetScale]);
 
   return (
-    <div
+    <motion.div
       style={{
         top: cardTop ? `${cardTop}px` : `calc(155px + ${i * 20}px)`,
+        y: exitY,
       }}
       ref={container}
       className="sticky z-20 w-full mb-6 flex flex-col items-start justify-start"
@@ -111,7 +114,7 @@ const StickyCard_001 = ({
           </div>
         </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -143,6 +146,7 @@ const Skiper16Content = ({
   const exitStart = lastCardStartPos + (0.3 / projects.length);
   const leftColumnOpacity = useTransform(scrollYProgress, [exitStart, 1], [1, 0]);
   const leftColumnY = useTransform(scrollYProgress, [exitStart, 1], [0, -100]);
+  const mobileExitY = useTransform(scrollYProgress, [exitStart, 1], [0, -800]);
 
   if (isSmallHeight) {
     return (
@@ -182,84 +186,99 @@ const Skiper16Content = ({
   return (
     <ReactLenis root options={{ lerp: 0.1 }}>
       <div ref={container} className="relative">
-        <div className="lg:flex lg:gap-20">
-          <motion.div
-            style={{ opacity: leftColumnOpacity, y: leftColumnY }}
-            className="sticky top-[80px] lg:top-[100px] flex-col justify-center lg:py-20 pt-4 pb-4 lg:pt-10 flex-1 self-start z-10 lg:bg-transparent  lg:shadow-none"
-          >
-            <div className="flex lg:gap-8">
-              <div className="shrink-0 lg:flex hidden">
-                <svg width="100" height="700" viewBox="0 0 100 700" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <defs>
-                    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stopColor="#60a5fa" />
-                      <stop offset="100%" stopColor="#1e3a8a" />
-                    </linearGradient>
-                    <filter id="glow">
-                      <feGaussianBlur stdDeviation="3" result="blur" />
-                      <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                    </filter>
-                  </defs>
-                  <path
-                    d="M60 20 L35 60 L35 400  60 440 L60 690"
-                    stroke="url(#lineGradient)"
-                    strokeWidth="2"
-                    fill="none"
-                    filter="url(#glow)"
-                  />
-                  <rect x="59" y="10" width="10" height="10" fill="#60a5fa" filter="url(#glow)" />
-                  <rect x="136" y="620" width="10" height="10" fill="#1e3a8a" transform="rotate(45 20 560)" filter="url(#glow)" />
-                </svg>
-              </div>
+        {(() => {
+          const titleContent = (
+            <div className="px-4 z-0 pt-6 md:pt-0 lg:ml-0 w-full">
+              {(offerData.title || offerData.titleHighlight) && (
+                <h2 style={{ fontFamily: "var(--font-michroma)" }} className="text-center md:text-left mb-3 text-2xl lg:text-5xl font-black tracking-tight text-gray-900 sm:text-3xl">
+                  {offerData.title && <>{offerData.title}{" "}
+                  </>}
+                  {offerData.titleHighlight && <span className="text-blue-600">{offerData.titleHighlight}</span>}
+                </h2>
+              )}
+              {offerData.description && (
+                <p className="max-w-md text-base md:text-xl lg:text-2xl leading-relaxed text-gray-600 lg:mt-16 mt-2">
+                  {offerData.description}
+                </p>
+              )}
+              {offerData.buttonText && offerData.buttonLink && offerData.buttonLink !== '' && (
+                <div className="lg:mt-10 mt-4 flex gap-4">
+                  <Link href={offerData.buttonLink}>
+                    <StarGradientButton>{offerData.buttonText}</StarGradientButton>
+                  </Link>
+                </div>
+              )}
+            </div>
+          );
 
-              <div className="px-4 z-0 pt-6 md:pt-0 lg:ml-0 w-full">
-                {(offerData.title || offerData.titleHighlight) && (
-                  <h2 style={{ fontFamily: "var(--font-michroma)" }} className="text-center md:text-left mb-3 text-2xl lg:text-5xl font-black tracking-tight text-gray-900 sm:text-3xl">
-                    {offerData.title && <>{offerData.title}{" "}
-                    </>}
-                    {offerData.titleHighlight && <span className="text-blue-600">{offerData.titleHighlight}</span>}
-                  </h2>
-                )}
-                {offerData.description && (
-                  <p className="max-w-md text-base md:text-xl lg:text-2xl leading-relaxed text-gray-600 lg:mt-16 mt-2">
-                    {offerData.description}
-                  </p>
-                )}
-                {offerData.buttonText && offerData.buttonLink && offerData.buttonLink !== '' && (
-                  <div className="lg:mt-10 mt-4 flex gap-4">
-                    <Link href={offerData.buttonLink}>
-                      <StarGradientButton>{offerData.buttonText}</StarGradientButton>
-                    </Link>
+          return (
+            <div className="lg:flex lg:gap-20">
+              <motion.div
+                style={{ opacity: leftColumnOpacity, y: leftColumnY }}
+                className="hidden lg:flex lg:sticky lg:top-[100px] lg:flex-col lg:justify-center lg:py-20 lg:pt-10 lg:flex-1 lg:self-start z-10 lg:bg-transparent lg:shadow-none"
+              >
+                <div className="flex lg:gap-8">
+                  <div className="shrink-0 lg:flex hidden">
+                    <svg width="100" height="700" viewBox="0 0 100 700" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <defs>
+                        <linearGradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                          <stop offset="0%" stopColor="#60a5fa" />
+                          <stop offset="100%" stopColor="#1e3a8a" />
+                        </linearGradient>
+                        <filter id="glow">
+                          <feGaussianBlur stdDeviation="3" result="blur" />
+                          <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                        </filter>
+                      </defs>
+                      <path
+                        d="M60 20 L35 60 L35 400  60 440 L60 690"
+                        stroke="url(#lineGradient)"
+                        strokeWidth="2"
+                        fill="none"
+                        filter="url(#glow)"
+                      />
+                      <rect x="59" y="10" width="10" height="10" fill="#60a5fa" filter="url(#glow)" />
+                      <rect x="136" y="620" width="10" height="10" fill="#1e3a8a" transform="rotate(45 20 560)" filter="url(#glow)" />
+                    </svg>
                   </div>
-                )}
+                  {titleContent}
+                </div>
+              </motion.div>
+
+              <div className="relative mt-6 lg:mt-0 flex-1 px-4 min-h-[200vh]">
+                <motion.div
+                  style={{ opacity: leftColumnOpacity, y: isMobile ? mobileExitY : leftColumnY }}
+                  className="lg:hidden sticky top-[80px] z-10 pt-4 pb-4"
+                >
+                  {titleContent}
+                </motion.div>
+
+                {projects.map((project, i) => {
+                  const targetScale = 1 - (projects.length - i) * 0.04;
+                  const startRange = i * (1 / projects.length);
+                  const cardTop = isMobile ? 320 + (i * 20) : 155 + (i * 20);
+
+                  return (
+                    <StickyCard_001
+                      key={`p_${i}`}
+                      i={i}
+                      title={project.title}
+                      slug={project.slug}
+                      description={project.description}
+                      src={project.src || project.image || ''}
+                      isLast={i === projects.length - 1}
+                      progress={scrollYProgress}
+                      range={[startRange, 1]}
+                      targetScale={targetScale}
+                      cardTop={cardTop}
+                      exitY={isMobile ? mobileExitY : undefined}
+                    />
+                  )
+                })}
               </div>
             </div>
-          </motion.div>
-
-          <div className="relative mt-6 lg:mt-0 flex-1 px-4 min-h-[200vh] lg:pt-0 pt-[320px]">
-            {projects.map((project, i) => {
-              const targetScale = 1 - (projects.length - i) * 0.04;
-              const startRange = i * (1 / projects.length);
-              const cardTop = isMobile ? 360 + (i * 20) : 155 + (i * 20);
-
-              return (
-                <StickyCard_001
-                  key={`p_${i}`}
-                  i={i}
-                  title={project.title}
-                  slug={project.slug}
-                  description={project.description}
-                  src={project.src || project.image || ''}
-                  isLast={i === projects.length - 1}
-                  progress={scrollYProgress}
-                  range={[startRange, 1]}
-                  targetScale={targetScale}
-                  cardTop={cardTop}
-                />
-              )
-            })}
-          </div>
-        </div>
+          );
+        })()}
       </div>
     </ReactLenis>
   );

@@ -45,7 +45,7 @@ export default function PartnersSection() {
 
   if (loading) {
     return (
-      <section className="py-24  relative overflow-hidden">
+      <section className="md:py-24 py-6 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <p className="text-white/60">{t('loading')}</p>
@@ -60,7 +60,7 @@ export default function PartnersSection() {
   }
 
   return (
-    <section className="md:py-24 py-12  relative overflow-hidden"> <div className="w-20 h-1 bg-blue-600 rounded-full mx-auto mb-8"></div>
+    <section className="md:py-24 py-6 relative overflow-hidden"> <div className="w-20 h-1 bg-blue-600 rounded-full mx-auto mb-8"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
@@ -96,7 +96,7 @@ export default function PartnersSection() {
                   {partner.logo ? (
                     <div className="w-full md:h-26 flex items-center justify-center mb-3">
                       <img
-                        src={urlFor(partner.logo).url()}
+                        src={urlFor(partner.logo).width(300).quality(80).auto('format').url()}
                         alt={partner.name || 'Partner'}
                         className=" max-h-full max-w-full object-contain brightness-0 opacity-100 group-hover:opacity-100 transition-opacity"
                       />
