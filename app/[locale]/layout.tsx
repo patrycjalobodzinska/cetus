@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Michroma } from "next/font/google";
-import "../globals.css";
 import SmoothScroll from "../components/SmoothScroll";
 import Footer from "../components/Footer";
 import NavbarCurosora from "../components/NavbarCurosora";
@@ -15,22 +13,6 @@ import {
 } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { locales } from "@/i18n";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const michroma = Michroma({
-  variable: "--font-michroma",
-  subsets: ["latin"],
-  weight: "400",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -214,51 +196,47 @@ export default async function RootLayout({
   };
 
   return (
-    <html lang={locale}>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${michroma.variable} antialiased bg-white`}>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <NavigationProvider>
-            <SmoothScroll>
-              {/* Skip to main content link */}
-              <a
-                href="#main-content"
-                className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2">
-                {t("skipToContent.skipToContent")}
-              </a>
-              <NavbarCurosora />
-              <div
-                className="fixed top-0"
-                style={{
-                  width: "100%",
-                  height: "120vh",
-                  position: "fixed",
-                  top: 0,
-                  left: 0,
-                  zIndex: -10,
-                }}>
-                <Plasma
-                  color="#0073ff"
-                  speed={1.2}
-                  direction="pingpong"
-                  scale={0.4}
-                  mouseInteractive={false}
-                  opacity={0.35}
-                />
-              </div>
-              <main id="main-content" className=" top-0 left-0 w-full h-full">
-                {children}
-                <Footer />
-              </main>
-              <HiddenCaseStudiesAccess />
-            </SmoothScroll>
-          </NavigationProvider>
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <NextIntlClientProvider locale={locale} messages={messages}>
+        <NavigationProvider>
+          <SmoothScroll>
+            <a
+              href="#main-content"
+              className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2">
+              {t("skipToContent.skipToContent")}
+            </a>
+            <NavbarCurosora />
+            <div
+              className="fixed top-0"
+              style={{
+                width: "100%",
+                height: "120vh",
+                position: "fixed",
+                top: 0,
+                left: 0,
+                zIndex: -10,
+              }}>
+              <Plasma
+                color="#0073ff"
+                speed={1.2}
+                direction="pingpong"
+                scale={0.4}
+                mouseInteractive={false}
+                opacity={0.35}
+              />
+            </div>
+            <main id="main-content" className=" top-0 left-0 w-full h-full">
+              {children}
+              <Footer />
+            </main>
+            <HiddenCaseStudiesAccess />
+          </SmoothScroll>
+        </NavigationProvider>
+      </NextIntlClientProvider>
+    </>
   );
 }

@@ -308,10 +308,10 @@
   },
   "home": {
     "metadata": {
-      "title": "Home",
-      "description": "CetusPro - We create modern web applications, mobile apps and IT solutions. We specialize in UX/UI design, cybersecurity, AI and business process automation.",
-      "ogTitle": "CetusPro - Modern IT solutions and web applications",
-      "ogDescription": "We create modern web applications, mobile apps and IT solutions. We specialize in UX/UI design, cybersecurity, AI and process automation."
+      "title": "Web & mobile apps, AI, UX/UI and cybersecurity",
+      "description": "We advise, build and support. Web and mobile apps, UX/UI design, AI and cybersecurity solutions tailored to your business.",
+      "ogTitle": "CetusPro - Web & mobile apps, AI and cybersecurity",
+      "ogDescription": "We advise, build and support. Web and mobile apps, UX/UI design, AI and cybersecurity solutions tailored to your business."
     },
     "process": {
       "title": "From chaos to structure. We give you peace and guidance",

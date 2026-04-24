@@ -142,11 +142,9 @@ export default function Footer() {
 
   return (
     <footer className="relative bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden">
-      {/* Decorative glow */}
       <div aria-hidden="true" className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-blue-600/20 blur-[120px]" />
       <div aria-hidden="true" className="pointer-events-none absolute bottom-0 right-0 w-[500px] h-[300px] rounded-full bg-blue-500/10 blur-[100px]" />
 
-      {/* Tagline Banner */}
       <div className="relative border-b border-slate-800/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <p
@@ -159,10 +157,8 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Main Footer Content */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12">
-          {/* Kontakt Column */}
           <div className="lg:col-span-2 space-y-6">
             {footerData.contactTitle && (
               <h3
@@ -220,18 +216,17 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Nawigacja Column */}
           <div>
             <h3 className="text-base font-bold text-white mb-6 uppercase tracking-wider flex items-center gap-2 before:content-[''] before:w-6 before:h-[2px] before:bg-blue-500 before:rounded-full">{t('navigation')}</h3>
             <ul className="space-y-3">
               <li><Link href={`/${locale}`} className="text-slate-300 hover:text-white transition-colors">{tNav('home')}</Link></li>
               <li><Link href={`/${locale}/o-nas`} className="text-slate-300 hover:text-white transition-colors">{tNav('about')}</Link></li>
               <li><Link href={`/${locale}/oferta`} className="text-slate-300 hover:text-white transition-colors">{tNav('services')}</Link></li>
+              <li><Link href={`/${locale}/case-studies`} className="text-slate-300 hover:text-white transition-colors">{tNav('caseStudies')}</Link></li>
               <li><Link href={`/${locale}/kontakt`} className="text-slate-300 hover:text-white transition-colors">{tNav('contact')}</Link></li>
             </ul>
           </div>
 
-          {/* Oferta Column */}
           <div>
             <h3 className="text-base font-bold text-white mb-6 uppercase tracking-wider flex items-center gap-2 before:content-[''] before:w-6 before:h-[2px] before:bg-blue-500 before:rounded-full">{t('services')}</h3>
             <ul className="space-y-3">
@@ -248,7 +243,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Firma Column */}
           <div>
             <h3 className="text-base font-bold text-white mb-6 uppercase tracking-wider flex items-center gap-2 before:content-[''] before:w-6 before:h-[2px] before:bg-blue-500 before:rounded-full">{t('company')}</h3>
             {footerData.companyLinks && footerData.companyLinks.length > 0 ? (
@@ -269,7 +263,6 @@ export default function Footer() {
             )}
           </div>
 
-          {/* Dokumenty Column */}
           <div>
             <h3 className="text-base font-bold text-white mb-6 uppercase tracking-wider flex items-center gap-2 before:content-[''] before:w-6 before:h-[2px] before:bg-blue-500 before:rounded-full">{t('documents')}</h3>
             <ul className="space-y-3">
@@ -290,7 +283,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom Section */}
       <div className="relative border-t border-slate-800/60 bg-slate-950/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8">

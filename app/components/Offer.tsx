@@ -7,9 +7,10 @@ import Link from "next/link";
 import StarGradientButton from "./ui/gradientBackground";
 import { useLocale, useTranslations } from "next-intl";
 
-import type { Project, OfferData } from '@/types/pages';
+import type { Project, OfferData } from "@/types/pages";
 
-const POLYGON_CLIP_PATH = "polygon(0% 0px, 20px 0%, 95% 0%, 100% 20px, 100% 80%, 100% 100%, calc(100% - 20px) 100%, 5% 100%, 0% 80%)";
+const POLYGON_CLIP_PATH =
+  "polygon(0% 0px, 20px 0%, 95% 0%, 100% 20px, 100% 80%, 100% 100%, calc(100% - 20px) 100%, 5% 100%, 0% 80%)";
 
 const SMALL_HEIGHT_BREAKPOINT = 500;
 
@@ -22,7 +23,7 @@ const SimpleCard = ({
   slug?: string;
   description: string;
 }) => {
-  const t = useTranslations('common');
+  const t = useTranslations("common");
   const locale = useLocale();
 
   return (
@@ -30,19 +31,28 @@ const SimpleCard = ({
       <div
         className="p-px w-full rounded-md"
         style={{
-          background: "linear-gradient(135deg, rgba(59, 130, 246, 0.5) 0%, rgba(147, 197, 253, 0.5) 100%)",
-          clipPath: POLYGON_CLIP_PATH
-        }}
-      >
+          background:
+            "linear-gradient(135deg, rgba(59, 130, 246, 0.5) 0%, rgba(147, 197, 253, 0.5) 100%)",
+          clipPath: POLYGON_CLIP_PATH,
+        }}>
         <div
           style={{ clipPath: POLYGON_CLIP_PATH }}
-          className="relative w-full h-full overflow-hidden bg-white"
-        >
+          className="relative w-full h-full overflow-hidden bg-white">
           <div className="flex h-full w-full flex-col p-6">
-            {title && <h3 className="mb-2 text-xl font-bold text-gray-900">{title}</h3>}
-            {description && <p className="text-gray-600 leading-relaxed text-sm mb-3">{description}</p>}
+            {title && (
+              <h3 className="mb-2 text-xl font-bold text-gray-900">{title}</h3>
+            )}
+            {description && (
+              <p className="text-gray-600 leading-relaxed text-sm mb-3">
+                {description}
+              </p>
+            )}
             {slug && (
-              <Link className="hover:underline text-blue-600 font-medium" href={`/${locale}/oferta/${slug}`}>{t('learnMore')}</Link>
+              <Link
+                className="hover:underline text-blue-600 font-medium"
+                href={`/${locale}/oferta/${slug}`}>
+                {t("learnMore")}
+              </Link>
             )}
           </div>
         </div>
@@ -75,7 +85,7 @@ const StickyCard_001 = ({
   cardTop?: number;
   exitY?: MotionValue<number>;
 }) => {
-  const t = useTranslations('common');
+  const t = useTranslations("common");
   const locale = useLocale();
   const container = useRef<HTMLDivElement>(null);
   const scale = useTransform(progress, range, [1, targetScale]);
@@ -87,28 +97,37 @@ const StickyCard_001 = ({
         y: exitY,
       }}
       ref={container}
-      className="sticky z-20 w-full mb-6 flex flex-col items-start justify-start"
-    >
+      className="sticky z-20 w-full mb-6 flex flex-col items-start justify-start">
       <div
         className="p-px w-full rounded-md transition-all duration-300"
         style={{
-          background: "linear-gradient(135deg, rgba(59, 130, 246, 0.5) 0%, rgba(147, 197, 253, 0.5) 100%)",
-          clipPath: POLYGON_CLIP_PATH
-        }}
-      >
+          background:
+            "linear-gradient(135deg, rgba(59, 130, 246, 0.5) 0%, rgba(147, 197, 253, 0.5) 100%)",
+          clipPath: POLYGON_CLIP_PATH,
+        }}>
         <motion.div
           style={{
-            clipPath: POLYGON_CLIP_PATH
+            clipPath: POLYGON_CLIP_PATH,
           }}
-          className="relative w-full h-full origin-top overflow-hidden bg-white"
-        >
+          className="relative w-full h-full origin-top overflow-hidden bg-white">
           <div className="flex h-full w-full flex-col">
-
             <div className="flex h-1/2 cursor-pointer flex-col p-8">
-              {title && <h3 className="mb-3 text-2xl font-bold text-gray-900">{title}</h3>}
-              {description && <p className="text-gray-600 leading-relaxed text-sm">{description}</p>}
+              {title && (
+                <h3 className="mb-3 text-2xl font-bold text-gray-900">
+                  {title}
+                </h3>
+              )}
+              {description && (
+                <p className="text-gray-600 leading-relaxed text-sm">
+                  {description}
+                </p>
+              )}
               {slug && (
-                <Link className="hover:underline text-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:rounded" href={`/${locale}/oferta/${slug}`}>{t('learnMore')}</Link>
+                <Link
+                  className="hover:underline text-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:rounded"
+                  href={`/${locale}/oferta/${slug}`}>
+                  {t("learnMore")}
+                </Link>
               )}
             </div>
           </div>
@@ -121,7 +140,7 @@ const StickyCard_001 = ({
 const Skiper16Content = ({
   container,
   scrollYProgress,
-  offerData
+  offerData,
 }: {
   container: React.RefObject<HTMLDivElement | null>;
   scrollYProgress: MotionValue<number>;
@@ -137,14 +156,18 @@ const Skiper16Content = ({
       setIsSmallHeight(window.innerHeight < SMALL_HEIGHT_BREAKPOINT);
     };
     checkViewport();
-    window.addEventListener('resize', checkViewport);
-    return () => window.removeEventListener('resize', checkViewport);
+    window.addEventListener("resize", checkViewport);
+    return () => window.removeEventListener("resize", checkViewport);
   }, []);
 
   const lastCardIndex = projects.length - 1;
   const lastCardStartPos = lastCardIndex * (1 / projects.length);
-  const exitStart = lastCardStartPos + (0.3 / projects.length);
-  const leftColumnOpacity = useTransform(scrollYProgress, [exitStart, 1], [1, 0]);
+  const exitStart = lastCardStartPos + 0.3 / projects.length;
+  const leftColumnOpacity = useTransform(
+    scrollYProgress,
+    [exitStart, 1],
+    [1, 0],
+  );
   const leftColumnY = useTransform(scrollYProgress, [exitStart, 1], [0, -100]);
   const mobileExitY = useTransform(scrollYProgress, [exitStart, 1], [0, -800]);
 
@@ -154,19 +177,31 @@ const Skiper16Content = ({
         <div className="flex flex-col gap-8 px-4 py-6">
           <div>
             {(offerData.title || offerData.titleHighlight) && (
-              <h2 style={{ fontFamily: "var(--font-michroma)" }} className="mb-3 text-2xl font-black tracking-tight text-gray-900">
-                {offerData.title && <>{offerData.title}{" "}</>}
-                {offerData.titleHighlight && <span className="text-blue-600">{offerData.titleHighlight}</span>}
+              <h2
+                style={{ fontFamily: "var(--font-michroma)" }}
+                className="mb-3 text-2xl font-black tracking-tight text-gray-900">
+                {offerData.title && <>{offerData.title} </>}
+                {offerData.titleHighlight && (
+                  <span className="text-blue-600">
+                    {offerData.titleHighlight}
+                  </span>
+                )}
               </h2>
             )}
             {offerData.description && (
-              <p className="text-base text-gray-600 leading-relaxed mb-4">{offerData.description}</p>
+              <p className="text-base text-gray-600 leading-relaxed mb-4">
+                {offerData.description}
+              </p>
             )}
-            {offerData.buttonText && offerData.buttonLink && offerData.buttonLink !== '' && (
-              <Link href={offerData.buttonLink}>
-                <StarGradientButton>{offerData.buttonText}</StarGradientButton>
-              </Link>
-            )}
+            {offerData.buttonText &&
+              offerData.buttonLink &&
+              offerData.buttonLink !== "" && (
+                <Link href={offerData.buttonLink}>
+                  <StarGradientButton>
+                    {offerData.buttonText}
+                  </StarGradientButton>
+                </Link>
+              )}
           </div>
           <div className="space-y-2">
             {projects.map((project, i) => (
@@ -190,10 +225,15 @@ const Skiper16Content = ({
           const titleContent = (
             <div className="px-4 z-0 pt-6 md:pt-0 lg:ml-0 w-full">
               {(offerData.title || offerData.titleHighlight) && (
-                <h2 style={{ fontFamily: "var(--font-michroma)" }} className="text-center md:text-left mb-3 text-2xl lg:text-5xl font-black tracking-tight text-gray-900 sm:text-3xl">
-                  {offerData.title && <>{offerData.title}{" "}
-                  </>}
-                  {offerData.titleHighlight && <span className="text-blue-600">{offerData.titleHighlight}</span>}
+                <h2
+                  style={{ fontFamily: "var(--font-michroma)" }}
+                  className="text-center md:text-left mb-3 text-2xl lg:text-5xl font-black tracking-tight text-gray-900 sm:text-3xl">
+                  {offerData.title && <>{offerData.title} </>}
+                  {offerData.titleHighlight && (
+                    <span className="text-blue-600">
+                      {offerData.titleHighlight}
+                    </span>
+                  )}
                 </h2>
               )}
               {offerData.description && (
@@ -201,13 +241,17 @@ const Skiper16Content = ({
                   {offerData.description}
                 </p>
               )}
-              {offerData.buttonText && offerData.buttonLink && offerData.buttonLink !== '' && (
-                <div className="lg:mt-10 mt-4 flex gap-4">
-                  <Link href={offerData.buttonLink}>
-                    <StarGradientButton>{offerData.buttonText}</StarGradientButton>
-                  </Link>
-                </div>
-              )}
+              {offerData.buttonText &&
+                offerData.buttonLink &&
+                offerData.buttonLink !== "" && (
+                  <div className="lg:mt-10 mt-4 flex gap-4">
+                    <Link href={offerData.buttonLink}>
+                      <StarGradientButton>
+                        {offerData.buttonText}
+                      </StarGradientButton>
+                    </Link>
+                  </div>
+                )}
             </div>
           );
 
@@ -215,19 +259,33 @@ const Skiper16Content = ({
             <div className="lg:flex lg:gap-20">
               <motion.div
                 style={{ opacity: leftColumnOpacity, y: leftColumnY }}
-                className="hidden lg:flex lg:sticky lg:top-[100px] lg:flex-col lg:justify-center lg:py-20 lg:pt-10 lg:flex-1 lg:self-start z-10 lg:bg-transparent lg:shadow-none"
-              >
+                className="hidden lg:flex lg:sticky lg:top-[100px] lg:flex-col lg:justify-center lg:py-20 lg:pt-10 lg:flex-1 lg:self-start z-10 lg:bg-transparent lg:shadow-none">
                 <div className="flex lg:gap-8">
                   <div className="shrink-0 lg:flex hidden">
-                    <svg width="100" height="700" viewBox="0 0 100 700" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <svg
+                      width="100"
+                      height="700"
+                      viewBox="0 0 100 700"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true">
                       <defs>
-                        <linearGradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <linearGradient
+                          id="lineGradient"
+                          x1="0%"
+                          y1="0%"
+                          x2="0%"
+                          y2="100%">
                           <stop offset="0%" stopColor="#60a5fa" />
                           <stop offset="100%" stopColor="#1e3a8a" />
                         </linearGradient>
                         <filter id="glow">
                           <feGaussianBlur stdDeviation="3" result="blur" />
-                          <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                          <feComposite
+                            in="SourceGraphic"
+                            in2="blur"
+                            operator="over"
+                          />
                         </filter>
                       </defs>
                       <path
@@ -237,8 +295,23 @@ const Skiper16Content = ({
                         fill="none"
                         filter="url(#glow)"
                       />
-                      <rect x="59" y="10" width="10" height="10" fill="#60a5fa" filter="url(#glow)" />
-                      <rect x="136" y="620" width="10" height="10" fill="#1e3a8a" transform="rotate(45 20 560)" filter="url(#glow)" />
+                      <rect
+                        x="59"
+                        y="10"
+                        width="10"
+                        height="10"
+                        fill="#60a5fa"
+                        filter="url(#glow)"
+                      />
+                      <rect
+                        x="136"
+                        y="620"
+                        width="10"
+                        height="10"
+                        fill="#1e3a8a"
+                        transform="rotate(45 20 560)"
+                        filter="url(#glow)"
+                      />
                     </svg>
                   </div>
                   {titleContent}
@@ -247,16 +320,18 @@ const Skiper16Content = ({
 
               <div className="relative mt-6 lg:mt-0 flex-1 px-4 min-h-[200vh]">
                 <motion.div
-                  style={{ opacity: leftColumnOpacity, y: isMobile ? mobileExitY : leftColumnY }}
-                  className="lg:hidden sticky top-[80px] z-10 pt-4 pb-4"
-                >
+                  style={{
+                    opacity: leftColumnOpacity,
+                    y: isMobile ? mobileExitY : leftColumnY,
+                  }}
+                  className="lg:hidden sticky top-[80px] z-10 pt-4 pb-4">
                   {titleContent}
                 </motion.div>
 
                 {projects.map((project, i) => {
                   const targetScale = 1 - (projects.length - i) * 0.04;
                   const startRange = i * (1 / projects.length);
-                  const cardTop = isMobile ? 320 + (i * 20) : 155 + (i * 20);
+                  const cardTop = isMobile ? 320 + i * 20 : 155 + i * 20;
 
                   return (
                     <StickyCard_001
@@ -265,7 +340,7 @@ const Skiper16Content = ({
                       title={project.title}
                       slug={project.slug}
                       description={project.description}
-                      src={project.src || project.image || ''}
+                      src={project.src || project.image || ""}
                       isLast={i === projects.length - 1}
                       progress={scrollYProgress}
                       range={[startRange, 1]}
@@ -273,7 +348,7 @@ const Skiper16Content = ({
                       cardTop={cardTop}
                       exitY={isMobile ? mobileExitY : undefined}
                     />
-                  )
+                  );
                 })}
               </div>
             </div>
@@ -286,7 +361,7 @@ const Skiper16Content = ({
 
 const Skiper16WithScroll = ({
   container,
-  offerData
+  offerData,
 }: {
   container: React.RefObject<HTMLDivElement | null>;
   offerData: OfferData;
@@ -296,43 +371,69 @@ const Skiper16WithScroll = ({
     offset: ["start start", "end start"],
   });
 
-  return <Skiper16Content container={container} scrollYProgress={scrollYProgress} offerData={offerData} />;
+  return (
+    <Skiper16Content
+      container={container}
+      scrollYProgress={scrollYProgress}
+      offerData={offerData}
+    />
+  );
 };
 
 const Skiper16 = () => {
-  const t = useTranslations('offer');
+  const t = useTranslations("offer");
   const locale = useLocale();
   const container = useRef<HTMLDivElement>(null);
   const [isMounted, setIsMounted] = useState(false);
   const [isReady, setIsReady] = useState(false);
 
-  const projectKeys = ['webApps', 'mobileApps', 'uiUx', 'ai', 'cybersecurity', 'transformation', 'outsourcing', 'academy', 'venture'];
+  const projectKeys = [
+    "webApps",
+    "mobileApps",
+    "uiUx",
+    "ai",
+    "cybersecurity",
+    "transformation",
+    "outsourcing",
+    "academy",
+    "venture",
+  ];
 
   const offerData: OfferData = {
-    title: t('title'),
-    titleHighlight: t('titleHighlight'),
-    description: t('description'),
-    buttonText: t('buttonText'),
-    buttonLink: t('buttonLink'),
-    projects: projectKeys.map((key, index) => {
-      const projectData = t.raw(`projects.${key}`) as { title: string; description: string; slug: string; image: string; order?: number } | undefined;
-      if (projectData) {
+    title: t("title"),
+    titleHighlight: t("titleHighlight"),
+    description: t("description"),
+    buttonText: t("buttonText"),
+    buttonLink: t("buttonLink"),
+    projects: projectKeys
+      .map((key, index) => {
+        const projectData = t.raw(`projects.${key}`) as
+          | {
+              title: string;
+              description: string;
+              slug: string;
+              image: string;
+              order?: number;
+            }
+          | undefined;
+        if (projectData) {
+          return {
+            title: projectData.title,
+            description: projectData.description,
+            slug: projectData.slug,
+            src: projectData.image,
+            order: projectData.order ?? index + 1,
+          };
+        }
         return {
-          title: projectData.title,
-          description: projectData.description,
-          slug: projectData.slug,
-          src: projectData.image,
-          order: projectData.order ?? index + 1,
+          title: t(`projects.${key}.title`),
+          description: t(`projects.${key}.description`),
+          slug: t(`projects.${key}.slug`),
+          src: t(`projects.${key}.image`),
+          order: index + 1,
         };
-      }
-      return {
-        title: t(`projects.${key}.title`),
-        description: t(`projects.${key}.description`),
-        slug: t(`projects.${key}.slug`),
-        src: t(`projects.${key}.image`),
-        order: index + 1,
-      };
-    }).sort((a, b) => a.order - b.order)
+      })
+      .sort((a, b) => a.order - b.order),
   };
 
   useEffect(() => {
@@ -345,7 +446,9 @@ const Skiper16 = () => {
 
   return (
     <div ref={container} className="relative">
-      {isReady && <Skiper16WithScroll container={container} offerData={offerData} />}
+      {isReady && (
+        <Skiper16WithScroll container={container} offerData={offerData} />
+      )}
     </div>
   );
 };

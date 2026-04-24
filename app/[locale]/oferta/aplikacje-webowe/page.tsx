@@ -1,17 +1,9 @@
-'use client';
+import { notFound } from 'next/navigation'
+import ServicePageView from '@/app/components/ServicePageView'
+import { fetchServicePage } from '@/sanity/lib/servicePage'
 
-import HeroSection from './components/HeroSection';
-import WhyFeaturesSection from './components/WhyFeaturesSection';
-import ModulesSection from './components/ModulesSection';
-import WebAppsCTASection from './components/CTASection';
-
-export default function WebAppsPage() {
-  return (
-    <div className="min-h-screen bg-white">
-      <HeroSection />
-      <WhyFeaturesSection />
-      <ModulesSection />
-      <WebAppsCTASection />
-    </div>
-  );
+export default async function Page() {
+  const data = await fetchServicePage('aplikacje-webowe')
+  if (!data) notFound()
+  return <ServicePageView data={data} />
 }

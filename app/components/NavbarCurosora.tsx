@@ -153,6 +153,17 @@ export default function NavbarCurosora() {
               </span>
 
               <NavigationLink
+                href={`/${locale}/case-studies`}
+                className={navLinkClass(
+                  pathname?.startsWith(`/${locale}/case-studies`) ?? false,
+                )}>
+                {t("caseStudies")}
+              </NavigationLink>
+              <span className="text-slate-300 text-xs" aria-hidden="true">
+                /
+              </span>
+
+              <NavigationLink
                 href={`/${locale}/kontakt`}
                 className={navLinkClass(
                   pathname?.startsWith(`/${locale}/kontakt`) ?? false,
@@ -236,6 +247,18 @@ export default function NavbarCurosora() {
               )}
               onClick={() => setIsMobileMenuOpen(false)}>
               {t("services")}
+            </NavigationLink>
+
+            <NavigationLink
+              href={`/${locale}/case-studies`}
+              className={cn(
+                "text-lg font-medium",
+                pathname?.startsWith(`/${locale}/case-studies`)
+                  ? "text-blue-600 font-semibold"
+                  : "text-slate-900 hover:text-blue-600",
+              )}
+              onClick={() => setIsMobileMenuOpen(false)}>
+              {t("caseStudies")}
             </NavigationLink>
 
             <NavigationLink

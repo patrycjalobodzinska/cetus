@@ -305,10 +305,10 @@
   },
   "home": {
     "metadata": {
-      "title": "Strona główna",
-      "description": "CetusPro - Tworzymy nowoczesne aplikacje webowe, mobilne i rozwiązania IT. Specjalizujemy się w projektowaniu UX/UI, cyberbezpieczeństwie, AI i automatyzacji procesów biznesowych.",
-      "ogTitle": "CetusPro - Nowoczesne rozwiązania IT i aplikacje webowe",
-      "ogDescription": "Tworzymy nowoczesne aplikacje webowe, mobilne i rozwiązania IT. Specjalizujemy się w projektowaniu UX/UI, cyberbezpieczeństwie, AI i automatyzacji procesów."
+      "title": "Aplikacje webowe, mobilne, AI i cybersecurity",
+      "description": "Doradzamy, budujemy i wspieramy. Tworzymy aplikacje webowe i mobilne, projekty UX/UI, rozwiązania AI i cybersecurity dla Twojego biznesu.",
+      "ogTitle": "CetusPro - Aplikacje webowe, mobilne, AI i cybersecurity",
+      "ogDescription": "Doradzamy, budujemy i wspieramy. Tworzymy aplikacje webowe i mobilne, projekty UX/UI, rozwiązania AI i cybersecurity dla Twojego biznesu."
     },
     "process": {
       "title": "Z chaosu do struktury. Dajemy Ci spokój i prowadzenie",

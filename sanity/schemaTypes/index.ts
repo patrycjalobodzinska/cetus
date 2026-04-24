@@ -17,6 +17,7 @@ import localeString from './localeString'
 import localeText from './localeText'
 import localeStringArray from './localeStringArray'
 import processSection from './processSection'
+import servicePage from './servicePage'
 import {
   csHeroSection,
   csStatsSection,
@@ -49,6 +50,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     partner,
     homepageModules,
     processSection,
+    servicePage,
     csHeroSection,
     csStatsSection,
     csChallengeSection,
