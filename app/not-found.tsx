@@ -55,7 +55,6 @@ export default function RootNotFound() {
               {[
                 { href: '/o-nas', label: 'O nas' },
                 { href: '/oferta', label: 'Oferta' },
-                { href: '/case-studies', label: 'Realizacje' },
                 { href: '/kontakt', label: 'Kontakt' },
               ].map((s) => (
                 <li key={s.href}>

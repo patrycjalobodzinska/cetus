@@ -22,7 +22,6 @@ export default function NotFound() {
   const suggestions = [
     { href: `${base}/o-nas`, label: isEn ? 'About us' : 'O nas' },
     { href: `${base}/oferta`, label: isEn ? 'Services' : 'Oferta' },
-    { href: `${base}/case-studies`, label: isEn ? 'Case studies' : 'Realizacje' },
     { href: `${base}/kontakt`, label: isEn ? 'Contact' : 'Kontakt' },
   ]
 
