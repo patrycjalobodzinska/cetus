@@ -89,10 +89,10 @@ export default function ContactPage() {
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-2">{t('email')}</h3>
                 <a
-                  href="mailto:kontakt@cetuspro.pl"
+                  href="mailto:contact@cetuspro.com"
                   className="text-blue-600 hover:opacity-70 transition-opacity font-semibold mb-2"
                 >
-                  kontakt@cetuspro.pl
+                  contact@cetuspro.com
                 </a>
                 <p className="text-sm text-slate-500">{t('emailResponse')}</p>
               </div>
@@ -116,7 +116,7 @@ export default function ContactPage() {
                 {t('freeConsultationDescription')}
               </p>
               <a
-                href="mailto:kontakt@cetuspro.pl?subject=Consultation"
+                href="mailto:contact@cetuspro.com?subject=Consultation"
                 className="inline-flex items-center space-x-2 bg-white text-blue-600 px-6 py-3 rounded-xl font-semibold hover:bg-white/90 transition-all"
               >
                 <span>{t('bookConsultation')}</span>

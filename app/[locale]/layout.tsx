@@ -126,7 +126,7 @@ export default async function RootLayout({
         },
         contactPoint: {
           "@type": "ContactPoint",
-          email: "kontakt@cetuspro.pl",
+          email: "contact@cetuspro.com",
           contactType: "customer service",
           availableLanguage: ["Polish", "English"],
         },

@@ -134,7 +134,7 @@ const docs = [];
           appsPl: [p.modules[k].item1, p.modules[k].item2, p.modules[k].item3, p.modules[k].item4].filter(Boolean),
           appsEn: [e.modules[k].item1, e.modules[k].item2, e.modules[k].item3, e.modules[k].item4].filter(Boolean),
         }))),
-      ctaBlock('cta', p.cta.title, e.cta.title, p.cta.description, e.cta.description, p.cta.buttonText, e.cta.buttonText, '/kontakt', 'kontakt@cetuspro.pl'),
+      ctaBlock('cta', p.cta.title, e.cta.title, p.cta.description, e.cta.description, p.cta.buttonText, e.cta.buttonText, '/kontakt', 'contact@cetuspro.com'),
     ],
   });
 }

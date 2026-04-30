@@ -18,7 +18,7 @@ export default function NavbarCurosora() {
 
   const isContactPage = pathname?.startsWith(`/${locale}/kontakt`);
   const consultationHref = isContactPage
-    ? "mailto:kontakt@cetuspro.pl?subject=Consultation"
+    ? "mailto:contact@cetuspro.com?subject=Consultation"
     : `/${locale}/kontakt`;
 
   const navLinkClass = (isActive: boolean) =>
