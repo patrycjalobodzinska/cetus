@@ -11,7 +11,7 @@ default:
 variables:
   NODE_BASE_IMAGE: "node:24-trixie-slim"
   KANIKO_IMAGE: "registry.gitlab.com/gitlab-ci-utils/container-images/kaniko:v1.25.12-debug"
-  SSH_CLIENT_IMAGE: "kroniak/ssh-client:3.21"
+  SSH_CLIENT_IMAGE: "kroniak/ssh-client:3.23"
   PNPM_VERSION: "pnpm@latest-10"
 
 workflow:
@@ -54,7 +54,7 @@ workflow:
     when: on_success
     expire_in: "1 hour"
     paths:
-      - "${ARTIFACT_PATH}"
+      - "${CI_PROJECT_DIR}/${ARTIFACT_PATH}"
 
 .x-kaniko-containerize: &kaniko-build-template
   stage: containerize
@@ -62,18 +62,18 @@ workflow:
     name: ${KANIKO_IMAGE}
     entrypoint: [""]
   variables:
-    COMPONENT: unset
+    IMAGE_REPOSITORY: unset
     IMAGE_TAG: unset
   before_script:
     - mkdir -p /kaniko/.docker
-    - echo "{\"auths\":{\"${CI_REGISTRY}\":{\"auth\":\"$(printf "%s:%s" "${CI_REGISTRY_USER}" "${CI_REGISTRY_PASSWORD}" | base64 | tr -d '\n')\"},\"$(echo -n $CI_DEPENDENCY_PROXY_SERVER | awk -F[:] '{print $1}')\":{\"auth\":\"$(printf "%s:%s" ${CI_DEPENDENCY_PROXY_USER} "${CI_DEPENDENCY_PROXY_PASSWORD}" | base64 | tr -d '\n')\"}}}" > /kaniko/.docker/config.json
+    - printf '%s' "{\"auths\":{\"${HARBOR_HOST}\":{\"auth\":\"$(printf \"%s:%s\" \"${HARBOR_USERNAME}\" \"${HARBOR_PASSWORD}\" | base64 | tr -d '\\n')\"}}}" > /kaniko/.docker/config.json
   script:
     - >
       /kaniko/executor
       --cache=true
       --context "${CI_PROJECT_DIR}"
       --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
-      --destination "${CI_REGISTRY_IMAGE}/${COMPONENT}:${IMAGE_TAG}"
+      --destination "${IMAGE_REPOSITORY}:${IMAGE_TAG}"
 
 .x-ssh-setup: &ssh-setup-template
   image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/${SSH_CLIENT_IMAGE}
@@ -91,7 +91,7 @@ workflow:
 build-main:
   <<: *default-build-template
   variables:
-    ARTIFACT_PATH: ${CI_PROJECT_DIR}/.next
+    ARTIFACT_PATH: .next
   rules:
     - <<: *run-on-push-to-default-branch-template
   dependencies: []
@@ -99,7 +99,7 @@ build-main:
 build-tag:
   <<: *default-build-template
   variables:
-    ARTIFACT_PATH: ${CI_PROJECT_DIR}/.next
+    ARTIFACT_PATH: .next
   rules:
     - <<: *run-on-tags-template
   dependencies: []
@@ -107,7 +107,7 @@ build-tag:
 containerize-main:
   <<: *kaniko-build-template
   variables:
-    COMPONENT: next
+    IMAGE_REPOSITORY: "${HARBOR_HOST}/${HARBOR_PROJECT}/cetusprocomv2/next"
     IMAGE_TAG: latest
   rules:
     - <<: *run-on-push-to-default-branch-template
@@ -119,7 +119,7 @@ containerize-main:
 containerize-tag:
   <<: *kaniko-build-template
   variables:
-    COMPONENT: next
+    IMAGE_REPOSITORY: "${HARBOR_HOST}/${HARBOR_PROJECT}/cetusprocomv2/next"
     IMAGE_TAG: ${CI_COMMIT_TAG}
   rules:
     - <<: *run-on-tags-template
