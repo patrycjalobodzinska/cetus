@@ -66,7 +66,9 @@ workflow:
     IMAGE_TAG: unset
   before_script:
     - mkdir -p /kaniko/.docker
-    - printf '%s' "{\"auths\":{\"${HARBOR_HOST}\":{\"auth\":\"$(printf \"%s:%s\" \"${HARBOR_USERNAME}\" \"${HARBOR_PASSWORD}\" | base64 | tr -d '\\n')\"}}}" > /kaniko/.docker/config.json
+    - export HARBOR_AUTH="$(printf '%s:%s' "${HARBOR_USERNAME}" "${HARBOR_PASSWORD}" | base64 | tr -d '\n')"
+    - export HARBOR_CONFIG_JSON="{\"auths\":{\"${HARBOR_HOST}\":{\"auth\":\"${HARBOR_AUTH}\"}}}"
+    - printf '%s' "${HARBOR_CONFIG_JSON}" > /kaniko/.docker/config.json
   script:
     - >
       /kaniko/executor
