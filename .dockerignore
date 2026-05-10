@@ -29,6 +29,8 @@ build
 .prettierrc.*
 .eslint
 .eslint.*
+flake.nix
+flake.lock
 
 # Project information
 *.md

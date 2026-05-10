@@ -42,13 +42,5 @@ yarn-error.log*
 next-env.d.ts
 .env
 
-# Devenv
-.devenv*
-devenv.local.nix
-devenv.local.yaml
-
-# direnv
-.direnv
-
 # pre-commit
 .pre-commit-config.yaml
