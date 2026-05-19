@@ -107,6 +107,7 @@ export default function ContactPage() {
                   35-083 Rzeszów<br />
                   {t('country')}
                 </p>
+                <p className="text-slate-500 text-sm mt-2">NIP: 8133850782</p>
               </div>
             </div>
 

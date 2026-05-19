@@ -189,6 +189,10 @@ export default function Footer() {
                   <span className="text-slate-300">{footerData.address}</span>
                 </div>
               )}
+              <div className="flex items-center gap-3">
+                <span className="text-slate-500 text-sm">NIP:</span>
+                <span className="text-slate-300 text-sm">8133850782</span>
+              </div>
               <div className="flex items-center gap-3 pt-2">
                 <span className="text-slate-500 text-sm">{t('workingHours')}:</span>
                 <span className="text-slate-400 text-sm">{t('workingHoursValue')}</span>
