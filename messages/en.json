@@ -15,9 +15,13 @@
     "home": "Home",
     "about": "About Us",
     "services": "Services",
+    "allServices": "All Services",
     "caseStudies": "Case Studies",
     "contact": "Contact",
-    "freeConsultation": "Free Consultation"
+    "freeConsultation": "Free Consultation",
+    "servicesMenuLabel": "Services submenu",
+    "openServicesMenu": "Open Services menu",
+    "closeServicesMenu": "Close Services menu"
 
 
 

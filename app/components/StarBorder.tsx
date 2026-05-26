@@ -31,7 +31,7 @@ const StarBorder = <T extends React.ElementType = 'button'>({
         ...(rest as any).style
       }}
     >
-      {/* Stars clipped inside their own container — nie na button, żeby box-shadow focus był widoczny */}
+      {/* Stars clipped inside their own container - nie na button, żeby box-shadow focus był widoczny */}
       <div className="absolute inset-0 overflow-hidden rounded-[20px] z-0">
         {/* Multiple stars for continuous effect - Bottom */}
         {[0, 1, 2, 3, 4].map((index) => {

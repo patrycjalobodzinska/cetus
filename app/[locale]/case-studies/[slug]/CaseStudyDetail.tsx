@@ -1,7 +1,12 @@
 "use client";
 
 import React, { useRef, useEffect, useState, useLayoutEffect } from "react";
-import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  type MotionValue,
+} from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import StarGradientButton from "@/app/components/ui/gradientBackground";
@@ -139,8 +144,9 @@ interface CaseStudy {
   sections?: Section[];
 }
 
-// ─── StickyResultCard — używany w wariancie "stacked" ────────────────────────
-const POLYGON = "polygon(0% 0px, 20px 0%, 95% 0%, 100% 20px, 100% 80%, 100% 100%, calc(100% - 20px) 100%, 5% 100%, 0% 80%)";
+// ─── StickyResultCard - używany w wariancie "stacked" ────────────────────────
+const POLYGON =
+  "polygon(0% 0px, 20px 0%, 95% 0%, 100% 20px, 100% 80%, 100% 100%, calc(100% - 20px) 100%, 5% 100%, 0% 80%)";
 
 function StickyResultCard({
   item,
@@ -164,12 +170,10 @@ function StickyResultCard({
       <motion.div style={{ scale, transformOrigin: "top" }}>
         <div
           className="p-px rounded-md bg-gradient-to-br from-blue-600 via-sky-400 to-blue-900"
-          style={{ clipPath: POLYGON }}
-        >
+          style={{ clipPath: POLYGON }}>
           <div
             className="bg-white px-8 py-8 flex items-start gap-6"
-            style={{ clipPath: POLYGON }}
-          >
+            style={{ clipPath: POLYGON }}>
             <div className="relative flex items-center justify-center shrink-0">
               <div className="absolute inset-0 rounded-full bg-blue-100 blur-xl opacity-60" />
               <div className="relative flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-600 text-white font-bold text-2xl shadow-lg">
@@ -177,8 +181,16 @@ function StickyResultCard({
               </div>
             </div>
             <div className="flex-1 py-2">
-              {item.title && <p className="text-slate-900 font-semibold text-lg mb-1">{item.title}</p>}
-              {item.description && <p className="text-slate-600 leading-relaxed">{item.description}</p>}
+              {item.title && (
+                <p className="text-slate-900 font-semibold text-lg mb-1">
+                  {item.title}
+                </p>
+              )}
+              {item.description && (
+                <p className="text-slate-600 leading-relaxed">
+                  {item.description}
+                </p>
+              )}
             </div>
           </div>
         </div>
@@ -191,8 +203,8 @@ function StickyResultCard({
 // Renders a full-desktop-width page (INNER_W) inside the container,
 // scaled down so the entire site is visible without scrolling.
 
-const INNER_W = 1280; // px — the width the site is rendered at internally
-const INNER_H = 900; // px — how tall the viewport is inside the iframe
+const INNER_W = 1280; // px - the width the site is rendered at internally
+const INNER_H = 900; // px - how tall the viewport is inside the iframe
 
 function ScaledIframe({ src, title }: { src: string; title?: string }) {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -213,18 +225,20 @@ function ScaledIframe({ src, title }: { src: string; title?: string }) {
   }, []);
 
   return (
-    <div role="region" aria-label={title ? `Podgląd strony: ${title}` : "Podgląd strony"}>
-      {/* Skip link — widoczny tylko przy fokusie (WCAG 2.4.1) */}
+    <div
+      role="region"
+      aria-label={title ? `Podgląd strony: ${title}` : "Podgląd strony"}>
+      {/* Skip link - widoczny tylko przy fokusie (WCAG 2.4.1) */}
       <a
         href={`#${skipTargetId}`}
-        className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:text-sm focus:font-medium focus:rounded focus:outline-none"
-      >
+        className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:text-sm focus:font-medium focus:rounded focus:outline-none">
         Pomiń podgląd strony
       </a>
 
       {/* Informacja dla czytników ekranu */}
       <p className="sr-only">
-        Poniżej znajduje się podgląd strony projektu osadzony w ramce. Aby wejść do ramki, naciśnij Tab. Aby wyjść, naciśnij Escape lub Shift+Tab.
+        Poniżej znajduje się podgląd strony projektu osadzony w ramce. Aby wejść
+        do ramki, naciśnij Tab. Aby wyjść, naciśnij Escape lub Shift+Tab.
       </p>
 
       <div
@@ -234,8 +248,7 @@ function ScaledIframe({ src, title }: { src: string; title?: string }) {
           height: `${INNER_H * scale}px`,
           overflow: "hidden",
           position: "relative",
-        }}
-      >
+        }}>
         <iframe
           ref={iframeRef}
           src={src}
@@ -253,7 +266,7 @@ function ScaledIframe({ src, title }: { src: string; title?: string }) {
         />
       </div>
 
-      {/* Cel skip linka — focus trafia tutaj po "Pomiń podgląd strony" */}
+      {/* Cel skip linka - focus trafia tutaj po "Pomiń podgląd strony" */}
       <div id={skipTargetId} tabIndex={-1} className="sr-only" />
     </div>
   );
@@ -325,10 +338,25 @@ function CsHeroSection({
   );
 }
 
-function CsStatsSpark({ path, dur = '9s', begin = '0s', filterId }: { path: string; dur?: string; begin?: string; filterId: string }) {
+function CsStatsSpark({
+  path,
+  dur = "9s",
+  begin = "0s",
+  filterId,
+}: {
+  path: string;
+  dur?: string;
+  begin?: string;
+  filterId: string;
+}) {
   return (
     <circle r="2" fill="#3b82f6" filter={`url(#${filterId})`}>
-      <animateMotion dur={dur} begin={begin} repeatCount="indefinite" path={path} />
+      <animateMotion
+        dur={dur}
+        begin={begin}
+        repeatCount="indefinite"
+        path={path}
+      />
     </circle>
   );
 }
@@ -343,14 +371,19 @@ function CsStatsSection({
     <section className="py-12">
       <div className="relative w-full mx-auto lg:mb-10 md:px-4 overflow-visible">
         <div className="relative max-w-6xl mx-auto flex justify-center items-center py-12 overflow-visible">
-
           {/* Stats box */}
           <div
             className="relative w-full mx-6 md:mx-16 max-w-5xl min-h-40 py-6 md:h-28 bg-gray-50 border border-gray-100 text-gray-900 flex flex-col md:flex-row items-center justify-around sm:px-12 px-6 md:px-16 drop-shadow-xl z-10 stats-polygon"
-            style={{ filter: 'drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1))' }}>
-            <div className={`relative w-full grid grid-cols-2 md:py-4 gap-4 md:gap-8 z-10 ${items.length <= 3 ? 'md:grid-cols-3' : 'md:grid-cols-4'}`}>
+            style={{
+              filter:
+                "drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1))",
+            }}>
+            <div
+              className={`relative w-full grid grid-cols-2 md:py-4 gap-4 md:gap-8 z-10 ${items.length <= 3 ? "md:grid-cols-3" : "md:grid-cols-4"}`}>
               {items.map((stat, index) => (
-                <div key={stat._key || index} className="flex flex-col justify-between text-center min-w-[120px]">
+                <div
+                  key={stat._key || index}
+                  className="flex flex-col justify-between text-center min-w-[120px]">
                   <div className="text-xs md:text-sm text-gray-500 mb-1 font-medium tracking-wide uppercase">
                     {stat.label}
                   </div>
@@ -362,100 +395,302 @@ function CsStatsSection({
             </div>
           </div>
 
-          {/* Desktop — left line */}
+          {/* Desktop - left line */}
           <div
             className="absolute hidden md:block left-0 bottom-0 w-[400px] h-[80px] pointer-events-none z-0"
-            style={{ left: '0px', top: 'calc(5px)' }}>
-            <svg className="w-full h-full" viewBox="0 0 300 70" preserveAspectRatio="none" aria-hidden="true">
+            style={{ left: "0px", top: "calc(5px)" }}>
+            <svg
+              className="w-full h-full"
+              viewBox="0 0 300 70"
+              preserveAspectRatio="none"
+              aria-hidden="true">
               <defs>
-                <linearGradient id="neonGradientCsS" x1="0%" y1="0%" x2="100%" y2="0%">
+                <linearGradient
+                  id="neonGradientCsS"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="0%">
                   <stop offset="0%" stopColor="#3b82f6" />
                   <stop offset="100%" stopColor="#93c5fd" />
                 </linearGradient>
-                <filter id="softNeonCsS" x="-20%" y="-20%" width="140%" height="140%">
+                <filter
+                  id="softNeonCsS"
+                  x="-20%"
+                  y="-20%"
+                  width="140%"
+                  height="140%">
                   <feGaussianBlur stdDeviation="1.5" result="blur" />
-                  <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
                 </filter>
-                <filter id="sparkGlowCsL" x="-300%" y="-300%" width="700%" height="700%">
-                  <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="b1" />
-                  <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="b2" />
-                  <feMerge><feMergeNode in="b1" /><feMergeNode in="b2" /><feMergeNode in="SourceGraphic" /></feMerge>
+                <filter
+                  id="sparkGlowCsL"
+                  x="-300%"
+                  y="-300%"
+                  width="700%"
+                  height="700%">
+                  <feGaussianBlur
+                    in="SourceGraphic"
+                    stdDeviation="5"
+                    result="b1"
+                  />
+                  <feGaussianBlur
+                    in="SourceGraphic"
+                    stdDeviation="3"
+                    result="b2"
+                  />
+                  <feMerge>
+                    <feMergeNode in="b1" />
+                    <feMergeNode in="b2" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
                 </filter>
               </defs>
-              <path d="M10 65 L35 65 L60 20 L300 20 L400 20" fill="none" stroke="url(#neonGradientCsS)" strokeWidth="2" filter="url(#softNeonCsS)" strokeLinecap="round" />
-              <rect x="7" y="62" width="6" height="6" fill="#3b82f6" transform="rotate(45 10 65)" filter="url(#softNeonCsS)" />
-              <CsStatsSpark path="M300 20 L60 20 L35 65 L10 65" dur="9s" begin="0s" filterId="sparkGlowCsL" />
+              <path
+                d="M10 65 L35 65 L60 20 L300 20 L400 20"
+                fill="none"
+                stroke="url(#neonGradientCsS)"
+                strokeWidth="2"
+                filter="url(#softNeonCsS)"
+                strokeLinecap="round"
+              />
+              <rect
+                x="7"
+                y="62"
+                width="6"
+                height="6"
+                fill="#3b82f6"
+                transform="rotate(45 10 65)"
+                filter="url(#softNeonCsS)"
+              />
+              <CsStatsSpark
+                path="M300 20 L60 20 L35 65 L10 65"
+                dur="9s"
+                begin="0s"
+                filterId="sparkGlowCsL"
+              />
             </svg>
           </div>
 
-          {/* Mobile — left line */}
+          {/* Mobile - left line */}
           <div
             className="absolute md:hidden left-0 bottom-0 w-[80px] h-[200px] pointer-events-none z-0"
-            style={{ left: '0px', top: 'calc(5px)' }}>
-            <svg className="w-full h-full" viewBox="0 0 70 200" preserveAspectRatio="none" aria-hidden="true">
+            style={{ left: "0px", top: "calc(5px)" }}>
+            <svg
+              className="w-full h-full"
+              viewBox="0 0 70 200"
+              preserveAspectRatio="none"
+              aria-hidden="true">
               <defs>
-                <linearGradient id="neonGradientCsSMobL" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#3b82f6" /><stop offset="100%" stopColor="#93c5fd" />
+                <linearGradient
+                  id="neonGradientCsSMobL"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="0%">
+                  <stop offset="0%" stopColor="#3b82f6" />
+                  <stop offset="100%" stopColor="#93c5fd" />
                 </linearGradient>
-                <filter id="softNeonCsSMobL" x="-20%" y="-20%" width="140%" height="140%">
+                <filter
+                  id="softNeonCsSMobL"
+                  x="-20%"
+                  y="-20%"
+                  width="140%"
+                  height="140%">
                   <feGaussianBlur stdDeviation="1.5" result="blur" />
-                  <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
                 </filter>
-                <filter id="sparkGlowCsSMobL" x="-300%" y="-300%" width="700%" height="700%">
-                  <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="b1" />
-                  <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="b2" />
-                  <feMerge><feMergeNode in="b1" /><feMergeNode in="b2" /><feMergeNode in="SourceGraphic" /></feMerge>
+                <filter
+                  id="sparkGlowCsSMobL"
+                  x="-300%"
+                  y="-300%"
+                  width="700%"
+                  height="700%">
+                  <feGaussianBlur
+                    in="SourceGraphic"
+                    stdDeviation="5"
+                    result="b1"
+                  />
+                  <feGaussianBlur
+                    in="SourceGraphic"
+                    stdDeviation="3"
+                    result="b2"
+                  />
+                  <feMerge>
+                    <feMergeNode in="b1" />
+                    <feMergeNode in="b2" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
                 </filter>
               </defs>
-              <path d="M25 35 L10 55 L10 150" fill="none" stroke="url(#neonGradientCsSMobL)" strokeWidth="2" filter="url(#softNeonCsSMobL)" strokeLinecap="round" />
-              <rect x="25" y="30" width="6" height="6" fill="#3b82f6" filter="url(#softNeonCsSMobL)" />
-              <CsStatsSpark path="M10 150 L10 55 L25 35" dur="9s" begin="0s" filterId="sparkGlowCsSMobL" />
+              <path
+                d="M25 35 L10 55 L10 150"
+                fill="none"
+                stroke="url(#neonGradientCsSMobL)"
+                strokeWidth="2"
+                filter="url(#softNeonCsSMobL)"
+                strokeLinecap="round"
+              />
+              <rect
+                x="25"
+                y="30"
+                width="6"
+                height="6"
+                fill="#3b82f6"
+                filter="url(#softNeonCsSMobL)"
+              />
+              <CsStatsSpark
+                path="M10 150 L10 55 L25 35"
+                dur="9s"
+                begin="0s"
+                filterId="sparkGlowCsSMobL"
+              />
             </svg>
           </div>
 
-          {/* Mobile — right line */}
+          {/* Mobile - right line */}
           <div
             className="absolute md:hidden rotate-180 right-10 bottom-10 w-[80px] h-[200px] pointer-events-none z-0"
-            style={{ right: '0', bottom: 'calc(5px)' }}>
-            <svg className="w-full h-full" viewBox="0 0 70 200" preserveAspectRatio="none" aria-hidden="true">
+            style={{ right: "0", bottom: "calc(5px)" }}>
+            <svg
+              className="w-full h-full"
+              viewBox="0 0 70 200"
+              preserveAspectRatio="none"
+              aria-hidden="true">
               <defs>
-                <linearGradient id="neonGradientCsSMobR" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#3b82f6" /><stop offset="100%" stopColor="#93c5fd" />
+                <linearGradient
+                  id="neonGradientCsSMobR"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="0%">
+                  <stop offset="0%" stopColor="#3b82f6" />
+                  <stop offset="100%" stopColor="#93c5fd" />
                 </linearGradient>
-                <filter id="softNeonCsSMobR" x="-20%" y="-20%" width="140%" height="140%">
+                <filter
+                  id="softNeonCsSMobR"
+                  x="-20%"
+                  y="-20%"
+                  width="140%"
+                  height="140%">
                   <feGaussianBlur stdDeviation="1.5" result="blur" />
-                  <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
                 </filter>
-                <filter id="sparkGlowCsSMobR" x="-300%" y="-300%" width="700%" height="700%">
-                  <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="b1" />
-                  <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="b2" />
-                  <feMerge><feMergeNode in="b1" /><feMergeNode in="b2" /><feMergeNode in="SourceGraphic" /></feMerge>
+                <filter
+                  id="sparkGlowCsSMobR"
+                  x="-300%"
+                  y="-300%"
+                  width="700%"
+                  height="700%">
+                  <feGaussianBlur
+                    in="SourceGraphic"
+                    stdDeviation="5"
+                    result="b1"
+                  />
+                  <feGaussianBlur
+                    in="SourceGraphic"
+                    stdDeviation="3"
+                    result="b2"
+                  />
+                  <feMerge>
+                    <feMergeNode in="b1" />
+                    <feMergeNode in="b2" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
                 </filter>
               </defs>
-              <path d="M25 35 L10 55 L10 150" fill="none" stroke="url(#neonGradientCsSMobR)" strokeWidth="2" filter="url(#softNeonCsSMobR)" strokeLinecap="round" />
-              <rect x="25" y="30" width="6" height="6" fill="#3b82f6" filter="url(#softNeonCsSMobR)" />
-              <CsStatsSpark path="M25 35 L10 55 L10 150" dur="9s" begin="4.5s" filterId="sparkGlowCsSMobR" />
+              <path
+                d="M25 35 L10 55 L10 150"
+                fill="none"
+                stroke="url(#neonGradientCsSMobR)"
+                strokeWidth="2"
+                filter="url(#softNeonCsSMobR)"
+                strokeLinecap="round"
+              />
+              <rect
+                x="25"
+                y="30"
+                width="6"
+                height="6"
+                fill="#3b82f6"
+                filter="url(#softNeonCsSMobR)"
+              />
+              <CsStatsSpark
+                path="M25 35 L10 55 L10 150"
+                dur="9s"
+                begin="4.5s"
+                filterId="sparkGlowCsSMobR"
+              />
             </svg>
           </div>
 
-          {/* Desktop — right line */}
+          {/* Desktop - right line */}
           <div
             className="absolute hidden md:block w-[400px] h-[80px] pointer-events-none z-0"
-            style={{ right: '0px', bottom: 'calc(20px)' }}>
-            <svg className="w-full h-full" viewBox="0 0 300 70" preserveAspectRatio="none" aria-hidden="true">
+            style={{ right: "0px", bottom: "calc(20px)" }}>
+            <svg
+              className="w-full h-full"
+              viewBox="0 0 300 70"
+              preserveAspectRatio="none"
+              aria-hidden="true">
               <defs>
-                <filter id="sparkGlowCsR" x="-300%" y="-300%" width="700%" height="700%">
-                  <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="b1" />
-                  <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="b2" />
-                  <feMerge><feMergeNode in="b1" /><feMergeNode in="b2" /><feMergeNode in="SourceGraphic" /></feMerge>
+                <filter
+                  id="sparkGlowCsR"
+                  x="-300%"
+                  y="-300%"
+                  width="700%"
+                  height="700%">
+                  <feGaussianBlur
+                    in="SourceGraphic"
+                    stdDeviation="5"
+                    result="b1"
+                  />
+                  <feGaussianBlur
+                    in="SourceGraphic"
+                    stdDeviation="3"
+                    result="b2"
+                  />
+                  <feMerge>
+                    <feMergeNode in="b1" />
+                    <feMergeNode in="b2" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
                 </filter>
               </defs>
-              <path d="M10 65 L240 65 L265 20 L290 20 L294 20" fill="none" stroke="url(#neonGradientCsS)" strokeWidth="2" filter="url(#softNeonCsS)" strokeLinecap="round" />
-              <rect x="287" y="17" width="6" height="6" fill="#93c5fd" transform="rotate(45 290 20)" filter="url(#softNeonCsS)" />
-              <CsStatsSpark path="M10 65 L240 65 L265 20 L290 20 L294 20" dur="9s" begin="4.5s" filterId="sparkGlowCsR" />
+              <path
+                d="M10 65 L240 65 L265 20 L290 20 L294 20"
+                fill="none"
+                stroke="url(#neonGradientCsS)"
+                strokeWidth="2"
+                filter="url(#softNeonCsS)"
+                strokeLinecap="round"
+              />
+              <rect
+                x="287"
+                y="17"
+                width="6"
+                height="6"
+                fill="#93c5fd"
+                transform="rotate(45 290 20)"
+                filter="url(#softNeonCsS)"
+              />
+              <CsStatsSpark
+                path="M10 65 L240 65 L265 20 L290 20 L294 20"
+                dur="9s"
+                begin="4.5s"
+                filterId="sparkGlowCsR"
+              />
             </svg>
           </div>
-
         </div>
       </div>
     </section>
@@ -681,15 +916,16 @@ function CsResultsStackedSection({
     <section className="py-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="heading-1 text-slate-900 mb-4" style={{ fontFamily: "var(--font-michroma)" }}>
+          <h2
+            className="heading-1 text-slate-900 mb-4"
+            style={{ fontFamily: "var(--font-michroma)" }}>
             {title}
           </h2>
         </div>
         <div
           ref={containerRef}
           style={{ minHeight: `${items.length * 120 + 400}px` }}
-          className="relative"
-        >
+          className="relative">
           {items.map((item, i) => {
             const targetScale = 1 - (items.length - i) * 0.04;
             const startRange = i * (1 / items.length);
@@ -744,8 +980,16 @@ function CsResultsSection({
                 className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl border border-gray-100">
                 <CheckCircle2 className="w-6 h-6 text-blue-600 shrink-0 mt-0.5" />
                 <div>
-                  {item.title && <p className="text-slate-900 font-semibold text-lg">{item.title}</p>}
-                  {item.description && <p className="text-slate-600 leading-relaxed mt-0.5">{item.description}</p>}
+                  {item.title && (
+                    <p className="text-slate-900 font-semibold text-lg">
+                      {item.title}
+                    </p>
+                  )}
+                  {item.description && (
+                    <p className="text-slate-600 leading-relaxed mt-0.5">
+                      {item.description}
+                    </p>
+                  )}
                 </div>
               </li>
             ))}
@@ -790,8 +1034,16 @@ function CsResultsSection({
                     </div>
                   </div>
                   <div className="flex-1">
-                    {item.title && <p className="text-slate-900 font-semibold text-lg mb-1">{item.title}</p>}
-                    {item.description && <p className="text-slate-600 leading-relaxed">{item.description}</p>}
+                    {item.title && (
+                      <p className="text-slate-900 font-semibold text-lg mb-1">
+                        {item.title}
+                      </p>
+                    )}
+                    {item.description && (
+                      <p className="text-slate-600 leading-relaxed">
+                        {item.description}
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>
@@ -842,7 +1094,11 @@ function CsTechMarqueeRow({
         className={`flex gap-4 ${animationClass}`}
         style={{ width: "max-content" }}>
         {duplicated.map((item, i) => (
-          <CsTechPill key={`${item.name}-${i}`} name={item.name || ""} logo={item.logo} />
+          <CsTechPill
+            key={`${item.name}-${i}`}
+            name={item.name || ""}
+            logo={item.logo}
+          />
         ))}
       </div>
     </div>
@@ -898,7 +1154,7 @@ function CsQuoteSection({
               "{quote}"
             </p>
             {author && (
-              <footer className="text-slate-500 font-medium">— {author}</footer>
+              <footer className="text-slate-500 font-medium">- {author}</footer>
             )}
           </blockquote>
         </div>
@@ -913,7 +1169,7 @@ function CsQuoteSection({
           "{quote}"
         </p>
         {author && (
-          <p className="text-slate-500 font-medium text-lg">— {author}</p>
+          <p className="text-slate-500 font-medium text-lg">- {author}</p>
         )}
       </div>
     </section>
@@ -948,7 +1204,9 @@ function CsScopeSection({
                 key={item._key || index}
                 className="flex items-start gap-3 p-4 bg-gray-50 rounded-xl border border-gray-100">
                 <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
-                <span className="text-slate-600 leading-relaxed">{item.text}</span>
+                <span className="text-slate-600 leading-relaxed">
+                  {item.text}
+                </span>
               </div>
             ))}
           </div>

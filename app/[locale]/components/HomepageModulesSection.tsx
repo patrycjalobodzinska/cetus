@@ -1,7 +1,4 @@
-'use client';
-
-import { useEffect, useState } from 'react';
-import { useLocale } from 'next-intl';
+import { getLocale } from 'next-intl/server';
 import Link from 'next/link';
 import { client } from '@/sanity/lib/client';
 import { urlFor } from '@/sanity/lib/image';
@@ -19,46 +16,24 @@ interface HomepageModule {
   linkText?: string;
 }
 
-export default function HomepageModulesSection() {
-  const locale = useLocale();
-  const [modules, setModules] = useState<HomepageModule[]>([]);
-  const [loading, setLoading] = useState(true);
+const QUERY = `*[_type == "homepageModule"] | order(order asc) {
+  _id,
+  moduleNumber,
+  "title": coalesce(title[$locale], title.pl),
+  "description": coalesce(description[$locale], description.pl),
+  image,
+  link,
+  "linkText": coalesce(linkText[$locale], linkText.pl)
+}`;
 
-  useEffect(() => {
-    async function fetchModules() {
-      try {
-        const data = await client.fetch<HomepageModule[]>(
-          `*[_type == "homepageModule"] | order(order asc) {
-            _id,
-            moduleNumber,
-            "title": coalesce(title[$locale], title.pl),
-            "description": coalesce(description[$locale], description.pl),
-            image,
-            link,
-            "linkText": coalesce(linkText[$locale], linkText.pl)
-          }`,
-          { locale }
-        );
-        setModules(data);
-      } catch (error) {
-        console.error('Error fetching homepage modules:', error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchModules();
-  }, [locale]);
+export default async function HomepageModulesSection() {
+  const locale = await getLocale();
 
-  if (loading) {
-    return (
-      <section className="md:py-24 py-6 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <p className="text-slate-600"></p>
-          </div>
-        </div>
-      </section>
-    );
+  let modules: HomepageModule[] = [];
+  try {
+    modules = (await client.fetch<HomepageModule[]>(QUERY, { locale })) ?? [];
+  } catch (error) {
+    console.error('Error fetching homepage modules:', error);
   }
 
   if (modules.length === 0) {
@@ -68,10 +43,10 @@ export default function HomepageModulesSection() {
   return (
     <section className="md:py-24 py-6 relative overflow-hidden">
       <div className="max-w-7xl mx-auto border-y md:border-y-0 border-y-gray-200 px-4 sm:px-6 lg:px-8">
-        <div className={ clsx(modules.length > 2? "divide-y ":"divide-y md:divide-y-0","grid  md:divide-x divide-gray-300 md:grid-cols-2 divide-y")}>
+        <div className={clsx(modules.length > 2 ? "divide-y " : "divide-y md:divide-y-0", "grid  md:divide-x divide-gray-300 md:grid-cols-2 divide-y")}>
           {modules.map((module, index) => (
             <div
-              key={index}
+              key={module._id || index}
               className="group md:p-6 py-4 relative"
             >
               <div className="relative h-full">
@@ -126,4 +101,3 @@ export default function HomepageModulesSection() {
     </section>
   );
 }
-

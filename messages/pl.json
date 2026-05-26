@@ -15,9 +15,13 @@
     "home": "Strona główna",
     "about": "O nas",
     "services": "Usługi",
+    "allServices": "Wszystkie usługi",
     "caseStudies": "Realizacje",
     "contact": "Kontakt",
-    "freeConsultation": "Darmowa konsultacja"
+    "freeConsultation": "Darmowa konsultacja",
+    "servicesMenuLabel": "Podmenu Usługi",
+    "openServicesMenu": "Rozwiń menu Usługi",
+    "closeServicesMenu": "Zwiń menu Usługi"
   },
   "common": {
     "learnMore": "Dowiedz się więcej",

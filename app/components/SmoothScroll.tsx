@@ -20,7 +20,7 @@ export default function SmoothScroll({
   const isPopStateRef = useRef(false);
 
   useEffect(() => {
-    // Disable browser's native scroll restoration — Lenis manages scroll
+    // Disable browser's native scroll restoration - Lenis manages scroll
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
     }

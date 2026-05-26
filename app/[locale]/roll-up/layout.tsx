@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "CetusPro — Technologia, która napędza Twój biznes",
-  description: "Projektujemy, budujemy i rozwijamy dedykowane systemy IT. Sprawdź naszą ofertę dla biznesu lub dołącz do zespołu CetusPro.",
+  title: "CetusPro - Technologia, która napędza Twój biznes",
+  description:
+    "Projektujemy, budujemy i rozwijamy dedykowane systemy IT. Sprawdź naszą ofertę dla biznesu lub dołącz do zespołu CetusPro.",
   keywords: [
     "CetusPro",
     "rozwiązania IT",
@@ -10,26 +11,19 @@ export const metadata: Metadata = {
     "aplikacje mobilne",
     "AI i automatyzacja",
     "cyberbezpieczeństwo",
-    "kariera w IT"
+    "kariera w IT",
   ],
   openGraph: {
-    title: "CetusPro — Technologia, która napędza Twój biznes",
-    description: "Sprawdź naszą ofertę dla biznesu lub dołącz do zespołu CetusPro.",
+    title: "CetusPro - Technologia, która napędza Twój biznes",
+    description:
+      "Sprawdź naszą ofertę dla biznesu lub dołącz do zespołu CetusPro.",
     url: "/roll-up",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "CetusPro — rozwiązania IT",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "CetusPro — Technologia, która napędza Twój biznes",
-    description: "Sprawdź naszą ofertę dla biznesu lub dołącz do zespołu CetusPro.",
-    images: ["/og-image.png"],
+    title: "CetusPro - Technologia, która napędza Twój biznes",
+    description:
+      "Sprawdź naszą ofertę dla biznesu lub dołącz do zespołu CetusPro.",
   },
   alternates: {
     canonical: "/roll-up",

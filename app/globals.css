@@ -93,7 +93,7 @@
   outline-offset: 4px;
 }
 
-/* <a> owijające StarGradientButton — display:inline nie ma border-radius,
+/* <a> owijające StarGradientButton - display:inline nie ma border-radius,
    robimy inline-block + rounded żeby outline podążał za kształtem przycisku */
 a:has(> .sgb-outer) {
   display: inline-block;
