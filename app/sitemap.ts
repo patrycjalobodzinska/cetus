@@ -1,4 +1,5 @@
 import { MetadataRoute } from "next";
+import { client } from "@/sanity/lib/client";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://cetuspro.com";
 
@@ -7,6 +8,7 @@ const staticPages = [
   { path: "/o-nas", priority: 0.8, changeFrequency: "monthly" as const },
   { path: "/oferta", priority: 0.9, changeFrequency: "monthly" as const },
   { path: "/kontakt", priority: 0.8, changeFrequency: "monthly" as const },
+  { path: "/blog", priority: 0.8, changeFrequency: "weekly" as const },
   { path: "/polityka-jakosci", priority: 0.3, changeFrequency: "yearly" as const },
   { path: "/oferta/aplikacje-webowe", priority: 0.7, changeFrequency: "monthly" as const },
   { path: "/oferta/aplikacje-mobilne", priority: 0.7, changeFrequency: "monthly" as const },
@@ -56,6 +58,46 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         },
       },
     });
+  }
+
+  try {
+    const blogPosts = await client.fetch<Array<{ slug: string; publishedAt?: string }>>(
+      `*[_type == "blogPost" && defined(slug.current)] {
+        "slug": slug.current,
+        publishedAt
+      }`
+    );
+
+    for (const post of blogPosts) {
+      const path = `/blog/${post.slug}`;
+      const lastModified = post.publishedAt ? new Date(post.publishedAt) : new Date();
+      entries.push({
+        url: getLocalizedUrl(path, "pl"),
+        lastModified,
+        changeFrequency: "monthly",
+        priority: 0.6,
+        alternates: {
+          languages: {
+            pl: getLocalizedUrl(path, "pl"),
+            en: getLocalizedUrl(path, "en"),
+          },
+        },
+      });
+      entries.push({
+        url: getLocalizedUrl(path, "en"),
+        lastModified,
+        changeFrequency: "monthly",
+        priority: 0.54,
+        alternates: {
+          languages: {
+            pl: getLocalizedUrl(path, "pl"),
+            en: getLocalizedUrl(path, "en"),
+          },
+        },
+      });
+    }
+  } catch (error) {
+    console.error("Error fetching blog posts for sitemap:", error);
   }
 
   return entries;

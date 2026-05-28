@@ -144,7 +144,7 @@ function SplashScreen({ onFinish }: { onFinish: () => void }) {
 }
 
 const POLYGON_CLIP =
-  "polygon(0% 0px, 20px 0%, 95% 0%, 100% 20px, 100% 80%, 100% 100%, calc(100% - 20px) 100%, 5% 100%, 0% 80%)";
+  "polygon(0% 0px, 20px 0%, 95% 0%, 100% 20px, 100% 80%, 100% 100%, calc(100% - 20px) 100%, 0% 100%)";
 
 const ICON_MAP: Record<string, LucideIcon> = {
   code: Code2,

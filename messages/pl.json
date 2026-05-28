@@ -17,6 +17,7 @@
     "services": "Usługi",
     "allServices": "Wszystkie usługi",
     "caseStudies": "Realizacje",
+    "blog": "Blog",
     "contact": "Kontakt",
     "freeConsultation": "Darmowa konsultacja",
     "servicesMenuLabel": "Podmenu Usługi",
@@ -387,6 +388,19 @@
       "title": "Zaufali nam",
       "description": "",
       "loading": "Ładowanie partnerów..."
+    }
+  },
+  "blog": {
+    "hero": {
+      "titlePrefix": "Nasz",
+      "titleHighlight": "Blog",
+      "description": "Praktyczna wiedza, opinie i case studies z naszego doświadczenia w tworzeniu nowoczesnego oprogramowania."
+    },
+    "noPosts": "Brak wpisów do wyświetlenia.",
+    "cta": {
+      "title": "Masz pomysł na projekt?",
+      "description": "Porozmawiajmy o tym, jak możemy pomóc Twojej firmie urzeczywistnić ten pomysł.",
+      "buttonText": "Skontaktuj się z nami"
     }
   },
   "caseStudies": {

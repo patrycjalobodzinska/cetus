@@ -404,6 +404,19 @@ export default function NavbarCurosora() {
               <span className="text-slate-300 text-xs" aria-hidden="true">/</span>
 
               <NavigationLink
+                href={`/${locale}/blog`}
+                className={navLinkClass(
+                  pathname?.startsWith(`/${locale}/blog`) ?? false
+                )}
+                aria-current={
+                  pathname?.startsWith(`/${locale}/blog`) ? "page" : undefined
+                }
+              >
+                {t("blog")}
+              </NavigationLink>
+              <span className="text-slate-300 text-xs" aria-hidden="true">/</span>
+
+              <NavigationLink
                 href={`/${locale}/kontakt`}
                 className={navLinkClass(
                   pathname?.startsWith(`/${locale}/kontakt`) ?? false
@@ -496,6 +509,22 @@ export default function NavbarCurosora() {
               closeLabel={t("closeServicesMenu")}
               onNavigate={() => setIsMobileMenuOpen(false)}
             />
+
+            <NavigationLink
+              href={`/${locale}/blog`}
+              className={cn(
+                "text-lg font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 rounded-sm",
+                pathname?.startsWith(`/${locale}/blog`)
+                  ? "text-blue-600 font-semibold"
+                  : "text-slate-900 hover:text-blue-600"
+              )}
+              aria-current={
+                pathname?.startsWith(`/${locale}/blog`) ? "page" : undefined
+              }
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {t("blog")}
+            </NavigationLink>
 
             <NavigationLink
               href={`/${locale}/kontakt`}

@@ -17,6 +17,7 @@
     "services": "Services",
     "allServices": "All Services",
     "caseStudies": "Case Studies",
+    "blog": "Blog",
     "contact": "Contact",
     "freeConsultation": "Free Consultation",
     "servicesMenuLabel": "Services submenu",
@@ -390,6 +391,19 @@
       "title": "Strategic Partners",
       "description": "We deliver real value through cooperation with leading organizations and innovative startups.",
       "loading": "Loading partners..."
+    }
+  },
+  "blog": {
+    "hero": {
+      "titlePrefix": "Our",
+      "titleHighlight": "Blog",
+      "description": "Practical knowledge, opinions and case studies from our experience building modern software."
+    },
+    "noPosts": "No posts to display yet.",
+    "cta": {
+      "title": "Have a project in mind?",
+      "description": "Let's talk about how we can help bring your idea to life.",
+      "buttonText": "Get in touch"
     }
   },
   "caseStudies": {

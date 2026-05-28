@@ -30,6 +30,19 @@ import {
   csScopeSection,
   csCtaSection,
 } from './caseStudySections'
+import blogPost from './blogPost'
+import {
+  bpHeroSection,
+  bpRichTextSection,
+  bpImageSection,
+  bpQuoteSection,
+  bpGallerySection,
+  bpCodeSection,
+  bpVideoSection,
+  bpListSection,
+  bpCalloutSection,
+  bpCtaSection,
+} from './blogPostSections'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -62,5 +75,16 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     csQuoteSection,
     csScopeSection,
     csCtaSection,
+    blogPost,
+    bpHeroSection,
+    bpRichTextSection,
+    bpImageSection,
+    bpQuoteSection,
+    bpGallerySection,
+    bpCodeSection,
+    bpVideoSection,
+    bpListSection,
+    bpCalloutSection,
+    bpCtaSection,
   ],
 }
