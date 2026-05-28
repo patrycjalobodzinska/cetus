@@ -82,9 +82,12 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/logo-square.png", type: "image/png", sizes: "512x512" },
+    ],
     shortcut: "/favicon.ico",
-    apple: "/logocetus.png",
+    apple: [{ url: "/logo-square.png", sizes: "180x180", type: "image/png" }],
   },
 };
 
@@ -122,7 +125,9 @@ export default async function RootLayout({
         url: siteUrl,
         logo: {
           "@type": "ImageObject",
-          url: `${siteUrl}/logocetus.png`,
+          url: `${siteUrl}/logo-square.png`,
+          width: 512,
+          height: 512,
         },
         contactPoint: {
           "@type": "ContactPoint",
