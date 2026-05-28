@@ -194,12 +194,12 @@ const portableTextComponents: PortableTextComponents = {
 function widthClass(variant?: string) {
   switch (variant) {
     case "wide":
-      return "max-w-6xl";
+      return "max-w-7xl";
     case "full":
       return "max-w-none";
     case "standard":
     default:
-      return "max-w-4xl";
+      return "max-w-5xl";
   }
 }
 
@@ -232,7 +232,7 @@ function BpHero({ variant = "centered", title, category, excerpt, image }: HeroS
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/20" />
           <div className="absolute inset-0 flex items-end">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-12">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-12">
               {category && (
                 <span className="inline-block bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-medium mb-4">
                   {category}
@@ -258,7 +258,7 @@ function BpHero({ variant = "centered", title, category, excerpt, image }: HeroS
 
   if (variant === "split") {
     return (
-      <section className="pt-[var(--page-top-offset)] pb-16">
+      <section className="pt-28 md:pt-32 lg:pt-36 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center">
           <div>
             {category && (
@@ -296,8 +296,8 @@ function BpHero({ variant = "centered", title, category, excerpt, image }: HeroS
 
   // centered
   return (
-    <section className="pt-[var(--page-top-offset)] pb-12">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <section className="pt-28 md:pt-32 lg:pt-36 pb-12">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {category && (
           <span className="inline-block bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-medium mb-5">
             {category}
@@ -317,9 +317,9 @@ function BpHero({ variant = "centered", title, category, excerpt, image }: HeroS
           </p>
         )}
         {image && (
-          <div className="relative mt-10 aspect-[16/9] rounded-2xl overflow-hidden shadow-xl">
+          <div className="relative mt-8 aspect-[21/9] rounded-2xl overflow-hidden shadow-xl">
             <Image
-              src={urlFor(image).width(1600).height(900).url()}
+              src={urlFor(image).width(1600).height(686).url()}
               alt={title || ""}
               fill
               priority
@@ -370,7 +370,7 @@ function BpImage({ variant = "contained", image, caption, alt }: ImageSection) {
     );
   }
 
-  const wrapper = variant === "wide" ? "max-w-6xl" : "max-w-4xl";
+  const wrapper = variant === "wide" ? "max-w-7xl" : "max-w-5xl";
 
   return (
     <section className="py-8">
@@ -399,7 +399,7 @@ function BpQuote({ variant = "centered", quote, author, role }: QuoteSection) {
   if (variant === "blockquote") {
     return (
       <section className="py-12">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <blockquote className="border-l-4 border-blue-600 pl-6">
             <p className="text-xl md:text-2xl text-slate-700 italic leading-relaxed mb-4">
               “{quote}”
@@ -418,7 +418,7 @@ function BpQuote({ variant = "centered", quote, author, role }: QuoteSection) {
   }
   return (
     <section className="py-16">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <p className="text-2xl md:text-3xl text-slate-700 italic font-light leading-relaxed">
           “{quote}”
         </p>
@@ -546,7 +546,7 @@ function BpCode({ language = "text", filename, code }: CodeSection) {
   if (!code) return null;
   return (
     <section className="py-8">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="rounded-xl overflow-hidden border border-slate-200 bg-slate-900">
           {(filename || language) && (
             <div className="flex items-center justify-between px-4 py-2 bg-slate-800 text-slate-300 text-xs">
@@ -575,7 +575,7 @@ function BpVideo({ url, caption, title }: VideoSection) {
 
   return (
     <section className="py-8">
-      <figure className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <figure className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative aspect-video rounded-xl overflow-hidden bg-black">
           {embedSrc ? (
             <iframe
@@ -604,7 +604,7 @@ function BpList({ variant = "bullet", sectionTitle, items = [] }: ListSection) {
   if (!items.length) return null;
   return (
     <section className="py-8">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {sectionTitle && (
           <h2 className="text-2xl font-semibold text-slate-900 mb-5">{sectionTitle}</h2>
         )}
@@ -650,7 +650,7 @@ function BpCallout({ tone = "info", title, body }: CalloutSection) {
 
   return (
     <section className="py-6">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`rounded-xl border ${config.border} ${config.bg} p-5 flex gap-4`}>
           <Icon className={`w-5 h-5 shrink-0 mt-0.5 ${config.color}`} />
           <div>
@@ -674,7 +674,7 @@ function BpCta({
   if (variant === "banner") {
     return (
       <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="rounded-2xl bg-gradient-to-br from-blue-600 to-blue-900 px-8 py-12 text-center text-white">
             {heading && (
               <h2
@@ -699,7 +699,7 @@ function BpCta({
   }
   return (
     <section className="py-16">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {heading && (
           <h2
             className="heading-1 text-slate-900 mb-4"
@@ -763,8 +763,8 @@ export default function BlogPostDetail({
   return (
     <article className="min-h-screen">
       {!hasCustomHero && (
-        <section className="pt-[var(--page-top-offset)] pb-6">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <section className="pt-28 md:pt-32 lg:pt-36 pb-6">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             {post.category && (
               <span className="inline-block bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-medium mb-5">
                 {post.category}
@@ -786,7 +786,7 @@ export default function BlogPostDetail({
       )}
 
       {(post.author?.name || post.publishedAt) && (
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-4 flex items-center gap-3 text-sm text-slate-500">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-4 flex items-center gap-3 text-sm text-slate-500">
           {post.author?.avatar && (
             <div className="relative w-9 h-9 rounded-full overflow-hidden">
               <Image
@@ -819,7 +819,7 @@ export default function BlogPostDetail({
       })}
 
       {post.tags && post.tags.length > 0 && (
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 mb-12 flex flex-wrap gap-2">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 mb-12 flex flex-wrap gap-2">
           {post.tags.map((tag) => (
             <span
               key={tag}

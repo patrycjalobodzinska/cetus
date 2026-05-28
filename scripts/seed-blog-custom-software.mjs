@@ -92,6 +92,11 @@ async function main() {
     "custom-software-cover.jpg",
   );
 
+  const heroImage = await uploadImage(
+    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1800&q=80",
+    "custom-software-hero.jpg",
+  );
+
   const inlineImage1 = await uploadImage(
     "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1400&q=80",
     "custom-software-team.jpg",
@@ -113,7 +118,7 @@ async function main() {
   console.log("→ Building document…");
 
   const sections = [
-    // Hero — czysty centered, bez zdjęcia
+    // Hero — centered z banerowym zdjęciem pod tekstem
     {
       _key: _key(),
       _type: "bpHeroSection",
@@ -121,6 +126,7 @@ async function main() {
       title: ls(TITLE_PL, TITLE_EN),
       category: ls("Custom Software", "Custom Software"),
       excerpt: lt(EXCERPT_PL, EXCERPT_EN),
+      image: heroImage,
     },
 
     // Wstęp — Rich text
