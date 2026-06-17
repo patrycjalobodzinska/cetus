@@ -132,6 +132,14 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Zapobiega poziomemu (oś X) scrollowi na każdej stronie –
+   np. od elementów 100vw, które są szersze niż obszar treści o szerokość scrollbara.
+   `clip` nie tworzy kontenera przewijania, więc nie psuje Lenis ani position: sticky. */
+html,
+body {
+  overflow-x: clip;
+}
+
 /* Global custom blue scrollbar */
 html {
   /* Firefox */

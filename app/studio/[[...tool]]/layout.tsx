@@ -5,6 +5,19 @@ export const metadata: Metadata = {
   description: "",
 };
 
+// Globalny niebieski scrollbar z globals.css ustawia scrollbar-width/scrollbar-color
+// na <html>, a te właściwości są dziedziczone – przez co kolorują wszystkie panele
+// Sanity Studio. Ten styl (renderowany tylko dla /studio) przywraca domyślny scrollbar.
+const resetStudioScrollbar = `
+  html, body {
+    scrollbar-width: auto !important;
+    scrollbar-color: auto !important;
+  }
+  html::-webkit-scrollbar { width: initial; height: initial; }
+  html::-webkit-scrollbar-track { background: initial; }
+  html::-webkit-scrollbar-thumb { background: initial; border-radius: initial; }
+`;
+
 export default function StudioLayout({
   children,
 }: Readonly<{
@@ -12,7 +25,10 @@ export default function StudioLayout({
 }>) {
   return (
     <html lang="pl">
-      <body>{children}</body>
+      <body>
+        <style dangerouslySetInnerHTML={{ __html: resetStudioScrollbar }} />
+        {children}
+      </body>
     </html>
   );
 }

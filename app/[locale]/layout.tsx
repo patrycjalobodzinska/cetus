@@ -82,12 +82,9 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: [
-      { url: "/favicon.ico" },
-      { url: "/logo-square.png", type: "image/png", sizes: "512x512" },
-    ],
-    shortcut: "/favicon.ico",
-    apple: [{ url: "/logo-square.png", sizes: "180x180", type: "image/png" }],
+    icon: [{ url: "/smalllogo.png", type: "image/png", sizes: "512x512" }],
+    shortcut: "/smalllogo.png",
+    apple: [{ url: "/smalllogo.png", sizes: "180x180", type: "image/png" }],
   },
 };
 
@@ -125,7 +122,7 @@ export default async function RootLayout({
         url: siteUrl,
         logo: {
           "@type": "ImageObject",
-          url: `${siteUrl}/logo-square.png`,
+          url: `${siteUrl}/smalllogo.png`,
           width: 512,
           height: 512,
         },
@@ -135,7 +132,11 @@ export default async function RootLayout({
           contactType: "customer service",
           availableLanguage: ["Polish", "English"],
         },
-        sameAs: [],
+        sameAs: [
+          "https://www.facebook.com/cetusprocom/?locale=pl_PL",
+          "https://www.instagram.com/cetuspro/",
+          "https://pl.linkedin.com/company/cetuspro",
+        ],
       },
       {
         "@type": "WebSite",

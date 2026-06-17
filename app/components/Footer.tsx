@@ -37,6 +37,12 @@ const socialIcons: Record<string, any> = {
   instagram: Instagram,
 };
 
+const DEFAULT_SOCIAL_MEDIA = [
+  { platform: 'facebook', url: 'https://www.facebook.com/cetusprocom/?locale=pl_PL' },
+  { platform: 'instagram', url: 'https://www.instagram.com/cetuspro/' },
+  { platform: 'linkedin', url: 'https://pl.linkedin.com/company/cetuspro' },
+];
+
 const DEFAULT_OFFER_LINKS = [
   { titleKey: 'webApps', slug: 'aplikacje-webowe' },
   { titleKey: 'mobileApps', slug: 'aplikacje-mobilne' },
@@ -113,6 +119,11 @@ export default async function Footer() {
         slug: item.slug,
       }))
   ).filter((link) => link.slug && isValidSlug(link.slug));
+
+  const socialMedia =
+    data.socialMedia && data.socialMedia.length > 0
+      ? data.socialMedia
+      : DEFAULT_SOCIAL_MEDIA;
 
   return (
     <footer className="relative bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden">
@@ -273,9 +284,9 @@ export default async function Footer() {
               </div>
             </div>
 
-            {(data.socialMedia && data.socialMedia.length > 0) && (
+            {socialMedia.length > 0 && (
               <div className="flex items-center gap-5">
-                {data.socialMedia.map((social, index) => {
+                {socialMedia.map((social, index) => {
                   const Icon = socialIcons[social.platform.toLowerCase()];
                   if (!Icon) return null;
                   return (
