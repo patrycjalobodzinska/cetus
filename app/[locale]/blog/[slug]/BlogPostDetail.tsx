@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { PortableText, type PortableTextComponents } from "@portabletext/react";
-import { ArrowLeft, CheckCircle2, Info, AlertTriangle, Lightbulb } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, CheckCircle2, Info, AlertTriangle, Lightbulb } from "lucide-react";
 import StarGradientButton from "@/app/components/ui/gradientBackground";
 import { urlFor } from "@/sanity/lib/image";
 
@@ -96,6 +96,16 @@ interface CtaSection extends BaseSection {
   description?: string;
   buttonLabel?: string;
   buttonHref?: string;
+  blank?: boolean;
+}
+
+interface ButtonSection extends BaseSection {
+  _type: "bpButtonSection";
+  variant?: "primary" | "secondary" | "outline";
+  align?: "left" | "center" | "right";
+  buttonLabel?: string;
+  buttonHref?: string;
+  blank?: boolean;
 }
 
 type Section =
@@ -108,7 +118,8 @@ type Section =
   | VideoSection
   | ListSection
   | CalloutSection
-  | CtaSection;
+  | CtaSection
+  | ButtonSection;
 
 interface BlogPost {
   _id: string;
@@ -213,6 +224,42 @@ function getYouTubeId(url: string) {
 function getVimeoId(url: string) {
   const m = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
   return m ? m[1] : null;
+}
+
+const isExternalHref = (href?: string) => !!href && /^(https?:|mailto:|tel:)/i.test(href);
+
+// Renderuje <a> dla linków zewnętrznych / "nowa karta", a next/link dla wewnętrznych.
+function ActionLink({
+  href,
+  blank,
+  className,
+  children,
+}: {
+  href: string;
+  blank?: boolean;
+  className?: string;
+  children: React.ReactNode;
+}) {
+  const external = isExternalHref(href);
+  const newTab = blank === undefined ? external : blank;
+
+  if (external || newTab) {
+    return (
+      <a
+        href={href}
+        target={newTab ? "_blank" : undefined}
+        rel={newTab ? "noopener noreferrer" : undefined}
+        className={className}
+      >
+        {children}
+      </a>
+    );
+  }
+  return (
+    <Link href={href} className={className}>
+      {children}
+    </Link>
+  );
 }
 
 // ─── Section components ──────────────────────────────────────────────────────
@@ -669,6 +716,7 @@ function BpCta({
   description,
   buttonLabel,
   buttonHref = "/kontakt",
+  blank,
 }: CtaSection) {
   if (!heading && !description) return null;
   if (variant === "banner") {
@@ -688,9 +736,9 @@ function BpCta({
               <p className="text-lg text-blue-100 mb-8 leading-relaxed">{description}</p>
             )}
             {buttonLabel && (
-              <Link href={buttonHref}>
+              <ActionLink href={buttonHref} blank={blank}>
                 <StarGradientButton>{buttonLabel}</StarGradientButton>
-              </Link>
+              </ActionLink>
             )}
           </div>
         </div>
@@ -712,10 +760,52 @@ function BpCta({
           <p className="text-lg text-slate-600 mb-8 leading-relaxed">{description}</p>
         )}
         {buttonLabel && (
-          <Link href={buttonHref}>
+          <ActionLink href={buttonHref} blank={blank}>
             <StarGradientButton>{buttonLabel}</StarGradientButton>
-          </Link>
+          </ActionLink>
         )}
+      </div>
+    </section>
+  );
+}
+
+function BpButton({
+  variant = "primary",
+  align = "center",
+  buttonLabel,
+  buttonHref,
+  blank,
+}: ButtonSection) {
+  if (!buttonLabel || !buttonHref) return null;
+
+  const external = isExternalHref(buttonHref);
+  const base =
+    "inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold transition-all duration-300";
+  const styles: Record<string, string> = {
+    primary:
+      "bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg shadow-blue-600/25 hover:shadow-xl hover:shadow-blue-600/40 hover:-translate-y-0.5",
+    secondary:
+      "bg-slate-900 text-white shadow-md hover:bg-slate-800 hover:-translate-y-0.5",
+    outline:
+      "border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white",
+  };
+  const alignClass =
+    align === "left" ? "justify-start" : align === "right" ? "justify-end" : "justify-center";
+  const Icon = external ? ArrowUpRight : ArrowRight;
+
+  return (
+    <section className="py-6">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className={`flex ${alignClass}`}>
+          <ActionLink
+            href={buttonHref}
+            blank={blank}
+            className={`${base} ${styles[variant] || styles.primary}`}
+          >
+            <span>{buttonLabel}</span>
+            <Icon className="w-4 h-4" />
+          </ActionLink>
+        </div>
       </div>
     </section>
   );
@@ -734,6 +824,7 @@ const sectionComponents: Record<string, React.ComponentType<any>> = {
   bpListSection: BpList,
   bpCalloutSection: BpCallout,
   bpCtaSection: BpCta,
+  bpButtonSection: BpButton,
 };
 
 // ─── Main export ──────────────────────────────────────────────────────────────

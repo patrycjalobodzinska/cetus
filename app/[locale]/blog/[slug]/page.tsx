@@ -63,6 +63,8 @@ export default async function BlogPostPage({
           "body": coalesce(body[$locale], body.pl),
           "buttonLabel": coalesce(buttonLabel[$locale], buttonLabel.pl),
           buttonHref,
+          blank,
+          align,
           "items": coalesce(items[$locale], items.pl, items),
           image,
           // rich text - pick localized content array

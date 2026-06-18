@@ -502,3 +502,69 @@ export const bpCtaSection = defineType({
     },
   },
 });
+
+// ─── bpButtonSection ──────────────────────────────────────────────────────────
+export const bpButtonSection = defineType({
+  name: "bpButtonSection",
+  title: "Przycisk z linkiem",
+  type: "object",
+  fields: [
+    defineField({
+      name: "variant",
+      title: "Styl",
+      type: "string",
+      options: {
+        list: [
+          { title: "Primary – niebieski, wypełniony", value: "primary" },
+          { title: "Secondary – ciemny", value: "secondary" },
+          { title: "Outline – obramowanie", value: "outline" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "primary",
+    }),
+    defineField({
+      name: "align",
+      title: "Wyrównanie",
+      type: "string",
+      options: {
+        list: [
+          { title: "Do lewej", value: "left" },
+          { title: "Wyśrodkowany", value: "center" },
+          { title: "Do prawej", value: "right" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "center",
+    }),
+    defineField({
+      name: "buttonLabel",
+      title: "Tekst przycisku",
+      type: "localeString",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "buttonHref",
+      title: "Link (np. https://elevate.cetuspro.com albo /kontakt)",
+      type: "url",
+      validation: (Rule) =>
+        Rule.required().uri({
+          allowRelative: true,
+          scheme: ["http", "https", "mailto", "tel"],
+        }),
+    }),
+    defineField({
+      name: "blank",
+      title: "Otwórz w nowej karcie",
+      type: "boolean",
+      description: "Zalecane dla linków zewnętrznych.",
+      initialValue: true,
+    }),
+  ],
+  preview: {
+    select: { title: "buttonLabel.pl", subtitle: "buttonHref" },
+    prepare({ title, subtitle }) {
+      return { title: `Przycisk: ${title || "-"}`, subtitle };
+    },
+  },
+});

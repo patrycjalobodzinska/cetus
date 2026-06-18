@@ -2,7 +2,7 @@ import { defineField, defineType, defineArrayMember } from "sanity";
 
 export default defineType({
   name: "blogPost",
-  title: "Blog - wpis",
+  title: "Co u nas - wpis",
   type: "document",
   fields: [
     defineField({
@@ -85,6 +85,7 @@ export default defineType({
         defineArrayMember({ type: "bpListSection", title: "Lista" }),
         defineArrayMember({ type: "bpCalloutSection", title: "Callout" }),
         defineArrayMember({ type: "bpCtaSection", title: "CTA" }),
+        defineArrayMember({ type: "bpButtonSection", title: "Przycisk z linkiem" }),
       ],
     }),
     defineField({

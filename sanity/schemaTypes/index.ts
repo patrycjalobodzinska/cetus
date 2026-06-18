@@ -43,6 +43,7 @@ import {
   bpListSection,
   bpCalloutSection,
   bpCtaSection,
+  bpButtonSection,
 } from './blogPostSections'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -88,5 +89,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     bpListSection,
     bpCalloutSection,
     bpCtaSection,
+    bpButtonSection,
   ],
 }

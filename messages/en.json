@@ -17,7 +17,7 @@
     "services": "Services",
     "allServices": "All Services",
     "caseStudies": "Case Studies",
-    "blog": "Blog",
+    "blog": "News",
     "contact": "Contact",
     "freeConsultation": "Free Consultation",
     "servicesMenuLabel": "Services submenu",
@@ -395,9 +395,9 @@
   },
   "blog": {
     "hero": {
-      "titlePrefix": "Our",
-      "titleHighlight": "Blog",
-      "description": "Practical knowledge, opinions and case studies from our experience building modern software."
+      "titlePrefix": "What's",
+      "titleHighlight": "new",
+      "description": "The latest initiatives, events and news from life at CetusPro."
     },
     "noPosts": "No posts to display yet.",
     "cta": {

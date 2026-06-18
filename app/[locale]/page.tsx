@@ -7,6 +7,7 @@ import ProcessSection from "./components/ProcessSection";
 import FAQSection from "./components/FAQSection";
 import PartnersSection from "./components/PartnersSection";
 import HomepageModulesSection from "./components/HomepageModulesSection";
+import NewsSection from "./components/NewsSection";
 import WhatsNewSection from "./components/WhatsNewSection";
 
 export async function generateMetadata({
@@ -80,6 +81,7 @@ export default async function Home({
         <ProcessSection />
         <HomepageModulesSection />
         <PartnersSection />
+        <NewsSection />
         <WhatsNewSection />
         <FAQSection />
         <HomeCTASection />
