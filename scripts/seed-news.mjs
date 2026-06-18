@@ -115,6 +115,18 @@ const callout = (tone, title, body) => ({
   body,
 });
 
+const gallerySection = (variant, sectionTitle, images, altPl, altEn) => ({
+  _key: _key(),
+  _type: "bpGallerySection",
+  variant,
+  sectionTitle,
+  items: (images || []).filter(Boolean).map((image, i) => ({
+    _key: _key(),
+    image,
+    alt: ls(`${altPl} — zdjęcie ${i + 1}`, `${altEn} — photo ${i + 1}`),
+  })),
+});
+
 const cta = (variant, heading, description, buttonLabel, buttonHref, blank = false) => ({
   _key: _key(),
   _type: "bpCtaSection",
@@ -235,7 +247,7 @@ function cetusElevate(cover, logo) {
   };
 }
 
-function vibeTheFuture(cover, logo) {
+function vibeTheFuture(cover, logo, gallery) {
   const TITLE_PL = "Vibe The Future 2026 – 24-godzinny hackathon, w którym liczy się przyszłość";
   const TITLE_EN = "Vibe The Future 2026 – a 24-hour hackathon where the future takes shape";
   const EXCERPT_PL =
@@ -306,6 +318,13 @@ function vibeTheFuture(cover, logo) {
           "Najlepszy zespół nie tylko otrzymał nagrodę finansową, ale przede wszystkim realne portfolio i kontakt z firmami, które szukają takich ludzi. To często pierwszy krok przed pierwszym CV.",
           "The best team didn't just win prize money – above all they walked away with a real portfolio and contact with companies looking for exactly these people. It's often the first step before a first CV.",
         ),
+      ),
+      gallerySection(
+        "masonry",
+        ls("Tak wyglądał Vibe The Future", "Inside Vibe The Future"),
+        gallery,
+        "Vibe The Future — hackathon CetusPro",
+        "Vibe The Future — CetusPro hackathon",
       ),
       cta(
         "banner",
@@ -411,10 +430,8 @@ async function main() {
       "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80",
       "cetus-elevate-cover.jpg",
     ),
-    uploadImage(
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80",
-      "vibe-the-future-cover.jpg",
-    ),
+    // Vibe = ten hackathon (Product Challenge) — zdjęcie główne z wydarzenia.
+    uploadLocalImage("scripts/seed-assets/vibe/5.jpeg", "vibe-the-future-cover.jpeg"),
     uploadImage(
       "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1600&q=80",
       "cetus-academy-cover.jpg",
@@ -423,9 +440,18 @@ async function main() {
     uploadLocalImage("public/vibe-the-future-logo.png", "vibe-the-future-logo.png"),
   ]);
 
+  console.log("→ Uploading Vibe gallery…");
+  // 6..23 bez 21 (21 == 5, czyli zdjęcie główne — nie powtarzamy go w galerii).
+  const vibeGalleryNums = Array.from({ length: 18 }, (_, i) => i + 6).filter((n) => n !== 21);
+  const vibeGallery = await Promise.all(
+    vibeGalleryNums.map((n) =>
+      uploadLocalImage(`scripts/seed-assets/vibe/${n}.jpeg`, `vibe-gallery-${n}.jpeg`),
+    ),
+  );
+
   const docs = [
     cetusElevate(elevateCover, elevateLogo),
-    vibeTheFuture(vibeCover, vibeLogo),
+    vibeTheFuture(vibeCover, vibeLogo, vibeGallery),
     cetusAcademy(academyCover),
   ];
 
