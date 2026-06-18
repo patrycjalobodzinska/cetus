@@ -129,7 +129,7 @@ const cta = (variant, heading, description, buttonLabel, buttonHref, blank = fal
 const buttonSection = (
   buttonLabel,
   buttonHref,
-  { variant = "primary", align = "center", blank = true } = {},
+  { variant = "primary", align = "center", blank = true, image } = {},
 ) => ({
   _key: _key(),
   _type: "bpButtonSection",
@@ -138,11 +138,12 @@ const buttonSection = (
   buttonLabel,
   buttonHref,
   blank,
+  ...(image ? { image } : {}),
 });
 
 // ─── articles ────────────────────────────────────────────────────────────────
 
-function cetusElevate(cover) {
+function cetusElevate(cover, logo) {
   const TITLE_PL = "Cetus Elevate – pomagamy wejść do IT tym, którzy na to zasługują";
   const TITLE_EN = "Cetus Elevate – helping the people who deserve it break into IT";
   const EXCERPT_PL =
@@ -186,6 +187,7 @@ function cetusElevate(cover) {
       buttonSection(
         ls("Wejdź na elevate.cetuspro.com", "Open elevate.cetuspro.com"),
         "https://elevate.cetuspro.com/",
+        { image: logo },
       ),
       listSection(
         "checklist",
@@ -233,7 +235,7 @@ function cetusElevate(cover) {
   };
 }
 
-function vibeTheFuture(cover) {
+function vibeTheFuture(cover, logo) {
   const TITLE_PL = "Vibe The Future 2026 – 24-godzinny hackathon, w którym liczy się przyszłość";
   const TITLE_EN = "Vibe The Future 2026 – a 24-hour hackathon where the future takes shape";
   const EXCERPT_PL =
@@ -275,6 +277,7 @@ function vibeTheFuture(cover) {
       buttonSection(
         ls("Zobacz stronę wydarzenia", "Visit the event site"),
         "https://vibethelimit.pl/",
+        { image: logo },
       ),
       listSection(
         "numbered",
@@ -402,19 +405,27 @@ function cetusAcademy(cover) {
 
 // ─── run ─────────────────────────────────────────────────────────────────────
 async function main() {
-  console.log("→ Uploading cover images…");
-  const [elevateCover, vibeCover, academyCover] = await Promise.all([
-    uploadLocalImage("public/cetus-elevate-logo.png", "cetus-elevate-logo.png"),
-    uploadLocalImage("public/vibe-the-future-logo.png", "vibe-the-future-logo.png"),
+  console.log("→ Uploading cover images + logos…");
+  const [elevateCover, vibeCover, academyCover, elevateLogo, vibeLogo] = await Promise.all([
+    uploadImage(
+      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80",
+      "cetus-elevate-cover.jpg",
+    ),
+    uploadImage(
+      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80",
+      "vibe-the-future-cover.jpg",
+    ),
     uploadImage(
       "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1600&q=80",
       "cetus-academy-cover.jpg",
     ),
+    uploadLocalImage("public/cetus-elevate-logo.png", "cetus-elevate-logo.png"),
+    uploadLocalImage("public/vibe-the-future-logo.png", "vibe-the-future-logo.png"),
   ]);
 
   const docs = [
-    cetusElevate(elevateCover),
-    vibeTheFuture(vibeCover),
+    cetusElevate(elevateCover, elevateLogo),
+    vibeTheFuture(vibeCover, vibeLogo),
     cetusAcademy(academyCover),
   ];
 

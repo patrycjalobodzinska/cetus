@@ -560,11 +560,18 @@ export const bpButtonSection = defineType({
       description: "Zalecane dla linków zewnętrznych.",
       initialValue: true,
     }),
+    defineField({
+      name: "image",
+      title: "Logo / grafika nad przyciskiem (opcjonalne)",
+      type: "image",
+      description: "Np. logo strony, do której prowadzi przycisk. Wyświetli się nad przyciskiem.",
+      options: { hotspot: true },
+    }),
   ],
   preview: {
-    select: { title: "buttonLabel.pl", subtitle: "buttonHref" },
-    prepare({ title, subtitle }) {
-      return { title: `Przycisk: ${title || "-"}`, subtitle };
+    select: { title: "buttonLabel.pl", subtitle: "buttonHref", media: "image" },
+    prepare({ title, subtitle, media }) {
+      return { title: `Przycisk: ${title || "-"}`, subtitle, media };
     },
   },
 });

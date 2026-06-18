@@ -106,6 +106,7 @@ interface ButtonSection extends BaseSection {
   buttonLabel?: string;
   buttonHref?: string;
   blank?: boolean;
+  image?: any;
 }
 
 type Section =
@@ -775,6 +776,7 @@ function BpButton({
   buttonLabel,
   buttonHref,
   blank,
+  image,
 }: ButtonSection) {
   if (!buttonLabel || !buttonHref) return null;
 
@@ -789,14 +791,27 @@ function BpButton({
     outline:
       "border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white",
   };
-  const alignClass =
-    align === "left" ? "justify-start" : align === "right" ? "justify-end" : "justify-center";
+  const itemsClass =
+    align === "left" ? "items-start" : align === "right" ? "items-end" : "items-center";
+  const objectPos =
+    align === "left" ? "object-left" : align === "right" ? "object-right" : "object-center";
   const Icon = external ? ArrowUpRight : ArrowRight;
 
   return (
     <section className="py-6">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`flex ${alignClass}`}>
+        <div className={`flex flex-col gap-5 ${itemsClass}`}>
+          {image && (
+            <div className="relative h-14 w-56">
+              <Image
+                src={urlFor(image).height(160).url()}
+                alt={buttonLabel}
+                fill
+                sizes="224px"
+                className={`object-contain ${objectPos}`}
+              />
+            </div>
+          )}
           <ActionLink
             href={buttonHref}
             blank={blank}
