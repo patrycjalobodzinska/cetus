@@ -251,9 +251,9 @@ function vibeTheFuture(cover, logo, gallery) {
   const TITLE_PL = "Vibe The Future 2026 – 24-godzinny hackathon, w którym liczy się przyszłość";
   const TITLE_EN = "Vibe The Future 2026 – a 24-hour hackathon where the future takes shape";
   const EXCERPT_PL =
-    "VibeTheFuture to nasz autorski hackathon w ramach Cetus Elevate. Wiosenna edycja 2026 odbyła się 23–24 maja na Uniwersytecie Rzeszowskim – 24 godziny intensywnej pracy, realne wyzwania i nagroda główna 4 000 zł.";
+    "VibeTheFuture to nasz autorski hackathon w ramach Cetus Elevate. Wiosenna edycja 2026 odbyła się 23–24 maja na Uniwersytecie Rzeszowskim – 24 godziny intensywnej pracy, realne wyzwania i nagroda główna – voucher o wartości 24 000 zł.";
   const EXCERPT_EN =
-    "VibeTheFuture is our original hackathon under the Cetus Elevate umbrella. The Spring 2026 edition took place on 23–24 May at the University of Rzeszów – 24 hours of intense work, real challenges and a 4,000 PLN grand prize.";
+    "VibeTheFuture is our original hackathon under the Cetus Elevate umbrella. The Spring 2026 edition took place on 23–24 May at the University of Rzeszów – 24 hours of intense work, real challenges and a 24,000 PLN voucher as the grand prize.";
 
   return {
     _id: "blogPost-vibe-the-future",
@@ -299,24 +299,24 @@ function vibeTheFuture(cover, logo, gallery) {
             "80 zgłoszonych uczestników",
             "40 zakwalifikowanych do rywalizacji",
             "24 godziny nieprzerwanej pracy zespołowej",
-            "1 nagroda główna o wartości 4 000 zł",
+            "1 nagroda główna – voucher o wartości 24 000 zł",
             "Partner merytoryczny: LOT Aircraft Maintenance Services",
           ],
           [
             "80 applicants",
             "40 qualified to compete",
             "24 hours of non-stop teamwork",
-            "1 grand prize worth 4,000 PLN",
+            "1 grand prize – a voucher worth 24,000 PLN",
             "Expert partner: LOT Aircraft Maintenance Services",
           ],
         ),
       ),
       callout(
         "success",
-        ls("Nagroda główna: 4 000 zł", "Grand prize: 4,000 PLN"),
+        ls("Nagroda główna: voucher 24 000 zł", "Grand prize: 24,000 PLN voucher"),
         lt(
-          "Najlepszy zespół nie tylko otrzymał nagrodę finansową, ale przede wszystkim realne portfolio i kontakt z firmami, które szukają takich ludzi. To często pierwszy krok przed pierwszym CV.",
-          "The best team didn't just win prize money – above all they walked away with a real portfolio and contact with companies looking for exactly these people. It's often the first step before a first CV.",
+          "Najlepszy zespół otrzymał voucher o wartości 24 000 zł, ale przede wszystkim realne portfolio i kontakt z firmami, które szukają takich ludzi. To często pierwszy krok przed pierwszym CV.",
+          "The best team won a 24,000 PLN voucher – but above all they walked away with a real portfolio and contact with companies looking for exactly these people. It's often the first step before a first CV.",
         ),
       ),
       gallerySection(
