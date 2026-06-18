@@ -60,7 +60,7 @@ export default async function NewsSection() {
   const allLabel = locale === "en" ? "See all news" : "Zobacz wszystkie";
 
   return (
-    <section className="md:py-24 py-10 relative overflow-hidden">
+    <section className="md:pt-24 md:pb-12 pt-10 pb-8 relative overflow-hidden">
       <div className="w-20 h-1 bg-blue-600 rounded-full mx-auto mb-8" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -44,27 +44,9 @@ export default async function WhatsNewSection() {
     return null;
   }
 
-  const heading = data?.title || (locale === 'en' ? "What's new" : 'Co u nas');
-
   return (
-    <section className="md:py-24 py-10 relative overflow-hidden">
-      <div className="w-20 h-1 bg-blue-600 rounded-full mx-auto mb-8" />
-
+    <section className="pt-2 md:pt-4 pb-12 md:pb-16 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2
-            className="heading-1 text-gray-800 mb-4 leading-tight"
-            style={{ fontFamily: 'var(--font-michroma)' }}
-          >
-            {heading}
-          </h2>
-          {data?.description && (
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
-              {data.description}
-            </p>
-          )}
-        </div>
-
         {/* Mobile: karuzela (przesuwanie + snap). Desktop (md+): kafelki obok siebie. */}
         <div className="flex gap-5 md:gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none scroll-px-4 scrollbar-hide pb-4 -mx-4 px-4 md:mx-0 md:px-0 md:flex-wrap md:justify-center">
           {reels.map((reel, index) => (
