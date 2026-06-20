@@ -23,9 +23,6 @@
     "servicesMenuLabel": "Services submenu",
     "openServicesMenu": "Open Services menu",
     "closeServicesMenu": "Close Services menu"
-
-
-
   },
   "common": {
     "learnMore": "Learn More",
@@ -40,7 +37,7 @@
     "titleHighlight": "software",
     "titleAfterHighlight": "that",
     "titleThirdLine": "helps companies grow",
-    "subtitle": "Check it yourself",
+    "subtitle": "",
     "subtitleHighlight": "",
     "description": "",
     "buttonText": "Schedule a consultation"
@@ -149,7 +146,6 @@
   "skipToContent": {
     "skipToContent": "Skip to main content"
   },
-
   "webApps": {
     "hero": {
       "title": "We create",

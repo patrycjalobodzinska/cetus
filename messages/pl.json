@@ -37,7 +37,7 @@
     "titleHighlight": "oprogramowania",
     "titleAfterHighlight": "które",
     "titleThirdLine": "pomagają firmom się rozwijać",
-    "subtitle": "Sprawdź sam",
+    "subtitle": "",
     "subtitleHighlight": "",
     "description": "",
     "buttonText": "Umów konsultację"
@@ -146,7 +146,6 @@
   "skipToContent": {
     "skipToContent": "Przejdź do głównej treści"
   },
-
   "webApps": {
     "hero": {
       "title": "Tworzymy aplikacje",

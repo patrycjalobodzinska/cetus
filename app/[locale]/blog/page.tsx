@@ -4,6 +4,9 @@ import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { getTranslations } from "next-intl/server";
 import CTASection from "@/app/components/CTASection";
+import WhatsNewSection from "../components/WhatsNewSection";
+
+const PAGE_SIZE = 6;
 
 interface BlogPostListItem {
   _id: string;
@@ -31,10 +34,13 @@ function formatDate(iso: string | undefined, locale: string) {
 
 export default async function BlogPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: string }>;
+  searchParams: Promise<{ page?: string }>;
 }) {
   const { locale } = await params;
+  const { page } = await searchParams;
   const t = await getTranslations({ locale, namespace: "blog" });
 
   let posts: BlogPostListItem[] = [];
@@ -57,6 +63,17 @@ export default async function BlogPage({
     console.error("Error fetching blog posts:", error);
   }
 
+  const publishedPosts = (posts ?? []).filter((p) => p.slug?.current);
+  const totalPages = Math.max(1, Math.ceil(publishedPosts.length / PAGE_SIZE));
+  const currentPage = Math.min(
+    Math.max(1, Number.parseInt(page ?? "1", 10) || 1),
+    totalPages
+  );
+  const pagePosts = publishedPosts.slice(
+    (currentPage - 1) * PAGE_SIZE,
+    currentPage * PAGE_SIZE
+  );
+
   return (
     <div className="min-h-screen">
       <section className="pt-[var(--page-top-offset)] pb-12">
@@ -74,13 +91,11 @@ export default async function BlogPage({
         </div>
       </section>
 
-      <section className="pb-24">
+      <section className="pb-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {posts && posts.length > 0 ? (
+          {pagePosts.length > 0 ? (
             <ul className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {posts
-                .filter((p) => p.slug?.current)
-                .map((post) => (
+              {pagePosts.map((post) => (
                   <li key={post._id}>
                     <Link
                       href={`/${locale}/blog/${post.slug!.current}`}
@@ -137,8 +152,50 @@ export default async function BlogPage({
               <p className="text-slate-600 text-lg">{t("noPosts")}</p>
             </div>
           )}
+
+          {totalPages > 1 && (
+            <nav
+              className="mt-12 flex items-center justify-center gap-2"
+              aria-label={locale === "en" ? "Pagination" : "Paginacja"}
+            >
+              {currentPage > 1 && (
+                <Link
+                  href={`/${locale}/blog?page=${currentPage - 1}`}
+                  className="px-4 py-2 rounded-full border border-gray-200 text-slate-700 hover:border-blue-600/40 hover:text-blue-600 transition-colors"
+                  aria-label={locale === "en" ? "Previous page" : "Poprzednia strona"}
+                >
+                  ←
+                </Link>
+              )}
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
+                <Link
+                  key={n}
+                  href={`/${locale}/blog?page=${n}`}
+                  aria-current={n === currentPage ? "page" : undefined}
+                  className={
+                    n === currentPage
+                      ? "min-w-10 px-4 py-2 rounded-full bg-blue-600 text-white font-semibold text-center"
+                      : "min-w-10 px-4 py-2 rounded-full border border-gray-200 text-slate-700 hover:border-blue-600/40 hover:text-blue-600 transition-colors text-center"
+                  }
+                >
+                  {n}
+                </Link>
+              ))}
+              {currentPage < totalPages && (
+                <Link
+                  href={`/${locale}/blog?page=${currentPage + 1}`}
+                  className="px-4 py-2 rounded-full border border-gray-200 text-slate-700 hover:border-blue-600/40 hover:text-blue-600 transition-colors"
+                  aria-label={locale === "en" ? "Next page" : "Następna strona"}
+                >
+                  →
+                </Link>
+              )}
+            </nav>
+          )}
         </div>
       </section>
+
+      <WhatsNewSection showHeading={false} />
 
       <CTASection
         title={t("cta.title")}

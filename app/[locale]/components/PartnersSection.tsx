@@ -36,7 +36,7 @@ export default async function PartnersSection() {
   const clipPath = "polygon(17% 0, 100% 0, 100% 89%, 83% 100%, 0 100%, 0 11%)";
 
   return (
-    <section className="md:py-24 py-6 relative overflow-hidden">
+    <section className="md:pt-6 md:pb-10 pt-2 pb-4 relative overflow-hidden">
       <div className="w-20 h-1 bg-blue-600 rounded-full mx-auto mb-8"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

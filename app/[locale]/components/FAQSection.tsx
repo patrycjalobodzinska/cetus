@@ -30,7 +30,7 @@ export default async function FAQSection() {
   }
 
   return (
-    <section className="md:py-24 py-6 relative overflow-hidden">
+    <section className="md:pt-24 md:pb-10 pt-6 pb-4 relative overflow-hidden">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2

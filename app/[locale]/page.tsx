@@ -7,8 +7,8 @@ import ProcessSection from "./components/ProcessSection";
 import FAQSection from "./components/FAQSection";
 import PartnersSection from "./components/PartnersSection";
 import HomepageModulesSection from "./components/HomepageModulesSection";
-import NewsSection from "./components/NewsSection";
 import WhatsNewSection from "./components/WhatsNewSection";
+import SponsorsSection from "./components/SponsorsSection";
 
 export async function generateMetadata({
   params
@@ -78,11 +78,11 @@ export default async function Home({
       <main className="w-full max-w-7xl">
         <HeroCurosora />
         <Skiper16 />
+        <WhatsNewSection />
         <ProcessSection />
         <HomepageModulesSection />
         <PartnersSection />
-        <NewsSection />
-        <WhatsNewSection />
+        <SponsorsSection />
         <FAQSection />
         <HomeCTASection />
       </main>

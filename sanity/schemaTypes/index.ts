@@ -12,6 +12,7 @@ import technologies from './technologies'
 import industries from './industries'
 import offerStats from './offerStats'
 import partner from './partner'
+import sponsor from './sponsor'
 import homepageModules from './homepageModules'
 import whatsNew from './whatsNew'
 import localeString from './localeString'
@@ -64,6 +65,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     industries,
     offerStats,
     partner,
+    sponsor,
     homepageModules,
     whatsNew,
     processSection,

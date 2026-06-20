@@ -1,9 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
-import StarGradientButton from "@/app/components/ui/gradientBackground";
 import { client } from "@/sanity/lib/client";
 
 interface ProcessStep {
@@ -30,13 +28,13 @@ function StepCard({ step }: { step: ProcessStep }) {
         style={{ background: CARD_GRADIENT }}
         className="rounded-2xl shadow-md shadow-blue-300/50 p-0.5 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-blue-400/50 h-full">
         <div className="bg-white rounded-2xl p-6 h-full flex flex-col">
-          <div className="flex items-center gap-2 mb-4">
+          <div className="flex items-center gap-2 mb-1.5">
             <span className="text-xs font-semibold text-slate-600 uppercase tracking-wider">
               {step.stepLabel}
             </span>
           </div>
-          <p className="text-sm text-slate-500 mb-3 italic">{step.question}</p>
-          <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">
+          <p className="text-sm text-slate-500 mb-1 italic">{step.question}</p>
+          <h3 className="text-xl font-bold text-slate-900 mb-1 group-hover:text-blue-600 transition-colors">
             {step.title}
           </h3>
           <p className="text-slate-600 leading-relaxed flex-1">
@@ -119,7 +117,7 @@ function ArcDownToCenter({ id }: { id: string }) {
   const gradId = `grad-${id}`;
   const filterId = `neon-${id}`;
   return (
-    <div className="hidden lg:block w-full h-14 relative">
+    <div className="hidden lg:block w-full h-8 relative">
       <svg
         viewBox="0 0 1000 56"
         fill="none"
@@ -185,7 +183,7 @@ function ArcDownFromCenter({ id }: { id: string }) {
   const gradId = `grad-${id}`;
   const filterId = `neon-${id}`;
   return (
-    <div className="hidden lg:block w-full h-14 relative">
+    <div className="hidden lg:block w-full h-8 relative">
       <svg
         viewBox="0 0 1000 56"
         fill="none"
@@ -296,29 +294,24 @@ export default function ProcessSection() {
   const sectionDesc = data?.description ?? t("description");
 
   return (
-    <section className="md:py-24 py-6 relative overflow-hidden">
+    <section className="md:pt-8 md:pb-24 pt-2 pb-6 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-10">
           <h2
             className="heading-1 text-slate-900 mb-6 leading-tight"
             style={{ fontFamily: "var(--font-michroma)" }}>
             {sectionTitle}
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-8">
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
             {sectionDesc}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href={`/${locale}/kontakt`}>
-              <StarGradientButton>{t("cta.designIdea")}</StarGradientButton>
-            </Link>
-          </div>
         </div>
 
         {/* Steps - układ 2-1-2 */}
-        <div className="flex flex-col items-center gap-6 lg:gap-0">
+        <div className="flex flex-col items-center gap-3 lg:gap-0">
           {/* Wiersz 1: 2 karty */}
-          <div className="flex flex-col lg:flex-row lg:items-stretch gap-4 w-full max-w-4xl">
+          <div className="flex flex-col lg:flex-row lg:items-stretch gap-4 w-full max-w-6xl">
             <div className="flex-1">
               <StepCard step={steps[0]} />
             </div>
@@ -332,7 +325,7 @@ export default function ProcessSection() {
           <ArcDownToCenter id="arcD1" />
 
           {/* Wiersz 2: 1 karta na środku */}
-          <div className="w-full max-w-sm">
+          <div className="w-full max-w-lg">
             <StepCard step={steps[2]} />
           </div>
 
@@ -340,7 +333,7 @@ export default function ProcessSection() {
           <ArcDownFromCenter id="arcD2" />
 
           {/* Wiersz 3: 2 karty */}
-          <div className="flex flex-col lg:flex-row lg:items-stretch gap-4 w-full max-w-4xl">
+          <div className="flex flex-col lg:flex-row lg:items-stretch gap-4 w-full max-w-6xl">
             <div className="flex-1">
               <StepCard step={steps[3]} />
             </div>

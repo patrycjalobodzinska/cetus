@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { useLocale } from "next-intl";
 import { ArrowRight, CheckCircle } from "lucide-react";
@@ -13,37 +14,101 @@ import type {
 } from "@/sanity/lib/servicePage";
 import { L, LA } from "@/sanity/lib/servicePage";
 
-export default function ServicePageView({ data }: { data: ServicePageData }) {
+export default function ServicePageView({
+  data,
+  heroImageSrc,
+  heroImageAlt,
+}: {
+  data: ServicePageData;
+  heroImageSrc?: string;
+  heroImageAlt?: string;
+}) {
   const locale = useLocale() as Locale;
+  const hasHeroImage = Boolean(heroImageSrc);
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-white">
-      <section className="pt-24 md:pt-[var(--page-top-offset)] pb-8 md:pb-12 relative overflow-hidden">
+      <section className="pt-24 md:pt-[var(--page-top-offset)] pb-8 md:pb-12 relative overflow-hidden bg-gradient-to-b from-blue-50 via-cyan-50/40 to-white">
+        {/* Kolorowe, rozmyte plamy w tle hero */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-blue-400/30 blur-3xl"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute top-10 right-0 h-80 w-80 rounded-full bg-cyan-300/30 blur-3xl"
+        />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-14 relative z-10">
-          <div className="text-center max-w-4xl mx-auto space-y-8">
-            <h1
-              className="heading-hero text-slate-900 leading-tight"
-              style={{ fontFamily: "var(--font-michroma)" }}>
-              {L(data.heroTitle, locale)}
-            </h1>
-            {data.heroDescription && (
-              <p className="text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto">
-                {L(data.heroDescription, locale)}
-              </p>
-            )}
-            {data.heroButtonText && (
-              <div className="flex justify-center pt-4">
-                <Link href={data.heroButtonLink || "/kontakt"}>
-                  <StarGradientButton>
-                    <span className="flex items-center gap-2">
-                      {L(data.heroButtonText, locale)}
-                      <ArrowRight className="w-5 h-5" />
-                    </span>
-                  </StarGradientButton>
-                </Link>
+          {hasHeroImage ? (
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+              <div className="space-y-8 text-center lg:text-left">
+                <h1
+                  className="heading-hero text-slate-900 leading-tight"
+                  style={{ fontFamily: "var(--font-michroma)" }}>
+                  {L(data.heroTitle, locale)}
+                </h1>
+                {data.heroDescription && (
+                  <p className="text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                    {L(data.heroDescription, locale)}
+                  </p>
+                )}
+                {data.heroButtonText && (
+                  <div className="flex justify-center lg:justify-start pt-4">
+                    <Link href={data.heroButtonLink || "/kontakt"}>
+                      <StarGradientButton>
+                        <span className="flex items-center gap-2">
+                          {L(data.heroButtonText, locale)}
+                          <ArrowRight className="w-5 h-5" />
+                        </span>
+                      </StarGradientButton>
+                    </Link>
+                  </div>
+                )}
               </div>
-            )}
-          </div>
+              <div
+                className="rounded-3xl p-1 shadow-xl shadow-blue-500/20"
+                style={{
+                  background:
+                    "linear-gradient(135deg, hsla(215, 69%, 36%, 1) 0%, hsla(190, 94%, 76%, 1) 100%)",
+                }}>
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.35rem]">
+                  <Image
+                    src={heroImageSrc as string}
+                    alt={heroImageAlt || L(data.heroTitle, locale) || ""}
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="text-center max-w-4xl mx-auto space-y-8">
+              <h1
+                className="heading-hero text-slate-900 leading-tight"
+                style={{ fontFamily: "var(--font-michroma)" }}>
+                {L(data.heroTitle, locale)}
+              </h1>
+              {data.heroDescription && (
+                <p className="text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto">
+                  {L(data.heroDescription, locale)}
+                </p>
+              )}
+              {data.heroButtonText && (
+                <div className="flex justify-center pt-4">
+                  <Link href={data.heroButtonLink || "/kontakt"}>
+                    <StarGradientButton>
+                      <span className="flex items-center gap-2">
+                        {L(data.heroButtonText, locale)}
+                        <ArrowRight className="w-5 h-5" />
+                      </span>
+                    </StarGradientButton>
+                  </Link>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </section>
 
