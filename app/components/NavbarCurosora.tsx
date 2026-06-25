@@ -271,7 +271,7 @@ export default function NavbarCurosora() {
 
   const navLinkClass = (isActive: boolean) =>
     cn(
-      "transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2",
+      "whitespace-nowrap transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2",
       isActive
         ? "text-blue-600 font-semibold"
         : "hover:text-blue-600 text-slate-700"
@@ -331,17 +331,17 @@ export default function NavbarCurosora() {
 
       {/* Desktop Navbar */}
       <div className="hidden lg:flex flex-row gap-4 w-full max-w-[1300px]">
-        <div className="relative transform -skew-x-12 bg-white/60 backdrop-blur-md border border-emerald-100/50 shadow-sm rounded-sm">
+        <div className="relative shrink-0 transform -skew-x-12 bg-white/60 backdrop-blur-md border border-emerald-100/50 shadow-sm rounded-sm">
           <div className="transform skew-x-12 w-full h-full flex items-center px-5 py-1">
             <div className="flex items-center gap-3">
               <NavigationLink
                 href={`/${locale}`}
-                className="w-full h-16 rounded-md flex items-center justify-center"
+                className="h-16 w-40 rounded-md flex items-center justify-center"
               >
                 <img
                   src="/logocetus.png"
                   alt="Logo"
-                  className="w-full h-full object-contain"
+                  className="h-full w-full object-contain"
                 />
               </NavigationLink>
             </div>
@@ -349,9 +349,9 @@ export default function NavbarCurosora() {
         </div>
 
         <div className="flex-1 items-center justify-center transform -skew-x-12 h-[74px] bg-white/60 backdrop-blur-md border border-emerald-100/50 shadow-sm rounded-sm">
-          <div className="w-full h-full flex items-center justify-between px-8 transform skew-x-12">
+          <div className="w-full h-full flex items-center justify-between px-6 transform skew-x-12">
             <nav
-              className="flex items-center gap-6 text-[15px] font-medium"
+              className="flex flex-nowrap items-center gap-4 text-[15px] font-medium whitespace-nowrap"
               aria-label="Główna nawigacja"
             >
               <NavigationLink
