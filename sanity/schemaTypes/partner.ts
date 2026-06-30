@@ -2,7 +2,7 @@ import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'partner',
-  title: 'Partner Strategiczny',
+  title: 'Zaufali nam',
   type: 'document',
   fields: [
     defineField({
@@ -10,6 +10,14 @@ export default defineType({
       title: 'Nazwa',
       type: 'localeString',
       description: 'Nazwa partnera',
+    }),
+    defineField({
+      name: 'invertColors',
+      title: 'Odwróć kolory (logo na czarno)',
+      type: 'boolean',
+      description:
+        'Domyślnie logo wyświetla się w oryginalnych kolorach. Włącz, jeśli chcesz ujednolicić logo do czerni (np. kolorowe / wielobarwne logo, które ma pasować do reszty).',
+      initialValue: false,
     }),
     defineField({
       name: 'logo',
@@ -27,11 +35,12 @@ export default defineType({
       description: 'Krótki opis partnera (opcjonalne)',
     }),
     defineField({
-      name: 'caseStudy',
-      title: 'Case Study',
-      type: 'reference',
-      to: [{ type: 'caseStudy' }],
-      description: 'Opcjonalne powiązanie z case study - jeśli wybrane, kafelek będzie linkiem do tego case study',
+      name: 'url',
+      title: 'Link',
+      type: 'url',
+      description: 'Adres strony / profilu klienta (opcjonalny) - jeśli podany, kafelek będzie linkiem',
+      validation: (Rule) =>
+        Rule.uri({ scheme: ['http', 'https'], allowRelative: false }),
     }),
     defineField({
       name: 'order',

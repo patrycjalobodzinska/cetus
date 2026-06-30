@@ -7,7 +7,8 @@ interface Partner {
   name?: string;
   logo?: any;
   description?: string;
-  caseStudySlug?: string;
+  url?: string;
+  invertColors?: boolean;
 }
 
 const QUERY = `*[_type == "partner"] | order(order asc) {
@@ -15,7 +16,8 @@ const QUERY = `*[_type == "partner"] | order(order asc) {
   "name": coalesce(name[$locale], name.pl),
   logo,
   "description": coalesce(description[$locale], description.pl),
-  "caseStudySlug": caseStudy->slug.current
+  url,
+  invertColors
 }`;
 
 export default async function PartnersSection() {
@@ -53,8 +55,18 @@ export default async function PartnersSection() {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-          {partners.map((partner) => (
-            <div key={partner._id} className="group relative">
+          {partners.map((partner) => {
+            const Wrapper = partner.url ? 'a' : 'div';
+            const wrapperProps = partner.url
+              ? {
+                  href: partner.url,
+                  target: '_blank',
+                  rel: 'noopener noreferrer',
+                  'aria-label': partner.name,
+                }
+              : {};
+            return (
+            <Wrapper key={partner._id} className="group relative block" {...wrapperProps}>
               <div
                 style={{
                   clipPath,
@@ -71,7 +83,7 @@ export default async function PartnersSection() {
                       <img
                         src={urlFor(partner.logo).width(300).quality(80).auto('format').url()}
                         alt={partner.name || 'Partner'}
-                        className=" max-h-full max-w-full object-contain brightness-0 opacity-100 group-hover:opacity-100 transition-opacity"
+                        className={`max-h-full max-w-full object-contain opacity-100 group-hover:opacity-100 transition-opacity${partner.invertColors ? ' brightness-0' : ''}`}
                       />
                     </div>
                   ) : (
@@ -87,8 +99,9 @@ export default async function PartnersSection() {
                   )}
                 </div>
               </div>
-            </div>
-          ))}
+            </Wrapper>
+            );
+          })}
         </div>
       </div>
     </section>

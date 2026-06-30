@@ -46,8 +46,8 @@ const MODULES_QUERY = `*[_type == "homepageModule"] | order(order asc) {
   "linkText": coalesce(linkText[$locale], linkText.pl)
 }`;
 
-// Najnowsze 2 wpisy z bloga ("Co u nas słychać").
-const POSTS_QUERY = `*[_type == "blogPost" && defined(slug.current)] | order(publishedAt desc)[0...2] {
+// Najnowsze 3 wpisy z bloga ("Co u nas słychać") + 1 moduł = 4 karty w gridzie.
+const POSTS_QUERY = `*[_type == "blogPost" && defined(slug.current)] | order(publishedAt desc)[0...3] {
   _id,
   "title": coalesce(title[$locale], title.pl),
   slug,
@@ -74,7 +74,7 @@ export default async function HomepageModulesSection() {
 
   const readMore = locale === 'en' ? 'Read more' : 'Czytaj więcej';
 
-  // Najpierw dwa wpisy z bloga, potem dwa moduły strony głównej.
+  // Najpierw najnowsze wpisy z bloga, potem moduły strony głównej (np. "Dlaczego klienci nam ufają?").
   const cards: Card[] = [
     ...posts.map((post) => ({
       key: post._id,
