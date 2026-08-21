@@ -56,7 +56,7 @@ export default function StatsPanel() {
       <div className="relative max-w-6xl mx-auto flex justify-center items-center py-12 overflow-visible">
         {/* ── Stats box ────────────────────────────────────────────────────── */}
         <div
-          className="relative w-full mx-6 md:mx-16 max-w-5xl min-h-40 py-6 md:h-28 bg-gray-50 border border-gray-100 text-gray-900 flex flex-col md:flex-row items-center justify-around sm:px-12 px-6 md:px-16 drop-shadow-xl z-10 stats-polygon"
+          className="relative w-full mx-6 md:mx-16 max-w-5xl min-h-40 py-6 md:h-28 bg-white border border-gray-100 text-gray-900 flex flex-col md:flex-row items-center justify-around sm:px-12 px-6 md:px-16 drop-shadow-xl z-10 stats-polygon"
           style={{
             filter:
               "drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1))",

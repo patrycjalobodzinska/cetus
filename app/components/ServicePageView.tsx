@@ -249,7 +249,7 @@ function TabsSectionView({
               background:
                 "linear-gradient(0deg, hsla(215, 69%, 36%, 1) 0%, hsla(190, 94%, 76%, 1) 100%)",
             }}
-            className="rounded-md shadow-md shadow-blue-300 p-0.5">
+            className="self-start rounded-md shadow-md shadow-blue-300 p-0.5">
             <div className="space-y-6 bg-white rounded-md p-6 md:p-8">
               <h3 className="text-xl md:text-2xl font-bold text-slate-900">
                 {L(activeItem?.title, locale)}

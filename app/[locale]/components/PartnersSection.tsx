@@ -35,74 +35,45 @@ export default async function PartnersSection() {
     return null;
   }
 
-  const clipPath = "polygon(17% 0, 100% 0, 100% 89%, 83% 100%, 0 100%, 0 11%)";
-
   return (
-    <section className="md:pt-6 md:pb-10 pt-2 pb-4 relative overflow-hidden">
-      <div className="w-20 h-1 bg-blue-600 rounded-full mx-auto mb-8"></div>
-
+    <section className="relative overflow-hidden py-8 lg:py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2
-            className="heading-1 text-gray-800 mb-6 leading-tight"
-            style={{ fontFamily: "var(--font-michroma)" }}
-          >
-            {t('title')}
-          </h2>
-          <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
-            {t('description')}
-          </p>
-        </div>
+        <p className="text-center text-xs font-bold uppercase tracking-[0.2em] text-slate-400 mb-10">
+          {t('title')}
+        </p>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        <div className="flex flex-wrap justify-center gap-4">
           {partners.map((partner) => {
-            const Wrapper = partner.url ? 'a' : 'div';
-            const wrapperProps = partner.url
-              ? {
-                  href: partner.url,
-                  target: '_blank',
-                  rel: 'noopener noreferrer',
-                  'aria-label': partner.name,
-                }
-              : {};
-            return (
-            <Wrapper key={partner._id} className="group relative block" {...wrapperProps}>
-              <div
-                style={{
-                  clipPath,
-                  background: "linear-gradient(0deg, hsla(215, 69%, 36%, 1) 0%, hsla(190, 94%, 76%, 1) 100%)",
-                }}
-                className="rounded-2xl shadow-md shadow-blue-500/20 p-0.5 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-blue-400/40 h-full"
-              >
-                <div
-                  className="bg-white rounded-2xl p-6 h-full flex flex-col items-center justify-center min-h-[140px] transition-all duration-300 group-hover:bg-slate-50 cursor-pointer"
-                  style={{ clipPath }}
+              const Wrapper = partner.url ? 'a' : 'div';
+              const wrapperProps = partner.url
+                ? {
+                    href: partner.url,
+                    target: '_blank',
+                    rel: 'noopener noreferrer',
+                    'aria-label': partner.name,
+                  }
+                : {};
+              return (
+                <Wrapper
+                  key={partner._id}
+                  className="group flex items-center justify-center h-24 w-[calc(50%-0.5rem)] sm:w-44 rounded-xl border border-gray-100 bg-white px-4 shadow-sm transition-all duration-300 hover:border-blue-200 hover:shadow-md"
+                  {...wrapperProps}
                 >
                   {partner.logo ? (
-                    <div className="w-full md:h-26 flex items-center justify-center mb-3">
-                      <img
-                        src={urlFor(partner.logo).width(300).quality(80).auto('format').url()}
-                        alt={partner.name || 'Partner'}
-                        className={`max-h-full max-w-full object-contain opacity-100 group-hover:opacity-100 transition-opacity${partner.invertColors ? ' brightness-0' : ''}`}
-                      />
-                    </div>
+                    <img
+                      src={urlFor(partner.logo).width(300).quality(80).auto('format').url()}
+                      alt={partner.name || 'Partner'}
+                      className={`max-h-10 w-auto object-contain grayscale opacity-70 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100${partner.invertColors ? ' brightness-0 group-hover:brightness-100' : ''}`}
+                    />
                   ) : (
-                    <div className="text-slate-600 text-sm font-semibold uppercase tracking-wider mb-3">
+                    <span className="text-slate-400 text-base font-semibold tracking-wide transition-colors group-hover:text-slate-700">
                       {partner.name}
-                    </div>
+                    </span>
                   )}
-
-                  {partner.description && (
-                    <p className="text-slate-600 text-xs text-center line-clamp-2 mt-2">
-                      {partner.description}
-                    </p>
-                  )}
-                </div>
-              </div>
-            </Wrapper>
-            );
-          })}
-        </div>
+                </Wrapper>
+              );
+            })}
+          </div>
       </div>
     </section>
   );

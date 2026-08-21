@@ -3,18 +3,18 @@
 :root {
   --background: #ffffff;
   --foreground: #ffffff;
-  --page-top-offset: 10rem; /* 160px mobile - większy odstęp od headera */
+  --page-top-offset: 8rem; /* 128px mobile */
 }
 
 @media (min-width: 768px) {
   :root {
-    --page-top-offset: 11rem; /* 176px tablet */
+    --page-top-offset: 8.5rem; /* 136px tablet */
   }
 }
 
 @media (min-width: 1024px) {
   :root {
-    --page-top-offset: 12rem; /* 192px desktop */
+    --page-top-offset: 9rem; /* 144px desktop */
   }
 }
 

@@ -3,7 +3,6 @@ import SmoothScroll from "../components/SmoothScroll";
 import Footer from "../components/Footer";
 import NavbarCurosora from "../components/NavbarCurosora";
 import NavigationProvider from "../components/NavigationProvider";
-import Plasma from "../components/Plasma";
 import HiddenCaseStudiesAccess from "../components/HiddenCaseStudiesAccess";
 import { NextIntlClientProvider } from "next-intl";
 import {
@@ -216,25 +215,6 @@ export default async function RootLayout({
               {t("skipToContent.skipToContent")}
             </a>
             <NavbarCurosora />
-            <div
-              className="fixed top-0"
-              style={{
-                width: "100%",
-                height: "120vh",
-                position: "fixed",
-                top: 0,
-                left: 0,
-                zIndex: -10,
-              }}>
-              <Plasma
-                color="#0073ff"
-                speed={1.2}
-                direction="pingpong"
-                scale={0.4}
-                mouseInteractive={false}
-                opacity={0.35}
-              />
-            </div>
             <main id="main-content" className=" top-0 left-0 w-full h-full">
               {children}
               <Footer />

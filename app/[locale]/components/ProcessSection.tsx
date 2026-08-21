@@ -3,6 +3,59 @@
 import { useState, useEffect } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { client } from "@/sanity/lib/client";
+// Animowany SVG - pulsujący sygnał (rozchodzące się kółko + kropka)
+function PulseDot({ dark = false }: { dark?: boolean }) {
+  const c = dark ? "#60a5fa" : "#2563eb";
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" className="overflow-visible" aria-hidden="true">
+      <circle cx="8" cy="8" r="3.5" fill={c} />
+      <circle cx="8" cy="8" r="3.5" fill="none" stroke={c} strokeWidth="1.5">
+        <animate attributeName="r" values="3.5;10" dur="1.8s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0.7;0" dur="1.8s" repeatCount="indefinite" />
+      </circle>
+    </svg>
+  );
+}
+
+// Karta kroku procesu (styl jak w referencji, karta 03 ciemna)
+function ProcessCard({ step, index }: { step: ProcessStep; index: number }) {
+  const isDark = index === 2;
+  return (
+    <article
+      className={`group rounded-2xl border p-6 flex flex-col h-full transition-all duration-300 ${
+        isDark
+          ? "bg-slate-900 border-slate-900 text-white shadow-lg shadow-slate-900/20"
+          : "bg-white border-gray-200 text-slate-900 shadow-sm hover:shadow-md hover:border-blue-200 hover:-translate-y-0.5"
+      }`}
+    >
+      <div className="flex items-center justify-between mb-4">
+        <span
+          className={`text-xs font-mono uppercase tracking-widest ${
+            isDark ? "text-white/55" : "text-slate-400"
+          }`}
+        >
+          {step.stepLabel}
+        </span>
+        <PulseDot dark={isDark} />
+      </div>
+      {step.question && (
+        <p className={`text-sm italic mb-3 ${isDark ? "text-white/60" : "text-slate-500"}`}>
+          {step.question}
+        </p>
+      )}
+      <h3
+        className={`text-lg font-bold leading-snug tracking-tight mb-3 hyphens-auto ${
+          isDark ? "text-white" : "text-slate-900"
+        }`}
+      >
+        {step.title}
+      </h3>
+      <p className={`text-sm leading-relaxed ${isDark ? "text-white/80" : "text-slate-600"}`}>
+        {step.description}
+      </p>
+    </article>
+  );
+}
 
 interface ProcessStep {
   _key: string;
@@ -294,54 +347,28 @@ export default function ProcessSection() {
   const sectionDesc = data?.description ?? t("description");
 
   return (
-    <section className="md:pt-8 md:pb-24 pt-2 pb-6 relative overflow-hidden">
+    <section className="py-10 lg:py-14 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-10">
+        <div className="text-center mb-12">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-4">
+            - Proces
+          </p>
           <h2
-            className="heading-1 text-slate-900 mb-6 leading-tight"
+            className="heading-1 text-slate-900 mb-4 leading-tight"
             style={{ fontFamily: "var(--font-michroma)" }}>
             {sectionTitle}
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
             {sectionDesc}
           </p>
         </div>
 
-        {/* Steps - układ 2-1-2 */}
-        <div className="flex flex-col items-center gap-3 lg:gap-0">
-          {/* Wiersz 1: 2 karty */}
-          <div className="flex flex-col lg:flex-row lg:items-stretch gap-4 w-full max-w-6xl">
-            <div className="flex-1">
-              <StepCard step={steps[0]} />
-            </div>
-            <HorizontalArc id="arcH1" />
-            <div className="flex-1">
-              <StepCard step={steps[1]} />
-            </div>
-          </div>
-
-          {/* Łuk: wiersz 1 → wiersz 2 */}
-          <ArcDownToCenter id="arcD1" />
-
-          {/* Wiersz 2: 1 karta na środku */}
-          <div className="w-full max-w-lg">
-            <StepCard step={steps[2]} />
-          </div>
-
-          {/* Łuk: wiersz 2 → wiersz 3 */}
-          <ArcDownFromCenter id="arcD2" />
-
-          {/* Wiersz 3: 2 karty */}
-          <div className="flex flex-col lg:flex-row lg:items-stretch gap-4 w-full max-w-6xl">
-            <div className="flex-1">
-              <StepCard step={steps[3]} />
-            </div>
-            <HorizontalArc id="arcH3" />
-            <div className="flex-1">
-              <StepCard step={steps[4]} />
-            </div>
-          </div>
+        {/* Karty kroków */}
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          {steps.map((step, i) => (
+            <ProcessCard key={step._key} step={step} index={i} />
+          ))}
         </div>
       </div>
     </section>

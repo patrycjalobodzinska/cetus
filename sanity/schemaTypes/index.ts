@@ -21,6 +21,7 @@ import localeStringArray from './localeStringArray'
 import processSection from './processSection'
 import servicePage from './servicePage'
 import rollUpPage from './rollUpPage'
+import funding from './funding'
 import {
   csHeroSection,
   csStatsSection,
@@ -71,6 +72,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     processSection,
     servicePage,
     rollUpPage,
+    funding,
     csHeroSection,
     csStatsSection,
     csChallengeSection,

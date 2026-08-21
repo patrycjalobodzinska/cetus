@@ -9,7 +9,8 @@
     "followUs": "Follow us on social media",
     "workingHours": "Working hours",
     "workingHoursValue": "Mon–Fri: 9:00 AM–5:00 PM",
-    "qualityPolicy": "Quality Policy"
+    "qualityPolicy": "Quality Policy",
+    "euFunding": "European Funds"
   },
   "nav": {
     "home": "Home",
@@ -26,21 +27,21 @@
   },
   "common": {
     "learnMore": "Learn More",
-    "contactUs": "Contact us to discuss your project and learn how we can help grow your business.",
-    "getStarted": "Ready to get started?",
-    "letsTalk": "Let's Talk",
+    "contactUs": "Book a call with our expert - we'll assess the scope, risks and the best engagement model for your organization, with no commitment.",
+    "getStarted": "Let's talk about your project",
+    "letsTalk": "Book a consultation",
     "loading": "Loading...",
     "noData": "No data"
   },
   "hero": {
-    "title": "We create modern",
-    "titleHighlight": "software",
-    "titleAfterHighlight": "that",
-    "titleThirdLine": "helps companies grow",
-    "subtitle": "",
+    "title": "Software",
+    "titleHighlight": "your business",
+    "titleAfterHighlight": "",
+    "titleThirdLine": "runs on",
+    "subtitle": "We design, build and maintain business-critical systems for large organizations.",
     "subtitleHighlight": "",
-    "description": "",
-    "buttonText": "Schedule a consultation"
+    "description": "From strategy and architecture, through delivery, to long-term development and maintenance.",
+    "buttonText": "Book a consultation"
   },
   "stats": {
     "loading": "Loading statistics...",
@@ -65,17 +66,17 @@
     "heroTitle": "Technology tailored to your needs",
     "heroDescription": "We create dedicated solutions – from web and mobile applications, through system integrations, to development and maintenance.",
     "title": "We advise, build and",
-    "titleHighlight": "support",
-    "description": "Comprehensive IT solutions tailored to your business needs",
+    "titleHighlight": "maintain",
+    "description": "End-to-end IT solutions for demanding organizations - from strategy and architecture, through development, to deployment and maintenance of business-critical systems.",
     "buttonText": "See",
     "buttonLink": "/oferta",
     "pageTitle": "Our offer",
     "pageDescription": "Comprehensive technological solutions tailored to your business needs",
     "noOffers": "No offers to display.",
     "cta": {
-      "title": "Want to learn more?",
-      "description": "Contact us and let's discuss how we can help grow your business.",
-      "buttonText": "Contact us"
+      "title": "Want to discuss a specific project?",
+      "description": "Get in touch - we'll assess the scope, risks and the engagement model that fits your organization.",
+      "buttonText": "Book a consultation"
     },
     "projects": {
       "webApps": {
@@ -309,10 +310,10 @@
   },
   "home": {
     "metadata": {
-      "title": "Web & mobile apps, AI, UX/UI and cybersecurity",
-      "description": "We advise, build and support. Web and mobile apps, UX/UI design, AI and cybersecurity solutions tailored to your business.",
-      "ogTitle": "CetusPro - Web & mobile apps, AI and cybersecurity",
-      "ogDescription": "We advise, build and support. Web and mobile apps, UX/UI design, AI and cybersecurity solutions tailored to your business."
+      "title": "Technology partner for large organizations",
+      "description": "CetusPro designs, builds and maintains business-critical systems - from strategy and architecture, through development, to deployment and maintenance.",
+      "ogTitle": "CetusPro - technology partner for large organizations",
+      "ogDescription": "We design, build and maintain business-critical systems. Software built to enterprise standards."
     },
     "process": {
       "title": "From chaos to structure. We give you peace and guidance",
@@ -680,5 +681,17 @@
       "emailLabel": "or write directly",
       "email": "contact@cetuspro.com"
     }
+  },
+  "funding": {
+    "title": "European Funds",
+    "inPreparation": "Information about projects co-financed by the European Union is being prepared.",
+    "program": "Programme / measure",
+    "fund": "Fund",
+    "objective": "Project objective",
+    "effects": "Expected results",
+    "contractNumber": "Grant agreement number",
+    "projectValue": "Project value",
+    "euContribution": "European Union contribution",
+    "reportIrregularities": "Report an irregularity"
   }
 }

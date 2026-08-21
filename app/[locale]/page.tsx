@@ -75,7 +75,7 @@ export default async function Home({
 }) {
   return (
     <div className="relative flex flex-col items-center justify-center">
-      <main className="w-full max-w-7xl">
+      <main className="w-full  max-w-7xl">
         <HeroCurosora />
         <Skiper16 />
         <WhatsNewSection />

@@ -9,7 +9,8 @@
     "followUs": "Obserwuj nas w mediach społecznościowych",
     "workingHours": "Godziny pracy",
     "workingHoursValue": "Pn–Pt: 9:00–17:00",
-    "qualityPolicy": "Polityka Jakości"
+    "qualityPolicy": "Polityka Jakości",
+    "euFunding": "Fundusze Europejskie"
   },
   "nav": {
     "home": "Strona główna",
@@ -26,20 +27,20 @@
   },
   "common": {
     "learnMore": "Dowiedz się więcej",
-    "contactUs": "Skontaktuj się z nami, aby omówić Twój projekt i dowiedzieć się, jak możemy pomóc w rozwoju Twojego biznesu.",
-    "getStarted": "Gotowy na start?",
-    "letsTalk": "Porozmawiajmy",
+    "contactUs": "Umówmy rozmowę z naszym ekspertem - bez zobowiązań ocenimy zakres, ryzyka i najlepszy model współpracy dla Waszej organizacji.",
+    "getStarted": "Porozmawiajmy o Waszym projekcie",
+    "letsTalk": "Umów konsultację",
     "loading": "Ładowanie...",
     "noData": "Brak danych"
   },
   "hero": {
-    "title": "Tworzymy nowoczesne",
-    "titleHighlight": "oprogramowania",
-    "titleAfterHighlight": "które",
-    "titleThirdLine": "pomagają firmom się rozwijać",
-    "subtitle": "",
+    "title": "Oprogramowanie,",
+    "titleHighlight": "na którym opiera się",
+    "titleAfterHighlight": "",
+    "titleThirdLine": "Wasz biznes",
+    "subtitle": "Projektujemy, budujemy i utrzymujemy systemy krytyczne dla dużych organizacji.",
     "subtitleHighlight": "",
-    "description": "",
+    "description": "Od strategii i architektury, przez wdrożenie, po długoletni rozwój i utrzymanie.",
     "buttonText": "Umów konsultację"
   },
   "stats": {
@@ -65,17 +66,17 @@
     "heroTitle": "Technologia szyta na miarę",
     "heroDescription": "Tworzymy dedykowane rozwiązania – od aplikacji webowych i mobilnych, przez integracje systemów, po rozwój i utrzymanie.",
     "title": "Doradzamy, budujemy i",
-    "titleHighlight": "wspieramy",
-    "description": "Kompleksowe rozwiązania IT dostosowane do potrzeb Twojego biznesu",
+    "titleHighlight": "utrzymujemy",
+    "description": "Kompleksowe rozwiązania IT dla wymagających organizacji - od strategii i architektury, przez development, po wdrożenie i utrzymanie systemów krytycznych.",
     "buttonText": "Zobacz",
     "buttonLink": "/oferta",
     "pageTitle": "Nasza oferta",
     "pageDescription": "Kompleksowe rozwiązania technologiczne dostosowane do potrzeb Twojego biznesu",
     "noOffers": "Brak ofert do wyświetlenia.",
     "cta": {
-      "title": "Chcesz dowiedzieć się więcej?",
-      "description": "Skontaktuj się z nami i omówmy, jak możemy pomóc w rozwoju Twojego biznesu.",
-      "buttonText": "Skontaktuj się z nami"
+      "title": "Chcesz omówić konkretny projekt?",
+      "description": "Skontaktuj się z nami - ocenimy zakres, ryzyka i model współpracy dopasowany do Waszej organizacji.",
+      "buttonText": "Umów konsultację"
     },
     "projects": {
       "webApps": {
@@ -309,10 +310,10 @@
   },
   "home": {
     "metadata": {
-      "title": "Aplikacje webowe, mobilne, AI i cybersecurity",
-      "description": "Doradzamy, budujemy i wspieramy. Tworzymy aplikacje webowe i mobilne, projekty UX/UI, rozwiązania AI i cybersecurity dla Twojego biznesu.",
-      "ogTitle": "CetusPro - Aplikacje webowe, mobilne, AI i cybersecurity",
-      "ogDescription": "Doradzamy, budujemy i wspieramy. Tworzymy aplikacje webowe i mobilne, projekty UX/UI, rozwiązania AI i cybersecurity dla Twojego biznesu."
+      "title": "Partner technologiczny dla dużych organizacji",
+      "description": "CetusPro projektuje, buduje i utrzymuje systemy krytyczne dla biznesu - od strategii i architektury, przez development, po wdrożenie i utrzymanie.",
+      "ogTitle": "CetusPro - partner technologiczny dla dużych organizacji",
+      "ogDescription": "Projektujemy, budujemy i utrzymujemy systemy krytyczne dla biznesu. Software na miarę wymagań enterprise."
     },
     "process": {
       "title": "Z chaosu do struktury. Dajemy Ci spokój i prowadzenie",
@@ -680,5 +681,17 @@
       "emailLabel": "lub napisz bezpośrednio",
       "email": "contact@cetuspro.com"
     }
+  },
+  "funding": {
+    "title": "Fundusze Europejskie",
+    "inPreparation": "Informacja o realizowanych projektach wspolfinansowanych ze srodkow Unii Europejskiej jest w przygotowaniu.",
+    "program": "Program / dzialanie",
+    "fund": "Fundusz",
+    "objective": "Cel projektu",
+    "effects": "Planowane efekty",
+    "contractNumber": "Numer umowy o dofinansowanie",
+    "projectValue": "Wartosc projektu",
+    "euContribution": "Wysokosc wkladu Unii Europejskiej",
+    "reportIrregularities": "Zglos nieprawidlowosc"
   }
 }

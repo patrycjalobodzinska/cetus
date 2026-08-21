@@ -279,7 +279,7 @@ export default function NavbarCurosora() {
 
   return (
     <div
-      className={`sticky top-0 z-50 w-full -mb-34 flex justify-center px-4 py-6 transition-all max-w-[1300px] mx-auto duration-700 ease-out opacity-100 translate-y-0`}
+      className={`sticky top-0 z-50 w-full -mb-34 flex justify-center px-4 pt-2 pb-6 transition-all max-w-[1300px] mx-auto duration-700 ease-out opacity-100 translate-y-0`}
     >
       {/* Mobile Header */}
       <div className="lg:hidden w-full max-w-[1300px]">

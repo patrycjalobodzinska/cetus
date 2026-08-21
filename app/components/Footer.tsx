@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Mail, MapPin, Linkedin, Dribbble, Twitter, Facebook, Instagram, ArrowRight } from 'lucide-react';
 import { client } from '@/sanity/lib/client';
+import { urlFor } from '@/sanity/lib/image';
 import { getLocale, getTranslations } from 'next-intl/server';
 import StarGradientButton from './ui/gradientBackground';
 import Image from 'next/image';
@@ -19,6 +20,11 @@ interface FooterData {
   documentLinks?: Array<{ text: string; url: string }>;
   socialMedia?: Array<{ platform: string; url: string }>;
   copyright?: string;
+}
+
+interface FundingData {
+  enabled?: boolean;
+  logoLockup?: { asset?: unknown; alt?: string };
 }
 
 interface OfferProject {
@@ -88,6 +94,11 @@ const OFFER_PROJECTS_QUERY = `*[_type == "offer"][0] {
   }
 }`;
 
+const FUNDING_QUERY = `*[_type == "funding"][0] {
+  enabled,
+  logoLockup { asset, alt }
+}`;
+
 const isValidSlug = (slug: string) => /^[a-zA-Z0-9-]+$/.test(slug);
 
 export default async function Footer() {
@@ -98,17 +109,22 @@ export default async function Footer() {
 
   let footerData: FooterData | null = null;
   let offerProjects: OfferProject[] = [];
+  let funding: FundingData | null = null;
 
   try {
-    const [footer, offer] = await Promise.all([
+    const [footer, offer, fundingDoc] = await Promise.all([
       client.fetch<FooterData | null>(FOOTER_QUERY, { locale }),
       client.fetch<{ projects?: OfferProject[] } | null>(OFFER_PROJECTS_QUERY, { locale }),
+      client.fetch<FundingData | null>(FUNDING_QUERY),
     ]);
     footerData = footer ?? null;
     offerProjects = offer?.projects ?? [];
+    funding = fundingDoc ?? null;
   } catch (error) {
     console.error('Footer Sanity fetch failed:', error);
   }
+
+  const showFundingStrip = Boolean(funding?.enabled && funding?.logoLockup?.asset);
 
   const data: FooterData = footerData ?? {};
 
@@ -259,6 +275,11 @@ export default async function Footer() {
                   {t('qualityPolicy')}
                 </Link>
               </li>
+              <li>
+                <Link href={`/${locale}/dofinansowanie`} className="text-slate-300 hover:text-white transition-colors">
+                  {t('euFunding')}
+                </Link>
+              </li>
               {data.documentLinks && data.documentLinks.map((link, index) => (
                 <li key={index}>
                   <Link href={link.url || '#'} className="text-slate-300 hover:text-white transition-colors">
@@ -270,6 +291,25 @@ export default async function Footer() {
           </div>
         </div>
       </div>
+
+      {showFundingStrip && (
+        <div className="relative border-t border-slate-800/60 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-center">
+            <Link href={`/${locale}/dofinansowanie`} aria-label={t('euFunding')}>
+              <Image
+                src={urlFor(funding!.logoLockup).width(1000).fit('max').url()}
+                alt={
+                  funding!.logoLockup!.alt ||
+                  'Znak Fundusze Europejskie, flaga Unii Europejskiej - Dofinansowane przez Unie Europejska'
+                }
+                width={1000}
+                height={160}
+                className="h-14 sm:h-16 w-auto"
+              />
+            </Link>
+          </div>
+        </div>
+      )}
 
       <div className="relative border-t border-slate-800/60 bg-slate-950/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
