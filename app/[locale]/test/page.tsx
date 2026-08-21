@@ -4,6 +4,7 @@ import ServicesGridSection from "../components/ServicesGridSection";
 import ProcessSection from "../components/ProcessSection";
 import WhyUsSection from "../components/WhyUsSection";
 import PartnersSection from "../components/PartnersSection";
+import ReelsMarqueeSection from "../components/ReelsMarqueeSection";
 import HomepageModulesSection from "../components/HomepageModulesSection";
 import FAQSection from "../components/FAQSection";
 import HomeCTASection from "../components/HomeCTASection";
@@ -25,6 +26,8 @@ export default function TestHomePreview() {
         <WhyUsSection />
         {/* Zaufali nam – logotypy klientów */}
         <PartnersSection />
+        {/* Co u nas słychać – filmiki z FB (karuzela) */}
+        <ReelsMarqueeSection />
         {/* Dlaczego klienci nam ufają */}
         <HomepageModulesSection />
         {/* FAQ dużych klientów */}

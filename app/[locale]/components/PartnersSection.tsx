@@ -35,45 +35,58 @@ export default async function PartnersSection() {
     return null;
   }
 
-  return (
-    <section className="relative overflow-hidden py-8 lg:py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <p className="text-center text-xs font-bold uppercase tracking-[0.2em] text-slate-400 mb-10">
-          {t('title')}
-        </p>
+  const track = [...partners, ...partners, ...partners, ...partners];
 
-        <div className="flex flex-wrap justify-center gap-4">
-          {partners.map((partner) => {
-              const Wrapper = partner.url ? 'a' : 'div';
-              const wrapperProps = partner.url
-                ? {
-                    href: partner.url,
-                    target: '_blank',
-                    rel: 'noopener noreferrer',
-                    'aria-label': partner.name,
-                  }
-                : {};
-              return (
-                <Wrapper
-                  key={partner._id}
-                  className="group flex items-center justify-center h-24 w-[calc(50%-0.5rem)] sm:w-44 rounded-xl border border-gray-100 bg-white px-4 shadow-sm transition-all duration-300 hover:border-blue-200 hover:shadow-md"
-                  {...wrapperProps}
-                >
-                  {partner.logo ? (
-                    <img
-                      src={urlFor(partner.logo).width(300).quality(80).auto('format').url()}
-                      alt={partner.name || 'Partner'}
-                      className={`max-h-10 w-auto object-contain grayscale opacity-70 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100${partner.invertColors ? ' brightness-0 group-hover:brightness-100' : ''}`}
-                    />
-                  ) : (
-                    <span className="text-slate-400 text-base font-semibold tracking-wide transition-colors group-hover:text-slate-700">
-                      {partner.name}
-                    </span>
-                  )}
-                </Wrapper>
-              );
-            })}
-          </div>
+  return (
+    <section className="relative py-16 lg:py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-10">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-3">
+            - {t('title')}
+          </p>
+          <h2
+            className="text-slate-900 text-2xl sm:text-3xl leading-tight"
+            style={{ fontFamily: "var(--font-michroma)" }}
+          >
+            {t('description')}
+          </h2>
+        </div>
+      </div>
+
+      {/* animowany pasek logo na całą szerokość ekranu */}
+      <div className="group/marquee relative left-1/2 right-1/2 -mx-[50vw] w-screen overflow-hidden py-4 [mask-image:linear-gradient(90deg,transparent,#000_5%,#000_95%,transparent)]">
+        <div className="flex w-max animate-marquee-left gap-5 px-3 group-hover/marquee:[animation-play-state:paused]">
+          {track.map((partner, i) => {
+            const Wrapper = partner.url ? 'a' : 'div';
+            const wrapperProps = partner.url
+              ? {
+                  href: partner.url,
+                  target: '_blank',
+                  rel: 'noopener noreferrer',
+                  'aria-label': partner.name,
+                }
+              : {};
+            return (
+              <Wrapper
+                key={`${partner._id}-${i}`}
+                className="group shrink-0 flex items-center justify-center h-24 w-48 rounded-2xl border border-gray-100 bg-white px-6 shadow-sm transition-all duration-300 hover:border-blue-200 hover:shadow-md hover:-translate-y-0.5"
+                {...wrapperProps}
+              >
+                {partner.logo ? (
+                  <img
+                    src={urlFor(partner.logo).width(300).quality(80).auto('format').url()}
+                    alt={partner.name || 'Partner'}
+                    className="max-h-11 w-auto object-contain"
+                  />
+                ) : (
+                  <span className="text-slate-400 text-base font-semibold tracking-wide transition-colors group-hover:text-slate-700">
+                    {partner.name}
+                  </span>
+                )}
+              </Wrapper>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

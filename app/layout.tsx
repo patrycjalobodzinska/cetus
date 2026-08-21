@@ -1,7 +1,7 @@
-import { Geist, Geist_Mono, Michroma } from 'next/font/google'
+import { Geist_Mono, Michroma, Albert_Sans } from 'next/font/google'
 import './globals.css'
 
-const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
+const albertSans = Albert_Sans({ variable: '--font-albert', subsets: ['latin', 'latin-ext'] })
 const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] })
 const michroma = Michroma({ variable: '--font-michroma', subsets: ['latin'], weight: '400' })
 
@@ -9,7 +9,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pl">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${michroma.variable} antialiased bg-white`}
+        className={`${albertSans.variable} ${geistMono.variable} ${michroma.variable} antialiased bg-white`}
       >
         {children}
       </body>

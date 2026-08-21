@@ -37,7 +37,7 @@ export default function WhyUsSection() {
   const t = CONTENT[locale === "en" ? "en" : "pl"];
 
   return (
-    <section className="relative overflow-hidden py-10 lg:py-14">
+    <section className="relative overflow-hidden py-14 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           {/* Teza */}

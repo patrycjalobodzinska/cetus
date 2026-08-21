@@ -3,7 +3,6 @@
 import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
 import Image from "next/image";
-import StatsPanel from "./StatsPanel";
 import StarGradientButton from "./ui/gradientBackground";
 
 export default function HeroCurosora() {
@@ -96,8 +95,6 @@ export default function HeroCurosora() {
           </div>
         </div>
       </div>
-
-      <StatsPanel />
     </section>
   );
 }

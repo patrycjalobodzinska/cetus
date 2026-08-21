@@ -136,7 +136,7 @@ export default function ServicesGridSection() {
   const t = CONTENT[locale === "en" ? "en" : "pl"];
 
   return (
-    <section className="relative py-10 lg:py-14">
+    <section className="relative py-14 lg:py-20">
       <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-2">
