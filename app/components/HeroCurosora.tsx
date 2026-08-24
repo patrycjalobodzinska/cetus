@@ -2,96 +2,90 @@
 
 import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
-import Image from "next/image";
-import StarGradientButton from "./ui/gradientBackground";
+import { ArrowRight } from "lucide-react";
+import PaintReveal from "./PaintReveal";
 
 export default function HeroCurosora() {
   const t = useTranslations("hero");
   const locale = useLocale();
 
   return (
-    <section className="relative lg:pb-4 overflow-x-hidden max-w-[100vw] w-full flex flex-col items-center justify-start overflow-hidden">
-      {/* ── Tło: zdjęcie po prawej, rozmycie + fade rozpływające się w lewo ── */}
-      <div aria-hidden="true" className="absolute inset-0 -z-10 pointer-events-none">
-        {/* baza w kolorze tła sekcji (pod zdjęciem) */}
-        <div className="absolute inset-0 bg-gray-100" />
-        {/* zdjęcie – pełna szerokość, bez twardej krawędzi (fade rozpuszcza lewą część) */}
-        <div className="absolute inset-0">
-          <Image
-            src="/career_2.jpg"
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-[72%_40%]"
-          />
-        </div>
-        {/* warstwa rozmycia – najmocniej przy lewej stronie */}
-        <div
-          className="absolute inset-0 backdrop-blur-sm"
-          style={{
-            WebkitMaskImage:
-              "linear-gradient(90deg,#000 0%,#000 16%,rgba(0,0,0,.78) 34%,rgba(0,0,0,.45) 52%,rgba(0,0,0,.18) 70%,transparent 88%)",
-            maskImage:
-              "linear-gradient(90deg,#000 0%,#000 16%,rgba(0,0,0,.78) 34%,rgba(0,0,0,.45) 52%,rgba(0,0,0,.18) 70%,transparent 88%)",
-          }}
-        />
-        {/* rozmycie od dołu – najmocniej przy dolnej krawędzi */}
-        <div
-          className="absolute inset-0 backdrop-blur-md"
-          style={{
-            WebkitMaskImage:
-              "linear-gradient(0deg,#000 0%,rgba(0,0,0,.6) 18%,transparent 42%)",
-            maskImage:
-              "linear-gradient(0deg,#000 0%,rgba(0,0,0,.6) 18%,transparent 42%)",
-          }}
-        />
-        {/* fade w kolorze tła (gray-100) – wygładza WSZYSTKIE krawędzie zdjęcia */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(90deg,#f3f4f6 0%,#f3f4f6 28%,rgba(243,244,246,.70) 46%,rgba(243,244,246,.20) 70%,rgba(243,244,246,0) 90%)," +
-              "linear-gradient(270deg,#f3f4f6 0%,rgba(243,244,246,0) 14%)," +
-              "linear-gradient(180deg,#f3f4f6 0%,rgba(243,244,246,0) 16%)," +
-              "linear-gradient(0deg,#f3f4f6 0%,rgba(243,244,246,0) 22%)",
-          }}
-        />
-        {/* mocniejszy welon na mobile dla czytelności */}
-        <div className="absolute inset-0 bg-gray-100/70 lg:hidden" />
+    <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen overflow-hidden bg-white">
+      {/* ── Tło: poświaty ───────────────────────────────────────────────── */}
+      <div aria-hidden="true" className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute -top-32 -left-24 h-96 w-96 rounded-full bg-blue-400/15 blur-3xl" />
+        <div className="absolute top-1/4 -right-24 h-[34rem] w-[34rem] rounded-full bg-sky-300/20 blur-3xl" />
       </div>
 
-      <div className="pt-[var(--page-top-offset)] w-full container mx-auto lg:pb-6 flex flex-col relative overflow-x-hidden">
-        <div className="flex flex-col z-30 lg:pt-4 xl:pt-0 items-start justify-center relative px-4 lg:pl-10 lg:pr-0 max-w-2xl">
-          <div className="relative">
+      {/* ── Fala (grzbiet stały wzgl. zdjęcia + wypełnienie rosnące w dół) ── */}
+      <div
+        aria-hidden="true"
+        className="hidden pointer-events-none absolute inset-x-0 bottom-0 z-20 flex-col top-[20rem] sm:top-[24rem] lg:top-[30rem]">
+        {/* grzbiet – stała wysokość, bez rozciągania */}
+        <svg
+          className="h-16 w-full shrink-0 sm:h-24 lg:h-32"
+          viewBox="0 0 1440 120"
+          fill="none"
+          preserveAspectRatio="none">
+          <path
+            transform="scale(-1,1) translate(-1440,0)"
+            d="M0 60 C 160 40, 260 82, 440 70 S 640 44, 820 56 S 1020 78, 1180 44 S 1340 18, 1440 12 L1440 120 L0 120 Z"
+            fill="#f3f4f6"
+          />
+        </svg>
+        {/* wypełnienie – rośnie w dół przy wyższym ekranie */}
+        <div className="w-full flex-1 bg-gray-100" />
+      </div>
+
+      <div className="relative mx-auto flex min-h-[min(100vh,1000px)] w-full max-w-7xl items-center px-4 sm:px-6 lg:px-8 pt-[var(--page-top-offset)] pb-16 lg:pb-24">
+        <div className="grid w-full items-center gap-8 lg:grid-cols-2 lg:gap-14">
+          {/* Tekst */}
+          <div className="relative z-30 order-1 flex flex-col items-start text-left lg:col-start-1 lg:row-start-1">
             <h1
-              className="heading-hero text-left tracking-tighter text-slate-900"
+              className="tracking-tight text-slate-900 text-3xl sm:text-4xl lg:text-[3.4rem] leading-[1.15]"
               style={{ fontFamily: "var(--font-michroma)" }}>
               <span className="block">{t("title")}</span>
               <span className="block">
-                <span className="text-blue-600">{t("titleHighlight")}</span>{" "}
+                <span className="font-extrabold text-blue-600">{t("titleHighlight")}</span>{" "}
                 {t("titleAfterHighlight")}
               </span>
               <span className="block">{t("titleThirdLine")}</span>
             </h1>
+
+            {t("subtitle") && (
+              <p className="mt-6 max-w-md text-base sm:text-lg text-slate-600 leading-relaxed">
+                {t("subtitle")}
+              </p>
+            )}
+
+            {t("buttonText") && (
+              <Link
+                href={`/${locale}/kontakt`}
+                className="group mt-6 inline-flex items-center gap-2.5 rounded-full bg-blue-600 pl-7 pr-6 py-3.5 text-base font-semibold text-white shadow-lg shadow-blue-600/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-700">
+                {t("buttonText")}
+                <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
+              </Link>
+            )}
           </div>
 
-          <div className="text-left space-y-2 flex flex-col max-w-lg relative w-full mt-5 mb-4">
-            {t("subtitle") && (
-              <h2 className="text-lg lg:text-xl text-slate-600 leading-relaxed">
-                {t("subtitle")}
-              </h2>
-            )}
-            {t("description") && (
-              <p className="text-slate-500">{t("description")}</p>
-            )}
-            {t("buttonText") && (
-              <div className="pt-2">
-                <StarGradientButton>
-                  <Link href={`/${locale}/kontakt`}>{t("buttonText")}</Link>
-                </StarGradientButton>
-              </div>
-            )}
+          {/* Ilustracja (szkic → malowanie) */}
+          <div className="relative order-2 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:min-w-0 lg:overflow-visible">
+            <div className="relative z-10 -mx-4 sm:mx-0 lg:w-[min(72vh,52rem)] lg:min-w-[34rem]">
+              {/* kropelki farby po bokach – subtelne */}
+              <span className="pointer-events-none absolute left-[4%] top-[28%] z-10 h-2.5 w-2.5 rounded-full bg-blue-400/40 blur-[1px]" />
+              <span className="pointer-events-none absolute left-[9%] top-[52%] z-10 h-1.5 w-1.5 rounded-full bg-sky-400/40 blur-[1px]" />
+              <span className="pointer-events-none absolute left-[2%] top-[64%] z-10 h-1 w-1 rounded-full bg-blue-300/50 blur-[0.5px]" />
+              <span className="pointer-events-none absolute right-[5%] top-[20%] z-10 h-2 w-2 rounded-full bg-blue-400/40 blur-[1px]" />
+              <span className="pointer-events-none absolute right-[10%] top-[58%] z-10 h-1.5 w-1.5 rounded-full bg-sky-400/40 blur-[1px]" />
+              <span className="pointer-events-none absolute right-[3%] top-[74%] z-10 h-1 w-1 rounded-full bg-blue-300/50 blur-[0.5px]" />
+
+              <PaintReveal
+                sketchSrc="/Norbert2.png"
+                paintedSrc="/Norbert3.png"
+                alt="Norbert - CetusPro"
+                aspect="1 / 1"
+              />
+            </div>
           </div>
         </div>
       </div>

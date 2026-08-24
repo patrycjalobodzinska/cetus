@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { client } from "@/sanity/lib/client";
+import Slider from "../../components/Slider";
 // Animowany SVG - pulsujący sygnał (rozchodzące się kółko + kropka)
 function PulseDot({ dark = false }: { dark?: boolean }) {
   const c = dark ? "#60a5fa" : "#2563eb";
@@ -364,12 +365,19 @@ export default function ProcessSection() {
           </p>
         </div>
 
-        {/* Karty kroków */}
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        {/* Karty kroków - desktop grid */}
+        <div className="hidden sm:grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {steps.map((step, i) => (
             <ProcessCard key={step._key} step={step} index={i} />
           ))}
         </div>
+
+        {/* Karty kroków - mobile slider */}
+        <Slider className="sm:hidden" slideWidth="85%">
+          {steps.map((step, i) => (
+            <ProcessCard key={step._key} step={step} index={i} />
+          ))}
+        </Slider>
       </div>
     </section>
   );

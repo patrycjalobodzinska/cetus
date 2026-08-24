@@ -19,7 +19,6 @@ const OFFER_LINKS = [
   { titleKey: "transformation", slug: "transformacja-technologiczna" },
   { titleKey: "outsourcing", slug: "outsourcing-programistow" },
   { titleKey: "academy", slug: "akademia-i-szkolenia" },
-  { titleKey: "venture", slug: "cetus-venture-capital" },
 ] as const;
 
 const isValidSlug = (slug: string) => /^[a-zA-Z0-9-]+$/.test(slug);
@@ -283,7 +282,7 @@ export default function NavbarCurosora() {
     >
       {/* Mobile Header */}
       <div className="lg:hidden w-full max-w-[1300px]">
-        <div className="flex items-center justify-between bg-white/50 backdrop-blur-md border border-gray-100/50 shadow-sm rounded-md px-4 py-3">
+        <div className="flex items-center justify-between bg-white/50 backdrop-blur-md border border-gray-100/50 shadow-sm rounded-2xl px-4 py-3">
           <div className="flex items-center">
             <NavigationLink
               className="w-32 h-12 rounded-lg flex cursor-pointer items-center justify-center"
@@ -331,7 +330,7 @@ export default function NavbarCurosora() {
 
       {/* Desktop Navbar */}
       <div className="hidden lg:flex flex-row gap-4 w-full max-w-[1300px]">
-        <div className="relative shrink-0 transform -skew-x-12 bg-white/60 backdrop-blur-md border border-emerald-100/50 shadow-sm rounded-sm">
+        <div className="relative shrink-0 transform -skew-x-12 bg-white/60 backdrop-blur-md border border-emerald-100/50 shadow-sm rounded-xl">
           <div className="transform skew-x-12 w-full h-full flex items-center px-5 py-1">
             <div className="flex items-center gap-3">
               <NavigationLink
@@ -348,7 +347,7 @@ export default function NavbarCurosora() {
           </div>
         </div>
 
-        <div className="flex-1 items-center justify-center transform -skew-x-12 h-[74px] bg-white/60 backdrop-blur-md border border-emerald-100/50 shadow-sm rounded-sm">
+        <div className="flex-1 items-center justify-center transform -skew-x-12 h-[74px] bg-white/60 backdrop-blur-md border border-emerald-100/50 shadow-sm rounded-xl">
           <div className="w-full h-full flex items-center justify-between px-6 transform skew-x-12">
             <nav
               className="flex flex-nowrap items-center gap-4 text-[15px] font-medium whitespace-nowrap"

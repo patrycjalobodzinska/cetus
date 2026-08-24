@@ -35,7 +35,6 @@ export default function OfferPage() {
     "transformation",
     "outsourcing",
     "academy",
-    "venture",
   ];
 
   const projects = projectKeys

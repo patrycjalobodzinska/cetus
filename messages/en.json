@@ -34,14 +34,14 @@
     "noData": "No data"
   },
   "hero": {
-    "title": "Software",
-    "titleHighlight": "your business",
+    "title": "We create",
+    "titleHighlight": "modern software",
     "titleAfterHighlight": "",
-    "titleThirdLine": "runs on",
+    "titleThirdLine": "that helps companies grow",
     "subtitle": "We design, build and maintain business-critical systems for large organizations.",
     "subtitleHighlight": "",
     "description": "From strategy and architecture, through delivery, to long-term development and maintenance.",
-    "buttonText": "Book a consultation"
+    "buttonText": "Book a meeting"
   },
   "stats": {
     "loading": "Loading statistics...",
@@ -134,13 +134,6 @@
         "slug": "akademia-i-szkolenia",
         "order": 8,
         "image": "https://images.pexels.com/photos/1181533/pexels-photo-1181533.jpeg?auto=compress&cs=tinysrgb&w=1200"
-      },
-      "venture": {
-        "title": "Cetus Venture Capital",
-        "description": "Investments in innovative technology projects with growth potential.",
-        "slug": "cetus-venture-capital",
-        "order": 9,
-        "image": "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1200"
       }
     }
   },

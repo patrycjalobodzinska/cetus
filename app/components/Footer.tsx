@@ -58,7 +58,6 @@ const DEFAULT_OFFER_LINKS = [
   { titleKey: 'transformation', slug: 'transformacja-technologiczna' },
   { titleKey: 'outsourcing', slug: 'outsourcing-programistow' },
   { titleKey: 'academy', slug: 'akademia-i-szkolenia' },
-  { titleKey: 'venture', slug: 'cetus-venture-capital' },
 ];
 
 const FOOTER_QUERY = `*[_type == "footer"][0] {

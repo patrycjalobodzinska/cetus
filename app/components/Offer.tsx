@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
-import ReactLenis from "lenis/react";
 import React, { useRef, useState, useEffect, useLayoutEffect } from "react";
 import Link from "next/link";
 import StarGradientButton from "./ui/gradientBackground";
@@ -219,8 +218,7 @@ const Skiper16Content = ({
   }
 
   return (
-    <ReactLenis root options={{ lerp: 0.1 }}>
-      <div ref={container} className="relative">
+    <div ref={container} className="relative">
         {(() => {
           const titleContent = (
             <div className="px-4 z-0 pt-6 md:pt-0 lg:ml-0 w-full">
@@ -355,7 +353,6 @@ const Skiper16Content = ({
           );
         })()}
       </div>
-    </ReactLenis>
   );
 };
 
@@ -396,7 +393,6 @@ const Skiper16 = () => {
     "transformation",
     "outsourcing",
     "academy",
-    "venture",
   ];
 
   const offerData: OfferData = {

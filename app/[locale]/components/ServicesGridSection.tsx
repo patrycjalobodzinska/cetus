@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useLocale } from "next-intl";
+import Slider from "../../components/Slider";
 import {
   Monitor,
   Smartphone,
@@ -11,8 +12,6 @@ import {
   RefreshCw,
   Users,
   GraduationCap,
-  Rocket,
-  ArrowRight,
 } from "lucide-react";
 
 const CONTENT = {
@@ -29,7 +28,6 @@ const CONTENT = {
       { title: "Transformacja technologiczna", desc: "Modernizacja legacy i migracje do chmury - bez przestojów." },
       { title: "Outsourcing programistów", desc: "Doświadczone zespoły w Waszym procesie, z governance." },
       { title: "Akademia i szkolenia", desc: "Rozwój kompetencji technologicznych dla zespołów." },
-      { title: "Cetus Venture Capital", desc: "Wsparcie technologiczne i inwestycyjne dla projektów o wysokim potencjale wzrostu.", cta: "Poznaj Cetus Venture" },
     ],
   },
   en: {
@@ -45,12 +43,11 @@ const CONTENT = {
       { title: "Technology transformation", desc: "Legacy modernization and cloud migration - no downtime." },
       { title: "Developer outsourcing", desc: "Experienced teams in your process, with governance." },
       { title: "Academy & training", desc: "Technology skill development for teams." },
-      { title: "Cetus Venture Capital", desc: "Technology and investment support for high-growth-potential ventures.", cta: "Explore Cetus Venture" },
     ],
   },
 } as const;
 
-const ICONS = [Monitor, Smartphone, PenTool, Sparkles, ShieldCheck, RefreshCw, Users, GraduationCap, Rocket];
+const ICONS = [Monitor, Smartphone, PenTool, Sparkles, ShieldCheck, RefreshCw, Users, GraduationCap];
 
 // Wygenerowany mockup design/artboard z placeholderami (do kafla UX/UI)
 function DesignMock({ className = "" }: { className?: string }) {
@@ -85,6 +82,58 @@ function DesignMock({ className = "" }: { className?: string }) {
 }
 
 // Wygenerowany mockup ekranu telefonu z placeholderami (do kafla Aplikacje mobilne)
+// Mockup sieci neuronowej / AI (kafel "AI i automatyzacja")
+function AiMock({ className = "" }: { className?: string }) {
+  const nodes = [
+    { x: 24, y: 30 }, { x: 24, y: 70 }, { x: 24, y: 110 },
+    { x: 75, y: 50 }, { x: 75, y: 90 },
+    { x: 126, y: 70 },
+  ];
+  const edges: [number, number][] = [
+    [0, 3], [0, 4], [1, 3], [1, 4], [2, 3], [2, 4], [3, 5], [4, 5],
+  ];
+  return (
+    <svg viewBox="0 0 150 140" className={className} aria-hidden="true" fill="none">
+      {edges.map(([a, b], i) => (
+        <line
+          key={i}
+          x1={nodes[a].x} y1={nodes[a].y} x2={nodes[b].x} y2={nodes[b].y}
+          stroke="#93c5fd" strokeWidth="1.5"
+        />
+      ))}
+      {nodes.map((n, i) => (
+        <circle
+          key={i} cx={n.x} cy={n.y} r={i === 5 ? 9 : 7}
+          fill={i === 5 ? "#2563eb" : "#ffffff"}
+          stroke="#2563eb" strokeWidth="2"
+        />
+      ))}
+      {/* iskra */}
+      <path d="M126 62 l3 6 6 1 -4 4 1 6 -6 -3 -6 3 1 -6 -4 -4 6 -1 z" fill="#38bdf8" />
+    </svg>
+  );
+}
+
+// Mockup tarczy / bezpieczeństwa (kafel "Cybersecurity")
+function CyberMock({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 140 150" className={className} aria-hidden="true" fill="none">
+      {/* tarcza */}
+      <path
+        d="M70 8 L124 28 V74 C124 108 100 130 70 142 C40 130 16 108 16 74 V28 Z"
+        fill="#eff6ff" stroke="#2563eb" strokeWidth="3"
+      />
+      {/* kłódka */}
+      <rect x="52" y="66" width="36" height="30" rx="6" fill="#2563eb" />
+      <path d="M58 66 v-8 a12 12 0 0 1 24 0 v8" stroke="#1d4ed8" strokeWidth="4" fill="none" />
+      <circle cx="70" cy="79" r="4.5" fill="#ffffff" />
+      <rect x="68" y="79" width="4" height="9" rx="2" fill="#ffffff" />
+      {/* linia skanu */}
+      <line x1="28" y1="52" x2="112" y2="52" stroke="#38bdf8" strokeWidth="2" strokeDasharray="6 6" />
+    </svg>
+  );
+}
+
 function PhoneMock({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 120 240" className={className} aria-hidden="true" fill="none">
@@ -118,18 +167,116 @@ function PhoneMock({ className = "" }: { className?: string }) {
   );
 }
 const SPANS = [
-  "md:col-span-6 md:row-span-2",
-  "md:col-span-3",
-  "md:col-span-3",
-  "md:col-span-3",
-  "md:col-span-3",
+  "md:col-span-4 md:row-span-2",
   "md:col-span-4",
   "md:col-span-4",
   "md:col-span-4",
-  "md:col-span-12",
+  "md:col-span-4",
+  "md:col-span-4",
+  "md:col-span-4",
+  "md:col-span-4",
 ];
-// spokojna paleta: białe karty + JEDEN niebieski (feature) + JEDEN ciemny (baner)
-const VARIANT = ["feature", "plain", "plain", "plain", "plain", "plain", "plain", "plain", "banner"] as const;
+// spokojna paleta: białe karty + JEDEN niebieski (feature)
+const VARIANT = ["feature", "plain", "plain", "plain", "plain", "plain", "plain", "plain"] as const;
+
+type Item = { title: string; desc: string; chips?: readonly string[]; cta?: string };
+
+// Pojedyncza karta usługi (współdzielona: bento na desktopie + slider na mobile)
+function Tile({ c, i, layoutClass }: { c: Item; i: number; layoutClass: string }) {
+  const Icon = ICONS[i];
+  const v = VARIANT[i];
+  const dark = v === "feature";
+  const chips = c.chips;
+
+  const skin =
+    v === "feature"
+      ? "bg-blue-900 border-blue-800 text-white shadow-lg shadow-blue-600/20"
+      : "bg-white border-gray-200 text-slate-900 shadow-sm hover:shadow-md hover:border-blue-200";
+
+  return (
+    <article
+      className={`${layoutClass} group relative h-full overflow-hidden rounded-2xl border p-4 sm:p-5 flex flex-col min-h-0 transition-shadow ${skin}`}
+    >
+      {v === "feature" && (
+        <>
+          <Image
+            src="/career_2.jpg"
+            alt=""
+            fill
+            sizes="(max-width:768px) 100vw, 33vw"
+            className="object-cover object-center z-0 transition-transform duration-500 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 z-0 bg-gradient-to-t from-blue-950 via-blue-950/70 to-blue-950/20" />
+        </>
+      )}
+
+      {v === "plain" && (
+        <div
+          aria-hidden="true"
+          className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-blue-500/10 blur-2xl z-0 transition-transform duration-500 group-hover:scale-125"
+        />
+      )}
+
+      {i !== 1 && i !== 2 && i !== 3 && i !== 4 && (
+        <Icon
+          aria-hidden="true"
+          className={`absolute -bottom-6 -right-5 w-28 h-28 z-0 transition-transform duration-500 group-hover:scale-105 ${
+            dark ? "text-white/10" : "text-blue-600/[0.07]"
+          }`}
+          strokeWidth={1}
+        />
+      )}
+
+      {i === 1 && (
+        <PhoneMock className="absolute -bottom-9 right-6 w-24 rotate-[10deg] z-0 drop-shadow-xl transition-transform duration-500 group-hover:-translate-y-1 group-hover:rotate-[6deg]" />
+      )}
+      {i === 2 && (
+        <DesignMock className="absolute -bottom-4 -right-3 w-32 rotate-[6deg] z-0 drop-shadow-xl transition-transform duration-500 group-hover:-translate-y-1 group-hover:rotate-[3deg]" />
+      )}
+      {i === 3 && (
+        <AiMock className="absolute -bottom-3 -right-3 w-32 z-0 drop-shadow-xl transition-transform duration-500 group-hover:-translate-y-1 group-hover:scale-105" />
+      )}
+      {i === 4 && (
+        <CyberMock className="absolute -bottom-4 -right-3 w-28 z-0 drop-shadow-xl transition-transform duration-500 group-hover:-translate-y-1 group-hover:scale-105" />
+      )}
+
+      <div
+        className={`relative z-10 flex flex-col h-full ${v === "feature" ? "justify-end" : ""} ${
+          i === 1 || i === 2 || i === 3 || i === 4 ? "pr-20" : ""
+        }`}
+      >
+        <h3
+          className={`font-bold mb-1.5 pr-6 ${
+            v === "feature" ? "text-2xl sm:text-3xl" : "text-base sm:text-lg"
+          }`}
+        >
+          {c.title}
+        </h3>
+        <p
+          className={`text-[13px] sm:text-sm leading-snug ${
+            dark ? "text-white/85" : "text-slate-600"
+          }`}
+        >
+          {c.desc}
+        </p>
+        {chips ? (
+          <div className="mt-3 flex flex-wrap gap-2">
+            {chips.map((chip, j) => (
+              <span
+                key={j}
+                className={`text-xs font-mono rounded-full px-3 py-1 border ${
+                  dark ? "border-white/25 text-white/85" : "border-gray-200 text-slate-600"
+                }`}
+              >
+                {chip}
+              </span>
+            ))}
+          </div>
+        ) : null}
+      </div>
+    </article>
+  );
+}
 
 export default function ServicesGridSection() {
   const locale = useLocale();
@@ -151,127 +298,19 @@ export default function ServicesGridSection() {
           <p className="text-slate-600 max-w-2xl mx-auto text-sm lg:text-base">{t.sub}</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-[minmax(130px,auto)]">
-          {t.items.map((c, i) => {
-            const Icon = ICONS[i];
-            const v = VARIANT[i];
-            const dark = v === "feature" || v === "banner";
-            const cta = "cta" in c ? c.cta : undefined;
-            const chips = "chips" in c ? c.chips : undefined;
-
-            const skin =
-              v === "feature"
-                ? "bg-blue-900 border-blue-800 text-white shadow-lg shadow-blue-600/20"
-                : v === "banner"
-                ? "bg-slate-900 border-slate-900 text-white md:flex-row md:items-center md:justify-between"
-                : "bg-white border-gray-200 text-slate-900 shadow-sm hover:shadow-md hover:border-blue-200";
-
-            return (
-              <article
-                key={i}
-                className={`${SPANS[i]} group relative overflow-hidden rounded-2xl border p-4 sm:p-5 flex flex-col min-h-0 transition-shadow ${skin}`}
-              >
-                {/* feature: zdjęcie w tle + niebieskie przyciemnienie */}
-                {v === "feature" && (
-                  <>
-                    <Image
-                      src="/web_apps.jpg"
-                      alt=""
-                      fill
-                      sizes="(max-width:768px) 100vw, 50vw"
-                      className="object-cover object-center z-0"
-                    />
-                    <div className="absolute inset-0 z-0 bg-gradient-to-t from-blue-950 via-blue-950/70 to-blue-950/15" />
-                  </>
-                )}
-
-                {/* delikatny kolorowy blob w tle - dodaje ciepła */}
-                {v === "plain" && (
-                  <div
-                    aria-hidden="true"
-                    className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-blue-500/10 blur-2xl z-0 transition-transform duration-500 group-hover:scale-125"
-                  />
-                )}
-
-                {/* tematyczny znak wodny ikony (tło) */}
-                {v !== "banner" && i !== 1 && i !== 2 && (
-                  <Icon
-                    aria-hidden="true"
-                    className={`absolute -bottom-6 -right-5 w-28 h-28 z-0 transition-transform duration-500 group-hover:scale-105 ${
-                      dark ? "text-white/10" : "text-blue-600/[0.07]"
-                    }`}
-                    strokeWidth={1}
-                  />
-                )}
-
-                {/* mockup telefonu (kafel Aplikacje mobilne) */}
-                {i === 1 && (
-                  <PhoneMock className="absolute -bottom-9 -right-2 w-24 rotate-[10deg] z-0 drop-shadow-xl transition-transform duration-500 group-hover:-translate-y-1 group-hover:rotate-[6deg]" />
-                )}
-
-                {/* mockup design/artboard (kafel UX/UI) */}
-                {i === 2 && (
-                  <DesignMock className="absolute -bottom-4 -right-3 w-32 rotate-[6deg] z-0 drop-shadow-xl transition-transform duration-500 group-hover:-translate-y-1 group-hover:rotate-[3deg]" />
-                )}
-
-                {/* treść */}
-                {v === "banner" ? (
-                  <>
-                    <Image
-                      src="/DSC_3998.JPEG"
-                      alt=""
-                      fill
-                      sizes="100vw"
-                      className="object-cover object-[50%_40%] z-0 opacity-70"
-                    />
-                    <div className="absolute inset-0 z-0 bg-gradient-to-r from-slate-900/95 via-slate-900/60 to-slate-900/25" />
-                    <div className="relative z-10 max-w-2xl">
-                      <h3 className="text-xl sm:text-2xl font-bold mb-1">{c.title}</h3>
-                      <p className="text-white/75 text-sm leading-snug">{c.desc}</p>
-                    </div>
-                    <div className="relative z-10 mt-4 md:mt-0 shrink-0">
-                      <button className="inline-flex items-center gap-2 bg-white text-slate-900 font-semibold text-sm rounded-full px-5 py-3 hover:bg-blue-50 transition-colors">
-                        {cta}
-                        <ArrowRight className="w-4 h-4" />
-                      </button>
-                    </div>
-                    <Rocket aria-hidden="true" className="absolute -bottom-8 right-44 w-36 h-36 text-white/[0.06] z-0" strokeWidth={1} />
-                  </>
-                ) : (
-                  <div className={`relative z-10 flex flex-col h-full ${v === "feature" ? "justify-end" : ""} ${i === 1 || i === 2 ? "pr-24" : ""}`}>
-                    <h3 className={`font-bold mb-1.5 pr-6 ${v === "feature" ? "text-2xl sm:text-3xl" : "text-base sm:text-lg"}`}>
-                      {c.title}
-                    </h3>
-                    <p className={`text-[13px] sm:text-sm leading-snug ${dark ? "text-white/85" : "text-slate-600"}`}>
-                      {c.desc}
-                    </p>
-                    <div className="mt-3">
-                      {cta ? (
-                        <button className="inline-flex items-center gap-2 bg-slate-900 text-white font-semibold text-sm rounded-full px-4 py-2.5 hover:bg-black transition-colors">
-                          {cta}
-                          <ArrowRight className="w-4 h-4" />
-                        </button>
-                      ) : chips ? (
-                        <div className="flex flex-wrap gap-2">
-                          {chips.map((chip, j) => (
-                            <span
-                              key={j}
-                              className={`text-xs font-mono rounded-full px-3 py-1 border ${
-                                dark ? "border-white/25 text-white/85" : "border-gray-200 text-slate-600"
-                              }`}
-                            >
-                              {chip}
-                            </span>
-                          ))}
-                        </div>
-                      ) : null}
-                    </div>
-                  </div>
-                )}
-              </article>
-            );
-          })}
+        {/* Desktop: bento */}
+        <div className="hidden md:grid grid-cols-12 gap-4 auto-rows-auto [grid-template-rows:180px_180px_auto]">
+          {t.items.map((c, i) => (
+            <Tile key={i} c={c} i={i} layoutClass={SPANS[i]} />
+          ))}
         </div>
+
+        {/* Mobile: slider ze strzałkami i kropkami */}
+        <Slider className="md:hidden" slideWidth="85%">
+          {t.items.map((c, i) => (
+            <Tile key={i} c={c} i={i} layoutClass="min-h-[190px]" />
+          ))}
+        </Slider>
       </div>
     </section>
   );

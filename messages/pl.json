@@ -34,14 +34,14 @@
     "noData": "Brak danych"
   },
   "hero": {
-    "title": "Oprogramowanie,",
-    "titleHighlight": "na którym opiera się",
+    "title": "Tworzymy",
+    "titleHighlight": "nowoczesne oprogramowanie",
     "titleAfterHighlight": "",
-    "titleThirdLine": "Wasz biznes",
+    "titleThirdLine": "które pomaga firmom rosnąć",
     "subtitle": "Projektujemy, budujemy i utrzymujemy systemy krytyczne dla dużych organizacji.",
     "subtitleHighlight": "",
     "description": "Od strategii i architektury, przez wdrożenie, po długoletni rozwój i utrzymanie.",
-    "buttonText": "Umów konsultację"
+    "buttonText": "Umów spotkanie"
   },
   "stats": {
     "loading": "Ładowanie statystyk...",
@@ -134,13 +134,6 @@
         "slug": "akademia-i-szkolenia",
         "order": 8,
         "image": "https://images.pexels.com/photos/1181533/pexels-photo-1181533.jpeg?auto=compress&cs=tinysrgb&w=1200"
-      },
-      "venture": {
-        "title": "Cetus Venture Capital",
-        "description": "Inwestycje w innowacyjne projekty technologiczne z potencjałem wzrostu.",
-        "slug": "cetus-venture-capital",
-        "order": 9,
-        "image": "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1200"
       }
     }
   },

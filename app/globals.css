@@ -165,25 +165,15 @@ html::-webkit-scrollbar-thumb:hover {
   background: #1d4ed8; /* blue-700 */
 }
 
-/* Smooth Scroll Styles */
-html.lenis {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
+/* PaintReveal - pulsujące zakolorowanie (mobile) */
+@keyframes colorPulse {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 /* Animations for StarBorder */

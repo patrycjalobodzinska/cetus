@@ -18,7 +18,6 @@ const staticPages = [
   { path: "/oferta/outsourcing-programistow", priority: 0.7, changeFrequency: "monthly" as const },
   { path: "/oferta/transformacja-technologiczna", priority: 0.7, changeFrequency: "monthly" as const },
   { path: "/oferta/akademia-i-szkolenia", priority: 0.7, changeFrequency: "monthly" as const },
-  { path: "/oferta/cetus-venture-capital", priority: 0.7, changeFrequency: "monthly" as const },
 ];
 
 function getLocalizedUrl(path: string, locale: string): string {

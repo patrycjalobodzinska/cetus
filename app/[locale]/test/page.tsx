@@ -14,20 +14,20 @@ export default function TestHomePreview() {
   return (
     <div className="relative flex flex-col items-center justify-center">
       <main className="w-full max-w-7xl">
-        {/* Hero (zawiera pasek statystyk) */}
+        {/* Hero */}
         <HeroCurosora />
-        {/* Kim jesteśmy – mocne zdanie wartości */}
-        <ValueStatementSection />
         {/* Co robimy - kafelki usług */}
         <ServicesGridSection />
+        {/* Co u nas słychać – filmiki z FB (karuzela) */}
+        <ReelsMarqueeSection />
+        {/* Kim jesteśmy – mocne zdanie wartości */}
+        <ValueStatementSection />
         {/* Proces – przewidywalność */}
         <ProcessSection />
         {/* Dlaczego my – teza + atuty */}
         <WhyUsSection />
         {/* Zaufali nam – logotypy klientów */}
         <PartnersSection />
-        {/* Co u nas słychać – filmiki z FB (karuzela) */}
-        <ReelsMarqueeSection />
         {/* Dlaczego klienci nam ufają */}
         <HomepageModulesSection />
         {/* FAQ dużych klientów */}
