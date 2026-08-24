@@ -38,7 +38,7 @@ export default async function PartnersSection() {
   const track = [...partners, ...partners, ...partners, ...partners];
 
   return (
-    <section className="relative py-16 lg:py-24">
+    <section className="relative flex min-h-[min(100vh,1000px)] flex-col justify-center py-16 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-3">

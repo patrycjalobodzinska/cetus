@@ -199,7 +199,7 @@ export default function PaintReveal({
           const LAG = bands * 0.4; // zacznij znikać po ~40% narysowania
           const cycle = bands + LAG;
           const prev = prevProg;
-          phase += 0.06;
+          phase += 0.035; // wolniejsze malowanie
 
           if (phase >= cycle) {
             phase = 0;

@@ -140,29 +140,23 @@ body {
   overflow-x: clip;
 }
 
-/* Global custom blue scrollbar */
+/* Scrollbar - jasny track, neutralny thumb */
 html {
-  /* Firefox */
-  scrollbar-width: thin;
-  scrollbar-color: #3b82f6 #e5e7eb; /* thumb, track */
+  scrollbar-color: #cbd5e1 #f1f5f9; /* thumb, track (Firefox) */
 }
-
-/* WebKit (Chrome, Edge, Safari) */
 html::-webkit-scrollbar {
-  width: 8px;
+  width: 14px;
 }
-
 html::-webkit-scrollbar-track {
-  background: #e5e7eb; /* gray-200 */
+  background: #f1f5f9; /* slate-100 - jasne tło */
 }
-
 html::-webkit-scrollbar-thumb {
-  background: #3b82f6; /* blue-500 */
+  background: #cbd5e1; /* slate-300 */
   border-radius: 9999px;
+  border: 3px solid #f1f5f9; /* jasny margines wokół thumba */
 }
-
 html::-webkit-scrollbar-thumb:hover {
-  background: #1d4ed8; /* blue-700 */
+  background: #94a3b8; /* slate-400 */
 }
 
 /* PaintReveal - pulsujące zakolorowanie (mobile) */

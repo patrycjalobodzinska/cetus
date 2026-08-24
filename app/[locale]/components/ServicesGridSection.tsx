@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useLocale } from "next-intl";
 import Slider from "../../components/Slider";
 import {
@@ -49,6 +48,52 @@ const CONTENT = {
 
 const ICONS = [Monitor, Smartphone, PenTool, Sparkles, ShieldCheck, RefreshCw, Users, GraduationCap];
 
+// Mockup przeglądarki / dashboardu (kafel flagowy "Aplikacje webowe")
+function BrowserMock({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 320 220" className={className} aria-hidden="true" fill="none">
+      {/* okno */}
+      <rect x="1" y="1" width="318" height="218" rx="16" fill="#ffffff" />
+      {/* pasek */}
+      <rect x="1" y="1" width="318" height="30" rx="16" fill="#f1f5f9" />
+      <rect x="1" y="16" width="318" height="15" fill="#f1f5f9" />
+      <circle cx="20" cy="16" r="4" fill="#f87171" />
+      <circle cx="35" cy="16" r="4" fill="#fbbf24" />
+      <circle cx="50" cy="16" r="4" fill="#34d399" />
+      <rect x="80" y="10" width="180" height="12" rx="6" fill="#e2e8f0" />
+      {/* sidebar */}
+      <rect x="1" y="31" width="70" height="188" fill="#eff6ff" />
+      <rect x="16" y="48" width="40" height="8" rx="4" fill="#2563eb" />
+      <rect x="16" y="68" width="40" height="7" rx="3.5" fill="#bfdbfe" />
+      <rect x="16" y="84" width="40" height="7" rx="3.5" fill="#bfdbfe" />
+      <rect x="16" y="100" width="40" height="7" rx="3.5" fill="#bfdbfe" />
+      {/* KPI */}
+      <rect x="86" y="46" width="70" height="44" rx="10" fill="#f8fafc" stroke="#e2e8f0" />
+      <rect x="164" y="46" width="70" height="44" rx="10" fill="#f8fafc" stroke="#e2e8f0" />
+      <rect x="242" y="46" width="66" height="44" rx="10" fill="#2563eb" />
+      <rect x="98" y="56" width="30" height="7" rx="3.5" fill="#cbd5e1" />
+      <rect x="98" y="70" width="42" height="11" rx="5.5" fill="#1d4ed8" />
+      <rect x="176" y="56" width="30" height="7" rx="3.5" fill="#cbd5e1" />
+      <rect x="176" y="70" width="42" height="11" rx="5.5" fill="#334155" />
+      <rect x="254" y="56" width="26" height="7" rx="3.5" fill="#bfdbfe" />
+      <rect x="254" y="70" width="38" height="11" rx="5.5" fill="#ffffff" />
+      {/* wykres */}
+      <rect x="86" y="100" width="222" height="104" rx="10" fill="#f8fafc" stroke="#e2e8f0" />
+      <path
+        d="M100 178 L134 156 L166 166 L200 132 L234 146 L268 116 L296 128"
+        stroke="#2563eb" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"
+      />
+      <path
+        d="M100 178 L134 156 L166 166 L200 132 L234 146 L268 116 L296 128 L296 196 L100 196 Z"
+        fill="#2563eb" fillOpacity="0.1"
+      />
+      {[100, 134, 166, 200, 234, 268, 296].map((cx, idx) => (
+        <circle key={idx} cx={cx} cy={[178, 156, 166, 132, 146, 116, 128][idx]} r="3" fill="#2563eb" />
+      ))}
+    </svg>
+  );
+}
+
 // Wygenerowany mockup design/artboard z placeholderami (do kafla UX/UI)
 function DesignMock({ className = "" }: { className?: string }) {
   return (
@@ -82,58 +127,6 @@ function DesignMock({ className = "" }: { className?: string }) {
 }
 
 // Wygenerowany mockup ekranu telefonu z placeholderami (do kafla Aplikacje mobilne)
-// Mockup sieci neuronowej / AI (kafel "AI i automatyzacja")
-function AiMock({ className = "" }: { className?: string }) {
-  const nodes = [
-    { x: 24, y: 30 }, { x: 24, y: 70 }, { x: 24, y: 110 },
-    { x: 75, y: 50 }, { x: 75, y: 90 },
-    { x: 126, y: 70 },
-  ];
-  const edges: [number, number][] = [
-    [0, 3], [0, 4], [1, 3], [1, 4], [2, 3], [2, 4], [3, 5], [4, 5],
-  ];
-  return (
-    <svg viewBox="0 0 150 140" className={className} aria-hidden="true" fill="none">
-      {edges.map(([a, b], i) => (
-        <line
-          key={i}
-          x1={nodes[a].x} y1={nodes[a].y} x2={nodes[b].x} y2={nodes[b].y}
-          stroke="#93c5fd" strokeWidth="1.5"
-        />
-      ))}
-      {nodes.map((n, i) => (
-        <circle
-          key={i} cx={n.x} cy={n.y} r={i === 5 ? 9 : 7}
-          fill={i === 5 ? "#2563eb" : "#ffffff"}
-          stroke="#2563eb" strokeWidth="2"
-        />
-      ))}
-      {/* iskra */}
-      <path d="M126 62 l3 6 6 1 -4 4 1 6 -6 -3 -6 3 1 -6 -4 -4 6 -1 z" fill="#38bdf8" />
-    </svg>
-  );
-}
-
-// Mockup tarczy / bezpieczeństwa (kafel "Cybersecurity")
-function CyberMock({ className = "" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 140 150" className={className} aria-hidden="true" fill="none">
-      {/* tarcza */}
-      <path
-        d="M70 8 L124 28 V74 C124 108 100 130 70 142 C40 130 16 108 16 74 V28 Z"
-        fill="#eff6ff" stroke="#2563eb" strokeWidth="3"
-      />
-      {/* kłódka */}
-      <rect x="52" y="66" width="36" height="30" rx="6" fill="#2563eb" />
-      <path d="M58 66 v-8 a12 12 0 0 1 24 0 v8" stroke="#1d4ed8" strokeWidth="4" fill="none" />
-      <circle cx="70" cy="79" r="4.5" fill="#ffffff" />
-      <rect x="68" y="79" width="4" height="9" rx="2" fill="#ffffff" />
-      {/* linia skanu */}
-      <line x1="28" y1="52" x2="112" y2="52" stroke="#38bdf8" strokeWidth="2" strokeDasharray="6 6" />
-    </svg>
-  );
-}
-
 function PhoneMock({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 120 240" className={className} aria-hidden="true" fill="none">
@@ -167,11 +160,11 @@ function PhoneMock({ className = "" }: { className?: string }) {
   );
 }
 const SPANS = [
-  "md:col-span-4 md:row-span-2",
+  "md:col-span-5 md:row-span-2",
   "md:col-span-4",
+  "md:col-span-3",
   "md:col-span-4",
-  "md:col-span-4",
-  "md:col-span-4",
+  "md:col-span-3",
   "md:col-span-4",
   "md:col-span-4",
   "md:col-span-4",
@@ -182,7 +175,17 @@ const VARIANT = ["feature", "plain", "plain", "plain", "plain", "plain", "plain"
 type Item = { title: string; desc: string; chips?: readonly string[]; cta?: string };
 
 // Pojedyncza karta usługi (współdzielona: bento na desktopie + slider na mobile)
-function Tile({ c, i, layoutClass }: { c: Item; i: number; layoutClass: string }) {
+function Tile({
+  c,
+  i,
+  layoutClass,
+  eyebrow,
+}: {
+  c: Item;
+  i: number;
+  layoutClass: string;
+  eyebrow?: string;
+}) {
   const Icon = ICONS[i];
   const v = VARIANT[i];
   const dark = v === "feature";
@@ -190,23 +193,27 @@ function Tile({ c, i, layoutClass }: { c: Item; i: number; layoutClass: string }
 
   const skin =
     v === "feature"
-      ? "bg-blue-900 border-blue-800 text-white shadow-lg shadow-blue-600/20"
-      : "bg-white border-gray-200 text-slate-900 shadow-sm hover:shadow-md hover:border-blue-200";
+      ? "bg-gradient-to-br from-blue-950 via-blue-900 to-slate-900 text-white shadow-xl shadow-blue-900/30"
+      : "bg-white text-slate-900 shadow-sm hover:shadow-md";
 
   return (
     <article
-      className={`${layoutClass} group relative h-full overflow-hidden rounded-2xl border p-4 sm:p-5 flex flex-col min-h-0 transition-shadow ${skin}`}
+      className={`${layoutClass} group relative h-full overflow-hidden rounded-2xl p-4 sm:p-5 flex flex-col min-h-0 transition-shadow ${skin}`}
     >
       {v === "feature" && (
         <>
-          <Image
-            src="/career_2.jpg"
-            alt=""
-            fill
-            sizes="(max-width:768px) 100vw, 33vw"
-            className="object-cover object-center z-0 transition-transform duration-500 group-hover:scale-105"
+          {/* subtelna siatka + poświata */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 z-0 opacity-[0.14]"
+            style={{
+              backgroundImage:
+                "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
+              backgroundSize: "28px 28px",
+            }}
           />
-          <div className="absolute inset-0 z-0 bg-gradient-to-t from-blue-950 via-blue-950/70 to-blue-950/20" />
+          <div className="absolute -top-16 -right-10 z-0 h-56 w-56 rounded-full bg-blue-500/30 blur-3xl" />
+          <BrowserMock className="absolute -bottom-6 -right-6 w-[78%] max-w-[380px] rotate-[4deg] z-0 drop-shadow-2xl transition-transform duration-500 group-hover:-translate-y-1 group-hover:rotate-[2deg]" />
         </>
       )}
 
@@ -217,7 +224,7 @@ function Tile({ c, i, layoutClass }: { c: Item; i: number; layoutClass: string }
         />
       )}
 
-      {i !== 1 && i !== 2 && i !== 3 && i !== 4 && (
+      {i !== 1 && i !== 2 && (
         <Icon
           aria-hidden="true"
           className={`absolute -bottom-6 -right-5 w-28 h-28 z-0 transition-transform duration-500 group-hover:scale-105 ${
@@ -228,32 +235,31 @@ function Tile({ c, i, layoutClass }: { c: Item; i: number; layoutClass: string }
       )}
 
       {i === 1 && (
-        <PhoneMock className="absolute -bottom-9 right-6 w-24 rotate-[10deg] z-0 drop-shadow-xl transition-transform duration-500 group-hover:-translate-y-1 group-hover:rotate-[6deg]" />
+        <PhoneMock className="absolute -bottom-9 -right-2 w-24 rotate-[10deg] z-0 drop-shadow-xl transition-transform duration-500 group-hover:-translate-y-1 group-hover:rotate-[6deg]" />
       )}
       {i === 2 && (
         <DesignMock className="absolute -bottom-4 -right-3 w-32 rotate-[6deg] z-0 drop-shadow-xl transition-transform duration-500 group-hover:-translate-y-1 group-hover:rotate-[3deg]" />
       )}
-      {i === 3 && (
-        <AiMock className="absolute -bottom-3 -right-3 w-32 z-0 drop-shadow-xl transition-transform duration-500 group-hover:-translate-y-1 group-hover:scale-105" />
-      )}
-      {i === 4 && (
-        <CyberMock className="absolute -bottom-4 -right-3 w-28 z-0 drop-shadow-xl transition-transform duration-500 group-hover:-translate-y-1 group-hover:scale-105" />
-      )}
 
       <div
-        className={`relative z-10 flex flex-col h-full ${v === "feature" ? "justify-end" : ""} ${
-          i === 1 || i === 2 || i === 3 || i === 4 ? "pr-20" : ""
+        className={`relative z-10 flex flex-col h-full ${
+          i === 1 || i === 2 ? "pr-24" : ""
         }`}
       >
+        {eyebrow && (
+          <span className="mb-2 inline-block text-[11px] font-bold uppercase tracking-[0.2em] text-blue-300">
+            {eyebrow}
+          </span>
+        )}
         <h3
           className={`font-bold mb-1.5 pr-6 ${
-            v === "feature" ? "text-2xl sm:text-3xl" : "text-base sm:text-lg"
+            v === "feature" ? "text-2xl sm:text-3xl" : "text-lg sm:text-xl"
           }`}
         >
           {c.title}
         </h3>
         <p
-          className={`text-[13px] sm:text-sm leading-snug ${
+          className={`text-sm sm:text-base leading-snug ${
             dark ? "text-white/85" : "text-slate-600"
           }`}
         >
@@ -281,9 +287,10 @@ function Tile({ c, i, layoutClass }: { c: Item; i: number; layoutClass: string }
 export default function ServicesGridSection() {
   const locale = useLocale();
   const t = CONTENT[locale === "en" ? "en" : "pl"];
+  const featureEyebrow = locale === "en" ? "Flagship service" : "Usługa flagowa";
 
   return (
-    <section className="relative py-14 lg:py-20">
+    <section className="relative flex min-h-[min(100vh,1000px)] flex-col justify-center py-14 lg:py-20">
       <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-2">
@@ -299,16 +306,16 @@ export default function ServicesGridSection() {
         </div>
 
         {/* Desktop: bento */}
-        <div className="hidden md:grid grid-cols-12 gap-4 auto-rows-auto [grid-template-rows:180px_180px_auto]">
+        <div className="hidden md:grid grid-cols-12 gap-4 auto-rows-auto [grid-template-rows:190px_190px_auto]">
           {t.items.map((c, i) => (
-            <Tile key={i} c={c} i={i} layoutClass={SPANS[i]} />
+            <Tile key={i} c={c} i={i} layoutClass={SPANS[i]} eyebrow={i === 0 ? featureEyebrow : undefined} />
           ))}
         </div>
 
         {/* Mobile: slider ze strzałkami i kropkami */}
         <Slider className="md:hidden" slideWidth="85%">
           {t.items.map((c, i) => (
-            <Tile key={i} c={c} i={i} layoutClass="min-h-[190px]" />
+            <Tile key={i} c={c} i={i} layoutClass="min-h-[220px]" eyebrow={i === 0 ? featureEyebrow : undefined} />
           ))}
         </Slider>
       </div>
