@@ -80,7 +80,6 @@ export default async function ReelsMarqueeSection() {
                 style={{ border: 'none', overflow: 'hidden', display: 'block' }}
                 scrolling="no"
                 frameBorder="0"
-                allowFullScreen
                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                 title={reel.caption || `Reel ${i + 1}`}
               />
