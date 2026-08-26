@@ -1,14 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations } from 'next-intl/server';
-import HeroCurosora from "../components/HeroCurosora";
-import Skiper16 from "../components/OfferWrapper";
-import HomeCTASection from "./components/HomeCTASection";
-import ProcessSection from "./components/ProcessSection";
-import FAQSection from "./components/FAQSection";
-import PartnersSection from "./components/PartnersSection";
-import HomepageModulesSection from "./components/HomepageModulesSection";
-import WhatsNewSection from "./components/WhatsNewSection";
-import SponsorsSection from "./components/SponsorsSection";
+import HomeSections from "./components/HomeSections";
 
 export async function generateMetadata({
   params
@@ -68,24 +60,6 @@ export async function generateMetadata({
   };
 }
 
-export default async function Home({
-  params
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  return (
-    <div className="relative flex flex-col items-center justify-center">
-      <main className="w-full  max-w-7xl">
-        <HeroCurosora />
-        <Skiper16 />
-        <WhatsNewSection />
-        <ProcessSection />
-        <HomepageModulesSection />
-        <PartnersSection />
-        <SponsorsSection />
-        <FAQSection />
-        <HomeCTASection />
-      </main>
-    </div>
-  );
+export default function Home() {
+  return <HomeSections />;
 }

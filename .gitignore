@@ -44,3 +44,10 @@ next-env.d.ts
 
 # pre-commit
 .pre-commit-config.yaml
+scripts/.winopasja-assets.json
+scripts/.artinside-assets.json
+scripts/.emdesk-assets.json
+scripts/.partners-assets.json
+
+# lokalna konfiguracja edytora (zawiera absolutne sciezki uzytkownika)
+.cursor/

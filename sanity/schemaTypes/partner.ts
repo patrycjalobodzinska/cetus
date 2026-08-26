@@ -12,6 +12,21 @@ export default defineType({
       description: 'Nazwa partnera',
     }),
     defineField({
+      name: 'logoTone',
+      title: 'Kolorystyka logo',
+      type: 'string',
+      description:
+        'Decyduje o tle kafelka. „Ciemne logo” - jasne (białe) tło, tak wygląda większość logotypów. „Jasne logo” - ciemne tło, dla logotypów z białymi literami, które na białym byłyby niewidoczne.',
+      options: {
+        list: [
+          { title: 'Ciemne logo → jasne tło (domyślne)', value: 'dark' },
+          { title: 'Jasne logo → ciemne tło', value: 'light' },
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'dark',
+    }),
+    defineField({
       name: 'invertColors',
       title: 'Odwróć kolory (logo na czarno)',
       type: 'boolean',

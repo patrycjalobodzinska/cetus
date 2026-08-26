@@ -213,7 +213,7 @@ function Tile({
             }}
           />
           <div className="absolute -top-16 -right-10 z-0 h-56 w-56 rounded-full bg-blue-500/30 blur-3xl" />
-          <BrowserMock className="absolute -bottom-6 -right-6 w-[78%] max-w-[380px] rotate-[4deg] z-0 drop-shadow-2xl transition-transform duration-500 group-hover:-translate-y-1 group-hover:rotate-[2deg]" />
+          <BrowserMock className="absolute -bottom-8 -right-8 w-[62%] max-w-[300px] rotate-[4deg] z-0 drop-shadow-2xl transition-transform duration-500 group-hover:-translate-y-1 group-hover:rotate-[2deg]" />
         </>
       )}
 
@@ -290,15 +290,14 @@ export default function ServicesGridSection() {
   const featureEyebrow = locale === "en" ? "Flagship service" : "Usługa flagowa";
 
   return (
-    <section className="relative flex min-h-[min(100vh,1000px)] flex-col justify-center py-14 lg:py-20">
+    <section className="section-y relative flex min-h-[min(100vh,1000px)] flex-col justify-center">
       <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-2">
             - {t.eyebrow}
           </p>
           <h2
-            className="text-slate-900 text-2xl sm:text-3xl lg:text-4xl mb-2"
-            style={{ fontFamily: "var(--font-michroma)" }}
+            className="section-title text-slate-900 mb-2"
           >
             {t.title}
           </h2>

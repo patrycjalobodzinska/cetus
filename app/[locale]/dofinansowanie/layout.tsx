@@ -1,29 +1,15 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "../pageMetadata";
 
-export const metadata: Metadata = {
-  title: "Dofinansowanie",
-  description:
-    "Informacja o projektach CetusPro dofinansowanych ze srodkow Funduszy Europejskich.",
-  openGraph: {
-    title: "Dofinansowanie | CetusPro",
-    description:
-      "Projekty CetusPro dofinansowane przez Unie Europejska ze srodkow Funduszy Europejskich.",
-    url: "/dofinansowanie",
-  },
-  alternates: {
-    canonical: "/dofinansowanie",
-    languages: {
-      pl: "/dofinansowanie",
-      en: "/en/dofinansowanie",
-      "x-default": "/dofinansowanie",
-    },
-  },
-};
-
-export default function FundingLayout({
-  children,
+export async function generateMetadata({
+  params,
 }: {
-  children: React.ReactNode;
-}) {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildPageMetadata({ locale, key: "funding", path: "/dofinansowanie" });
+}
+
+export default function FundingLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

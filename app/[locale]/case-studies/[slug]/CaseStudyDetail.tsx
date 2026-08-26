@@ -1,1303 +1,562 @@
 "use client";
 
-import React, { useRef, useEffect, useState, useLayoutEffect } from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  type MotionValue,
-} from "framer-motion";
+import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import StarGradientButton from "@/app/components/ui/gradientBackground";
 import { urlFor } from "@/sanity/lib/image";
+import { useTranslations } from "next-intl";
+import Slider from "@/app/components/Slider";
 import {
   ArrowLeft,
-  CheckCircle2,
+  ArrowRight,
   TrendingUp,
-  Clock,
-  Target,
-  Zap,
   Users,
-  Shield,
+  ShieldCheck,
+  LayoutDashboard,
+  ShoppingBag,
+  ShoppingCart,
+  Settings,
+  User,
+  Truck,
+  Calendar,
+  Tag,
+  Database,
+  Wine,
+  Wallet,
+  CreditCard,
+  FileText,
+  Lock,
+  Sparkles,
+  ChevronLeft,
+  ChevronRight,
+  X,
+  type LucideIcon,
 } from "lucide-react";
-import { useTranslations } from "next-intl";
 
-const iconMap: Record<string, any> = {
+const iconMap: Record<string, LucideIcon> = {
   TrendingUp,
-  Clock,
-  Target,
-  Zap,
   Users,
-  Shield,
-  CheckCircle2,
+  ShieldCheck,
+  LayoutDashboard,
+  ShoppingBag,
+  ShoppingCart,
+  Settings,
+  User,
+  Truck,
+  Calendar,
+  Tag,
+  Database,
+  Wine,
+  Wallet,
+  CreditCard,
+  FileText,
+  Lock,
+  Sparkles,
 };
 
-// ─── Interfaces ───────────────────────────────────────────────────────────────
+// ─── helpers ──────────────────────────────────────────────────────────────────
 
-interface CsHeroSectionProps {
-  _type: "csHeroSection";
-  _key: string;
-  title?: string;
-  category?: string;
-  description?: string;
-  iframeUrl?: string;
+function img(src: any, w = 1400) {
+  if (!src) return "";
+  return urlFor(src).width(w).quality(85).auto("format").url();
 }
 
-interface CsStatsSectionProps {
-  _type: "csStatsSection";
-  _key: string;
-  variant?: "cards" | "horizontal";
-  items?: Array<{
-    _key: string;
-    value?: string;
-    label?: string;
-    icon?: string;
-  }>;
-}
+// ─── ramki makiet ───────────────────────────────────────────────────────────
 
-interface CsChallengeSectionProps {
-  _type: "csChallengeSection";
-  _key: string;
-  variant?: "narrative" | "two-column";
-  intro?: string;
-  bullets?: string[];
-  consequence?: string;
-}
-
-interface CsModulesSectionProps {
-  _type: "csModulesSection";
-  _key: string;
-  variant?: "alternating" | "cards";
-  sectionTitle?: string;
-  items?: Array<{
-    _key: string;
-    icon?: string;
-    title?: string;
-    description?: string[];
-    image?: any;
-  }>;
-}
-
-interface CsResultsSectionProps {
-  _type: "csResultsSection";
-  _key: string;
-  variant?: "numbered" | "checklist" | "stacked";
-  sectionTitle?: string;
-  items?: Array<{ _key: string; title?: string; description?: string }>;
-}
-
-interface TechItem {
-  _key: string;
-  name?: string;
-  logo?: any;
-}
-
-interface CsTechnologiesSectionProps {
-  _type: "csTechnologiesSection";
-  _key: string;
-  variant?: "circuit" | "badges" | "carousel";
-  sectionTitle?: string;
-  items?: TechItem[];
-}
-
-interface CsQuoteSectionProps {
-  _type: "csQuoteSection";
-  _key: string;
-  variant?: "centered" | "blockquote";
-  quote?: string;
-  author?: string;
-}
-
-interface CsScopeSectionProps {
-  _type: "csScopeSection";
-  _key: string;
-  variant?: "list" | "grid";
-  sectionTitle?: string;
-  items?: Array<{ _key: string; text?: string }>;
-  note?: string;
-}
-
-interface CsCtaSectionProps {
-  _type: "csCtaSection";
-  _key: string;
-  variant?: "centered" | "banner";
-  heading?: string;
-  description?: string;
-  buttonLabel?: string;
-  buttonHref?: string;
-}
-
-type Section =
-  | CsHeroSectionProps
-  | CsStatsSectionProps
-  | CsChallengeSectionProps
-  | CsModulesSectionProps
-  | CsResultsSectionProps
-  | CsTechnologiesSectionProps
-  | CsQuoteSectionProps
-  | CsScopeSectionProps
-  | CsCtaSectionProps;
-
-interface CaseStudy {
-  _id: string;
-  sections?: Section[];
-}
-
-// ─── StickyResultCard - używany w wariancie "stacked" ────────────────────────
-const POLYGON =
-  "polygon(0% 0px, 20px 0%, 95% 0%, 100% 20px, 100% 80%, 100% 100%, calc(100% - 20px) 100%, 5% 100%, 0% 80%)";
-
-function StickyResultCard({
-  item,
-  index,
-  progress,
-  range,
-  targetScale,
-  cardTop,
+function BrowserFrame({
+  src,
+  className = "",
+  dark = false,
 }: {
-  item: { _key: string; title?: string; description?: string };
-  index: number;
-  progress: MotionValue<number>;
-  range: [number, number];
-  targetScale: number;
-  cardTop: number;
+  src: string;
+  className?: string;
+  dark?: boolean;
 }) {
-  const scale = useTransform(progress, range, [1, targetScale]);
-
-  return (
-    <div style={{ top: `${cardTop}px` }} className="sticky z-20 w-full mb-6">
-      <motion.div style={{ scale, transformOrigin: "top" }}>
-        <div
-          className="p-px rounded-md bg-gradient-to-br from-blue-600 via-sky-400 to-blue-900"
-          style={{ clipPath: POLYGON }}>
-          <div
-            className="bg-white px-8 py-8 flex items-start gap-6"
-            style={{ clipPath: POLYGON }}>
-            <div className="relative flex items-center justify-center shrink-0">
-              <div className="absolute inset-0 rounded-full bg-blue-100 blur-xl opacity-60" />
-              <div className="relative flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-600 text-white font-bold text-2xl shadow-lg">
-                {(index + 1).toString().padStart(2, "0")}
-              </div>
-            </div>
-            <div className="flex-1 py-2">
-              {item.title && (
-                <p className="text-slate-900 font-semibold text-lg mb-1">
-                  {item.title}
-                </p>
-              )}
-              {item.description && (
-                <p className="text-slate-600 leading-relaxed">
-                  {item.description}
-                </p>
-              )}
-            </div>
-          </div>
-        </div>
-      </motion.div>
-    </div>
-  );
-}
-
-// ─── ScaledIframe ─────────────────────────────────────────────────────────────
-// Renders a full-desktop-width page (INNER_W) inside the container,
-// scaled down so the entire site is visible without scrolling.
-
-const INNER_W = 1280; // px - the width the site is rendered at internally
-const INNER_H = 900; // px - how tall the viewport is inside the iframe
-
-function ScaledIframe({ src, title }: { src: string; title?: string }) {
-  const wrapperRef = useRef<HTMLDivElement>(null);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-  const skipTargetId = `after-iframe-${src.replace(/\W/g, "")}`;
-  const [scale, setScale] = useState(1);
-
-  useEffect(() => {
-    const update = () => {
-      if (wrapperRef.current) {
-        setScale(wrapperRef.current.offsetWidth / INNER_W);
-      }
-    };
-    update();
-    const ro = new ResizeObserver(update);
-    if (wrapperRef.current) ro.observe(wrapperRef.current);
-    return () => ro.disconnect();
-  }, []);
-
   return (
     <div
-      role="region"
-      aria-label={title ? `Podgląd strony: ${title}` : "Podgląd strony"}>
-      {/* Skip link - widoczny tylko przy fokusie (WCAG 2.4.1) */}
-      <a
-        href={`#${skipTargetId}`}
-        className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:text-sm focus:font-medium focus:rounded focus:outline-none">
-        Pomiń podgląd strony
-      </a>
+      className={`overflow-hidden shadow-xl ${
+        dark ? "rounded-xl ring-[6px] ring-slate-500" : "rounded-2xl ring-1 ring-black/5"
+      } bg-white ${className}`}
+    >
+      <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
+        {src && <img src={src} alt="" className="absolute inset-0 h-full w-full object-cover object-top" />}
+      </div>
+    </div>
+  );
+}
 
-      {/* Informacja dla czytników ekranu */}
-      <p className="sr-only">
-        Poniżej znajduje się podgląd strony projektu osadzony w ramce. Aby wejść
-        do ramki, naciśnij Tab. Aby wyjść, naciśnij Escape lub Shift+Tab.
-      </p>
+function PhoneFrame({ src, className = "" }: { src: string; className?: string }) {
+  return (
+    <div className={`overflow-hidden rounded-[1.4rem] bg-slate-900 p-1 shadow-2xl ring-1 ring-black/20 ${className}`}>
+      <div className="relative aspect-[9/19] overflow-hidden rounded-[1.1rem] bg-slate-100">
+        {src && <img src={src} alt="" className="absolute inset-0 h-full w-full object-cover object-top" />}
+      </div>
+    </div>
+  );
+}
 
-      <div
-        ref={wrapperRef}
-        style={{
-          width: "100%",
-          height: `${INNER_H * scale}px`,
-          overflow: "hidden",
-          position: "relative",
-        }}>
-        <iframe
-          ref={iframeRef}
-          src={src}
-          title={title}
-          loading="lazy"
-          tabIndex={0}
-          style={{
-            width: `${INNER_W}px`,
-            height: `${INNER_H}px`,
-            border: "none",
-            transform: `scale(${scale})`,
-            transformOrigin: "top left",
-            pointerEvents: "auto",
-          }}
+function FeatureCard({
+  icon: Icon,
+  title,
+  text,
+  className = "",
+}: {
+  icon?: LucideIcon;
+  title?: string;
+  text?: string;
+  className?: string;
+}) {
+  return (
+    <div className={`rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-100 ${className}`}>
+      {Icon && (
+        <div className="mb-3 inline-grid h-12 w-12 place-items-center rounded-xl bg-blue-50 text-blue-600">
+          <Icon className="h-6 w-6" strokeWidth={1.75} />
+        </div>
+      )}
+      <h3 className="text-xl font-bold text-slate-900">{title}</h3>
+      <p className="mt-2 text-base leading-relaxed text-slate-600">{text}</p>
+    </div>
+  );
+}
+
+function FeatureFloat({
+  icon: Icon,
+  title,
+  text,
+  className = "",
+}: {
+  icon?: LucideIcon;
+  title?: string;
+  text?: string;
+  className?: string;
+}) {
+  return (
+    <div className={`w-64 rounded-xl bg-white/95 p-4 shadow-2xl ring-1 ring-black/5 backdrop-blur ${className}`}>
+      <div className="flex items-center gap-3">
+        {Icon && (
+          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-blue-50 text-blue-600">
+            <Icon className="h-5 w-5" strokeWidth={1.75} />
+          </span>
+        )}
+        <h3 className="text-base font-bold text-slate-900">{title}</h3>
+      </div>
+      <p className="mt-2 text-sm leading-relaxed text-slate-600">{text}</p>
+    </div>
+  );
+}
+
+// ─── Galeria z lightboxem ─────────────────────────────────────────────────────
+
+function Gallery({ images }: { images: Array<{ url: string; caption?: string }> }) {
+  const [open, setOpen] = useState<number | null>(null);
+  const close = useCallback(() => setOpen(null), []);
+  const prev = useCallback(
+    () => setOpen((o) => (o === null ? o : (o - 1 + images.length) % images.length)),
+    [images.length],
+  );
+  const next = useCallback(
+    () => setOpen((o) => (o === null ? o : (o + 1) % images.length)),
+    [images.length],
+  );
+
+  useEffect(() => {
+    if (open === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") close();
+      else if (e.key === "ArrowLeft") prev();
+      else if (e.key === "ArrowRight") next();
+    };
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [open, close, prev, next]);
+
+  const Thumb = ({ im, i }: { im: { url: string; caption?: string }; i: number }) => (
+    <button
+      type="button"
+      onClick={() => setOpen(i)}
+      aria-label={`Powiększ zrzut ${i + 1}`}
+      className="block w-full cursor-pointer overflow-hidden rounded-xl bg-white shadow-lg ring-1 ring-gray-200"
+    >
+      <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
+        <img
+          src={im.url}
+          alt={im.caption || ""}
+          className="absolute inset-0 h-full w-full object-cover object-top"
         />
       </div>
-
-      {/* Cel skip linka - focus trafia tutaj po "Pomiń podgląd strony" */}
-      <div id={skipTargetId} tabIndex={-1} className="sr-only" />
-    </div>
+    </button>
   );
-}
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// Section components
-// ═══════════════════════════════════════════════════════════════════════════════
-
-function CsHeroSection({
-  title,
-  category,
-  description,
-  iframeUrl,
-}: CsHeroSectionProps) {
-  const t = useTranslations("caseStudyDetail");
 
   return (
-    <section className="pt-[var(--page-top-offset)] pb-20 ">
-      <div className="max-w-7xl mx-auto px-2">
-        <Link
-          href="/case-studies"
-          className="inline-flex items-center gap-2 px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-all mb-8">
-          <ArrowLeft className="w-4 h-4" />
-          {t("backToList")}
-        </Link>
+    <>
+      {/* mobile: slider */}
+      <Slider className="sm:hidden" slideWidth="82%">
+        {images.map((im, i) => (
+          <Thumb key={i} im={im} i={i} />
+        ))}
+      </Slider>
 
-        <div className="flex flex-col lg:flex-row gap-12 items-center">
-          {/* Left: text */}
-          <div className="space-y-8 min-w-[40%]">
-            {category && (
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-medium">
-                {category}
-              </div>
-            )}
-            {title && (
-              <h1
-                className="heading-1 text-slate-900"
-                style={{ fontFamily: "var(--font-michroma)" }}>
-                {title}
-              </h1>
-            )}
-            {description && (
-              <p className="text-lg text-slate-600 leading-relaxed">
-                {description}
-              </p>
-            )}
-            <Link href="/kontakt">
-              <StarGradientButton>{t("ctaButton")}</StarGradientButton>
-            </Link>
-          </div>
-
-          {/* Right: scaled iframe preview */}
-          {iframeUrl && (
-            <div className="relative max-w-[55%] bg-gradient-to-b from-gray-800 to-gray-900 rounded-3xl p-3 shadow-2xl">
-              <div className="bg-black rounded-lg p-2">
-                <div className="bg-white rounded-sm overflow-hidden">
-                  <ScaledIframe
-                    src={iframeUrl}
-                    title={title || t("imageAltFallback")}
-                  />
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function CsStatsSpark({
-  path,
-  dur = "9s",
-  begin = "0s",
-  filterId,
-}: {
-  path: string;
-  dur?: string;
-  begin?: string;
-  filterId: string;
-}) {
-  return (
-    <circle r="2" fill="#3b82f6" filter={`url(#${filterId})`}>
-      <animateMotion
-        dur={dur}
-        begin={begin}
-        repeatCount="indefinite"
-        path={path}
-      />
-    </circle>
-  );
-}
-
-function CsStatsSection({
-  variant = "cards",
-  items = [],
-}: CsStatsSectionProps) {
-  if (!items.length) return null;
-
-  return (
-    <section className="py-12">
-      <div className="relative w-full mx-auto lg:mb-10 md:px-4 overflow-visible">
-        <div className="relative max-w-6xl mx-auto flex justify-center items-center py-12 overflow-visible">
-          {/* Stats box */}
-          <div
-            className="relative w-full mx-6 md:mx-16 max-w-5xl min-h-40 py-6 md:h-28 bg-gray-50 border border-gray-100 text-gray-900 flex flex-col md:flex-row items-center justify-around sm:px-12 px-6 md:px-16 drop-shadow-xl z-10 stats-polygon"
-            style={{
-              filter:
-                "drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1))",
-            }}>
-            <div
-              className={`relative w-full grid grid-cols-2 md:py-4 gap-4 md:gap-8 z-10 ${items.length <= 3 ? "md:grid-cols-3" : "md:grid-cols-4"}`}>
-              {items.map((stat, index) => (
-                <div
-                  key={stat._key || index}
-                  className="flex flex-col justify-between text-center min-w-[120px]">
-                  <div className="text-xs md:text-sm text-gray-500 mb-1 font-medium tracking-wide uppercase">
-                    {stat.label}
-                  </div>
-                  <div className="text-2xl md:text-5xl font-medium text-gray-900 tracking-wider">
-                    {stat.value}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Desktop - left line */}
-          <div
-            className="absolute hidden md:block left-0 bottom-0 w-[400px] h-[80px] pointer-events-none z-0"
-            style={{ left: "0px", top: "calc(5px)" }}>
-            <svg
-              className="w-full h-full"
-              viewBox="0 0 300 70"
-              preserveAspectRatio="none"
-              aria-hidden="true">
-              <defs>
-                <linearGradient
-                  id="neonGradientCsS"
-                  x1="0%"
-                  y1="0%"
-                  x2="100%"
-                  y2="0%">
-                  <stop offset="0%" stopColor="#3b82f6" />
-                  <stop offset="100%" stopColor="#93c5fd" />
-                </linearGradient>
-                <filter
-                  id="softNeonCsS"
-                  x="-20%"
-                  y="-20%"
-                  width="140%"
-                  height="140%">
-                  <feGaussianBlur stdDeviation="1.5" result="blur" />
-                  <feMerge>
-                    <feMergeNode in="blur" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-                <filter
-                  id="sparkGlowCsL"
-                  x="-300%"
-                  y="-300%"
-                  width="700%"
-                  height="700%">
-                  <feGaussianBlur
-                    in="SourceGraphic"
-                    stdDeviation="5"
-                    result="b1"
-                  />
-                  <feGaussianBlur
-                    in="SourceGraphic"
-                    stdDeviation="3"
-                    result="b2"
-                  />
-                  <feMerge>
-                    <feMergeNode in="b1" />
-                    <feMergeNode in="b2" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-              </defs>
-              <path
-                d="M10 65 L35 65 L60 20 L300 20 L400 20"
-                fill="none"
-                stroke="url(#neonGradientCsS)"
-                strokeWidth="2"
-                filter="url(#softNeonCsS)"
-                strokeLinecap="round"
-              />
-              <rect
-                x="7"
-                y="62"
-                width="6"
-                height="6"
-                fill="#3b82f6"
-                transform="rotate(45 10 65)"
-                filter="url(#softNeonCsS)"
-              />
-              <CsStatsSpark
-                path="M300 20 L60 20 L35 65 L10 65"
-                dur="9s"
-                begin="0s"
-                filterId="sparkGlowCsL"
-              />
-            </svg>
-          </div>
-
-          {/* Mobile - left line */}
-          <div
-            className="absolute md:hidden left-0 bottom-0 w-[80px] h-[200px] pointer-events-none z-0"
-            style={{ left: "0px", top: "calc(5px)" }}>
-            <svg
-              className="w-full h-full"
-              viewBox="0 0 70 200"
-              preserveAspectRatio="none"
-              aria-hidden="true">
-              <defs>
-                <linearGradient
-                  id="neonGradientCsSMobL"
-                  x1="0%"
-                  y1="0%"
-                  x2="100%"
-                  y2="0%">
-                  <stop offset="0%" stopColor="#3b82f6" />
-                  <stop offset="100%" stopColor="#93c5fd" />
-                </linearGradient>
-                <filter
-                  id="softNeonCsSMobL"
-                  x="-20%"
-                  y="-20%"
-                  width="140%"
-                  height="140%">
-                  <feGaussianBlur stdDeviation="1.5" result="blur" />
-                  <feMerge>
-                    <feMergeNode in="blur" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-                <filter
-                  id="sparkGlowCsSMobL"
-                  x="-300%"
-                  y="-300%"
-                  width="700%"
-                  height="700%">
-                  <feGaussianBlur
-                    in="SourceGraphic"
-                    stdDeviation="5"
-                    result="b1"
-                  />
-                  <feGaussianBlur
-                    in="SourceGraphic"
-                    stdDeviation="3"
-                    result="b2"
-                  />
-                  <feMerge>
-                    <feMergeNode in="b1" />
-                    <feMergeNode in="b2" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-              </defs>
-              <path
-                d="M25 35 L10 55 L10 150"
-                fill="none"
-                stroke="url(#neonGradientCsSMobL)"
-                strokeWidth="2"
-                filter="url(#softNeonCsSMobL)"
-                strokeLinecap="round"
-              />
-              <rect
-                x="25"
-                y="30"
-                width="6"
-                height="6"
-                fill="#3b82f6"
-                filter="url(#softNeonCsSMobL)"
-              />
-              <CsStatsSpark
-                path="M10 150 L10 55 L25 35"
-                dur="9s"
-                begin="0s"
-                filterId="sparkGlowCsSMobL"
-              />
-            </svg>
-          </div>
-
-          {/* Mobile - right line */}
-          <div
-            className="absolute md:hidden rotate-180 right-10 bottom-10 w-[80px] h-[200px] pointer-events-none z-0"
-            style={{ right: "0", bottom: "calc(5px)" }}>
-            <svg
-              className="w-full h-full"
-              viewBox="0 0 70 200"
-              preserveAspectRatio="none"
-              aria-hidden="true">
-              <defs>
-                <linearGradient
-                  id="neonGradientCsSMobR"
-                  x1="0%"
-                  y1="0%"
-                  x2="100%"
-                  y2="0%">
-                  <stop offset="0%" stopColor="#3b82f6" />
-                  <stop offset="100%" stopColor="#93c5fd" />
-                </linearGradient>
-                <filter
-                  id="softNeonCsSMobR"
-                  x="-20%"
-                  y="-20%"
-                  width="140%"
-                  height="140%">
-                  <feGaussianBlur stdDeviation="1.5" result="blur" />
-                  <feMerge>
-                    <feMergeNode in="blur" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-                <filter
-                  id="sparkGlowCsSMobR"
-                  x="-300%"
-                  y="-300%"
-                  width="700%"
-                  height="700%">
-                  <feGaussianBlur
-                    in="SourceGraphic"
-                    stdDeviation="5"
-                    result="b1"
-                  />
-                  <feGaussianBlur
-                    in="SourceGraphic"
-                    stdDeviation="3"
-                    result="b2"
-                  />
-                  <feMerge>
-                    <feMergeNode in="b1" />
-                    <feMergeNode in="b2" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-              </defs>
-              <path
-                d="M25 35 L10 55 L10 150"
-                fill="none"
-                stroke="url(#neonGradientCsSMobR)"
-                strokeWidth="2"
-                filter="url(#softNeonCsSMobR)"
-                strokeLinecap="round"
-              />
-              <rect
-                x="25"
-                y="30"
-                width="6"
-                height="6"
-                fill="#3b82f6"
-                filter="url(#softNeonCsSMobR)"
-              />
-              <CsStatsSpark
-                path="M25 35 L10 55 L10 150"
-                dur="9s"
-                begin="4.5s"
-                filterId="sparkGlowCsSMobR"
-              />
-            </svg>
-          </div>
-
-          {/* Desktop - right line */}
-          <div
-            className="absolute hidden md:block w-[400px] h-[80px] pointer-events-none z-0"
-            style={{ right: "0px", bottom: "calc(20px)" }}>
-            <svg
-              className="w-full h-full"
-              viewBox="0 0 300 70"
-              preserveAspectRatio="none"
-              aria-hidden="true">
-              <defs>
-                <filter
-                  id="sparkGlowCsR"
-                  x="-300%"
-                  y="-300%"
-                  width="700%"
-                  height="700%">
-                  <feGaussianBlur
-                    in="SourceGraphic"
-                    stdDeviation="5"
-                    result="b1"
-                  />
-                  <feGaussianBlur
-                    in="SourceGraphic"
-                    stdDeviation="3"
-                    result="b2"
-                  />
-                  <feMerge>
-                    <feMergeNode in="b1" />
-                    <feMergeNode in="b2" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-              </defs>
-              <path
-                d="M10 65 L240 65 L265 20 L290 20 L294 20"
-                fill="none"
-                stroke="url(#neonGradientCsS)"
-                strokeWidth="2"
-                filter="url(#softNeonCsS)"
-                strokeLinecap="round"
-              />
-              <rect
-                x="287"
-                y="17"
-                width="6"
-                height="6"
-                fill="#93c5fd"
-                transform="rotate(45 290 20)"
-                filter="url(#softNeonCsS)"
-              />
-              <CsStatsSpark
-                path="M10 65 L240 65 L265 20 L290 20 L294 20"
-                dur="9s"
-                begin="4.5s"
-                filterId="sparkGlowCsR"
-              />
-            </svg>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function CsChallengeSection({
-  variant = "narrative",
-  intro,
-  bullets = [],
-  consequence,
-}: CsChallengeSectionProps) {
-  const t = useTranslations("caseStudyDetail");
-
-  if (variant === "two-column") {
-    return (
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2
-            className="heading-1 text-slate-900 mb-12"
-            style={{ fontFamily: "var(--font-michroma)" }}>
-            {t("challengeTitle")}
-          </h2>
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div>
-              {intro && (
-                <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                  {intro}
-                </p>
-              )}
-              {bullets.length > 0 && (
-                <ul className="space-y-3">
-                  {bullets.map((b, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
-                      <span className="text-slate-600 leading-relaxed">
-                        {b}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-            {consequence && (
-              <div className=" rounded-2xl border border-gray-200 p-8">
-                <p className="text-lg text-slate-600 leading-relaxed">
-                  {consequence}
-                </p>
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  return (
-    <section className="py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2
-          className="heading-1 text-slate-900 mb-8"
-          style={{ fontFamily: "var(--font-michroma)" }}>
-          {t("challengeTitle")}
-        </h2>
-        {intro && (
-          <p className="text-lg text-slate-600 leading-relaxed mb-8 max-w-3xl">
-            {intro}
-          </p>
-        )}
-        {bullets.length > 0 && (
-          <ul className="space-y-4 max-w-3xl">
-            {bullets.map((b, i) => (
-              <li key={i} className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
-                <span className="text-slate-600 leading-relaxed">{b}</span>
-              </li>
-            ))}
-          </ul>
-        )}
-        {consequence && (
-          <p className="mt-8 text-lg text-slate-600 leading-relaxed max-w-3xl italic">
-            {consequence}
-          </p>
-        )}
-      </div>
-    </section>
-  );
-}
-
-function CsModulesSection({
-  variant = "alternating",
-  sectionTitle,
-  items = [],
-}: CsModulesSectionProps) {
-  const t = useTranslations("caseStudyDetail");
-  if (!items.length) return null;
-
-  const title = sectionTitle || t("modulesTitle");
-
-  if (variant === "cards") {
-    return (
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2
-              className="heading-1 text-slate-900"
-              style={{ fontFamily: "var(--font-michroma)" }}>
-              {title}
-            </h2>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            {items.map((module) => (
-              <div
-                key={module._key}
-                className="bg-white p-8 rounded-2xl shadow-md border border-gray-200 hover:border-blue-600/30 hover:shadow-lg transition-all duration-300 group">
-                <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-4">
-                  {module.title}
-                </h3>
-                {module.description && module.description.length > 0 && (
-                  <ul className="space-y-2">
-                    {module.description.map((item, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
-                        <span className="text-slate-600 text-sm">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  return (
-    <section className="py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-20">
-          <h2
-            className="heading-1 text-slate-900 mb-4"
-            style={{ fontFamily: "var(--font-michroma)" }}>
-            {title}
-          </h2>
-        </div>
-        <div className="space-y-20">
-          {items.map((module, index) => {
-            if (!module.title) return null;
-            const isEven = index % 2 === 0;
-            return (
-              <div
-                key={module._key}
-                className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div className={isEven ? "order-1" : "order-1 lg:order-2"}>
-                  <div className="bg-white p-8 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200 hover:border-blue-600/30 group">
-                    <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-6">
-                      {module.title}
-                    </h3>
-                    {module.description && module.description.length > 0 && (
-                      <ul className="space-y-3">
-                        {module.description.map((item, i) => (
-                          <li key={i} className="flex items-start gap-3">
-                            <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
-                            <span className="text-slate-600 leading-relaxed">
-                              {item}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                </div>
-                <div className={isEven ? "order-2" : "order-2 lg:order-1"}>
-                  {module.image ? (
-                    <div className="relative rounded-3xl shadow-2xl overflow-hidden">
-                      <img
-                        src={urlFor(module.image).width(800).height(600).url()}
-                        alt={module.title || t("moduleImageAltFallback")}
-                        className="w-full h-auto object-cover rounded-3xl"
-                      />
-                    </div>
-                  ) : (
-                    <div className="relative bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl shadow-2xl p-16 flex items-center justify-center aspect-video">
-                      <p className="text-white/60 text-sm">
-                        {t("mockupLabel", { title: module.title })}
-                      </p>
-                    </div>
-                  )}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function CsResultsStackedSection({
-  title,
-  items,
-}: {
-  title: string;
-  items: Array<{ _key: string; title?: string; description?: string }>;
-}) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useLayoutEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 1024);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, []);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  });
-
-  return (
-    <section className="py-24">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2
-            className="heading-1 text-slate-900 mb-4"
-            style={{ fontFamily: "var(--font-michroma)" }}>
-            {title}
-          </h2>
-        </div>
-        <div
-          ref={containerRef}
-          style={{ minHeight: `${items.length * 120 + 400}px` }}
-          className="relative">
-          {items.map((item, i) => {
-            const targetScale = 1 - (items.length - i) * 0.04;
-            const startRange = i * (1 / items.length);
-            const cardTop = isMobile ? 120 + i * 16 : 100 + i * 20;
-            return (
-              <StickyResultCard
-                key={item._key || i}
-                item={item}
-                index={i}
-                progress={scrollYProgress}
-                range={[startRange, 1]}
-                targetScale={targetScale}
-                cardTop={cardTop}
-              />
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function CsResultsSection({
-  variant = "numbered",
-  sectionTitle,
-  items = [],
-}: CsResultsSectionProps) {
-  const t = useTranslations("caseStudyDetail");
-  if (!items.length) return null;
-
-  const title = sectionTitle || t("resultsTitle");
-
-  if (variant === "stacked") {
-    return <CsResultsStackedSection title={title} items={items} />;
-  }
-
-  if (variant === "checklist") {
-    return (
-      <section className="py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2
-              className="heading-1 text-slate-900 mb-4"
-              style={{ fontFamily: "var(--font-michroma)" }}>
-              {title}
-            </h2>
-          </div>
-          <ul className="space-y-4">
-            {items.map((item, index) => (
-              <li
-                key={item._key || index}
-                className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl border border-gray-100">
-                <CheckCircle2 className="w-6 h-6 text-blue-600 shrink-0 mt-0.5" />
-                <div>
-                  {item.title && (
-                    <p className="text-slate-900 font-semibold text-lg">
-                      {item.title}
-                    </p>
-                  )}
-                  {item.description && (
-                    <p className="text-slate-600 leading-relaxed mt-0.5">
-                      {item.description}
-                    </p>
-                  )}
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-    );
-  }
-
-  return (
-    <section className="py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2
-            className="heading-1 text-slate-900 mb-4"
-            style={{ fontFamily: "var(--font-michroma)" }}>
-            {title}
-          </h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            {t("resultsDescription")}
-          </p>
-        </div>
-        <div className="grid md:grid-cols-2 gap-8">
-          {items.map((item, index) => (
-            <div key={item._key || index} className="group relative">
-              <div
-                className="p-[1.5px] rounded-tr-xl rounded-bl-xl bg-gradient-to-br from-blue-600 via-sky-400 to-blue-900"
-                style={{
-                  clipPath:
-                    "polygon(16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%, 0 16px)",
-                }}>
-                <div
-                  className="h-full w-full rounded-tr-[11px] rounded-bl-[11px] bg-white backdrop-blur-sm border border-white/60 px-8 py-8 flex items-start gap-6"
-                  style={{
-                    clipPath:
-                      "polygon(16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%, 0 16px)",
-                  }}>
-                  <div className="relative flex items-center justify-center shrink-0">
-                    <div className="absolute inset-0 rounded-full bg-blue-100 blur-xl opacity-60 group-hover:opacity-80 transition-opacity" />
-                    <div className="relative flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-600 text-white font-bold text-2xl shadow-lg">
-                      {(index + 1).toString().padStart(2, "0")}
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    {item.title && (
-                      <p className="text-slate-900 font-semibold text-lg mb-1">
-                        {item.title}
-                      </p>
-                    )}
-                    {item.description && (
-                      <p className="text-slate-600 leading-relaxed">
-                        {item.description}
-                      </p>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function CsTechPill({ name, logo }: { name: string; logo?: any }) {
-  return (
-    <div className="flex items-center gap-3 px-5 py-2.5 bg-[#f5f0e8] rounded-full shrink-0 border border-[#ebe6dd] shadow-sm">
-      {logo ? (
-        <div className="relative w-6 h-6 shrink-0">
-          <Image
-            src={urlFor(logo).width(48).height(48).url()}
-            alt={name}
-            width={24}
-            height={24}
-            className="object-contain"
-          />
-        </div>
-      ) : null}
-      <span className="text-slate-800 font-medium text-sm whitespace-nowrap">
-        {name}
-      </span>
-    </div>
-  );
-}
-
-function CsTechMarqueeRow({
-  items,
-  direction,
-}: {
-  items: Array<{ name?: string; logo?: any }>;
-  direction: "left" | "right";
-}) {
-  if (items.length === 0) return null;
-  const duplicated = [...items, ...items, ...items, ...items];
-  const animationClass =
-    direction === "left" ? "animate-marquee-left" : "animate-marquee-right";
-
-  return (
-    <div className="overflow-hidden py-2 w-full">
-      <div
-        className={`flex gap-4 ${animationClass}`}
-        style={{ width: "max-content" }}>
-        {duplicated.map((item, i) => (
-          <CsTechPill
-            key={`${item.name}-${i}`}
-            name={item.name || ""}
-            logo={item.logo}
-          />
+      {/* sm+: siatka */}
+      <div className="hidden gap-6 sm:grid sm:grid-cols-2 lg:grid-cols-3">
+        {images.map((im, i) => (
+          <Thumb key={i} im={im} i={i} />
         ))}
       </div>
-    </div>
-  );
-}
 
-function CsTechnologiesSection({
-  variant = "circuit",
-  sectionTitle,
-  items = [],
-}: CsTechnologiesSectionProps) {
-  const t = useTranslations("caseStudyDetail");
-  if (!items.length) return null;
-
-  const title = sectionTitle || t("technologiesTitle");
-
-  const third = Math.ceil(items.length / 3);
-  const row1 = items.slice(0, third);
-  const row2 = items.slice(third, third * 2);
-  const row3 = items.slice(third * 2);
-
-  return (
-    <section className="py-24 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <h2
-          className="heading-1 text-slate-900 text-center"
-          style={{ fontFamily: "var(--font-michroma)" }}>
-          {title}
-        </h2>
-      </div>
-      <div className="w-full overflow-x-hidden py-8">
-        <CsTechMarqueeRow items={row1} direction="left" />
-        <CsTechMarqueeRow items={row2} direction="right" />
-        <CsTechMarqueeRow items={row3} direction="left" />
-      </div>
-    </section>
-  );
-}
-
-function CsQuoteSection({
-  variant = "centered",
-  quote,
-  author,
-}: CsQuoteSectionProps) {
-  if (!quote) return null;
-
-  if (variant === "blockquote") {
-    return (
-      <section className="py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <blockquote className="border-l-4 border-blue-600 pl-8">
-            <p className="text-2xl text-slate-700 leading-relaxed italic mb-6">
-              "{quote}"
-            </p>
-            {author && (
-              <footer className="text-slate-500 font-medium">- {author}</footer>
+      {open !== null && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-4 backdrop-blur-sm"
+          onClick={close}
+          role="dialog"
+          aria-modal="true"
+        >
+          <button
+            type="button"
+            onClick={close}
+            aria-label="Zamknij"
+            className="absolute right-4 top-4 grid h-11 w-11 place-items-center rounded-full bg-white/10 text-white transition hover:bg-white/20 cursor-pointer"
+          >
+            <X className="h-6 w-6" />
+          </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              prev();
+            }}
+            aria-label="Poprzednie"
+            className="absolute left-3 top-1/2 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-white/10 text-white transition hover:bg-white/20 cursor-pointer sm:left-6"
+          >
+            <ChevronLeft className="h-7 w-7" />
+          </button>
+          <figure className="max-w-[92vw]" onClick={(e) => e.stopPropagation()}>
+            <img
+              src={images[open].url}
+              alt={images[open].caption || ""}
+              className="mx-auto max-h-[82vh] w-auto rounded-lg object-contain shadow-2xl"
+            />
+            {images[open].caption && (
+              <figcaption className="mt-3 text-center text-sm text-white/70">
+                {images[open].caption}
+              </figcaption>
             )}
-          </blockquote>
+          </figure>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              next();
+            }}
+            aria-label="Następne"
+            className="absolute right-3 top-1/2 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-white/10 text-white transition hover:bg-white/20 cursor-pointer sm:right-6"
+          >
+            <ChevronRight className="h-7 w-7" />
+          </button>
+          <div className="absolute bottom-5 left-1/2 -translate-x-1/2 rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium text-white">
+            {open + 1} / {images.length}
+          </div>
         </div>
-      </section>
-    );
-  }
+      )}
+    </>
+  );
+}
 
+// ═══════════════════════════════════════════════════════════════════════════════
+// Sekcje
+// ═══════════════════════════════════════════════════════════════════════════════
+
+function CsHero({ section, backToList }: { section: any; backToList: string }) {
+  const meta = (section.meta || []).filter((m: any) => m?.value);
+  const web = img(section.webImage, 1600);
+  const phone = img(section.phoneImage, 900);
   return (
-    <section className="py-24">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <p className="text-3xl md:text-4xl text-slate-700 leading-relaxed italic font-light mb-8">
-          "{quote}"
-        </p>
-        {author && (
-          <p className="text-slate-500 font-medium text-lg">- {author}</p>
+    <section className="grid items-center gap-10 lg:min-h-[88vh] lg:grid-cols-[1fr_1.3fr] lg:gap-3 pt-[var(--page-top-offset)] pb-[clamp(3rem,7vw,6rem)]">
+      <div>
+        <Link
+          href="/case-studies"
+          className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-slate-500 transition-colors hover:text-blue-600"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          {backToList}
+        </Link>
+        {section.category && (
+          <p className="mb-4 inline-flex items-center gap-2 rounded-full bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-blue-600">
+            {section.category}
+          </p>
+        )}
+        {section.title && (
+          <h1
+            className="text-slate-900 text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight"
+            style={{ fontFamily: "var(--font-space-grotesk)" }}
+          >
+            {section.title}
+          </h1>
+        )}
+        {section.summary && (
+          <p className="mt-6 max-w-md text-lg text-slate-600 leading-relaxed">{section.summary}</p>
+        )}
+        {meta.length > 0 && (
+          <dl className="mt-6 flex flex-wrap gap-x-8 gap-y-3">
+            {meta.map((m: any, i: number) => (
+              <div key={i}>
+                <dt className="text-xs uppercase tracking-wide text-slate-400">{m.label}</dt>
+                <dd className="text-sm font-semibold text-slate-800">{m.value}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
+        {section.buttonLabel && (
+          <div className="mt-8">
+            <Link
+              href={section.buttonHref || "/kontakt"}
+              style={{ fontFamily: "var(--font-space-grotesk)" }}
+              className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-slate-900 px-7 py-3.5 text-base font-semibold text-white shadow-md transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-800"
+            >
+              {section.buttonLabel}
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         )}
       </div>
+
+      <div className="relative px-4 py-6">
+        <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-300/30 blur-3xl" />
+        {web && <BrowserFrame src={web} dark className="w-full" />}
+        {phone && <PhoneFrame src={phone} className="absolute -bottom-4 -right-1 w-32 sm:w-40 lg:w-44" />}
+      </div>
     </section>
   );
 }
 
-function CsScopeSection({
-  variant = "list",
-  sectionTitle,
-  items = [],
-  note,
-}: CsScopeSectionProps) {
-  const t = useTranslations("caseStudyDetail");
-  if (!items.length) return null;
+function CsFeatures({ section }: { section: any }) {
+  const items = section.items || [];
+  const screenA = img(section.screenA, 1200);
+  const screenB = img(section.screenB, 1200);
+  const ic = (i: number) => (items[i]?.icon ? iconMap[items[i].icon] : undefined);
 
-  const title = sectionTitle || t("scopeTitle");
-
-  if (variant === "grid") {
-    return (
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+  return (
+    <section className="relative left-1/2 w-screen -translate-x-1/2 py-[clamp(4rem,9vw,9rem)]">
+      <div className="mx-auto max-w-[90rem] px-4 sm:px-6 lg:px-10">
+        <div className="mb-14 text-center">
+          {section.eyebrow && (
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-3">- {section.eyebrow}</p>
+          )}
+          {section.heading && (
             <h2
-              className="heading-1 text-slate-900"
-              style={{ fontFamily: "var(--font-michroma)" }}>
-              {title}
+              className="mx-auto max-w-2xl text-slate-900 text-2xl sm:text-3xl lg:text-4xl leading-tight"
+              style={{ fontFamily: "var(--font-michroma)" }}
+            >
+              {section.heading}
             </h2>
+          )}
+        </div>
+
+        {/* DESKTOP */}
+        <div className="relative mx-auto hidden h-[46rem] max-w-6xl lg:block">
+          {screenA && <BrowserFrame src={screenA} dark className="absolute left-0 top-0 z-0 w-[54%] -rotate-2 shadow-2xl" />}
+          {screenB && <BrowserFrame src={screenB} dark className="absolute bottom-0 right-0 z-0 w-[54%] rotate-2 shadow-2xl" />}
+          {items[2] && (
+            <FeatureCard icon={ic(2)} title={items[2].title} text={items[2].text} className="absolute right-0 top-2 z-20 w-[38%]" />
+          )}
+          {items[3] && (
+            <FeatureCard icon={ic(3)} title={items[3].title} text={items[3].text} className="absolute bottom-2 left-0 z-20 w-[38%]" />
+          )}
+          {items[0] && (
+            <FeatureFloat icon={ic(0)} title={items[0].title} text={items[0].text} className="absolute left-0 top-0 z-30 -translate-x-24 -translate-y-12" />
+          )}
+          {items[1] && (
+            <FeatureFloat icon={ic(1)} title={items[1].title} text={items[1].text} className="absolute bottom-0 right-0 z-30 translate-x-24 translate-y-12" />
+          )}
+        </div>
+
+        {/* MOBILE: na przemian zdjęcie / treść, potem reszta kart */}
+        <div className="space-y-6 lg:hidden">
+          {screenA && <BrowserFrame src={screenA} dark className="w-full shadow-xl" />}
+          {items[0] && (
+            <FeatureCard icon={items[0].icon ? iconMap[items[0].icon] : undefined} title={items[0].title} text={items[0].text} />
+          )}
+          {screenB && <BrowserFrame src={screenB} dark className="w-full shadow-xl" />}
+          {items[1] && (
+            <FeatureCard icon={items[1].icon ? iconMap[items[1].icon] : undefined} title={items[1].title} text={items[1].text} />
+          )}
+          {items.slice(2).map((it: any, i: number) => (
+            <FeatureCard key={i} icon={it.icon ? iconMap[it.icon] : undefined} title={it.title} text={it.text} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CsMetrics({ section }: { section: any }) {
+  const items = (section.items || []).filter((m: any) => m?.value);
+  if (!items.length) return null;
+  return (
+    <section className="py-[clamp(3rem,7vw,6rem)]">
+      <div className="grid grid-cols-2 gap-6 rounded-3xl bg-slate-50 p-8 sm:p-10 lg:grid-cols-4">
+        {items.map((m: any, i: number) => {
+          const Icon = m.icon ? iconMap[m.icon] : undefined;
+          return (
+            <div key={i} className="text-center">
+              {Icon && <Icon className="mx-auto mb-3 h-6 w-6 text-blue-600" strokeWidth={1.75} />}
+              <div className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 tabular-nums">
+                {m.value}
+              </div>
+              <div className="mt-1 text-sm font-medium text-slate-500">{m.label}</div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+function CsAbout({ section }: { section: any }) {
+  const paragraphs = section.paragraphs || [];
+  if (!section.heading && !paragraphs.length) return null;
+  return (
+    <section className="py-[clamp(3rem,7vw,6rem)]">
+      <div className="relative overflow-hidden rounded-3xl bg-slate-50 px-6 py-14 sm:px-12 sm:py-20">
+        <div aria-hidden="true" className="pointer-events-none absolute -left-16 -top-20 h-72 w-72 rounded-full bg-blue-300/15 blur-3xl" />
+        <div aria-hidden="true" className="pointer-events-none absolute -right-10 bottom-0 h-80 w-80 rounded-full bg-sky-200/20 blur-3xl" />
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-4 -top-10 select-none text-[13rem] font-black leading-none text-slate-900/[0.04] sm:text-[18rem]"
+        >
+          ”
+        </span>
+        <div className="relative mx-auto max-w-3xl text-center">
+          {section.eyebrow && (
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-3">- {section.eyebrow}</p>
+          )}
+          {section.heading && (
+            <h2
+              className="text-slate-900 text-2xl sm:text-3xl lg:text-4xl leading-tight"
+              style={{ fontFamily: "var(--font-michroma)" }}
+            >
+              {section.heading}
+            </h2>
+          )}
+          <div className="mx-auto mt-6 h-px w-16 bg-blue-600/40" />
+          <div className="mt-8 space-y-5 text-lg leading-relaxed text-slate-700">
+            {paragraphs.map((p: string, i: number) => (
+              <p key={i}>{p}</p>
+            ))}
           </div>
-          <div className="grid sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
-            {items.map((item, index) => (
-              <div
-                key={item._key || index}
-                className="flex items-start gap-3 p-4 bg-gray-50 rounded-xl border border-gray-100">
-                <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
-                <span className="text-slate-600 leading-relaxed">
-                  {item.text}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CsOutcome({ section }: { section: any }) {
+  const items = section.items || [];
+  if (!items.length) return null;
+  return (
+    <section className="py-[clamp(3rem,7vw,6rem)]">
+      <div className="grid gap-8 md:grid-cols-3">
+        {items.map((b: any, i: number) => (
+          <div key={i} className="relative rounded-2xl bg-white p-7 shadow-sm ring-1 ring-gray-100">
+            <span className="text-5xl font-extrabold text-blue-600/15">0{i + 1}</span>
+            <h3 className="mt-2 text-lg font-bold text-slate-900">{b.tag}</h3>
+            {b.text && <p className="mt-2 text-sm leading-relaxed text-slate-600">{b.text}</p>}
+            {(b.points || []).length > 0 && (
+              <ul className="mt-4 space-y-2 border-t border-gray-100 pt-4">
+                {b.points.map((p: string, j: number) => (
+                  <li key={j} className="flex items-start gap-2 text-sm text-slate-600">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-600" />
+                    {p}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function CsScope({ section }: { section: any }) {
+  const items = (section.items || []).filter((it: any) => it?.text);
+  if (!items.length) return null;
+  return (
+    <section className="py-[clamp(3rem,7vw,6rem)]">
+      <div className="rounded-3xl border border-gray-100 bg-white p-8 shadow-sm sm:p-10">
+        <div className="grid gap-8 md:grid-cols-[1fr_1.6fr]">
+          <div>
+            {section.eyebrow && (
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-3">- {section.eyebrow}</p>
+            )}
+            {section.heading && (
+              <h2
+                className="text-slate-900 text-2xl sm:text-3xl leading-tight"
+                style={{ fontFamily: "var(--font-michroma)" }}
+              >
+                {section.heading}
+              </h2>
+            )}
+          </div>
+          <div className="grid gap-x-8 gap-y-3 sm:grid-cols-2">
+            {items.map((it: any, i: number) => (
+              <div key={i} className="flex items-start gap-3">
+                <span className="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600">
+                  <ArrowRight className="h-3 w-3" />
                 </span>
+                <span className="text-sm text-slate-700">{it.text}</span>
               </div>
             ))}
           </div>
-          {note && (
-            <p className="mt-8 text-center text-slate-500 italic max-w-2xl mx-auto">
-              {note}
-            </p>
-          )}
         </div>
-      </section>
-    );
-  }
-
-  return (
-    <section className="py-24">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2
-          className="heading-1 text-slate-900 mb-10"
-          style={{ fontFamily: "var(--font-michroma)" }}>
-          {title}
-        </h2>
-        <ul className="space-y-4">
-          {items.map((item, index) => (
-            <li
-              key={item._key || index}
-              className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl border border-gray-100">
-              <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0 mt-1" />
-              <span className="text-slate-600 leading-relaxed text-lg">
-                {item.text}
-              </span>
-            </li>
-          ))}
-        </ul>
-        {note && <p className="mt-8 text-slate-500 italic">{note}</p>}
       </div>
     </section>
   );
 }
 
-function CsCtaSection({
-  variant = "centered",
-  heading,
-  description,
-  buttonLabel,
-  buttonHref = "/kontakt",
-}: CsCtaSectionProps) {
-  const t = useTranslations("caseStudyDetail");
-  const label = buttonLabel || t("ctaButton");
-
-  if (variant === "banner") {
-    return (
-      <section className="py-24 bg-gradient-to-br from-blue-600 to-blue-900">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          {heading && (
-            <h2
-              className="heading-1 text-white mb-6"
-              style={{ fontFamily: "var(--font-michroma)" }}>
-              {heading}
-            </h2>
-          )}
-          {description && (
-            <p className="text-xl text-blue-100 mb-10 leading-relaxed">
-              {description}
-            </p>
-          )}
-          <Link href={buttonHref}>
-            <StarGradientButton>{label}</StarGradientButton>
-          </Link>
-        </div>
-      </section>
-    );
-  }
-
+function CsGallery({ section }: { section: any }) {
+  const images = (section.images || [])
+    .filter((im: any) => im?.asset)
+    .map((im: any) => ({ url: img(im, 1600), caption: im.caption }));
+  if (!images.length) return null;
   return (
-    <section className="py-24">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {heading && (
-          <h2
-            className="heading-1 text-slate-900 mb-6"
-            style={{ fontFamily: "var(--font-michroma)" }}>
-            {heading}
+    <section className="py-[clamp(3rem,7vw,6rem)]">
+      <div className="mb-10 text-center">
+        {section.eyebrow && (
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-3">- {section.eyebrow}</p>
+        )}
+        {section.heading && (
+          <h2 className="text-slate-900 text-2xl sm:text-3xl lg:text-4xl" style={{ fontFamily: "var(--font-michroma)" }}>
+            {section.heading}
           </h2>
         )}
-        {description && (
-          <p className="text-xl text-slate-600 mb-10 leading-relaxed">
-            {description}
-          </p>
-        )}
-        <Link href={buttonHref}>
-          <StarGradientButton>{label}</StarGradientButton>
-        </Link>
+      </div>
+      <Gallery images={images} />
+    </section>
+  );
+}
+
+function CsTech({ section }: { section: any }) {
+  const items = (section.items || []).filter((t: any) => t?.name);
+  if (!items.length) return null;
+  return (
+    <section className="py-[clamp(3rem,7vw,6rem)]">
+      <div className="flex flex-col items-center gap-5">
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
+          {section.heading || "Technologie"}
+        </p>
+        <div className="flex flex-wrap justify-center gap-3">
+          {items.map((t: any, i: number) => (
+            <span
+              key={i}
+              className="rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm"
+            >
+              {t.name}
+            </span>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -1305,44 +564,51 @@ function CsCtaSection({
 
 // ─── Dispatcher ───────────────────────────────────────────────────────────────
 
-const sectionComponents: Record<string, React.ComponentType<any>> = {
-  csHeroSection: CsHeroSection,
-  csStatsSection: CsStatsSection,
-  csChallengeSection: CsChallengeSection,
-  csModulesSection: CsModulesSection,
-  csResultsSection: CsResultsSection,
-  csTechnologiesSection: CsTechnologiesSection,
-  csQuoteSection: CsQuoteSection,
-  csScopeSection: CsScopeSection,
-  csCtaSection: CsCtaSection,
-};
+interface CaseStudy {
+  _id: string;
+  sections?: Array<{ _key: string; _type: string; [k: string]: any }>;
+}
 
-// ─── Main export ──────────────────────────────────────────────────────────────
+export default function CaseStudyDetail({ caseStudy }: { caseStudy: CaseStudy }) {
+  const t = useTranslations("caseStudyDetail");
+  const backToList = t("backToList");
 
-export default function CaseStudyDetail({
-  caseStudy,
-}: {
-  caseStudy: CaseStudy;
-}) {
   return (
-    <div className="min-h-screen">
-      {caseStudy.sections?.map((section) => {
-        const Component = sectionComponents[section._type];
-        return Component ? <Component key={section._key} {...section} /> : null;
-      })}
+    <div className="relative flex flex-col items-center">
+      <main className="w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        {caseStudy.sections?.map((section) => {
+          switch (section._type) {
+            case "csHeroSection":
+              return <CsHero key={section._key} section={section} backToList={backToList} />;
+            case "csFeaturesSection":
+              return <CsFeatures key={section._key} section={section} />;
+            case "csMetricsSection":
+              return <CsMetrics key={section._key} section={section} />;
+            case "csAboutSection":
+              return <CsAbout key={section._key} section={section} />;
+            case "csOutcomeSection":
+              return <CsOutcome key={section._key} section={section} />;
+            case "csScopeSection":
+              return <CsScope key={section._key} section={section} />;
+            case "csGallerySection":
+              return <CsGallery key={section._key} section={section} />;
+            case "csTechSection":
+              return <CsTech key={section._key} section={section} />;
+            default:
+              return null;
+          }
+        })}
 
-      <section className="pb-16 pt-50 border-t border-gray-200 ">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="border-t border-gray-100 py-12">
           <Link
             href="/case-studies"
-            className="inline-flex items-center gap-2 px-6 py-3 text-slate-600 hover:text-blue-600 hover:bg-gray-50 rounded-full transition-all duration-300 border border-gray-200 hover:border-blue-600">
-            <ArrowLeft className="w-5 h-5" />
-            <span className="font-semibold">
-              Powrót do wszystkich Case Studies
-            </span>
+            className="inline-flex items-center gap-2 rounded-full border border-gray-200 px-6 py-3 text-sm font-semibold text-slate-600 transition-all hover:border-blue-600 hover:text-blue-600"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            {backToList}
           </Link>
         </div>
-      </section>
+      </main>
     </div>
   );
 }

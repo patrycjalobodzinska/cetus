@@ -172,56 +172,42 @@ export default function PaintReveal({
     let prevProg = 0;
     const tick = () => {
       if (autoPlay) {
-        // MOBILE: obraz "kreskuje się" grubymi ukośnymi liniami (zygzak),
-        // po wypełnieniu wymazuje się tą samą ścieżką (najstarsze pierwsze).
-        if (!reduceMotion) {
-          const w = mask.width;
-          const h = mask.height;
-          const rad = r() * 1.8; // grubsza kreska
-          const spacing = rad * 1.15; // mniej pasm
-          const slope = 0.55;
-          const bands = Math.ceil((h + w * slope + rad * 3) / spacing) + 2;
+        // MOBILE: obraz zakolorowuje się RAZ ukośnymi kreskami (zygzak), potem zostaje.
+        const w = mask.width;
+        const h = mask.height;
+        const rad = r() * 1.8;
+        const spacing = rad * 1.15;
+        const slope = 0.55;
+        const bands = Math.ceil((h + w * slope + rad * 3) / spacing) + 2;
 
-          // przebiega pasma a→b, rysując lub wymazując
-          const runBands = (a: number, b: number, erase: boolean) => {
-            if (b <= a) return;
-            const bPrev = Math.floor(a);
-            const bCur = Math.floor(b);
-            if (bCur !== bPrev) {
-              drawStroke(bPrev, a - bPrev, 1, spacing, slope, rad, erase);
-              drawStroke(bCur, 0, b - bCur, spacing, slope, rad, erase);
-            } else {
-              drawStroke(bCur, a - bCur, b - bCur, spacing, slope, rad, erase);
-            }
-          };
-
-          // "kometa": ogon (wymazywanie) rusza z opóźnieniem za głową (rysowaniem)
-          const LAG = bands * 0.4; // zacznij znikać po ~40% narysowania
-          const cycle = bands + LAG;
-          const prev = prevProg;
-          phase += 0.035; // wolniejsze malowanie
-
-          if (phase >= cycle) {
-            phase = 0;
-            prevProg = 0;
-            mctx.clearRect(0, 0, w, h);
-            render();
-            raf = requestAnimationFrame(tick);
-            return;
-          }
-
-          // głowa: rysowanie (do końca pasm)
-          runBands(Math.min(prev, bands), Math.min(phase, bands), false);
-          // ogon: wymazywanie tą samą ścieżką, z opóźnieniem LAG
-          runBands(
-            Math.min(Math.max(prev - LAG, 0), bands),
-            Math.min(Math.max(phase - LAG, 0), bands),
-            true,
-          );
-
-          prevProg = phase;
+        if (reduceMotion) {
+          // bez animacji - od razu pełny kolor
+          mctx.fillStyle = "#ffffff";
+          mctx.fillRect(0, 0, w, h);
           render();
+          return; // stop
         }
+
+        const runBands = (a: number, b: number) => {
+          if (b <= a) return;
+          const bPrev = Math.floor(a);
+          const bCur = Math.floor(b);
+          if (bCur !== bPrev) {
+            drawStroke(bPrev, a - bPrev, 1, spacing, slope, rad);
+            drawStroke(bCur, 0, b - bCur, spacing, slope, rad);
+          } else {
+            drawStroke(bCur, a - bCur, b - bCur, spacing, slope, rad);
+          }
+        };
+
+        const prev = prevProg;
+        phase += 0.035;
+        const cur = Math.min(phase, bands);
+        runBands(prev, cur);
+        prevProg = cur;
+        render();
+
+        if (cur >= bands) return; // zakończone - nie zapętlaj
         raf = requestAnimationFrame(tick);
         return;
       }
@@ -263,11 +249,29 @@ export default function PaintReveal({
         sizes="(max-width: 1024px) 100vw, 50vw"
         className="object-contain select-none pointer-events-none [mask-image:linear-gradient(to_bottom,#000_58%,transparent_90%)] [-webkit-mask-image:linear-gradient(to_bottom,#000_58%,transparent_90%)]"
       />
-      {/* warstwa koloru: desktop = kursor, mobile = ukośne kreski (auto) */}
+      {/* desktop: stała, słaba warstwa koloru (zawsze lekko widoczna) */}
+      {!auto && (
+        <Image
+          src={paintedSrc}
+          alt=""
+          fill
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          className="object-contain select-none pointer-events-none opacity-[0.18] [mask-image:linear-gradient(to_bottom,#000_58%,transparent_90%)] [-webkit-mask-image:linear-gradient(to_bottom,#000_58%,transparent_90%)]"
+        />
+      )}
+      {/* warstwa koloru: desktop = kursor, mobile = ukośne kreski (auto), na mobile subtelniejsza */}
       <canvas
         ref={canvasRef}
-        className={`absolute inset-0 h-full w-full ${auto ? "opacity-70" : ""}`}
+        className={`absolute inset-0 h-full w-full ${auto ? "opacity-45" : ""}`}
       />
+      {/* delikatne, pulsujące punkty mocniejszego koloru (tylko mobile/auto) */}
+      {auto && (
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+          <span className="absolute left-[38%] top-[30%] h-10 w-10 rounded-full bg-blue-500/25 blur-xl motion-safe:animate-pulse" />
+          <span className="absolute left-[60%] top-[46%] h-8 w-8 rounded-full bg-sky-500/25 blur-xl motion-safe:animate-pulse [animation-delay:0.8s]" />
+          <span className="absolute left-[46%] top-[62%] h-9 w-9 rounded-full bg-blue-400/25 blur-xl motion-safe:animate-pulse [animation-delay:1.6s]" />
+        </div>
+      )}
     </div>
   );
 }

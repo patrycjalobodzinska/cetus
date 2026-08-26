@@ -19,7 +19,7 @@ export default function CTASection({
   const finalButtonLink = buttonLink.startsWith('/') ? `/${locale}${buttonLink}` : buttonLink;
 
   return (
-    <section className={`md:py-32 py-12 relative overflow-hidden ${className}`}>
+    <section className={`section-y relative overflow-hidden ${className}`}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center">
           {showDivider && (
@@ -27,8 +27,7 @@ export default function CTASection({
           )}
 
           <h2
-            className="heading-hero text-slate-900 mb-6 leading-tight"
-            style={{ fontFamily: "var(--font-michroma)" }}
+            className="section-title text-slate-900 mb-6"
           >
             {title}
           </h2>

@@ -30,35 +30,59 @@ export default defineType({
       options: { hotspot: true },
     }),
     defineField({
+      name: "category",
+      title: "Kategoria (karta listingu)",
+      type: "localeString",
+      description: 'Np. „Marketplace e-commerce"',
+    }),
+    defineField({
+      name: "description",
+      title: "Opis (karta listingu)",
+      type: "localeText",
+    }),
+    defineField({
+      name: "featured",
+      title: "Główna realizacja (duży kafel)",
+      type: "boolean",
+      description:
+        "Zaznacz jedną realizację - trafi na duży kafel otwierający sekcję Realizacje na stronie głównej. Jeśli zaznaczysz kilka, wybrana zostanie najnowsza.",
+      initialValue: false,
+    }),
+    defineField({
+      name: "solution",
+      title: "Efekt (karta listingu)",
+      type: "localeText",
+      description: 'Krótkie podsumowanie rezultatu - pokazywane po nagłówku „Efekt”.',
+    }),
+    defineField({
       name: "sections",
       title: "Sekcje strony",
       type: "array",
       of: [
-        defineArrayMember({
-          type: "csHeroSection",
-          title: "Hero - nagłówek projektu",
-        }),
-        defineArrayMember({ type: "csStatsSection", title: "Statystyki" }),
-        defineArrayMember({ type: "csChallengeSection", title: "Wyzwanie" }),
-        defineArrayMember({ type: "csScopeSection", title: "Zakres projektu" }),
-        defineArrayMember({
-          type: "csModulesSection",
-          title: "Moduły systemu",
-        }),
-        defineArrayMember({ type: "csResultsSection", title: "Rezultaty" }),
-        defineArrayMember({
-          type: "csTechnologiesSection",
-          title: "Technologie",
-        }),
-        defineArrayMember({ type: "csQuoteSection", title: "Cytat" }),
-        defineArrayMember({ type: "csCtaSection", title: "CTA" }),
+        defineArrayMember({ type: "csHeroSection", title: "Hero - nagłówek projektu" }),
+        defineArrayMember({ type: "csFeaturesSection", title: "Realizacja - ekrany + karty" }),
+        defineArrayMember({ type: "csMetricsSection", title: "Metryki" }),
+        defineArrayMember({ type: "csAboutSection", title: "O projekcie" }),
+        defineArrayMember({ type: "csOutcomeSection", title: "Wyzwanie / Rozwiązanie / Efekt" }),
+        defineArrayMember({ type: "csScopeSection", title: "Zakres" }),
+        defineArrayMember({ type: "csGallerySection", title: "Galeria - zobacz efekt" }),
+        defineArrayMember({ type: "csTechSection", title: "Technologie" }),
       ],
     }),
   ],
   preview: {
     select: {
       title: "title.pl",
+      category: "category.pl",
+      featured: "featured",
       media: "image",
+    },
+    prepare({ title, category, featured, media }: any) {
+      return {
+        title,
+        subtitle: featured ? "★ Główna realizacja" : category,
+        media,
+      };
     },
   },
 });

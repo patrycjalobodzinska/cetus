@@ -1,5 +1,5 @@
 import { client } from '@/sanity/lib/client';
-import MethodologySection from './components/MethodologySection';
+import ProcessSection from '@/app/[locale]/components/ProcessSection';
 import CaseStudyItem from './components/CaseStudyItem';
 import { getTranslations } from 'next-intl/server';
 import CTASection from '@/app/components/CTASection';
@@ -43,7 +43,7 @@ export default async function CaseStudiesPage({
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
- <MethodologySection />
+      <ProcessSection />
 
 
 

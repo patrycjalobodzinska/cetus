@@ -4,6 +4,13 @@
   --background: #ffffff;
   --foreground: #ffffff;
   --page-top-offset: 8rem; /* 128px mobile */
+
+  /* Krzywe animacji - mocniejsze niż wbudowane ease-out/ease-in-out */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  /* Do dłuższych wejść scroll-reveal - mocny ease-out zjada 99% drogi
+     w pierwszych 250 ms, więc animacja czyta się jak brak animacji. */
+  --ease-reveal: cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 @media (min-width: 768px) {
@@ -324,4 +331,325 @@ html::-webkit-scrollbar-thumb:hover {
 
 .animate-marquee-right {
   animation: marquee-scroll-right 40s linear infinite;
+}
+
+/* Proces - pływające elementy (kafle ikon, chipy plików, dymek) */
+@keyframes cpFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+@keyframes cpFloatTilt {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--cp-rot, 0deg));
+  }
+  50% {
+    transform: translateY(-8px) rotate(var(--cp-rot, 0deg));
+  }
+}
+@keyframes cpDashFlow {
+  to {
+    stroke-dashoffset: -32;
+  }
+}
+@keyframes cpRing {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+@keyframes cpSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.cp-spin {
+  animation: cpSpin 6s linear infinite;
+}
+.cp-float {
+  animation: cpFloat 4s ease-in-out infinite;
+}
+.cp-float-slow {
+  animation: cpFloat 5.5s ease-in-out infinite;
+}
+.cp-float-tilt {
+  animation: cpFloatTilt 4.5s ease-in-out infinite;
+}
+.cp-delay-1 {
+  animation-delay: 0.6s;
+}
+.cp-delay-2 {
+  animation-delay: 1.2s;
+}
+.cp-delay-3 {
+  animation-delay: 1.8s;
+}
+.cp-dash {
+  stroke-dasharray: 6 6;
+  animation: cpDashFlow 1.1s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .cp-float,
+  .cp-float-slow,
+  .cp-float-tilt,
+  .cp-dash {
+    animation: none;
+  }
+}
+
+/* Proces - primitywy wejścia sekcji (scroll-reveal) i tekstura tła */
+/* Znaczniki podziałki - wchodzą po kartach */
+.pv-tick {
+  transform: scaleY(0);
+  transform-origin: top center;
+  transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--d, 0ms);
+}
+.pv-in .pv-tick {
+  transform: scaleY(1);
+}
+
+@keyframes pvFadeOnly {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Słupki wykresu: karta rośnie od wspólnej podstawy w górę.
+   clip-path zamiast scaleY, żeby ramka, promienie i tekst się nie deformowały.
+   Klatka końcowa ma ujemny inset, żeby gotowa karta nie przycinała cienia
+   ani uniesienia na hover. */
+.pv-grow {
+  clip-path: inset(100% 0 0 0);
+}
+.pv-in .pv-grow {
+  animation: pvGrow 700ms var(--ease-reveal) var(--d, 0ms) both;
+}
+@keyframes pvGrow {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  72% {
+    clip-path: inset(0 0 0 0);
+  }
+  to {
+    clip-path: inset(-40% -40% -40% -40%);
+  }
+}
+
+/* Treść karty - wchodzi dopiero, gdy słupek dorósł do pełnej wysokości */
+.pv-fade {
+  opacity: 0;
+}
+.pv-in .pv-fade {
+  animation: pvFade 420ms var(--ease-reveal) var(--d, 0ms) both;
+}
+@keyframes pvFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Hover karty - uniesienie, cieplejsza ramka, cień i poświata.
+   Tylko dla realnego kursora; dotyk wywołuje fałszywy hover po tapnięciu.
+   Dłuższe wejście niż wyjście: uniesienie ma płynąć, powrót ma być zwinny. */
+.pv-card {
+  transition:
+    transform 260ms var(--ease-out),
+    border-color 260ms ease,
+    box-shadow 260ms ease;
+}
+.pv-card-glow {
+  opacity: 0;
+  transition: opacity 260ms ease;
+  background: radial-gradient(
+    120% 80% at 50% 100%,
+    rgba(37, 99, 235, 0.1) 0%,
+    transparent 70%
+  );
+}
+.pv-card-num {
+  transition: color 180ms ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .pv-card {
+    will-change: transform;
+  }
+  .pv-card:hover {
+    transform: translateY(-6px);
+    transition:
+      transform 340ms var(--ease-out),
+      border-color 340ms ease,
+      box-shadow 340ms ease;
+    border-color: rgb(191 219 254); /* blue-200 */
+    box-shadow: 0 18px 38px -18px rgba(37, 99, 235, 0.4);
+  }
+  .pv-card:hover .pv-card-glow {
+    opacity: 1;
+    transition: opacity 340ms ease;
+  }
+  .pv-card:hover .pv-card-num {
+    color: rgba(37, 99, 235, 0.12);
+  }
+}
+
+/* Siatka kropek - delikatna tekstura tła sekcji, wygaszana maską do środka */
+.pv-dots {
+  background-image: radial-gradient(rgba(37, 99, 235, 0.18) 1px, transparent 1px);
+  background-size: 22px 22px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 0%, transparent 75%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 0%, transparent 75%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pv-tick {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+  /* Reduced motion: zostaje samo rozjaśnienie - bez wzrostu i ruchu */
+  .pv-grow,
+  .pv-fade {
+    animation: none;
+    clip-path: none;
+    transform: none;
+  }
+  .pv-in .pv-grow,
+  .pv-in .pv-fade {
+    animation: pvFadeOnly 260ms ease var(--d, 0ms) both;
+  }
+  .pv-card,
+  .pv-card:hover {
+    transform: none;
+  }
+}
+
+/* Realizacje - mozaika kafli (scroll-reveal).
+   Kafle wchodzą kaskadowo: nagłówek, kafel wiodący, potem mniejsze.
+   Opóźnienie każdego kafla podaje --d ustawiane w komponencie. */
+.cs-tile {
+  opacity: 0;
+}
+.cs-in .cs-tile {
+  animation: csTile 560ms var(--ease-reveal) var(--d, 0ms) both;
+}
+@keyframes csTile {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cs-tile,
+  .cs-in .cs-tile {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Tytuł sekcji - jedna miara i jedna grubość dla wszystkich sekcji strony.
+   Wcześniej tytuły rozjeżdżały się na pięć różnych traktowań (heading-1 na 700,
+   trzy różne skale inline i jeden font-extrabold w innym kroju). */
+.section-title {
+  font-family: var(--font-michroma), sans-serif;
+  font-size: 1.5rem; /* 24px */
+  font-weight: 600;
+  line-height: 1.25;
+}
+@media (min-width: 640px) {
+  .section-title {
+    font-size: 1.875rem; /* 30px */
+  }
+}
+@media (min-width: 1024px) {
+  .section-title {
+    font-size: 2.25rem; /* 36px */
+  }
+}
+
+/* Karta realizacji - hover w tej samej konwencji co .pv-card w sekcji Proces:
+   dłuższe wejście niż wyjście i krzywa projektu (--ease-out), a nie wbudowany
+   ease-out Tailwinda. Ramka jest borderem, nie ringiem, bo ring zajmuje
+   box-shadow i blokowałby cień hoveru. */
+.cs-card {
+  transition:
+    transform 260ms var(--ease-out),
+    box-shadow 260ms ease,
+    border-color 260ms ease;
+}
+/* Zrzut ma stałe krycie - hover rusza tylko pozycją, nie przezroczystością. */
+.cs-card-shot {
+  transition: transform 260ms var(--ease-out);
+}
+/* Poświata od dołu - opacity animuje się gładko, więc niesie ciężar wrażenia
+   głębi zamiast samego box-shadow. */
+.cs-card-glow {
+  opacity: 0;
+  transition: opacity 260ms ease;
+  background: radial-gradient(120% 90% at 70% 100%, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cs-card {
+    will-change: transform;
+  }
+  .cs-card:hover {
+    transform: translateY(-8px);
+    border-color: rgb(191 219 254); /* blue-200 */
+    box-shadow: 0 26px 52px -26px rgba(37, 99, 235, 0.38);
+    transition:
+      transform 380ms var(--ease-out),
+      box-shadow 380ms ease,
+      border-color 380ms ease;
+  }
+  .cs-card:hover .cs-card-shot {
+    transform: translateY(-6px);
+    transition: transform 380ms var(--ease-out);
+  }
+  .cs-card:hover .cs-card-glow {
+    opacity: 1;
+    transition: opacity 380ms ease;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cs-card,
+  .cs-card:hover,
+  .cs-card-shot,
+  .cs-card:hover .cs-card-shot,
+  .cs-card-glow {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* Rytm pionowy sekcji - jedna miara dla całej strony.
+   Wcześniej każda sekcja miała własne py (5, 6, 8 rem, a FAQ pb 2.5 rem),
+   więc odstępy między sąsiadami wahały się od 10,5 do 16 rem. */
+.section-y {
+  padding-top: clamp(3.5rem, 7vw, 6rem);
+  padding-bottom: clamp(3.5rem, 7vw, 6rem);
 }

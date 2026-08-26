@@ -1,48 +1,15 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "../pageMetadata";
 
-export const metadata: Metadata = {
-  title: "Kontakt",
-  description: "Skontaktuj się z CetusPro. Jesteśmy gotowi pomóc w realizacji Twojego projektu IT. Odpowiemy na wszystkie pytania i przedstawimy najlepsze rozwiązania dla Twojego biznesu.",
-  keywords: [
-    "kontakt",
-    "CetusPro kontakt",
-    "zapytanie ofertowe",
-    "konsultacja IT",
-    "wsparcie techniczne"
-  ],
-  openGraph: {
-    title: "Kontakt | CetusPro",
-    description: "Skontaktuj się z CetusPro. Jesteśmy gotowi pomóc w realizacji Twojego projektu IT.",
-    url: "/kontakt",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "CetusPro - Kontakt",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Kontakt | CetusPro",
-    description: "Skontaktuj się z CetusPro. Jesteśmy gotowi pomóc w realizacji Twojego projektu IT.",
-    images: ["/og-image.png"],
-  },
-  alternates: {
-    canonical: "/kontakt",
-    languages: {
-      pl: "/kontakt",
-      en: "/en/kontakt",
-      "x-default": "/kontakt",
-    },
-  },
-};
-
-export default function ContactLayout({
-  children,
+export async function generateMetadata({
+  params,
 }: {
-  children: React.ReactNode;
-}) {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildPageMetadata({ locale, key: "contact", path: "/kontakt" });
+}
+
+export default function ContactLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

@@ -31,38 +31,42 @@ export default async function CaseStudyPage({
         sections[] {
           _key,
           _type,
-          variant,
           // csHeroSection
-          "title": coalesce(title[$locale], title.pl),
           "category": coalesce(category[$locale], category.pl),
-          "description": coalesce(description[$locale], description.pl),
-          iframeUrl,
-          // csChallengeSection
-          "intro": coalesce(intro[$locale], intro.pl),
-          "bullets": coalesce(bullets[$locale], bullets.pl),
-          "consequence": coalesce(consequence[$locale], consequence.pl),
-          // csScopeSection / csModulesSection / csResultsSection / csTechnologiesSection
-          "sectionTitle": coalesce(sectionTitle[$locale], sectionTitle.pl),
-          "note": coalesce(note[$locale], note.pl),
-          // csCtaSection
-          "heading": coalesce(heading[$locale], heading.pl),
+          "title": coalesce(title[$locale], title.pl),
+          "summary": coalesce(summary[$locale], summary.pl),
+          meta[]{
+            "label": coalesce(label[$locale], label.pl),
+            "value": coalesce(value[$locale], value.pl)
+          },
           "buttonLabel": coalesce(buttonLabel[$locale], buttonLabel.pl),
           buttonHref,
-          // csQuoteSection
-          "quote": coalesce(quote[$locale], quote.pl),
-          author,
-          // items (stats / modules / scope / results / technologies)
+          webImage,
+          phoneImage,
+          // csFeaturesSection / csAboutSection / csScopeSection / csGallerySection
+          "eyebrow": coalesce(eyebrow[$locale], eyebrow.pl),
+          "heading": coalesce(heading[$locale], heading.pl),
+          "paragraphs": coalesce(paragraphs[$locale], paragraphs.pl),
+          screenA,
+          screenB,
+          images[]{
+            _key,
+            asset,
+            hotspot,
+            crop,
+            "caption": coalesce(caption[$locale], caption.pl)
+          },
+          // items (features / metrics / outcome / scope / tech)
           items[]{
             _key,
             icon,
             value,
             name,
-            logo,
+            "tag": coalesce(tag[$locale], tag.pl),
             "text": coalesce(text[$locale], text.pl),
             "label": coalesce(label[$locale], label.pl),
             "title": coalesce(title[$locale], title.pl),
-            "description": coalesce(description[$locale], description.pl),
-            image
+            "points": coalesce(points[$locale], points.pl)
           },
         }
       }`,

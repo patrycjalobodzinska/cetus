@@ -4,11 +4,11 @@
     "services": "Usługi",
     "company": "Firma",
     "documents": "Dokumenty",
-    "tagline": "Tworzymy nowoczesne rozwiązania IT, które napędzają rozwój Twojego biznesu.",
+    "tagline": "Projektujemy, budujemy i utrzymujemy systemy, na których opiera się Twój biznes.",
     "stayInTouch": "Bądź na bieżąco",
     "followUs": "Obserwuj nas w mediach społecznościowych",
     "workingHours": "Godziny pracy",
-    "workingHoursValue": "Pn–Pt: 9:00–17:00",
+    "workingHoursValue": "Pn-Pt: 9:00-17:00",
     "qualityPolicy": "Polityka Jakości",
     "euFunding": "Fundusze Europejskie"
   },
@@ -27,8 +27,8 @@
   },
   "common": {
     "learnMore": "Dowiedz się więcej",
-    "contactUs": "Umówmy rozmowę z naszym ekspertem - bez zobowiązań ocenimy zakres, ryzyka i najlepszy model współpracy dla Waszej organizacji.",
-    "getStarted": "Porozmawiajmy o Waszym projekcie",
+    "contactUs": "Umówmy rozmowę z naszym ekspertem - bez zobowiązań ocenimy zakres, ryzyka i najlepszy model współpracy dla Twojej organizacji.",
+    "getStarted": "Porozmawiajmy o Twoim projekcie",
     "letsTalk": "Umów konsultację",
     "loading": "Ładowanie...",
     "noData": "Brak danych"
@@ -55,7 +55,7 @@
     },
     "experts": {
       "title": "EKSPERTÓW W ZESPOLE",
-      "count": "40"
+      "count": "30"
     },
     "experience": {
       "title": "LAT DOŚWIADCZENIA",
@@ -64,18 +64,18 @@
   },
   "offer": {
     "heroTitle": "Technologia szyta na miarę",
-    "heroDescription": "Tworzymy dedykowane rozwiązania – od aplikacji webowych i mobilnych, przez integracje systemów, po rozwój i utrzymanie.",
+    "heroDescription": "Tworzymy dedykowane rozwiązania - od aplikacji webowych i mobilnych, przez integracje systemów, po rozwój i utrzymanie.",
     "title": "Doradzamy, budujemy i",
     "titleHighlight": "utrzymujemy",
     "description": "Kompleksowe rozwiązania IT dla wymagających organizacji - od strategii i architektury, przez development, po wdrożenie i utrzymanie systemów krytycznych.",
-    "buttonText": "Zobacz",
+    "buttonText": "Zobacz ofertę",
     "buttonLink": "/oferta",
     "pageTitle": "Nasza oferta",
-    "pageDescription": "Kompleksowe rozwiązania technologiczne dostosowane do potrzeb Twojego biznesu",
+    "pageDescription": "Osiem obszarów, w których prowadzimy projekty end-to-end - od pierwszego audytu po utrzymanie w ramach SLA.",
     "noOffers": "Brak ofert do wyświetlenia.",
     "cta": {
       "title": "Chcesz omówić konkretny projekt?",
-      "description": "Skontaktuj się z nami - ocenimy zakres, ryzyka i model współpracy dopasowany do Waszej organizacji.",
+      "description": "Opowiedz nam o zakresie - ocenimy ryzyka, harmonogram i model współpracy dopasowany do Twojej organizacji.",
       "buttonText": "Umów konsultację"
     },
     "projects": {
@@ -135,171 +135,11 @@
         "order": 8,
         "image": "https://images.pexels.com/photos/1181533/pexels-photo-1181533.jpeg?auto=compress&cs=tinysrgb&w=1200"
       }
-    }
+    },
+    "cardCta": "Zobacz szczegóły"
   },
   "skipToContent": {
     "skipToContent": "Przejdź do głównej treści"
-  },
-  "webApps": {
-    "hero": {
-      "title": "Tworzymy aplikacje",
-      "highlight": "webowe",
-      "subtitle": ", które napędzają Twój biznes",
-      "description": "Od koncepcji do wdrożenia - tworzymy nowoczesne aplikacje webowe, które są szybkie, bezpieczne i łatwe w użyciu.",
-      "buttonText": "Porozmawiajmy o projekcie"
-    },
-    "whyFeatures": {
-      "title": "Dlaczego warto wybrać nasze rozwiązania?",
-      "subtitle": "Nowoczesne rozwiązania, które napędzają Twój biznes",
-      "modernTech": {
-        "title": "Nowoczesne technologie",
-        "description": "Wykorzystujemy najnowsze frameworki i narzędzia, aby zapewnić szybkość, bezpieczeństwo i skalowalność Twojej aplikacji."
-      },
-      "responsiveDesign": {
-        "title": "Responsywny design",
-        "description": "Twoja aplikacja będzie doskonale wyglądać i działać na każdym urządzeniu - od telefonu po duży ekran desktopowy."
-      },
-      "performance": {
-        "title": "Optymalizacja wydajności",
-        "description": "Zoptymalizujemy każdy aspekt aplikacji, aby zapewnić szybkie ładowanie i płynne działanie nawet przy dużym obciążeniu."
-      },
-      "security": {
-        "title": "Bezpieczeństwo",
-        "description": "Implementujemy najlepsze praktyki bezpieczeństwa, aby chronić dane Twoich użytkowników i Twojej firmy."
-      },
-      "seo": {
-        "title": "SEO i dostępność",
-        "description": "Twoja aplikacja będzie łatwo znajdowana w wyszukiwarkach i dostępna dla wszystkich użytkowników."
-      },
-      "support": {
-        "title": "Wsparcie i utrzymanie",
-        "description": "Zapewniamy ciągłe wsparcie techniczne i aktualizacje, aby Twoja aplikacja zawsze działała perfekcyjnie."
-      }
-    },
-    "modules": {
-      "title": "Moduły aplikacji webowej",
-      "security": {
-        "title": "Logowanie i bezpieczeństwo",
-        "item1": "Autoryzacja OAuth2",
-        "item2": "Dwuskładnikowe uwierzytelnianie (2FA)",
-        "item3": "Zarządzanie sesjami",
-        "item4": "Ochrona przed atakami CSRF"
-      },
-      "payments": {
-        "title": "Płatności i monetyzacja",
-        "item1": "Integracja z Stripe/PayPal",
-        "item2": "Subskrypcje i płatności cykliczne",
-        "item3": "Zarządzanie fakturami",
-        "item4": "Dashboard finansowy"
-      },
-      "communication": {
-        "title": "Komunikacja i powiadomienia",
-        "item1": "Czat w czasie rzeczywistym",
-        "item2": "Powiadomienia push",
-        "item3": "E-maile transakcyjne",
-        "item4": "Integracja z SMS"
-      },
-      "navigation": {
-        "title": "Nawigacja i lokalizacja",
-        "item1": "Mapy interaktywne",
-        "item2": "Geolokalizacja",
-        "item3": "Wielojęzyczność (i18n)",
-        "item4": "Wyszukiwanie geograficzne"
-      },
-      "analytics": {
-        "title": "Analiza danych",
-        "item1": "Dashboard analityczny",
-        "item2": "Raporty w czasie rzeczywistym",
-        "item3": "Eksport danych",
-        "item4": "Wizualizacja danych"
-      },
-      "personalization": {
-        "title": "Personalizacja UX",
-        "item1": "Motywy i kolorystyka",
-        "item2": "Dostosowanie interfejsu",
-        "item3": "Preferencje użytkownika",
-        "item4": "Tryb ciemny"
-      }
-    },
-    "cta": {
-      "title": "Gotowy na start?",
-      "description": "Skontaktuj się z nami, aby omówić Twój projekt i dowiedzieć się, jak możemy pomóc w rozwoju Twojego biznesu.",
-      "buttonText": "Porozmawiajmy o projekcie",
-      "emailLabel": "lub napisz bezpośrednio"
-    }
-  },
-  "mobileApps": {
-    "hero": {
-      "title": "Tworzymy aplikacje mobilne, które użytkownicy pokochają",
-      "description": "Od koncepcji do publikacji w App Store i Google Play - tworzymy nowoczesne aplikacje mobilne, które są szybkie, bezpieczne i intuicyjne w użyciu."
-    },
-    "howWeHelp": {
-      "title": "Jak możemy pomóc",
-      "services": [
-        {
-          "title": "Aplikacje natywne iOS i Android",
-          "description": "Tworzymy wydajne aplikacje natywne wykorzystujące pełny potencjał systemów iOS i Android, zapewniając najlepszą wydajność i doświadczenie użytkownika."
-        },
-        {
-          "title": "Aplikacje multiplatformowe",
-          "description": "Rozwiązania cross-platformowe z React Native lub Flutter, które działają na wszystkich platformach przy zachowaniu natywnej wydajności i wyglądu."
-        },
-        {
-          "title": "Progressive Web Apps (PWA)",
-          "description": "Nowoczesne aplikacje webowe, które działają jak natywne aplikacje mobilne, z możliwością instalacji i pracy offline."
-        }
-      ]
-    },
-    "whyFeatures": {
-      "title": "Dlaczego warto wybrać nasze rozwiązania?",
-      "features": [
-        {
-          "title": "Modularna architektura",
-          "description": "Aplikacje zbudowane z niezależnych modułów, które można łatwo rozbudowywać i aktualizować bez wpływu na cały system."
-        },
-        {
-          "title": "Wysoka wydajność",
-          "description": "Optymalizacja każdego aspektu aplikacji, aby zapewnić szybkie działanie i płynne animacje nawet na starszych urządzeniach."
-        },
-        {
-          "title": "Bezpieczeństwo danych",
-          "description": "Implementacja najlepszych praktyk bezpieczeństwa, szyfrowanie danych i bezpieczne połączenia API."
-        },
-        {
-          "title": "Szybkie ładowanie",
-          "description": "Optymalizacja rozmiaru aplikacji i czasu ładowania, aby użytkownicy mogli szybko rozpocząć korzystanie z aplikacji."
-        },
-        {
-          "title": "Celowe projektowanie",
-          "description": "Projektowanie z myślą o konkretnych celach biznesowych i potrzebach użytkowników, a nie tylko o technologii."
-        },
-        {
-          "title": "Ciągły rozwój",
-          "description": "Regularne aktualizacje i nowe funkcje, które utrzymują aplikację na bieżąco z potrzebami użytkowników i rynku."
-        }
-      ]
-    },
-    "whyUs": {
-      "title": "Dlaczego my?",
-      "reasons": [
-        {
-          "title": "Doświadczenie w różnych branżach",
-          "description": "Mamy doświadczenie w tworzeniu aplikacji mobilnych dla różnych branż - od e-commerce po finanse i zdrowie."
-        },
-        {
-          "title": "Pełny cykl rozwoju",
-          "description": "Oferujemy kompleksową obsługę od koncepcji, przez projektowanie, rozwój, testowanie, aż po publikację w sklepach."
-        },
-        {
-          "title": "Wsparcie po wdrożeniu",
-          "description": "Zapewniamy ciągłe wsparcie techniczne, aktualizacje i optymalizację aplikacji po jej uruchomieniu."
-        },
-        {
-          "title": "Zgodność z wytycznymi",
-          "description": "Zapewniamy pełną zgodność z wytycznymi App Store i Google Play, aby Twoja aplikacja została szybko zaakceptowana."
-        }
-      ]
-    }
   },
   "home": {
     "metadata": {
@@ -309,140 +149,118 @@
       "ogDescription": "Projektujemy, budujemy i utrzymujemy systemy krytyczne dla biznesu. Software na miarę wymagań enterprise."
     },
     "process": {
-      "title": "Z chaosu do struktury. Dajemy Ci spokój i prowadzenie",
-      "description": "Nie musisz tłumaczyć nam, jak działa Twój biznes - wystarczy, że powiesz, dokąd chcesz dojść. My porządkujemy proces, ustalamy priorytety i dowozimy wyniki, które możesz mierzyć. Ty podejmujesz decyzje, a my bierzemy odpowiedzialność za realizację. Dzięki temu zyskujesz więcej czasu, klarowność i przewidywalne efekty.",
-      "cta": {
-        "caseStudies": "Nasze realizacje",
-        "designIdea": "Zaprojektuj swój Pomysł w 5 minut!"
-      },
+      "title": "Proces, który daje przewidywalność",
+      "description": "Ten sam proces w każdym projekcie. Wiesz, kto za co odpowiada, co powstaje na danym etapie i kiedy to zobaczysz.",
       "steps": {
         "audit": {
           "stepLabel": "Krok 1",
-          "question": "Czy masz wrażenie, że Twój system żyje własnym życiem?",
           "title": "Audyt",
-          "description": "Zanim zaczniemy cokolwiek budować, analizujemy Twój system, procesy i dane. W efekcie otrzymujesz pełny obraz sytuacji, świadomość ryzyk i konkretne rekomendacje, które pomagają podejmować trafne decyzje zamiast działać w ciemno."
+          "description": "Sprawdzamy system, procesy i dane, zanim powstanie pierwsza linijka kodu. Dostajesz mapę ryzyk i rekomendacje."
         },
         "roadmap": {
           "stepLabel": "Krok 2",
-          "question": "Nie wiesz, od czego zacząć - bo wszystko wydaje się ważne?",
           "title": "Roadmapa",
-          "description": "Tworzymy roadmapę z jasnymi priorytetami, zależnościami i celami biznesowymi. Dzięki temu każdy wie, co jest naprawdę ważne, a zespół działa w jednym kierunku, bez marnowania energii na przypadkowe zadania."
+          "description": "Układamy priorytety, zależności i cele biznesowe w jeden plan. Wiesz, co powstaje najpierw i dlaczego."
         },
         "management": {
           "stepLabel": "Krok 3",
-          "question": "Masz dość chaotycznego developmentu bez kontroli i celu?",
-          "title": "Management Projektu",
-          "description": "Budujemy rozwiązanie krok po kroku, zgodnie z wcześniej ustaloną mapą. Efekt: kontrolowany rozwój produktu, bez przypadkowych funkcji i niepotrzebnych kosztów."
+          "title": "Realizacja",
+          "description": "Budujemy iteracyjnie, zgodnie z planem i standardami jakości. Zakres i koszty zostają pod kontrolą."
         },
         "acceptance": {
           "stepLabel": "Krok 4",
-          "question": "Zaskoczenia na etapie odbiorów? Nie u nas.",
           "title": "Odbiory",
-          "description": "Regularnie pokazujemy wyniki pracy i sprawdzamy zgodność z celami biznesowymi. Efekt: zero niespodzianek na końcu projektu i pełna przewidywalność w każdym etapie współpracy."
+          "description": "Regularnie pokazujemy postęp i weryfikujemy go z Twoimi celami. Odbierasz efekty etapami, nie na końcu."
         },
         "maintenance": {
           "stepLabel": "Krok 5",
-          "question": "Czy Twój system wymaga ciągłego 'gaszenia pożarów'?",
           "title": "Utrzymanie",
-          "description": "Monitorujemy, aktualizujemy i dbamy o stabilność infrastruktury. Efekt: Ty skupiasz się na rozwoju biznesu, my zajmujemy się resztą."
+          "description": "Monitorujemy, aktualizujemy i utrzymujemy stabilność systemu w ramach SLA. Rozwijamy go dalej wraz z biznesem."
         }
       }
     },
+    "caseStudies": {
+      "eyebrow": "Nasze realizacje",
+      "title": "Systemy, które zbudowaliśmy",
+      "lead": "Na każdym z nich codziennie stoi biznes naszego klienta.",
+      "allLink": "Wszystkie realizacje",
+      "readCase": "Zobacz realizację",
+      "seeMore": "Zobacz więcej realizacji"
+    },
     "faq": {
       "title": "Najczęściej zadawane pytania",
-      "subtitle": "Znajdź odpowiedzi na pytania dotyczące naszych usług i procesu współpracy",
+      "subtitle": "Zakres, bezpieczeństwo, modele współpracy i utrzymanie - odpowiedzi na pytania, które najczęściej zadają działy IT i zakupów.",
       "loading": "Ładowanie...",
-      "q1": {
-        "question": "Jak długo trwa realizacja projektu?",
-        "answer": "Czas realizacji zależy od złożoności projektu. Proste aplikacje webowe mogą być gotowe w ciągu 2-3 miesięcy, podczas gdy bardziej złożone systemy wymagają 6-12 miesięcy. Po audycie przygotowujemy szczegółowy harmonogram z konkretnymi datami."
-      },
-      "q2": {
-        "question": "Jakie technologie wykorzystujecie?",
-        "answer": "Pracujemy z najnowszymi technologiami dostosowanymi do potrzeb projektu. W aplikacjach webowych używamy React, Next.js, TypeScript. W aplikacjach mobilnych React Native, Flutter oraz natywnych rozwiązań iOS i Android. Wybór technologii zawsze konsultujemy z klientem."
-      },
-      "q3": {
-        "question": "Czy zapewniacie wsparcie po wdrożeniu?",
-        "answer": "Tak, oferujemy kompleksowe wsparcie techniczne po wdrożeniu. Obejmuje to monitoring, aktualizacje bezpieczeństwa, optymalizację wydajności oraz dodawanie nowych funkcji. Możemy również zapewnić pełne utrzymanie systemu."
-      },
-      "q4": {
-        "question": "Jak wygląda proces współpracy?",
-        "answer": "Zaczynamy od audytu i analizy potrzeb. Następnie tworzymy roadmapę z priorytetami i harmonogramem. W trakcie realizacji regularnie prezentujemy postępy i przeprowadzamy odbiory. Po wdrożeniu zapewniamy wsparcie i utrzymanie."
-      },
-      "q5": {
-        "question": "Ile kosztuje projekt?",
-        "answer": "Koszt projektu zależy od jego zakresu, złożoności i wymagań. Po audycie przygotowujemy szczegółową wycenę z podziałem na etapy. Oferujemy również elastyczne modele współpracy - od projektów jednorazowych po długoterminowe kontrakty."
-      },
-      "q6": {
-        "question": "Czy mogę zobaczyć przykłady waszych realizacji?",
-        "answer": "Oczywiście! W sekcji Case Studies znajdziesz szczegółowe opisy naszych projektów wraz z efektami. Możemy również zorganizować prezentację wybranych rozwiązań podczas konsultacji."
-      }
+      "contactTitle": "Nie ma tu Twojego pytania?",
+      "contactLead": "Napisz, z czym się mierzysz - wrócimy z oceną zakresu, ryzyk i modelu współpracy.",
+      "contactCta": "Umów bezpłatną konsultację"
     },
     "partners": {
-      "title": "Zaufali nam",
-      "description": "",
+      "eyebrow": "Zaufali nam",
+      "title": "Marki, które powierzyły nam swoje systemy",
       "loading": "Ładowanie partnerów..."
-    }
-  },
-  "blog": {
-    "hero": {
-      "titlePrefix": "Co u",
-      "titleHighlight": "nas",
-      "description": "Najnowsze inicjatywy, wydarzenia i nowości z życia CetusPro."
     },
-    "noPosts": "Brak wpisów do wyświetlenia.",
-    "cta": {
-      "title": "Masz pomysł na projekt?",
-      "description": "Porozmawiajmy o tym, jak możemy pomóc Twojej firmie urzeczywistnić ten pomysł.",
-      "buttonText": "Skontaktuj się z nami"
+    "sponsors": {
+      "eyebrow": "Dumny sponsor",
+      "title": "Wspieramy tych, którzy grają o wynik",
+      "lead": "Angażujemy się tam, gdzie rodzi się pasja i charakter. Wspieramy kluby i zawodników w drodze po kolejne sukcesy."
+    },
+    "reels": {
+      "eyebrow": "Aktualności",
+      "title": "Co u nas słychać",
+      "lead": "Zajrzyj za kulisy CetusPro - wydarzenia, inicjatywy i ludzie, którzy je tworzą."
+    },
+    "modules": {
+      "readMore": "Czytaj więcej"
     }
   },
   "caseStudies": {
     "hero": {
       "titlePrefix": "Nasze",
       "titleHighlight": "realizacje",
-      "description": "Zobacz, jak pomogliśmy naszym klientom osiągnąć sukces dzięki nowoczesnym rozwiązaniom technologicznym."
+      "description": "Wdrożenia opisane od środka: wyzwanie, zakres prac i efekty, które zostały w organizacji klienta."
     },
-    "introduction": "Zobacz nasze realizacje i przekonaj się, że trudne zadanie można przekuć w proste rozwiązanie.",
+    "introduction": "Każda realizacja to opis problemu, decyzji projektowych i tego, co zmieniło się po wdrożeniu.",
     "noCaseStudies": "Brak case studies do wyświetlenia.",
-    "effect": "Efekt?",
+    "effect": "Efekt",
     "cta": {
-      "text": "Zobacz nasze realizacje i przekonaj się, że trudne zadanie można przekuć w proste rozwiązanie.",
-      "button": "Sprawdź",
+      "text": "Zobacz, jak trudne wymagania zamieniamy w system, który działa na produkcji.",
+      "button": "Zobacz realizację",
       "title": "Chcesz stworzyć podobne rozwiązanie?",
-      "description": "Skontaktuj się z nami i opowiedz o swoich potrzebach – stworzymy rozwiązanie dopasowane do Twojego biznesu.",
+      "description": "Napisz, czego potrzebujesz - wrócimy z oceną zakresu, ryzyk i modelu współpracy.",
       "buttonText": "Skontaktuj się z nami"
     },
     "methodology": {
-      "label": "METHODOLOGY V1.0",
+      "label": "Metodyka pracy",
       "title": "Proces tworzenia oprogramowania",
-      "description": "Nasze systematyczne podejście do budowania wydajnych produktów cyfrowych. Nie tylko piszemy kod; projektujemy rozwiązania, które skalują się wraz z Twoim biznesem.",
+      "description": "Nasze podejście do budowania produktów cyfrowych. Nie piszemy tylko kodu - projektujemy rozwiązania, które skalują się razem z Twoim biznesem.",
       "steps": {
         "analysis": {
           "title": "ANALIZA",
-          "subtitle": "Discovery i Planowanie",
+          "subtitle": "Discovery i planowanie",
           "description": "Analizujemy wymagania biznesowe, grupę docelową i ograniczenia techniczne, aby zdefiniować jasną mapę drogową."
         },
         "design": {
           "title": "PROJEKTOWANIE",
-          "subtitle": "Architektura Systemów",
+          "subtitle": "Architektura systemu",
           "description": "Tworzenie fundamentów Twojej aplikacji. Projektujemy skalowalne schematy baz danych i solidne struktury API."
         },
         "launch": {
-          "title": "LAUNCH",
-          "subtitle": "CI/CD & Deployment",
-          "description": "Bezpieczne i zautomatyzowane dostarczanie produktu do środowisk chmurowych przy zachowaniu zero-downtime."
+          "title": "WYTWARZANIE",
+          "subtitle": "Development i testy",
+          "description": "Budujemy iteracyjnie, z code review i testami automatycznymi. Postęp widać po każdym sprincie, nie dopiero na odbiorze."
         },
         "deployment": {
           "title": "WDROŻENIE",
-          "subtitle": "CI/CD i Deployment",
-          "description": "Bezpieczne i zautomatyzowane dostarczanie produktu do środowisk chmurowych przy zachowaniu zero-downtime."
+          "subtitle": "CI/CD i utrzymanie",
+          "description": "Automatyczne wdrożenia bez przerw w działaniu, monitoring i utrzymanie systemu po starcie."
         }
       }
     }
   },
   "caseStudyDetail": {
     "backToList": "Powrót do realizacji",
-    "ctaButton": "Zobacz, jak możemy pomóc",
+    "ctaButton": "Umów konsultację",
     "visitSite": "Odwiedź stronę",
     "modulesTitle": "Moduły systemu",
     "challengeTitle": "Wyzwanie",
@@ -451,27 +269,40 @@
     "resultsDescription": "Podsumowanie najważniejszych rezultatów wdrożenia, które odczuli użytkownicy i biznes.",
     "technologiesTitle": "Technologie użyte w projekcie",
     "mockupLabel": "Mockup: {title}",
-    "imageAltFallback": "Case Study",
-    "moduleImageAltFallback": "Moduł"
+    "imageAltFallback": "Zrzut ekranu z wdrożonego systemu",
+    "moduleImageAltFallback": "Zrzut ekranu modułu",
+    "modulesIntro": "Każdy moduł opisany w układzie: problem po stronie rynku, wdrożona funkcja i wartość biznesowa.",
+    "moduleProblem": "Problem",
+    "moduleFeature": "Funkcja",
+    "moduleValue": "Wartość biznesowa",
+    "metaClient": "Klient",
+    "metaRelease": "Data wdrożenia",
+    "metaType": "Typ projektu",
+    "metaScope": "Zakres CetusPro",
+    "integrationsTitle": "Integracje",
+    "teamTitle": "Współpraca, metodologia i zespół",
+    "teamRolesLabel": "Zespół",
+    "teamProcessLabel": "Proces",
+    "teamChallengesLabel": "Wyzwania w realizacji"
   },
   "contact": {
     "title": "Skontaktuj się",
     "titleHighlight": "z nami",
-    "subtitle": "Masz pytania? Chcesz omówić swój projekt? Napisz do nas lub zadzwoń - odpowiemy w ciągu 24 godzin.",
+    "subtitle": "Napisz lub zadzwoń - odpowiadamy w ciągu 24 godzin w dni robocze.",
     "contactDetails": "Dane kontaktowe",
-    "contactDetailsDescription": "Wybierz najwygodniejszą dla Ciebie formę kontaktu. Jesteśmy dostępni od poniedziałku do piątku w godzinach 9:00 - 17:00.",
+    "contactDetailsDescription": "Wybierz najwygodniejszą formę kontaktu. Jesteśmy dostępni od poniedziałku do piątku, 9:00-17:00.",
     "email": "Email",
     "emailResponse": "Odpowiadamy w ciągu 24h",
     "phone": "Telefon",
-    "phoneHours": "Pn-Pt 9:00 - 17:00",
+    "phoneHours": "Pn-Pt, 9:00-17:00",
     "address": "Adres",
     "country": "Polska",
     "freeConsultation": "Bezpłatna konsultacja",
-    "freeConsultationDescription": "Umów się na bezpłatną 30-minutową konsultację, podczas której omówimy Twoje potrzeby i zaproponujemy najlepsze rozwiązania.",
+    "freeConsultationDescription": "Umów bezpłatną 30-minutową rozmowę. Omówimy potrzeby, ograniczenia i możliwe warianty rozwiązania - bez zobowiązań.",
     "bookConsultation": "Umów konsultację",
     "faq": {
       "title": "Najczęściej zadawane pytania",
-      "subtitle": "Odpowiedzi na najczęstsze pytania dotyczące naszej oferty i procesu współpracy",
+      "subtitle": "Odpowiedzi na pytania, które najczęściej padają przed rozpoczęciem współpracy.",
       "loading": "Ładowanie FAQ...",
       "noQuestions": "Brak pytań do wyświetlenia."
     }
@@ -514,177 +345,110 @@
     },
     "team": {
       "title": "Nasz zespół",
-      "description": "Poznaj ludzi, którzy tworzą naszą firmę i codziennie pracują nad najlepszymi rozwiązaniami dla naszych klientów.",
+      "description": "Ludzie, którzy prowadzą projekty od audytu po utrzymanie - ten sam zespół przez cały czas trwania współpracy.",
       "loading": "Ładowanie zespołu...",
       "noMembers": "Brak członków zespołu do wyświetlenia.",
       "fallbackName": "Członek zespołu",
       "galleryTitle": "Zespół w jednym ujęciu"
     },
     "cta": {
-      "title": "Chcesz dołączyć do naszej historii?",
-      "description": "Skontaktuj się z nami i dowiedz się, jak możemy pomóc w rozwoju Twojego biznesu.",
+      "title": "Chcesz, żebyśmy poprowadzili Twój projekt?",
+      "description": "Umów bezpłatną konsultację - ocenimy zakres, ryzyka i model współpracy.",
       "buttonText": "Skontaktuj się z nami"
-    }
-  },
-  "aiAutomation": {
-    "hero": {
-      "badge": "AI i Automatyzacja",
-      "title": "Automatyzuj i optymalizuj z pomocą AI",
-      "description": "Wykorzystaj potencjał sztucznej inteligencji i automatyzacji, aby przyspieszyć procesy biznesowe, zwiększyć wydajność i osiągnąć lepsze wyniki.",
-      "buttonText": "Porozmawiajmy o projekcie",
-      "caseStudiesButton": "Zobacz realizacje",
-      "aiSystemLabel": "AI System"
-    },
-    "benefits": {
-      "title": "Korzyści z AI i automatyzacji",
-      "subtitle": "Nowoczesne rozwiązania, które transformują Twój biznes",
-      "items": [
-        {
-          "title": "Automatyzacja procesów",
-          "description": "Zautomatyzuj powtarzalne zadania i procesy biznesowe, oszczędzając czas i zasoby, a jednocześnie zwiększając wydajność i dokładność operacji."
-        },
-        {
-          "title": "Inteligentne rozwiązania",
-          "description": "Wykorzystaj potencjał sztucznej inteligencji do analizy danych, przewidywania trendów i podejmowania inteligentnych decyzji biznesowych."
-        },
-        {
-          "title": "Szybkość i wydajność",
-          "description": "Przyspiesz procesy biznesowe dzięki automatyzacji i AI, umożliwiając szybsze reagowanie na potrzeby klientów i rynku."
-        },
-        {
-          "title": "Bezpieczeństwo i zgodność",
-          "description": "Zapewniamy pełną zgodność z przepisami RODO i standardami bezpieczeństwa, chroniąc dane i procesy Twojej firmy."
-        }
-      ]
-    },
-    "services": {
-      "title": "Nasze usługi",
-      "applicationsLabel": "Zastosowania:",
-      "effectLabel": "Efekt:",
-      "items": [
-        {
-          "title": "Chatboty i asystenci AI",
-          "description": "Inteligentne chatboty i wirtualni asystenci, którzy odpowiadają na pytania klientów, wspierają sprzedaż i automatyzują obsługę klienta 24/7.",
-          "applications": [
-            "Chatboty na stronie internetowej",
-            "Asystenci w aplikacjach mobilnych",
-            "Automatyzacja obsługi klienta",
-            "Wsparcie sprzedaży i lead generation",
-            "Integracja z systemami CRM"
-          ],
-          "effect": "Redukcja kosztów obsługi klienta o 60% i zwiększenie satysfakcji klientów"
-        },
-        {
-          "title": "Automatyzacja workflow",
-          "description": "Automatyzacja złożonych procesów biznesowych, przepływów pracy i integracji między systemami, eliminując ręczne zadania i błędy.",
-          "applications": [
-            "Automatyzacja procesów biznesowych",
-            "Integracja systemów i aplikacji",
-            "Automatyzacja raportowania",
-            "Workflow management",
-            "Orchestracja zadań"
-          ],
-          "effect": "Oszczędność 20+ godzin tygodniowo na powtarzalnych zadaniach"
-        },
-        {
-          "title": "Analiza danych i predykcje",
-          "description": "Zaawansowana analityka danych z wykorzystaniem AI do przewidywania trendów, identyfikacji wzorców i wspierania decyzji biznesowych.",
-          "applications": [
-            "Analiza predykcyjna",
-            "Machine Learning dla biznesu",
-            "Anomalia detection",
-            "Forecasting i trend analysis",
-            "Personalizacja i rekomendacje"
-          ],
-          "effect": "Poprawa dokładności prognoz o 40% i lepsze decyzje biznesowe"
-        },
-        {
-          "title": "Computer Vision",
-          "description": "Rozwiązania oparte na rozpoznawaniu obrazów i wizji komputerowej do automatyzacji procesów wizualnych i analizy danych obrazowych.",
-          "applications": [
-            "Rozpoznawanie i klasyfikacja obrazów",
-            "OCR i ekstrakcja danych",
-            "Quality control automation",
-            "Facial recognition",
-            "Object detection"
-          ],
-          "effect": "Automatyzacja kontroli jakości z dokładnością 99%"
-        },
-        {
-          "title": "Natural Language Processing",
-          "description": "Przetwarzanie języka naturalnego do analizy tekstu, sentymentu, ekstrakcji informacji i automatyzacji procesów opartych na tekście.",
-          "applications": [
-            "Analiza sentymentu",
-            "Ekstrakcja informacji z dokumentów",
-            "Automatyczne tagowanie i kategoryzacja",
-            "Tłumaczenie automatyczne",
-            "Summarization i content generation"
-          ],
-          "effect": "Przetwarzanie 1000+ dokumentów dziennie automatycznie"
-        }
-      ]
-    },
-    "caseStudy": {
-      "title": "Case Study",
-      "goal": {
-        "label": "Cel:",
-        "text": "Automatyzacja procesów biznesowych w średniej firmie produkcyjnej, redukcja czasu przetwarzania zamówień i eliminacja błędów manualnych."
-      },
-      "solution": {
-        "label": "Rozwiązanie:",
-        "text": "Wdrożenie kompleksowego systemu automatyzacji z wykorzystaniem AI do przetwarzania zamówień, zarządzania magazynem i generowania raportów."
-      },
-      "effects": {
-        "label": "Efekty:",
-        "items": [
-          "Redukcja czasu przetwarzania zamówień o 70%",
-          "Automatyzacja 80% powtarzalnych zadań",
-          "Poprawa dokładności o 95%",
-          "Oszczędność 30h tygodniowo na procesach administracyjnych"
-        ]
-      },
-      "result": "Wynik: 300% wzrost wydajności procesów i oszczędność 30h tygodniowo"
-    },
-    "process": {
-      "title": "Nasz proces",
-      "compliance": "Pełna zgodność z RODO i standardami bezpieczeństwa",
-      "steps": [
-        {
-          "title": "Analiza potrzeb",
-          "description": "Dokładnie analizujemy Twoje procesy biznesowe, identyfikujemy obszary do automatyzacji i określamy cele projektu."
-        },
-        {
-          "title": "Projektowanie rozwiązania",
-          "description": "Tworzymy architekturę rozwiązania AI/automatyzacji, wybieramy odpowiednie technologie i planujemy implementację."
-        },
-        {
-          "title": "Implementacja i testy",
-          "description": "Wdrażamy rozwiązanie, przeprowadzamy testy i optymalizujemy działanie systemu, zapewniając pełną funkcjonalność."
-        },
-        {
-          "title": "Wdrożenie i wsparcie",
-          "description": "Wdrażamy rozwiązanie w produkcji, zapewniamy szkolenia i ciągłe wsparcie techniczne oraz monitoring działania."
-        }
-      ]
-    },
-    "cta": {
-      "title": "Gotowy na transformację?",
-      "description": "Skontaktuj się z nami, aby omówić możliwości automatyzacji i AI dla Twojej firmy.",
-      "buttonText": "Porozmawiajmy",
-      "emailLabel": "lub napisz bezpośrednio",
-      "email": "contact@cetuspro.com"
     }
   },
   "funding": {
     "title": "Fundusze Europejskie",
-    "inPreparation": "Informacja o realizowanych projektach wspolfinansowanych ze srodkow Unii Europejskiej jest w przygotowaniu.",
-    "program": "Program / dzialanie",
+    "inPreparation": "Informacja o realizowanych projektach współfinansowanych ze środków Unii Europejskiej jest w przygotowaniu.",
+    "program": "Program / działanie",
     "fund": "Fundusz",
     "objective": "Cel projektu",
     "effects": "Planowane efekty",
     "contractNumber": "Numer umowy o dofinansowanie",
-    "projectValue": "Wartosc projektu",
-    "euContribution": "Wysokosc wkladu Unii Europejskiej",
-    "reportIrregularities": "Zglos nieprawidlowosc"
+    "projectValue": "Wartość projektu",
+    "euContribution": "Wysokość wkładu Unii Europejskiej",
+    "reportIrregularities": "Zgłoś nieprawidłowość"
+  },
+  "pageMeta": {
+    "offer": {
+      "title": "Oferta",
+      "description": "Osiem obszarów, w których prowadzimy projekty end-to-end: aplikacje webowe i mobilne, UX/UI, AI i automatyzacja, cyberbezpieczeństwo, transformacja technologiczna, outsourcing i szkolenia.",
+      "keywords": "oferta IT, aplikacje webowe, aplikacje mobilne, UX/UI design, cyberbezpieczeństwo, AI i automatyzacja, outsourcing programistów, transformacja technologiczna"
+    },
+    "webApps": {
+      "title": "Aplikacje webowe",
+      "description": "Budujemy aplikacje webowe dla procesów krytycznych: wydajne, bezpieczne i gotowe na wzrost. Od architektury, przez wdrożenie, po utrzymanie w ramach SLA.",
+      "keywords": "aplikacje webowe, React, Next.js, Node.js, systemy dedykowane, aplikacje na zamówienie"
+    },
+    "mobileApps": {
+      "title": "Aplikacje mobilne",
+      "description": "Aplikacje iOS i Android klasy produkcyjnej - natywne i wieloplatformowe. Od koncepcji, przez publikację w App Store i Google Play, po rozwój po starcie.",
+      "keywords": "aplikacje mobilne, iOS, Android, React Native, Flutter, aplikacje natywne"
+    },
+    "uiUx": {
+      "title": "UX/UI Design",
+      "description": "Projektujemy interfejsy, które upraszczają złożone procesy: badania z użytkownikami, prototypy, dostępność zgodna z WCAG i spójny system projektowy.",
+      "keywords": "UX design, UI design, projektowanie interfejsów, prototypy, badania użytkowników, WCAG, dostępność"
+    },
+    "ai": {
+      "title": "AI i automatyzacja procesów",
+      "description": "Automatyzujemy procesy, w których powtarzalna praca kosztuje najwięcej: asystenci AI, integracje systemów, analiza danych i przetwarzanie dokumentów.",
+      "keywords": "AI, sztuczna inteligencja, automatyzacja procesów, chatboty, machine learning, integracje systemów, RODO"
+    },
+    "cybersecurity": {
+      "title": "Cyberbezpieczeństwo",
+      "description": "Audyty bezpieczeństwa, testy penetracyjne, monitoring i zgodność z RODO. Podatności uszeregowane według ryzyka, z planem naprawy.",
+      "keywords": "cyberbezpieczeństwo, audyt bezpieczeństwa, testy penetracyjne, monitoring, RODO, ochrona danych, ISO 27001"
+    },
+    "transformation": {
+      "title": "Transformacja technologiczna",
+      "description": "Modernizacja systemów, migracja do chmury i automatyzacja wdrożeń - etapami, bez przerywania pracy organizacji.",
+      "keywords": "transformacja cyfrowa, modernizacja systemów, migracja do chmury, legacy, DevOps, CI/CD"
+    },
+    "outsourcing": {
+      "title": "Outsourcing programistów",
+      "description": "Doświadczeni inżynierowie wpięci w Twój proces - uzupełnienie zespołu, dedykowany zespół albo cały projekt po naszej stronie.",
+      "keywords": "outsourcing programistów, zespół deweloperski, staff augmentation, dedykowany zespół, body leasing"
+    },
+    "academy": {
+      "title": "Akademia i szkolenia",
+      "description": "Szkolenia dla zespołów wdrażających nowe technologie: programowanie, AI i zarządzanie projektami IT, prowadzone przez praktyków.",
+      "keywords": "szkolenia IT, kursy programowania, szkolenia AI, zarządzanie projektami, rozwój kompetencji zespołu"
+    },
+    "contact": {
+      "title": "Kontakt",
+      "description": "Napisz lub zadzwoń - odpowiadamy w ciągu 24 godzin w dni robocze. Bezpłatna 30-minutowa konsultacja: zakres, ryzyka i model współpracy.",
+      "keywords": "kontakt, konsultacja IT, wycena projektu, CetusPro, Rzeszów"
+    },
+    "caseStudies": {
+      "title": "Realizacje",
+      "description": "Wdrożenia opisane od środka: wyzwanie, zakres prac, użyte technologie i efekty, które zostały w organizacji klienta.",
+      "keywords": "realizacje, case studies, wdrożenia IT, projekty, portfolio"
+    },
+    "blog": {
+      "title": "Co u nas",
+      "description": "Inicjatywy, wydarzenia i nowości z życia CetusPro - hackathony, akademia, projekty zespołu.",
+      "keywords": "CetusPro, aktualności, wydarzenia, hackathon, akademia"
+    },
+    "about": {
+      "title": "O nas",
+      "description": "Zespół, który prowadzi projekty od audytu po utrzymanie. Poznaj ludzi, historię firmy i sposób, w jaki pracujemy.",
+      "keywords": "o nas, zespół CetusPro, historia firmy, software house Rzeszów"
+    },
+    "funding": {
+      "title": "Fundusze Europejskie",
+      "description": "Informacje o projektach CetusPro współfinansowanych ze środków Unii Europejskiej.",
+      "keywords": "fundusze europejskie, dofinansowanie, Unia Europejska, CetusPro"
+    },
+    "qualityPolicy": {
+      "title": "Polityka Jakości",
+      "description": "Polityka Jakości CetusPro Sp. z o.o. zgodna z normą ISO 9001:2015 - standardy i zobowiązania dotyczące jakości usług.",
+      "keywords": "polityka jakości, ISO 9001, standardy jakości, CetusPro"
+    },
+    "rollUp": {
+      "title": "CetusPro - technologia, która napędza Twój biznes",
+      "description": "Projektujemy, budujemy i rozwijamy dedykowane systemy IT. Sprawdź ofertę dla biznesu lub dołącz do zespołu CetusPro.",
+      "keywords": "CetusPro, rozwiązania IT, oprogramowanie dedykowane, kariera IT"
+    }
   }
 }

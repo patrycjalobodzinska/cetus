@@ -1,12 +1,25 @@
+/**
+ * Seed krótkiego, biznesowego case study Winopasja do Sanity.
+ *
+ * Treść zgodna z oficjalnym case study (2023), zrzuty z katalogu public/winopasja.
+ * Stawiamy na krótką i zwięzłą treść - jedna sekcja = jeden ekran.
+ *
+ * Uruchomienie:
+ *   node scripts/seed-winopasja.mjs
+ *   node scripts/seed-winopasja.mjs --no-images   (pomija upload zrzutów)
+ */
+
 import { createClient } from "@sanity/client";
-import { readFileSync } from "fs";
+import { readFileSync, writeFileSync, existsSync, statSync } from "fs";
 import { fileURLToPath } from "url";
-import { dirname, resolve } from "path";
+import { dirname, resolve, join, basename, extname } from "path";
+import sharp from "sharp";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// Parse .env.local manually
+// ─── Konfiguracja ─────────────────────────────────────────────────────────────
+
 const envFile = readFileSync(resolve(__dirname, "../.env.local"), "utf-8");
 const env = {};
 for (const line of envFile.split("\n")) {
@@ -22,546 +35,339 @@ const client = createClient({
   useCdn: false,
 });
 
-const caseStudy = {
-  _type: "caseStudy",
-  _id: "caseStudy-winopasja",
-  title: {
-    _type: "localeString",
-    pl: "Winopasja",
-    en: "Winopasja",
-  },
-  slug: {
-    _type: "slug",
-    current: "winopasja",
-  },
-  sections: [
-    // 1. Hero Section
-    {
-      _key: "hero1",
-      _type: "csHeroSection",
-      variant: "default",
-      title: {
-        _type: "localeString",
-        pl: "Winopasja",
-        en: "Winopasja",
-      },
-      category: {
-        _type: "localeString",
-        pl: "Marketplace e-commerce",
-        en: "E-commerce Marketplace",
-      },
-      description: {
-        _type: "localeText",
-        pl: "Marketplace, który otworzył cyfrową sprzedaż dla branży winiarskiej. Pierwszy w Polsce tak zaawansowany ekosystem cyfrowy, który pozwala lokalnym winiarniom sprzedawać produkty online w pełnej zgodności z przepisami.",
-        en: "A marketplace that opened digital sales for the wine industry. The first such advanced digital ecosystem in Poland, enabling local wineries to sell products online in full compliance with regulations.",
-      },
-      iframeUrl: "https://winopasja.pl/",
-    },
+const SKIP_IMAGES = process.argv.includes("--no-images");
 
-    // 2. Stats Section
-    {
-      _key: "stats1",
-      _type: "csStatsSection",
-      variant: "cards",
-      items: [
-        {
-          _key: "stat1",
-          value: "1000+",
-          label: {
-            _type: "localeString",
-            pl: "Zarejestrowanych zamówień",
-            en: "Registered orders",
-          },
-          icon: "ShoppingCart",
-        },
-        {
-          _key: "stat2",
-          value: "400+",
-          label: {
-            _type: "localeString",
-            pl: "Zrealizowanych transakcji",
-            en: "Completed transactions",
-          },
-          icon: "CreditCard",
-        },
-        {
-          _key: "stat3",
-          value: "40+",
-          label: {
-            _type: "localeString",
-            pl: "Winiarni na platformie",
-            en: "Wineries on the platform",
-          },
-          icon: "Wine",
-        },
-        {
-          _key: "stat4",
-          value: "0 zł",
-          label: {
-            _type: "localeString",
-            pl: "Inwestycji winiarni w technologię",
-            en: "Winery investment in technology",
-          },
-          icon: "Wallet",
-        },
-      ],
-    },
+/** Istniejący dokument case study - nadpisujemy, żeby nie tworzyć duplikatów. */
+const DOC_ID = "75d0c321-7e84-4364-b112-21ebf2d8e136";
+const LEGACY_IDS = ["caseStudy-winopasja"];
+const SHOTS_DIR = resolve(__dirname, "../public/winopasja");
 
-    // 3. Challenge Section
-    {
-      _key: "challenge1",
-      _type: "csChallengeSection",
-      variant: "narrative",
-      intro: {
-        _type: "localeText",
-        pl: "Klient działał w sektorze sprzedaży polskich win i enoturystyki, którego misją było wsparcie polskich, rzemieślniczych winiarni w cyfryzacji sprzedaży. Rynek winiarski w Polsce rozwija się dynamicznie, jednak większość małych producentów nie posiada infrastruktury technologicznej ani zasobów do prowadzenia sprzedaży online zgodnej z regulacjami prawnymi dotyczącymi alkoholu.",
-        en: "The client operated in the Polish wine sales and enotourism sector, with a mission to support Polish craft wineries in digitizing their sales. The wine market in Poland is growing dynamically, but most small producers lack the technological infrastructure and resources to conduct online sales compliant with alcohol regulations.",
-      },
-      bullets: {
-        _type: "localeStringArray",
-        pl: [
-          "Producenci wina nie posiadali sklepów internetowych",
-          "Regulacje prawne dotyczące sprzedaży alkoholu utrudniały wdrożenia",
-          "Koszty technologiczne były zbyt wysokie dla pojedynczych winiarni",
-          "Brakowało centralnej platformy sprzedażowej dla tego rynku",
+// ─── Pomocniki lokalizacji ────────────────────────────────────────────────────
+
+const ls = (pl, en) => ({ _type: "localeString", pl, en });
+const lt = (pl, en) => ({ _type: "localeText", pl, en });
+const lsa = (pl, en) => ({ _type: "localeStringArray", pl, en });
+
+// ─── Upload zrzutów ───────────────────────────────────────────────────────────
+
+const CACHE_PATH = resolve(__dirname, ".winopasja-assets.json");
+const uploadCache = new Map(
+  existsSync(CACHE_PATH) ? Object.entries(JSON.parse(readFileSync(CACHE_PATH, "utf-8"))) : [],
+);
+const persistCache = () =>
+  writeFileSync(CACHE_PATH, JSON.stringify(Object.fromEntries(uploadCache), null, 2) + "\n");
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+async function uploadShot(file) {
+  const filePath = join(SHOTS_DIR, file);
+  if (!existsSync(filePath)) {
+    console.warn(`   ⚠️  brak pliku: ${file}`);
+    return undefined;
+  }
+  const cacheKey = `${filePath}:${statSync(filePath).mtimeMs}`;
+  if (uploadCache.has(cacheKey)) return uploadCache.get(cacheKey);
+
+  const buffer = await sharp(filePath).resize({ width: 1800, withoutEnlargement: true }).webp({ quality: 82 }).toBuffer();
+  const filename = `winopasja-${basename(file, extname(file)).toLowerCase().replace(/[^a-z0-9]+/gi, "-")}.webp`;
+
+  let lastError;
+  for (let attempt = 1; attempt <= 4; attempt++) {
+    try {
+      const asset = await client.assets.upload("image", buffer, { filename });
+      uploadCache.set(cacheKey, asset._id);
+      persistCache();
+      return asset._id;
+    } catch (error) {
+      lastError = error;
+      console.warn(`   ↻ ponawiam ${filename} (${attempt}/4): ${error.message}`);
+      await sleep(attempt * 2000);
+    }
+  }
+  throw lastError;
+}
+
+const imageField = (ref) =>
+  ref ? { _type: "image", asset: { _type: "reference", _ref: ref } } : undefined;
+
+// ─── Galeria „Zobacz efekt” ─────────────────────────────────────────────────
+
+const GALLERY = [
+  { file: "marketplace.jpg", caption: ls("Marketplace - katalog win", "Marketplace - wine catalogue") },
+  { file: "panel-winiarni.jpg", caption: ls("Panel winiarni", "Winery panel") },
+  { file: "panel-klienta.jpg", caption: ls("Panel klienta", "Customer panel") },
+  { file: "vms.jpg", caption: ls("VMS - produkcja wina", "VMS - wine production") },
+  { file: "logistyka.jpg", caption: ls("Logistyka i pakowanie", "Logistics and packing") },
+  { file: "admin.jpg", caption: ls("Panel administracyjny", "Admin panel") },
+];
+
+// ─── Budowa dokumentu ─────────────────────────────────────────────────────────
+
+async function buildCaseStudy() {
+  console.log("Przygotowanie zrzutów...");
+  const shots = {};
+  if (!SKIP_IMAGES) {
+    for (const file of ["marketplace.jpg", "panel-winiarni.jpg", "mobile.jpg"]) {
+      shots[file] = await uploadShot(file);
+    }
+  }
+
+  const galleryImages = [];
+  if (!SKIP_IMAGES) {
+    for (const [i, g] of GALLERY.entries()) {
+      const ref = await uploadShot(g.file);
+      if (ref) {
+        galleryImages.push({
+          _key: `gal-${i + 1}`,
+          _type: "image",
+          asset: { _type: "reference", _ref: ref },
+          caption: g.caption,
+        });
+      }
+    }
+    console.log(`   ✓ galeria: ${galleryImages.length} zrzutów`);
+  }
+
+  const coverRef = shots["marketplace.jpg"];
+
+  return {
+    _type: "caseStudy",
+    _id: DOC_ID,
+    title: ls("Winopasja", "Winopasja"),
+    slug: { _type: "slug", current: "winopasja" },
+    category: ls("Marketplace e-commerce", "E-commerce marketplace"),
+    description: lt(
+      "Pierwszy system, w którym winiarnia prowadzi sprzedaż i zarządza całą winnicą w jednym miejscu.",
+      "The first system where a winery runs its sales and manages the whole vineyard in one place.",
+    ),
+    solution: lt(
+      "1000+ zamówień, 400+ transakcji i 40+ winiarni gotowych do sprzedaży 24/7 - przy zerowej inwestycji winiarni w technologię.",
+      "1000+ orders, 400+ transactions and 40+ wineries ready to sell 24/7 - with zero winery investment in technology.",
+    ),
+    ...(coverRef ? { image: imageField(coverRef) } : {}),
+    sections: [
+      // 1. Hero
+      {
+        _key: "hero",
+        _type: "csHeroSection",
+        category: ls("Case study · Winopasja", "Case study · Winopasja"),
+        title: ls(
+          "Pierwszy system, w którym prowadzisz winiarnię i sprzedajesz wino",
+          "The first system where you run a winery and sell wine",
+        ),
+        summary: lt(
+          "Jedna platforma łącząca zarządzanie winnicą ze sprzedażą online - koniec arkuszy, mailowych zamówień i osobnych narzędzi.",
+          "One platform joining vineyard management with online sales - no more spreadsheets, email orders and scattered tools.",
+        ),
+        meta: [
+          { _key: "m1", label: ls("Branża", "Industry"), value: ls("Wino / E-commerce", "Wine / E-commerce") },
+          { _key: "m2", label: ls("Rok", "Year"), value: ls("2023", "2023") },
+          {
+            _key: "m3",
+            label: ls("Zakres", "Scope"),
+            value: ls("Strategia · Architektura · Wdrożenie", "Strategy · Architecture · Delivery"),
+          },
         ],
-        en: [
-          "Wine producers did not have online stores",
-          "Alcohol sales regulations made implementations difficult",
-          "Technology costs were too high for individual wineries",
-          "There was no central sales platform for this market",
+        buttonLabel: ls("Podobny projekt? Porozmawiajmy", "A similar project? Let's talk"),
+        buttonHref: "/kontakt",
+        ...(shots["marketplace.jpg"] ? { webImage: imageField(shots["marketplace.jpg"]) } : {}),
+        ...(shots["mobile.jpg"] ? { phoneImage: imageField(shots["mobile.jpg"]) } : {}),
+      },
+
+      // 2. Realizacja - ekrany + karty wartości
+      {
+        _key: "features",
+        _type: "csFeaturesSection",
+        eyebrow: ls("Realizacja", "Delivery"),
+        heading: ls("Co zmieniło wdrożenie", "What the rollout changed"),
+        ...(shots["marketplace.jpg"] ? { screenA: imageField(shots["marketplace.jpg"]) } : {}),
+        ...(shots["panel-winiarni.jpg"] ? { screenB: imageField(shots["panel-winiarni.jpg"]) } : {}),
+        items: [
+          {
+            _key: "f1",
+            icon: "ShoppingBag",
+            title: ls("Zarządzaj winiarnią i sprzedawaj w jednym systemie", "Run the winery and sell in one system"),
+            text: lt(
+              "Pierwsza platforma, która łączy prowadzenie winnicy ze sprzedażą wina online.",
+              "The first platform joining vineyard operations with online wine sales.",
+            ),
+          },
+          {
+            _key: "f2",
+            icon: "Settings",
+            title: ls("Sprzedaż online bez własnego sklepu", "Online sales without your own store"),
+            text: lt(
+              "Winiarnia rusza ze sprzedażą od ręki, na gotowej platformie - bez zespołu IT.",
+              "A winery starts selling right away on a ready platform - with no IT team.",
+            ),
+          },
+          {
+            _key: "f3",
+            icon: "User",
+            title: ls("Kupujący zamawiają prosto od winiarni", "Buyers order straight from the winery"),
+            text: lt(
+              "Prosty koszyk, płatność i dostawa - wino trafia z winnicy na stół klienta.",
+              "A simple cart, payment and delivery - wine goes from the vineyard to the customer's table.",
+            ),
+          },
+          {
+            _key: "f4",
+            icon: "LayoutDashboard",
+            title: ls("Cały biznes z jednego panelu", "The whole business from one panel"),
+            text: lt(
+              "Oferta, magazyn, zamówienia, ceny i analityka - wszystko w jednym miejscu.",
+              "Offering, warehouse, orders, prices and analytics - all in one place.",
+            ),
+          },
         ],
       },
-      consequence: {
-        _type: "localeText",
-        pl: "Bez dedykowanego rozwiązania technologicznego projekt nie miałby możliwości skalowania, a model biznesowy klienta nie mógłby funkcjonować. Technologia w tym projekcie nie była dodatkiem do biznesu - była jego warunkiem istnienia.",
-        en: "Without a dedicated technological solution, the project would have no way to scale, and the client's business model could not function. Technology in this project was not an addition to the business - it was a condition for its existence.",
-      },
-    },
 
-    // 4. Scope Section
-    {
-      _key: "scope1",
-      _type: "csScopeSection",
-      variant: "grid",
-      sectionTitle: {
-        _type: "localeString",
-        pl: "Zakres projektu",
-        en: "Project Scope",
+      // 3. Metryki
+      {
+        _key: "metrics",
+        _type: "csMetricsSection",
+        items: [
+          { _key: "n1", icon: "ShoppingBag", value: "1000+", label: ls("zarejestrowanych zamówień", "registered orders") },
+          { _key: "n2", icon: "TrendingUp", value: "400+", label: ls("transakcji od startu", "transactions since launch") },
+          { _key: "n3", icon: "Users", value: "40+", label: ls("winiarni sprzedających 24/7", "wineries selling 24/7") },
+          { _key: "n4", icon: "ShieldCheck", value: "0 zł", label: ls("inwestycji winiarni w technologię", "winery investment in tech") },
+        ],
       },
-      items: [
-        {
-          _key: "scope-item1",
-          text: {
-            _type: "localeString",
-            pl: "Marketplace sprzedaży produktów",
-            en: "Product sales marketplace",
-          },
-        },
-        {
-          _key: "scope-item2",
-          text: {
-            _type: "localeString",
-            pl: "Panel klienta końcowego",
-            en: "End customer panel",
-          },
-        },
-        {
-          _key: "scope-item3",
-          text: {
-            _type: "localeString",
-            pl: "Panel producenta (winiarni)",
-            en: "Producer (winery) panel",
-          },
-        },
-        {
-          _key: "scope-item4",
-          text: {
-            _type: "localeString",
-            pl: "Panel administracyjny",
-            en: "Admin panel",
-          },
-        },
-        {
-          _key: "scope-item5",
-          text: {
-            _type: "localeString",
-            pl: "Moduły marketingowe i enoturystyczne",
-            en: "Marketing and enotourism modules",
-          },
-        },
-        {
-          _key: "scope-item6",
-          text: {
-            _type: "localeString",
-            pl: "Integracje płatności, kurierów i fakturowania",
-            en: "Payment, courier and invoicing integrations",
-          },
-        },
-        {
-          _key: "scope-item7",
-          text: {
-            _type: "localeString",
-            pl: "Infrastruktura cloud",
-            en: "Cloud infrastructure",
-          },
-        },
-        {
-          _key: "scope-item8",
-          text: {
-            _type: "localeString",
-            pl: "Proof of Concept systemu VMS",
-            en: "VMS system Proof of Concept",
-          },
-        },
-      ],
-      note: {
-        _type: "localeText",
-        pl: "Dodatkowo przygotowaliśmy Proof of Concept systemu VMS do zarządzania winiarnią, który stanowi bazę pod przyszłe produkty klienta.",
-        en: "Additionally, we prepared a Proof of Concept for a VMS system for winery management, which serves as a foundation for future client products.",
-      },
-    },
 
-    // 5. Modules Section
-    {
-      _key: "modules1",
-      _type: "csModulesSection",
-      variant: "alternating",
-      sectionTitle: {
-        _type: "localeString",
-        pl: "Wdrożone funkcjonalności",
-        en: "Implemented Features",
+      // 4. O projekcie
+      {
+        _key: "about",
+        _type: "csAboutSection",
+        eyebrow: ls("O projekcie", "About"),
+        heading: ls("Jeden system dla całej winiarni", "One system for the whole winery"),
+        paragraphs: lsa(
+          [
+            "Winopasja to pierwsza platforma, na której winiarnia prowadzi sprzedaż i zarządza całą winnicą w jednym miejscu - zamiast arkuszy, mailowych zamówień i osobnych narzędzi.",
+            "Klienci kupują wino prosto od producentów, a winiarnie ruszają online od ręki - bez własnego sklepu i bez zespołu IT. Cały biznes, od oferty po wysyłkę i analitykę, prowadzą z jednego panelu.",
+          ],
+          [
+            "Winopasja is the first platform where a winery runs its sales and manages the whole vineyard in one place - instead of spreadsheets, email orders and scattered tools.",
+            "Customers buy wine straight from producers, and wineries go online right away - with no store of their own and no IT team. They run the entire business, from offering to shipping and analytics, from a single panel.",
+          ],
+        ),
       },
-      items: [
-        {
-          _key: "mod1",
-          icon: "ShoppingBag",
-          title: {
-            _type: "localeString",
-            pl: "Marketplace sprzedaży wina",
-            en: "Wine Sales Marketplace",
-          },
-          description: {
-            _type: "localeStringArray",
-            pl: [
-              "Centralny sklep z ofertą wielu winiarni",
-              "Producenci mogą rozpocząć sprzedaż natychmiast - bez inwestycji w technologię",
-              "Szybkie skalowanie liczby partnerów i produktów",
-            ],
-            en: [
-              "Central store with offerings from multiple wineries",
-              "Producers can start selling immediately - no technology investment needed",
-              "Rapid scaling of partners and products",
-            ],
-          },
-        },
-        {
-          _key: "mod2",
-          icon: "Settings",
-          title: {
-            _type: "localeString",
-            pl: "Panel winiarni (sprzedawcy)",
-            en: "Winery Panel (Seller)",
-          },
-          description: {
-            _type: "localeStringArray",
-            pl: [
-              "Zarządzanie produktami, cenami, stanami magazynowymi",
-              "Pełna samodzielność użytkowników w obsłudze sprzedaży",
-              "Niskie koszty operacyjne",
-            ],
-            en: [
-              "Product, pricing and inventory management",
-              "Full user independence in sales operations",
-              "Low operational costs",
-            ],
-          },
-        },
-        {
-          _key: "mod3",
-          icon: "User",
-          title: {
-            _type: "localeString",
-            pl: "Panel klienta końcowego",
-            en: "End Customer Panel",
-          },
-          description: {
-            _type: "localeStringArray",
-            pl: [
-              "Historia zamówień, faktury, status dostawy",
-              "Lepsze doświadczenie użytkownika",
-              "Mniejsza liczba zapytań do supportu",
-            ],
-            en: [
-              "Order history, invoices, delivery status",
-              "Better user experience",
-              "Fewer support inquiries",
-            ],
-          },
-        },
-        {
-          _key: "mod4",
-          icon: "Truck",
-          title: {
-            _type: "localeString",
-            pl: "System logistyczny i pakowania",
-            en: "Logistics and Packaging System",
-          },
-          description: {
-            _type: "localeStringArray",
-            pl: [
-              "Uproszczony workflow generowania przesyłek",
-              "Integracja z firmami kurierskimi (DPD, OrlenPaczka)",
-              "Skrócenie czasu obsługi i redukcja błędów",
-            ],
-            en: [
-              "Simplified shipment generation workflow",
-              "Integration with courier companies (DPD, OrlenPaczka)",
-              "Reduced handling time and fewer errors",
-            ],
-          },
-        },
-        {
-          _key: "mod5",
-          icon: "Calendar",
-          title: {
-            _type: "localeString",
-            pl: "Moduł enoturystyki i wydarzeń",
-            en: "Enotourism and Events Module",
-          },
-          description: {
-            _type: "localeStringArray",
-            pl: [
-              "Wydarzenia, degustacje, kalendarz atrakcji",
-              "Zwiększenie wartości platformy poza sprzedażą produktów",
-              "Większe zaangażowanie klientów",
-            ],
-            en: [
-              "Events, tastings, attractions calendar",
-              "Increased platform value beyond product sales",
-              "Higher customer engagement",
-            ],
-          },
-        },
-        {
-          _key: "mod6",
-          icon: "Tag",
-          title: {
-            _type: "localeString",
-            pl: "Vouchery i rabaty",
-            en: "Vouchers and Discounts",
-          },
-          description: {
-            _type: "localeStringArray",
-            pl: [
-              "System kodów rabatowych i voucherów",
-              "Alternatywne narzędzia marketingowe zgodne z regulacjami",
-            ],
-            en: [
-              "Discount codes and voucher system",
-              "Alternative marketing tools compliant with regulations",
-            ],
-          },
-        },
-        {
-          _key: "mod7",
-          icon: "Shield",
-          title: {
-            _type: "localeString",
-            pl: "Panel administracyjny",
-            en: "Admin Panel",
-          },
-          description: {
-            _type: "localeStringArray",
-            pl: [
-              "Zarządzanie słownikami, kategoriami, parametrami win",
-              "Pełna kontrola nad platformą, producentami i ofertą",
-              "Zarządzanie rosnącym ekosystemem z jednego miejsca",
-            ],
-            en: [
-              "Dictionary, category and wine parameter management",
-              "Full control over the platform, producers and offerings",
-              "Managing a growing ecosystem from one place",
-            ],
-          },
-        },
-        {
-          _key: "mod8",
-          icon: "Database",
-          title: {
-            _type: "localeString",
-            pl: "Panel VMS (produkcja wina)",
-            en: "VMS Panel (Wine Production)",
-          },
-          description: {
-            _type: "localeStringArray",
-            pl: [
-              "System zarządzania produkcją wina",
-              "Proof of Concept stanowiący bazę pod przyszłe produkty",
-            ],
-            en: [
-              "Wine production management system",
-              "Proof of Concept serving as a base for future products",
-            ],
-          },
-        },
-      ],
-    },
 
-    // 6. Technologies Section
-    {
-      _key: "tech1",
-      _type: "csTechnologiesSection",
-      variant: "badges",
-      sectionTitle: {
-        _type: "localeString",
-        pl: "Technologie użyte w projekcie",
-        en: "Technologies Used",
+      // 5. Wyzwanie / Rozwiązanie / Efekt
+      {
+        _key: "outcome",
+        _type: "csOutcomeSection",
+        items: [
+          {
+            _key: "o1",
+            tag: ls("Wyzwanie", "Challenge"),
+            text: lt(
+              "Winiarnie chciały sprzedawać online, ale nie miały jak - i traciły czas na ręczną obsługę biznesu.",
+              "Wineries wanted to sell online but had no way to - and lost time on manual operations.",
+            ),
+            points: lsa(
+              ["Sprzedaż tylko offline", "Zamówienia w mailach i arkuszach", "Brak jednego miejsca na biznes"],
+              ["Offline sales only", "Orders in emails and spreadsheets", "No single place for the business"],
+            ),
+          },
+          {
+            _key: "o2",
+            tag: ls("Rozwiązanie", "Solution"),
+            text: lt(
+              "Jeden system, w którym winiarnia sprzedaje wino i prowadzi całą winnicę - bez własnego sklepu i IT.",
+              "One system where a winery sells wine and runs the whole vineyard - with no own store or IT.",
+            ),
+            points: lsa(
+              ["Sprzedaż online od ręki", "Zamówienia, ceny i magazyn w panelu", "Kupujący zamawiają prosto od winiarni"],
+              ["Online sales right away", "Orders, prices and stock in one panel", "Buyers order straight from the winery"],
+            ),
+          },
+          {
+            _key: "o3",
+            tag: ls("Efekt", "Result"),
+            text: lt(
+              "Winiarnie zaczynają sprzedawać online od razu i prowadzą cały biznes z jednego miejsca.",
+              "Wineries start selling online immediately and run the whole business from one place.",
+            ),
+            points: lsa(
+              ["Nowy kanał sprzedaży", "Mniej pracy ręcznej", "Łatwe skalowanie oferty"],
+              ["A new sales channel", "Less manual work", "Easy to scale the offering"],
+            ),
+          },
+        ],
       },
-      items: [
-        { _key: "t1", name: "Next.js" },
-        { _key: "t2", name: "NestJS" },
-        { _key: "t3", name: "React Native" },
-        { _key: "t4", name: "PostgreSQL" },
-        { _key: "t5", name: "Prisma ORM" },
-        { _key: "t6", name: "Mantine UI" },
-        { _key: "t7", name: "Turborepo" },
-        { _key: "t8", name: "Chart.js" },
-        { _key: "t9", name: "Leaflet" },
-        { _key: "t10", name: "i18next" },
-        { _key: "t11", name: "AWS S3" },
-        { _key: "t12", name: "Cloudflare" },
-        { _key: "t13", name: "PayNow" },
-        { _key: "t14", name: "Furgonetka" },
-        { _key: "t15", name: "Fakturownia" },
-        { _key: "t16", name: "Slack" },
-        { _key: "t17", name: "ClickUp" },
-        { _key: "t18", name: "Miro" },
-      ],
-    },
 
-    // 7. Results Section
-    {
-      _key: "results1",
-      _type: "csResultsSection",
-      variant: "numbered",
-      sectionTitle: {
-        _type: "localeString",
-        pl: "Efekty i rezultaty",
-        en: "Effects and Results",
+      // 6. Zakres
+      {
+        _key: "scope",
+        _type: "csScopeSection",
+        eyebrow: ls("Zakres", "Scope"),
+        heading: ls("Co dostarczyliśmy", "What we delivered"),
+        items: [
+          { _key: "s1", text: ls("Marketplace sprzedaży wina", "Wine sales marketplace") },
+          { _key: "s2", text: ls("Panel winiarni (sprzedawcy)", "Winery panel (seller)") },
+          { _key: "s3", text: ls("Panel klienta końcowego", "End customer panel") },
+          { _key: "s4", text: ls("Panel administracyjny", "Admin panel") },
+          { _key: "s5", text: ls("Logistyka, płatności i fakturowanie", "Logistics, payments and invoicing") },
+          { _key: "s6", text: ls("Moduły enoturystyki i promocji", "Enotourism and promotion modules") },
+        ],
       },
-      items: [
-        {
-          _key: "r1",
-          title: {
-            _type: "localeString",
-            pl: "Pierwsza w Polsce platforma sprzedaży dla winiarni",
-            en: "First wine sales platform in Poland",
-          },
-          description: {
-            _type: "localeText",
-            pl: "Uruchomienie pierwszej w Polsce platformy sprzedaży online dedykowanej polskim winiarniom rzemieślniczym.",
-            en: "Launch of the first online sales platform in Poland dedicated to Polish craft wineries.",
-          },
-        },
-        {
-          _key: "r2",
-          title: {
-            _type: "localeString",
-            pl: "Nowy model biznesowy oparty o prowizję",
-            en: "New commission-based business model",
-          },
-          description: {
-            _type: "localeText",
-            pl: "Stworzenie skalowalnego źródła przychodów opartego o prowizję od sprzedaży, bez konieczności inwestycji winiarni w technologię.",
-            en: "Creating a scalable revenue source based on sales commission, with no technology investment required from wineries.",
-          },
-        },
-        {
-          _key: "r3",
-          title: {
-            _type: "localeString",
-            pl: "Cyfryzacja procesów sprzedaży",
-            en: "Sales process digitization",
-          },
-          description: {
-            _type: "localeText",
-            pl: "Pełna cyfryzacja procesów sprzedaży i obsługi zamówień - od złożenia zamówienia, przez pakowanie, aż po dostawę.",
-            en: "Full digitization of sales and order processing - from order placement, through packaging, to delivery.",
-          },
-        },
-        {
-          _key: "r4",
-          title: {
-            _type: "localeString",
-            pl: "Fundament pod dalszy rozwój",
-            en: "Foundation for further development",
-          },
-          description: {
-            _type: "localeText",
-            pl: "Fundament technologiczny pod dalsze projekty (m.in. system VMS) oraz wzmocnienie pozycji klienta jako agregatora rynku winiarskiego.",
-            en: "Technological foundation for future projects (including VMS system) and strengthening the client's position as a wine market aggregator.",
-          },
-        },
-      ],
-    },
 
-    // 8. Quote Section
-    {
-      _key: "quote1",
-      _type: "csQuoteSection",
-      variant: "centered",
-      quote: {
-        _type: "localeText",
-        pl: "Winopasja to dowód na to, że technologia może być demokratyczna - daje małym producentom narzędzia, które dotąd były zarezerwowane tylko dla rynkowych gigantów.",
-        en: "Winopasja is proof that technology can be democratic - it gives small producers tools that were previously reserved only for market giants.",
+      // 7. Galeria
+      {
+        _key: "gallery",
+        _type: "csGallerySection",
+        eyebrow: ls("Produkt", "Product"),
+        heading: ls("Zobacz efekt", "See the result"),
+        ...(galleryImages.length ? { images: galleryImages } : {}),
       },
-      author: "CetusPro Team",
-    },
 
-    // 9. CTA Section
-    {
-      _key: "cta1",
-      _type: "csCtaSection",
-      variant: "centered",
-      heading: {
-        _type: "localeString",
-        pl: "Chcesz stworzyć podobne rozwiązanie?",
-        en: "Want to create a similar solution?",
+      // 8. Technologie
+      {
+        _key: "tech",
+        _type: "csTechSection",
+        items: [
+          { _key: "t1", name: "Next.js" },
+          { _key: "t2", name: "NestJS" },
+          { _key: "t3", name: "React Native" },
+          { _key: "t4", name: "PostgreSQL" },
+          { _key: "t5", name: "Prisma" },
+          { _key: "t6", name: "Cloudflare" },
+          { _key: "t7", name: "PayNow" },
+          { _key: "t8", name: "Furgonetka" },
+        ],
       },
-      description: {
-        _type: "localeText",
-        pl: "Skontaktuj się z nami i opowiedz o swoich potrzebach - stworzymy rozwiązanie dopasowane do Twojego biznesu.",
-        en: "Contact us and tell us about your needs - we'll create a solution tailored to your business.",
-      },
-      buttonLabel: {
-        _type: "localeString",
-        pl: "Skontaktuj się z nami",
-        en: "Contact us",
-      },
-      buttonHref: "/kontakt",
-    },
-  ],
-};
+    ],
+  };
+}
+
+// ─── Seed ─────────────────────────────────────────────────────────────────────
 
 async function seed() {
-  console.log("Seeding Winopasja case study...");
-  console.log(`Project: ${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}`);
-  console.log(`Dataset: ${process.env.NEXT_PUBLIC_SANITY_DATASET}`);
+  console.log("Seed case study Winopasja (krótka wersja)");
+  console.log(`Projekt: ${env.NEXT_PUBLIC_SANITY_PROJECT_ID}`);
+  console.log(`Dataset: ${env.NEXT_PUBLIC_SANITY_DATASET}`);
+  if (SKIP_IMAGES) console.log("Tryb --no-images: zrzuty pominięte.");
 
   try {
+    const caseStudy = await buildCaseStudy();
     const result = await client.createOrReplace(caseStudy);
-    console.log(`✅ Case study created: ${result._id}`);
-    console.log(`   Slug: winopasja`);
-    console.log(`   Sections: ${caseStudy.sections.length}`);
+
+    const stale = [`drafts.${DOC_ID}`, ...LEGACY_IDS];
+    for (const id of stale) {
+      if (await client.getDocument(id)) {
+        await client.delete(id);
+        console.log(`   🧹 usunięto duplikat/wersję roboczą: ${id}`);
+      }
+    }
+
+    console.log(`✅ Zapisano: ${result._id}`);
+    console.log(`   Sekcje: ${caseStudy.sections.length}`);
     console.log(`   URL: /case-studies/winopasja`);
   } catch (error) {
-    console.error("❌ Error seeding:", error.message);
+    console.error("❌ Błąd seeda:", error.message);
     if (error.statusCode === 403) {
-      console.error(
-        "   Token lacks write permissions. Generate an Editor token at sanity.io/manage.",
-      );
+      console.error("   Token nie ma uprawnień do zapisu. Wygeneruj token Editor na sanity.io/manage.");
     }
+    process.exitCode = 1;
   }
 }
 

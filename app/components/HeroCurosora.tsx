@@ -2,7 +2,6 @@
 
 import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
-import StarGradientButton from "./ui/gradientBackground";
 import PaintReveal from "./PaintReveal";
 
 export default function HeroCurosora() {
@@ -10,7 +9,7 @@ export default function HeroCurosora() {
   const locale = useLocale();
 
   return (
-    <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen overflow-hidden bg-white">
+    <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen overflow-hidden bg-gray-100">
       {/* ── Fala (grzbiet stały wzgl. zdjęcia + wypełnienie rosnące w dół) ── */}
       <div
         aria-hidden="true"
@@ -37,27 +36,26 @@ export default function HeroCurosora() {
         <div aria-hidden="true" className="pointer-events-none absolute right-0 top-1/3 z-0 h-[30rem] w-[30rem] rounded-full bg-sky-300/20 blur-3xl" />
         <div className="grid w-full items-center gap-8 lg:grid-cols-2 lg:gap-14">
           {/* Tekst */}
-          <div className="relative z-30 order-1 flex flex-col items-start justify-center text-left lg:col-start-1">
+          <div className="relative z-30 order-1 flex flex-col items-start justify-center text-left lg:col-start-1 lg:-mt-10">
             <h1
-              className="tracking-tight text-slate-900 text-4xl sm:text-5xl lg:text-6xl leading-[1.12]"
-              style={{ fontFamily: "var(--font-michroma)" }}>
+              className="font-bold tracking-tight text-slate-900 text-4xl sm:text-6xl lg:text-[5rem] leading-[1.05]"
+              style={{ fontFamily: "var(--font-space-grotesk)" }}>
               <span className="block">{t("title")}</span>
               <span className="block">
-                <span className="font-extrabold text-blue-600">{t("titleHighlight")}</span>{" "}
+                <span className="text-blue-600">{t("titleHighlight")}</span>{" "}
                 {t("titleAfterHighlight")}
               </span>
               <span className="block">{t("titleThirdLine")}</span>
             </h1>
 
             {t("buttonText") && (
-              <div className="mt-10">
-                <StarGradientButton
-                  containerClassName="p-[2px]"
-                  className="rounded-[18px] px-10 py-5 text-lg"
-                >
-                  <Link href={`/${locale}/kontakt`}>{t("buttonText")}</Link>
-                </StarGradientButton>
-              </div>
+              <Link
+                href={`/${locale}/kontakt`}
+                style={{ fontFamily: "var(--font-space-grotesk)" }}
+                className="mt-10 inline-flex items-center rounded-2xl bg-blue-600 px-9 py-4 text-lg font-semibold text-white shadow-md shadow-blue-600/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-700"
+              >
+                {t("buttonText")}
+              </Link>
             )}
           </div>
 

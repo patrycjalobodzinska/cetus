@@ -29,11 +29,6 @@ export default defineType({
               type: 'localeString',
             }),
             defineField({
-              name: 'question',
-              title: 'Pytanie (italic)',
-              type: 'localeString',
-            }),
-            defineField({
               name: 'title',
               title: 'Tytuł kroku',
               type: 'localeString',
