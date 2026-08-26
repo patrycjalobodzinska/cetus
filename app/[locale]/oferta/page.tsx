@@ -5,7 +5,8 @@ import Link from "next/link";
 import TechnologiesMarquee from "@/app/components/TechnologiesMarquee";
 import StatsPanel from "@/app/components/StatsPanel";
 import CTASection from "@/app/components/CTASection";
-import OfferServiceCard from "../components/OfferServiceCard";
+import Tile, { SPANS } from "../components/ServiceTile";
+import Slider from "@/app/components/Slider";
 import { ArrowRight } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { client } from "@/sanity/lib/client";
@@ -153,21 +154,42 @@ export default function OfferPage() {
           </div>
 
           {projects.length > 0 ? (
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {projects.map((project, index) =>
-                project.slug && (project.title || project.description) ? (
-                  <OfferServiceCard
+            <>
+              {/* Ten sam kafel i ten sam układ bento co „Co robimy" na stronie
+                  głównej - te same osiem usług w tej samej kolejności, więc
+                  indeksy dają identyczne makiety i skiny. */}
+              <div className="hidden auto-rows-[minmax(150px,auto)] grid-cols-12 gap-4 md:grid">
+                {projects.map((project, index) => (
+                  <Link
                     key={project.slug}
-                    index={index}
-                    title={project.title || ""}
-                    description={project.description || ""}
                     href={`/${locale}/oferta/${project.slug}`}
-                    cta={t("cardCta")}
-                    feature={index === 0}
-                  />
-                ) : null,
-              )}
-            </div>
+                    className={`${SPANS[index] ?? "md:col-span-4"} group block`}
+                  >
+                    <Tile
+                      c={{ title: project.title || "", desc: project.description || "" }}
+                      i={index}
+                      layoutClass="h-full"
+                    />
+                  </Link>
+                ))}
+              </div>
+
+              <Slider className="md:hidden" slideWidth="85%">
+                {projects.map((project, index) => (
+                  <Link
+                    key={project.slug}
+                    href={`/${locale}/oferta/${project.slug}`}
+                    className="group block h-full"
+                  >
+                    <Tile
+                      c={{ title: project.title || "", desc: project.description || "" }}
+                      i={index}
+                      layoutClass="min-h-[220px]"
+                    />
+                  </Link>
+                ))}
+              </Slider>
+            </>
           ) : (
             <div className="py-12 text-center">
               <p className="text-slate-600">{t("noOffers")}</p>

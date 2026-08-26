@@ -467,48 +467,10 @@ html::-webkit-scrollbar-thumb:hover {
   }
 }
 
-/* Hover karty - uniesienie, cieplejsza ramka, cień i poświata.
-   Tylko dla realnego kursora; dotyk wywołuje fałszywy hover po tapnięciu.
-   Dłuższe wejście niż wyjście: uniesienie ma płynąć, powrót ma być zwinny. */
-.pv-card {
-  transition:
-    transform 260ms var(--ease-out),
-    border-color 260ms ease,
-    box-shadow 260ms ease;
-}
-.pv-card-glow {
-  opacity: 0;
-  transition: opacity 260ms ease;
-  background: radial-gradient(
-    120% 80% at 50% 100%,
-    rgba(37, 99, 235, 0.1) 0%,
-    transparent 70%
-  );
-}
-.pv-card-num {
-  transition: color 180ms ease;
-}
-@media (hover: hover) and (pointer: fine) {
-  .pv-card {
-    will-change: transform;
-  }
-  .pv-card:hover {
-    transform: translateY(-6px);
-    transition:
-      transform 340ms var(--ease-out),
-      border-color 340ms ease,
-      box-shadow 340ms ease;
-    border-color: rgb(191 219 254); /* blue-200 */
-    box-shadow: 0 18px 38px -18px rgba(37, 99, 235, 0.4);
-  }
-  .pv-card:hover .pv-card-glow {
-    opacity: 1;
-    transition: opacity 340ms ease;
-  }
-  .pv-card:hover .pv-card-num {
-    color: rgba(37, 99, 235, 0.12);
-  }
-}
+/* Karty procesu nie mają stanu hover - to element informacyjny, nie kontrolka,
+   a uniesienie na dotyku zachowywało się nieprzewidywalnie (część urządzeń
+   raportuje obsługę hovera i stan przyklejał się po tapnięciu).
+   Klasa `.pv-card` została, bo po niej celuje reveal (`.pv-in .pv-grow`). */
 
 /* Siatka kropek - delikatna tekstura tła sekcji, wygaszana maską do środka */
 .pv-dots {
@@ -535,8 +497,7 @@ html::-webkit-scrollbar-thumb:hover {
   .pv-in .pv-fade {
     animation: pvFadeOnly 260ms ease var(--d, 0ms) both;
   }
-  .pv-card,
-  .pv-card:hover {
+  .pv-card {
     transform: none;
   }
 }
@@ -590,10 +551,10 @@ html::-webkit-scrollbar-thumb:hover {
   }
 }
 
-/* Karta realizacji - hover w tej samej konwencji co .pv-card w sekcji Proces:
-   dłuższe wejście niż wyjście i krzywa projektu (--ease-out), a nie wbudowany
-   ease-out Tailwinda. Ramka jest borderem, nie ringiem, bo ring zajmuje
-   box-shadow i blokowałby cień hoveru. */
+/* Karta realizacji - jedyna karta z hoverem (jest linkiem, więc stan wskazania
+   coś znaczy; karty procesu są informacyjne i hoveru nie mają).
+   Dłuższe wejście niż wyjście i krzywa projektu (--ease-out). Ramka jest
+   borderem, nie ringiem, bo ring zajmuje box-shadow i blokowałby cień. */
 .cs-card {
   transition:
     transform 260ms var(--ease-out),
@@ -612,7 +573,7 @@ html::-webkit-scrollbar-thumb:hover {
   background: radial-gradient(120% 90% at 70% 100%, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (hover: hover) and (pointer: fine) and (min-width: 768px) {
   .cs-card {
     will-change: transform;
   }

@@ -165,7 +165,7 @@ export default function CaseStudiesMosaic({
                   src={c.image}
                   alt=""
                   aria-hidden="true"
-                  className="rounded-tl-2xl border-l-6 border-t-6 border-gray-800  cs-card-shot shadow-2xl shadow-blue-300  pointer-events-none absolute -bottom-8 right-2 h-48 w-72 object-[0%_top] object-cover   md:-bottom-12 md:-right-0 md:h-64 md:w-96 lg:h-80 lg:w-[30rem]"
+                  className="rounded-tl-2xl border-l-6 border-t-6 border-gray-800  cs-card-shot shadow-2xl shadow-blue-300  pointer-events-none absolute -bottom-6 -right-4 h-52 w-[22rem] object-[0%_top] object-cover md:-bottom-12 md:-right-0 md:h-64 md:w-96 lg:h-80 lg:w-[30rem]"
                 />
                 <span aria-hidden="true" className="cs-card-glow pointer-events-none absolute inset-0" />
               </>

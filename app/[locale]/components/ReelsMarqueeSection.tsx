@@ -48,7 +48,7 @@ export default async function ReelsMarqueeSection() {
   }
 
   return (
-    <section className="section-y relative flex min-h-[min(100vh,1000px)] flex-col justify-center">
+    <section className="section-y relative flex flex-col justify-center lg:min-h-[min(100vh,1000px)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-3">

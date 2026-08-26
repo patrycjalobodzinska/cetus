@@ -225,10 +225,6 @@ export default function ProcessSection() {
                       />
                       <span
                         aria-hidden="true"
-                        className="pv-card-glow pointer-events-none absolute inset-0"
-                      />
-                      <span
-                        aria-hidden="true"
                         className="pv-card-num pointer-events-none absolute -bottom-3 right-3 text-6xl text-slate-900/[0.055]"
                         style={{ fontFamily: "var(--font-michroma)" }}>
                         {i + 1}
@@ -289,7 +285,6 @@ function StepCard({
           style={{ width: `${progress}%` }}
         />
       </span>
-      <span aria-hidden="true" className="pv-card-glow pointer-events-none absolute inset-0" />
       <span
         aria-hidden="true"
         className="pv-card-num pointer-events-none absolute -bottom-3 right-3 text-5xl text-slate-900/[0.055]"
