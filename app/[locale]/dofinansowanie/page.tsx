@@ -90,7 +90,7 @@ export default async function FundingPage() {
             <div className="mb-12 flex justify-center rounded-2xl border border-gray-200 bg-white p-6 md:p-10">
               <FundingSignSet
                 locale={locale}
-                className="h-auto w-full max-w-2xl"
+                className="h-auto w-full max-w-4xl"
                 priority
               />
             </div>

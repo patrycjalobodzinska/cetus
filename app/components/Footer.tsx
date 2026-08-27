@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Mail, MapPin, Linkedin, Dribbble, Twitter, Facebook, Instagram, ArrowRight } from 'lucide-react';
 import { client } from '@/sanity/lib/client';
 import { urlFor } from '@/sanity/lib/image';
-import { FundingSignSet } from './FundingSigns';
+import { EuSign } from './FundingSigns';
 import { getLocale, getTranslations } from 'next-intl/server';
 import StarGradientButton from './ui/gradientBackground';
 import Image from 'next/image';
@@ -317,8 +317,11 @@ export default async function Footer() {
                   className="h-14 sm:h-16 w-auto"
                 />
               ) : (
-                /* Oficjalne zestawienie znaków POPW z pakietu MFiPR. */
-                <FundingSignSet locale={locale} className="h-auto w-[280px] sm:w-[340px]" />
+                /* Znak UE w rozmiarze, w którym napis jest czytelny. Pełne
+                   zestawienie znaków (FE + barwy RP + UE) jest na podstronie
+                   /dofinansowanie - w pasku stopki musiałoby zejść do ~30 px
+                   wysokości, a wtedy podpisy w znaku są nie do odczytania. */
+                <EuSign locale={locale} className="h-10 w-auto sm:h-11" />
               )}
 
               <div className="text-center sm:text-left">
