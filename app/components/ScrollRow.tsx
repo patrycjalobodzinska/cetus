@@ -1,65 +1,98 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 /**
- * Poziomy pasek z ręcznym scrollem i strzałkami (full-bleed, z wygaszeniem
- * po bokach). Strzałki zapętlają się: z końca wracają na początek i odwrotnie.
+ * Poziomy pasek z nieskończoną pętlą.
  *
- * CELOWO BEZ scroll-snap. Przy `scroll-snap-type: x mandatory` przeglądarka
- * nie zatrzymuje kontenera tam, gdzie każe mu kod - dosnapowuje do najbliższego
- * punktu i przerywa programowe smooth-scrollowanie. Przy `snap-center` kilka
- * ostatnich kafli daje ten sam, przycięty do maksimum punkt snapu, więc
- * pozycja spoczynkowa na końcu paska była nieprzewidywalna i warunek
- * „jesteśmy na końcu" łapał tylko czasami - klik w strzałkę wyglądał wtedy
- * tak, jakby nic nie robił. Bez snapu `scrollLeft` dobija dokładnie do
- * `scrollWidth - clientWidth`, więc detekcja krańców jest deterministyczna.
+ * Ścieżka zawiera dwie kopie kafli. Pozycja scrolla jest trzymana w zakresie
+ * [0, szerokość jednej kopii) - gdy przekroczy granicę, odejmujemy tę
+ * szerokość natychmiastowo. Ponieważ treść za granicą jest identyczna,
+ * przeskok jest wizualnie niewidoczny, a pasek nie ma końca: po ostatnim
+ * kaflu od razu pojawia się pierwszy, w obie strony i przy przewijaniu palcem.
+ *
+ * Normalizacja dzieje się PRZED animacją, nie w jej trakcie - inaczej
+ * korekta scrollLeft przerywałaby smooth-scrollowanie.
+ *
+ * Bez scroll-snap: przy `snap-mandatory` przeglądarka dosnapowuje kontener
+ * do własnych punktów i przerywa programowe przewijanie.
  */
 export default function ScrollRow({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
+  const items = React.Children.toArray(children);
+  const count = items.length;
 
-  // Strzałki mają sens tylko wtedy, gdy pasek faktycznie wystaje poza kadr.
-  // Siedem rolek to ~2000 px treści - na szerokim monitorze wszystko się
-  // mieści i klikanie nic nie robi. Zamiast martwych kontrolek chowamy je.
-  const [scrollable, setScrollable] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
+  /** Szerokość jednej kopii ścieżki - mierzona z odległości między kopiami. */
+  const setWidth = useCallback(
+    (el: HTMLDivElement) => {
+      const kids = Array.from(el.children) as HTMLElement[];
+      if (kids.length < count * 2 || count === 0) return 0;
+      return kids[count].offsetLeft - kids[0].offsetLeft;
+    },
+    [count],
+  );
 
-    const measure = () => setScrollable(el.scrollWidth - el.clientWidth > 1);
-    measure();
-
-    const ro = new ResizeObserver(measure);
-    ro.observe(el);
-    // Kafle to iframe'y Facebooka - ich rozmiar ustala się po załadowaniu,
-    // więc mierzymy też po zmianie rozmiaru dzieci.
-    Array.from(el.children).forEach((c) => ro.observe(c));
-
-    return () => ro.disconnect();
+  /** Krok = jeden kafel plus odstęp. */
+  const step = useCallback((el: HTMLDivElement) => {
+    const kids = Array.from(el.children) as HTMLElement[];
+    if (kids.length < 2) return el.clientWidth * 0.8;
+    return kids[1].offsetLeft - kids[0].offsetLeft;
   }, []);
 
   const scrollByDir = (dir: number) => {
     const el = ref.current;
     if (!el) return;
 
-    const maxScroll = Math.max(0, el.scrollWidth - el.clientWidth);
-    if (maxScroll <= 1) return; // nic nie wystaje poza kadr
+    const one = setWidth(el);
+    if (one <= 0) return;
 
-    // 2 px tolerancji na zaokrąglenia subpikselowe przy zoomie przeglądarki.
-    const EPS = 2;
+    let target = el.scrollLeft + dir * step(el);
 
-    if (dir > 0 && el.scrollLeft >= maxScroll - EPS) {
-      el.scrollTo({ left: 0, behavior: "smooth" });
-      return;
-    }
-    if (dir < 0 && el.scrollLeft <= EPS) {
-      el.scrollTo({ left: maxScroll, behavior: "smooth" });
-      return;
+    // W lewo trzeba przeskoczyć PRZED animacją, bo przeglądarka przycina
+    // scrollLeft do zera i animacja nie miałaby gdzie się rozegrać.
+    // Skok o szerokość jednej kopii jest wizualnie niewidoczny (ta sama treść).
+    if (target < 0) {
+      el.scrollLeft += one;
+      target += one;
     }
 
-    el.scrollBy({ left: dir * el.clientWidth * 0.8, behavior: "smooth" });
+    // W prawo NIE korygujemy z góry: druga kopia daje zapas, więc animacja
+    // ma gdzie dojechać, a pozycję zawija dopiero handler po wyhamowaniu.
+    // Korekta przed animacją cofałaby scrollLeft poniżej zera (przycięcie
+    // do 0) i dawała widoczny przeskok w tył.
+    el.scrollTo({ left: target, behavior: "smooth" });
   };
+
+  // Przewijanie palcem też musi się zawijać - normalizujemy po wyhamowaniu.
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    let timer = 0;
+    const normalize = () => {
+      const one = setWidth(el);
+      if (one <= 0) return;
+      // Tylko w prawo: przeglądarka przycina scrollLeft do zera, więc w lewo
+      // nie da się wyjechać poza początek ścieżki. Zawijanie w lewo palcem
+      // wymagałoby trzeciej kopii kafli (i trzeciego zestawu iframe'ów);
+      // strzałka w lewo zawija się mimo tego, bo koryguje pozycję sama.
+      if (el.scrollLeft >= one) el.scrollLeft -= one;
+    };
+
+    const onScroll = () => {
+      window.clearTimeout(timer);
+      timer = window.setTimeout(normalize, 120);
+    };
+
+    el.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      el.removeEventListener("scroll", onScroll);
+      window.clearTimeout(timer);
+    };
+  }, [setWidth]);
+
+  if (!count) return null;
 
   return (
     <div className="relative left-1/2 w-screen -translate-x-1/2">
@@ -67,29 +100,38 @@ export default function ScrollRow({ children }: { children: React.ReactNode }) {
         ref={ref}
         className="scrollbar-hide flex gap-5 overflow-x-auto px-6 py-2 pb-3 [mask-image:linear-gradient(90deg,transparent,#000_5%,#000_95%,transparent)]"
       >
-        {children}
+        {items.map((child, i) => (
+          <React.Fragment key={`a-${i}`}>{child}</React.Fragment>
+        ))}
+        {/* Druga kopia domyka pętlę. Klonujemy same kafle - bez opakowania,
+            bo `display: contents` nie ma boksa i zepsułoby pomiar offsetLeft.
+            aria-hidden, żeby czytnik ekranu nie czytał listy dwa razy. */}
+        {items.map((child, i) =>
+          React.isValidElement(child)
+            ? React.cloneElement(child as React.ReactElement<{ "aria-hidden"?: string }>, {
+                key: `b-${i}`,
+                "aria-hidden": "true",
+              })
+            : child,
+        )}
       </div>
 
-      {scrollable && (
-        <>
-          <button
-            type="button"
-            onClick={() => scrollByDir(-1)}
-            aria-label="Poprzednie"
-            className="absolute left-3 top-1/2 hidden -translate-y-1/2 place-items-center rounded-full border border-gray-200 bg-white/90 p-2 text-slate-700 shadow-md backdrop-blur transition hover:border-blue-300 hover:text-blue-600 sm:grid"
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </button>
-          <button
-            type="button"
-            onClick={() => scrollByDir(1)}
-            aria-label="Następne"
-            className="absolute right-3 top-1/2 hidden -translate-y-1/2 place-items-center rounded-full border border-gray-200 bg-white/90 p-2 text-slate-700 shadow-md backdrop-blur transition hover:border-blue-300 hover:text-blue-600 sm:grid"
-          >
-            <ChevronRight className="h-5 w-5" />
-          </button>
-        </>
-      )}
+      <button
+        type="button"
+        onClick={() => scrollByDir(-1)}
+        aria-label="Poprzednie"
+        className="absolute left-3 top-1/2 hidden -translate-y-1/2 place-items-center rounded-full border border-gray-200 bg-white/90 p-2 text-slate-700 shadow-md backdrop-blur transition hover:border-blue-300 hover:text-blue-600 sm:grid"
+      >
+        <ChevronLeft className="h-5 w-5" />
+      </button>
+      <button
+        type="button"
+        onClick={() => scrollByDir(1)}
+        aria-label="Następne"
+        className="absolute right-3 top-1/2 hidden -translate-y-1/2 place-items-center rounded-full border border-gray-200 bg-white/90 p-2 text-slate-700 shadow-md backdrop-blur transition hover:border-blue-300 hover:text-blue-600 sm:grid"
+      >
+        <ChevronRight className="h-5 w-5" />
+      </button>
     </div>
   );
 }
