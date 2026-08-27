@@ -24,11 +24,11 @@ export default function StatsPanel() {
                 i > 0 ? "md:border-l md:border-gray-100" : ""
               }`}
             >
-              <div className="text-4xl md:text-5xl font-extrabold tracking-tight tabular-nums bg-gradient-to-br from-blue-600 to-sky-400 bg-clip-text text-transparent">
+              <div className="text-4xl md:text-5xl font-extrabold tracking-tight tabular-nums text-blue-600">
                 <span aria-hidden="true">{stat.count}+</span>
                 <span className="sr-only">Ponad {stat.count}</span>
               </div>
-              <span className="mt-3 h-1 w-8 rounded-full bg-gradient-to-r from-blue-600 to-sky-400 opacity-70 transition-all duration-300 group-hover:w-12 group-hover:opacity-100" />
+              <span className="mt-3 h-1 w-8 rounded-full bg-blue-600 opacity-70 transition-all duration-300 group-hover:w-12 group-hover:opacity-100" />
               <div className="mt-3 text-[11px] md:text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
                 {t(`${stat.key}.title`)}
               </div>

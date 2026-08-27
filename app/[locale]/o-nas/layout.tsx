@@ -1,49 +1,15 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "../pageMetadata";
 
-export const metadata: Metadata = {
-  title: "O nas",
-  description: "Poznaj zespół CetusPro - doświadczeni eksperci w dziedzinie aplikacji webowych, mobilnych, UX/UI design, cyberbezpieczeństwa i AI. Dowiedz się więcej o naszej historii i wartościach.",
-  keywords: [
-    "o nas",
-    "zespół",
-    "historia firmy",
-    "wartości",
-    "doświadczenie",
-    "eksperci IT"
-  ],
-  openGraph: {
-    title: "O nas | CetusPro",
-    description: "Poznaj zespół CetusPro - doświadczeni eksperci w dziedzinie aplikacji webowych, mobilnych i rozwiązań IT.",
-    url: "/o-nas",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "CetusPro - O nas",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "O nas | CetusPro",
-    description: "Poznaj zespół CetusPro - doświadczeni eksperci w dziedzinie aplikacji webowych, mobilnych i rozwiązań IT.",
-    images: ["/og-image.png"],
-  },
-  alternates: {
-    canonical: "/o-nas",
-    languages: {
-      pl: "/o-nas",
-      en: "/en/o-nas",
-      "x-default": "/o-nas",
-    },
-  },
-};
-
-export default function AboutUsLayout({
-  children,
+export async function generateMetadata({
+  params,
 }: {
-  children: React.ReactNode;
-}) {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildPageMetadata({ locale, key: "about", path: "/o-nas" });
+}
+
+export default function AboutLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

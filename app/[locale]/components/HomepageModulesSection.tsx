@@ -1,4 +1,4 @@
-import { getLocale } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 import { client } from '@/sanity/lib/client';
 import { urlFor } from '@/sanity/lib/image';
@@ -72,7 +72,8 @@ export default async function HomepageModulesSection() {
     console.error('Error fetching homepage modules/posts:', error);
   }
 
-  const readMore = locale === 'en' ? 'Read more' : 'Czytaj więcej';
+  const tm = await getTranslations('home.modules');
+  const readMore = tm('readMore');
 
   // Najpierw najnowsze wpisy z bloga, potem moduły strony głównej (np. "Dlaczego klienci nam ufają?").
   const cards: Card[] = [
@@ -101,7 +102,7 @@ export default async function HomepageModulesSection() {
   }
 
   return (
-    <section className="md:py-24 py-6 relative overflow-hidden">
+    <section className="section-y relative overflow-hidden">
       <div className="max-w-7xl mx-auto border-y md:border-y-0 border-y-gray-200 px-4 sm:px-6 lg:px-8">
         <div className={clsx(cards.length > 2 ? "divide-y " : "divide-y md:divide-y-0", "grid  md:divide-x divide-gray-300 md:grid-cols-2 divide-y")}>
           {cards.map((card, index) => (

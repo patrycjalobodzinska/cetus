@@ -66,8 +66,7 @@ export default async function WhatsNewSection({
             <>
               <div className="w-20 h-1 bg-blue-600 rounded-full mx-auto mb-6" />
               <h2
-                className="heading-1 text-slate-900 leading-tight mb-4"
-                style={{ fontFamily: 'var(--font-michroma)' }}
+                className="section-title text-slate-900 mb-4"
               >
                 {heading}
               </h2>

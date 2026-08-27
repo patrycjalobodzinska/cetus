@@ -1,0 +1,4121 @@
+[
+  {
+    "_createdAt": "2026-01-29T10:34:43Z",
+    "_id": "031c7b5c-54c0-477b-9ca0-d80d945c583e",
+    "_rev": "EDhOMD1lEiAxSZZqOvq2Vn",
+    "_system": {
+      "base": {
+        "id": "031c7b5c-54c0-477b-9ca0-d80d945c583e",
+        "rev": "EZVTiLRPwUR4FtFNlIoQ9y"
+      }
+    },
+    "_type": "footer",
+    "_updatedAt": "2026-04-14T08:37:42Z",
+    "address": "ul. Adama Matuszczaka 14 35-083 Rzeszów, Poland",
+    "contactTitle": {
+      "_type": "localeString",
+      "en": "Contact",
+      "pl": "Kontakt"
+    },
+    "email": "contact@cetuspro.com",
+    "offerLinks": [
+      {
+        "_key": "7c55d2e06882",
+        "text": "Aplikacje webowe",
+        "url": "aplikacje-webowe"
+      }
+    ],
+    "primaryButtonLink": "/kontakt"
+  },
+  {
+    "_createdAt": "2026-01-28T13:25:47Z",
+    "_id": "074a12b0-9bdf-4262-8045-56420da07092",
+    "_rev": "SUWwR1lsarTohvEJLV16sI",
+    "_system": {
+      "base": {
+        "id": "074a12b0-9bdf-4262-8045-56420da07092",
+        "rev": "RKlKf70RoUQAHnpKCF7dAX"
+      }
+    },
+    "_type": "stats",
+    "_updatedAt": "2026-02-04T07:24:47Z",
+    "count": 40,
+    "order": 3,
+    "title": {
+      "_type": "localeString",
+      "en": "Experts in the team",
+      "pl": "Ekspertów w zespole"
+    }
+  },
+  {
+    "_createdAt": "2026-01-28T13:04:23Z",
+    "_id": "0ee590ad-79d7-43e4-90da-469e8e656b97",
+    "_rev": "SUWwR1lsarTohvEJLV13jP",
+    "_system": {
+      "base": {
+        "id": "0ee590ad-79d7-43e4-90da-469e8e656b97",
+        "rev": "RKlKf70RoUQAHnpKCF7jVp"
+      }
+    },
+    "_type": "stats",
+    "_updatedAt": "2026-02-04T07:24:28Z",
+    "count": 50,
+    "order": 1,
+    "title": {
+      "_type": "localeString",
+      "en": "Completed projects",
+      "pl": "Zrealizowanych projektów"
+    }
+  },
+  {
+    "_createdAt": "2026-01-28T13:04:57Z",
+    "_id": "207f2fdb-bf4c-43ec-8c70-97ae75f3f9d6",
+    "_rev": "SUWwR1lsarTohvEJLV1niC",
+    "_system": {
+      "base": {
+        "id": "207f2fdb-bf4c-43ec-8c70-97ae75f3f9d6",
+        "rev": "RKlKf70RoUQAHnpKCF7UyX"
+      }
+    },
+    "_type": "stats",
+    "_updatedAt": "2026-02-04T07:25:05Z",
+    "count": 30,
+    "order": 2,
+    "title": {
+      "_type": "localeString",
+      "en": "Satisfied customers",
+      "pl": "Zadowolonych klientów"
+    }
+  },
+  {
+    "_createdAt": "2026-01-28T20:29:34Z",
+    "_id": "25ff4b10-7868-45f7-bbeb-55e1feedb989",
+    "_rev": "LJZf3bBpf1KzH3t5M8kC9K",
+    "_system": {
+      "base": {
+        "id": "25ff4b10-7868-45f7-bbeb-55e1feedb989",
+        "rev": "MNsTLAXnFu2XFIUrqvdrkV"
+      }
+    },
+    "_type": "faq",
+    "_updatedAt": "2026-08-19T15:40:51Z",
+    "description": {
+      "_type": "localeText",
+      "en": "Yes - we offer maintenance, development and support with SLA guarantees, monitoring and updates, ensuring the continuity of business-critical systems.",
+      "pl": "Tak - oferujemy utrzymanie, rozwój i wsparcie z gwarancjami SLA, monitoring oraz aktualizacje, zapewniając ciągłość działania systemów krytycznych."
+    },
+    "order": 3,
+    "title": {
+      "_type": "localeString",
+      "en": "Do you provide maintenance and SLA after go-live?",
+      "pl": "Czy zapewniacie utrzymanie i SLA po wdrożeniu?"
+    }
+  },
+  {
+    "_createdAt": "2026-01-29T08:43:42Z",
+    "_id": "2622ab37-9ff2-4e35-aa22-bc7445bedee5",
+    "_rev": "G9i554PzHOm2FpeMnCASLU",
+    "_system": {
+      "base": {
+        "id": "2622ab37-9ff2-4e35-aa22-bc7445bedee5",
+        "rev": "MNsTLAXnFu2XFIUrr43Bmp"
+      }
+    },
+    "_type": "aboutUs",
+    "_updatedAt": "2026-02-04T09:19:05Z",
+    "description": {
+      "_type": "localeText",
+      "en": "We are a young technology company founded on a passion for new technologies. We are a close-knit team that has comprehensively implemented several technological products used by hundreds of thousands of users. We help companies build high-quality software that gives them a competitive advantage. We believe that technology is, above all, about the people who create it. Our entire team, constantly working with young startups, places great emphasis on analyzing user and market needs. Working with startups keeps us up-to-date with the latest trends and technologies. We are able to respond quickly to changes and suggest product development steps based on our analyses.",
+      "pl": "Jesteśmy młodą firmą technologiczną, która powstała z pasji do nowych technologii. Tworzymy zgrany zespół, który kompleksowo wdrożył na rynek kilka produktów technologicznych używanych przez setki tysięcy użytkowników. Pomagamy firmom budować oprogramowanie wysokiej jakości, dzięki któremu zyskują przewagę nad konkurencją. Wierzymy, że technologia to przede wszystkim ludzie, którzy ją tworzą. Dzięki temu, że cały nas zespół ciągle pracuje z młodymi startupami dużą uwagę przykładamy do analizy potrzeb użytkowników oraz rynku. Dzięki pracy ze startupami jesteśmy na bieżąco z najnowszymi trendami i technologiami. Potrafimy szybko reagować na zmiany i sami sugerujemy kroki rozwoju produktu na podstawie naszych analiz."
+    },
+    "image": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-ffcaf6fadc2f9aec99fb077078ecc5965227bbfb-5987x3991-jpg",
+        "_type": "reference"
+      }
+    },
+    "title": {
+      "_type": "localeString",
+      "en": "Who we are",
+      "pl": "Kim jesteśmy"
+    }
+  },
+  {
+    "_createdAt": "2026-01-28T12:36:40Z",
+    "_id": "4811eea1-e571-4be7-8911-db41c38449b3",
+    "_rev": "LJZf3bBpf1KzH3t5M8kALY",
+    "_system": {
+      "base": {
+        "id": "4811eea1-e571-4be7-8911-db41c38449b3",
+        "rev": "MNsTLAXnFu2XFIUrqsvlO7"
+      }
+    },
+    "_type": "offer",
+    "_updatedAt": "2026-08-19T15:40:49Z",
+    "buttonLink": "/oferta",
+    "buttonText": {
+      "_type": "localeString",
+      "en": "Learn more",
+      "pl": "Zobacz"
+    },
+    "description": {
+      "_type": "localeText",
+      "en": "End-to-end IT solutions for demanding organizations. We run projects from strategy and architecture, through development, to deployment, growth and maintenance of business-critical systems.",
+      "pl": "Kompleksowe rozwiązania IT dla wymagających organizacji. Prowadzimy projekty end-to-end - od strategii i architektury, przez development, po wdrożenie, rozwój i utrzymanie systemów krytycznych dla biznesu."
+    },
+    "projects": [
+      {
+        "_key": "02deb81a42d0",
+        "description": {
+          "_type": "localeText",
+          "en": "Scalable web applications and platforms for business-critical processes - performant, secure and ready to grow.",
+          "pl": "Skalowalne aplikacje i platformy webowe dla procesów o znaczeniu krytycznym - wydajne, bezpieczne i gotowe na wzrost."
+        },
+        "image": {
+          "_type": "image",
+          "asset": {
+            "_ref": "image-c824a7db703f2337363bc7867a5fc762677e0ad9-1368x902-png",
+            "_type": "reference"
+          }
+        },
+        "link": "aplikacje-webowe",
+        "order": 1,
+        "slug": {
+          "_type": "slug",
+          "current": "aplikacje-webowe"
+        },
+        "title": {
+          "_type": "localeString",
+          "en": "Web applications",
+          "pl": "Aplikacje webowe"
+        }
+      },
+      {
+        "_key": "ee5ce1ca6701",
+        "description": {
+          "_type": "localeText",
+          "en": "Production-grade iOS and Android apps - aligned with your strategy and systems ecosystem.",
+          "pl": "Aplikacje mobilne iOS i Android klasy produkcyjnej - spójne z Waszą strategią i ekosystemem systemów."
+        },
+        "image": {
+          "_type": "image",
+          "asset": {
+            "_ref": "image-8f05fb4a6120a38dd7280a33b3036d90bb470d27-1386x902-png",
+            "_type": "reference"
+          }
+        },
+        "link": "aplikacje-mobilne",
+        "order": 2,
+        "slug": {
+          "_type": "slug",
+          "current": "aplikacje-mobilne"
+        },
+        "title": {
+          "_type": "localeString",
+          "en": "Mobile applications",
+          "pl": " Aplikacje mobilne"
+        }
+      },
+      {
+        "_key": "29f222fcd8a5",
+        "description": {
+          "_type": "localeText",
+          "en": "Product and interface design that simplifies complex processes and drives user adoption.",
+          "pl": "Projektowanie produktów i interfejsów, które upraszczają złożone procesy i zwiększają adopcję wśród użytkowników."
+        },
+        "image": {
+          "_type": "image",
+          "asset": {
+            "_ref": "image-9aa3c4f9f197233af4eb0946c81af62fedbe78fe-1390x918-png",
+            "_type": "reference"
+          }
+        },
+        "link": "ui-ux-design",
+        "order": 3,
+        "slug": {
+          "_type": "slug",
+          "current": "ui-ux-design"
+        },
+        "title": {
+          "_type": "localeString",
+          "en": "UX/UI Design",
+          "pl": "UX/UI Design"
+        }
+      },
+      {
+        "_key": "b45a539936e2",
+        "description": {
+          "_type": "localeText",
+          "en": "AI adoption and process automation - from data integration to decision-support solutions and lower operating costs.",
+          "pl": "Wdrożenia AI i automatyzacja procesów - od integracji danych po rozwiązania wspierające decyzje i redukcję kosztów operacyjnych."
+        },
+        "image": {
+          "_type": "image",
+          "asset": {
+            "_ref": "image-5bf416ac7c0ec7882aeccb4391bf579982ce1633-1138x726-png",
+            "_type": "reference"
+          }
+        },
+        "link": "aI-i-automatyzacja-procesow",
+        "order": 4,
+        "slug": {
+          "_type": "slug",
+          "current": "aI-i-automatyzacja-procesow"
+        },
+        "title": {
+          "_type": "localeString",
+          "en": " AI & Process Automation",
+          "pl": "AI i automatyzacja procesów"
+        }
+      },
+      {
+        "_key": "741ca825435d",
+        "description": {
+          "_type": "localeText",
+          "en": "Audits, hardening and protection of systems and data - aligned with regulatory requirements and security standards.",
+          "pl": "Audyty, hardening i ochrona systemów oraz danych - zgodność z wymogami regulacyjnymi i standardami bezpieczeństwa."
+        },
+        "image": {
+          "_type": "image",
+          "asset": {
+            "_ref": "image-c4f25d62534d24f763397b7020adca7d32e6443c-1920x1440-png",
+            "_type": "reference"
+          }
+        },
+        "link": "cybersecurity",
+        "order": 5,
+        "slug": {
+          "_type": "slug",
+          "current": "cybersecurity"
+        },
+        "title": {
+          "_type": "localeString",
+          "en": " Cybersecurity",
+          "pl": " Cybersecurity"
+        }
+      },
+      {
+        "_key": "f8119b37edb5",
+        "description": {
+          "_type": "localeText",
+          "en": "Comprehensive support for digital change — from needs analysis and development strategy to the implementation of modern IT solutions that enhance your company's efficiency.",
+          "pl": "Kompleksowe wsparcie w cyfrowej zmianie — od analizy potrzeb i strategii rozwoju po wdrożenie nowoczesnych rozwiązań IT zwiększających efektywność firmy.\\n\\n"
+        },
+        "image": {
+          "_type": "image",
+          "asset": {
+            "_ref": "image-e545a757502b149d5c898a97c5ffa19230c834e6-750x446-png",
+            "_type": "reference"
+          }
+        },
+        "link": "transformacja-technologicazna",
+        "order": 6,
+        "slug": {
+          "_type": "slug",
+          "current": "transformacja -echnologicazna"
+        },
+        "title": {
+          "_type": "localeString",
+          "en": "Technological Transformation",
+          "pl": "Transformacja technologicazna"
+        }
+      },
+      {
+        "_key": "ef0eb062425a",
+        "description": {
+          "_type": "localeText",
+          "en": "Experienced engineering teams embedded in your processes - with governance, reporting and accountability for quality.",
+          "pl": "Doświadczone zespoły inżynierskie wpięte w Wasze procesy - z governance, raportowaniem i odpowiedzialnością za jakość."
+        },
+        "image": {
+          "_type": "image",
+          "asset": {
+            "_ref": "image-97474d2db8f214ee20a7659543e0d687e53543cf-1792x1024-png",
+            "_type": "reference"
+          }
+        },
+        "link": "outsourcing-programistow",
+        "order": 7,
+        "slug": {
+          "_type": "slug",
+          "current": "outsourcing-programistow"
+        },
+        "title": {
+          "_type": "localeString",
+          "en": "Software Development Outsourcing",
+          "pl": "Outsourcing programistów"
+        }
+      },
+      {
+        "_key": "ebc5cdd6fec7",
+        "description": {
+          "_type": "localeText",
+          "en": "Training programs and technology skill development for teams across your organization.",
+          "pl": "Programy szkoleniowe i rozwój kompetencji technologicznych dla zespołów w organizacji."
+        },
+        "image": {
+          "_type": "image",
+          "asset": {
+            "_ref": "image-12d2bb37d120d7fad1ac5d05bb3994a3d8b24ca0-1254x836-png",
+            "_type": "reference"
+          }
+        },
+        "link": "akademia-i-szkolenia",
+        "order": 9,
+        "slug": {
+          "_type": "slug",
+          "current": "akademia-i-szkolenia"
+        },
+        "title": {
+          "_type": "localeString",
+          "en": "Academy & Training",
+          "pl": "Akademia i szkolenia"
+        }
+      },
+      {
+        "_key": "666d265fdcf7",
+        "description": {
+          "_type": "localeText",
+          "en": "Technology and investment support for high-growth-potential ventures.",
+          "pl": "Wsparcie technologiczne i inwestycyjne dla projektów o wysokim potencjale wzrostu."
+        },
+        "image": {
+          "_type": "image",
+          "asset": {
+            "_ref": "image-27a3111f4ce225823d3d1b372c10517ec968b5f4-1024x527-png",
+            "_type": "reference"
+          }
+        },
+        "link": "cetus-venture-capital",
+        "order": 10,
+        "slug": {
+          "_type": "slug",
+          "current": "cetus-venture-capital"
+        },
+        "title": {
+          "_type": "localeString",
+          "en": "Cetus Venture Capital",
+          "pl": "Cetus Venture Capital"
+        }
+      }
+    ],
+    "title": {
+      "_type": "localeString",
+      "en": "We advise, build and",
+      "pl": "Doradzamy, budujemy i "
+    },
+    "titleHighlight": {
+      "_type": "localeString",
+      "en": "support",
+      "pl": "wspieramy"
+    }
+  },
+  {
+    "_createdAt": "2026-01-28T20:28:52Z",
+    "_id": "552ae99c-796d-4c10-9ef4-fe444b288b26",
+    "_rev": "LJZf3bBpf1KzH3t5M8kBNQ",
+    "_system": {
+      "base": {
+        "id": "552ae99c-796d-4c10-9ef4-fe444b288b26",
+        "rev": "MNsTLAXnFu2XFIUrqvdIV1"
+      }
+    },
+    "_type": "faq",
+    "_updatedAt": "2026-08-19T12:38:33Z",
+    "description": {
+      "_type": "localeText",
+      "en": "Flexibly: Fixed Price for a well-defined scope, Time & Material, and Team as a Service (a dedicated team) for long-term development. We match the model to your goal and the level of predictability you need.",
+      "pl": "Elastycznie: Fixed Price dla jasno zdefiniowanego zakresu, Time & Material oraz Team as a Service (dedykowany zespół) dla długofalowego rozwoju. Model dobieramy do celu i poziomu przewidywalności, jakiego potrzebujecie."
+    },
+    "order": 2,
+    "title": {
+      "_type": "localeString",
+      "en": "What engagement models do you offer?",
+      "pl": "W jakich modelach współpracy pracujecie?"
+    }
+  },
+  {
+    "_createdAt": "2026-01-28T12:34:30Z",
+    "_id": "5d3487f4-42ed-4d50-90f0-8ea81d675081",
+    "_rev": "Rq0BBCv7E5b6rI6Wk4svjt",
+    "_system": {
+      "base": {
+        "id": "5d3487f4-42ed-4d50-90f0-8ea81d675081",
+        "rev": "SIsz67NbFQI3M2UuZZ3hzU"
+      }
+    },
+    "_type": "hero",
+    "_updatedAt": "2026-04-24T10:38:49Z",
+    "buttonText": {
+      "_type": "localeString",
+      "en": "Call us",
+      "pl": "Umów konsultację"
+    },
+    "description": {
+      "_type": "localeText",
+      "en": "We create modern software that helps companies grow. We advise, build and support web applications, mobile apps and AI solutions — from the initial idea through UX/UI design to implementation and long-term development. We specialize in projects that organize processes, shorten operations and provide measurable competitive advantage.",
+      "pl": "Tworzymy nowoczesne oprogramowanie, które realnie pomaga firmom się rozwijać. Doradzamy, budujemy i wspieramy aplikacje webowe, mobilne oraz rozwiązania AI — od pomysłu, przez projektowanie UX/UI, po wdrożenie i długofalowy rozwój. Specjalizujemy się w projektach, które porządkują procesy, skracają czas operacji i zapewniają przewagę konkurencyjną na rynku."
+    },
+    "subtitle": {
+      "_type": "localeString",
+      "en": "Check on your own",
+      "pl": "Sprawdź sam"
+    },
+    "title": {
+      "_type": "localeString",
+      "en": "We create modern",
+      "pl": "Tworzymy nowoczesne"
+    },
+    "titleAfterHighlight": {
+      "_type": "localeString",
+      "en": "that helps",
+      "pl": "które pomaga"
+    },
+    "titleHighlight": {
+      "_type": "localeString",
+      "en": "software",
+      "pl": "oprogramowanie,"
+    },
+    "titleThirdLine": {
+      "_type": "localeString",
+      "en": "companies grow",
+      "pl": "firmom się rozwijać"
+    }
+  },
+  {
+    "_createdAt": "2026-01-28T13:26:05Z",
+    "_id": "6354befa-8286-4ab7-8538-2af47d69d6ad",
+    "_rev": "SIsz67NbFQI3M2UuZYUeHU",
+    "_system": {
+      "base": {
+        "id": "6354befa-8286-4ab7-8538-2af47d69d6ad",
+        "rev": "Kpk2Xa38vwPX3oqg55a3fA"
+      }
+    },
+    "_type": "stats",
+    "_updatedAt": "2026-02-04T07:24:00Z",
+    "count": 5,
+    "order": 4,
+    "title": {
+      "_type": "localeString",
+      "en": "Years of experience",
+      "pl": "Lat doświadczenia"
+    }
+  },
+  {
+    "_createdAt": "2026-01-28T20:28:03Z",
+    "_id": "77ea1246-9d89-4d57-b404-e486853fd046",
+    "_rev": "eYndy0iS5bTIcovJ7Qxhhx",
+    "_system": {
+      "base": {
+        "id": "77ea1246-9d89-4d57-b404-e486853fd046",
+        "rev": "nj5hbaxTFKzGXEbscfjxBN"
+      }
+    },
+    "_type": "faq",
+    "_updatedAt": "2026-08-19T12:38:32Z",
+    "description": {
+      "_type": "localeText",
+      "en": "We work under NDAs and data processing agreements (DPA), apply security best practices and GDPR compliance. Protecting client data and intellectual property is a priority at every stage.",
+      "pl": "Pracujemy w oparciu o NDA i umowy powierzenia (DPA), stosujemy dobre praktyki bezpieczeństwa i zgodność z RODO. Ochrona danych i własności intelektualnej klienta jest priorytetem na każdym etapie."
+    },
+    "order": 1,
+    "title": {
+      "_type": "localeString",
+      "en": "How do you ensure security and data confidentiality?",
+      "pl": "Jak zapewniacie bezpieczeństwo i poufność danych?"
+    }
+  },
+  {
+    "_createdAt": "2026-02-06T17:13:10Z",
+    "_id": "7d8c0a76-36c8-44b4-8ad4-cae7f62cd1b3",
+    "_rev": "eYndy0iS5bTIcovJ7QxiBN",
+    "_system": {
+      "base": {
+        "id": "7d8c0a76-36c8-44b4-8ad4-cae7f62cd1b3",
+        "rev": "2e3j4R9S7vYbfZE4Uub1Ut"
+      }
+    },
+    "_type": "homepageModule",
+    "_updatedAt": "2026-08-19T15:40:54Z",
+    "description": {
+      "_type": "localeText",
+      "en": "We deliver software that works in production - with a focus on quality, security and predictability. No empty promises: clean code, transparent communication and accountability for the outcome.",
+      "pl": "Dowozimy oprogramowanie, które działa w produkcji - z naciskiem na jakość, bezpieczeństwo i przewidywalność. Bez pustych obietnic: czysty kod, transparentna komunikacja i odpowiedzialność za rezultat."
+    },
+    "image": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-4e20837e2c8ca746c95875a9e87d434b893c166c-1884x1154-png",
+        "_type": "reference"
+      }
+    },
+    "link": "/o-nas",
+    "linkText": {
+      "_type": "localeString",
+      "en": "Case studies",
+      "pl": "Realizacje"
+    },
+    "title": {
+      "_type": "localeString",
+      "en": "Why do our customers trust us?",
+      "pl": "Dlaczego klienci nam ufają?"
+    }
+  },
+  {
+    "_createdAt": "2026-01-28T20:30:29Z",
+    "_id": "94caf04e-c151-481f-ad10-d6ac17b4667c",
+    "_rev": "LJZf3bBpf1KzH3t5M8kCPI",
+    "_system": {
+      "base": {
+        "id": "94caf04e-c151-481f-ad10-d6ac17b4667c",
+        "rev": "MNsTLAXnFu2XFIUrqvdvH3"
+      }
+    },
+    "_type": "faq",
+    "_updatedAt": "2026-08-19T15:40:52Z",
+    "description": {
+      "_type": "localeText",
+      "en": "Yes - we deliver projects that require integration with existing systems (ERP, CRM, APIs) and collaboration with internal IT teams and enterprise procurement processes.",
+      "pl": "Tak - realizujemy projekty wymagające integracji z istniejącymi systemami (ERP, CRM, API) oraz współpracy z wewnętrznymi zespołami IT i procesami zakupowymi dużych firm."
+    },
+    "order": 4,
+    "title": {
+      "_type": "localeString",
+      "en": "Do you have experience with large organizations and integrations?",
+      "pl": "Czy macie doświadczenie z dużymi organizacjami i integracjami?"
+    }
+  },
+  {
+    "_createdAt": "2026-02-04T12:09:11Z",
+    "_id": "9b39f981-ce48-4aa1-82cf-0f4cd8caa655",
+    "_rev": "SIsz67NbFQI3M2UuZbDYXU",
+    "_type": "industries",
+    "_updatedAt": "2026-02-04T12:14:57Z",
+    "description": {
+      "_type": "localeText",
+      "en": "We create solutions for companies in every industry. These are just examples – we have worked in many more sectors and have no limitations.",
+      "pl": "Tworzymy rozwiązania dla firm w każdej branży. To tylko przykłady – pracowaliśmy w znacznie większej liczbie sektorów i nie ograniczamy się w żaden sposób."
+    },
+    "items": [
+      {
+        "_key": "97df2e14a309",
+        "name": {
+          "_type": "localeString",
+          "en": "E-commerce",
+          "pl": "Sklepy internetowe"
+        }
+      },
+      {
+        "_key": "41235a226638",
+        "name": {
+          "_type": "localeString",
+          "en": "Finance",
+          "pl": "Finanse"
+        }
+      },
+      {
+        "_key": "c73efff74c91",
+        "name": {
+          "_type": "localeString",
+          "en": "Education",
+          "pl": "Edukacja"
+        }
+      },
+      {
+        "_key": "0de795d1a022",
+        "name": {
+          "_type": "localeString",
+          "en": "Logistics",
+          "pl": "Logistyka"
+        }
+      },
+      {
+        "_key": "6fa636d48612",
+        "name": {
+          "_type": "localeString",
+          "en": "Healthcare",
+          "pl": "Healthcare"
+        }
+      },
+      {
+        "_key": "c41c8779ad32",
+        "name": {
+          "_type": "localeString",
+          "en": "Transport",
+          "pl": "Transport"
+        }
+      },
+      {
+        "_key": "a6aacf44e36c",
+        "name": {
+          "_type": "localeString",
+          "en": "Startups",
+          "pl": "Startupy"
+        }
+      },
+      {
+        "_key": "01326199c3d4",
+        "name": {
+          "_type": "localeString",
+          "en": "Real Estate",
+          "pl": "Nieruchomości"
+        }
+      },
+      {
+        "_key": "9b19b3308ac6",
+        "name": {
+          "_type": "localeString",
+          "en": "Sports & Fitness",
+          "pl": "Sports i fitness"
+        }
+      }
+    ],
+    "title": {
+      "_type": "localeString",
+      "en": "Industries we work with",
+      "pl": "Branże, w których działamy"
+    }
+  },
+  {
+    "_createdAt": "2026-02-04T12:12:10Z",
+    "_id": "9cbcded1-2538-4525-bda9-827e4912d819",
+    "_rev": "a72NUXhALj6PRdX74pubzn",
+    "_type": "offerStats",
+    "_updatedAt": "2026-02-04T12:14:24Z",
+    "description": {
+      "_type": "localeText",
+      "en": "We create dedicated solutions – from web and mobile applications, through system integrations, to development and maintenance.",
+      "pl": "worzymy dedykowane rozwiązania – od aplikacji webowych i mobilnych, przez integracje systemów, po rozwój i utrzymanie."
+    },
+    "stats": [
+      {
+        "_key": "a05057f42cf9",
+        "icon": "TrendingUp",
+        "label": {
+          "_type": "localeString",
+          "en": "Projects",
+          "pl": "Projektów"
+        },
+        "value": "50+"
+      },
+      {
+        "_key": "4aad720a5855",
+        "icon": "Users",
+        "label": {
+          "_type": "localeString",
+          "en": "Clients return",
+          "pl": "Klientów wraca"
+        },
+        "value": "95%"
+      },
+      {
+        "_key": "25982771e9a1",
+        "icon": "Target",
+        "label": {
+          "_type": "localeString",
+          "en": "Experts",
+          "pl": "Ekspertów"
+        },
+        "value": "30+"
+      },
+      {
+        "_key": "22dfe25d4017",
+        "icon": "Crown",
+        "label": {
+          "_type": "localeString",
+          "en": "Userów",
+          "pl": "Użytkowników"
+        },
+        "value": "1M+"
+      }
+    ],
+    "title": {
+      "_type": "localeString",
+      "en": "Tailored Technology",
+      "pl": "Technologia szyta na miarę"
+    }
+  },
+  {
+    "_createdAt": "2026-02-04T11:57:38Z",
+    "_id": "b43242f2-b536-446c-84bc-235f400a2633",
+    "_rev": "Rq0BBCv7E5b6rI6Wk4ueW7",
+    "_system": {
+      "base": {
+        "id": "b43242f2-b536-446c-84bc-235f400a2633",
+        "rev": "zRYup4TOc2idbo0V29QcjW"
+      }
+    },
+    "_type": "technologies",
+    "_updatedAt": "2026-04-24T11:03:13Z",
+    "categories": [
+      {
+        "_key": "37b9a8a381c6",
+        "items": [
+          {
+            "_key": "f60249581453",
+            "logo": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-66d1946288a021c4b10d1547e9275e77c552a0b7-512x256-png",
+                "_type": "reference"
+              }
+            },
+            "name": {
+              "_type": "localeString",
+              "en": "ReactJs",
+              "pl": "ReactJs"
+            }
+          },
+          {
+            "_key": "e4dbb9ed17f4",
+            "logo": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-68026f7a527d3909d2759aedf32eb08f32bcb925-3840x780-png",
+                "_type": "reference"
+              }
+            },
+            "name": {
+              "_type": "localeString",
+              "en": "NextJs",
+              "pl": "NextJs"
+            }
+          },
+          {
+            "_key": "23beee43bb6d",
+            "logo": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-1875bb174fc65284c4bb55cf5e7aff4fde1f1873-500x300-png",
+                "_type": "reference"
+              }
+            },
+            "name": {
+              "_type": "localeString",
+              "en": "VueJs",
+              "pl": "VueJs"
+            }
+          },
+          {
+            "_key": "4e97c8231df7",
+            "logo": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-0b0bb79cd35e56b50f9d9cef761fb5ea5811dc32-2500x866-png",
+                "_type": "reference"
+              }
+            },
+            "name": {
+              "_type": "localeString",
+              "en": "Tailwind Css",
+              "pl": "Tailwind Css"
+            }
+          }
+        ],
+        "title": {
+          "_type": "localeString",
+          "en": "Frontend",
+          "pl": "Frontend"
+        }
+      },
+      {
+        "_key": "84f03b4bcc46",
+        "items": [
+          {
+            "_key": "037985616204",
+            "logo": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-0027e6a02ad97acb881449f794eb89a7683c7748-1280x1280-png",
+                "_type": "reference"
+              }
+            },
+            "name": {
+              "_type": "localeString",
+              "en": ".Net",
+              "pl": ".Net"
+            }
+          },
+          {
+            "_key": "4d6fc439f153",
+            "logo": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-e6dd56dd2db108207bc5c127dd94437edfdb8a5f-960x259-png",
+                "_type": "reference"
+              }
+            },
+            "name": {
+              "_type": "localeString",
+              "en": "Node js",
+              "pl": "Node js"
+            }
+          },
+          {
+            "_key": "19ab1718e862",
+            "logo": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-c3858f0d5c38407ed4a20dc25e6ec1810be50d8b-518x153-png",
+                "_type": "reference"
+              }
+            },
+            "name": {
+              "_type": "localeString",
+              "en": "Python",
+              "pl": "Python"
+            }
+          },
+          {
+            "_key": "d1c05bc71cbe",
+            "logo": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-825192dd958d07d9000b825bcbfccfa51f054aa9-960x262-png",
+                "_type": "reference"
+              }
+            },
+            "name": {
+              "_type": "localeString",
+              "en": "GraphQL",
+              "pl": "GraphQL"
+            }
+          }
+        ],
+        "title": {
+          "_type": "localeString",
+          "en": "Backend",
+          "pl": "Backend"
+        }
+      },
+      {
+        "_key": "7789fa7eebe4",
+        "items": [
+          {
+            "_key": "fadc0636a017",
+            "logo": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-e69620991f42aad71fa596cef943d48b48fa0adc-2500x2005-png",
+                "_type": "reference"
+              }
+            },
+            "name": {
+              "_type": "localeString",
+              "en": "React Native",
+              "pl": "React Native"
+            }
+          },
+          {
+            "_key": "b7db848576eb",
+            "logo": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-906626572601621ea2f9018794bfa4a8997293c7-1600x1000-png",
+                "_type": "reference"
+              }
+            },
+            "name": {
+              "_type": "localeString",
+              "en": "Swift",
+              "pl": "Swift"
+            }
+          },
+          {
+            "_key": "2e8a6db284a3",
+            "logo": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-4a2e32703a79718cda336a9198c5ce7a8ae5afab-1280x366-png",
+                "_type": "reference"
+              }
+            },
+            "name": {
+              "_type": "localeString",
+              "en": "Flutter",
+              "pl": "Flutter"
+            }
+          }
+        ],
+        "title": {
+          "_type": "localeString",
+          "en": "Mobile",
+          "pl": "Mobile"
+        }
+      },
+      {
+        "_key": "2550f654b977",
+        "items": [
+          {
+            "_key": "7a834fea6c20",
+            "logo": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-fce0f0ec049f680f9b17927ee8ecd710a6d9982e-1280x767-png",
+                "_type": "reference"
+              }
+            },
+            "name": {
+              "_type": "localeString",
+              "en": "AWS",
+              "pl": "AWS"
+            }
+          },
+          {
+            "_key": "ddc8aa037d95",
+            "logo": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-e6632c348514fac1cf65bbb37ab386453c4335c1-1280x370-png",
+                "_type": "reference"
+              }
+            },
+            "name": {
+              "_type": "localeString",
+              "en": "Azure",
+              "pl": "Azure"
+            }
+          },
+          {
+            "_key": "761b4bf14f57",
+            "logo": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-bf4c46291538e1188b8e64705b9fc07b44760cf0-1502x928-png",
+                "_type": "reference"
+              }
+            },
+            "name": {
+              "_type": "localeString",
+              "en": "GCP",
+              "pl": "GCP "
+            }
+          },
+          {
+            "_key": "a1828fc1d556",
+            "logo": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-0371e51c5b842dbc93b51e75f9c6dd44176131cd-9726x2213-png",
+                "_type": "reference"
+              }
+            },
+            "name": {
+              "_type": "localeString",
+              "en": "Docker",
+              "pl": "Docker"
+            }
+          },
+          {
+            "_key": "0dce06caa98a",
+            "logo": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-20043ce2e6d590f496dfa4856d7e48a1e612791c-960x933-png",
+                "_type": "reference"
+              }
+            },
+            "name": {
+              "_type": "localeString",
+              "en": "Kubernetes",
+              "pl": "Kubernets"
+            }
+          }
+        ],
+        "title": {
+          "_type": "localeString",
+          "en": "Cloud & DevOps",
+          "pl": "Cloud & DevOps"
+        }
+      }
+    ],
+    "description": {
+      "_type": "localeText",
+      "en": "Modern tools and frameworks for scalable and secure solutions.",
+      "pl": "Nowoczesne narzędzia i frameworki dla skalowalnych i bezpiecznych rozwiązań."
+    },
+    "title": {
+      "_type": "localeString",
+      "en": "Technologies we use in projects",
+      "pl": "Technologie, które wykorzystujemy w projektach"
+    }
+  },
+  {
+    "_createdAt": "2026-01-29T10:34:43Z",
+    "_id": "drafts.031c7b5c-54c0-477b-9ca0-d80d945c583e",
+    "_rev": "3c9a5a1e-cd2c-4036-8408-2368c7c7e6b3",
+    "_system": {
+      "base": {
+        "id": "031c7b5c-54c0-477b-9ca0-d80d945c583e",
+        "rev": "EDhOMD1lEiAxSZZqOvq2Vn"
+      }
+    },
+    "_type": "footer",
+    "_updatedAt": "2026-07-02T08:53:09Z",
+    "address": "ul. Adama Matuszczaka 14 35-083 Rzeszów, Poland",
+    "contactTitle": {
+      "_type": "localeString",
+      "en": "Contact",
+      "pl": "Kontakt"
+    },
+    "email": "contact@cetuspro.com",
+    "offerLinks": [
+      {
+        "_key": "7c55d2e06882",
+        "text": "Aplikacje webowe",
+        "url": "aplikacje-webowe"
+      }
+    ],
+    "primaryButtonLink": "/kontakt"
+  },
+  {
+    "_createdAt": "2026-03-01T18:21:43Z",
+    "_id": "e73c35f2-9f38-4611-aaad-eecc85a12430",
+    "_rev": "BciyEBMBEQW8VWmAtpeInA",
+    "_system": {
+      "base": {
+        "id": "e73c35f2-9f38-4611-aaad-eecc85a12430",
+        "rev": "EDhOMD1lEiAxSZZqOvcBKL"
+      }
+    },
+    "_type": "processSection",
+    "_updatedAt": "2026-08-26T07:30:17Z",
+    "description": {
+      "_type": "localeText",
+      "en": "The same process in every project. You know who owns what, what each stage produces and when you will see it.",
+      "pl": "Ten sam proces w każdym projekcie. Wiesz, kto za co odpowiada, co powstaje na danym etapie i kiedy to zobaczysz."
+    },
+    "steps": [
+      {
+        "_key": "1a82c984bd81",
+        "description": {
+          "_type": "localeText",
+          "en": "We review your systems, processes and data before the first line of code. You get a map of risks and recommendations.",
+          "pl": "Sprawdzamy system, procesy i dane, zanim powstanie pierwsza linijka kodu. Dostajesz mapę ryzyk i rekomendacje."
+        },
+        "question": {
+          "_type": "localeString",
+          "en": "„Is your system living its own life?”",
+          "pl": "„System żyje własnym życiem?”"
+        },
+        "stepLabel": {
+          "_type": "localeString",
+          "en": "Step 1",
+          "pl": "Krok 1"
+        },
+        "title": {
+          "_type": "localeString",
+          "en": "Audit",
+          "pl": "Audyt"
+        }
+      },
+      {
+        "_key": "b61cee0871ed",
+        "description": {
+          "_type": "localeText",
+          "en": "We turn priorities, dependencies and business goals into a single plan. You know what gets built first, and why.",
+          "pl": "Układamy priorytety, zależności i cele biznesowe w jeden plan. Wiesz, co powstaje najpierw i dlaczego."
+        },
+        "question": {
+          "_type": "localeString",
+          "en": "„Everything feels important.”",
+          "pl": "„Wszystko wydaje się ważne.”"
+        },
+        "stepLabel": {
+          "_type": "localeString",
+          "en": "Step 2",
+          "pl": "Krok 2"
+        },
+        "title": {
+          "_type": "localeString",
+          "en": "Roadmap",
+          "pl": "Roadmapa"
+        }
+      },
+      {
+        "_key": "d036437ef828",
+        "description": {
+          "_type": "localeText",
+          "en": "We build iteratively, against the plan and our quality standards. Scope and cost stay under control at every step.",
+          "pl": "Budujemy iteracyjnie, zgodnie z planem i standardami jakości. Zakres i koszty zostają pod kontrolą."
+        },
+        "question": {
+          "_type": "localeString",
+          "en": "„Development out of control?”",
+          "pl": "„Development bez kontroli?”"
+        },
+        "stepLabel": {
+          "_type": "localeString",
+          "en": "Step 3",
+          "pl": "Krok 3"
+        },
+        "title": {
+          "_type": "localeString",
+          "en": "Delivery",
+          "pl": "Realizacja"
+        }
+      },
+      {
+        "_key": "60a4deb3daf5",
+        "description": {
+          "_type": "localeText",
+          "en": "We show progress regularly and check it against your goals. You sign off stage by stage, not only at the end.",
+          "pl": "Regularnie pokazujemy postęp i weryfikujemy go z Twoimi celami. Odbierasz efekty etapami, nie na końcu."
+        },
+        "question": {
+          "_type": "localeString",
+          "en": "„Surprises at handover?”",
+          "pl": "„Zaskoczenia na odbiorze?”"
+        },
+        "stepLabel": {
+          "_type": "localeString",
+          "en": "Step 4",
+          "pl": "Krok 4"
+        },
+        "title": {
+          "_type": "localeString",
+          "en": "Acceptance",
+          "pl": "Odbiory"
+        }
+      },
+      {
+        "_key": "056ac984f754",
+        "description": {
+          "_type": "localeText",
+          "en": "We monitor, update and keep the system stable under an SLA. We keep developing it as the business grows.",
+          "pl": "Monitorujemy, aktualizujemy i utrzymujemy stabilność systemu w ramach SLA. Rozwijamy go dalej wraz z biznesem."
+        },
+        "stepLabel": {
+          "_type": "localeString",
+          "en": "Step 5",
+          "pl": "Krok 5"
+        },
+        "title": {
+          "_type": "localeString",
+          "en": "Maintenance",
+          "pl": "Utrzymanie"
+        }
+      }
+    ],
+    "title": {
+      "_type": "localeString",
+      "en": "A delivery process built for predictability",
+      "pl": "Proces, który daje przewidywalność"
+    }
+  },
+  {
+    "_createdAt": "2026-08-17T08:39:32Z",
+    "_id": "funding",
+    "_rev": "37vum8r6xkYjLI2jHgmJ37",
+    "_type": "funding",
+    "_updatedAt": "2026-08-17T08:39:32Z",
+    "enabled": false,
+    "hashtags": "#FunduszeUE #FunduszeEuropejskie",
+    "heading": {
+      "_type": "localeString",
+      "en": "European Funds",
+      "pl": "Fundusze Europejskie"
+    },
+    "intro": {
+      "_type": "localeText",
+      "en": "CetusPro carries out projects co-financed by the European Union.",
+      "pl": "CetusPro realizuje projekty wspolfinansowane ze srodkow Unii Europejskiej."
+    },
+    "projects": [
+      {
+        "_key": "project-1",
+        "_type": "fundingProject",
+        "contractNumber": "",
+        "effects": {
+          "_type": "localeText",
+          "en": "",
+          "pl": ""
+        },
+        "euContribution": "",
+        "fund": {
+          "_type": "localeString",
+          "en": "",
+          "pl": ""
+        },
+        "name": {
+          "_type": "localeString",
+          "en": "",
+          "pl": ""
+        },
+        "objective": {
+          "_type": "localeText",
+          "en": "",
+          "pl": ""
+        },
+        "programName": {
+          "_type": "localeString",
+          "en": "",
+          "pl": ""
+        },
+        "projectValue": ""
+      }
+    ]
+  },
+  {
+    "_createdAt": "2026-04-24T11:37:34Z",
+    "_id": "servicePage-ai-i-automatyzacja-procesow",
+    "_rev": "k1bovl3XmM6yRht40lBlt9",
+    "_type": "servicePage",
+    "_updatedAt": "2026-04-24T11:46:28Z",
+    "heroButtonLink": "/kontakt",
+    "heroButtonText": {
+      "_type": "localeString",
+      "en": "Let's talk about your project",
+      "pl": "Porozmawiajmy o projekcie"
+    },
+    "heroDescription": {
+      "_type": "localeText",
+      "en": "Leverage the potential of artificial intelligence and automation to accelerate business processes, increase efficiency, and achieve better results.",
+      "pl": "Wykorzystaj potencjał sztucznej inteligencji i automatyzacji, aby przyspieszyć procesy biznesowe, zwiększyć wydajność i osiągnąć lepsze wyniki."
+    },
+    "heroTitle": {
+      "_type": "localeString",
+      "en": "Automate and optimize with AI",
+      "pl": "Automatyzuj i optymalizuj z pomocą AI"
+    },
+    "sections": [
+      {
+        "_key": "4on5aaj1",
+        "_type": "gridSection",
+        "description": {
+          "_type": "localeText",
+          "en": "Modern solutions that transform your business",
+          "pl": "Nowoczesne rozwiązania, które transformują Twój biznes"
+        },
+        "items": [
+          {
+            "_key": "8cr5u49m",
+            "description": {
+              "_type": "localeText",
+              "en": "Automate repetitive tasks and business processes, saving time and resources while increasing efficiency and accuracy of operations.",
+              "pl": "Zautomatyzuj powtarzalne zadania i procesy biznesowe, oszczędzając czas i zasoby, a jednocześnie zwiększając wydajność i dokładność operacji."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Process automation",
+              "pl": "Automatyzacja procesów"
+            }
+          },
+          {
+            "_key": "a21mhgaw",
+            "description": {
+              "_type": "localeText",
+              "en": "Leverage the potential of artificial intelligence for data analysis, trend prediction, and making intelligent business decisions.",
+              "pl": "Wykorzystaj potencjał sztucznej inteligencji do analizy danych, przewidywania trendów i podejmowania inteligentnych decyzji biznesowych."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Intelligent solutions",
+              "pl": "Inteligentne rozwiązania"
+            }
+          },
+          {
+            "_key": "oga9wgce",
+            "description": {
+              "_type": "localeText",
+              "en": "Accelerate business processes through automation and AI, enabling faster response to customer and market needs.",
+              "pl": "Przyspiesz procesy biznesowe dzięki automatyzacji i AI, umożliwiając szybsze reagowanie na potrzeby klientów i rynku."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Speed and efficiency",
+              "pl": "Szybkość i wydajność"
+            }
+          },
+          {
+            "_key": "r1fkxdtb",
+            "description": {
+              "_type": "localeText",
+              "en": "We ensure full compliance with GDPR regulations and security standards, protecting your company's data and processes.",
+              "pl": "Zapewniamy pełną zgodność z przepisami RODO i standardami bezpieczeństwa, chroniąc dane i procesy Twojej firmy."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Security and compliance",
+              "pl": "Bezpieczeństwo i zgodność"
+            }
+          }
+        ],
+        "sectionKey": "benefits",
+        "title": {
+          "_type": "localeString",
+          "en": "Benefits of AI and automation",
+          "pl": "Korzyści z AI i automatyzacji"
+        }
+      },
+      {
+        "_key": "akzn4u78",
+        "_type": "tabsSection",
+        "description": {
+          "_type": "localeText",
+          "en": "",
+          "pl": ""
+        },
+        "items": [
+          {
+            "_key": "ufh5ydc7",
+            "applications": {
+              "_type": "localeStringArray",
+              "en": [
+                "Chatbots on websites",
+                "Assistants in mobile applications",
+                "Customer service automation",
+                "Sales support and lead generation",
+                "CRM system integration"
+              ],
+              "pl": [
+                "Chatboty na stronie internetowej",
+                "Asystenci w aplikacjach mobilnych",
+                "Automatyzacja obsługi klienta",
+                "Wsparcie sprzedaży i lead generation",
+                "Integracja z systemami CRM"
+              ]
+            },
+            "description": {
+              "_type": "localeText",
+              "en": "Intelligent chatbots and virtual assistants that answer customer questions, support sales, and automate customer service 24/7.",
+              "pl": "Inteligentne chatboty i wirtualni asystenci, którzy odpowiadają na pytania klientów, wspierają sprzedaż i automatyzują obsługę klienta 24/7."
+            },
+            "effect": {
+              "_type": "localeText",
+              "en": "60% reduction in customer service costs and increased customer satisfaction",
+              "pl": "Redukcja kosztów obsługi klienta o 60% i zwiększenie satysfakcji klientów"
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Chatbots and AI assistants",
+              "pl": "Chatboty i asystenci AI"
+            }
+          },
+          {
+            "_key": "vrd76j08",
+            "applications": {
+              "_type": "localeStringArray",
+              "en": [
+                "Business process automation",
+                "System and application integration",
+                "Reporting automation",
+                "Workflow management",
+                "Task orchestration"
+              ],
+              "pl": [
+                "Automatyzacja procesów biznesowych",
+                "Integracja systemów i aplikacji",
+                "Automatyzacja raportowania",
+                "Workflow management",
+                "Orchestracja zadań"
+              ]
+            },
+            "description": {
+              "_type": "localeText",
+              "en": "Automation of complex business processes, workflows, and system integrations, eliminating manual tasks and errors.",
+              "pl": "Automatyzacja złożonych procesów biznesowych, przepływów pracy i integracji między systemami, eliminując ręczne zadania i błędy."
+            },
+            "effect": {
+              "_type": "localeText",
+              "en": "Savings of 20+ hours per week on repetitive tasks",
+              "pl": "Oszczędność 20+ godzin tygodniowo na powtarzalnych zadaniach"
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Workflow automation",
+              "pl": "Automatyzacja workflow"
+            }
+          },
+          {
+            "_key": "jjkcd00m",
+            "applications": {
+              "_type": "localeStringArray",
+              "en": [
+                "Predictive analysis",
+                "Machine Learning for business",
+                "Anomaly detection",
+                "Forecasting and trend analysis",
+                "Personalization and recommendations"
+              ],
+              "pl": [
+                "Analiza predykcyjna",
+                "Machine Learning dla biznesu",
+                "Anomalia detection",
+                "Forecasting i trend analysis",
+                "Personalizacja i rekomendacje"
+              ]
+            },
+            "description": {
+              "_type": "localeText",
+              "en": "Advanced data analytics using AI to predict trends, identify patterns, and support business decisions.",
+              "pl": "Zaawansowana analityka danych z wykorzystaniem AI do przewidywania trendów, identyfikacji wzorców i wspierania decyzji biznesowych."
+            },
+            "effect": {
+              "_type": "localeText",
+              "en": "40% improvement in forecast accuracy and better business decisions",
+              "pl": "Poprawa dokładności prognoz o 40% i lepsze decyzje biznesowe"
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Data analysis and predictions",
+              "pl": "Analiza danych i predykcje"
+            }
+          },
+          {
+            "_key": "jurjrt1i",
+            "applications": {
+              "_type": "localeStringArray",
+              "en": [
+                "Image recognition and classification",
+                "OCR and data extraction",
+                "Quality control automation",
+                "Facial recognition",
+                "Object detection"
+              ],
+              "pl": [
+                "Rozpoznawanie i klasyfikacja obrazów",
+                "OCR i ekstrakcja danych",
+                "Quality control automation",
+                "Facial recognition",
+                "Object detection"
+              ]
+            },
+            "description": {
+              "_type": "localeText",
+              "en": "Solutions based on image recognition and computer vision for automating visual processes and analyzing image data.",
+              "pl": "Rozwiązania oparte na rozpoznawaniu obrazów i wizji komputerowej do automatyzacji procesów wizualnych i analizy danych obrazowych."
+            },
+            "effect": {
+              "_type": "localeText",
+              "en": "Quality control automation with 99% accuracy",
+              "pl": "Automatyzacja kontroli jakości z dokładnością 99%"
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Computer Vision",
+              "pl": "Computer Vision"
+            }
+          },
+          {
+            "_key": "tbcr7k2z",
+            "applications": {
+              "_type": "localeStringArray",
+              "en": [
+                "Sentiment analysis",
+                "Information extraction from documents",
+                "Automatic tagging and categorization",
+                "Machine translation",
+                "Summarization and content generation"
+              ],
+              "pl": [
+                "Analiza sentymentu",
+                "Ekstrakcja informacji z dokumentów",
+                "Automatyczne tagowanie i kategoryzacja",
+                "Tłumaczenie automatyczne",
+                "Summarization i content generation"
+              ]
+            },
+            "description": {
+              "_type": "localeText",
+              "en": "Natural language processing for text analysis, sentiment analysis, information extraction, and automation of text-based processes.",
+              "pl": "Przetwarzanie języka naturalnego do analizy tekstu, sentymentu, ekstrakcji informacji i automatyzacji procesów opartych na tekście."
+            },
+            "effect": {
+              "_type": "localeText",
+              "en": "Processing 1000+ documents daily automatically",
+              "pl": "Przetwarzanie 1000+ dokumentów dziennie automatycznie"
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Natural Language Processing",
+              "pl": "Natural Language Processing"
+            }
+          }
+        ],
+        "sectionKey": "services",
+        "title": {
+          "_type": "localeString",
+          "en": "Our services",
+          "pl": "Nasze usługi"
+        }
+      },
+      {
+        "_key": "zadegxg9",
+        "_type": "caseStudyBlock",
+        "goal": {
+          "_type": "localeText",
+          "en": "Automation of business processes in a medium-sized manufacturing company, reducing order processing time and eliminating manual errors.",
+          "pl": "Automatyzacja procesów biznesowych w średniej firmie produkcyjnej, redukcja czasu przetwarzania zamówień i eliminacja błędów manualnych."
+        },
+        "results": {
+          "_type": "localeStringArray",
+          "en": [
+            "70% reduction in order processing time",
+            "Automation of 80% of repetitive tasks",
+            "95% improvement in accuracy",
+            "Savings of 30h per week on administrative processes"
+          ],
+          "pl": [
+            "Redukcja czasu przetwarzania zamówień o 70%",
+            "Automatyzacja 80% powtarzalnych zadań",
+            "Poprawa dokładności o 95%",
+            "Oszczędność 30h tygodniowo na procesach administracyjnych"
+          ]
+        },
+        "sectionKey": "caseStudy",
+        "solution": {
+          "_type": "localeText",
+          "en": "Implementation of a comprehensive automation system using AI for order processing, warehouse management, and report generation.",
+          "pl": "Wdrożenie kompleksowego systemu automatyzacji z wykorzystaniem AI do przetwarzania zamówień, zarządzania magazynem i generowania raportów."
+        },
+        "title": {
+          "_type": "localeString",
+          "en": "Case Study",
+          "pl": "Case Study"
+        }
+      },
+      {
+        "_key": "175tx19u",
+        "_type": "stepsSection",
+        "description": {
+          "_type": "localeText",
+          "en": "Full compliance with GDPR and security standards",
+          "pl": "Pełna zgodność z RODO i standardami bezpieczeństwa"
+        },
+        "sectionKey": "process",
+        "steps": [
+          {
+            "_key": "ckb2onah",
+            "description": {
+              "_type": "localeText",
+              "en": "We thoroughly analyze your business processes, identify areas for automation, and define project goals.",
+              "pl": "Dokładnie analizujemy Twoje procesy biznesowe, identyfikujemy obszary do automatyzacji i określamy cele projektu."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Needs analysis",
+              "pl": "Analiza potrzeb"
+            }
+          },
+          {
+            "_key": "ecs7fv6o",
+            "description": {
+              "_type": "localeText",
+              "en": "We create the architecture of the AI/automation solution, select appropriate technologies, and plan implementation.",
+              "pl": "Tworzymy architekturę rozwiązania AI/automatyzacji, wybieramy odpowiednie technologie i planujemy implementację."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Solution design",
+              "pl": "Projektowanie rozwiązania"
+            }
+          },
+          {
+            "_key": "aoqoa081",
+            "description": {
+              "_type": "localeText",
+              "en": "We implement the solution, conduct tests, and optimize system performance, ensuring full functionality.",
+              "pl": "Wdrażamy rozwiązanie, przeprowadzamy testy i optymalizujemy działanie systemu, zapewniając pełną funkcjonalność."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Implementation and testing",
+              "pl": "Implementacja i testy"
+            }
+          },
+          {
+            "_key": "geejha5o",
+            "description": {
+              "_type": "localeText",
+              "en": "We deploy the solution in production, provide training and continuous technical support, and monitor operations.",
+              "pl": "Wdrażamy rozwiązanie w produkcji, zapewniamy szkolenia i ciągłe wsparcie techniczne oraz monitoring działania."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Deployment and support",
+              "pl": "Wdrożenie i wsparcie"
+            }
+          }
+        ],
+        "title": {
+          "_type": "localeString",
+          "en": "Our process",
+          "pl": "Nasz proces"
+        }
+      },
+      {
+        "_key": "jhrapzxx",
+        "_type": "ctaBlock",
+        "buttonLink": "/kontakt",
+        "buttonText": {
+          "_type": "localeString",
+          "en": "Let's talk",
+          "pl": "Porozmawiajmy"
+        },
+        "description": {
+          "_type": "localeText",
+          "en": "Contact us to discuss automation and AI opportunities for your company.",
+          "pl": "Skontaktuj się z nami, aby omówić możliwości automatyzacji i AI dla Twojej firmy."
+        },
+        "email": "kontakt@cetuspro.pl",
+        "sectionKey": "cta",
+        "title": {
+          "_type": "localeString",
+          "en": "Ready for transformation?",
+          "pl": "Gotowy na transformację?"
+        }
+      }
+    ],
+    "slug": {
+      "_type": "slug",
+      "current": "aI-i-automatyzacja-procesow"
+    },
+    "title": {
+      "_type": "localeString",
+      "en": "AI and process automation",
+      "pl": "AI i automatyzacja procesów"
+    }
+  },
+  {
+    "_createdAt": "2026-04-24T11:37:34Z",
+    "_id": "servicePage-akademia-i-szkolenia",
+    "_rev": "k1bovl3XmM6yRht40lBlt9",
+    "_type": "servicePage",
+    "_updatedAt": "2026-04-24T11:46:28Z",
+    "heroButtonLink": "/kontakt",
+    "heroButtonText": {
+      "_type": "localeString",
+      "en": "Enroll in a course",
+      "pl": "Zapisz się na kurs"
+    },
+    "heroDescription": {
+      "_type": "localeText",
+      "en": "Comprehensive training and courses in programming, AI, IT project management. We teach practical skills that are needed in today's job market.",
+      "pl": "Kompleksowe szkolenia i kursy z zakresu programowania, AI, zarządzania projektami IT. Uczymy praktycznych umiejętności, które są potrzebne w dzisiejszym rynku pracy."
+    },
+    "heroTitle": {
+      "_type": "localeString",
+      "en": "Develop your skills with CetusPro Academy",
+      "pl": "Rozwijaj swoje umiejętności z CetusPro Academy"
+    },
+    "sections": [
+      {
+        "_key": "hl36x3i7",
+        "_type": "gridSection",
+        "description": {
+          "_type": "localeText",
+          "en": "",
+          "pl": ""
+        },
+        "items": [
+          {
+            "_key": "d71jskvf",
+            "description": {
+              "_type": "localeText",
+              "en": "We teach through practice - each course includes real projects and tasks that will prepare you for work in the IT industry.",
+              "pl": "Uczymy przez praktykę - każdy kurs zawiera realne projekty i zadania, które przygotują Cię do pracy w branży IT."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Practical skills",
+              "pl": "Praktyczne umiejętności"
+            }
+          },
+          {
+            "_key": "d0astono",
+            "description": {
+              "_type": "localeText",
+              "en": "Our trainers are practitioners with many years of experience who share knowledge from real projects.",
+              "pl": "Nasi trenerzy to praktycy z wieloletnim doświadczeniem, którzy dzielą się wiedzą z prawdziwych projektów."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Experienced mentors",
+              "pl": "Doświadczeni mentorzy"
+            }
+          },
+          {
+            "_key": "rntu6ox9",
+            "description": {
+              "_type": "localeText",
+              "en": "We adapt to your pace - you can learn at a time and place convenient for you.",
+              "pl": "Dostosowujemy się do Twojego tempa - możesz uczyć się w dogodnym dla siebie czasie i miejscu."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Flexible schedule",
+              "pl": "Elastyczny harmonogram"
+            }
+          },
+          {
+            "_key": "khu3bms9",
+            "description": {
+              "_type": "localeText",
+              "en": "After completing the course, you receive a certificate and support in finding your first job in the IT industry.",
+              "pl": "Po ukończeniu kursu otrzymujesz certyfikat oraz wsparcie w znalezieniu pierwszej pracy w branży IT."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Certificates and support",
+              "pl": "Certyfikaty i wsparcie"
+            }
+          }
+        ],
+        "sectionKey": "benefits",
+        "title": {
+          "_type": "localeString",
+          "en": "Why CetusPro Academy?",
+          "pl": "Dlaczego CetusPro Academy?"
+        }
+      },
+      {
+        "_key": "p0m9u71z",
+        "_type": "gridSection",
+        "description": {
+          "_type": "localeText",
+          "en": "",
+          "pl": ""
+        },
+        "items": [
+          {
+            "_key": "2dfrxbhe",
+            "description": {
+              "_type": "localeText",
+              "en": "Comprehensive programming courses from basics to advanced techniques. We teach the most popular languages and frameworks such as JavaScript, Python, React, Node.js and many others. Each course includes practical projects and tasks that will help you build a portfolio.",
+              "pl": "Kompleksowe kursy programowania od podstaw do zaawansowanych technik. Uczymy najpopularniejszych języków i frameworków, takich jak JavaScript, Python, React, Node.js i wiele innych. Każdy kurs zawiera praktyczne projekty i zadania, które pomogą Ci zbudować portfolio."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Programming",
+              "pl": "Programowanie"
+            }
+          },
+          {
+            "_key": "idkoo4lw",
+            "description": {
+              "_type": "localeText",
+              "en": "Learn the secrets of artificial intelligence and machine learning. Learn to build AI models, analyze data and create intelligent solutions. Courses cover both theoretical foundations and practical business applications.",
+              "pl": "Poznaj tajniki sztucznej inteligencji i uczenia maszynowego. Naucz się budować modele AI, analizować dane i tworzyć inteligentne rozwiązania. Kursy obejmują zarówno podstawy teoretyczne, jak i praktyczne zastosowania w biznesie."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "AI and Machine Learning",
+              "pl": "AI i Machine Learning"
+            }
+          },
+          {
+            "_key": "cuwfzqxm",
+            "description": {
+              "_type": "localeText",
+              "en": "Master IT project management methodologies such as Agile, Scrum and Kanban. Learn to effectively plan, organize and implement technology projects. Courses prepare you to work as a Product Owner, Scrum Master or Project Manager.",
+              "pl": "Opanuj metodyki zarządzania projektami IT, takie jak Agile, Scrum i Kanban. Naucz się efektywnie planować, organizować i realizować projekty technologiczne. Kursy przygotowują do pracy jako Product Owner, Scrum Master lub Project Manager."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "IT project management",
+              "pl": "Zarządzanie projektami IT"
+            }
+          }
+        ],
+        "sectionKey": "categories",
+        "title": {
+          "_type": "localeString",
+          "en": "Course categories",
+          "pl": "Kategorie kursów"
+        }
+      },
+      {
+        "_key": "utp4a1lg",
+        "_type": "gridSection",
+        "description": {
+          "_type": "localeText",
+          "en": "",
+          "pl": ""
+        },
+        "items": [
+          {
+            "_key": "1for27fh",
+            "description": {
+              "_type": "localeText",
+              "en": "For people who are just starting their adventure with programming and want to gain solid foundations.",
+              "pl": "Dla osób, które dopiero zaczynają przygodę z programowaniem i chcą zdobyć solidne fundamenty."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Beginners",
+              "pl": "Początkujący"
+            }
+          },
+          {
+            "_key": "ffcn4biv",
+            "description": {
+              "_type": "localeText",
+              "en": "For programmers who want to expand their skills and learn new technologies.",
+              "pl": "Dla programistów, którzy chcą poszerzyć swoje umiejętności i nauczyć się nowych technologii."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Intermediate",
+              "pl": "Średnio zaawansowani"
+            }
+          },
+          {
+            "_key": "8tzhvn40",
+            "description": {
+              "_type": "localeText",
+              "en": "Training dedicated to companies that want to raise the competence of their technical team.",
+              "pl": "Szkolenia dedykowane dla firm, które chcą podnieść kompetencje swojego zespołu technicznego."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Companies and teams",
+              "pl": "Firmy i zespoły"
+            }
+          }
+        ],
+        "sectionKey": "audience",
+        "title": {
+          "_type": "localeString",
+          "en": "For whom",
+          "pl": "Dla kogo"
+        }
+      },
+      {
+        "_key": "wr413602",
+        "_type": "checklistSection",
+        "description": {
+          "_type": "localeText",
+          "en": "",
+          "pl": ""
+        },
+        "items": {
+          "_type": "localeStringArray",
+          "en": [
+            "Practical projects in every course",
+            "Lifetime access to materials",
+            "Mentor support throughout the course",
+            "Active student community",
+            "Updated content in line with trends",
+            "Individual consultation option",
+            "Job interview preparation",
+            "Portfolio building assistance",
+            "Access to a closed group on the platform"
+          ],
+          "pl": [
+            "Praktyczne projekty w każdym kursie",
+            "Dostęp do materiałów na zawsze",
+            "Wsparcie mentora przez cały czas trwania kursu",
+            "Społeczność aktywnych studentów",
+            "Aktualizowane treści zgodne z trendami",
+            "Możliwość konsultacji indywidualnych",
+            "Przygotowanie do rozmów rekrutacyjnych",
+            "Pomoc w budowaniu portfolio",
+            "Dostęp do zamkniętej grupy na platformie"
+          ]
+        },
+        "sectionKey": "distinctive",
+        "title": {
+          "_type": "localeString",
+          "en": "What sets us apart",
+          "pl": "Co nas wyróżnia"
+        }
+      }
+    ],
+    "slug": {
+      "_type": "slug",
+      "current": "akademia-i-szkolenia"
+    },
+    "title": {
+      "_type": "localeString",
+      "en": "Academy and training",
+      "pl": "Akademia i szkolenia"
+    }
+  },
+  {
+    "_createdAt": "2026-04-24T11:37:34Z",
+    "_id": "servicePage-aplikacje-mobilne",
+    "_rev": "k1bovl3XmM6yRht40lBlt9",
+    "_type": "servicePage",
+    "_updatedAt": "2026-04-24T11:46:28Z",
+    "heroDescription": {
+      "_type": "localeText",
+      "en": "From concept to publication in App Store and Google Play - we create modern mobile applications that are fast, secure and intuitive to use.",
+      "pl": "Od koncepcji do publikacji w App Store i Google Play - tworzymy nowoczesne aplikacje mobilne, które są szybkie, bezpieczne i intuicyjne w użyciu."
+    },
+    "heroTitle": {
+      "_type": "localeString",
+      "en": "We create mobile apps that users will love",
+      "pl": "Tworzymy aplikacje mobilne, które użytkownicy pokochają"
+    },
+    "sections": [
+      {
+        "_key": "9xrzarww",
+        "_type": "gridSection",
+        "description": {
+          "_type": "localeText",
+          "en": "",
+          "pl": ""
+        },
+        "items": [
+          {
+            "_key": "glnhauoo",
+            "description": {
+              "_type": "localeText",
+              "en": "We create efficient native applications that leverage the full potential of iOS and Android systems, ensuring the best performance and user experience.",
+              "pl": "Tworzymy wydajne aplikacje natywne wykorzystujące pełny potencjał systemów iOS i Android, zapewniając najlepszą wydajność i doświadczenie użytkownika."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Native iOS and Android apps",
+              "pl": "Aplikacje natywne iOS i Android"
+            }
+          },
+          {
+            "_key": "ultg52dj",
+            "description": {
+              "_type": "localeText",
+              "en": "Cross-platform solutions with React Native or Flutter that work on all platforms while maintaining native performance and appearance.",
+              "pl": "Rozwiązania cross-platformowe z React Native lub Flutter, które działają na wszystkich platformach przy zachowaniu natywnej wydajności i wyglądu."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Cross-platform applications",
+              "pl": "Aplikacje multiplatformowe"
+            }
+          },
+          {
+            "_key": "s0t3a9w6",
+            "description": {
+              "_type": "localeText",
+              "en": "Modern web applications that work like native mobile apps, with installation capability and offline functionality.",
+              "pl": "Nowoczesne aplikacje webowe, które działają jak natywne aplikacje mobilne, z możliwością instalacji i pracy offline."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Progressive Web Apps (PWA)",
+              "pl": "Progressive Web Apps (PWA)"
+            }
+          }
+        ],
+        "sectionKey": "howWeHelp",
+        "title": {
+          "_type": "localeString",
+          "en": "How we can help",
+          "pl": "Jak możemy pomóc"
+        }
+      },
+      {
+        "_key": "kfr8secj",
+        "_type": "gridSection",
+        "description": {
+          "_type": "localeText",
+          "en": "",
+          "pl": ""
+        },
+        "items": [
+          {
+            "_key": "0k0fbhcp",
+            "description": {
+              "_type": "localeText",
+              "en": "Applications built from independent modules that can be easily expanded and updated without affecting the entire system.",
+              "pl": "Aplikacje zbudowane z niezależnych modułów, które można łatwo rozbudowywać i aktualizować bez wpływu na cały system."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Modular architecture",
+              "pl": "Modularna architektura"
+            }
+          },
+          {
+            "_key": "shm8udie",
+            "description": {
+              "_type": "localeText",
+              "en": "Optimization of every aspect of the application to ensure fast operation and smooth animations even on older devices.",
+              "pl": "Optymalizacja każdego aspektu aplikacji, aby zapewnić szybkie działanie i płynne animacje nawet na starszych urządzeniach."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "High performance",
+              "pl": "Wysoka wydajność"
+            }
+          },
+          {
+            "_key": "f824fxcr",
+            "description": {
+              "_type": "localeText",
+              "en": "Implementation of best security practices, data encryption and secure API connections.",
+              "pl": "Implementacja najlepszych praktyk bezpieczeństwa, szyfrowanie danych i bezpieczne połączenia API."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Data security",
+              "pl": "Bezpieczeństwo danych"
+            }
+          },
+          {
+            "_key": "950s4bqn",
+            "description": {
+              "_type": "localeText",
+              "en": "Optimization of application size and loading time so users can quickly start using the application.",
+              "pl": "Optymalizacja rozmiaru aplikacji i czasu ładowania, aby użytkownicy mogli szybko rozpocząć korzystanie z aplikacji."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Fast loading",
+              "pl": "Szybkie ładowanie"
+            }
+          },
+          {
+            "_key": "rzzzelpr",
+            "description": {
+              "_type": "localeText",
+              "en": "Designing with specific business goals and user needs in mind, not just technology.",
+              "pl": "Projektowanie z myślą o konkretnych celach biznesowych i potrzebach użytkowników, a nie tylko o technologii."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Purposeful design",
+              "pl": "Celowe projektowanie"
+            }
+          },
+          {
+            "_key": "qn5gnxzu",
+            "description": {
+              "_type": "localeText",
+              "en": "Regular updates and new features that keep the application up to date with user and market needs.",
+              "pl": "Regularne aktualizacje i nowe funkcje, które utrzymują aplikację na bieżąco z potrzebami użytkowników i rynku."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Continuous development",
+              "pl": "Ciągły rozwój"
+            }
+          }
+        ],
+        "sectionKey": "whyFeatures",
+        "title": {
+          "_type": "localeString",
+          "en": "Why choose our solutions?",
+          "pl": "Dlaczego warto wybrać nasze rozwiązania?"
+        }
+      },
+      {
+        "_key": "vax0kpzl",
+        "_type": "gridSection",
+        "description": {
+          "_type": "localeText",
+          "en": "",
+          "pl": ""
+        },
+        "items": [
+          {
+            "_key": "xyjwjz0f",
+            "description": {
+              "_type": "localeText",
+              "en": "We have experience in creating mobile applications for various industries - from e-commerce to finance and healthcare.",
+              "pl": "Mamy doświadczenie w tworzeniu aplikacji mobilnych dla różnych branż - od e-commerce po finanse i zdrowie."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Experience in various industries",
+              "pl": "Doświadczenie w różnych branżach"
+            }
+          },
+          {
+            "_key": "ac6w4f59",
+            "description": {
+              "_type": "localeText",
+              "en": "We offer comprehensive service from concept, through design, development, testing, to publication in stores.",
+              "pl": "Oferujemy kompleksową obsługę od koncepcji, przez projektowanie, rozwój, testowanie, aż po publikację w sklepach."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Full development cycle",
+              "pl": "Pełny cykl rozwoju"
+            }
+          },
+          {
+            "_key": "s9bz5gh8",
+            "description": {
+              "_type": "localeText",
+              "en": "We provide continuous technical support, updates and application optimization after its launch.",
+              "pl": "Zapewniamy ciągłe wsparcie techniczne, aktualizacje i optymalizację aplikacji po jej uruchomieniu."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Post-deployment support",
+              "pl": "Wsparcie po wdrożeniu"
+            }
+          },
+          {
+            "_key": "1bcpiun5",
+            "description": {
+              "_type": "localeText",
+              "en": "We ensure full compliance with App Store and Google Play guidelines so your application is quickly accepted.",
+              "pl": "Zapewniamy pełną zgodność z wytycznymi App Store i Google Play, aby Twoja aplikacja została szybko zaakceptowana."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Compliance with guidelines",
+              "pl": "Zgodność z wytycznymi"
+            }
+          }
+        ],
+        "sectionKey": "whyUs",
+        "title": {
+          "_type": "localeString",
+          "en": "Why us?",
+          "pl": "Dlaczego my?"
+        }
+      }
+    ],
+    "slug": {
+      "_type": "slug",
+      "current": "aplikacje-mobilne"
+    },
+    "title": {
+      "_type": "localeString",
+      "en": "Mobile apps",
+      "pl": "Aplikacje mobilne"
+    }
+  },
+  {
+    "_createdAt": "2026-04-24T11:37:34Z",
+    "_id": "servicePage-aplikacje-webowe",
+    "_rev": "k1bovl3XmM6yRht40lBlt9",
+    "_type": "servicePage",
+    "_updatedAt": "2026-04-24T11:46:28Z",
+    "heroButtonLink": "/kontakt",
+    "heroButtonText": {
+      "_type": "localeString",
+      "en": "Let's talk about your project",
+      "pl": "Porozmawiajmy o projekcie"
+    },
+    "heroDescription": {
+      "_type": "localeText",
+      "en": "From concept to deployment - we create modern web applications that are fast, secure and easy to use.",
+      "pl": "Od koncepcji do wdrożenia - tworzymy nowoczesne aplikacje webowe, które są szybkie, bezpieczne i łatwe w użyciu."
+    },
+    "heroTitle": {
+      "_type": "localeString",
+      "en": "We create web applications that drive your business",
+      "pl": "Tworzymy aplikacje webowe, które napędzają Twój biznes"
+    },
+    "sections": [
+      {
+        "_key": "flibz0y0",
+        "_type": "gridSection",
+        "description": {
+          "_type": "localeText",
+          "en": "Modern solutions that drive your business",
+          "pl": "Nowoczesne rozwiązania, które napędzają Twój biznes"
+        },
+        "items": [
+          {
+            "_key": "nis0s9ud",
+            "description": {
+              "_type": "localeText",
+              "en": "We use the latest frameworks and tools to ensure speed, security and scalability of your application.",
+              "pl": "Wykorzystujemy najnowsze frameworki i narzędzia, aby zapewnić szybkość, bezpieczeństwo i skalowalność Twojej aplikacji."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Modern technologies",
+              "pl": "Nowoczesne technologie"
+            }
+          },
+          {
+            "_key": "ndb11qwb",
+            "description": {
+              "_type": "localeText",
+              "en": "Your application will look and work perfectly on every device - from phone to large desktop screen.",
+              "pl": "Twoja aplikacja będzie doskonale wyglądać i działać na każdym urządzeniu - od telefonu po duży ekran desktopowy."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Responsive design",
+              "pl": "Responsywny design"
+            }
+          },
+          {
+            "_key": "oswy4yo6",
+            "description": {
+              "_type": "localeText",
+              "en": "We optimize every aspect of the application to ensure fast loading and smooth operation even under heavy load.",
+              "pl": "Zoptymalizujemy każdy aspekt aplikacji, aby zapewnić szybkie ładowanie i płynne działanie nawet przy dużym obciążeniu."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Performance optimization",
+              "pl": "Optymalizacja wydajności"
+            }
+          },
+          {
+            "_key": "gzllvo4r",
+            "description": {
+              "_type": "localeText",
+              "en": "We implement best security practices to protect your users' data and your company's data.",
+              "pl": "Implementujemy najlepsze praktyki bezpieczeństwa, aby chronić dane Twoich użytkowników i Twojej firmy."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Security",
+              "pl": "Bezpieczeństwo"
+            }
+          },
+          {
+            "_key": "058m0kj5",
+            "description": {
+              "_type": "localeText",
+              "en": "Your application will be easily found in search engines and accessible to all users.",
+              "pl": "Twoja aplikacja będzie łatwo znajdowana w wyszukiwarkach i dostępna dla wszystkich użytkowników."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "SEO and accessibility",
+              "pl": "SEO i dostępność"
+            }
+          },
+          {
+            "_key": "wqoifacz",
+            "description": {
+              "_type": "localeText",
+              "en": "We provide continuous technical support and updates so your application always works perfectly.",
+              "pl": "Zapewniamy ciągłe wsparcie techniczne i aktualizacje, aby Twoja aplikacja zawsze działała perfekcyjnie."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Support and maintenance",
+              "pl": "Wsparcie i utrzymanie"
+            }
+          }
+        ],
+        "sectionKey": "whyFeatures",
+        "title": {
+          "_type": "localeString",
+          "en": "Why choose our solutions?",
+          "pl": "Dlaczego warto wybrać nasze rozwiązania?"
+        }
+      },
+      {
+        "_key": "s99isg8z",
+        "_type": "tabsSection",
+        "description": {
+          "_type": "localeText",
+          "en": "",
+          "pl": ""
+        },
+        "items": [
+          {
+            "_key": "96z29pz2",
+            "applications": {
+              "_type": "localeStringArray",
+              "en": [
+                "OAuth2 authorization",
+                "Two-factor authentication (2FA)",
+                "Session management",
+                "CSRF attack protection"
+              ],
+              "pl": [
+                "Autoryzacja OAuth2",
+                "Dwuskładnikowe uwierzytelnianie (2FA)",
+                "Zarządzanie sesjami",
+                "Ochrona przed atakami CSRF"
+              ]
+            },
+            "description": {
+              "_type": "localeText",
+              "en": "",
+              "pl": ""
+            },
+            "effect": {
+              "_type": "localeText",
+              "en": "",
+              "pl": ""
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Login and security",
+              "pl": "Logowanie i bezpieczeństwo"
+            }
+          },
+          {
+            "_key": "wxj605l5",
+            "applications": {
+              "_type": "localeStringArray",
+              "en": [
+                "Stripe/PayPal integration",
+                "Subscriptions and recurring payments",
+                "Invoice management",
+                "Financial dashboard"
+              ],
+              "pl": [
+                "Integracja z Stripe/PayPal",
+                "Subskrypcje i płatności cykliczne",
+                "Zarządzanie fakturami",
+                "Dashboard finansowy"
+              ]
+            },
+            "description": {
+              "_type": "localeText",
+              "en": "",
+              "pl": ""
+            },
+            "effect": {
+              "_type": "localeText",
+              "en": "",
+              "pl": ""
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Payments and monetization",
+              "pl": "Płatności i monetyzacja"
+            }
+          },
+          {
+            "_key": "zdpqosel",
+            "applications": {
+              "_type": "localeStringArray",
+              "en": [
+                "Real-time chat",
+                "Push notifications",
+                "Transactional emails",
+                "SMS integration"
+              ],
+              "pl": [
+                "Czat w czasie rzeczywistym",
+                "Powiadomienia push",
+                "E-maile transakcyjne",
+                "Integracja z SMS"
+              ]
+            },
+            "description": {
+              "_type": "localeText",
+              "en": "",
+              "pl": ""
+            },
+            "effect": {
+              "_type": "localeText",
+              "en": "",
+              "pl": ""
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Communication and notifications",
+              "pl": "Komunikacja i powiadomienia"
+            }
+          },
+          {
+            "_key": "93ta8ka4",
+            "applications": {
+              "_type": "localeStringArray",
+              "en": [
+                "Interactive maps",
+                "Geolocation",
+                "Multilingual (i18n)",
+                "Geographic search"
+              ],
+              "pl": [
+                "Mapy interaktywne",
+                "Geolokalizacja",
+                "Wielojęzyczność (i18n)",
+                "Wyszukiwanie geograficzne"
+              ]
+            },
+            "description": {
+              "_type": "localeText",
+              "en": "",
+              "pl": ""
+            },
+            "effect": {
+              "_type": "localeText",
+              "en": "",
+              "pl": ""
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Navigation and location",
+              "pl": "Nawigacja i lokalizacja"
+            }
+          },
+          {
+            "_key": "gktxrmbq",
+            "applications": {
+              "_type": "localeStringArray",
+              "en": [
+                "Analytics dashboard",
+                "Real-time reports",
+                "Data export",
+                "Data visualization"
+              ],
+              "pl": [
+                "Dashboard analityczny",
+                "Raporty w czasie rzeczywistym",
+                "Eksport danych",
+                "Wizualizacja danych"
+              ]
+            },
+            "description": {
+              "_type": "localeText",
+              "en": "",
+              "pl": ""
+            },
+            "effect": {
+              "_type": "localeText",
+              "en": "",
+              "pl": ""
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Data analysis",
+              "pl": "Analiza danych"
+            }
+          },
+          {
+            "_key": "o8etjr9d",
+            "applications": {
+              "_type": "localeStringArray",
+              "en": [
+                "Themes and color schemes",
+                "Interface customization",
+                "User preferences",
+                "Dark mode"
+              ],
+              "pl": [
+                "Motywy i kolorystyka",
+                "Dostosowanie interfejsu",
+                "Preferencje użytkownika",
+                "Tryb ciemny"
+              ]
+            },
+            "description": {
+              "_type": "localeText",
+              "en": "",
+              "pl": ""
+            },
+            "effect": {
+              "_type": "localeText",
+              "en": "",
+              "pl": ""
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "UX personalization",
+              "pl": "Personalizacja UX"
+            }
+          }
+        ],
+        "sectionKey": "modules",
+        "title": {
+          "_type": "localeString",
+          "en": "Web application modules",
+          "pl": "Moduły aplikacji webowej"
+        }
+      },
+      {
+        "_key": "amcy7xj7",
+        "_type": "ctaBlock",
+        "buttonLink": "/kontakt",
+        "buttonText": {
+          "_type": "localeString",
+          "en": "Let's talk about your project",
+          "pl": "Porozmawiajmy o projekcie"
+        },
+        "description": {
+          "_type": "localeText",
+          "en": "Contact us to discuss your project and learn how we can help grow your business.",
+          "pl": "Skontaktuj się z nami, aby omówić Twój projekt i dowiedzieć się, jak możemy pomóc w rozwoju Twojego biznesu."
+        },
+        "email": "kontakt@cetuspro.pl",
+        "sectionKey": "cta",
+        "title": {
+          "_type": "localeString",
+          "en": "Ready to get started?",
+          "pl": "Gotowy na start?"
+        }
+      }
+    ],
+    "slug": {
+      "_type": "slug",
+      "current": "aplikacje-webowe"
+    },
+    "title": {
+      "_type": "localeString",
+      "en": "Web applications",
+      "pl": "Aplikacje webowe"
+    }
+  },
+  {
+    "_createdAt": "2026-04-24T11:37:34Z",
+    "_id": "servicePage-cetus-venture-capital",
+    "_rev": "k1bovl3XmM6yRht40lBlt9",
+    "_type": "servicePage",
+    "_updatedAt": "2026-04-24T11:46:28Z",
+    "heroButtonLink": "/kontakt",
+    "heroButtonText": {
+      "_type": "localeString",
+      "en": "Submit a startup",
+      "pl": "Zgłoś startup"
+    },
+    "heroDescription": {
+      "_type": "localeText",
+      "en": "We invest in promising technology startups. Not only capital - but also mentoring, contacts and technical support.",
+      "pl": "Inwestujemy w obiecujące startupy technologiczne. Nie tylko kapitał - ale także mentoring, kontakty i wsparcie techniczne."
+    },
+    "heroTitle": {
+      "_type": "localeString",
+      "en": "Cetus Venture Capital",
+      "pl": "Cetus Venture Capital"
+    },
+    "sections": [
+      {
+        "_key": "ad964dr3",
+        "_type": "gridSection",
+        "description": {
+          "_type": "localeText",
+          "en": "",
+          "pl": ""
+        },
+        "items": [
+          {
+            "_key": "l6hme9f4",
+            "description": {
+              "_type": "localeText",
+              "en": "We provide funding tailored to your startup's stage of development - from seed to Series A and beyond.",
+              "pl": "Zapewniamy finansowanie dostosowane do etapu rozwoju Twojego startupu - od seed do Series A i dalej."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Capital for growth",
+              "pl": "Kapitał na rozwój"
+            }
+          },
+          {
+            "_key": "7ryt0m3d",
+            "description": {
+              "_type": "localeText",
+              "en": "Our team of experts supports you in key business and technology decisions.",
+              "pl": "Nasz zespół ekspertów wspiera Cię w kluczowych decyzjach biznesowych i technologicznych."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Mentoring and advisory",
+              "pl": "Mentoring i doradztwo"
+            }
+          },
+          {
+            "_key": "taavsivr",
+            "description": {
+              "_type": "localeText",
+              "en": "You gain access to our network of partners, investors and potential customers.",
+              "pl": "Zyskujesz dostęp do naszej sieci partnerów, inwestorów i potencjalnych klientów."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Network of contacts",
+              "pl": "Sieć kontaktów"
+            }
+          },
+          {
+            "_key": "hlg6ngkw",
+            "description": {
+              "_type": "localeText",
+              "en": "We help build and scale a technology product at the highest level.",
+              "pl": "Pomagamy w budowie i skalowaniu produktu technologicznego na najwyższym poziomie."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Technical support",
+              "pl": "Wsparcie techniczne"
+            }
+          }
+        ],
+        "sectionKey": "benefits",
+        "title": {
+          "_type": "localeString",
+          "en": "What we offer",
+          "pl": "Co oferujemy"
+        }
+      },
+      {
+        "_key": "h3o1peoc",
+        "_type": "tabsSection",
+        "description": {
+          "_type": "localeText",
+          "en": "",
+          "pl": ""
+        },
+        "items": [
+          {
+            "_key": "wvyclrxo",
+            "applications": {
+              "_type": "localeStringArray",
+              "en": [
+                "50k - 500k PLN"
+              ],
+              "pl": [
+                "50k - 500k PLN"
+              ]
+            },
+            "description": {
+              "_type": "localeText",
+              "en": "Funding at the beginning of the journey - from idea to first customers.",
+              "pl": "Finansowanie na początku drogi - od pomysłu do pierwszych klientów."
+            },
+            "effect": {
+              "_type": "localeText",
+              "en": "",
+              "pl": ""
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Pre-seed & Seed",
+              "pl": "Pre-seed & Seed"
+            }
+          },
+          {
+            "_key": "szgjaotj",
+            "applications": {
+              "_type": "localeStringArray",
+              "en": [
+                "500k - 5M PLN"
+              ],
+              "pl": [
+                "500k - 5M PLN"
+              ]
+            },
+            "description": {
+              "_type": "localeText",
+              "en": "Support in scaling the business and conquering the market.",
+              "pl": "Wsparcie w skalowaniu biznesu i zdobywaniu rynku."
+            },
+            "effect": {
+              "_type": "localeText",
+              "en": "",
+              "pl": ""
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Series A",
+              "pl": "Series A"
+            }
+          },
+          {
+            "_key": "g3uxgxgk",
+            "applications": {
+              "_type": "localeStringArray",
+              "en": [
+                "5M+ PLN"
+              ],
+              "pl": [
+                "5M+ PLN"
+              ]
+            },
+            "description": {
+              "_type": "localeText",
+              "en": "Capital for international expansion and team development.",
+              "pl": "Kapitał na ekspansję międzynarodową i rozwój zespołu."
+            },
+            "effect": {
+              "_type": "localeText",
+              "en": "",
+              "pl": ""
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Growth Stage",
+              "pl": "Growth Stage"
+            }
+          }
+        ],
+        "sectionKey": "phases",
+        "title": {
+          "_type": "localeString",
+          "en": "Investment stages",
+          "pl": "Etapy inwestycji"
+        }
+      },
+      {
+        "_key": "7hwun9t4",
+        "_type": "gridSection",
+        "description": {
+          "_type": "localeText",
+          "en": "",
+          "pl": ""
+        },
+        "items": [
+          {
+            "_key": "l85dqq6n",
+            "description": {
+              "_type": "localeText",
+              "en": "We are looking for startups with a unique product solving a real problem.",
+              "pl": "Szukamy startupów z unikalnym produktem rozwiązującym realny problem."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Innovative idea",
+              "pl": "Innowacyjny pomysł"
+            }
+          },
+          {
+            "_key": "c4vksd2a",
+            "description": {
+              "_type": "localeText",
+              "en": "We invest in people - a team with complementary competencies and passion.",
+              "pl": "Inwestujemy w ludzi - zespół z komplementarnymi kompetencjami i pasją."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Strong team",
+              "pl": "Silny zespół"
+            }
+          },
+          {
+            "_key": "2kbr4cfy",
+            "description": {
+              "_type": "localeText",
+              "en": "Startups with a clear path to scalability and a large market.",
+              "pl": "Startupy z jasną ścieżką do skalowalności i dużego rynku."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Growth potential",
+              "pl": "Potencjał wzrostu"
+            }
+          },
+          {
+            "_key": "uhos1lq8",
+            "description": {
+              "_type": "localeText",
+              "en": "Projects consistent with our technological specialization.",
+              "pl": "Projekty zgodne z naszą specjalizacją technologiczną."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Strategic fit",
+              "pl": "Dopasowanie strategiczne"
+            }
+          }
+        ],
+        "sectionKey": "criteria",
+        "title": {
+          "_type": "localeString",
+          "en": "Investment criteria",
+          "pl": "Kryteria inwestycji"
+        }
+      },
+      {
+        "_key": "cjobcbln",
+        "_type": "gridSection",
+        "description": {
+          "_type": "localeText",
+          "en": "Our investments",
+          "pl": "Nasze inwestycje"
+        },
+        "items": [
+          {
+            "_key": "zogtft9k",
+            "description": {
+              "_type": "localeText",
+              "en": "AI platform for business process automation",
+              "pl": "Platforma AI do automatyzacji procesów biznesowych"
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "TechStart AI (Series A)",
+              "pl": "TechStart AI (Series A)"
+            }
+          },
+          {
+            "_key": "wayyecof",
+            "description": {
+              "_type": "localeText",
+              "en": "App connecting patients with specialist doctors",
+              "pl": "Aplikacja łącząca pacjentów z lekarzami specjalistami"
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "HealthConnect (Seed)",
+              "pl": "HealthConnect (Seed)"
+            }
+          },
+          {
+            "_key": "sa2639uw",
+            "description": {
+              "_type": "localeText",
+              "en": "Ecological last-mile delivery platform",
+              "pl": "Ekologiczna platforma dostaw last-mile"
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "EcoDelivery (Pre-seed)",
+              "pl": "EcoDelivery (Pre-seed)"
+            }
+          }
+        ],
+        "sectionKey": "portfolio",
+        "title": {
+          "_type": "localeString",
+          "en": "Portfolio",
+          "pl": "Portfolio"
+        }
+      }
+    ],
+    "slug": {
+      "_type": "slug",
+      "current": "cetus-venture-capital"
+    },
+    "title": {
+      "_type": "localeString",
+      "en": "Cetus Venture Capital",
+      "pl": "Cetus Venture Capital"
+    }
+  },
+  {
+    "_createdAt": "2026-04-24T11:37:34Z",
+    "_id": "servicePage-cybersecurity",
+    "_rev": "k1bovl3XmM6yRht40lBlt9",
+    "_type": "servicePage",
+    "_updatedAt": "2026-04-24T11:46:28Z",
+    "heroButtonLink": "/kontakt",
+    "heroButtonText": {
+      "_type": "localeString",
+      "en": "Let's talk about security",
+      "pl": "Porozmawiajmy o bezpieczeństwie"
+    },
+    "heroDescription": {
+      "_type": "localeText",
+      "en": "We protect your company from cyber threats with advanced security solutions, audits and continuous monitoring.",
+      "pl": "Chronimy Twoją firmę przed cyberzagrożeniami dzięki zaawansowanym rozwiązaniom bezpieczeństwa, audytom i ciągłemu monitoringowi."
+    },
+    "heroTitle": {
+      "_type": "localeString",
+      "en": "Comprehensive cybersecurity protection for your company",
+      "pl": "Kompleksowa ochrona cybernetyczna dla Twojej firmy"
+    },
+    "sections": [
+      {
+        "_key": "rm3rxc2i",
+        "_type": "gridSection",
+        "description": {
+          "_type": "localeText",
+          "en": "Comprehensive cybersecurity protection tailored to your company needs",
+          "pl": "Kompleksowa ochrona cybernetyczna dostosowana do potrzeb Twojej firmy"
+        },
+        "items": [
+          {
+            "_key": "xcmnvdhm",
+            "description": {
+              "_type": "localeText",
+              "en": "Comprehensive protection of your infrastructure from the latest cyber threats, including ransomware, phishing and DDoS attacks.",
+              "pl": "Kompleksowa ochrona Twojej infrastruktury przed najnowszymi zagrożeniami cybernetycznymi, w tym ransomware, phishing i atakami DDoS."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Protection against cyber attacks",
+              "pl": "Ochrona przed cyberatakami"
+            }
+          },
+          {
+            "_key": "m793142d",
+            "description": {
+              "_type": "localeText",
+              "en": "We help meet GDPR, ISO 27001 and other security standards, protecting personal data and sensitive information.",
+              "pl": "Pomagamy spełnić wymagania RODO, ISO 27001 i innych standardów bezpieczeństwa, chroniąc dane osobowe i wrażliwe informacje."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Regulatory compliance",
+              "pl": "Zgodność z przepisami"
+            }
+          },
+          {
+            "_key": "bgbnxjzc",
+            "description": {
+              "_type": "localeText",
+              "en": "24/7 security monitoring with automatic incident detection and response, ensuring peace of mind.",
+              "pl": "24/7 monitoring bezpieczeństwa z automatycznym wykrywaniem i reagowaniem na incydenty, zapewniający spokój ducha."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Continuous monitoring",
+              "pl": "Ciągły monitoring"
+            }
+          },
+          {
+            "_key": "1hw0q5o2",
+            "description": {
+              "_type": "localeText",
+              "en": "We educate your team on security best practices, creating the first line of defense against cyber threats.",
+              "pl": "Edukujemy Twój zespół w zakresie najlepszych praktyk bezpieczeństwa, tworząc pierwszą linię obrony przed cyberzagrożeniami."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Training and awareness",
+              "pl": "Szkolenia i świadomość"
+            }
+          }
+        ],
+        "sectionKey": "benefits",
+        "title": {
+          "_type": "localeString",
+          "en": "Why choose our solutions?",
+          "pl": "Dlaczego warto wybrać nasze rozwiązania?"
+        }
+      },
+      {
+        "_key": "3w7pel3a",
+        "_type": "tabsSection",
+        "description": {
+          "_type": "localeText",
+          "en": "Comprehensive protection of your company against cyber threats",
+          "pl": "Kompleksowa ochrona Twojej firmy przed zagrożeniami cybernetycznymi"
+        },
+        "items": [
+          {
+            "_key": "jizght89",
+            "applications": {
+              "_type": "localeStringArray",
+              "en": [
+                "IT infrastructure analysis",
+                "Security policies review",
+                "Penetration testing",
+                "GDPR compliance assessment",
+                "Vulnerability analysis",
+                "Improvement recommendations"
+              ],
+              "pl": [
+                "Analiza infrastruktury IT",
+                "Przegląd polityk bezpieczeństwa",
+                "Testy penetracyjne",
+                "Ocena zgodności z RODO",
+                "Analiza podatności",
+                "Rekomendacje poprawy"
+              ]
+            },
+            "description": {
+              "_type": "localeText",
+              "en": "Comprehensive security assessment with detailed report and recommendations",
+              "pl": "Kompleksowa ocena bezpieczeństwa z szczegółowym raportem i rekomendacjami"
+            },
+            "effect": {
+              "_type": "localeText",
+              "en": "Comprehensive security assessment with detailed report and recommendations",
+              "pl": "Kompleksowa ocena bezpieczeństwa z szczegółowym raportem i rekomendacjami"
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Security audits",
+              "pl": "Audyty bezpieczeństwa"
+            }
+          },
+          {
+            "_key": "r0dmf05w",
+            "applications": {
+              "_type": "localeStringArray",
+              "en": [
+                "Web application testing",
+                "Mobile application testing",
+                "Network infrastructure testing",
+                "Social engineering testing",
+                "Physical security testing",
+                "Reporting and recommendations"
+              ],
+              "pl": [
+                "Testy aplikacji webowych",
+                "Testy aplikacji mobilnych",
+                "Testy infrastruktury sieciowej",
+                "Testy socjotechniczne",
+                "Testy fizycznego bezpieczeństwa",
+                "Raportowanie i rekomendacje"
+              ]
+            },
+            "description": {
+              "_type": "localeText",
+              "en": "Identification of real vulnerabilities before attackers",
+              "pl": "Identyfikacja rzeczywistych podatności przed atakującymi"
+            },
+            "effect": {
+              "_type": "localeText",
+              "en": "Identification of real vulnerabilities before attackers",
+              "pl": "Identyfikacja rzeczywistych podatności przed atakującymi"
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Penetration testing",
+              "pl": "Testy penetracyjne"
+            }
+          },
+          {
+            "_key": "r1ko7j9l",
+            "applications": {
+              "_type": "localeStringArray",
+              "en": [
+                "Real-time threat detection",
+                "Automatic incident response",
+                "Log and event analysis",
+                "Alerts and notifications",
+                "Security reports",
+                "Integration with existing systems"
+              ],
+              "pl": [
+                "Wykrywanie zagrożeń w czasie rzeczywistym",
+                "Automatyczne reagowanie na incydenty",
+                "Analiza logów i zdarzeń",
+                "Alerty i powiadomienia",
+                "Raporty bezpieczeństwa",
+                "Integracja z istniejącymi systemami"
+              ]
+            },
+            "description": {
+              "_type": "localeText",
+              "en": "Continuous protection with automatic threat detection",
+              "pl": "Ciągła ochrona z automatycznym wykrywaniem zagrożeń"
+            },
+            "effect": {
+              "_type": "localeText",
+              "en": "Continuous protection with automatic threat detection",
+              "pl": "Ciągła ochrona z automatycznym wykrywaniem zagrożeń"
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Security monitoring",
+              "pl": "Monitoring bezpieczeństwa"
+            }
+          },
+          {
+            "_key": "gypozpsj",
+            "applications": {
+              "_type": "localeStringArray",
+              "en": [
+                "GDPR compliance audit",
+                "Documentation preparation",
+                "Procedure implementation",
+                "Employee training",
+                "Incident reporting support",
+                "Compliance updates"
+              ],
+              "pl": [
+                "Audyt zgodności z RODO",
+                "Przygotowanie dokumentacji",
+                "Wdrożenie procedur",
+                "Szkolenia dla pracowników",
+                "Wsparcie w raportowaniu incydentów",
+                "Aktualizacja zgodności"
+              ]
+            },
+            "description": {
+              "_type": "localeText",
+              "en": "Full compliance with personal data protection regulations",
+              "pl": "Pełna zgodność z przepisami ochrony danych osobowych"
+            },
+            "effect": {
+              "_type": "localeText",
+              "en": "Full compliance with personal data protection regulations",
+              "pl": "Pełna zgodność z przepisami ochrony danych osobowych"
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "GDPR compliance",
+              "pl": "Zgodność z RODO"
+            }
+          },
+          {
+            "_key": "liiejsxk",
+            "applications": {
+              "_type": "localeStringArray",
+              "en": [
+                "Cybersecurity awareness",
+                "Phishing recognition",
+                "Secure passwords and authentication",
+                "Personal data protection",
+                "Incident management",
+                "Security best practices"
+              ],
+              "pl": [
+                "Świadomość cyberbezpieczeństwa",
+                "Rozpoznawanie phishingu",
+                "Bezpieczne hasła i uwierzytelnianie",
+                "Ochrona danych osobowych",
+                "Zarządzanie incydentami",
+                "Najlepsze praktyki bezpieczeństwa"
+              ]
+            },
+            "description": {
+              "_type": "localeText",
+              "en": "Increased awareness and team skills in the field of security",
+              "pl": "Zwiększona świadomość i umiejętności zespołu w zakresie bezpieczeństwa"
+            },
+            "effect": {
+              "_type": "localeText",
+              "en": "Increased awareness and team skills in the field of security",
+              "pl": "Zwiększona świadomość i umiejętności zespołu w zakresie bezpieczeństwa"
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Security training",
+              "pl": "Szkolenia bezpieczeństwa"
+            }
+          }
+        ],
+        "sectionKey": "services",
+        "title": {
+          "_type": "localeString",
+          "en": "Our services",
+          "pl": "Nasze usługi"
+        }
+      },
+      {
+        "_key": "gsyx0qe6",
+        "_type": "caseStudyBlock",
+        "goal": {
+          "_type": "localeText",
+          "en": "",
+          "pl": ""
+        },
+        "results": {
+          "_type": "localeStringArray",
+          "en": [
+            "100% GDPR compliance",
+            "60% reduction in security incidents",
+            "24/7 monitoring deployed",
+            "Training for 200+ employees"
+          ],
+          "pl": [
+            "100% zgodność z RODO",
+            "60% redukcja incydentów bezpieczeństwa",
+            "24/7 monitoring wdrożony",
+            "Szkolenia dla 200+ pracowników"
+          ]
+        },
+        "sectionKey": "caseStudy",
+        "solution": {
+          "_type": "localeText",
+          "en": "",
+          "pl": ""
+        },
+        "title": {
+          "_type": "localeString",
+          "en": "Case study",
+          "pl": "Case study"
+        }
+      }
+    ],
+    "slug": {
+      "_type": "slug",
+      "current": "cybersecurity"
+    },
+    "title": {
+      "_type": "localeString",
+      "en": "Cybersecurity",
+      "pl": "Cybersecurity"
+    }
+  },
+  {
+    "_createdAt": "2026-04-24T11:37:34Z",
+    "_id": "servicePage-outsourcing-programistow",
+    "_rev": "k1bovl3XmM6yRht40lBlt9",
+    "_type": "servicePage",
+    "_updatedAt": "2026-04-24T11:46:28Z",
+    "heroButtonLink": "/kontakt",
+    "heroButtonText": {
+      "_type": "localeString",
+      "en": "Let's talk about the project",
+      "pl": "Porozmawiajmy o projekcie"
+    },
+    "heroDescription": {
+      "_type": "localeText",
+      "en": "Strengthen your team with experienced specialists or entrust us with the entire project. Flexibly, efficiently, professionally.",
+      "pl": "Wzmocnij swój zespół doświadczonymi specjalistami lub powierz nam cały projekt. Elastycznie, efektywnie, profesjonalnie."
+    },
+    "heroTitle": {
+      "_type": "localeString",
+      "en": "Developer outsourcing for your project",
+      "pl": "Outsourcing programistów dla Twojego projektu"
+    },
+    "sections": [
+      {
+        "_key": "s9htxkqb",
+        "_type": "gridSection",
+        "description": {
+          "_type": "localeText",
+          "en": "",
+          "pl": ""
+        },
+        "items": [
+          {
+            "_key": "hap9z3h8",
+            "description": {
+              "_type": "localeText",
+              "en": "Reduce operational costs by up to 40% while maintaining the highest quality of projects delivered.",
+              "pl": "Zmniejsz koszty operacyjne nawet o 40% przy zachowaniu najwyższej jakości realizowanych projektów."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Cost reduction",
+              "pl": "Redukcja kosztów"
+            }
+          },
+          {
+            "_key": "f4rw2xz4",
+            "description": {
+              "_type": "localeText",
+              "en": "Work with experienced specialists from various IT fields without a lengthy recruitment process.",
+              "pl": "Współpracuj z doświadczonymi specjalistami z różnych dziedzin IT bez długotrwałego procesu rekrutacji."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Access to experts",
+              "pl": "Dostęp do ekspertów"
+            }
+          },
+          {
+            "_key": "304b8v6i",
+            "description": {
+              "_type": "localeText",
+              "en": "Easily adjust the team to current project needs - scale up or down without commitments.",
+              "pl": "Łatwo dostosuj zespół do aktualnych potrzeb projektu - powiększaj lub zmniejszaj bez zobowiązań."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Flexibility and scalability",
+              "pl": "Elastyczność i skalowalność"
+            }
+          },
+          {
+            "_key": "4g3fw4gl",
+            "description": {
+              "_type": "localeText",
+              "en": "Focus on business development and we will take care of the technical aspects of your project.",
+              "pl": "Skup się na rozwoju biznesu, a my zajmiemy się technicznymi aspektami Twojego projektu."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Focus on business",
+              "pl": "Fokus na biznes"
+            }
+          }
+        ],
+        "sectionKey": "benefits",
+        "title": {
+          "_type": "localeString",
+          "en": "Outsourcing benefits",
+          "pl": "Korzyści z outsourcingu"
+        }
+      },
+      {
+        "_key": "craj827w",
+        "_type": "gridSection",
+        "description": {
+          "_type": "localeText",
+          "en": "",
+          "pl": ""
+        },
+        "items": [
+          {
+            "_key": "5kz9us00",
+            "description": {
+              "_type": "localeText",
+              "en": "Hand over the entire project to us - from requirements analysis, through design and implementation, to deployment and support. An ideal solution for companies that want to focus on business.",
+              "pl": "Przekaż nam cały projekt - od analizy wymagań, przez projektowanie i implementację, aż po wdrożenie i wsparcie. Idealne rozwiązanie dla firm, które chcą skupić się na biznesie."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Project outsourcing",
+              "pl": "Outsourcing projektowy"
+            }
+          },
+          {
+            "_key": "p9ietivp",
+            "description": {
+              "_type": "localeText",
+              "en": "We supplement your team with specialists with specific competencies. They work as an integral part of your team, following your processes and methodologies.",
+              "pl": "Uzupełniamy Twój zespół o specjalistów z konkretnymi kompetencjami. Pracują jako integralna część Twojego zespołu, według Twoich procesów i metodologii."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "IT Staff Augmentation",
+              "pl": "IT Staff Augmentation"
+            }
+          },
+          {
+            "_key": "zn3q148r",
+            "description": {
+              "_type": "localeText",
+              "en": "You get a dedicated team that works exclusively on your projects. Full control and transparency while maintaining the flexibility of outsourcing.",
+              "pl": "Otrzymujesz dedykowany zespół, który pracuje wyłącznie nad Twoimi projektami. Pełna kontrola i transparentność przy zachowaniu elastyczności outsourcingu."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Dedicated Team",
+              "pl": "Dedicated Team"
+            }
+          }
+        ],
+        "sectionKey": "models",
+        "title": {
+          "_type": "localeString",
+          "en": "Cooperation models",
+          "pl": "Modele współpracy"
+        }
+      },
+      {
+        "_key": "0qbexebo",
+        "_type": "checklistSection",
+        "description": {
+          "_type": "localeText",
+          "en": "",
+          "pl": ""
+        },
+        "items": {
+          "_type": "localeStringArray",
+          "en": [
+            "React",
+            "Next.js",
+            "Vue.js",
+            "Angular",
+            "TypeScript"
+          ],
+          "pl": [
+            "React",
+            "Next.js",
+            "Vue.js",
+            "Angular",
+            "TypeScript"
+          ]
+        },
+        "sectionKey": "technologies-frontend",
+        "title": {
+          "_type": "localeString",
+          "en": "Technologies: Frontend",
+          "pl": "Technologie: Frontend"
+        }
+      },
+      {
+        "_key": "1sajrqbu",
+        "_type": "checklistSection",
+        "description": {
+          "_type": "localeText",
+          "en": "",
+          "pl": ""
+        },
+        "items": {
+          "_type": "localeStringArray",
+          "en": [
+            "Node.js",
+            "Python",
+            "Java",
+            ".NET",
+            "PHP"
+          ],
+          "pl": [
+            "Node.js",
+            "Python",
+            "Java",
+            ".NET",
+            "PHP"
+          ]
+        },
+        "sectionKey": "technologies-backend",
+        "title": {
+          "_type": "localeString",
+          "en": "Technologies: Backend",
+          "pl": "Technologie: Backend"
+        }
+      },
+      {
+        "_key": "grvr7l17",
+        "_type": "checklistSection",
+        "description": {
+          "_type": "localeText",
+          "en": "",
+          "pl": ""
+        },
+        "items": {
+          "_type": "localeStringArray",
+          "en": [
+            "React Native",
+            "Flutter",
+            "iOS Native",
+            "Android Native"
+          ],
+          "pl": [
+            "React Native",
+            "Flutter",
+            "iOS Native",
+            "Android Native"
+          ]
+        },
+        "sectionKey": "technologies-mobile",
+        "title": {
+          "_type": "localeString",
+          "en": "Technologies: Mobile",
+          "pl": "Technologie: Mobile"
+        }
+      },
+      {
+        "_key": "8o5bj360",
+        "_type": "checklistSection",
+        "description": {
+          "_type": "localeText",
+          "en": "",
+          "pl": ""
+        },
+        "items": {
+          "_type": "localeStringArray",
+          "en": [
+            "AWS",
+            "Azure",
+            "Docker",
+            "Kubernetes",
+            "CI/CD"
+          ],
+          "pl": [
+            "AWS",
+            "Azure",
+            "Docker",
+            "Kubernetes",
+            "CI/CD"
+          ]
+        },
+        "sectionKey": "technologies-devops",
+        "title": {
+          "_type": "localeString",
+          "en": "Technologies: DevOps & Cloud",
+          "pl": "Technologie: DevOps & Cloud"
+        }
+      }
+    ],
+    "slug": {
+      "_type": "slug",
+      "current": "outsourcing-programistow"
+    },
+    "title": {
+      "_type": "localeString",
+      "en": "Developer outsourcing",
+      "pl": "Outsourcing programistów"
+    }
+  },
+  {
+    "_createdAt": "2026-04-24T11:37:34Z",
+    "_id": "servicePage-transformacja-technologiczna",
+    "_rev": "k1bovl3XmM6yRht40lBlt9",
+    "_type": "servicePage",
+    "_updatedAt": "2026-04-24T11:46:28Z",
+    "heroButtonLink": "/kontakt",
+    "heroButtonText": {
+      "_type": "localeString",
+      "en": "Let's talk about the project",
+      "pl": "Porozmawiajmy o projekcie"
+    },
+    "heroDescription": {
+      "_type": "localeText",
+      "en": "We will guide your company through a comprehensive digital transformation. From audit to implementation of modern solutions.",
+      "pl": "Przeprowadzimy Twoją firmę przez kompleksową transformację cyfrową. Od audytu po wdrożenie nowoczesnych rozwiązań."
+    },
+    "heroTitle": {
+      "_type": "localeString",
+      "en": "Technological transformation of your company",
+      "pl": "Transformacja technologiczna Twojej firmy"
+    },
+    "sections": [
+      {
+        "_key": "1hpxz442",
+        "_type": "gridSection",
+        "description": {
+          "_type": "localeText",
+          "en": "",
+          "pl": ""
+        },
+        "items": [
+          {
+            "_key": "75uspw6b",
+            "description": {
+              "_type": "localeText",
+              "en": "Modern technologies automate processes and eliminate repetitive tasks, increasing team productivity.",
+              "pl": "Nowoczesne technologie automatyzują procesy i eliminują powtarzalne zadania, zwiększając produktywność zespołu."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Increased efficiency",
+              "pl": "Zwiększona efektywność"
+            }
+          },
+          {
+            "_key": "sn8b643q",
+            "description": {
+              "_type": "localeText",
+              "en": "Technological transformation allows you to stay ahead of the competition and better respond to customer needs.",
+              "pl": "Transformacja technologiczna pozwala wyprzedzić konkurencję i lepiej odpowiadać na potrzeby klientów."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Market competitiveness",
+              "pl": "Konkurencyjność rynkowa"
+            }
+          },
+          {
+            "_key": "vnsb9zhg",
+            "description": {
+              "_type": "localeText",
+              "en": "Flexible IT infrastructure enables smooth company development without technical limitations.",
+              "pl": "Elastyczna infrastruktura IT umożliwia płynny rozwój firmy bez ograniczeń technicznych."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Business scalability",
+              "pl": "Skalowalność biznesu"
+            }
+          },
+          {
+            "_key": "5xxf3t27",
+            "description": {
+              "_type": "localeText",
+              "en": "System optimization and cloud migration significantly reduce operational expenses.",
+              "pl": "Optymalizacja systemów i migracja do chmury znacząco redukują wydatki operacyjne."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Cost reduction",
+              "pl": "Obniżenie kosztów"
+            }
+          }
+        ],
+        "sectionKey": "benefits",
+        "title": {
+          "_type": "localeString",
+          "en": "Benefits of transformation",
+          "pl": "Korzyści z transformacji"
+        }
+      },
+      {
+        "_key": "c29yx2wi",
+        "_type": "gridSection",
+        "description": {
+          "_type": "localeText",
+          "en": "",
+          "pl": ""
+        },
+        "items": [
+          {
+            "_key": "7wpyfvaq",
+            "description": {
+              "_type": "localeText",
+              "en": "Comprehensive analysis of the current IT infrastructure, identification of bottlenecks and areas requiring modernization.",
+              "pl": "Kompleksowa analiza obecnej infrastruktury IT, identyfikacja wąskich gardeł i obszarów wymagających modernizacji."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Technology audit",
+              "pl": "Audyt technologiczny"
+            }
+          },
+          {
+            "_key": "l2ihj8v3",
+            "description": {
+              "_type": "localeText",
+              "en": "Secure migration of applications and data to the cloud environment while ensuring business continuity.",
+              "pl": "Bezpieczne przeniesienie aplikacji i danych do środowiska chmurowego z zapewnieniem ciągłości działania."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Cloud migration",
+              "pl": "Migracja do chmury"
+            }
+          },
+          {
+            "_key": "8h67lcqg",
+            "description": {
+              "_type": "localeText",
+              "en": "Legacy code refactoring, framework updates and implementation of modern architectures.",
+              "pl": "Refaktoryzacja legacy code, aktualizacja frameworków i wdrożenie nowoczesnych architektur."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Application modernization",
+              "pl": "Modernizacja aplikacji"
+            }
+          },
+          {
+            "_key": "xtanmjsb",
+            "description": {
+              "_type": "localeText",
+              "en": "CI/CD implementation, deployment automation and introduction of DevOps practices.",
+              "pl": "Implementacja CI/CD, automatyzacja deploymentów i wprowadzenie praktyk DevOps."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Process automation",
+              "pl": "Automatyzacja procesów"
+            }
+          },
+          {
+            "_key": "03ecizrw",
+            "description": {
+              "_type": "localeText",
+              "en": "Strengthening security, implementing best practices and ensuring regulatory compliance.",
+              "pl": "Wzmocnienie zabezpieczeń, implementacja najlepszych praktyk i zapewnienie zgodności z regulacjami."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "IT security",
+              "pl": "Bezpieczeństwo IT"
+            }
+          }
+        ],
+        "sectionKey": "services",
+        "title": {
+          "_type": "localeString",
+          "en": "Our services",
+          "pl": "Nasze usługi"
+        }
+      },
+      {
+        "_key": "27zxj924",
+        "_type": "stepsSection",
+        "description": {
+          "_type": "localeText",
+          "en": "",
+          "pl": ""
+        },
+        "sectionKey": "process",
+        "steps": [
+          {
+            "_key": "0njo874u",
+            "description": {
+              "_type": "localeText",
+              "en": "Thorough assessment of the current infrastructure and identification of areas for improvement",
+              "pl": "Dokładna ocena obecnej infrastruktury i zidentyfikowanie obszarów do poprawy"
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Audit and analysis",
+              "pl": "Audyt i analiza"
+            }
+          },
+          {
+            "_key": "367zducc",
+            "description": {
+              "_type": "localeText",
+              "en": "Development of a detailed action plan tailored to business goals",
+              "pl": "Opracowanie szczegółowego planu działania dostosowanego do celów biznesowych"
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Transformation strategy",
+              "pl": "Strategia transformacji"
+            }
+          },
+          {
+            "_key": "plcuayhy",
+            "description": {
+              "_type": "localeText",
+              "en": "Gradual implementation of changes while maintaining systems continuity",
+              "pl": "Stopniowe wdrażanie zmian z zachowaniem ciągłości działania systemów"
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Implementation",
+              "pl": "Implementacja"
+            }
+          },
+          {
+            "_key": "rpek7pzr",
+            "description": {
+              "_type": "localeText",
+              "en": "Performance monitoring and continuous improvement of implemented solutions",
+              "pl": "Monitorowanie wydajności i ciągłe doskonalenie wdrożonych rozwiązań"
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Optimization",
+              "pl": "Optymalizacja"
+            }
+          }
+        ],
+        "title": {
+          "_type": "localeString",
+          "en": "Transformation process",
+          "pl": "Proces transformacji"
+        }
+      },
+      {
+        "_key": "679m884u",
+        "_type": "caseStudyBlock",
+        "goal": {
+          "_type": "localeText",
+          "en": "IT infrastructure modernization and improvement of operational efficiency",
+          "pl": "Modernizacja infrastruktury IT i poprawa efektywności operacyjnej"
+        },
+        "results": {
+          "_type": "localeStringArray",
+          "en": [
+            "60% reduction in IT infrastructure costs",
+            "3x faster deployment of new features",
+            "99.9% availability of critical systems",
+            "Full deployment process automation"
+          ],
+          "pl": [
+            "60% redukcja kosztów infrastruktury IT",
+            "3x szybsze wdrażanie nowych funkcjonalności",
+            "99.9% dostępność systemów krytycznych",
+            "Pełna automatyzacja procesów deployment"
+          ]
+        },
+        "sectionKey": "caseStudy",
+        "solution": {
+          "_type": "localeText",
+          "en": "Comprehensive transformation: cloud migration, application modernization, process automation",
+          "pl": "Kompleksowa transformacja: migracja do chmury, modernizacja aplikacji, automatyzacja procesów"
+        },
+        "title": {
+          "_type": "localeString",
+          "en": "Case study: Manufacturing company",
+          "pl": "Case study: Firma produkcyjna"
+        }
+      }
+    ],
+    "slug": {
+      "_type": "slug",
+      "current": "transformacja-technologiczna"
+    },
+    "title": {
+      "_type": "localeString",
+      "en": "Technological transformation",
+      "pl": "Transformacja technologiczna"
+    }
+  },
+  {
+    "_createdAt": "2026-04-24T11:37:34Z",
+    "_id": "servicePage-ui-ux-design",
+    "_rev": "k1bovl3XmM6yRht40lBlt9",
+    "_type": "servicePage",
+    "_updatedAt": "2026-04-24T11:46:28Z",
+    "heroButtonLink": "/kontakt",
+    "heroButtonText": {
+      "_type": "localeString",
+      "en": "Let's talk about the project",
+      "pl": "Porozmawiajmy o projekcie"
+    },
+    "heroDescription": {
+      "_type": "localeText",
+      "en": "We create modern, intuitive and aesthetic UX/UI designs that combine design with functionality.",
+      "pl": "Tworzymy nowoczesne, intuicyjne i estetyczne projekty UX/UI, które łączą design z funkcjonalnością."
+    },
+    "heroTitle": {
+      "_type": "localeString",
+      "en": "We design interfaces users love",
+      "pl": "Projektujemy interfejsy, które użytkownicy kochają"
+    },
+    "sections": [
+      {
+        "_key": "tqnm1klb",
+        "_type": "gridSection",
+        "description": {
+          "_type": "localeText",
+          "en": "",
+          "pl": ""
+        },
+        "items": [
+          {
+            "_key": "1nfvr1jp",
+            "description": {
+              "_type": "localeText",
+              "en": "We create unique interfaces tailored to your brand and user needs, ensuring visual and functional consistency across all platforms.",
+              "pl": "Tworzymy unikalne interfejsy dopasowane do Twojej marki i potrzeb użytkowników, zapewniając spójność wizualną i funkcjonalną na wszystkich platformach."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Tailored design",
+              "pl": "Projektowanie szyte na miarę"
+            }
+          },
+          {
+            "_key": "wln8stg4",
+            "description": {
+              "_type": "localeText",
+              "en": "We design interfaces with the user in mind, ensuring easy navigation, readability and pleasant experience while using the application.",
+              "pl": "Projektujemy interfejsy z myślą o użytkowniku, zapewniając łatwą nawigację, czytelność i przyjemne doświadczenie podczas korzystania z aplikacji."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Intuitive and user-friendly interfaces",
+              "pl": "Intuicyjne i przyjazne interfejsy"
+            }
+          },
+          {
+            "_key": "e1kyjau7",
+            "description": {
+              "_type": "localeText",
+              "en": "We create visually appealing designs using the latest design trends while maintaining functionality and usability.",
+              "pl": "Tworzymy wizualnie atrakcyjne projekty wykorzystujące najnowsze trendy w designie, zachowując przy tym funkcjonalność i użyteczność."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Aesthetic and modern solutions",
+              "pl": "Estetyczne i nowoczesne rozwiązania"
+            }
+          }
+        ],
+        "sectionKey": "howWeHelp",
+        "title": {
+          "_type": "localeString",
+          "en": "How we can help",
+          "pl": "Jak możemy pomóc"
+        }
+      },
+      {
+        "_key": "ijdrc5m8",
+        "_type": "gridSection",
+        "description": {
+          "_type": "localeText",
+          "en": "",
+          "pl": ""
+        },
+        "items": [
+          {
+            "_key": "ecndpeum",
+            "description": {
+              "_type": "localeText",
+              "en": "Each project is created individually with your brand, users and business goals in mind. We do not use templates - each interface is unique.",
+              "pl": "Każdy projekt jest tworzony indywidualnie z myślą o Twojej marce, użytkownikach i celach biznesowych. Nie używamy szablonów - każdy interfejs jest unikalny."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Tailored design",
+              "pl": "Projektowanie szyte na miarę"
+            }
+          },
+          {
+            "_key": "gk2qtbg7",
+            "description": {
+              "_type": "localeText",
+              "en": "We design with the user in mind, ensuring easy navigation, readability and pleasant experience while using the application.",
+              "pl": "Projektujemy z myślą o użytkowniku, zapewniając łatwą nawigację, czytelność i przyjemne doświadczenie podczas korzystania z aplikacji."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Intuitive and user-friendly interfaces",
+              "pl": "Intuicyjne i przyjazne interfejsy"
+            }
+          },
+          {
+            "_key": "o89ws2b4",
+            "description": {
+              "_type": "localeText",
+              "en": "We create visually appealing designs using the latest design trends while maintaining functionality and usability.",
+              "pl": "Tworzymy wizualnie atrakcyjne projekty wykorzystujące najnowsze trendy w designie, zachowując przy tym funkcjonalność i użyteczność."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Aesthetic and modern solutions",
+              "pl": "Estetyczne i nowoczesne rozwiązania"
+            }
+          },
+          {
+            "_key": "46xrl08r",
+            "description": {
+              "_type": "localeText",
+              "en": "We use proven design methodologies (Design Thinking, User-Centered Design) that ensure fast iterations and high quality solutions.",
+              "pl": "Stosujemy sprawdzone metodyki projektowe (Design Thinking, User-Centered Design), które zapewniają szybkie iteracje i wysoką jakość rozwiązań."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Effective design processes",
+              "pl": "Efektywne procesy projektowe"
+            }
+          },
+          {
+            "_key": "gz3hexe5",
+            "description": {
+              "_type": "localeText",
+              "en": "We analyze user behavior and optimize interfaces to provide the best possible experience and achieve business goals.",
+              "pl": "Analizujemy zachowania użytkowników i optymalizujemy interfejsy, aby zapewnić najlepsze możliwe doświadczenie i osiągnąć cele biznesowe."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "User experience optimization",
+              "pl": "Optymalizacja doświadczenia użytkownika"
+            }
+          }
+        ],
+        "sectionKey": "whyFeatures",
+        "title": {
+          "_type": "localeString",
+          "en": "Why choose our solutions?",
+          "pl": "Dlaczego warto wybrać nasze rozwiązania?"
+        }
+      },
+      {
+        "_key": "mk3ctaib",
+        "_type": "gridSection",
+        "description": {
+          "_type": "localeText",
+          "en": "",
+          "pl": ""
+        },
+        "items": [
+          {
+            "_key": "wn15tdpj",
+            "description": {
+              "_type": "localeText",
+              "en": "We have experience in designing interfaces for various industries - from e-commerce to finance, health and education.",
+              "pl": "Mamy doświadczenie w projektowaniu interfejsów dla różnych branż - od e-commerce po finanse, zdrowie i edukację."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Experience in various industries",
+              "pl": "Doświadczenie w różnych branżach"
+            }
+          },
+          {
+            "_key": "lii09sd6",
+            "description": {
+              "_type": "localeText",
+              "en": "We offer comprehensive service from research and needs analysis, through wireframes, prototypes, to final visual designs.",
+              "pl": "Oferujemy kompleksową obsługę od researchu i analizy potrzeb, przez wireframy, prototypy, aż po finalne projekty wizualne."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Full design cycle",
+              "pl": "Pełny cykl projektowy"
+            }
+          },
+          {
+            "_key": "oimvjpbz",
+            "description": {
+              "_type": "localeText",
+              "en": "We work in close cooperation with the development team, ensuring a smooth transition from project to implementation.",
+              "pl": "Pracujemy w ścisłej współpracy z zespołem deweloperskim, zapewniając płynne przejście od projektu do implementacji."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Collaboration with development team",
+              "pl": "Współpraca z zespołem deweloperskim"
+            }
+          },
+          {
+            "_key": "awxwo52a",
+            "description": {
+              "_type": "localeText",
+              "en": "We provide continuous support for design, interface updates and user experience optimization.",
+              "pl": "Zapewniamy ciągłe wsparcie w zakresie designu, aktualizacji interfejsów i optymalizacji doświadczenia użytkownika."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Post-implementation support",
+              "pl": "Wsparcie po wdrożeniu"
+            }
+          }
+        ],
+        "sectionKey": "whyUs",
+        "title": {
+          "_type": "localeString",
+          "en": "Why us?",
+          "pl": "Dlaczego my?"
+        }
+      },
+      {
+        "_key": "an31zb0e",
+        "_type": "caseStudyBlock",
+        "goal": {
+          "_type": "localeText",
+          "en": "Improve conversion and user experience in an online store",
+          "pl": "Poprawa konwersji i doświadczenia użytkownika w sklepie internetowym"
+        },
+        "results": {
+          "_type": "localeStringArray",
+          "en": [
+            "40% increase in conversion in the first quarter"
+          ],
+          "pl": [
+            "40% wzrost konwersji w pierwszym kwartale"
+          ]
+        },
+        "sectionKey": "caseStudy1",
+        "solution": {
+          "_type": "localeText",
+          "en": "Comprehensive interface redesign with modern design, simplified navigation and optimized purchase process",
+          "pl": "Kompleksowy redesign interfejsu z nowoczesnym designem, uproszczoną nawigacją i zoptymalizowanym procesem zakupów"
+        },
+        "title": {
+          "_type": "localeString",
+          "en": "E-commerce platform redesign",
+          "pl": "Redesign platformy e-commerce"
+        }
+      }
+    ],
+    "slug": {
+      "_type": "slug",
+      "current": "ui-ux-design"
+    },
+    "title": {
+      "_type": "localeString",
+      "en": "UX/UI Design",
+      "pl": "UX/UI Design"
+    }
+  },
+  {
+    "_createdAt": "2026-06-16T08:53:43Z",
+    "_id": "whatsNew",
+    "_rev": "mxoR6fnJzOXTuzOn2ifkFg",
+    "_system": {
+      "base": {
+        "id": "whatsNew",
+        "rev": "EfB2kIrJQHDYmeHeg12c1O"
+      }
+    },
+    "_type": "whatsNew",
+    "_updatedAt": "2026-08-26T06:27:28Z",
+    "description": {
+      "_type": "localeText",
+      "en": "Check out our latest videos straight from Facebook.",
+      "pl": "Zobacz nasze najnowsze materiały wideo prosto z Facebooka."
+    },
+    "reels": [
+      {
+        "_key": "lv27xznd",
+        "_type": "reel",
+        "url": "https://www.facebook.com/reel/990463803768200/"
+      },
+      {
+        "_key": "uckdnzn7",
+        "_type": "reel",
+        "url": "https://www.facebook.com/reel/786250697810751/"
+      },
+      {
+        "_key": "y70kylc4",
+        "_type": "reel",
+        "url": "https://www.facebook.com/reel/2171191370337211/"
+      },
+      {
+        "_key": "e2181f1758be",
+        "_type": "reel",
+        "url": "https://www.facebook.com/watch/?v=1726463645339662"
+      },
+      {
+        "_key": "589279b78452",
+        "_type": "reel",
+        "url": "https://www.facebook.com/watch/?v=2231077024293609"
+      },
+      {
+        "_key": "509a015e7bf4",
+        "_type": "reel",
+        "url": "https://www.facebook.com/watch/?v=1013813891048172"
+      },
+      {
+        "_key": "7987e951ac7f",
+        "_type": "reel",
+        "url": "https://www.facebook.com/watch/?v=879323971853901"
+      }
+    ],
+    "title": {
+      "_type": "localeString",
+      "en": "What's new",
+      "pl": "Co u nas"
+    }
+  }
+]

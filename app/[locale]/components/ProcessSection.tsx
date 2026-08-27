@@ -1,67 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { client } from "@/sanity/lib/client";
 import Slider from "../../components/Slider";
-// Animowany SVG - pulsujący sygnał (rozchodzące się kółko + kropka)
-function PulseDot({ dark = false }: { dark?: boolean }) {
-  const c = dark ? "#60a5fa" : "#2563eb";
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" className="overflow-visible" aria-hidden="true">
-      <circle cx="8" cy="8" r="3.5" fill={c} />
-      <circle cx="8" cy="8" r="3.5" fill="none" stroke={c} strokeWidth="1.5">
-        <animate attributeName="r" values="3.5;10" dur="1.8s" repeatCount="indefinite" />
-        <animate attributeName="opacity" values="0.7;0" dur="1.8s" repeatCount="indefinite" />
-      </circle>
-    </svg>
-  );
-}
-
-// Karta kroku procesu (styl jak w referencji, karta 03 ciemna)
-function ProcessCard({ step, index }: { step: ProcessStep; index: number }) {
-  const isDark = index === 2;
-  return (
-    <article
-      className={`group rounded-2xl border p-6 flex flex-col h-full transition-all duration-300 ${
-        isDark
-          ? "bg-slate-900 border-slate-900 text-white shadow-lg shadow-slate-900/20"
-          : "bg-white border-gray-200 text-slate-900 shadow-sm hover:shadow-md hover:border-blue-200 hover:-translate-y-0.5"
-      }`}
-    >
-      <div className="flex items-center justify-between mb-4">
-        <span
-          className={`text-xs font-mono uppercase tracking-widest ${
-            isDark ? "text-white/55" : "text-slate-400"
-          }`}
-        >
-          {step.stepLabel}
-        </span>
-        <PulseDot dark={isDark} />
-      </div>
-      {step.question && (
-        <p className={`text-sm italic mb-3 ${isDark ? "text-white/60" : "text-slate-500"}`}>
-          {step.question}
-        </p>
-      )}
-      <h3
-        className={`text-lg font-bold leading-snug tracking-tight mb-3 hyphens-auto ${
-          isDark ? "text-white" : "text-slate-900"
-        }`}
-      >
-        {step.title}
-      </h3>
-      <p className={`text-sm leading-relaxed ${isDark ? "text-white/80" : "text-slate-600"}`}>
-        {step.description}
-      </p>
-    </article>
-  );
-}
 
 interface ProcessStep {
   _key: string;
   stepLabel: string;
-  question: string;
   title: string;
   description: string;
 }
@@ -72,235 +18,104 @@ interface ProcessData {
   steps: ProcessStep[];
 }
 
-const CARD_GRADIENT =
-  "linear-gradient(0deg, hsla(215, 69%, 36%, 1) 0%, hsla(190, 94%, 76%, 1) 100%)";
+const RISE = 30; // przyrost wysokości karty na każdy krok (px)
 
-function StepCard({ step }: { step: ProcessStep }) {
+// ─── Warstwa graficzna ────────────────────────────────────────────────────────
+
+// Tło sekcji - siatka kropek + dwie miękkie poświaty. Czysta dekoracja.
+function Backdrop() {
   return (
-    <div className="group h-full">
-      <div
-        style={{ background: CARD_GRADIENT }}
-        className="rounded-2xl shadow-md shadow-blue-300/50 p-0.5 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-blue-400/50 h-full">
-        <div className="bg-white rounded-2xl p-6 h-full flex flex-col">
-          <div className="flex items-center gap-2 mb-1.5">
-            <span className="text-xs font-semibold text-slate-600 uppercase tracking-wider">
-              {step.stepLabel}
-            </span>
-          </div>
-          <p className="text-sm text-slate-500 mb-1 italic">{step.question}</p>
-          <h3 className="text-xl font-bold text-slate-900 mb-1 group-hover:text-blue-600 transition-colors">
-            {step.title}
-          </h3>
-          <p className="text-slate-600 leading-relaxed flex-1">
-            {step.description}
-          </p>
-        </div>
-      </div>
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+      <div className="pv-dots absolute inset-0" />
+      <div className="absolute -left-32 top-0 h-[28rem] w-[28rem] rounded-full bg-blue-500/10 blur-3xl" />
+      <div className="absolute -right-24 bottom-0 h-[22rem] w-[22rem] rounded-full bg-sky-400/[0.08] blur-3xl" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
     </div>
   );
 }
 
-// Linia pozioma między kartami w tym samym wierszu
-// Kształt: skos w prawo → prosta → skos w dół (jak w Offer/StatsPanel)
-function HorizontalArc({ id }: { id: string }) {
-  const gradId = `grad-${id}`;
-  const filterId = `neon-${id}`;
+// ─── Reveal ───────────────────────────────────────────────────────────────────
+
+// Jednorazowy reveal - odpala się, gdy element wejdzie w kadr na tyle,
+// żeby animacja rozegrała się na środku ekranu, a nie tuż nad jego krawędzią
+// (domyślnie: górna krawędź mija 58% wysokości okna).
+// Zabezpieczenie: natychmiastowy pomiar przy montowaniu + failsafe, żeby
+// treść nigdy nie została na opacity: 0, jeśli observer nie wystartuje.
+function useInView<T extends HTMLElement>(rootMargin = "0px 0px -42% 0px") {
+  const ref = useRef<T>(null);
+  const [seen, setSeen] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.58 && rect.bottom > 0) {
+      setSeen(true);
+      return;
+    }
+
+    if (typeof IntersectionObserver === "undefined") {
+      setSeen(true);
+      return;
+    }
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setSeen(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0, rootMargin },
+    );
+    io.observe(el);
+
+    // Failsafe na wypadek, gdyby observer nie wystartował - ten sam próg,
+    // żeby nie odpalić animacji wcześniej niż powinna.
+    const failsafe = window.setTimeout(() => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight * 0.58 && r.bottom > 0) setSeen(true);
+    }, 1500);
+
+    return () => {
+      io.disconnect();
+      window.clearTimeout(failsafe);
+    };
+  }, [rootMargin]);
+
+  return { ref, seen };
+}
+
+// ─── Karta kroku ──────────────────────────────────────────────────────────────
+
+function StepBody({ step, delay = 0 }: { step: ProcessStep; delay?: number }) {
   return (
-    <div className="hidden lg:flex items-center justify-center w-16 flex-shrink-0">
-      <svg
-        viewBox="0 0 64 24"
-        fill="none"
-        className="w-16 h-6"
-        overflow="visible">
-        <defs>
-          <linearGradient
-            id={gradId}
-            gradientUnits="userSpaceOnUse"
-            x1="4"
-            y1="12"
-            x2="60"
-            y2="12">
-            <stop offset="0%" stopColor="#3b82f6" />
-            <stop offset="100%" stopColor="#93c5fd" />
-          </linearGradient>
-          <filter id={filterId} x="-20%" y="-100%" width="140%" height="300%">
-            <feGaussianBlur stdDeviation="1.5" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
-        {/* diament start */}
-        <rect
-          x="2"
-          y="10"
-          width="4"
-          height="4"
-          fill="#3b82f6"
-          transform="rotate(45 4 12)"
-          filter={`url(#${filterId})`}
-        />
-        {/* skos w prawo → prosta → skos w dół */}
-        <path
-          d="M 4 12 L 16 4 L 48 4 L 60 12"
-          stroke={`url(#${gradId})`}
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          filter={`url(#${filterId})`}
-        />
-        {/* diament koniec */}
-        <rect
-          x="58"
-          y="10"
-          width="4"
-          height="4"
-          fill="#93c5fd"
-          transform="rotate(45 60 12)"
-          filter={`url(#${filterId})`}
-        />
-      </svg>
+    // Na desktopie min-height trzyma treść wszystkich kart na jednej
+    // wysokości, mimo że same karty rosną schodkowo.
+    <div
+      className="pv-fade relative lg:min-h-[11.5rem]"
+      style={{ ["--d" as string]: `${delay}ms` }}>
+      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-600">
+        {step.stepLabel}
+      </p>
+      <h3 className="mt-2 text-lg font-bold leading-snug tracking-tight text-slate-900">
+        {step.title}
+      </h3>
+      <p className="mt-3 text-sm leading-relaxed text-slate-600">{step.description}</p>
     </div>
   );
 }
 
-// Linia kątowa: wiersz 1 (prawa karta) → wiersz 2 (środek)
-// Kształt: skos w prawo → prosta → skos w dół (jak Offer.tsx)
-function ArcDownToCenter({ id }: { id: string }) {
-  const gradId = `grad-${id}`;
-  const filterId = `neon-${id}`;
-  return (
-    <div className="hidden lg:block w-full h-8 relative">
-      <svg
-        viewBox="0 0 1000 56"
-        fill="none"
-        className="absolute inset-0 w-full h-full"
-        preserveAspectRatio="none">
-        <defs>
-          <linearGradient
-            id={gradId}
-            gradientUnits="userSpaceOnUse"
-            x1="560"
-            y1="6"
-            x2="500"
-            y2="52">
-            <stop offset="0%" stopColor="#3b82f6" />
-            <stop offset="100%" stopColor="#93c5fd" />
-          </linearGradient>
-          <filter id={filterId} x="-30%" y="-30%" width="160%" height="160%">
-            <feGaussianBlur stdDeviation="1.5" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
-        {/* diament start */}
-        <rect
-          x="557"
-          y="3"
-          width="6"
-          height="6"
-          fill="#3b82f6"
-          transform="rotate(45 560 6)"
-          filter={`url(#${filterId})`}
-        />
-        {/* skos w prawo → prosta → skos w dół */}
-        <path
-          d="M 560 6 L 540 20 L 520 20 L 500 52"
-          stroke={`url(#${gradId})`}
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          filter={`url(#${filterId})`}
-          vectorEffect="non-scaling-stroke"
-        />
-        {/* diament koniec */}
-        <rect
-          x="497"
-          y="49"
-          width="6"
-          height="6"
-          fill="#93c5fd"
-          transform="rotate(45 500 52)"
-          filter={`url(#${filterId})`}
-        />
-      </svg>
-    </div>
-  );
-}
-
-// Linia kątowa: wiersz 2 (środek) → wiersz 3 (lewa karta)
-// Kształt: skos w prawo → prosta → skos w dół (jak Offer.tsx)
-function ArcDownFromCenter({ id }: { id: string }) {
-  const gradId = `grad-${id}`;
-  const filterId = `neon-${id}`;
-  return (
-    <div className="hidden lg:block w-full h-8 relative">
-      <svg
-        viewBox="0 0 1000 56"
-        fill="none"
-        className="absolute inset-0 w-full h-full"
-        preserveAspectRatio="none">
-        <defs>
-          <linearGradient
-            id={gradId}
-            gradientUnits="userSpaceOnUse"
-            x1="500"
-            y1="6"
-            x2="440"
-            y2="52">
-            <stop offset="0%" stopColor="#3b82f6" />
-            <stop offset="100%" stopColor="#93c5fd" />
-          </linearGradient>
-          <filter id={filterId} x="-30%" y="-30%" width="160%" height="160%">
-            <feGaussianBlur stdDeviation="1.5" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
-        {/* diament start */}
-        <rect
-          x="497"
-          y="3"
-          width="6"
-          height="6"
-          fill="#3b82f6"
-          transform="rotate(45 500 6)"
-          filter={`url(#${filterId})`}
-        />
-        {/* skos w prawo → prosta → skos w dół */}
-        <path
-          d="M 500 6 L 480 20 L 460 20 L 440 52"
-          stroke={`url(#${gradId})`}
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          filter={`url(#${filterId})`}
-          vectorEffect="non-scaling-stroke"
-        />
-        {/* diament koniec */}
-        <rect
-          x="437"
-          y="49"
-          width="6"
-          height="6"
-          fill="#93c5fd"
-          transform="rotate(45 440 52)"
-          filter={`url(#${filterId})`}
-        />
-      </svg>
-    </div>
-  );
-}
+// ─── Sekcja ───────────────────────────────────────────────────────────────────
 
 export default function ProcessSection() {
   const t = useTranslations("home.process");
   const locale = useLocale();
   const [data, setData] = useState<ProcessData | null>(null);
+  // Odsłonięcie dopiero, gdy schody są realnie w kadrze - przy wcześniejszym
+  // progu animacja kończyła się, zanim sekcja doszła do środka ekranu.
+  const { ref, seen } = useInView<HTMLDivElement>();
 
   useEffect(() => {
     async function fetchData() {
@@ -312,8 +127,7 @@ export default function ProcessSection() {
             "steps": steps[] {
               _key,
               "stepLabel": coalesce(stepLabel[$locale], stepLabel.pl),
-              "question":  coalesce(question[$locale],  question.pl),
-              "title":     coalesce(title[$locale],     title.pl),
+              "title": coalesce(title[$locale], title.pl),
               "description": coalesce(description[$locale], description.pl)
             }
           }`,
@@ -327,58 +141,157 @@ export default function ProcessSection() {
     fetchData();
   }, [locale]);
 
-  const fallbackKeys = [
-    "audit",
-    "roadmap",
-    "management",
-    "acceptance",
-    "maintenance",
-  ];
+  const fallbackKeys = ["audit", "roadmap", "management", "acceptance", "maintenance"];
   const steps: ProcessStep[] = data?.steps?.length
     ? data.steps
     : fallbackKeys.map((key) => ({
         _key: key,
         stepLabel: t(`steps.${key}.stepLabel`),
-        question: t(`steps.${key}.question`),
         title: t(`steps.${key}.title`),
         description: t(`steps.${key}.description`),
       }));
 
   const sectionTitle = data?.title ?? t("title");
   const sectionDesc = data?.description ?? t("description");
+  const count = steps.length;
 
   return (
-    <section className="relative flex min-h-[min(100vh,1000px)] flex-col justify-center overflow-hidden py-14 lg:py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    // Full-bleed: tło wychodzi poza max-w kontenera strony, treść zostaje w siatce.
+    <section className="section-y relative left-1/2 right-1/2 -mx-[50vw] w-screen overflow-hidden bg-gradient-to-b from-white via-slate-50/70 to-white">
+      <Backdrop />
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-4">
-            - Proces
-          </p>
-          <h2
-            className="heading-1 text-slate-900 mb-4 leading-tight"
+        <div className="relative text-center">
+          {/* znak wodny - liczba kroków za nagłówkiem */}
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute -top-16 left-1/2 -translate-x-1/2 select-none text-[9rem] leading-none text-slate-900/[0.035]"
             style={{ fontFamily: "var(--font-michroma)" }}>
+            {String(count).padStart(2, "0")}
+          </span>
+
+          <h2
+            className="section-title relative mb-4 text-slate-900">
             {sectionTitle}
           </h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="relative mx-auto max-w-2xl text-lg leading-relaxed text-slate-600">
             {sectionDesc}
           </p>
         </div>
 
-        {/* Karty kroków - desktop grid */}
-        <div className="hidden sm:grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-          {steps.map((step, i) => (
-            <ProcessCard key={step._key} step={step} index={i} />
-          ))}
-        </div>
+        <div ref={ref} className={`mt-20 ${seen ? "pv-in" : ""}`}>
+          {/* Schody - desktop: karty na wspólnej podstawie, rosnąca wysokość */}
+          <div className="relative hidden lg:block">
+            <ol className="relative flex items-end gap-3">
+              {steps.map((step, i) => {
+                const progress = ((i + 1) / count) * 100;
+                return (
+                  <li
+                    key={step._key}
+                    className="relative flex-1">
+                    {/* pionowy stopień - łączy górę tej karty z górą następnej */}
+                    {i < count - 1 && (
+                      <span
+                        aria-hidden="true"
+                        className="pv-tick absolute -right-1.5 w-px border-l border-dashed border-blue-300/70"
+                        style={{ top: -RISE, height: RISE, ["--d" as string]: `${620 + i * 110}ms` }}
+                      />
+                    )}
 
-        {/* Karty kroków - mobile slider */}
-        <Slider className="sm:hidden" slideWidth="85%">
-          {steps.map((step, i) => (
-            <ProcessCard key={step._key} step={step} index={i} />
-          ))}
-        </Slider>
+                    <article
+                      className="pv-grow pv-card relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white px-5 pb-7 pt-7 shadow-sm"
+                      style={{ ["--d" as string]: `${i * 110}ms` }}>
+                      {/* pasek postępu - narasta z każdym krokiem */}
+                      <span
+                        aria-hidden="true"
+                        className="absolute left-0 top-0 h-[3px] w-full bg-slate-100">
+                        <span
+                          className="block h-full bg-gradient-to-r from-blue-600 to-sky-400"
+                          style={{
+                            width: `${progress}%`,
+                            transform: seen ? "scaleX(1)" : "scaleX(0)",
+                            transformOrigin: "left center",
+                            transition: "transform 420ms var(--ease-out)",
+                            transitionDelay: `${400 + i * 110}ms`,
+                          }}
+                        />
+                      </span>
+
+                      {/* tekstura + poświata hoveru + numer w tle */}
+                      <span
+                        aria-hidden="true"
+                        className="pv-dots pointer-events-none absolute inset-0 opacity-70"
+                      />
+                      <span
+                        aria-hidden="true"
+                        className="pv-card-num pointer-events-none absolute -bottom-3 right-3 text-6xl text-slate-900/[0.055]"
+                        style={{ fontFamily: "var(--font-michroma)" }}>
+                        {i + 1}
+                      </span>
+
+                      {/* stopień - to on nadaje karcie schodkową wysokość */}
+                      <span aria-hidden="true" className="shrink-0" style={{ height: i * RISE }} />
+
+                      <StepBody step={step} delay={i * 110 + 400} />
+                    </article>
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+
+          {/* Tablet - te same karty w siatce */}
+          <ol className="hidden gap-4 sm:grid sm:grid-cols-2 lg:hidden">
+            {steps.map((step, i) => (
+              <li key={step._key} className="relative">
+                <StepCard step={step} index={i} count={count} delay={i * 110} />
+              </li>
+            ))}
+          </ol>
+
+          {/* Mobile - slider */}
+          <Slider className="sm:hidden" slideWidth="80%">
+            {steps.map((step, i) => (
+              <StepCard key={step._key} step={step} index={i} count={count} delay={i * 110} />
+            ))}
+          </Slider>
+        </div>
       </div>
     </section>
+  );
+}
+
+// Karta w wersji kompaktowej (tablet / mobile) - bez narastającej wysokości.
+function StepCard({
+  step,
+  index,
+  count,
+  delay = 0,
+}: {
+  step: ProcessStep;
+  index: number;
+  count: number;
+  delay?: number;
+}) {
+  const progress = ((index + 1) / count) * 100;
+  return (
+    <article
+      className="pv-grow pv-card relative h-full overflow-hidden rounded-2xl border border-slate-200 bg-white px-5 pb-6 pt-7 shadow-sm"
+      style={{ ["--d" as string]: `${delay}ms` }}>
+      <span aria-hidden="true" className="absolute left-0 top-0 h-[3px] w-full bg-slate-100">
+        <span
+          className="block h-full bg-gradient-to-r from-blue-600 to-sky-400"
+          style={{ width: `${progress}%` }}
+        />
+      </span>
+      <span
+        aria-hidden="true"
+        className="pv-card-num pointer-events-none absolute -bottom-3 right-3 text-5xl text-slate-900/[0.055]"
+        style={{ fontFamily: "var(--font-michroma)" }}>
+        {index + 1}
+      </span>
+      <StepBody step={step} delay={delay + 400} />
+    </article>
   );
 }

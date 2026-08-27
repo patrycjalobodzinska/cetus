@@ -61,8 +61,7 @@ export default function CaseFeatureSection() {
               {t.eyebrow}
             </p>
             <h2
-              className="heading-1 text-gray-900 mb-4 leading-tight"
-              style={{ fontFamily: "var(--font-michroma)" }}
+              className="section-title text-gray-900 mb-4"
             >
               {t.title} <span className="text-blue-600">{t.titleHighlight}</span>
             </h2>

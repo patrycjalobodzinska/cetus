@@ -1,44 +1,15 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "../pageMetadata";
 
-export const metadata: Metadata = {
-  title: "CetusPro - Technologia, która napędza Twój biznes",
-  description:
-    "Projektujemy, budujemy i rozwijamy dedykowane systemy IT. Sprawdź naszą ofertę dla biznesu lub dołącz do zespołu CetusPro.",
-  keywords: [
-    "CetusPro",
-    "rozwiązania IT",
-    "aplikacje webowe",
-    "aplikacje mobilne",
-    "AI i automatyzacja",
-    "cyberbezpieczeństwo",
-    "kariera w IT",
-  ],
-  openGraph: {
-    title: "CetusPro - Technologia, która napędza Twój biznes",
-    description:
-      "Sprawdź naszą ofertę dla biznesu lub dołącz do zespołu CetusPro.",
-    url: "/roll-up",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "CetusPro - Technologia, która napędza Twój biznes",
-    description:
-      "Sprawdź naszą ofertę dla biznesu lub dołącz do zespołu CetusPro.",
-  },
-  alternates: {
-    canonical: "/roll-up",
-    languages: {
-      pl: "/roll-up",
-      en: "/en/roll-up",
-      "x-default": "/roll-up",
-    },
-  },
-};
-
-export default function RollUpLayout({
-  children,
+export async function generateMetadata({
+  params,
 }: {
-  children: React.ReactNode;
-}) {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildPageMetadata({ locale, key: "rollUp", path: "/roll-up" });
+}
+
+export default function RollUpLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

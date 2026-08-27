@@ -1,22 +1,15 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "../pageMetadata";
 
-export const metadata: Metadata = {
-  title: "Case Studies",
-  description: "Poznaj nasze realizacje i projekty. Zobacz, jak pomogliśmy naszym klientom osiągnąć sukces dzięki nowoczesnym rozwiązaniom IT, aplikacjom webowym i mobilnym.",
-  alternates: {
-    canonical: "/case-studies",
-    languages: {
-      pl: "/case-studies",
-      en: "/en/case-studies",
-      "x-default": "/case-studies",
-    },
-  },
-};
-
-export default function CaseStudiesLayout({
-  children,
+export async function generateMetadata({
+  params,
 }: {
-  children: React.ReactNode;
-}) {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildPageMetadata({ locale, key: "caseStudies", path: "/case-studies" });
+}
+
+export default function CaseStudiesLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

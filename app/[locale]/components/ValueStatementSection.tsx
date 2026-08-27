@@ -22,7 +22,7 @@ export default function ValueStatementSection() {
   const t = CONTENT[locale === "en" ? "en" : "pl"];
 
   return (
-    <section className="relative flex min-h-[min(100vh,1000px)] flex-col justify-center overflow-hidden bg-gray-100 py-14 lg:py-20">
+    <section className="relative overflow-hidden bg-gray-100 py-[clamp(3.5rem,9vw,8rem)]">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <p className="text-xs font-bold uppercase tracking-[0.22em] text-blue-600 mb-8">
           - {t.eyebrow}

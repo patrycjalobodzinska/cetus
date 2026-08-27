@@ -37,7 +37,7 @@ export default function WhyUsSection() {
   const t = CONTENT[locale === "en" ? "en" : "pl"];
 
   return (
-    <section className="relative flex min-h-[min(100vh,1000px)] flex-col justify-center overflow-hidden py-14 lg:py-20">
+    <section className="relative overflow-hidden py-[clamp(3.5rem,9vw,8rem)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           {/* Teza */}
@@ -48,7 +48,7 @@ export default function WhyUsSection() {
                 {t.eyebrow}
               </span>
             </div>
-            <h2 className="font-extrabold tracking-tight leading-[1.1] text-3xl sm:text-4xl">
+            <h2 className="section-title tracking-tight">
               <span className="text-slate-900">{t.claimPre}</span>
               <span className="text-blue-600">{t.claimHl}</span>
             </h2>
