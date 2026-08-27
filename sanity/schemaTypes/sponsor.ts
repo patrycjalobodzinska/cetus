@@ -2,8 +2,9 @@ import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'sponsor',
-  title: 'Sponsoring',
+  title: 'Sponsoring - wspierany podmiot',
   type: 'document',
+  description: 'Podmiot w sekcji "Dumny sponsor" na stronie głównej.',
   fields: [
     defineField({
       name: 'name',

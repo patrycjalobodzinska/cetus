@@ -66,7 +66,7 @@ export default function ServicesGridSection() {
         </div>
 
         {/* Mobile: slider ze strzałkami i kropkami */}
-        <Slider className="md:hidden" slideWidth="85%">
+        <Slider className="md:hidden" slideWidth="85%" ariaLabel="Co robimy">
           {t.items.map((c, i) => (
             <Tile key={i} c={c} i={i} layoutClass="min-h-[220px]" eyebrow={i === 0 ? featureEyebrow : undefined} />
           ))}

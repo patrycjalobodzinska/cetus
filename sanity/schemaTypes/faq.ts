@@ -2,8 +2,9 @@ import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'faq',
-  title: 'FAQ',
+  title: 'FAQ - pytanie i odpowiedź',
   type: 'document',
+  description: 'Wspólna pula pytań - te same wpisy pokazują się w FAQ na stronie głównej i na /kontakt.',
   fields: [
     defineField({
       name: 'title',

@@ -2,8 +2,9 @@ import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'offerStats',
-  title: 'Statystyki Oferty',
+  title: 'Oferta - statystyki',
   type: 'document',
+  description: 'Pasek statystyk na /oferta.',
   fields: [
     defineField({
       name: 'title',

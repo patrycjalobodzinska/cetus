@@ -193,7 +193,7 @@ function Gallery({ images }: { images: Array<{ url: string; caption?: string }> 
   return (
     <>
       {/* mobile: slider */}
-      <Slider className="sm:hidden" slideWidth="82%">
+      <Slider className="sm:hidden" slideWidth="82%" ariaLabel="Galeria projektu">
         {images.map((im, i) => (
           <Thumb key={i} im={im} i={i} />
         ))}
@@ -277,7 +277,7 @@ function CsHero({ section, backToList }: { section: any; backToList: string }) {
       <div>
         <Link
           href="/case-studies"
-          className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-slate-500 transition-colors hover:text-blue-600"
+          className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-slate-600 transition-colors hover:text-blue-600"
         >
           <ArrowLeft className="h-4 w-4" />
           {backToList}
@@ -302,7 +302,7 @@ function CsHero({ section, backToList }: { section: any; backToList: string }) {
           <dl className="mt-6 flex flex-wrap gap-x-8 gap-y-3">
             {meta.map((m: any, i: number) => (
               <div key={i}>
-                <dt className="text-xs uppercase tracking-wide text-slate-400">{m.label}</dt>
+                <dt className="text-xs uppercase tracking-wide text-slate-600">{m.label}</dt>
                 <dd className="text-sm font-semibold text-slate-800">{m.value}</dd>
               </div>
             ))}
@@ -405,7 +405,7 @@ function CsMetrics({ section }: { section: any }) {
               <div className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 tabular-nums">
                 {m.value}
               </div>
-              <div className="mt-1 text-sm font-medium text-slate-500">{m.label}</div>
+              <div className="mt-1 text-sm font-medium text-slate-600">{m.label}</div>
             </div>
           );
         })}
@@ -460,7 +460,11 @@ function CsOutcome({ section }: { section: any }) {
       <div className="grid gap-8 md:grid-cols-3">
         {items.map((b: any, i: number) => (
           <div key={i} className="relative rounded-2xl bg-white p-7 shadow-sm ring-1 ring-gray-100">
-            <span className="text-5xl font-extrabold text-blue-600/15">0{i + 1}</span>
+            {/* Ozdobny numer karty - treść niesie tag i tekst poniżej, więc numer
+                jest dekoracją (aria-hidden), a nie informacją o niskim kontraście. */}
+            <span aria-hidden="true" className="text-5xl font-extrabold text-blue-600/15">
+              0{i + 1}
+            </span>
             <h3 className="mt-2 text-lg font-bold text-slate-900">{b.tag}</h3>
             {b.text && <p className="mt-2 text-sm leading-relaxed text-slate-600">{b.text}</p>}
             {(b.points || []).length > 0 && (
@@ -544,7 +548,7 @@ function CsTech({ section }: { section: any }) {
   return (
     <section className="py-[clamp(3rem,7vw,6rem)]">
       <div className="flex flex-col items-center gap-5">
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-600">
           {section.heading || "Technologie"}
         </p>
         <div className="flex flex-wrap justify-center gap-3">
@@ -575,7 +579,7 @@ export default function CaseStudyDetail({ caseStudy }: { caseStudy: CaseStudy })
 
   return (
     <div className="relative flex flex-col items-center">
-      <main className="w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         {caseStudy.sections?.map((section) => {
           switch (section._type) {
             case "csHeroSection":
@@ -608,7 +612,7 @@ export default function CaseStudyDetail({ caseStudy }: { caseStudy: CaseStudy })
             {backToList}
           </Link>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

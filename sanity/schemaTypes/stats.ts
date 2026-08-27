@@ -2,8 +2,9 @@ import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'stats',
-  title: 'Statystyki',
+  title: 'Statystyki (nieużywane na stronie)',
   type: 'document',
+  description: 'Nieużywane - żaden komponent nie pobiera tego typu.',
   fields: [
     defineField({
       name: 'title',

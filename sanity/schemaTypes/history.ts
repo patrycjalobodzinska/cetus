@@ -2,8 +2,9 @@ import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'history',
-  title: 'Historia',
+  title: 'Historia firmy - wpis na osi czasu',
   type: 'document',
+  description: 'Wpis na osi czasu na /o-nas.',
   fields: [
     defineField({
       name: 'year',

@@ -2,8 +2,9 @@ import { defineField, defineType, defineArrayMember } from "sanity";
 
 export default defineType({
   name: "caseStudy",
-  title: "Case Study",
+  title: "Realizacja (case study)",
   type: "document",
+  description: "Realizacja pokazywana w sekcji Realizacje na stronie głównej i na /case-studies. Zaznacz \"featured\", żeby trafiła na pierwsze miejsce.",
   fields: [
     defineField({
       name: "title",

@@ -181,7 +181,7 @@ export default function CaseStudiesMosaic({
               )}
               <h3 className="mt-0 flex items-start gap-2 text-lg font-bold leading-snug text-slate-900 lg:text-xl">
                 <span className="flex-1">{c.title}</span>
-                <ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-slate-400 transition-[transform,color] duration-200 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-blue-600" />
+                <ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-slate-400 transition-[translate,color] duration-200 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-blue-600" />
               </h3>
               {c.description && (
                 <p className="mt-0 line-clamp-2 max-w-xl text-sm leading-relaxed text-slate-600">
@@ -209,7 +209,7 @@ export default function CaseStudiesMosaic({
             />
             <Link
               href={`/${locale}/case-studies`}
-              className="pointer-events-auto relative mb-2 inline-flex items-center gap-2 rounded-full bg-slate-900 px-7 py-3.5 text-sm font-semibold text-white shadow-md transition-[transform,background-color] duration-200 ease-out hover:-translate-y-0.5 hover:bg-slate-800"
+              className="pointer-events-auto relative mb-2 inline-flex items-center gap-2 rounded-full bg-slate-900 px-7 py-3.5 text-sm font-semibold text-white shadow-md transition-[translate,background-color] duration-200 ease-out hover:-translate-y-0.5 hover:bg-slate-800"
             >
               {t("seeMore")}
               <ArrowRight className="h-4 w-4 transition-transform duration-200 ease-out group-hover:translate-x-1" />

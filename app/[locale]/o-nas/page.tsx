@@ -2,16 +2,14 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import StarGradientButton from '@/app/components/ui/gradientBackground';
 import { client } from '@/sanity/lib/client';
 import { urlFor } from '@/sanity/lib/image';
 import { Timeline } from '@/app/components/ui/timeline';
-import { ArrowRight, Users, User } from 'lucide-react';
-import DecorativeImage from '@/app/components/DecorativeImage';
-import PolygonCard from '@/app/components/PolygonCard';
+import { ArrowRight, Users } from 'lucide-react';
 import DomeGallery from '@/app/components/DomeGallery';
 import TeamMarquee from '@/app/components/TeamMarquee';
 import { useLocale, useTranslations } from 'next-intl';
+import SectionHeading from '@/app/components/SectionHeading';
 
 interface AboutUsData {
   title: string;
@@ -50,7 +48,6 @@ export default function AboutUsPage() {
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
   const [aboutUsLoading, setAboutUsLoading] = useState(true);
   const [historyLoading, setHistoryLoading] = useState(true);
-  const [teamLoading, setTeamLoading] = useState(true);
   const [isDesktop, setIsDesktop] = useState(false);
   const locale = useLocale();
   const t = useTranslations('aboutUs');
@@ -125,264 +122,209 @@ export default function AboutUsPage() {
         setTeamMembers(data);
       } catch (error) {
         console.error('Błąd podczas pobierania zespołu:', error);
-      } finally {
-        setTeamLoading(false);
       }
     }
     fetchTeam();
   }, [locale]);
 
+  // Treść kroku historii w tej samej karcie co realizacje i kroki procesu:
+  // biała karta, ramka slate-200, rounded-2xl, delikatny cień.
   const timelineData = historyItems.map((item) => ({
     title: item.year,
     content: (
-      <div>
-        <h3 className="heading-3 mb-4 text-slate-900">
+      <article className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-7">
+        <h3 className="text-lg font-bold leading-snug tracking-tight text-slate-900 sm:text-xl">
           {item.title}
         </h3>
-        <p className="mb-8 text-sm font-normal text-slate-600 md:text-base leading-relaxed">
+        <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
           {item.description}
         </p>
         {item.image && (
-          <div className="mt-4">
+          <div className="mt-6 overflow-hidden rounded-2xl">
             <img
               src={urlFor(item.image).width(1200).height(800).url()}
               alt={item.title}
-              className="w-full max-h-[520px] md:max-h-[580px] rounded-xl md:rounded-2xl object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+              className="max-h-[420px] w-full object-cover md:max-h-[480px]"
             />
           </div>
         )}
-      </div>
+      </article>
     ),
   }));
 
+  const teamImages = teamMembers.filter((member) => member.image);
+
   return (
-    <div className="min-h-screen ">
+    <div className="relative flex flex-col items-center">
+      <div className="w-full max-w-7xl">
+        {/* ── Hero - ten sam układ i typografia co hero strony głównej ── */}
+        <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen overflow-hidden bg-gray-100">
+          <div className="relative mx-auto flex min-h-[min(100vh,1000px)] w-full max-w-7xl items-center px-4 pb-16 pt-[var(--page-top-offset)] sm:px-6 lg:px-8 lg:pb-24">
+            {/* poświaty - jak w hero na home, trzymają się treści */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -left-16 top-10 z-0 h-80 w-80 rounded-full bg-blue-400/15 blur-3xl"
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute right-0 top-1/3 z-0 h-[30rem] w-[30rem] rounded-full bg-sky-300/20 blur-3xl"
+            />
 
-
-
-      {aboutUsLoading ? (
-        <section className="py-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center py-12">
-              <div className="inline-block w-8 h-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
-              <p className="mt-4 text-slate-600">{t('loading')}</p>
-            </div>
-          </div>
-        </section>
-      ) : aboutUsData ? (
-        <section className="pt-[var(--page-top-offset)] flex flex-col justify-between min-h-[calc(100vh-90px)]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Left - Text and Buttons */}
-              <div className="lg:space-y-8 mix-blend-darken space-y-4">
-                <h1 className="heading-hero text-slate-900 leading-tight">
-                  {aboutUsData.title}
-                </h1>
-                <p className="text-lg text-slate-600 leading-relaxed">
-                  {aboutUsData.description}
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                  <Link href={aboutUsData.primaryButtonLink || '/kontakt'}>
-                    <StarGradientButton>
-                      <span className="flex items-center gap-2">
-                        {aboutUsData.primaryButtonText || t('fallbackButton')}
-                        <ArrowRight className="w-5 h-5" />
-                      </span>
-                    </StarGradientButton>
-                  </Link>
-
+            {aboutUsLoading ? (
+              <div className="relative z-10 grid w-full items-center gap-10 lg:grid-cols-2 lg:gap-14">
+                <div className="space-y-5">
+                  <div className="h-3 w-24 rounded-full bg-slate-200/80" />
+                  <div className="h-12 w-full max-w-lg rounded-2xl bg-slate-200/80" />
+                  <div className="h-12 w-4/5 max-w-md rounded-2xl bg-slate-200/60" />
+                  <div className="h-20 w-full max-w-xl rounded-2xl bg-slate-200/50" />
                 </div>
+                <div className="aspect-[4/3] w-full rounded-2xl bg-slate-200/60" />
+                <span className="sr-only">{t('loading')}</span>
               </div>
+            ) : aboutUsData ? (
+              <div className="relative z-10 grid w-full items-center gap-12 lg:grid-cols-2 lg:gap-14">
+                {/* Tekst */}
+                <div className="order-1 flex flex-col items-start text-left">
+                  <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-blue-600">
+                    - {t('eyebrow')}
+                  </p>
+                  <h1
+                    className="text-4xl font-bold leading-[1.05] tracking-tight text-slate-900 sm:text-5xl lg:text-[4rem]"
+                    style={{ fontFamily: 'var(--font-space-grotesk)' }}
+                  >
+                    {aboutUsData.title}
+                  </h1>
+                  <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-600">
+                    {aboutUsData.description}
+                  </p>
 
-              {/* Right - Image with Overlay */}
-              <DecorativeImage
-                src={urlFor(aboutUsData.image).width(1200).height(800).url()}
-                alt={aboutUsData.title}
-                noRadius
-                overlay={
-                  aboutUsData.statValue
-                    ? {
-                        value: aboutUsData.statValue,
-                        label: aboutUsData.statLabel,
-                        subLabel: aboutUsData.statSubLabel,
-                        icon: <Users className="w-6 h-6 text-white" />,
-                      }
-                    : undefined
-                }
-              />
-            </div>
-          </div>
+                  <Link
+                    href={aboutUsData.primaryButtonLink || `/${locale}/kontakt`}
+                    style={{ fontFamily: 'var(--font-space-grotesk)' }}
+                    className="mt-10 inline-flex items-center gap-2 rounded-2xl bg-blue-600 px-9 py-4 text-lg font-semibold text-white shadow-md shadow-blue-600/25 transition-[translate,background-color] duration-200 ease-out hover:-translate-y-0.5 hover:bg-blue-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                  >
+                    {aboutUsData.primaryButtonText || t('fallbackButton')}
+                    <ArrowRight className="h-5 w-5" />
+                  </Link>
+                </div>
 
-        </section>
-      ) : null}
-
-      {/* History Timeline Section */}
-      <section className=" ">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center ">
-            <h2
-              className="heading-1 lg:mt-0 mt-12 text-slate-900 mb-4"
-              style={{ fontFamily: "var(--font-michroma)" }}
-            >
-              {t('history.title')}
-            </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              {t('history.description')}
-            </p>
-          </div>
-
-          {historyLoading ? (
-            <div className="text-center ">
-              <div className="inline-block w-8 h-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
-              <p className="mt-4 text-slate-600">{t('history.loading')}</p>
-            </div>
-          ) : historyItems.length > 0 ? (
-            <div className="relative w-full overflow-visible">
-              <Timeline data={timelineData} />
-            </div>
-          ) : (
-            <div className="text-center py-12">
-              <p className="text-slate-600">{t('history.noData')}</p>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section className="py-24  border-t hidden border-gray-200">
-      <div className="shrink-0 hidden lg:flex">
-                <svg width="100" height="900" viewBox="0 0 100 900" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <linearGradient id="teamLineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stopColor="#60a5fa" />
-                      <stop offset="100%" stopColor="#1e3a8a" />
-                    </linearGradient>
-                    <filter id="teamGlow">
-                      <feGaussianBlur stdDeviation="3" result="blur" />
-                      <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                    </filter>
-                  </defs>
-                  <path
-                    d="M60 20 L35 60 L35 750 L60 780"
-                    stroke="url(#teamLineGradient)"
-                    strokeWidth="2"
-                    fill="none"
-                    filter="url(#teamGlow)"
-                  />
-                  <rect x="59" y="10" width="10" height="10" fill="#60a5fa" filter="url(#teamGlow)" />
-                  <rect x="54" y="774" width="10" height="10" fill="#1e3a8a"  filter="url(#teamGlow)" />
-                </svg>
-              </div> <div className=" b flex flex-col ">
-          <div className="">
-            <div className="flex items-center justify-center lg:justify-start gap-8 mb-8">
-
-              <div className="text-center lg:text-left">
-                <h2
-                  className="heading-1 text-slate-900 mb-4"
-                  style={{ fontFamily: "var(--font-michroma)" }}
-                >
-                  {t('team.title')}
-                </h2>
-                <p className="text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0">
-                  {t('team.description')}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {teamLoading ? (
-            <div className="text-center py-12">
-              <div className="inline-block w-8 h-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
-              <p className="mt-4 text-slate-600">{t('team.loading')}</p>
-            </div>
-          ) : teamMembers.length > 0 ? (
-            <>
-              <div className="grid items-center justify-center lg:grid-cols-4 md:grid-cols-3 gap-6">
-                {teamMembers.map((member) => {
-                  const imageUrl = member.image
-                    ? urlFor(member.image).width(400).height(400).url()
-                    : undefined;
-                  return (
-                    <PolygonCard
-                      key={member._id}
-                      imageUrl={imageUrl}
-                      title={`${member.firstName || ''} ${member.lastName || ''}`.trim() || t('team.fallbackName')}
-                      description={member.position || ''}
-                      fallbackIcon={<User className="w-24 h-24 text-gray-400" />}
+                {/* Zdjęcie + karta ze statystyką w stylu kart z home */}
+                <div className="relative order-2">
+                  <div className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm">
+                    <img
+                      src={urlFor(aboutUsData.image).width(1200).height(900).url()}
+                      alt={aboutUsData.title}
+                      className="aspect-[4/3] w-full object-cover"
                     />
-                  );
-                })}
-              </div>
+                  </div>
 
-            </>
-          ) : (
-            <div className="text-center py-12">
-              <p className="text-slate-600">{t('team.noMembers')}</p>
-            </div>
-          )}
-        </div>
-      </section>
-
-      <div className="py-20 relative ">
-
-      <div className="absolute top-0  left-0 right-0 h-64 z-0 pointer-events-none bg-gradient-to-b from-transparent to-[#f4f4f4]"></div>
-                <div className="bg-[#f4f4f4] w-full" style={{ width: '100vw' , }}>
-                  {isDesktop ? (
-                    <DomeGallery
-                      title={t('team.galleryTitle')}
-                      images={teamMembers
-                        .filter((member) => member.image)
-                        .map((member) => ({
-                          src: urlFor(member.image).width(400).height(400).quality(75).auto('format').url(),
-                          alt: `${member.firstName || ''} ${member.lastName || ''}`.trim() || t('team.fallbackName'),
-                          name: `${member.firstName || ''} ${member.lastName || ''}`.trim() || undefined,
-                          description: member.position || undefined,
-                        }))}
-                      fit={0.8}
-                      minRadius={800}
-                      maxVerticalRotationDeg={0}
-                      segments={24}
-                      dragDampening={2}
-                      grayscale={false}
-                    />
-                  ) : (
-                    <TeamMarquee
-                      title={t('team.galleryTitle')}
-                      images={teamMembers
-                        .filter((member) => member.image)
-                        .map((member) => ({
-                          src: urlFor(member.image).width(300).height(300).quality(75).auto('format').url(),
-                          alt: `${member.firstName || ''} ${member.lastName || ''}`.trim() || t('team.fallbackName'),
-                          name: `${member.firstName || ''} ${member.lastName || ''}`.trim() || undefined,
-                          description: member.position || undefined,
-                        }))}
-                      rows={3}
-                    />
+                  {aboutUsData.statValue && (
+                    <div className="absolute -bottom-6 left-4 max-w-[16rem] rounded-2xl border border-gray-100 bg-white p-5 shadow-md sm:left-6">
+                      <div className="flex items-center gap-4">
+                        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-600">
+                          <Users className="h-6 w-6 text-white" aria-hidden="true" />
+                        </span>
+                        <div>
+                          <div className="text-3xl font-bold leading-none text-slate-900">
+                            {aboutUsData.statValue}
+                          </div>
+                          {aboutUsData.statLabel && (
+                            <div className="mt-1 text-sm font-semibold text-slate-900">
+                              {aboutUsData.statLabel}
+                            </div>
+                          )}
+                          {aboutUsData.statSubLabel && (
+                            <div className="text-xs text-slate-600">
+                              {aboutUsData.statSubLabel}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
                   )}
                 </div>
               </div>
-      {/* CTA Section */}
-      <section className="pb-24 bg-[#f4f4f4]">
-        <div className="max-w-4xl  mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2
-            className="heading-1 text-slate-900 mb-6"
-            style={{ fontFamily: "var(--font-michroma)" }}
-          >
-            {t('cta.title')}
-          </h2>
-          <p className="text-xl text-slate-600 mb-10 leading-relaxed">
-            {t('cta.description')}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/kontakt">
-              <StarGradientButton>
-                {t('cta.buttonText')}
-              </StarGradientButton>
-            </Link>
-
+            ) : null}
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* ── Historia ── */}
+        <section className="section-y">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <SectionHeading
+              eyebrow={t('history.eyebrow')}
+              title={t('history.title')}
+              lead={t('history.description')}
+              className="mb-10"
+            />
+
+            {historyLoading ? (
+              <div className="grid gap-4 sm:grid-cols-2">
+                {[0, 1].map((i) => (
+                  <div
+                    key={i}
+                    className="h-56 rounded-2xl border border-slate-200 bg-white shadow-sm"
+                  />
+                ))}
+                <span className="sr-only">{t('history.loading')}</span>
+              </div>
+            ) : historyItems.length > 0 ? (
+              <div className="relative w-full overflow-visible">
+                <Timeline data={timelineData} />
+              </div>
+            ) : (
+              <p className="text-center text-slate-600">{t('history.noData')}</p>
+            )}
+          </div>
+        </section>
+
+        {/* ── Zespół - pełnoekranowa sekcja z galerią, jak Proces na home ── */}
+        {teamImages.length > 0 && (
+          <section className="section-y relative left-1/2 right-1/2 -mx-[50vw] w-screen overflow-hidden bg-gray-100">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <SectionHeading
+                eyebrow={t('team.eyebrow')}
+                title={t('team.galleryTitle')}
+                lead={t('team.description')}
+                className="mb-10"
+              />
+            </div>
+
+            <div className="w-full">
+              {isDesktop ? (
+                <DomeGallery
+                  images={teamImages.map((member) => ({
+                    src: urlFor(member.image).width(400).height(400).quality(75).auto('format').url(),
+                    alt:
+                      `${member.firstName || ''} ${member.lastName || ''}`.trim() ||
+                      t('team.fallbackName'),
+                    name: `${member.firstName || ''} ${member.lastName || ''}`.trim() || undefined,
+                    description: member.position || undefined,
+                  }))}
+                  fit={0.8}
+                  minRadius={800}
+                  maxVerticalRotationDeg={0}
+                  segments={24}
+                  dragDampening={2}
+                  grayscale={false}
+                />
+              ) : (
+                <TeamMarquee
+                  images={teamImages.map((member) => ({
+                    src: urlFor(member.image).width(300).height(300).quality(75).auto('format').url(),
+                    alt:
+                      `${member.firstName || ''} ${member.lastName || ''}`.trim() ||
+                      t('team.fallbackName'),
+                    name: `${member.firstName || ''} ${member.lastName || ''}`.trim() || undefined,
+                    description: member.position || undefined,
+                  }))}
+                  rows={3}
+                />
+              )}
+            </div>
+          </section>
+        )}
+      </div>
     </div>
   );
 }

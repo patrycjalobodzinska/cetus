@@ -161,12 +161,14 @@ export default async function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12">
           <div className="lg:col-span-2 space-y-6">
             {data.contactTitle && (
-              <h3
+              // h2, bo to pierwszy nagłówek stopki - kolejne kolumny są h3.
+              // Przy h3 na podstronach bez sekcji h2 powstawał przeskok h1 -> h3.
+              <h2
                 style={{ fontFamily: "var(--font-michroma)" }}
                 className="text-2xl md:text-3xl font-black text-white leading-tight"
               >
                 {data.contactTitle}
-              </h3>
+              </h2>
             )}
             {data.contactDescription && (
               <p className="text-slate-300 leading-relaxed text-sm">

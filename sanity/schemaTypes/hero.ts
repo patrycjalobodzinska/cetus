@@ -2,8 +2,9 @@ import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'hero',
-  title: 'Sekcja Hero',
+  title: 'Sekcja Hero (nieużywana na stronie)',
   type: 'document',
+  description: 'Nieużywane - żaden komponent nie pobiera tego typu. Zostawione na wypadek powrotu do starego hero.',
   fields: [
     defineField({
       name: 'title',

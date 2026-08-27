@@ -2,8 +2,9 @@ import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'team',
-  title: 'Zespół',
+  title: 'Zespół - osoba',
   type: 'document',
+  description: 'Osoba w sekcji zespołu na /o-nas.',
   fields: [
     defineField({
       name: 'firstName',

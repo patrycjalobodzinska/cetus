@@ -2,8 +2,9 @@ import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'offer',
-  title: 'Oferta',
+  title: 'Lista usług w stopce',
   type: 'document',
+  description: 'Lista usług renderowana w stopce - wykorzystywane są tylko pozycje z pola "Projekty/Oferty" (tytuł + slug).',
   fields: [
     defineField({
       name: 'title',

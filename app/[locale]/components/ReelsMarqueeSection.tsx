@@ -1,7 +1,6 @@
 import { getLocale, getTranslations } from 'next-intl/server';
 import { client } from '@/sanity/lib/client';
-import ScrollRow from '@/app/components/ScrollRow';
-import ReelPlayer from '@/app/components/ReelPlayer';
+import ReelsCarousel from '@/app/components/ReelsCarousel';
 
 interface Reel {
   url?: string;
@@ -31,7 +30,12 @@ const buildEmbedSrc = (url: string) =>
     url,
   )}&show_text=false&width=${PLAYER_WIDTH}&t=0`;
 
-export default async function ReelsMarqueeSection() {
+export default async function ReelsMarqueeSection({
+  showHeading = true,
+}: {
+  /** na /blog nagłówek sekcji dubluje tytuł strony, więc go chowamy */
+  showHeading?: boolean;
+} = {}) {
   const locale = await getLocale();
   const t = await getTranslations('home.reels');
 
@@ -48,45 +52,39 @@ export default async function ReelsMarqueeSection() {
   }
 
   return (
-    <section className="section-y relative flex flex-col justify-center lg:min-h-[min(100vh,1000px)]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-3">
-            - {t('eyebrow')}
-          </p>
-          <h2
-            className="section-title text-slate-900 mb-3"
-          >
-            {t('title')}
-          </h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            {t('lead')}
-          </p>
-        </div>
-      </div>
-
-      {/* filmiki na całą szerokość ekranu - ręczny scroll + strzałki */}
-      <ScrollRow>
-        {reels.map((reel, i) => (
-          <div
-            key={`${reel.url}-${i}`}
-            className="shrink-0 rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-md shadow-blue-500/10"
-            style={{ width: PLAYER_WIDTH }}
-          >
-            <ReelPlayer
-              src={buildEmbedSrc(reel.url as string)}
-              width={PLAYER_WIDTH}
-              height={PLAYER_HEIGHT}
-              title={reel.caption || `Reel ${i + 1}`}
-            />
-            {reel.caption && (
-              <p className="px-3 py-3 text-slate-700 text-sm font-medium text-center">
-                {reel.caption}
-              </p>
-            )}
+    <section
+      className={
+        showHeading
+          ? 'section-y relative flex flex-col justify-center lg:min-h-[min(100vh,1000px)]'
+          : 'relative flex flex-col justify-center pb-12 md:pb-20'
+      }
+    >
+      {showHeading && (
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-3">
+              - {t('eyebrow')}
+            </p>
+            <h2 className="section-title text-slate-900 mb-3">{t('title')}</h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+              {t('lead')}
+            </p>
           </div>
-        ))}
-      </ScrollRow>
+        </div>
+      )}
+
+      {/* filmiki na całą szerokość ekranu - ręczny scroll + strzałki.
+          Karuzela pilnuje, żeby grała tylko jedna rolka naraz. */}
+      <ReelsCarousel
+        ariaLabel={t('title')}
+        width={PLAYER_WIDTH}
+        height={PLAYER_HEIGHT}
+        reels={reels.map((reel, i) => ({
+          src: buildEmbedSrc(reel.url as string),
+          caption: reel.caption,
+          title: reel.caption || `Reel ${i + 1}`,
+        }))}
+      />
     </section>
   );
 }

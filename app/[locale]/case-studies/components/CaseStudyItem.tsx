@@ -35,7 +35,7 @@ export default function CaseStudyItem({ caseStudy, index }: CaseStudyItemProps) 
           {/* Text Content */}
           <div className={`${!isEven ? 'lg:col-start-2' : ''}`}>
             {caseStudy.category && (
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-600/10 text-blue-600 rounded-full text-xs font-medium mb-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-600/10 text-blue-700 rounded-full text-xs font-medium mb-6">
                 {caseStudy.category}
               </div>
             )}

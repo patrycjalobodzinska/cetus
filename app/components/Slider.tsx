@@ -8,6 +8,8 @@ interface SliderProps {
   /** szerokość slajdu na mobile, np. "82%" */
   slideWidth?: string;
   className?: string;
+  /** nazwa karuzeli dla czytnika ekranu */
+  ariaLabel?: string;
 }
 
 // Poziomy slider (scroll-snap) ze strzałkami i kropkami - do użycia na mobile.
@@ -15,6 +17,7 @@ export default function Slider({
   children,
   slideWidth = "82%",
   className = "",
+  ariaLabel = "Karuzela",
 }: SliderProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
@@ -38,10 +41,15 @@ export default function Slider({
 
   return (
     <div className={className}>
+      {/* tabIndex + role: przewijany obszar musi być osiągalny z klawiatury
+          (WCAG 2.1.1) - inaczej treść za krawędzią jest niedostępna bez myszy. */}
       <div
         ref={ref}
         onScroll={onScroll}
-        className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-4 px-4 pb-1"
+        tabIndex={0}
+        role="group"
+        aria-label={ariaLabel}
+        className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-4 px-4 pb-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
       >
         {items.map((child, i) => (
           <div key={i} className="snap-center shrink-0" style={{ width: slideWidth }}>
@@ -63,15 +71,22 @@ export default function Slider({
 
         <div className="flex items-center gap-2">
           {items.map((_, i) => (
+            // Kropka ma 8px, więc klikalny obszar powiększamy przezroczystym
+            // paddingiem do 24x24 (WCAG 2.5.8), nie zmieniając wyglądu.
             <button
               key={i}
               type="button"
               onClick={() => goTo(i)}
               aria-label={`Slajd ${i + 1}`}
-              className={`h-2 rounded-full transition-all ${
-                i === active ? "w-6 bg-blue-600" : "w-2 bg-gray-300"
-              }`}
-            />
+              aria-current={i === active ? "true" : undefined}
+              className="grid h-6 w-6 place-items-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+            >
+              <span
+                className={`block h-2 rounded-full transition-all ${
+                  i === active ? "w-6 bg-blue-600" : "w-2 bg-gray-300"
+                }`}
+              />
+            </button>
           ))}
         </div>
 

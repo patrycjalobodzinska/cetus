@@ -18,7 +18,13 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
  * Bez scroll-snap: przy `snap-mandatory` przeglądarka dosnapowuje kontener
  * do własnych punktów i przerywa programowe przewijanie.
  */
-export default function ScrollRow({ children }: { children: React.ReactNode }) {
+export default function ScrollRow({
+  children,
+  ariaLabel = "Karuzela",
+}: {
+  children: React.ReactNode;
+  ariaLabel?: string;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const items = React.Children.toArray(children);
   const count = items.length;
@@ -96,9 +102,14 @@ export default function ScrollRow({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="relative left-1/2 w-screen -translate-x-1/2">
+      {/* Przewijany obszar musi dać się sfokusować, żeby dało się go przewinąć
+          strzałkami klawiatury (WCAG 2.1.1). */}
       <div
         ref={ref}
-        className="scrollbar-hide flex gap-5 overflow-x-auto px-6 py-2 pb-3 [mask-image:linear-gradient(90deg,transparent,#000_5%,#000_95%,transparent)]"
+        tabIndex={0}
+        role="group"
+        aria-label={ariaLabel}
+        className="scrollbar-hide flex gap-5 overflow-x-auto px-6 py-2 pb-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 [mask-image:linear-gradient(90deg,transparent,#000_5%,#000_95%,transparent)]"
       >
         {items.map((child, i) => (
           <React.Fragment key={`a-${i}`}>{child}</React.Fragment>

@@ -2,8 +2,9 @@ import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'aboutUs',
-  title: 'Sekcja O nas',
+  title: 'O nas - sekcja główna',
   type: 'document',
+  description: 'Sekcja otwierająca stronę /o-nas.',
   fields: [
     defineField({
       name: 'title',

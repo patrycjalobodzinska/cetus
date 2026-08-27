@@ -211,6 +211,9 @@
       "lead": "A behind-the-scenes look at life at CetusPro - events, initiatives and the people who make it happen."
     },
     "modules": {
+      "eyebrow": "Blog",
+      "title": "The knowledge we share every day",
+      "lead": "Articles on technology, process and what really changes the outcome of a project.",
       "readMore": "Read more"
     }
   },
@@ -256,6 +259,19 @@
           "description": "Automated zero-downtime releases, monitoring and maintenance of the system after launch."
         }
       }
+    }
+  },
+  "blog": {
+    "hero": {
+      "titlePrefix": "What's",
+      "titleHighlight": "new",
+      "description": "Events, initiatives and first-hand knowledge - what we are working on and what we are learning."
+    },
+    "noPosts": "No posts yet. Check back soon.",
+    "cta": {
+      "title": "Let's talk about your project",
+      "description": "Tell us what you are up against - we will come back with an assessment of scope, risks and engagement model.",
+      "buttonText": "Book a free consultation"
     }
   },
   "caseStudyDetail": {
@@ -335,15 +351,18 @@
     "downloadPdf": "Download Quality Policy (PDF)"
   },
   "aboutUs": {
+    "eyebrow": "About us",
     "loading": "Loading...",
     "fallbackButton": "Let's talk about your project",
     "history": {
+      "eyebrow": "Our journey",
       "title": "Our history",
       "description": "See the key moments of our journey and the achievements that shaped our company.",
       "loading": "Loading history...",
       "noData": "No data to display."
     },
     "team": {
+      "eyebrow": "Team",
       "title": "Our team",
       "description": "The people who run projects from audit to maintenance - the same team throughout the engagement.",
       "loading": "Loading team...",
@@ -450,5 +469,13 @@
       "description": "We design, build and grow dedicated IT systems. See our offer for business or join the CetusPro team.",
       "keywords": "CetusPro, IT solutions, custom software, IT careers"
     }
+  },
+  "preFooter": {
+    "left": "We build systems for companies across industries - from marketplaces and online galleries to service platforms.",
+    "leftHighlight": "The next one can be yours.",
+    "personName": "Norbert Pisz",
+    "personRole": "CEO, CetusPro",
+    "description": "Book a free consultation - we will talk about your project, the scope of work and the engagement model.",
+    "linkText": "Free consultation"
   }
 }

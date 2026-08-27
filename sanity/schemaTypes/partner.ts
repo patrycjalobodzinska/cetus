@@ -2,8 +2,9 @@ import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'partner',
-  title: 'Zaufali nam',
+  title: 'Zaufali nam - logotyp klienta',
   type: 'document',
+  description: 'Logotyp w pasku "Zaufali nam" na stronie głównej.',
   fields: [
     defineField({
       name: 'name',

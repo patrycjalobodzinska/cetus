@@ -41,7 +41,7 @@ export default function LogoWall({ items }: { items: LogoWallItem[] }) {
               </span>
             )}
             {item.caption && (
-              <span className="mt-3 text-xs uppercase tracking-[0.16em] text-slate-400">
+              <span className="mt-3 text-xs uppercase tracking-[0.16em] text-slate-600">
                 {item.caption}
               </span>
             )}
@@ -50,9 +50,13 @@ export default function LogoWall({ items }: { items: LogoWallItem[] }) {
 
         // Jasne logotypy (białe litery) dostają ciemne tło - na białej karcie
         // byłyby niewidoczne. Sterowane polem `logoTone` w Sanity.
+        //
+        // Uwaga: w Tailwind 4 `-translate-y-*` ustawia właściwość `translate`,
+        // a nie `transform` - lista przejść musi wymieniać `translate`, inaczej
+        // karta podskakuje skokowo, a płynnie animuje się tylko cień.
         const cardClass = item.darkBackground
-          ? "flex h-32 w-60 flex-col items-center justify-center rounded-2xl border border-slate-800 bg-slate-900 px-8 shadow-sm transition-[transform,box-shadow,border-color] duration-300 ease-out hover:-translate-y-0.5 hover:border-blue-500/50 hover:shadow-md"
-          : "flex h-32 w-60 flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white px-8 shadow-sm transition-[transform,box-shadow,border-color] duration-300 ease-out hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-md";
+          ? "flex h-32 w-60 flex-col items-center justify-center rounded-2xl border border-slate-800 bg-slate-900 px-8 shadow-sm transition-[translate,box-shadow,border-color] duration-200 ease-out hover:-translate-y-1 hover:border-blue-500/50 hover:shadow-md"
+          : "flex h-32 w-60 flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white px-8 shadow-sm transition-[translate,box-shadow,border-color] duration-200 ease-out hover:-translate-y-1 hover:border-blue-200 hover:shadow-md";
 
         return item.url ? (
           <a

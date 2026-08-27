@@ -2,8 +2,9 @@ import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'footer',
-  title: 'Footer',
+  title: 'Stopka',
   type: 'document',
+  description: 'Treści stopki widocznej na każdej podstronie.',
   fields: [
     defineField({
       name: 'contactTitle',

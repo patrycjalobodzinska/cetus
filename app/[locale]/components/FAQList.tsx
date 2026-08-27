@@ -36,7 +36,7 @@ export default function FAQList({ faqs }: { faqs: FAQ[] }) {
                 </span>
                 <span
                   aria-hidden="true"
-                  className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full border border-slate-200 text-slate-500 transition-[transform,color,border-color] duration-300 ease-out group-hover:border-blue-200 group-hover:text-blue-600"
+                  className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full border border-slate-200 text-slate-500 transition-[rotate,translate,color,border-color] duration-300 ease-out group-hover:border-blue-200 group-hover:text-blue-600"
                   style={{ transform: open ? "rotate(45deg)" : "rotate(0deg)" }}
                 >
                   <Plus className="h-4 w-4" />

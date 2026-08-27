@@ -251,7 +251,7 @@ export default function ProcessSection() {
           </ol>
 
           {/* Mobile - slider */}
-          <Slider className="sm:hidden" slideWidth="80%">
+          <Slider className="sm:hidden" slideWidth="80%" ariaLabel="Kroki procesu">
             {steps.map((step, i) => (
               <StepCard key={step._key} step={step} index={i} count={count} delay={i * 110} />
             ))}

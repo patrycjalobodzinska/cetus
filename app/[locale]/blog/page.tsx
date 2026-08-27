@@ -3,8 +3,7 @@ import Image from "next/image";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { getTranslations } from "next-intl/server";
-import CTASection from "@/app/components/CTASection";
-import WhatsNewSection from "../components/WhatsNewSection";
+import ReelsMarqueeSection from "../components/ReelsMarqueeSection";
 
 const PAGE_SIZE = 6;
 
@@ -195,15 +194,9 @@ export default async function BlogPage({
         </div>
       </section>
 
-      <WhatsNewSection showHeading={false} />
+      {/* ta sama karuzela rolek co na stronie głównej */}
+      <ReelsMarqueeSection showHeading={false} />
 
-      <CTASection
-        title={t("cta.title")}
-        description={t("cta.description")}
-        buttonText={t("cta.buttonText")}
-        buttonLink="/kontakt"
-        className="md:py-24 py-12"
-      />
     </div>
   );
 }

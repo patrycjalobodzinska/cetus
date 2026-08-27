@@ -145,8 +145,9 @@ const ctaBlock = defineArrayMember({
 
 export default defineType({
   name: 'servicePage',
-  title: 'Strona usługi',
+  title: 'Strona usługi (/oferta/...)',
   type: 'document',
+  description: 'Pojedyncza strona usługi pod /oferta/<slug>.',
   fields: [
     defineField({
       name: 'slug',

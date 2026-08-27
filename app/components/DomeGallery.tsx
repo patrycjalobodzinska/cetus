@@ -933,7 +933,7 @@ export default function DomeGallery({
             {title}
           </h2>
         )}
-        <main
+        <div
           ref={mainRef}
           className="absolute mt-16 inset-0 grid place-items-center overflow-hidden select-none bg-transparent"
           style={{
@@ -1066,7 +1066,7 @@ export default function DomeGallery({
               }}
             />
           </div>
-        </main>
+        </div>
       </div>
     </>
   );

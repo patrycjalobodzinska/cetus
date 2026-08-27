@@ -211,6 +211,9 @@
       "lead": "Zajrzyj za kulisy CetusPro - wydarzenia, inicjatywy i ludzie, którzy je tworzą."
     },
     "modules": {
+      "eyebrow": "Blog",
+      "title": "Wiedza, którą dzielimy się na co dzień",
+      "lead": "Artykuły o technologii, procesie i tym, co realnie zmienia efekt wdrożenia.",
       "readMore": "Czytaj więcej"
     }
   },
@@ -256,6 +259,19 @@
           "description": "Automatyczne wdrożenia bez przerw w działaniu, monitoring i utrzymanie systemu po starcie."
         }
       }
+    }
+  },
+  "blog": {
+    "hero": {
+      "titlePrefix": "Co u nas",
+      "titleHighlight": "słychać",
+      "description": "Wydarzenia, inicjatywy i wiedza z pierwszej ręki - piszemy o tym, nad czym pracujemy i czego się uczymy."
+    },
+    "noPosts": "Nie ma jeszcze żadnych wpisów. Zajrzyj do nas wkrótce.",
+    "cta": {
+      "title": "Porozmawiajmy o Twoim projekcie",
+      "description": "Opowiedz, z czym się mierzysz - wrócimy z oceną zakresu, ryzyk i modelu współpracy.",
+      "buttonText": "Umów bezpłatną konsultację"
     }
   },
   "caseStudyDetail": {
@@ -335,15 +351,18 @@
     "downloadPdf": "Pobierz Politykę Jakości (PDF)"
   },
   "aboutUs": {
+    "eyebrow": "O nas",
     "loading": "Ładowanie...",
     "fallbackButton": "Porozmawiajmy o projekcie",
     "history": {
+      "eyebrow": "Nasza droga",
       "title": "Nasza historia",
       "description": "Zobacz kluczowe momenty naszej podróży i osiągnięcia, które ukształtowały naszą firmę.",
       "loading": "Ładowanie historii...",
       "noData": "Brak danych do wyświetlenia."
     },
     "team": {
+      "eyebrow": "Zespół",
       "title": "Nasz zespół",
       "description": "Ludzie, którzy prowadzą projekty od audytu po utrzymanie - ten sam zespół przez cały czas trwania współpracy.",
       "loading": "Ładowanie zespołu...",
@@ -450,5 +469,13 @@
       "description": "Projektujemy, budujemy i rozwijamy dedykowane systemy IT. Sprawdź ofertę dla biznesu lub dołącz do zespołu CetusPro.",
       "keywords": "CetusPro, rozwiązania IT, oprogramowanie dedykowane, kariera IT"
     }
+  },
+  "preFooter": {
+    "left": "Budujemy systemy dla firm z różnych branż - od marketplace'ów, przez galerie sprzedaży online, po platformy serwisowe.",
+    "leftHighlight": "Kolejny możemy zbudować dla Ciebie.",
+    "personName": "Norbert Pisz",
+    "personRole": "CEO, CetusPro",
+    "description": "Umów bezpłatną konsultację - porozmawiamy o Twoim projekcie, zakresie prac i modelu współpracy.",
+    "linkText": "Bezpłatna konsultacja"
   }
 }

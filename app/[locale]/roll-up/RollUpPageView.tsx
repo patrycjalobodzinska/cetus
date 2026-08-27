@@ -475,7 +475,7 @@ export default function RollUpPageView({ data }: { data: RollUpData }) {
   return (
     <>
       {!splashDone && <SplashScreen onFinish={() => setSplashDone(true)} />}
-      <main className="min-h-screen overflow-x-hidden">
+      <div className="min-h-screen overflow-x-hidden">
         <section className="relative overflow-x-hidden max-w-[100vw] w-full flex flex-col items-center justify-start overflow-hidden">
           <div className="pt-32 md:pt-40 w-full justify-center container mx-auto pb-6 md:pb-10 flex flex-col items-center relative px-4">
             <ContestSection />
@@ -759,7 +759,7 @@ export default function RollUpPageView({ data }: { data: RollUpData }) {
             </section>
           );
         })()}
-      </main>
+      </div>
     </>
   );
 }

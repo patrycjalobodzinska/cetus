@@ -103,6 +103,17 @@ export default async function HomepageModulesSection() {
 
   return (
     <section className="section-y relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-10">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-3">
+            - {tm('eyebrow')}
+          </p>
+          <h2 className="section-title text-slate-900 mb-3">{tm('title')}</h2>
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+            {tm('lead')}
+          </p>
+        </div>
+      </div>
       <div className="max-w-7xl mx-auto border-y md:border-y-0 border-y-gray-200 px-4 sm:px-6 lg:px-8">
         <div className={clsx(cards.length > 2 ? "divide-y " : "divide-y md:divide-y-0", "grid  md:divide-x divide-gray-300 md:grid-cols-2 divide-y")}>
           {cards.map((card, index) => (
@@ -124,7 +135,7 @@ export default async function HomepageModulesSection() {
 
                 <div className="space-y-4">
                   {card.label && (
-                    <p className="text-sm text-gray-500 uppercase tracking-wider">
+                    <p className="text-sm text-gray-600 uppercase tracking-wider">
                       {card.label}
                     </p>
                   )}

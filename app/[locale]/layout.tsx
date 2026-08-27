@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import SmoothScroll from "../components/SmoothScroll";
+import PreFooterCTA from "@/app/components/PreFooterCTA";
 import Footer from "../components/Footer";
 import NavbarCurosora from "../components/NavbarCurosora";
 import NavigationProvider from "../components/NavigationProvider";
@@ -217,6 +218,8 @@ export default async function RootLayout({
             <NavbarCurosora />
             <main id="main-content" className=" top-0 left-0 w-full h-full">
               {children}
+              {/* wspólna zachęta do kontaktu tuż nad stopką */}
+              <PreFooterCTA />
               <Footer />
             </main>
             <HiddenCaseStudiesAccess />

@@ -409,7 +409,7 @@ function BpImage({ variant = "contained", image, caption, alt }: ImageSection) {
             />
           </div>
           {caption && (
-            <figcaption className="mt-3 text-center text-sm text-slate-500 italic px-4">
+            <figcaption className="mt-3 text-center text-sm text-slate-600 italic px-4">
               {caption}
             </figcaption>
           )}
@@ -433,7 +433,7 @@ function BpImage({ variant = "contained", image, caption, alt }: ImageSection) {
           />
         </div>
         {caption && (
-          <figcaption className="mt-3 text-center text-sm text-slate-500 italic">
+          <figcaption className="mt-3 text-center text-sm text-slate-600 italic">
             {caption}
           </figcaption>
         )}
@@ -453,7 +453,7 @@ function BpQuote({ variant = "centered", quote, author, role }: QuoteSection) {
               “{quote}”
             </p>
             {(author || role) && (
-              <footer className="text-slate-500 text-sm">
+              <footer className="text-slate-600 text-sm">
                 {author && <span className="font-medium">{author}</span>}
                 {author && role && <span> — </span>}
                 {role && <span>{role}</span>}
@@ -471,7 +471,7 @@ function BpQuote({ variant = "centered", quote, author, role }: QuoteSection) {
           “{quote}”
         </p>
         {(author || role) && (
-          <p className="mt-6 text-slate-500">
+          <p className="mt-6 text-slate-600">
             {author && <span className="font-medium">{author}</span>}
             {author && role && <span> — </span>}
             {role && <span>{role}</span>}
@@ -509,7 +509,7 @@ function BpGallery({ variant = "grid", sectionTitle, galleryItems = [] }: Galler
                     />
                   </div>
                   {item.caption && (
-                    <figcaption className="mt-2 text-sm text-slate-500 italic">
+                    <figcaption className="mt-2 text-sm text-slate-600 italic">
                       {item.caption}
                     </figcaption>
                   )}
@@ -542,7 +542,7 @@ function BpGallery({ variant = "grid", sectionTitle, galleryItems = [] }: Galler
                     className="w-full h-auto rounded-xl object-cover"
                   />
                   {item.caption && (
-                    <figcaption className="mt-2 text-xs text-slate-500 italic">
+                    <figcaption className="mt-2 text-xs text-slate-600 italic">
                       {item.caption}
                     </figcaption>
                   )}
@@ -577,7 +577,7 @@ function BpGallery({ variant = "grid", sectionTitle, galleryItems = [] }: Galler
                   />
                 </div>
                 {item.caption && (
-                  <figcaption className="mt-2 text-sm text-slate-500 italic">
+                  <figcaption className="mt-2 text-sm text-slate-600 italic">
                     {item.caption}
                   </figcaption>
                 )}
@@ -639,7 +639,7 @@ function BpVideo({ url, caption, title }: VideoSection) {
           )}
         </div>
         {caption && (
-          <figcaption className="mt-3 text-center text-sm text-slate-500 italic">
+          <figcaption className="mt-3 text-center text-sm text-slate-600 italic">
             {caption}
           </figcaption>
         )}
@@ -892,7 +892,7 @@ export default function BlogPostDetail({
       )}
 
       {(post.author?.name || post.publishedAt) && (
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-4 flex items-center gap-3 text-sm text-slate-500">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-4 flex items-center gap-3 text-sm text-slate-600">
           {post.author?.avatar && (
             <div className="relative w-9 h-9 rounded-full overflow-hidden">
               <Image

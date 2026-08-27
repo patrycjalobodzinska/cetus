@@ -12,8 +12,9 @@ const ICON_OPTIONS = [
 
 export default defineType({
   name: 'rollUpPage',
-  title: 'Strona Roll-up',
+  title: 'Strona Roll-up (/roll-up)',
   type: 'document',
+  description: 'Landing /roll-up (kod QR z materiałów drukowanych).',
   groups: [
     { name: 'hero', title: 'Hero' },
     { name: 'choose', title: 'Wybór ścieżki' },

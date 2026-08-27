@@ -2,8 +2,9 @@ import { defineField, defineType, defineArrayMember } from "sanity";
 
 export default defineType({
   name: "blogPost",
-  title: "Co u nas - wpis",
+  title: "Wpis na blogu (Co u nas)",
   type: "document",
+  description: "Wpis bloga (/blog). Trzy najnowsze wpisy pokazują się też na stronie głównej.",
   fields: [
     defineField({
       name: "title",

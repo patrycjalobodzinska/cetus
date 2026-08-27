@@ -16,8 +16,9 @@ import { defineField, defineType } from 'sanity'
  */
 export default defineType({
   name: 'funding',
-  title: 'Dofinansowanie (Fundusze Europejskie)',
+  title: 'Dofinansowanie (/dofinansowanie)',
   type: 'document',
+  description: 'Strona /dofinansowanie oraz logotyp funduszy w stopce.',
   fields: [
     defineField({
       name: 'enabled',

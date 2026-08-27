@@ -7,7 +7,6 @@ import HomepageModulesSection from "./HomepageModulesSection";
 import PartnersSection from "./PartnersSection";
 import SponsorsSection from "./SponsorsSection";
 import FAQSection from "./FAQSection";
-import HomeCTASection from "./HomeCTASection";
 
 /**
  * Układ strony głównej - jedno źródło kolejności sekcji.
@@ -17,7 +16,7 @@ import HomeCTASection from "./HomeCTASection";
 export default function HomeSections() {
   return (
     <div className="relative flex flex-col items-center justify-center">
-      <main className="w-full max-w-7xl">
+      <div className="w-full max-w-7xl">
         {/* Hero */}
         <HeroCurosora />
         {/* Co robimy - kafelki usług */}
@@ -36,9 +35,8 @@ export default function HomeSections() {
         <SponsorsSection />
         {/* FAQ dużych klientów */}
         <FAQSection />
-        {/* CTA */}
-        <HomeCTASection />
-      </main>
+        {/* CTA jest teraz wspólne dla całego serwisu - PreFooterCTA w layoucie */}
+      </div>
     </div>
   );
 }

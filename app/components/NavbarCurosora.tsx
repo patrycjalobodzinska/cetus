@@ -277,7 +277,9 @@ export default function NavbarCurosora() {
     );
 
   return (
-    <div
+    // <header>, a nie <div> - inaczej logo, przełącznik języka i menu mobilne
+    // leżą poza jakimkolwiek landmarkiem (WCAG 1.3.1 / axe "region").
+    <header
       className={`sticky top-0 z-50 w-full -mb-34 flex justify-center px-4 pt-2 pb-6 transition-all max-w-[1300px] mx-auto duration-700 ease-out opacity-100 translate-y-0`}
     >
       {/* Mobile Header */}
@@ -561,6 +563,6 @@ export default function NavbarCurosora() {
           </nav>
         </div>
       )}
-    </div>
+    </header>
   );
 }

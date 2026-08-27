@@ -2,8 +2,9 @@ import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'processSection',
-  title: 'Sekcja procesu',
+  title: 'Strona główna - sekcja Proces',
   type: 'document',
+  description: 'Sekcja "Proces" na stronie głównej.',
   fields: [
     defineField({
       name: 'title',

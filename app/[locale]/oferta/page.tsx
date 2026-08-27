@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import TechnologiesMarquee from "@/app/components/TechnologiesMarquee";
 import StatsPanel from "@/app/components/StatsPanel";
-import CTASection from "@/app/components/CTASection";
 import Tile, { SPANS } from "../components/ServiceTile";
 import Slider from "@/app/components/Slider";
 import { ArrowRight } from "lucide-react";
@@ -174,7 +173,7 @@ export default function OfferPage() {
                 ))}
               </div>
 
-              <Slider className="md:hidden" slideWidth="85%">
+              <Slider className="md:hidden" slideWidth="85%" ariaLabel="Usługi">
                 {projects.map((project, index) => (
                   <Link
                     key={project.slug}
@@ -253,7 +252,7 @@ export default function OfferPage() {
               <div className="text-center">
                 <Link
                   href={industries.buttonLink}
-                  className="group inline-flex items-center gap-2 rounded-full bg-slate-900 px-7 py-3.5 text-sm font-semibold text-white shadow-md transition-[transform,background-color] duration-200 ease-out hover:-translate-y-0.5 hover:bg-slate-800">
+                  className="group inline-flex items-center gap-2 rounded-full bg-slate-900 px-7 py-3.5 text-sm font-semibold text-white shadow-md transition-[translate,background-color] duration-200 ease-out hover:-translate-y-0.5 hover:bg-slate-800">
                   {industries.buttonText[locale as "pl" | "en"] ||
                     industries.buttonText.pl}
                   <ArrowRight className="h-4 w-4 transition-transform duration-200 ease-out group-hover:translate-x-1" />
@@ -264,12 +263,6 @@ export default function OfferPage() {
         </section>
       )}
 
-      <CTASection
-        title={t("cta.title")}
-        description={t("cta.description")}
-        buttonText={t("cta.buttonText")}
-        buttonLink="/kontakt"
-      />
     </div>
   );
 }

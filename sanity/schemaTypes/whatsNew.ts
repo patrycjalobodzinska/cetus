@@ -2,8 +2,9 @@ import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'whatsNew',
-  title: 'Co u nas (Shorts z FB)',
+  title: 'Strona główna - rolki z Facebooka',
   type: 'document',
+  description: 'Rolki z Facebooka w sekcji "Co u nas słychać" na stronie głównej.',
   fields: [
     defineField({
       name: 'title',

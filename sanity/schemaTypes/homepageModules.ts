@@ -2,8 +2,9 @@ import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'homepageModule',
-  title: 'Moduł Strony Głównej',
+  title: 'Strona główna - kafel',
   type: 'document',
+  description: 'Kafel w sekcji pod Realizacjami. W tej samej siatce wyświetlają się najpierw 3 najnowsze wpisy z bloga, a potem te kafle.',
   fields: [
     defineField({
       name: 'moduleNumber',
