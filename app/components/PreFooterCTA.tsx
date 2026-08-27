@@ -78,7 +78,7 @@ export default function PreFooterCTA() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-[#f4f4f4] pt-20 md:pt-28"
+      className="relative overflow-hidden bg-surface-muted pt-20 md:pt-28"
       aria-labelledby="prefooter-title"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

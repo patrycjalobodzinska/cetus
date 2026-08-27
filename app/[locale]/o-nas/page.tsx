@@ -158,7 +158,7 @@ export default function AboutUsPage() {
     <div className="relative flex flex-col items-center">
       <div className="w-full max-w-7xl">
         {/* ── Hero - ten sam układ i typografia co hero strony głównej ── */}
-        <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen overflow-hidden bg-gray-100">
+        <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen overflow-hidden bg-surface-muted">
           <div className="relative mx-auto flex min-h-[min(100vh,1000px)] w-full max-w-7xl items-center px-4 pb-8 pt-[var(--page-top-offset)] sm:px-6 sm:pb-12 lg:px-8 lg:pb-24">
             {/* poświaty - jak w hero na home, trzymają się treści */}
             <div
@@ -249,8 +249,14 @@ export default function AboutUsPage() {
         </section>
 
         {/* ── Historia ── */}
-        <section className="section-y">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <section className="section-y relative">
+          {/* Styk z przygaszonym hero rozmyty gradientem, żeby krawędź tła nie
+              rysowała się kreską przez całą szerokość ekranu. */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute left-1/2 top-0 h-40 w-screen -translate-x-1/2 bg-gradient-to-b from-surface-muted to-transparent"
+          />
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <SectionHeading
               eyebrow={t('history.eyebrow')}
               title={t('history.title')}
@@ -280,8 +286,14 @@ export default function AboutUsPage() {
 
         {/* ── Zespół - pełnoekranowa sekcja z galerią, jak Proces na home ── */}
         {teamImages.length > 0 && (
-          <section className="section-y relative left-1/2 right-1/2 -mx-[50vw] w-screen overflow-hidden bg-gray-100">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <section className="section-y relative left-1/2 right-1/2 -mx-[50vw] w-screen overflow-hidden bg-surface-muted">
+            {/* Symetrycznie do sekcji historii: wejście w przygaszone tło też
+                jest gradientem, a nie twardą krawędzią. */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white to-transparent"
+            />
+            <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <SectionHeading
                 eyebrow={t('team.eyebrow')}
                 title={t('team.galleryTitle')}
@@ -301,6 +313,7 @@ export default function AboutUsPage() {
                     name: `${member.firstName || ''} ${member.lastName || ''}`.trim() || undefined,
                     description: member.position || undefined,
                   }))}
+                  overlayBlurColor="var(--surface-muted)"
                   fit={0.8}
                   minRadius={800}
                   maxVerticalRotationDeg={0}

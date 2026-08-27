@@ -2,7 +2,13 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #ffffff;
+  --foreground: #0f172a; /* slate-900 */
+  /* Jedno, wspólne tło sekcji „przygaszonych" (hero, galeria zespołu,
+     zachęta nad stopką). Wcześniej te sekcje miały trzy różne szarości
+     (gray-100 #f3f4f6, #f4f4f4 i tło body), więc na styku było widać
+     przejście - zwłaszcza gdy body dostawało #f4f4f4 z preferencji
+     ciemnego motywu. */
+  --surface-muted: #f3f4f6;
   --page-top-offset: 8rem; /* 128px mobile */
 
   /* Krzywe animacji - mocniejsze niż wbudowane ease-out/ease-in-out */
@@ -122,15 +128,9 @@ a:has(> .sgb-outer) {
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface-muted: var(--surface-muted);
   --font-sans: var(--font-albert);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #f4f4f4;
-    --foreground: #f5f5f5;
-  }
 }
 
 body {
