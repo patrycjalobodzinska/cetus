@@ -8,14 +8,16 @@ import Image from "next/image";
  * i leżą w `public/fundusze`. Nie wolno ich przerysowywać ani przebudowywać -
  * są elementem Księgi Identyfikacji Wizualnej.
  *
- * Wymagania, które realizują te dwa komponenty (Załącznik nr 8 do umowy
- * o dofinansowanie POPW, rozdz. 4):
- *  - `EuSign` - flaga UE z napisem „Unia Europejska" musi być widoczna
- *    w momencie wejścia na stronę, bez przewijania w dół (rozwiązanie nr 2),
+ * Dwa warianty (Załącznik nr 8 do umowy o dofinansowanie POPW, rozdz. 4):
  *  - `FundingSignSet` - pełne zestawienie znaków (Fundusze Europejskie
- *    Polska Wschodnia, barwy RP, Unia Europejska z nazwą funduszu) w dalszej
- *    części serwisu; kolejność znaków jest częścią pliku, więc nie da się jej
- *    przypadkiem odwrócić.
+ *    Polska Wschodnia, barwy RP, Unia Europejska z nazwą funduszu). Stoi
+ *    w stopce, czyli na każdej podstronie, i na /dofinansowanie. Kolejność
+ *    znaków jest częścią pliku, więc nie da się jej przypadkiem odwrócić.
+ *  - `EuSign` - sama flaga UE z napisem „Unia Europejska". Wzór dopuszczony
+ *    dla rozwiązania nr 2 z rozdz. 4.2, gdzie znak jest widoczny bez
+ *    przewijania strony. Obecnie nieużywany - świadoma decyzja, żeby nie
+ *    trzymać znaku w nagłówku; komponent zostaje, bo to jedyne miejsce,
+ *    w którym ten wariant znaku jest opisany i gotowy do wstawienia.
  */
 
 const EU_SIGN = {
