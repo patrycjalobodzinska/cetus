@@ -8,6 +8,7 @@ import { useTranslations, useLocale } from "next-intl";
 import { usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { EuFlag } from "./FundingSigns";
 import { cn } from "@/lib/utils";
 
 const OFFER_LINKS = [
@@ -285,9 +286,9 @@ export default function NavbarCurosora() {
       {/* Mobile Header */}
       <div className="lg:hidden w-full max-w-[1300px]">
         <div className="flex items-center justify-between bg-white/50 backdrop-blur-md border border-gray-100/50 shadow-sm rounded-2xl px-4 py-3">
-          <div className="flex items-center">
+          <div className="flex items-center gap-3">
             <NavigationLink
-              className="w-32 h-12 rounded-lg flex cursor-pointer items-center justify-center"
+              className="w-32 h-12 shrink-0 rounded-lg flex cursor-pointer items-center justify-center"
               href={`/${locale}`}
             >
               <img
@@ -296,6 +297,7 @@ export default function NavbarCurosora() {
                 className="w-full h-full object-contain"
               />
             </NavigationLink>
+            <EuFlag className="h-6 w-auto shrink-0 rounded-sm" />
           </div>
           <div className="flex items-center justify-center">
             <LanguageSwitcher />
@@ -345,6 +347,7 @@ export default function NavbarCurosora() {
                   className="h-full w-full object-contain"
                 />
               </NavigationLink>
+              <EuFlag className="h-8 w-auto shrink-0 rounded-sm" />
             </div>
           </div>
         </div>

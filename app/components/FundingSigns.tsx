@@ -111,3 +111,51 @@ export function FundingSignSet({
     </>
   );
 }
+
+/**
+ * Sama flaga UE, bez napisu - do nagłówka, obok logo.
+ *
+ * Uwaga: rozdz. 4.2 Załącznika nr 8 dopuszcza w miejscu widocznym bez
+ * przewijania flagę UE **z napisem „Unia Europejska"** (cztery wzory).
+ * Sama flaga nie jest jednym z tych wzorów, więc ten komponent jest wyborem
+ * wizerunkowym, nie realizacją wymogu - ten realizuje `FundingSignSet`
+ * w stopce i na /dofinansowanie. Gdyby oznaczenie w nagłówku miało być
+ * zgodne z rozdz. 4.2, wystarczy podmienić go na `EuSignVertical` (flaga
+ * z napisem pod nią, wzór nr 3).
+ */
+export function EuFlag({ className = "" }: { className?: string }) {
+  return (
+    <Image
+      src="/fundusze/flaga-ue.png"
+      alt="Flaga Unii Europejskiej"
+      width={424}
+      height={282}
+      className={className}
+      priority
+    />
+  );
+}
+
+/** Flaga UE z napisem „Unia Europejska" pod nią (wzór nr 3 z rozdz. 4.2). */
+export function EuSignVertical({
+  locale,
+  className = "",
+}: {
+  locale: string;
+  className?: string;
+}) {
+  const src =
+    locale === "en"
+      ? "/fundusze/unia-europejska-en-pion.png"
+      : "/fundusze/unia-europejska-pl-pion.png";
+  return (
+    <Image
+      src={src}
+      alt={locale === "en" ? "European Union" : "Unia Europejska"}
+      width={500}
+      height={307}
+      className={className}
+      priority
+    />
+  );
+}
