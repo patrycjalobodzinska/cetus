@@ -502,6 +502,25 @@ html::-webkit-scrollbar-thumb:hover {
   }
 }
 
+/* Mobile: karty procesu pojawiają się od razu, bez wejścia. Na wąskim
+   ekranie kroki są w sliderze - karta wchodząca clip-path-em walczyła
+   z przewijaniem palcem i kolejne karty animowały się poza kadrem. */
+@media (max-width: 639px) {
+  .pv-tick {
+    transition: none;
+    transform: none;
+  }
+  .pv-grow,
+  .pv-fade,
+  .pv-in .pv-grow,
+  .pv-in .pv-fade {
+    animation: none;
+    clip-path: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* Realizacje - mozaika kafli (scroll-reveal).
    Kafle wchodzą kaskadowo: nagłówek, kafel wiodący, potem mniejsze.
    Opóźnienie każdego kafla podaje --d ustawiane w komponencie. */
