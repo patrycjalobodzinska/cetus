@@ -36,7 +36,6 @@ interface HistoryItem {
 interface TeamMember {
   _id: string;
   firstName: string;
-  lastName: string;
   position: string;
   image: any;
   order?: number;
@@ -113,7 +112,6 @@ export default function AboutUsPage() {
         const query = `*[_type == "team" && hidden != true] | order(order asc) {
           _id,
           firstName,
-          lastName,
           "position": coalesce(position[$locale], position.pl),
           image,
           order
@@ -307,10 +305,8 @@ export default function AboutUsPage() {
                 <DomeGallery
                   images={teamImages.map((member) => ({
                     src: urlFor(member.image).width(400).height(400).quality(75).auto('format').url(),
-                    alt:
-                      `${member.firstName || ''} ${member.lastName || ''}`.trim() ||
-                      t('team.fallbackName'),
-                    name: `${member.firstName || ''} ${member.lastName || ''}`.trim() || undefined,
+                    alt: member.firstName || t('team.fallbackName'),
+                    name: member.firstName || undefined,
                     description: member.position || undefined,
                   }))}
                   overlayBlurColor="var(--surface-muted)"
@@ -325,10 +321,8 @@ export default function AboutUsPage() {
                 <TeamMarquee
                   images={teamImages.map((member) => ({
                     src: urlFor(member.image).width(300).height(300).quality(75).auto('format').url(),
-                    alt:
-                      `${member.firstName || ''} ${member.lastName || ''}`.trim() ||
-                      t('team.fallbackName'),
-                    name: `${member.firstName || ''} ${member.lastName || ''}`.trim() || undefined,
+                    alt: member.firstName || t('team.fallbackName'),
+                    name: member.firstName || undefined,
                     description: member.position || undefined,
                   }))}
                   rows={3}

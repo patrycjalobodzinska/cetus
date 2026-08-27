@@ -10,11 +10,8 @@ export default defineType({
       name: 'firstName',
       title: 'Imię',
       type: 'string',
-    }),
-    defineField({
-      name: 'lastName',
-      title: 'Nazwisko',
-      type: 'string',
+      description: 'W galerii zespołu pokazujemy same imiona.',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'position',
@@ -47,15 +44,17 @@ export default defineType({
   preview: {
     select: {
       firstName: 'firstName',
-      lastName: 'lastName',
       position: 'position.pl',
       media: 'image',
+      hidden: 'hidden',
     },
-    prepare({ firstName, lastName, position, media }) {
+    prepare({ firstName, position, media, hidden }) {
       return {
-        title: `${firstName} ${lastName}`,
-        subtitle: position,
-        media: media,
+        title: firstName || 'Bez imienia',
+        subtitle: [position, hidden ? 'ukryta na stronie' : null]
+          .filter(Boolean)
+          .join(' - '),
+        media,
       }
     },
   },
