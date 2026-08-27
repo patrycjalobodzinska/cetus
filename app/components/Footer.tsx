@@ -299,38 +299,63 @@ export default async function Footer() {
         </div>
       </div>
 
-      {showFundingStrip && (
-        <div className="relative border-t border-slate-800/60 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col items-center gap-5 sm:flex-row sm:justify-between">
-            {hasOfficialLockup ? (
-              <Image
-                src={urlFor(funding!.logoLockup).width(1000).fit('max').url()}
-                alt={
-                  funding!.logoLockup!.alt ||
-                  'Znak Fundusze Europejskie, flaga Unii Europejskiej - Dofinansowane przez Unie Europejska'
-                }
-                width={1000}
-                height={160}
-                className="h-14 sm:h-16 w-auto"
-              />
-            ) : (
-              <EuFundingLockup caption={tFunding('lockupCaption')} />
-            )}
+      {/* Pasek wiarygodności: dofinansowanie UE i certyfikat ISO. Biały, bo
+          oficjalne znaki muszą stać na jasnym tle. */}
+      <div className="relative border-t border-slate-800/60 bg-white">
+        <div className="mx-auto flex max-w-7xl flex-col gap-8 px-4 py-6 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:gap-12 lg:px-8">
+          {showFundingStrip && (
+            <div className="flex flex-col items-center gap-5 sm:flex-row sm:items-center">
+              {hasOfficialLockup ? (
+                <Image
+                  src={urlFor(funding!.logoLockup).width(1000).fit('max').url()}
+                  alt={
+                    funding!.logoLockup!.alt ||
+                    'Znak Fundusze Europejskie, flaga Unii Europejskiej - Dofinansowane przez Unie Europejska'
+                  }
+                  width={1000}
+                  height={160}
+                  className="h-14 sm:h-16 w-auto"
+                />
+              ) : (
+                <EuFundingLockup caption={tFunding('lockupCaption')} />
+              )}
 
-            <div className="text-center sm:text-right">
-              <p className="text-sm leading-relaxed text-slate-600">
-                {tFunding('footerNote')}
+              <div className="text-center sm:text-left">
+                <p className="text-sm leading-relaxed text-slate-600">
+                  {tFunding('footerNote')}
+                </p>
+                <Link
+                  href={`/${locale}/dofinansowanie`}
+                  className="mt-1 inline-block text-sm font-semibold text-blue-600 underline-offset-4 transition-colors hover:text-blue-700 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                >
+                  {tFunding('footerLink')}
+                </Link>
+              </div>
+            </div>
+          )}
+
+          {/* Certyfikat ISO. Zakres jest podany wprost, bo certyfikat obejmuje
+              usługi szkoleniowe, a nie całą działalność firmy. */}
+          <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-center lg:justify-end">
+            <span className="flex h-14 shrink-0 items-center rounded-xl border border-slate-200 px-4 text-base font-bold tracking-tight text-slate-900 sm:h-16 sm:text-lg">
+              {t('iso.standard')}
+            </span>
+            <div className="text-center sm:text-left">
+              <p className="text-sm font-semibold text-slate-900">{t('iso.system')}</p>
+              <p className="mt-0.5 text-xs leading-relaxed text-slate-600">
+                {t('iso.certificate')}
               </p>
+              <p className="text-xs leading-relaxed text-slate-600">{t('iso.scope')}</p>
               <Link
-                href={`/${locale}/dofinansowanie`}
+                href={`/${locale}/polityka-jakosci`}
                 className="mt-1 inline-block text-sm font-semibold text-blue-600 underline-offset-4 transition-colors hover:text-blue-700 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
               >
-                {tFunding('footerLink')}
+                {t('iso.link')}
               </Link>
             </div>
           </div>
         </div>
-      )}
+      </div>
 
       <div className="relative border-t border-slate-800/60 bg-slate-950/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">

@@ -10,7 +10,14 @@
     "workingHours": "Working hours",
     "workingHoursValue": "Mon-Fri: 9:00-17:00",
     "qualityPolicy": "Quality Policy",
-    "euFunding": "European Funds"
+    "euFunding": "European Funds",
+    "iso": {
+      "standard": "ISO 9001:2015",
+      "system": "Quality management system",
+      "certificate": "Certificate No. GIPO-1031-QC, certification body G-CERTI (IAS accreditation MSCB-113)",
+      "scope": "Certification scope: training services",
+      "link": "Quality policy"
+    }
   },
   "nav": {
     "home": "Home",

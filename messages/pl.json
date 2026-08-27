@@ -10,7 +10,14 @@
     "workingHours": "Godziny pracy",
     "workingHoursValue": "Pn-Pt: 9:00-17:00",
     "qualityPolicy": "Polityka Jakości",
-    "euFunding": "Fundusze Europejskie"
+    "euFunding": "Fundusze Europejskie",
+    "iso": {
+      "standard": "ISO 9001:2015",
+      "system": "System zarządzania jakością",
+      "certificate": "Certyfikat nr GIPO-1031-QC, jednostka certyfikująca G-CERTI (akredytacja IAS MSCB-113)",
+      "scope": "Zakres certyfikacji: usługi szkoleniowe",
+      "link": "Polityka jakości"
+    }
   },
   "nav": {
     "home": "Strona główna",
