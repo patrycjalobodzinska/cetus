@@ -30,7 +30,7 @@ export default function HeroCurosora() {
         <div className="w-full flex-1 bg-gray-100" />
       </div>
 
-      <div className="relative mx-auto flex min-h-[min(100vh,1000px)] w-full max-w-7xl items-center px-4 sm:px-6 lg:px-8 pt-[var(--page-top-offset)] pb-16 lg:pb-24">
+      <div className="relative mx-auto flex min-h-[min(100vh,1000px)] w-full max-w-7xl items-center px-4 sm:px-6 lg:px-8 pt-[var(--page-top-offset)] pb-8 sm:pb-12 lg:pb-24">
         {/* poświaty - trzymają się treści (nie uciekają na bok na szerokim ekranie) */}
         <div aria-hidden="true" className="pointer-events-none absolute -left-16 top-10 z-0 h-80 w-80 rounded-full bg-blue-400/15 blur-3xl" />
         <div aria-hidden="true" className="pointer-events-none absolute right-0 top-1/3 z-0 h-[30rem] w-[30rem] rounded-full bg-sky-300/20 blur-3xl" />

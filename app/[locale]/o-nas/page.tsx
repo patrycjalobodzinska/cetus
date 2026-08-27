@@ -159,7 +159,7 @@ export default function AboutUsPage() {
       <div className="w-full max-w-7xl">
         {/* ── Hero - ten sam układ i typografia co hero strony głównej ── */}
         <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen overflow-hidden bg-gray-100">
-          <div className="relative mx-auto flex min-h-[min(100vh,1000px)] w-full max-w-7xl items-center px-4 pb-16 pt-[var(--page-top-offset)] sm:px-6 lg:px-8 lg:pb-24">
+          <div className="relative mx-auto flex min-h-[min(100vh,1000px)] w-full max-w-7xl items-center px-4 pb-8 pt-[var(--page-top-offset)] sm:px-6 sm:pb-12 lg:px-8 lg:pb-24">
             {/* poświaty - jak w hero na home, trzymają się treści */}
             <div
               aria-hidden="true"

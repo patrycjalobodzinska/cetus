@@ -140,6 +140,19 @@ const SPANS = [
   "md:col-span-4",
   "md:col-span-4",
 ];
+// Slugi podstron /oferta/* w tej samej kolejności co usługi - te same osiem
+// obszarów co na /oferta, więc indeks kafla wskazuje jego podstronę.
+const SLUGS = [
+  "aplikacje-webowe",
+  "aplikacje-mobilne",
+  "ui-ux-design",
+  "aI-i-automatyzacja-procesow",
+  "cybersecurity",
+  "transformacja-technologiczna",
+  "outsourcing-programistow",
+  "akademia-i-szkolenia",
+] as const;
+
 // spokojna paleta: białe karty + JEDEN niebieski (feature)
 const VARIANT = ["feature", "plain", "plain", "plain", "plain", "plain", "plain", "plain"] as const;
 
@@ -169,7 +182,10 @@ function Tile({
 
   return (
     <article
-      className={`${layoutClass} group relative h-full overflow-hidden rounded-2xl p-4 sm:p-5 flex flex-col min-h-0 transition-shadow ${skin}`}
+      // Kafel jest zawsze linkiem (home i /oferta), więc dostaje stan wskazania:
+      // delikatne uniesienie + mocniejszy cień. W Tailwind 4 `-translate-y-*`
+      // ustawia właściwość `translate`, dlatego jest ona wymieniona w transition.
+      className={`${layoutClass} group relative h-full overflow-hidden rounded-2xl p-4 sm:p-5 flex flex-col min-h-0 transition-[translate,box-shadow] duration-200 ease-out hover:-translate-y-1 ${skin}`}
     >
       {v === "feature" && (
         <>
@@ -255,6 +271,6 @@ function Tile({
   );
 }
 
-export { SPANS, VARIANT };
+export { SPANS, VARIANT, SLUGS };
 export type { Item };
 export default Tile;

@@ -325,7 +325,7 @@ function CsHero({ section, backToList }: { section: any; backToList: string }) {
       <div className="relative px-4 py-6">
         <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-300/30 blur-3xl" />
         {web && <BrowserFrame src={web} dark className="w-full" />}
-        {phone && <PhoneFrame src={phone} className="absolute -bottom-4 -right-1 w-32 sm:w-40 lg:w-44" />}
+        {phone && <PhoneFrame src={phone} className="absolute -bottom-2 -right-1 w-24 sm:w-36 lg:w-44" />}
       </div>
     </section>
   );

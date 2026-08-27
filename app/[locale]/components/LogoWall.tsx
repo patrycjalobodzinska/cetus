@@ -21,7 +21,10 @@ export default function LogoWall({ items }: { items: LogoWallItem[] }) {
   if (!items.length) return null;
 
   return (
-    <div className="flex flex-wrap items-stretch justify-center gap-5">
+    // Mobile: siatka po dwa logo w rzędzie (przy stałej szerokości karty
+    // flex-wrap dawał jedno na wiersz). Od sm w górę wraca zawijany rząd
+    // wyśrodkowanych kart o stałej szerokości.
+    <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:items-stretch sm:justify-center sm:gap-5">
       {items.map((item) => {
         const inner = (
           <>
@@ -29,7 +32,7 @@ export default function LogoWall({ items }: { items: LogoWallItem[] }) {
               <img
                 src={urlFor(item.logo).width(360).quality(80).auto("format").url()}
                 alt={item.name || ""}
-                className="max-h-14 w-auto object-contain"
+                className="max-h-10 w-auto object-contain sm:max-h-14"
               />
             ) : (
               <span
@@ -41,7 +44,7 @@ export default function LogoWall({ items }: { items: LogoWallItem[] }) {
               </span>
             )}
             {item.caption && (
-              <span className="mt-3 text-xs uppercase tracking-[0.16em] text-slate-600">
+              <span className="mt-2 text-[10px] uppercase tracking-[0.16em] text-slate-600 sm:mt-3 sm:text-xs">
                 {item.caption}
               </span>
             )}
@@ -55,8 +58,8 @@ export default function LogoWall({ items }: { items: LogoWallItem[] }) {
         // a nie `transform` - lista przejść musi wymieniać `translate`, inaczej
         // karta podskakuje skokowo, a płynnie animuje się tylko cień.
         const cardClass = item.darkBackground
-          ? "flex h-32 w-60 flex-col items-center justify-center rounded-2xl border border-slate-800 bg-slate-900 px-8 shadow-sm transition-[translate,box-shadow,border-color] duration-200 ease-out hover:-translate-y-1 hover:border-blue-500/50 hover:shadow-md"
-          : "flex h-32 w-60 flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white px-8 shadow-sm transition-[translate,box-shadow,border-color] duration-200 ease-out hover:-translate-y-1 hover:border-blue-200 hover:shadow-md";
+          ? "flex h-24 w-full flex-col items-center justify-center rounded-2xl border border-slate-800 bg-slate-900 px-4 sm:h-32 sm:w-60 sm:px-8 shadow-sm transition-[translate,box-shadow,border-color] duration-200 ease-out hover:-translate-y-1 hover:border-blue-500/50 hover:shadow-md"
+          : "flex h-24 w-full flex-col items-center justify-center rounded-2xl border border-gray-100 bg-white px-4 sm:h-32 sm:w-60 sm:px-8 shadow-sm transition-[translate,box-shadow,border-color] duration-200 ease-out hover:-translate-y-1 hover:border-blue-200 hover:shadow-md";
 
         return item.url ? (
           <a

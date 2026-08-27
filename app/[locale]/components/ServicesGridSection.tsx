@@ -1,8 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { useLocale } from "next-intl";
 import Slider from "../../components/Slider";
-import Tile, { SPANS } from "./ServiceTile";
+import Tile, { SPANS, SLUGS } from "./ServiceTile";
 
 const CONTENT = {
   pl: {
@@ -58,17 +59,33 @@ export default function ServicesGridSection() {
           <p className="text-slate-600 max-w-2xl mx-auto text-sm lg:text-base">{t.sub}</p>
         </div>
 
-        {/* Desktop: bento */}
+        {/* Desktop: bento. Każdy kafel prowadzi do swojej podstrony /oferta/*,
+            tak samo jak siatka na /oferta - kolejność usług jest identyczna,
+            więc indeks kafla wskazuje jego slug. */}
         <div className="hidden md:grid grid-cols-12 gap-4 auto-rows-auto [grid-template-rows:190px_190px_auto]">
           {t.items.map((c, i) => (
-            <Tile key={i} c={c} i={i} layoutClass={SPANS[i]} eyebrow={i === 0 ? featureEyebrow : undefined} />
+            <Link
+              key={i}
+              href={`/${locale}/oferta/${SLUGS[i]}`}
+              aria-label={c.title}
+              className={`${SPANS[i]} group block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 rounded-2xl`}
+            >
+              <Tile c={c} i={i} layoutClass="h-full" eyebrow={i === 0 ? featureEyebrow : undefined} />
+            </Link>
           ))}
         </div>
 
         {/* Mobile: slider ze strzałkami i kropkami */}
         <Slider className="md:hidden" slideWidth="85%" ariaLabel="Co robimy">
           {t.items.map((c, i) => (
-            <Tile key={i} c={c} i={i} layoutClass="min-h-[220px]" eyebrow={i === 0 ? featureEyebrow : undefined} />
+            <Link
+              key={i}
+              href={`/${locale}/oferta/${SLUGS[i]}`}
+              aria-label={c.title}
+              className="group block h-full rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+            >
+              <Tile c={c} i={i} layoutClass="min-h-[220px] h-full" eyebrow={i === 0 ? featureEyebrow : undefined} />
+            </Link>
           ))}
         </Slider>
       </div>

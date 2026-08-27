@@ -70,6 +70,46 @@ export default function ScrollRow({
     el.scrollTo({ left: target, behavior: "smooth" });
   };
 
+  // ─── Przeciąganie kursorem ──────────────────────────────────────────────
+  // Palcem pasek przewija się natywnie, myszką - nie, bo nie ma widocznego
+  // suwaka. Dlatego na wskaźnikach precyzyjnych (mysz, trackpad) łapiemy
+  // pointerdown i sami przesuwamy scrollLeft. Zdarzenia dochodzą tu również
+  // z przezroczystych nakładek nad ramkami rolek (iframe sam ich nie
+  // przepuszcza) - patrz ReelsCarousel.
+  const drag = useRef({ active: false, startX: 0, startScroll: 0, moved: false });
+
+  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.pointerType === "touch") return; // palcem przewija przeglądarka
+    if (e.button !== 0) return;
+    const el = ref.current;
+    if (!el) return;
+    drag.current = { active: true, startX: e.clientX, startScroll: el.scrollLeft, moved: false };
+    el.setPointerCapture?.(e.pointerId);
+  };
+
+  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    const el = ref.current;
+    if (!el || !drag.current.active) return;
+    const dx = e.clientX - drag.current.startX;
+    if (Math.abs(dx) > 4) drag.current.moved = true;
+    el.scrollLeft = drag.current.startScroll - dx;
+  };
+
+  const endDrag = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!drag.current.active) return;
+    drag.current.active = false;
+    ref.current?.releasePointerCapture?.(e.pointerId);
+  };
+
+  // Po przeciągnięciu nie chcemy kliknięcia w kafel (np. wejścia w link czy
+  // odsłonięcia odtwarzacza) - gasimy je w fazie przechwytywania.
+  const onClickCapture = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!drag.current.moved) return;
+    drag.current.moved = false;
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
   // Przewijanie palcem też musi się zawijać - normalizujemy po wyhamowaniu.
   useEffect(() => {
     const el = ref.current;
@@ -109,7 +149,12 @@ export default function ScrollRow({
         tabIndex={0}
         role="group"
         aria-label={ariaLabel}
-        className="scrollbar-hide flex gap-5 overflow-x-auto px-6 py-2 pb-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 [mask-image:linear-gradient(90deg,transparent,#000_5%,#000_95%,transparent)]"
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={endDrag}
+        onPointerCancel={endDrag}
+        onClickCapture={onClickCapture}
+        className="scrollbar-hide flex touch-pan-y gap-5 overflow-x-auto px-6 py-2 pb-3 select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 [mask-image:linear-gradient(90deg,transparent,#000_5%,#000_95%,transparent)] [@media(hover:hover)_and_(pointer:fine)]:cursor-grab [@media(hover:hover)_and_(pointer:fine)]:active:cursor-grabbing"
       >
         {items.map((child, i) => (
           <React.Fragment key={`a-${i}`}>{child}</React.Fragment>
