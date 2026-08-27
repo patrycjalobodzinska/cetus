@@ -386,7 +386,10 @@
     "contractNumber": "Grant agreement number",
     "projectValue": "Project value",
     "euContribution": "European Union contribution",
-    "reportIrregularities": "Report an irregularity"
+    "reportIrregularities": "Report an irregularity",
+    "lockupCaption": "Co-funded by the European Union",
+    "footerNote": "We deliver projects co-financed by the European Union.",
+    "footerLink": "Funding details"
   },
   "pageMeta": {
     "offer": {

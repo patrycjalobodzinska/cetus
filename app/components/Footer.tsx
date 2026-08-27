@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Mail, MapPin, Linkedin, Dribbble, Twitter, Facebook, Instagram, ArrowRight } from 'lucide-react';
 import { client } from '@/sanity/lib/client';
 import { urlFor } from '@/sanity/lib/image';
+import EuFundingLockup from './EuFundingLockup';
 import { getLocale, getTranslations } from 'next-intl/server';
 import StarGradientButton from './ui/gradientBackground';
 import Image from 'next/image';
@@ -105,6 +106,7 @@ export default async function Footer() {
   const t = await getTranslations('footer');
   const tNav = await getTranslations('nav');
   const tOffer = await getTranslations('offer.projects');
+  const tFunding = await getTranslations('funding');
 
   let footerData: FooterData | null = null;
   let offerProjects: OfferProject[] = [];
@@ -123,7 +125,11 @@ export default async function Footer() {
     console.error('Footer Sanity fetch failed:', error);
   }
 
-  const showFundingStrip = Boolean(funding?.enabled && funding?.logoLockup?.asset);
+  // Pasek pokazujemy, gdy dofinansowanie jest opublikowane. Oficjalne
+  // zestawienie znaków z Sanity ma pierwszeństwo; dopóki go nie ma, pokazujemy
+  // emblemat UE rysowany w kodzie z wymaganym podpisem.
+  const showFundingStrip = Boolean(funding?.enabled);
+  const hasOfficialLockup = Boolean(funding?.logoLockup?.asset);
 
   const data: FooterData = footerData ?? {};
 
@@ -295,8 +301,8 @@ export default async function Footer() {
 
       {showFundingStrip && (
         <div className="relative border-t border-slate-800/60 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-center">
-            <Link href={`/${locale}/dofinansowanie`} aria-label={t('euFunding')}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col items-center gap-5 sm:flex-row sm:justify-between">
+            {hasOfficialLockup ? (
               <Image
                 src={urlFor(funding!.logoLockup).width(1000).fit('max').url()}
                 alt={
@@ -307,7 +313,21 @@ export default async function Footer() {
                 height={160}
                 className="h-14 sm:h-16 w-auto"
               />
-            </Link>
+            ) : (
+              <EuFundingLockup caption={tFunding('lockupCaption')} />
+            )}
+
+            <div className="text-center sm:text-right">
+              <p className="text-sm leading-relaxed text-slate-600">
+                {tFunding('footerNote')}
+              </p>
+              <Link
+                href={`/${locale}/dofinansowanie`}
+                className="mt-1 inline-block text-sm font-semibold text-blue-600 underline-offset-4 transition-colors hover:text-blue-700 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+              >
+                {tFunding('footerLink')}
+              </Link>
+            </div>
           </div>
         </div>
       )}

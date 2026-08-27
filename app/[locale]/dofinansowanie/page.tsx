@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { getLocale, getTranslations } from 'next-intl/server';
 import { client } from '@/sanity/lib/client';
 import { urlFor } from '@/sanity/lib/image';
+import EuFundingLockup from '@/app/components/EuFundingLockup';
 
 export const revalidate = 3600;
 
@@ -56,7 +57,9 @@ export default async function FundingPage() {
     console.error('Funding Sanity fetch failed:', error);
   }
 
-  const projects = data?.projects ?? [];
+  // Puste wiersze-zaślepki (dodane w Studio, jeszcze bez danych z umowy) nie
+  // mogą udawać gotowej informacji - liczą się tylko projekty z nazwą.
+  const projects = (data?.projects ?? []).filter((project) => project.name?.trim());
   const isReady = Boolean(data?.enabled) && projects.length > 0;
 
   return (
@@ -83,6 +86,11 @@ export default async function FundingPage() {
       <section className="pb-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Oficjalne zestawienie znakow */}
+          {!data?.logoLockup?.asset && (
+            <div className="mb-12 flex justify-center rounded-2xl border border-gray-200 bg-white p-8 md:p-10">
+              <EuFundingLockup caption={t('lockupCaption')} />
+            </div>
+          )}
           {Boolean(data?.logoLockup?.asset) && data?.logoLockup && (
             <div className="bg-white rounded-2xl border border-gray-200 p-8 md:p-10 mb-12 flex justify-center">
               <Image
