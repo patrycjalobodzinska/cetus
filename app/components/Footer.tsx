@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Mail, MapPin, Linkedin, Dribbble, Twitter, Facebook, Instagram, ArrowRight } from 'lucide-react';
 import { client } from '@/sanity/lib/client';
 import { urlFor } from '@/sanity/lib/image';
-import { EuSign } from './FundingSigns';
+import { FundingSignSet } from './FundingSigns';
 import { getLocale, getTranslations } from 'next-intl/server';
 import StarGradientButton from './ui/gradientBackground';
 import Image from 'next/image';
@@ -302,9 +302,9 @@ export default async function Footer() {
       {/* Pasek wiarygodności: dofinansowanie UE i certyfikat ISO. Biały, bo
           oficjalne znaki muszą stać na jasnym tle. */}
       <div className="relative border-t border-slate-800/60 bg-white">
-        <div className="mx-auto flex max-w-7xl flex-col gap-8 px-4 py-6 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:gap-12 lg:px-8">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-8 sm:px-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:gap-12 lg:px-8">
           {showFundingStrip && (
-            <div className="flex flex-col items-center gap-5 sm:flex-row sm:items-center">
+            <div className="flex flex-col items-center gap-5 sm:items-start">
               {hasOfficialLockup ? (
                 <Image
                   src={urlFor(funding!.logoLockup).width(1000).fit('max').url()}
@@ -317,11 +317,13 @@ export default async function Footer() {
                   className="h-14 sm:h-16 w-auto"
                 />
               ) : (
-                /* Znak UE w rozmiarze, w którym napis jest czytelny. Pełne
-                   zestawienie znaków (FE + barwy RP + UE) jest na podstronie
-                   /dofinansowanie - w pasku stopki musiałoby zejść do ~30 px
-                   wysokości, a wtedy podpisy w znaku są nie do odczytania. */
-                <EuSign locale={locale} className="h-10 w-auto sm:h-11" />
+                /* Pełne zestawienie znaków: FE Polska Wschodnia + barwy RP + UE
+                   z EFRR. Stoi na każdej podstronie, w szerokości, w której
+                   podpisy w znaku pozostają czytelne. */
+                <FundingSignSet
+                  locale={locale}
+                  className="h-auto w-full max-w-[720px]"
+                />
               )}
 
               <div className="text-center sm:text-left">
@@ -340,7 +342,7 @@ export default async function Footer() {
 
           {/* Certyfikat ISO. Zakres jest podany wprost, bo certyfikat obejmuje
               usługi szkoleniowe, a nie całą działalność firmy. */}
-          <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-center lg:justify-end">
+          <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-center lg:justify-end lg:self-center">
             <span className="flex h-14 shrink-0 items-center rounded-xl border border-slate-200 px-4 text-base font-bold tracking-tight text-slate-900 sm:h-16 sm:text-lg">
               {t('iso.standard')}
             </span>
