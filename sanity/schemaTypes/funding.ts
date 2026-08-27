@@ -1,15 +1,22 @@
 import { defineField, defineType } from 'sanity'
 
 /**
- * Sekcja "Dofinansowanie / Fundusze Europejskie" (perspektywa FE 2021-2027).
+ * Sekcja "Dofinansowanie / Fundusze Europejskie" (/dofinansowanie + stopka).
  *
- * Obowiazki informacyjne beneficjenta (Rozporzadzenie ogolne 2021/1060, zal. IX
- * oraz Podrecznik wnioskodawcy i beneficjenta - Ksiega Tozsamosci Wizualnej FE):
- *  - oficjalne "zestawienie znakow" (Fundusze Europejskie + flaga UE
- *    "Dofinansowane przez Unie Europejska" [+ barwy RP / logo programu regionalnego]),
- *  - krotki opis projektu: cel/przedmiot, planowane efekty,
- *  - wartosc projektu oraz wysokosc wkladu Unii Europejskiej,
+ * Obowiazki informacyjne beneficjenta dla projektu POPW 2014-2020 (Zalacznik
+ * nr 8 do umowy o dofinansowanie, rozdz. 4 - strona internetowa):
+ *  - znak Funduszy Europejskich z nazwa programu, barwy RP i znak Unii
+ *    Europejskiej z nazwa funduszu (pelne zestawienie znakow),
+ *  - flaga UE z napisem "Unia Europejska" widoczna w momencie wejscia na
+ *    strone, bez przewijania w dol (u nas: znak w naglowku, patrz
+ *    app/components/FundingSigns.tsx),
+ *  - krotki opis projektu: cele, planowane efekty, wartosc projektu,
+ *    wklad Funduszu Europejskiego,
  *  - (zalecane) hasztag #FunduszeUE / #FunduszeEuropejskie.
+ *
+ * Znaki sa w repo jako oficjalne pliki z pakietu MFiPR (public/fundusze),
+ * wiec pole "logoLockup" jest opcjonalne - sluzy tylko do nadpisania ich
+ * innym zestawieniem (np. gdy dojdzie projekt z perspektywy 2021-2027).
  *
  * WAZNE: wartosci (tytul projektu, kwoty, nr umowy) musza pochodzic wprost
  * z umowy o dofinansowanie. Nie wolno ich zmyslac.
@@ -42,7 +49,7 @@ export default defineType({
       name: 'logoLockup',
       title: 'Oficjalne zestawienie znakow (obraz)',
       description:
-        'Wgraj plik dostarczony przez instytucje: Fundusze Europejskie + flaga UE "Dofinansowane przez Unie Europejska" (+ ew. barwy RP / logo programu). Preferowany format poziomy, na bialym tle. Ten sam znak pokaze sie w pasku w stopce.',
+        'Opcjonalne. Serwis ma juz wbudowane oficjalne zestawienie znakow POPW (Fundusze Europejskie Polska Wschodnia + barwy RP + Unia Europejska z EFRR). Wgraj plik tylko wtedy, gdy instytucja przekaze inne zestawienie - wtedy zastapi ono wbudowane. Format poziomy, na bialym tle.',
       type: 'image',
       options: { hotspot: true },
       fields: [
@@ -51,7 +58,7 @@ export default defineType({
           title: 'Tekst alternatywny (alt)',
           type: 'string',
           initialValue:
-            'Znak Fundusze Europejskie, flaga Unii Europejskiej - Dofinansowane przez Unie Europejska',
+            'Fundusze Europejskie Polska Wschodnia, Rzeczpospolita Polska, Unia Europejska - Europejski Fundusz Rozwoju Regionalnego',
         }),
       ],
     }),
@@ -96,6 +103,8 @@ export default defineType({
             defineField({
               name: 'effects',
               title: 'Planowane efekty / rezultaty',
+              description:
+                'Wymagany element opisu projektu na stronie (rozdz. 4.3 Zalacznika nr 8). Przepisz wprost z umowy o dofinansowanie.',
               type: 'localeText',
             }),
             defineField({

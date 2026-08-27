@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Mail, MapPin, Linkedin, Dribbble, Twitter, Facebook, Instagram, ArrowRight } from 'lucide-react';
 import { client } from '@/sanity/lib/client';
 import { urlFor } from '@/sanity/lib/image';
-import EuFundingLockup from './EuFundingLockup';
+import { FundingSignSet } from './FundingSigns';
 import { getLocale, getTranslations } from 'next-intl/server';
 import StarGradientButton from './ui/gradientBackground';
 import Image from 'next/image';
@@ -317,7 +317,8 @@ export default async function Footer() {
                   className="h-14 sm:h-16 w-auto"
                 />
               ) : (
-                <EuFundingLockup caption={tFunding('lockupCaption')} />
+                /* Oficjalne zestawienie znaków POPW z pakietu MFiPR. */
+                <FundingSignSet locale={locale} className="h-auto w-[280px] sm:w-[340px]" />
               )}
 
               <div className="text-center sm:text-left">

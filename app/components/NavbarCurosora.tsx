@@ -8,6 +8,7 @@ import { useTranslations, useLocale } from "next-intl";
 import { usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { EuSign } from "./FundingSigns";
 import { cn } from "@/lib/utils";
 
 const OFFER_LINKS = [
@@ -285,9 +286,9 @@ export default function NavbarCurosora() {
       {/* Mobile Header */}
       <div className="lg:hidden w-full max-w-[1300px]">
         <div className="flex items-center justify-between bg-white/50 backdrop-blur-md border border-gray-100/50 shadow-sm rounded-2xl px-4 py-3">
-          <div className="flex items-center">
+          <div className="flex min-w-0 items-center gap-3">
             <NavigationLink
-              className="w-32 h-12 rounded-lg flex cursor-pointer items-center justify-center"
+              className="w-28 h-12 shrink-0 rounded-lg flex cursor-pointer items-center justify-center"
               href={`/${locale}`}
             >
               <img
@@ -296,6 +297,8 @@ export default function NavbarCurosora() {
                 className="w-full h-full object-contain"
               />
             </NavigationLink>
+            {/* Znak UE musi być widoczny bez przewijania strony - patrz FundingSigns. */}
+            <EuSign locale={locale} className="h-4 w-auto shrink-0" />
           </div>
           <div className="flex items-center justify-center">
             <LanguageSwitcher />
@@ -334,10 +337,10 @@ export default function NavbarCurosora() {
       <div className="hidden lg:flex flex-row gap-4 w-full max-w-[1300px]">
         <div className="relative shrink-0 transform -skew-x-12 bg-white/60 backdrop-blur-md border border-emerald-100/50 shadow-sm rounded-xl">
           <div className="transform skew-x-12 w-full h-full flex items-center px-5 py-1">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               <NavigationLink
                 href={`/${locale}`}
-                className="h-16 w-40 rounded-md flex items-center justify-center"
+                className="h-16 w-32 rounded-md flex items-center justify-center"
               >
                 <img
                   src="/logocetus.png"
@@ -345,6 +348,9 @@ export default function NavbarCurosora() {
                   className="h-full w-full object-contain"
                 />
               </NavigationLink>
+              <span aria-hidden="true" className="h-10 w-px bg-slate-200" />
+              {/* Znak UE musi być widoczny bez przewijania strony - patrz FundingSigns. */}
+              <EuSign locale={locale} className="h-5 w-auto shrink-0" />
             </div>
           </div>
         </div>
