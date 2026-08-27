@@ -70,7 +70,7 @@ export default async function ReelsMarqueeSection() {
         {reels.map((reel, i) => (
           <div
             key={`${reel.url}-${i}`}
-            className="shrink-0 snap-center rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-md shadow-blue-500/10"
+            className="shrink-0 rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-md shadow-blue-500/10"
             style={{ width: PLAYER_WIDTH }}
           >
             <ReelPlayer
