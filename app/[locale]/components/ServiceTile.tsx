@@ -129,6 +129,31 @@ function PhoneMock({ className = "" }: { className?: string }) {
     </svg>
   );
 }
+/**
+ * Makieta na telefonie - w normalnym przepływie, pod treścią kafla.
+ *
+ * Na desktopie makiety leżą absolutnie w prawym dolnym narożniku i tekst je
+ * omija (`lg:pr-24`). Na wąskim ekranie to nie działa: w „Aplikacjach
+ * webowych" makieta wchodziła pod nagłówek i plakietki technologii, a telefon
+ * i artboard były po prostu ukryte (`hidden lg:block`), więc dwa kafle nie
+ * miały żadnej grafiki. Tutaj makieta dostaje własne miejsce na dole kafla,
+ * dosunięta do prawej krawędzi i lekko za nią wypuszczona, żeby zachować
+ * wrażenie „wystającego" ekranu z wersji desktopowej.
+ */
+function MobileMock({ i }: { i: number }) {
+  if (i > 2) return null;
+
+  const shared = "drop-shadow-xl";
+
+  return (
+    <div className="mt-4 -mb-4 -mr-4 flex justify-end md:hidden" aria-hidden="true">
+      {i === 0 && <BrowserMock className={`w-44 rotate-[4deg] ${shared}`} />}
+      {i === 1 && <PhoneMock className={`-mb-6 w-20 rotate-[8deg] ${shared}`} />}
+      {i === 2 && <DesignMock className={`w-28 rotate-[6deg] ${shared}`} />}
+    </div>
+  );
+}
+
 // Bento na 7 kafli: kolumna flagowa (6) na dwa wiersze, obok dwa razy 3+3,
 // a ostatni wiersz dzielą dwa szerokie kafle 6+6 - inaczej po zdjęciu
 // transformacji technologicznej zostawało puste pole w ostatnim rzędzie.
@@ -204,7 +229,11 @@ function Tile({
             }}
           />
           <div className="absolute -top-16 -right-10 z-0 h-56 w-56 rounded-full bg-blue-500/30 blur-3xl" />
-          <BrowserMock className="absolute -bottom-8 -right-8 w-[62%] max-w-[300px] rotate-[4deg] z-0 drop-shadow-2xl transition-transform duration-500 group-hover:-translate-y-1 group-hover:rotate-[2deg]" />
+          {/* Makieta jako tło kafla dopiero od md. Na telefonie kafel jest za
+              wąski: makieta wchodziła pod tekst i pod plakietki technologii,
+              więc nieczytelne stawało się jedno i drugie. Na mobile ta sama
+              makieta jest w normalnym przepływie, pod treścią (niżej). */}
+          <BrowserMock className="absolute -bottom-8 -right-8 hidden w-[62%] max-w-[300px] rotate-[4deg] z-0 drop-shadow-2xl transition-transform duration-500 group-hover:-translate-y-1 group-hover:rotate-[2deg] md:block" />
         </>
       )}
 
@@ -273,6 +302,8 @@ function Tile({
             ))}
           </div>
         ) : null}
+
+        <MobileMock i={i} />
       </div>
     </article>
   );
