@@ -53,7 +53,6 @@ export default function RootNotFound() {
             <p className="text-xs uppercase tracking-[0.2em] text-slate-500 mb-3">Być może szukasz</p>
             <ul className="flex flex-wrap gap-2 justify-center">
               {[
-                { href: '/o-nas', label: 'O nas' },
                 { href: '/oferta', label: 'Oferta' },
                 { href: '/kontakt', label: 'Kontakt' },
               ].map((s) => (

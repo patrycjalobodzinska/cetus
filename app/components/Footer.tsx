@@ -9,6 +9,7 @@ import Image from 'next/image';
 import ObfuscatedEmail from './ObfuscatedEmail';
 import { cloakEmail } from '@/lib/emailCloak';
 import CookieSettingsLink from './consent/CookieSettingsLink';
+import { SHOW_ABOUT_PAGE, isHiddenPath } from '@/lib/featureFlags';
 
 interface FooterData {
   contactTitle?: string;
@@ -143,6 +144,11 @@ export default async function Footer() {
       }))
   ).filter((link) => link.slug && isValidSlug(link.slug));
 
+  // Linki wpisane recznie w CMS moga wskazywac strone zdjeta z serwisu
+  // (np. /o-nas ukryte flaga) - wtedy ich nie pokazujemy.
+  const companyLinks = (data.companyLinks ?? []).filter((link) => !isHiddenPath(link.url));
+  const documentLinks = (data.documentLinks ?? []).filter((link) => !isHiddenPath(link.url));
+
   const socialMedia =
     data.socialMedia && data.socialMedia.length > 0
       ? data.socialMedia
@@ -235,7 +241,9 @@ export default async function Footer() {
             <h3 className="text-base font-bold text-white mb-6 uppercase tracking-wider flex items-center gap-2 before:content-[''] before:w-6 before:h-[2px] before:bg-blue-500 before:rounded-full">{t('navigation')}</h3>
             <ul className="space-y-3">
               <li><Link href={`/${locale}`} className="text-slate-300 hover:text-white transition-colors">{tNav('home')}</Link></li>
-              <li><Link href={`/${locale}/o-nas`} className="text-slate-300 hover:text-white transition-colors">{tNav('about')}</Link></li>
+              {SHOW_ABOUT_PAGE && (
+                <li><Link href={`/${locale}/o-nas`} className="text-slate-300 hover:text-white transition-colors">{tNav('about')}</Link></li>
+              )}
               <li><Link href={`/${locale}/oferta`} className="text-slate-300 hover:text-white transition-colors">{tNav('services')}</Link></li>
               <li><Link href={`/${locale}/kontakt`} className="text-slate-300 hover:text-white transition-colors">{tNav('contact')}</Link></li>
             </ul>
@@ -259,9 +267,9 @@ export default async function Footer() {
 
           <div>
             <h3 className="text-base font-bold text-white mb-6 uppercase tracking-wider flex items-center gap-2 before:content-[''] before:w-6 before:h-[2px] before:bg-blue-500 before:rounded-full">{t('company')}</h3>
-            {data.companyLinks && data.companyLinks.length > 0 ? (
+            {companyLinks.length > 0 ? (
               <ul className="space-y-3">
-                {data.companyLinks.map((link, index) => (
+                {companyLinks.map((link, index) => (
                   <li key={index}>
                     <Link href={link.url || '#'} className="text-slate-300 hover:text-white transition-colors">
                       {link.text}
@@ -271,7 +279,9 @@ export default async function Footer() {
               </ul>
             ) : (
               <ul className="space-y-3">
+                {SHOW_ABOUT_PAGE && (
                 <li><Link href={`/${locale}/o-nas`} className="text-slate-300 hover:text-white transition-colors">{tNav('about')}</Link></li>
+              )}
                 <li><Link href={`/${locale}/kontakt`} className="text-slate-300 hover:text-white transition-colors">{tNav('contact')}</Link></li>
               </ul>
             )}
@@ -300,7 +310,7 @@ export default async function Footer() {
                     inaczej zgody nie da się realnie wycofać. */}
                 <CookieSettingsLink />
               </li>
-              {data.documentLinks && data.documentLinks.map((link, index) => (
+              {documentLinks.map((link, index) => (
                 <li key={index}>
                   <Link href={link.url || '#'} className="text-slate-300 hover:text-white transition-colors">
                     {link.text}

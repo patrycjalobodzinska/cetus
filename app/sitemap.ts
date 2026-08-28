@@ -1,12 +1,16 @@
 import { MetadataRoute } from "next";
 import { client } from "@/sanity/lib/client";
+import { SHOW_ABOUT_PAGE } from "@/lib/featureFlags";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://cetuspro.com";
 
 const staticPages = [
   { path: "", priority: 1.0, changeFrequency: "weekly" as const },
-  { path: "/o-nas", priority: 0.8, changeFrequency: "monthly" as const },
   { path: "/oferta", priority: 0.9, changeFrequency: "monthly" as const },
+  // „O nas" wchodzi do sitemapy tylko wtedy, gdy strona jest widoczna w serwisie.
+  ...(SHOW_ABOUT_PAGE
+    ? [{ path: "/o-nas", priority: 0.8, changeFrequency: "monthly" as const }]
+    : []),
   { path: "/kontakt", priority: 0.8, changeFrequency: "monthly" as const },
   { path: "/blog", priority: 0.8, changeFrequency: "weekly" as const },
   { path: "/polityka-jakosci", priority: 0.3, changeFrequency: "yearly" as const },

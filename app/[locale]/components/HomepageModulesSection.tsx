@@ -5,6 +5,7 @@ import { urlFor } from '@/sanity/lib/image';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import clsx from 'clsx';
+import { isHiddenPath } from '@/lib/featureFlags';
 
 interface HomepageModule {
   _id: string;
@@ -109,7 +110,10 @@ export default async function HomepageModulesSection() {
       label: module.moduleNumber,
       title: module.title,
       description: module.description,
-      link: module.link,
+      // Link modułu wpisuje się recznie w CMS, więc może prowadzić do sekcji
+      // ukrytej w serwisie (O nas, Realizacje). Karta zostaje, ale bez CTA -
+      // inaczej strona główna linkowałaby do czegoś, czego nie ma w nawigacji.
+      link: isHiddenPath(module.link) ? undefined : module.link,
       linkText: module.linkText,
     })),
   ];

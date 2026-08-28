@@ -28,3 +28,27 @@ export const SHOW_CASE_STUDIES =
  * zostają - włączenie to zmiana tej stałej na `true`.
  */
 export const SHOW_TEAM_GALLERY = false;
+
+/**
+ * Podstrona „O nas" (`/o-nas`).
+ *
+ * Ukryta na życzenie klienta (2026-08-28): znika z nagłówka, ze stopki,
+ * z podpowiedzi na stronie 404, z danych strukturalnych i z sitemapy, a sama
+ * trasa dostaje `noindex`. Adres nadal działa, więc wysłane wcześniej linki
+ * się nie psują - wystarczy zmienić tę stałą na `true`, by wróciła.
+ */
+export const SHOW_ABOUT_PAGE = false;
+
+/**
+ * Czy adres prowadzi do sekcji ukrytej flagą.
+ *
+ * Część linków wpisuje się ręcznie w Sanity (moduły strony głównej, kolumny
+ * stopki), więc mogą wskazywać stronę, którą właśnie zdjęliśmy z nawigacji.
+ * Ten warunek pilnuje, żeby taki link nie pojawił się w serwisie.
+ */
+export function isHiddenPath(link?: string): boolean {
+  if (!link) return false;
+  if (!SHOW_ABOUT_PAGE && link.includes("/o-nas")) return true;
+  if (!SHOW_CASE_STUDIES && link.includes("/case-studies")) return true;
+  return false;
+}

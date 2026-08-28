@@ -11,7 +11,7 @@ import { ChevronDown } from "lucide-react";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { EuFlag } from "./FundingSigns";
 import { cn } from "@/lib/utils";
-import { SHOW_CASE_STUDIES } from "@/lib/featureFlags";
+import { SHOW_ABOUT_PAGE, SHOW_CASE_STUDIES } from "@/lib/featureFlags";
 
 const OFFER_LINKS = [
   { titleKey: "webApps", slug: "aplikacje-webowe" },
@@ -416,20 +416,26 @@ export default function NavbarCurosora() {
                 /
               </span>
 
-              <NavigationLink
-                href={`/${locale}/o-nas`}
-                className={navLinkClass(
-                  pathname?.startsWith(`/${locale}/o-nas`) ?? false,
-                )}
-                aria-current={
-                  pathname?.startsWith(`/${locale}/o-nas`) ? "page" : undefined
-                }
-              >
-                {t("about")}
-              </NavigationLink>
-              <span className="text-slate-300 text-xs" aria-hidden="true">
-                /
-              </span>
+              {/* O nas - ukryte (SHOW_ABOUT_PAGE). Razem z linkiem znika
+                  ukośnik, żeby w pasku nie został wiszący separator. */}
+              {SHOW_ABOUT_PAGE && (
+                <>
+                  <NavigationLink
+                    href={`/${locale}/o-nas`}
+                    className={navLinkClass(
+                      pathname?.startsWith(`/${locale}/o-nas`) ?? false,
+                    )}
+                    aria-current={
+                      pathname?.startsWith(`/${locale}/o-nas`) ? "page" : undefined
+                    }
+                  >
+                    {t("about")}
+                  </NavigationLink>
+                  <span className="text-slate-300 text-xs" aria-hidden="true">
+                    /
+                  </span>
+                </>
+              )}
 
               <ServicesDropdownDesktop
                 items={serviceItems}
@@ -560,21 +566,23 @@ export default function NavbarCurosora() {
                 {t("home")}
               </NavigationLink>
 
-              <NavigationLink
-                href={`/${locale}/o-nas`}
-                className={cn(
-                  "text-lg font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 rounded-sm",
-                  pathname?.startsWith(`/${locale}/o-nas`)
-                    ? "text-blue-600 font-semibold"
-                    : "text-slate-900 hover:text-blue-600",
-                )}
-                aria-current={
-                  pathname?.startsWith(`/${locale}/o-nas`) ? "page" : undefined
-                }
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {t("about")}
-              </NavigationLink>
+              {SHOW_ABOUT_PAGE && (
+                <NavigationLink
+                  href={`/${locale}/o-nas`}
+                  className={cn(
+                    "text-lg font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 rounded-sm",
+                    pathname?.startsWith(`/${locale}/o-nas`)
+                      ? "text-blue-600 font-semibold"
+                      : "text-slate-900 hover:text-blue-600",
+                  )}
+                  aria-current={
+                    pathname?.startsWith(`/${locale}/o-nas`) ? "page" : undefined
+                  }
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {t("about")}
+                </NavigationLink>
+              )}
 
               <ServicesDisclosureMobile
                 items={serviceItems}

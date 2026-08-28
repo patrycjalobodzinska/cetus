@@ -20,7 +20,6 @@ export default function NotFound() {
 
   const base = isEn ? '/en' : ''
   const suggestions = [
-    { href: `${base}/o-nas`, label: isEn ? 'About us' : 'O nas' },
     { href: `${base}/oferta`, label: isEn ? 'Services' : 'Oferta' },
     { href: `${base}/kontakt`, label: isEn ? 'Contact' : 'Kontakt' },
   ]

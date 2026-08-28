@@ -163,11 +163,6 @@ export default async function RootLayout({
           },
           {
             "@type": "SiteNavigationElement",
-            name: locale === "pl" ? "O nas" : "About Us",
-            url: `${siteUrl}/o-nas`,
-          },
-          {
-            "@type": "SiteNavigationElement",
             name: locale === "pl" ? "Oferta" : "Services",
             url: `${siteUrl}/oferta`,
           },
