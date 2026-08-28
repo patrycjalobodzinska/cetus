@@ -147,9 +147,12 @@ function MobileMock({ i }: { i: number }) {
 
   return (
     <div className="mt-4 -mb-4 -mr-4 flex justify-end md:hidden" aria-hidden="true">
-      {i === 0 && <BrowserMock className={`w-44 rotate-[4deg] ${shared}`} />}
-      {i === 1 && <PhoneMock className={`-mb-6 w-20 rotate-[8deg] ${shared}`} />}
-      {i === 2 && <DesignMock className={`w-28 rotate-[6deg] ${shared}`} />}
+      {/* Kafel flagowy jest na pełną szerokość, więc mieści dużą makietę.
+          Pozostałe dzielą rząd na pół - tam makiety muszą być wyraźnie
+          mniejsze, inaczej wypychają tekst i wychodzą za kafel. */}
+      {i === 0 && <BrowserMock className={`w-48 rotate-[4deg] ${shared}`} />}
+      {i === 1 && <PhoneMock className={`-mb-5 w-14 rotate-[8deg] ${shared}`} />}
+      {i === 2 && <DesignMock className={`w-24 rotate-[6deg] ${shared}`} />}
     </div>
   );
 }
@@ -276,7 +279,7 @@ function Tile({
         )}
         <h3
           className={`font-bold mb-1.5 pr-6 ${
-            v === "feature" ? "text-2xl sm:text-3xl" : "text-lg sm:text-xl"
+            v === "feature" ? "text-2xl sm:text-3xl" : "text-base sm:text-lg lg:text-xl"
           }`}
         >
           {c.title}

@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useLocale } from "next-intl";
-import Slider from "../../components/Slider";
 import Tile, { SPANS, SLUGS } from "./ServiceTile";
 
 const CONTENT = {
@@ -75,19 +74,29 @@ export default function ServicesGridSection() {
           ))}
         </div>
 
-        {/* Mobile: slider ze strzałkami i kropkami */}
-        <Slider className="md:hidden" slideWidth="85%" ariaLabel="Co robimy">
+        {/* Mobile: siatka 2 kolumn zamiast slidera. Slider chował sześć z siedmiu
+            usług za przewijaniem w bok, którego część użytkowników nie zauważa -
+            w siatce cała oferta jest widoczna od razu. Kafel flagowy zostaje na
+            pełną szerokość, bo ma plakietki technologii i największą makietę. */}
+        <div className="grid grid-cols-2 gap-3 md:hidden">
           {t.items.map((c, i) => (
             <Link
               key={i}
               href={`/${locale}/oferta/${SLUGS[i]}`}
               aria-label={c.title}
-              className="group block h-full rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+              className={`group block rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 ${
+                i === 0 ? "col-span-2" : ""
+              }`}
             >
-              <Tile c={c} i={i} layoutClass="min-h-[220px] h-full" eyebrow={i === 0 ? featureEyebrow : undefined} />
+              <Tile
+                c={c}
+                i={i}
+                layoutClass={`h-full ${i === 0 ? "min-h-[220px]" : "min-h-[180px]"}`}
+                eyebrow={i === 0 ? featureEyebrow : undefined}
+              />
             </Link>
           ))}
-        </Slider>
+        </div>
       </div>
     </section>
   );
