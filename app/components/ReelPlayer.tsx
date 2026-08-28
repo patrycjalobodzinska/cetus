@@ -11,6 +11,8 @@ interface ReelPlayerProps {
   index?: number;
   /** czy to ta rolka, którą użytkownik ostatnio kliknął */
   active?: boolean;
+  /** dopóki false, ramka FB w ogóle nie trafia do DOM - widać sam placeholder */
+  mounted?: boolean;
 }
 
 // Odtwarzacz FB z placeholderem (skeleton) i płynnym pojawieniem po załadowaniu.
@@ -21,6 +23,7 @@ export default function ReelPlayer({
   title,
   index,
   active = true,
+  mounted = true,
 }: ReelPlayerProps) {
   const [loaded, setLoaded] = useState(false);
   // Zmiana `key` przeładowuje ramkę - tak zatrzymujemy odtwarzacz Facebooka,
@@ -40,25 +43,27 @@ export default function ReelPlayer({
 
   return (
     <div className="relative" style={{ width, height }}>
-      {!loaded && (
+      {(!loaded || !mounted) && (
         <div className="absolute inset-0 animate-pulse rounded-t-2xl bg-gradient-to-b from-slate-100 to-slate-200" />
       )}
-      <iframe
-        key={reloadKey}
-        src={src}
-        data-reel-index={index}
-        width={width}
-        height={height}
-        loading="lazy"
-        onLoad={() => setLoaded(true)}
-        style={{ border: "none", overflow: "hidden", display: "block" }}
-        scrolling="no"
-        frameBorder="0"
-        allowFullScreen
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture; web-share"
-        title={title}
-        className={`transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
-      />
+      {mounted && (
+        <iframe
+          key={reloadKey}
+          src={src}
+          data-reel-index={index}
+          width={width}
+          height={height}
+          loading="lazy"
+          onLoad={() => setLoaded(true)}
+          style={{ border: "none", overflow: "hidden", display: "block" }}
+          scrolling="no"
+          frameBorder="0"
+          allowFullScreen
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture; web-share"
+          title={title}
+          className={`transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
+        />
+      )}
     </div>
   );
 }

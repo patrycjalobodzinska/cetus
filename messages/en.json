@@ -17,7 +17,9 @@
       "certificate": "Certificate No. GIPO-1031-QC, certification body G-CERTI (IAS accreditation MSCB-113)",
       "scope": "Certification scope: training services",
       "link": "Quality policy"
-    }
+    },
+    "taxIdLabel": "EU VAT",
+    "taxIdValue": "PL8133850782"
   },
   "nav": {
     "home": "Home",
@@ -100,10 +102,10 @@
         "order": 2,
         "image": "https://images.pexels.com/photos/699122/pexels-photo-699122.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
-      "uiUx": {
-        "title": "UX/UI Design",
-        "description": "Designing user interfaces that are beautiful, intuitive and functional.",
-        "slug": "ui-ux-design",
+      "fastPrototyping": {
+        "title": "Fast Prototyping",
+        "description": "A clickable prototype and interface design in days - before the first line of code.",
+        "slug": "fast-prototyping",
         "order": 3,
         "image": "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
@@ -121,25 +123,18 @@
         "order": 5,
         "image": "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
-      "transformation": {
-        "title": "Technological transformation",
-        "description": "We help companies with digital transformation and IT system modernization.",
-        "slug": "transformacja-technologiczna",
-        "order": 6,
-        "image": "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=1200"
-      },
       "outsourcing": {
         "title": "Programmer outsourcing",
         "description": "Access to experienced programmers without the need for permanent employment.",
         "slug": "outsourcing-programistow",
-        "order": 7,
+        "order": 6,
         "image": "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200"
       },
       "academy": {
-        "title": "Academy and training",
-        "description": "Training and courses in programming, design and IT project management.",
+        "title": "CETUSPRO Academy",
+        "description": "Internships and apprenticeships for technical-school pupils and IT students - on our real projects.",
         "slug": "akademia-i-szkolenia",
-        "order": 8,
+        "order": 7,
         "image": "https://images.pexels.com/photos/1181533/pexels-photo-1181533.jpeg?auto=compress&cs=tinysrgb&w=1200"
       }
     },
@@ -151,8 +146,8 @@
   "home": {
     "metadata": {
       "title": "Technology partner for large organizations",
-      "description": "CetusPro designs, builds and maintains business-critical systems - from strategy and architecture, through development, to deployment and maintenance.",
-      "ogTitle": "CetusPro - technology partner for large organizations",
+      "description": "CETUSPRO designs, builds and maintains business-critical systems - from strategy and architecture, through development, to deployment and maintenance.",
+      "ogTitle": "CETUSPRO - technology partner for large organizations",
       "ogDescription": "We design, build and maintain business-critical systems. Software built to enterprise standards."
     },
     "process": {
@@ -194,18 +189,32 @@
       "readCase": "Read the case study",
       "seeMore": "See more case studies"
     },
-    "faq": {
-      "title": "Frequently Asked Questions",
-      "subtitle": "Scope, security, engagement models and maintenance - answers to the questions IT and procurement teams ask most often.",
-      "loading": "Loading...",
-      "contactTitle": "Can't find your question?",
-      "contactLead": "Tell us what you are up against - we will come back with an assessment of scope, risks and engagement model.",
-      "contactCta": "Book a free consultation"
-    },
     "partners": {
       "eyebrow": "Trusted by",
       "title": "Brands that trusted us with their systems",
       "loading": "Loading partners..."
+    },
+    "initiatives": {
+      "eyebrow": "Our initiatives",
+      "title": "We do more than client projects",
+      "lead": "Three programmes we run ourselves - for people who want to get into IT, and for those already in it.",
+      "items": {
+        "vibe": {
+          "name": "Vibe The Future",
+          "description": "Our own hackathon: 24 hours to turn an idea into a working prototype, with real challenges and mentors from our team.",
+          "linkText": "Go to the hackathon site"
+        },
+        "academy": {
+          "name": "CETUSPRO Academy",
+          "description": "Internships and apprenticeships for technical-school pupils and IT students - real projects, a mentor and code review.",
+          "linkText": "See the internship programme"
+        },
+        "elevate": {
+          "name": "Cetus Elevate",
+          "description": "Support for talented people entering the industry: mentoring, contests and concrete opportunities instead of waiting for luck.",
+          "linkText": "Discover Cetus Elevate"
+        }
+      }
     },
     "sponsors": {
       "eyebrow": "Proud sponsor",
@@ -215,7 +224,7 @@
     "reels": {
       "eyebrow": "News",
       "title": "What's new",
-      "lead": "A behind-the-scenes look at life at CetusPro - events, initiatives and the people who make it happen."
+      "lead": "A behind-the-scenes look at life at CETUSPRO - events, initiatives and the people who make it happen."
     },
     "modules": {
       "eyebrow": "Blog",
@@ -301,7 +310,7 @@
     "metaClient": "Client",
     "metaRelease": "Go-live date",
     "metaType": "Project type",
-    "metaScope": "CetusPro scope",
+    "metaScope": "CETUSPRO scope",
     "integrationsTitle": "Integrations",
     "teamTitle": "Collaboration, methodology and team",
     "teamRolesLabel": "Team",
@@ -323,18 +332,21 @@
     "freeConsultation": "Free consultation",
     "freeConsultationDescription": "Book a free 30-minute call. We will go through your needs, constraints and the options on the table - with no commitment.",
     "bookConsultation": "Book a consultation",
-    "faq": {
-      "title": "Frequently asked questions",
-      "subtitle": "Answers to the questions that come up most often before we start working together.",
-      "loading": "Loading FAQ...",
-      "noQuestions": "No questions to display."
-    }
+    "taxIdLabel": "EU VAT",
+    "taxIdValue": "PL8133850782",
+    "eyebrow": "Contact",
+    "hoursLabel": "Office hours",
+    "hoursValue": "Mon-Fri, 9:00-17:00",
+    "hoursNote": "Outside those hours we reply on the next business day.",
+    "consultationEyebrow": "First step",
+    "mapLabel": "See on the map",
+    "writeToUs": "Write to us"
   },
   "qualityPolicy": {
     "title": "Quality",
     "titleHighlight": "Policy",
-    "subtitle": "CetusPro Sp. z o.o. - guarantee of the highest quality standards compliant with ISO 9001:2015",
-    "introduction": "The main goal of CetusPro Sp. z o.o. is to provide training services that meet the requirements and expectations of our Clients. The company's goal is also to strengthen its position as a leader in the training services market and to achieve financial results that enable continuous development.",
+    "subtitle": "CETUSPRO Sp. z o.o. - guarantee of the highest quality standards compliant with ISO 9001:2015",
+    "introduction": "The main goal of CETUSPRO Sp. z o.o. is to provide training services that meet the requirements and expectations of our Clients. The company's goal is also to strengthen its position as a leader in the training services market and to achieve financial results that enable continuous development.",
     "guaranteesTitle": "Guarantee of achieving goals",
     "guarantees": [
       "Maintaining and improving the quality system compliant with ISO 9001:2015 standard requirements",
@@ -400,8 +412,8 @@
   "pageMeta": {
     "offer": {
       "title": "Services",
-      "description": "Eight areas where we run projects end to end: web and mobile applications, UX/UI, AI and automation, cybersecurity, technology transformation, outsourcing and training.",
-      "keywords": "IT services, web applications, mobile applications, UX/UI design, cybersecurity, AI and automation, software outsourcing, technology transformation"
+      "description": "Seven areas where we run projects end to end: web and mobile applications, fast prototyping, AI and automation, cybersecurity, outsourcing and our internship programme.",
+      "keywords": "IT services, web applications, mobile applications, fast prototyping, cybersecurity, AI and automation, developer outsourcing, IT internships"
     },
     "webApps": {
       "title": "Web applications",
@@ -413,10 +425,10 @@
       "description": "Production-grade iOS and Android apps, native and cross-platform. From concept, through App Store and Google Play release, to post-launch development.",
       "keywords": "mobile applications, iOS, Android, React Native, Flutter, native apps"
     },
-    "uiUx": {
-      "title": "UX/UI Design",
-      "description": "We design interfaces that simplify complex processes: user research, prototypes, WCAG-compliant accessibility and a consistent design system.",
-      "keywords": "UX design, UI design, interface design, prototypes, user research, WCAG, accessibility"
+    "fastPrototyping": {
+      "title": "Fast Prototyping",
+      "description": "A clickable prototype and interface design in days: real screens, real flows and an implementation estimate before you spend the development budget.",
+      "keywords": "fast prototyping, app prototype, clickable prototype, interface design, MVP, idea validation, design sprint"
     },
     "ai": {
       "title": "AI and process automation",
@@ -428,25 +440,20 @@
       "description": "Security audits, penetration testing, monitoring and GDPR compliance. Vulnerabilities ranked by risk, with a remediation plan.",
       "keywords": "cybersecurity, security audit, penetration testing, monitoring, GDPR, data protection, ISO 27001"
     },
-    "transformation": {
-      "title": "Technology transformation",
-      "description": "System modernisation, cloud migration and deployment automation - in stages, without interrupting how the organisation works.",
-      "keywords": "digital transformation, system modernisation, cloud migration, legacy, DevOps, CI/CD"
-    },
     "outsourcing": {
       "title": "Software outsourcing",
       "description": "Experienced engineers plugged into your process - team augmentation, a dedicated team, or the whole project on our side.",
       "keywords": "software outsourcing, development team, staff augmentation, dedicated team"
     },
     "academy": {
-      "title": "Academy and training",
-      "description": "Training for teams adopting new technologies: programming, AI and IT project management, taught by practitioners.",
-      "keywords": "IT training, programming courses, AI training, project management, team upskilling"
+      "title": "CETUSPRO Academy - internships",
+      "description": "An internship and apprenticeship programme for technical-school pupils and IT students. Real projects, a mentor, code review and a reference letter. We do not run open courses.",
+      "keywords": "IT internship Rzeszow, developer internship, student internship, summer internship IT, CETUSPRO Academy"
     },
     "contact": {
       "title": "Contact",
       "description": "Write or call - we reply within 24 hours on business days. A free 30-minute consultation: scope, risks and engagement model.",
-      "keywords": "contact, IT consultation, project estimate, CetusPro, Rzeszow"
+      "keywords": "contact, IT consultation, project estimate, CETUSPRO, Rzeszow"
     },
     "caseStudies": {
       "title": "Case studies",
@@ -455,35 +462,35 @@
     },
     "blog": {
       "title": "What's new",
-      "description": "Initiatives, events and news from CetusPro - hackathons, the academy and the team behind the projects.",
-      "keywords": "CetusPro, news, events, hackathon, academy"
+      "description": "Initiatives, events and news from CETUSPRO - hackathons, the academy and the team behind the projects.",
+      "keywords": "CETUSPRO, news, events, hackathon, academy"
     },
     "about": {
       "title": "About us",
       "description": "The team that runs projects from audit to maintenance. Meet the people, the company history and the way we work.",
-      "keywords": "about us, CetusPro team, company history, software house"
+      "keywords": "about us, CETUSPRO team, company history, software house"
     },
     "funding": {
       "title": "European Funds",
-      "description": "Information about CetusPro projects co-financed by the European Union.",
-      "keywords": "European funds, EU funding, European Union, CetusPro"
+      "description": "Information about CETUSPRO projects co-financed by the European Union.",
+      "keywords": "European funds, EU funding, European Union, CETUSPRO"
     },
     "qualityPolicy": {
       "title": "Quality Policy",
-      "description": "The Quality Policy of CetusPro Sp. z o.o. compliant with ISO 9001:2015 - our standards and quality commitments.",
-      "keywords": "quality policy, ISO 9001, quality standards, CetusPro"
+      "description": "The Quality Policy of CETUSPRO Sp. z o.o. compliant with ISO 9001:2015 - our standards and quality commitments.",
+      "keywords": "quality policy, ISO 9001, quality standards, CETUSPRO"
     },
     "rollUp": {
-      "title": "CetusPro - technology that drives your business",
-      "description": "We design, build and grow dedicated IT systems. See our offer for business or join the CetusPro team.",
-      "keywords": "CetusPro, IT solutions, custom software, IT careers"
+      "title": "CETUSPRO - technology that drives your business",
+      "description": "We design, build and grow dedicated IT systems. See our offer for business or join the CETUSPRO team.",
+      "keywords": "CETUSPRO, IT solutions, custom software, IT careers"
     }
   },
   "preFooter": {
     "left": "We build systems for companies across industries - from marketplaces and online galleries to service platforms.",
     "leftHighlight": "The next one can be yours.",
     "personName": "Norbert Pisz",
-    "personRole": "CEO, CetusPro",
+    "personRole": "CEO, CETUSPRO",
     "description": "Book a free consultation - we will talk about your project, the scope of work and the engagement model.",
     "linkText": "Free consultation"
   }

@@ -29,10 +29,10 @@ export async function buildPageMetadata({
     .filter(Boolean);
 
   const url = locale === "pl" ? path : `/${locale}${path}`;
-  const ogTitle = `${title} | CetusPro`;
+  const ogTitle = `${title} | CETUSPRO`;
 
   return {
-    // absolute: szablon "%s | CetusPro" z korzenia nie dociera do stron
+    // absolute: szablon "%s | CETUSPRO" z korzenia nie dociera do stron
     // zagnieżdżonych pod /oferta, więc sufiks ustawiamy jawnie i spójnie.
     title: { absolute: ogTitle },
     description,

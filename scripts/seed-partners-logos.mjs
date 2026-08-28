@@ -47,7 +47,11 @@ const LOGOS_DIR = resolve(__dirname, "../public/partners");
 const ls = (v) => ({ _type: "localeString", pl: v, en: v });
 
 // Kolejność zaczyna się od 10, żeby nie wchodzić w drogę wpisom już
-// istniejącym w CMS (Winopasja, 4mobility, SoDA, Flex To Go).
+// istniejącym w CMS (Winopasja, 4mobility, Flex To Go).
+//
+// Zdjęte z sekcji na życzenie klienta (2026-08-28): 6moto, Sydig,
+// ConnectedLife oraz SoDA - dokumenty usunięte z CMS, więc i seed ich nie
+// przywraca. Pliki logo zostają w public/partners, gdyby miały wrócić.
 const PARTNERS = [
   {
     id: "partner-artinside",
@@ -64,22 +68,6 @@ const PARTNERS = [
     url: "https://traineron.com/",
     source: "https://traineron.com/assets/logo/dark/logo_traineron.png",
     order: 11,
-  },
-  {
-    id: "partner-6moto",
-    name: "6moto",
-    file: "6moto.png",
-    url: "https://6moto.com/",
-    source: "https://6moto.com/images/logo/6moto_dark.svg (SVG przekonwertowany na PNG)",
-    order: 12,
-  },
-  {
-    id: "partner-sydig",
-    name: "Sydig",
-    file: "sydig.png",
-    url: "https://sydig.com/",
-    source: "https://sydig.com/static/media/logo-black.d80c4067.png",
-    order: 13,
   },
   {
     id: "partner-spotbrowser",
@@ -104,14 +92,6 @@ const PARTNERS = [
     url: null,
     source: "plik od klienta (wklejony w rozmowie 2026-08-26)",
     order: 17,
-  },
-  {
-    id: "partner-connectedlife",
-    name: "ConnectedLife",
-    file: "connectedlife.png",
-    url: null,
-    source: "plik od klienta (wklejony w rozmowie 2026-08-26)",
-    order: 19,
   },
   {
     id: "partner-aquares",

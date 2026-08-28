@@ -12,11 +12,10 @@ const staticPages = [
   { path: "/polityka-jakosci", priority: 0.3, changeFrequency: "yearly" as const },
   { path: "/oferta/aplikacje-webowe", priority: 0.7, changeFrequency: "monthly" as const },
   { path: "/oferta/aplikacje-mobilne", priority: 0.7, changeFrequency: "monthly" as const },
-  { path: "/oferta/ui-ux-design", priority: 0.7, changeFrequency: "monthly" as const },
+  { path: "/oferta/fast-prototyping", priority: 0.7, changeFrequency: "monthly" as const },
   { path: "/oferta/cybersecurity", priority: 0.7, changeFrequency: "monthly" as const },
   { path: "/oferta/aI-i-automatyzacja-procesow", priority: 0.7, changeFrequency: "monthly" as const },
   { path: "/oferta/outsourcing-programistow", priority: 0.7, changeFrequency: "monthly" as const },
-  { path: "/oferta/transformacja-technologiczna", priority: 0.7, changeFrequency: "monthly" as const },
   { path: "/oferta/akademia-i-szkolenia", priority: 0.7, changeFrequency: "monthly" as const },
 ];
 

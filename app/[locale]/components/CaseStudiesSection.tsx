@@ -10,6 +10,7 @@ interface CaseStudyDoc {
   description?: string;
   slug?: { current: string };
   image?: any;
+  phoneImage?: any;
   featured?: boolean;
 }
 
@@ -22,7 +23,10 @@ const CS_QUERY = `*[_type == "caseStudy" && defined(slug.current)]
   "description": coalesce(description[$locale], description.pl),
   slug,
   image,
-  featured
+  featured,
+  // Zrzut mobilny mieszka w hero strony realizacji - karta czyta to samo pole,
+  // zeby to samo zdjecie nie musialo byc wgrywane dwa razy.
+  "phoneImage": sections[_type == "csHeroSection"][0].phoneImage
 }`;
 
 export default async function CaseStudiesSection() {
@@ -42,6 +46,8 @@ export default async function CaseStudiesSection() {
     description: c.description ?? "",
     slug: c.slug!.current,
     image: c.image ? urlFor(c.image).width(1600).quality(85).auto("format").url() : null,
+    // Telefon jest waski - 720 px w zupelnosci starcza na ekran w obudowie.
+    mobile: c.phoneImage ? urlFor(c.phoneImage).width(720).quality(85).auto("format").url() : null,
   }));
 
   return (

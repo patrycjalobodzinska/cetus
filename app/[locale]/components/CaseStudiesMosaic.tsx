@@ -1,9 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
+import PhoneFrame from "./PhoneFrame";
+import { useReveal } from "../../components/useReveal";
 
 export interface MosaicCase {
   id: string;
@@ -12,6 +14,9 @@ export interface MosaicCase {
   description: string;
   slug: string;
   image: string | null;
+  /** Zrzut mobilny - to samo pole co w hero strony realizacji. Bez niego
+   *  telefon na karcie sie nie pojawia. */
+  mobile: string | null;
 }
 
 // Ile kafli pokazujemy w sekcji.
@@ -20,52 +25,6 @@ const VISIBLE = 6;
 // Powyżej tego progu dolny rząd jest wygaszany i pojawia się „Zobacz więcej”.
 const FADE_AFTER = 4;
 
-// Jednorazowy reveal - ten sam próg co w sekcji Proces, żeby animacja
-// rozgrywała się na środku ekranu, a nie tuż nad jego krawędzią.
-function useInView<T extends HTMLElement>(rootMargin = "0px 0px -42% 0px") {
-  const ref = useRef<T>(null);
-  const [seen, setSeen] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.58 && rect.bottom > 0) {
-      setSeen(true);
-      return;
-    }
-
-    if (typeof IntersectionObserver === "undefined") {
-      setSeen(true);
-      return;
-    }
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setSeen(true);
-          io.disconnect();
-        }
-      },
-      { threshold: 0, rootMargin },
-    );
-    io.observe(el);
-
-    // Failsafe - treść nigdy nie może zostać na opacity: 0.
-    const failsafe = window.setTimeout(() => {
-      const r = el.getBoundingClientRect();
-      if (r.top < window.innerHeight * 0.58 && r.bottom > 0) setSeen(true);
-    }, 1500);
-
-    return () => {
-      io.disconnect();
-      window.clearTimeout(failsafe);
-    };
-  }, [rootMargin]);
-
-  return { ref, seen };
-}
 
 /**
  * Siatka realizacji - jednolite karty po dwie w rzędzie: tekst przy górnej
@@ -83,7 +42,7 @@ export default function CaseStudiesMosaic({
   total: number;
 }) {
   const t = useTranslations("home.caseStudies");
-  const { ref, seen } = useInView<HTMLDivElement>();
+  const { ref, seen } = useReveal<HTMLDivElement>();
 
   // Podgląd układu przy większej liczbie realizacji: /test?mock=8.
   // Klonuje realizacje z CMS-u, więc nie dotyka danych w Sanity.
@@ -112,20 +71,20 @@ export default function CaseStudiesMosaic({
         </p>
         <h2
           className="cs-tile section-title text-slate-900"
-          style={{ ["--d" as string]: "60ms" }}
+          style={{ ["--d" as string]: "40ms" }}
         >
           {t("title")}
         </h2>
         <p
           className="cs-tile mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-600 text-pretty"
-          style={{ ["--d" as string]: "120ms" }}
+          style={{ ["--d" as string]: "80ms" }}
         >
           {t("lead")}
         </p>
         <Link
           href={`/${locale}/case-studies`}
           className="cs-tile group mt-6 inline-flex items-center gap-2 text-sm font-semibold text-slate-900 transition-colors duration-150 ease-out hover:text-blue-600"
-          style={{ ["--d" as string]: "180ms" }}
+          style={{ ["--d" as string]: "120ms" }}
         >
           {t("allLink")}
           <ArrowRight className="h-4 w-4 transition-transform duration-200 ease-out group-hover:translate-x-1" />
@@ -146,7 +105,7 @@ export default function CaseStudiesMosaic({
             key={c.id}
             href={`/${locale}/case-studies/${c.slug}`}
             className="cs-tile cs-card group relative flex flex-col overflow-hidden rounded-3xl border bg-white border-slate-200"
-            style={{ ["--d" as string]: `${240 + i * 80}ms` }}
+            style={{ ["--d" as string]: `${140 + i * 55}ms` }}
           >
             {/* Tło karty: delikatny gradient + siatka kropek. Zrzut ma własny
                 cień i obwódkę, więc na tonowanym tle odcina się jak osobny
@@ -171,6 +130,18 @@ export default function CaseStudiesMosaic({
               </>
             )}
 
+            {/* Telefon dostawiony przed lewa krawedz zrzutu webowego - para
+                urzadzen czyta sie jako „web + mobile". Renderuje sie tylko,
+                gdy realizacja ma wgrany zrzut mobilny w hero swojej strony
+                (phoneImage) - bez niego karta zostaje przy samym zrzucie webowym. */}
+            {c.mobile && (
+              <PhoneFrame
+                src={c.mobile}
+                bezel="sm"
+                className="cp-phone pointer-events-none absolute -bottom-10 right-[15rem] z-10 w-24 md:right-[19rem] md:w-28 lg:right-[26rem] lg:w-32"
+              />
+            )}
+
             {/* Rozmyty panel pod tekstem zamiast gradientu - zrzut zostaje
                 w pełnym, stałym kryciu, a nagłówek i tak jest czytelny. */}
             <div className="relative  px-6 pt-5 pb-0 ">
@@ -184,7 +155,7 @@ export default function CaseStudiesMosaic({
                 <ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-slate-400 transition-[translate,color] duration-200 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-blue-600" />
               </h3>
               {c.description && (
-                <p className="mt-0 line-clamp-2 max-w-xl text-sm leading-relaxed text-slate-600">
+                <p className="mt-0 line-clamp-2 max-w-[18rem] text-sm leading-relaxed text-slate-600">
                   {c.description}
                 </p>
               )}

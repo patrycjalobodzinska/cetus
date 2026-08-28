@@ -6,6 +6,7 @@ import { FundingSignSet } from './FundingSigns';
 import { getLocale, getTranslations } from 'next-intl/server';
 import StarGradientButton from './ui/gradientBackground';
 import Image from 'next/image';
+import ObfuscatedEmail from './ObfuscatedEmail';
 
 interface FooterData {
   contactTitle?: string;
@@ -53,10 +54,9 @@ const DEFAULT_SOCIAL_MEDIA = [
 const DEFAULT_OFFER_LINKS = [
   { titleKey: 'webApps', slug: 'aplikacje-webowe' },
   { titleKey: 'mobileApps', slug: 'aplikacje-mobilne' },
-  { titleKey: 'uiUx', slug: 'ui-ux-design' },
+  { titleKey: 'fastPrototyping', slug: 'fast-prototyping' },
   { titleKey: 'ai', slug: 'aI-i-automatyzacja-procesow' },
   { titleKey: 'cybersecurity', slug: 'cybersecurity' },
-  { titleKey: 'transformation', slug: 'transformacja-technologiczna' },
   { titleKey: 'outsourcing', slug: 'outsourcing-programistow' },
   { titleKey: 'academy', slug: 'akademia-i-szkolenia' },
 ];
@@ -186,9 +186,10 @@ export default async function Footer() {
               {data.email && (
                 <div className="flex items-center gap-3">
                   <Mail className="w-5 h-5 text-blue-400 shrink-0" />
-                  <a href={`mailto:${data.email}`} className="text-slate-300 hover:text-white transition-colors">
-                    {data.email}
-                  </a>
+                  <ObfuscatedEmail
+                    email={data.email}
+                    className="text-slate-300 hover:text-white transition-colors"
+                  />
                 </div>
               )}
               {data.address && (
@@ -198,8 +199,8 @@ export default async function Footer() {
                 </div>
               )}
               <div className="flex items-center gap-3">
-                <span className="text-slate-500 text-sm">NIP:</span>
-                <span className="text-slate-300 text-sm">8133850782</span>
+                <span className="text-slate-500 text-sm">{t('taxIdLabel')}:</span>
+                <span className="text-slate-300 text-sm">{t('taxIdValue')}</span>
               </div>
               <div className="flex items-center gap-3 pt-2">
                 <span className="text-slate-500 text-sm">{t('workingHours')}:</span>
@@ -368,7 +369,7 @@ export default async function Footer() {
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="flex flex-col sm:flex-row items-center gap-6">
               <Link href={`/${locale}`}>
-                <Image src="/logocetus.png" alt="CetusPro" className="bg-white w-36 rounded-lg" width={144} height={48} />
+                <Image src="/logocetus.png" alt="CETUSPRO" className="bg-white w-36 rounded-lg" width={144} height={48} />
               </Link>
               <div className="text-center sm:text-left">
                 <p className="text-slate-400 text-sm font-medium mb-1">{t('stayInTouch')}</p>

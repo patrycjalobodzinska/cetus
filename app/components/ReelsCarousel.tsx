@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { Play } from "lucide-react";
 import ScrollRow from "./ScrollRow";
 import ReelPlayer from "./ReelPlayer";
+import { useReveal } from "./useReveal";
 
 interface Reel {
   src: string;
@@ -46,6 +47,26 @@ export default function ReelsCarousel({
   const [unlocked, setUnlocked] = useState<number[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // Odtwarzacze Facebooka montujemy dopiero, gdy karuzela zbliży się do kadru
+  // I gdy strona skończy się ładować. Każda rolka to pełna, obca strona w
+  // ramce (a ScrollRow renderuje jeszcze drugą kopię ścieżki, więc ramek jest
+  // dwa razy tyle) - wpuszczone od razu potrafiły zająć wątek główny na długo
+  // i trzymać wskaźnik ładowania karty, mimo że nasza treść była już gotowa.
+  const { ref: viewRef, seen: near } = useReveal<HTMLDivElement>(-0.4);
+  const [pageLoaded, setPageLoaded] = useState(false);
+
+  useEffect(() => {
+    if (document.readyState === "complete") {
+      setPageLoaded(true);
+      return;
+    }
+    const onLoad = () => setPageLoaded(true);
+    window.addEventListener("load", onLoad);
+    return () => window.removeEventListener("load", onLoad);
+  }, []);
+
+  const mountPlayers = near && pageLoaded;
+
   useEffect(() => {
     const onBlur = () => {
       // `blur` leci przed aktualizacją activeElement - stąd odczyt w kolejnej klatce.
@@ -67,6 +88,7 @@ export default function ReelsCarousel({
 
   return (
     <div ref={containerRef}>
+      <div ref={viewRef} />
       <ScrollRow ariaLabel={ariaLabel}>
         {reels.map((reel, i) => (
           <div
@@ -76,6 +98,7 @@ export default function ReelsCarousel({
           >
             <div className="relative">
               <ReelPlayer
+                mounted={mountPlayers}
                 src={reel.src}
                 width={width}
                 height={height}
@@ -95,7 +118,10 @@ export default function ReelsCarousel({
                   className="group absolute inset-0 z-10 hidden cursor-grab items-center justify-center active:cursor-grabbing [@media(hover:hover)_and_(pointer:fine)]:flex"
                 >
                   <span className="grid h-14 w-14 place-items-center rounded-full bg-slate-900/50 text-white opacity-0 backdrop-blur transition-opacity duration-200 group-hover:opacity-100">
-                    <Play className="h-6 w-6 translate-x-0.5" fill="currentColor" />
+                    <Play
+                      className="h-6 w-6 translate-x-0.5"
+                      fill="currentColor"
+                    />
                   </span>
                 </div>
               )}

@@ -81,7 +81,7 @@ function SplashScreen({ onFinish }: { onFinish: () => void }) {
                 }}>
                 <Image
                   src="/logocetus.png"
-                  alt="CetusPro"
+                  alt="CETUSPRO"
                   width={280}
                   height={94}
                   priority
@@ -337,7 +337,7 @@ function ContestSection() {
                   className="heading-1 text-slate-900 mb-2 md:mb-3 break-words"
                   style={{ fontFamily: "var(--font-michroma)" }}>
                   KONKURS przy stoisku{" "}
-                  <span className="text-blue-600">Cetus Pro</span>
+                  <span className="text-blue-600">CETUSPRO</span>
                 </h2>
                 <p className="text-sm md:text-base text-slate-600 mb-5">
                   Career Days WSIiZ Rzeszów - wygraj dostęp do Claude&apos;a,
@@ -402,7 +402,7 @@ function ContestSection() {
                   </h3>
                   <ol className="space-y-3">
                     {[
-                      "Zaobserwuj profil Cetus Pro na LinkedIn",
+                      "Zaobserwuj profil CETUSPRO na LinkedIn",
                       "Zostaw komentarz pod postem z odpowiedzią na pytanie konkursowe",
                       "Zrób repost posta na swoim profilu, oznaczając cetuspro.com oraz Wyższą Szkołę Informatyki i Zarządzania w Rzeszowie",
                     ].map((rule, idx) => (

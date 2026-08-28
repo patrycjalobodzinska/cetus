@@ -19,25 +19,24 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL || "https://cetuspro.com",
   ),
   title: {
-    default: "CetusPro - Nowoczesne rozwiązania IT i aplikacje webowe",
-    template: "%s | CetusPro",
+    default: "CETUSPRO - Nowoczesne rozwiązania IT i aplikacje webowe",
+    template: "%s | CETUSPRO",
   },
   description:
-    "CetusPro - Tworzymy nowoczesne aplikacje webowe, mobilne i rozwiązania IT. Specjalizujemy się w projektowaniu UX/UI, cyberbezpieczeństwie, AI i automatyzacji procesów.",
+    "CETUSPRO - Tworzymy nowoczesne aplikacje webowe, mobilne i rozwiązania IT. Specjalizujemy się w szybkim prototypowaniu, cyberbezpieczeństwie, AI i automatyzacji procesów.",
   keywords: [
     "aplikacje webowe",
     "aplikacje mobilne",
     "rozwój oprogramowania",
-    "UX/UI design",
+    "fast prototyping",
     "cyberbezpieczeństwo",
     "AI i automatyzacja",
     "outsourcing programistów",
-    "transformacja technologiczna",
-    "CetusPro",
+    "CETUSPRO",
   ],
-  authors: [{ name: "CetusPro" }],
-  creator: "CetusPro",
-  publisher: "CetusPro",
+  authors: [{ name: "CETUSPRO" }],
+  creator: "CETUSPRO",
+  publisher: "CETUSPRO",
   robots: {
     index: true,
     follow: true,
@@ -53,8 +52,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pl_PL",
     url: "/",
-    siteName: "CetusPro",
-    title: "CetusPro - Nowoczesne rozwiązania IT i aplikacje webowe",
+    siteName: "CETUSPRO",
+    title: "CETUSPRO - Nowoczesne rozwiązania IT i aplikacje webowe",
     description:
       "Tworzymy nowoczesne aplikacje webowe, mobilne i rozwiązania IT. Specjalizujemy się w projektowaniu UX/UI, cyberbezpieczeństwie, AI i automatyzacji procesów.",
     images: [
@@ -62,13 +61,13 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "CetusPro - Nowoczesne rozwiązania IT i aplikacje webowe",
+        alt: "CETUSPRO - Nowoczesne rozwiązania IT i aplikacje webowe",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "CetusPro - Nowoczesne rozwiązania IT",
+    title: "CETUSPRO - Nowoczesne rozwiązania IT",
     description:
       "Tworzymy nowoczesne aplikacje webowe, mobilne i rozwiązania IT.",
     images: ["/og-image.png"],
@@ -118,7 +117,7 @@ export default async function RootLayout({
       {
         "@type": "Organization",
         "@id": `${siteUrl}/#organization`,
-        name: "CetusPro",
+        name: "CETUSPRO",
         url: siteUrl,
         logo: {
           "@type": "ImageObject",
@@ -126,9 +125,12 @@ export default async function RootLayout({
           width: 512,
           height: 512,
         },
+        // Bez pola `email` - JSON-LD to czysty tekst w HTML, więc adres
+        // wpisany tutaj obchodzi całą ochronę z ObfuscatedEmail. Zamiast
+        // adresu wskazujemy stronę kontaktu (schema.org: `url`).
         contactPoint: {
           "@type": "ContactPoint",
-          email: "contact@cetuspro.com",
+          url: `${siteUrl}/pl/kontakt`,
           contactType: "customer service",
           availableLanguage: ["Polish", "English"],
         },
@@ -142,7 +144,7 @@ export default async function RootLayout({
         "@type": "WebSite",
         "@id": `${siteUrl}/#website`,
         url: siteUrl,
-        name: "CetusPro",
+        name: "CETUSPRO",
         publisher: { "@id": `${siteUrl}/#organization` },
         inLanguage: ["pl", "en"],
       },
@@ -183,8 +185,8 @@ export default async function RootLayout({
           },
           {
             "@type": "SiteNavigationElement",
-            name: "UX/UI Design",
-            url: `${siteUrl}/oferta/ui-ux-design`,
+            name: "Fast Prototyping",
+            url: `${siteUrl}/oferta/fast-prototyping`,
           },
           {
             "@type": "SiteNavigationElement",

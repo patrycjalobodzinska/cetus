@@ -12,7 +12,6 @@ import {
   HeartIcon,
   HomeIcon,
   ImagesIcon,
-  HelpCircleIcon,
   MenuIcon,
   PlayIcon,
   RocketIcon,
@@ -83,7 +82,7 @@ const BY_ORDER = [{ field: 'order', direction: 'asc' as const }]
 
 export const structure = (S: StructureBuilder, context: StructureResolverContext) =>
   S.list()
-    .title('CetusPro')
+    .title('CETUSPRO')
     .items([
       S.divider().title('Strona główna'),
 
@@ -100,7 +99,6 @@ export const structure = (S: StructureBuilder, context: StructureResolverContext
               list(S, 'homepageModule', 'Kafle pod Realizacjami', BlockContentIcon, BY_ORDER),
               list(S, 'partner', 'Zaufali nam - logotypy', UsersIcon, BY_ORDER),
               list(S, 'sponsor', 'Sponsoring', HeartIcon, BY_ORDER),
-              list(S, 'faq', 'FAQ (wspólne dla strony głównej i /kontakt)', HelpCircleIcon, BY_ORDER),
             ]),
         ),
 

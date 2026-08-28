@@ -6,7 +6,6 @@ import {
   PenTool,
   Sparkles,
   ShieldCheck,
-  RefreshCw,
   Users,
   GraduationCap,
 } from "lucide-react";
@@ -14,10 +13,10 @@ import {
 /**
  * Kafel usługi - jeden komponent dla sekcji „Co robimy" na stronie głównej
  * i dla siatki na /oferta. Ikony, makiety i układ bento wybierane są po
- * indeksie, a kolejność usług jest w obu miejscach identyczna (osiem tych
+ * indeksie, a kolejność usług jest w obu miejscach identyczna (siedem tych
  * samych obszarów), więc te same indeksy dają ten sam wygląd.
  */
-const ICONS = [Monitor, Smartphone, PenTool, Sparkles, ShieldCheck, RefreshCw, Users, GraduationCap];
+const ICONS = [Monitor, Smartphone, PenTool, Sparkles, ShieldCheck, Users, GraduationCap];
 
 // Mockup przeglądarki / dashboardu (kafel flagowy "Aplikacje webowe")
 function BrowserMock({ className = "" }: { className?: string }) {
@@ -130,31 +129,36 @@ function PhoneMock({ className = "" }: { className?: string }) {
     </svg>
   );
 }
+// Bento na 7 kafli: kolumna flagowa (6) na dwa wiersze, obok dwa razy 3+3,
+// a ostatni wiersz dzielą dwa szerokie kafle 6+6 - inaczej po zdjęciu
+// transformacji technologicznej zostawało puste pole w ostatnim rzędzie.
+//
+// Cztery kafle w kolumnach 7-12 mają ten sam span (3), więc „Aplikacje
+// mobilne" i „Fast Prototyping" są równej szerokości - wcześniej 4+3 dawało
+// dwie różne szerokości i wąższy kafel dusił tekst.
 const SPANS = [
-  "md:col-span-5 md:row-span-2",
-  "md:col-span-4",
+  "md:col-span-6 md:row-span-2",
   "md:col-span-3",
-  "md:col-span-4",
   "md:col-span-3",
-  "md:col-span-4",
-  "md:col-span-4",
-  "md:col-span-4",
+  "md:col-span-3",
+  "md:col-span-3",
+  "md:col-span-6",
+  "md:col-span-6",
 ];
-// Slugi podstron /oferta/* w tej samej kolejności co usługi - te same osiem
+// Slugi podstron /oferta/* w tej samej kolejności co usługi - te same siedem
 // obszarów co na /oferta, więc indeks kafla wskazuje jego podstronę.
 const SLUGS = [
   "aplikacje-webowe",
   "aplikacje-mobilne",
-  "ui-ux-design",
+  "fast-prototyping",
   "aI-i-automatyzacja-procesow",
   "cybersecurity",
-  "transformacja-technologiczna",
   "outsourcing-programistow",
   "akademia-i-szkolenia",
 ] as const;
 
 // spokojna paleta: białe karty + JEDEN niebieski (feature)
-const VARIANT = ["feature", "plain", "plain", "plain", "plain", "plain", "plain", "plain"] as const;
+const VARIANT = ["feature", "plain", "plain", "plain", "plain", "plain", "plain"] as const;
 
 type Item = { title: string; desc: string; chips?: readonly string[]; cta?: string };
 
@@ -222,15 +226,18 @@ function Tile({
       )}
 
       {i === 1 && (
-        <PhoneMock className="absolute -bottom-9 -right-2 w-24 rotate-[10deg] z-0 drop-shadow-xl transition-transform duration-500 group-hover:-translate-y-1 group-hover:rotate-[6deg]" />
+        <PhoneMock className="absolute -bottom-9 -right-2 hidden w-24 rotate-[10deg] z-0 lg:block drop-shadow-xl transition-transform duration-500 group-hover:-translate-y-1 group-hover:rotate-[6deg]" />
       )}
       {i === 2 && (
-        <DesignMock className="absolute -bottom-4 -right-3 w-32 rotate-[6deg] z-0 drop-shadow-xl transition-transform duration-500 group-hover:-translate-y-1 group-hover:rotate-[3deg]" />
+        <DesignMock className="absolute -bottom-4 -right-3 hidden w-32 rotate-[6deg] z-0 lg:block drop-shadow-xl transition-transform duration-500 group-hover:-translate-y-1 group-hover:rotate-[3deg]" />
       )}
 
       <div
+        // Miejsce na makietę rezerwujemy tylko tam, gdzie makieta jest
+        // widoczna (od lg) - na md kafel ma ok. 170 px i pr-24 zostawiałoby
+        // tekstowi kilkadziesiąt pikseli, czyli ucięty opis.
         className={`relative z-10 flex flex-col h-full ${
-          i === 1 || i === 2 ? "pr-24" : ""
+          i === 1 || i === 2 ? "lg:pr-24" : ""
         }`}
       >
         {eyebrow && (

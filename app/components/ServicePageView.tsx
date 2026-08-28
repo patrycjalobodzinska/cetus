@@ -7,6 +7,7 @@ import { useLocale } from "next-intl";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import StarGradientButton from "@/app/components/ui/gradientBackground";
 import PolygonAccordion from "@/app/components/PolygonAccordion";
+import ObfuscatedEmail from "@/app/components/ObfuscatedEmail";
 import type {
   ServicePageData,
   Section,
@@ -28,7 +29,10 @@ export default function ServicePageView({
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-white">
-      <section className="pt-24 md:pt-[var(--page-top-offset)] pb-8 md:pb-12 relative overflow-hidden bg-gradient-to-b from-blue-50 via-cyan-50/40 to-white">
+      {/* Odstęp pod nagłówkiem bierzemy z tej samej zmiennej co reszta
+          podstron - `pt-24` (96 px) było mniejsze niż wysokość paska nagłówka
+          plus jego ujemny margines, więc na mobile hero wchodził pod nagłówek. */}
+      <section className="pt-[var(--page-top-offset)] pb-8 md:pb-12 relative overflow-hidden bg-gradient-to-b from-blue-50 via-cyan-50/40 to-white">
         {/* Kolorowe, rozmyte plamy w tle hero */}
         <div
           aria-hidden="true"
@@ -223,7 +227,7 @@ function TabsSectionView({
   if (!section.items?.length) return null;
   const activeItem = section.items[active];
   return (
-    <section className="md:py-20 py-14 bg-white relative overflow-hidden">
+    <section className="md:py-20 py-14 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           title={section.title}
@@ -474,11 +478,10 @@ function CtaBlockView({
               </StarGradientButton>
             </Link>
             {section.email && (
-              <a
-                href={`mailto:${section.email}`}
-                className="text-blue-600 hover:underline">
-                {section.email}
-              </a>
+              <ObfuscatedEmail
+                email={section.email}
+                className="text-blue-600 hover:underline"
+              />
             )}
           </div>
         )}

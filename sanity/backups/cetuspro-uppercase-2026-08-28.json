@@ -1,0 +1,2408 @@
+[
+  {
+    "_createdAt": "2026-06-18T12:32:48Z",
+    "_id": "blogPost-cetus-academy",
+    "_rev": "XIcS3BJZg6p9LbLDN8UqMQ",
+    "_type": "blogPost",
+    "_updatedAt": "2026-06-18T14:53:14Z",
+    "author": {
+      "name": "CetusPro",
+      "role": {
+        "_type": "localeString",
+        "en": "CetusPro Team",
+        "pl": "Zespół CetusPro"
+      }
+    },
+    "category": {
+      "_type": "localeString",
+      "en": "Education",
+      "pl": "Edukacja"
+    },
+    "coverImage": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-ccf811968a9538799e2fe04252f753463e9a735d-1600x1067-jpg",
+        "_type": "reference"
+      }
+    },
+    "excerpt": {
+      "_type": "localeText",
+      "en": "Cetus Academy is CetusPro's educational program where we share hands-on knowledge of building modern software – through training, workshops and mentoring grounded in real projects.",
+      "pl": "Cetus Academy to program edukacyjny CetusPro, w którym dzielimy się praktyczną wiedzą z zakresu tworzenia nowoczesnego oprogramowania – poprzez szkolenia, warsztaty i mentoring oparte na realnych projektach."
+    },
+    "publishedAt": "2026-06-15T09:00:00.000Z",
+    "sections": [
+      {
+        "_key": "ixh0nipzev",
+        "_type": "bpHeroSection",
+        "category": {
+          "_type": "localeString",
+          "en": "Education",
+          "pl": "Edukacja"
+        },
+        "excerpt": {
+          "_type": "localeText",
+          "en": "Cetus Academy is CetusPro's educational program where we share hands-on knowledge of building modern software – through training, workshops and mentoring grounded in real projects.",
+          "pl": "Cetus Academy to program edukacyjny CetusPro, w którym dzielimy się praktyczną wiedzą z zakresu tworzenia nowoczesnego oprogramowania – poprzez szkolenia, warsztaty i mentoring oparte na realnych projektach."
+        },
+        "image": {
+          "_type": "image",
+          "asset": {
+            "_ref": "image-ccf811968a9538799e2fe04252f753463e9a735d-1600x1067-jpg",
+            "_type": "reference"
+          }
+        },
+        "title": {
+          "_type": "localeString",
+          "en": "Cetus Academy – sharing knowledge and shaping future specialists",
+          "pl": "Cetus Academy – dzielimy się wiedzą i kształcimy przyszłych specjalistów"
+        },
+        "variant": "centered"
+      },
+      {
+        "_key": "hte7qnz6c2",
+        "_type": "bpRichTextSection",
+        "contentEn": [
+          {
+            "_key": "dte9pybsu2",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "untxhr89d1",
+                "_type": "span",
+                "marks": [],
+                "text": "The best knowledge is the kind you can apply right away. At Cetus Academy we teach the way we work every day – on real examples, with an emphasis on good practices and independence."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "2dwopetvce",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "ktxfgrxu3z",
+                "_type": "span",
+                "marks": [],
+                "text": "The program combines training, workshops and mentoring. Instead of dry theory we show how modern software actually comes to life: from idea, through design, to deployment and maintenance."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "contentPl": [
+          {
+            "_key": "sr7czxt365",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "uyxzgobiop",
+                "_type": "span",
+                "marks": [],
+                "text": "Najlepszą wiedzą jest ta, którą da się od razu zastosować. W Cetus Academy uczymy tak, jak sami pracujemy na co dzień – na realnych przykładach, z naciskiem na dobre praktyki i samodzielność."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "hvm2vhv8ko",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "avs6v7by1p",
+                "_type": "span",
+                "marks": [],
+                "text": "Program łączy szkolenia, warsztaty i mentoring. Zamiast suchej teorii pokazujemy, jak powstaje nowoczesne oprogramowanie: od pomysłu, przez projekt, po wdrożenie i utrzymanie."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "variant": "standard"
+      },
+      {
+        "_key": "abymmveo27",
+        "_type": "bpListSection",
+        "items": {
+          "_type": "localeStringArray",
+          "en": [
+            "Hands-on workshops led by experienced developers",
+            "Training in modern web and mobile technologies",
+            "Mentoring and individual support for your growth",
+            "Knowledge shared from real CetusPro projects"
+          ],
+          "pl": [
+            "Praktyczne warsztaty prowadzone przez doświadczonych programistów",
+            "Szkolenia z nowoczesnych technologii webowych i mobilnych",
+            "Mentoring i indywidualne wsparcie w rozwoju",
+            "Dzielenie się wiedzą z prawdziwych projektów CetusPro"
+          ]
+        },
+        "sectionTitle": {
+          "_type": "localeString",
+          "en": "What you'll find in Cetus Academy",
+          "pl": "Co znajdziesz w Cetus Academy"
+        },
+        "variant": "checklist"
+      },
+      {
+        "_key": "wbx53ljo6a",
+        "_type": "bpCtaSection",
+        "buttonHref": "/kontakt",
+        "buttonLabel": {
+          "_type": "localeString",
+          "en": "Contact us",
+          "pl": "Napisz do nas"
+        },
+        "description": {
+          "_type": "localeText",
+          "en": "Get in touch – we'll tell you how to join Cetus Academy and plan your growth path together.",
+          "pl": "Napisz do nas – opowiemy, jak dołączyć do Cetus Academy i wspólnie zaplanujemy Twoją ścieżkę rozwoju."
+        },
+        "heading": {
+          "_type": "localeString",
+          "en": "Want to learn more?",
+          "pl": "Chcesz dowiedzieć się więcej?"
+        },
+        "variant": "banner"
+      }
+    ],
+    "seoDescription": {
+      "_type": "localeText",
+      "en": "Cetus Academy is CetusPro's educational program where we share hands-on knowledge of building modern software – through training, workshops and mentoring grounded in real projects.",
+      "pl": "Cetus Academy to program edukacyjny CetusPro, w którym dzielimy się praktyczną wiedzą z zakresu tworzenia nowoczesnego oprogramowania – poprzez szkolenia, warsztaty i mentoring oparte na realnych projektach."
+    },
+    "seoTitle": {
+      "_type": "localeString",
+      "en": "Cetus Academy – IT training and mentoring by CetusPro",
+      "pl": "Cetus Academy – szkolenia i mentoring IT od CetusPro"
+    },
+    "slug": {
+      "_type": "slug",
+      "current": "cetus-academy"
+    },
+    "tags": [
+      "cetus-academy",
+      "edukacja",
+      "szkolenia",
+      "mentoring"
+    ],
+    "title": {
+      "_type": "localeString",
+      "en": "Cetus Academy – sharing knowledge and shaping future specialists",
+      "pl": "Cetus Academy – dzielimy się wiedzą i kształcimy przyszłych specjalistów"
+    }
+  },
+  {
+    "_createdAt": "2026-06-18T12:32:47Z",
+    "_id": "blogPost-cetus-elevate",
+    "_rev": "zhYS2GyM8sHLOHgNBYOWIv",
+    "_type": "blogPost",
+    "_updatedAt": "2026-06-18T14:53:12Z",
+    "author": {
+      "name": "CetusPro",
+      "role": {
+        "_type": "localeString",
+        "en": "CetusPro Team",
+        "pl": "Zespół CetusPro"
+      }
+    },
+    "category": {
+      "_type": "localeString",
+      "en": "Initiative",
+      "pl": "Inicjatywa"
+    },
+    "coverImage": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-e4416237af3bb1938448a48fc2f974d522ee6923-1600x1067-jpg",
+        "_type": "reference"
+      }
+    },
+    "excerpt": {
+      "_type": "localeText",
+      "en": "Cetus Elevate is a CetusPro initiative dedicated to actively supporting talented people in building a career in IT. We believe talent doesn't need luck – it needs a chance.",
+      "pl": "Cetus Elevate to inicjatywa CetusPro, której celem jest aktywne wspieranie zdolnych ludzi w budowaniu kariery w branży IT. Wierzymy, że talent nie potrzebuje szczęścia – potrzebuje szansy."
+    },
+    "publishedAt": "2026-06-16T09:00:00.000Z",
+    "sections": [
+      {
+        "_key": "859ky0muj8",
+        "_type": "bpHeroSection",
+        "category": {
+          "_type": "localeString",
+          "en": "CetusPro initiative",
+          "pl": "Inicjatywa CetusPro"
+        },
+        "excerpt": {
+          "_type": "localeText",
+          "en": "Cetus Elevate is a CetusPro initiative dedicated to actively supporting talented people in building a career in IT. We believe talent doesn't need luck – it needs a chance.",
+          "pl": "Cetus Elevate to inicjatywa CetusPro, której celem jest aktywne wspieranie zdolnych ludzi w budowaniu kariery w branży IT. Wierzymy, że talent nie potrzebuje szczęścia – potrzebuje szansy."
+        },
+        "image": {
+          "_type": "image",
+          "asset": {
+            "_ref": "image-e4416237af3bb1938448a48fc2f974d522ee6923-1600x1067-jpg",
+            "_type": "reference"
+          }
+        },
+        "title": {
+          "_type": "localeString",
+          "en": "Cetus Elevate – helping the people who deserve it break into IT",
+          "pl": "Cetus Elevate – pomagamy wejść do IT tym, którzy na to zasługują"
+        },
+        "variant": "centered"
+      },
+      {
+        "_key": "n3ekrexy6z",
+        "_type": "bpRichTextSection",
+        "contentEn": [
+          {
+            "_key": "2dkihufnb2",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "rehcisz8cq",
+                "_type": "span",
+                "marks": [],
+                "text": "We started exactly where you are"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "2j697z1f4j",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "qsxvrnf2g2",
+                "_type": "span",
+                "marks": [],
+                "text": "CetusPro is a technology company from Rzeszów. We build software for business, but our real pride is where our team comes from. Many of our people were once students and interns who joined us with zero commercial experience. We watched talent turn into professionals once given the right chance and direction."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "vco7i2jt0z",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "5i3n0xaos5",
+                "_type": "span",
+                "marks": [],
+                "text": "Cetus Elevate is how we give that chance to the next people in a structured way – no theory detached from practice, but real projects, mentoring and contact with a company that actually ships products."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "contentPl": [
+          {
+            "_key": "fogjuw2a7d",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "cpxkzeo2a1",
+                "_type": "span",
+                "marks": [],
+                "text": "Zaczynaliśmy tak samo, jak Ty"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "uibx1pq248",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "q9vwh0lojg",
+                "_type": "span",
+                "marks": [],
+                "text": "CetusPro to firma technologiczna z Rzeszowa. Tworzymy oprogramowanie dla biznesu, ale naszą prawdziwą dumą jest to, skąd pochodzi nasz zespół. Wielu naszych pracowników to byli studenci i stażyści, którzy przyszli do nas z zerowym doświadczeniem komercyjnym. Widzieliśmy, jak talent zamienia się w zawodowca, gdy dostanie właściwą szansę i kierunek."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "2kis4npwh5",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "382feomv44",
+                "_type": "span",
+                "marks": [],
+                "text": "Cetus Elevate to nasz sposób na systemowe dawanie tej szansy kolejnym osobom – bez teorii oderwanej od praktyki, za to z realnymi projektami, mentoringiem i kontaktem z firmą, która naprawdę buduje produkty."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "variant": "standard"
+      },
+      {
+        "_key": "bfktkvuo13",
+        "_type": "bpButtonSection",
+        "align": "center",
+        "blank": true,
+        "buttonHref": "https://elevate.cetuspro.com/",
+        "buttonLabel": {
+          "_type": "localeString",
+          "en": "Open elevate.cetuspro.com",
+          "pl": "Wejdź na elevate.cetuspro.com"
+        },
+        "image": {
+          "_type": "image",
+          "asset": {
+            "_ref": "image-12f930adc8d9650729a5f76d8740783fdc960088-2000x591-png",
+            "_type": "reference"
+          }
+        },
+        "variant": "primary"
+      },
+      {
+        "_key": "ctq4njf0z3",
+        "_type": "bpListSection",
+        "items": {
+          "_type": "localeStringArray",
+          "en": [
+            "1:1 mentoring – 6 months of project work with a dedicated one-on-one mentor",
+            "Vibe The Future hackathon – 48 hours of real teamwork and a genuine career kickstart",
+            "Summer internships – real recruitment, real tasks, a case study at the end",
+            "Partnerships with universities and technical schools across the Podkarpacie region"
+          ],
+          "pl": [
+            "Mentoring 1:1 – 6 miesięcy pracy projektowej z dedykowanym mentorem, jeden na jeden",
+            "Hackathon Vibe The Future – 48 godzin realnej pracy zespołowej i prawdziwy start kariery",
+            "Staże i praktyki wakacyjne – realna rekrutacja, prawdziwe zadania, case study na koniec",
+            "Partnerstwa z uczelniami i szkołami technicznymi z całego Podkarpacia"
+          ]
+        },
+        "sectionTitle": {
+          "_type": "localeString",
+          "en": "What Cetus Elevate offers",
+          "pl": "Inicjatywy w ramach Cetus Elevate"
+        },
+        "variant": "checklist"
+      },
+      {
+        "_key": "rpauy1d6qn",
+        "_type": "bpCalloutSection",
+        "body": {
+          "_type": "localeText",
+          "en": "Over 200 students reached in 2024, 8+ partner schools and universities, and 6 active mentors. We measure success by your success – our goal isn't a certificate, it's your job or your own company.",
+          "pl": "Ponad 200 studentów i uczniów objętych działaniami w 2024 roku, 8+ uczelni i szkół partnerskich oraz 6 aktywnych mentorów. Mierzymy sukces Twoim sukcesem – naszym celem nie jest certyfikat, tylko Twoja praca albo własna firma."
+        },
+        "title": {
+          "_type": "localeString",
+          "en": "What we've achieved so far",
+          "pl": "Co osiągnęliśmy do tej pory"
+        },
+        "tone": "info"
+      },
+      {
+        "_key": "tarvutj2tq",
+        "_type": "bpCtaSection",
+        "blank": true,
+        "buttonHref": "https://elevate.cetuspro.com/",
+        "buttonLabel": {
+          "_type": "localeString",
+          "en": "Visit Cetus Elevate",
+          "pl": "Odwiedź Cetus Elevate"
+        },
+        "description": {
+          "_type": "localeText",
+          "en": "Explore all the initiatives, meet the mentors and join a program that genuinely opens doors into the IT industry.",
+          "pl": "Sprawdź wszystkie inicjatywy, poznaj mentorów i dołącz do programu, który realnie otwiera drzwi do branży IT."
+        },
+        "heading": {
+          "_type": "localeString",
+          "en": "Discover Cetus Elevate",
+          "pl": "Poznaj Cetus Elevate"
+        },
+        "variant": "banner"
+      }
+    ],
+    "seoDescription": {
+      "_type": "localeText",
+      "en": "Cetus Elevate is a CetusPro initiative dedicated to actively supporting talented people in building a career in IT. We believe talent doesn't need luck – it needs a chance.",
+      "pl": "Cetus Elevate to inicjatywa CetusPro, której celem jest aktywne wspieranie zdolnych ludzi w budowaniu kariery w branży IT. Wierzymy, że talent nie potrzebuje szczęścia – potrzebuje szansy."
+    },
+    "seoTitle": {
+      "_type": "localeString",
+      "en": "Cetus Elevate – break into IT with CetusPro",
+      "pl": "Cetus Elevate – wejdź do IT z CetusPro"
+    },
+    "slug": {
+      "_type": "slug",
+      "current": "cetus-elevate"
+    },
+    "tags": [
+      "cetus-elevate",
+      "kariera",
+      "it",
+      "edukacja"
+    ],
+    "title": {
+      "_type": "localeString",
+      "en": "Cetus Elevate – helping the people who deserve it break into IT",
+      "pl": "Cetus Elevate – pomagamy wejść do IT tym, którzy na to zasługują"
+    }
+  },
+  {
+    "_createdAt": "2026-05-28T10:02:24Z",
+    "_id": "blogPost-czym-jest-custom-software",
+    "_rev": "oyTLQo1lMZF90G3YTPQ92Q",
+    "_type": "blogPost",
+    "_updatedAt": "2026-05-28T10:26:20Z",
+    "author": {
+      "name": "Norbert Pisz",
+      "role": {
+        "_type": "localeString",
+        "en": "CEO, CetusPro",
+        "pl": "CEO, CetusPro"
+      }
+    },
+    "category": {
+      "_type": "localeString",
+      "en": "Custom Software",
+      "pl": "Custom Software"
+    },
+    "coverImage": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-f9c9bcbf8e4d29fb404cdf0c69efc591558aedb1-1600x1067-jpg",
+        "_type": "reference"
+      }
+    },
+    "excerpt": {
+      "_type": "localeText",
+      "en": "Custom software is software built specifically for a single business. We explain how it differs from off-the-shelf SaaS, when it pays off, what the implementation process looks like, and which long-term benefits it brings.",
+      "pl": "Custom software to oprogramowanie tworzone „na miarę” konkretnego biznesu. W tym artykule wyjaśniamy, czym różni się od gotowych rozwiązań SaaS, kiedy się opłaca, jak wygląda proces wdrożenia oraz jakie korzyści daje firmie w długim okresie."
+    },
+    "publishedAt": "2026-05-28T10:26:20.821Z",
+    "sections": [
+      {
+        "_key": "dy2tflygvh",
+        "_type": "bpHeroSection",
+        "category": {
+          "_type": "localeString",
+          "en": "Custom Software",
+          "pl": "Custom Software"
+        },
+        "excerpt": {
+          "_type": "localeText",
+          "en": "Custom software is software built specifically for a single business. We explain how it differs from off-the-shelf SaaS, when it pays off, what the implementation process looks like, and which long-term benefits it brings.",
+          "pl": "Custom software to oprogramowanie tworzone „na miarę” konkretnego biznesu. W tym artykule wyjaśniamy, czym różni się od gotowych rozwiązań SaaS, kiedy się opłaca, jak wygląda proces wdrożenia oraz jakie korzyści daje firmie w długim okresie."
+        },
+        "image": {
+          "_type": "image",
+          "asset": {
+            "_ref": "image-bc9bd644b30a1dadceea436b144ecae8004635a2-1800x1198-jpg",
+            "_type": "reference"
+          }
+        },
+        "title": {
+          "_type": "localeString",
+          "en": "What is Custom Software and when should you choose it?",
+          "pl": "Czym jest Custom Software i kiedy warto go wybrać?"
+        },
+        "variant": "centered"
+      },
+      {
+        "_key": "brplkgnu4c",
+        "_type": "bpRichTextSection",
+        "contentEn": [
+          {
+            "_key": "yjfz4dx2s7",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "794cow92n3",
+                "_type": "span",
+                "marks": [],
+                "text": "Every business has unique processes, constraints, and competitive edges. The problem starts when we try to squeeze them into generic software designed for the \"average\" customer. Custom software flips this logic — it's a tool we shape to fit the business, not the other way around."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "20ad7zjxro",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "e2wjtr5ujk",
+                "_type": "span",
+                "marks": [],
+                "text": "So what exactly is custom software?"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "4eq7piy6nw",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "ngewh69t0j",
+                "_type": "span",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Custom software "
+              },
+              {
+                "_key": "lz87sgaqu6",
+                "_type": "span",
+                "marks": [],
+                "text": "is designed and built from scratch for a specific organization. Unlike off-the-shelf solutions (SaaS, ERP suites), it answers the actual processes that exist in your company — nothing has to be worked around or stuffed into a generic \"description\" field."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "contentPl": [
+          {
+            "_key": "lso1wkmfnt",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "i0ktwidtbb",
+                "_type": "span",
+                "marks": [],
+                "text": "Każdy biznes ma swoje unikalne procesy, ograniczenia i przewagi konkurencyjne. Problem zaczyna się, gdy próbujemy wcisnąć je w gotowe oprogramowanie, które było tworzone z myślą o „średnim” kliencie. Custom software (oprogramowanie dedykowane) odwraca tę logikę — to narzędzie, które dopasowujemy do firmy, nie firmę do narzędzia."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "40x1mvntvw",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "u37smit1dl",
+                "_type": "span",
+                "marks": [],
+                "text": "Czym dokładnie jest custom software?"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "fta02o6r77",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "jyvsugptuy",
+                "_type": "span",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Custom software "
+              },
+              {
+                "_key": "re4q3q4nqm",
+                "_type": "span",
+                "marks": [],
+                "text": "to oprogramowanie projektowane i budowane od podstaw dla konkretnej organizacji. W odróżnieniu od rozwiązań pudełkowych (SaaS, ERP off-the-shelf) odpowiada dokładnie na te procesy, które realnie istnieją w Twojej firmie — niczego nie trzeba „obchodzić” ani upychać w pole „opis”."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "variant": "standard"
+      },
+      {
+        "_key": "7474wcj6et",
+        "_type": "bpCalloutSection",
+        "body": {
+          "_type": "localeText",
+          "en": "If your team spends more than 5 hours a week copy-pasting data between systems, juggling spreadsheets, or working around tool limitations, you're likely losing money that custom software would recover.",
+          "pl": "Jeśli Twój zespół spędza więcej niż 5 godzin tygodniowo na ręcznym przeklejaniu danych między systemami, kopiowaniu Exceli lub omijaniu ograniczeń narzędzia, prawdopodobnie tracisz pieniądze, które zwróciłyby się na dedykowanym rozwiązaniu."
+        },
+        "title": {
+          "_type": "localeString",
+          "en": "Quick test: do you need custom software?",
+          "pl": "Krótki test: czy potrzebujesz custom software?"
+        },
+        "tone": "tip"
+      },
+      {
+        "_key": "ygk4mrfgal",
+        "_type": "bpListSection",
+        "items": {
+          "_type": "localeStringArray",
+          "en": [
+            "Full ownership of code and data — no vendor lock-in, no per-seat fees",
+            "Functionality matches your processes 1:1, no compromises",
+            "Scalability designed for your actual traffic and load",
+            "Integrations with any system you already use",
+            "Security and compliance (GDPR, ISO) built in from day one",
+            "Continuous evolution — the product grows with your business"
+          ],
+          "pl": [
+            "Pełna własność kodu i danych — bez vendor lock-in i opłat per-seat",
+            "Funkcjonalność 1:1 z procesami firmy, bez kompromisów",
+            "Skalowalność dopasowana do realnego ruchu i obciążenia",
+            "Integracje z dowolnym systemem, który już posiadasz",
+            "Bezpieczeństwo i zgodność (RODO, ISO) zaprojektowane od początku",
+            "Stała ewolucja — produkt rośnie razem z biznesem"
+          ]
+        },
+        "sectionTitle": {
+          "_type": "localeString",
+          "en": "What sets custom software apart from off-the-shelf?",
+          "pl": "Co odróżnia custom software od gotowca?"
+        },
+        "variant": "checklist"
+      },
+      {
+        "_key": "aw3en73ldf",
+        "_type": "bpQuoteSection",
+        "author": "Norbert Pisz",
+        "quote": {
+          "_type": "localeText",
+          "en": "Good custom software becomes invisible. It simply works the way your company works — that's its highest form.",
+          "pl": "Dobry custom software przestaje być widoczny. Po prostu działa tak, jak praca w Twojej firmie — to jego najwyższa forma."
+        },
+        "role": {
+          "_type": "localeString",
+          "en": "CEO, CetusPro",
+          "pl": "CEO, CetusPro"
+        },
+        "variant": "centered"
+      },
+      {
+        "_key": "84k556hr7z",
+        "_type": "bpImageSection",
+        "alt": {
+          "_type": "localeString",
+          "en": "Team at a discovery workshop",
+          "pl": "Zespół przy warsztacie discovery"
+        },
+        "caption": {
+          "_type": "localeString",
+          "en": "Product designers and developers during a discovery workshop.",
+          "pl": "Zespół product designerów i developerów podczas warsztatu discovery."
+        },
+        "image": {
+          "_type": "image",
+          "asset": {
+            "_ref": "image-6737995ad78edfe9fdea97f89ef89d0117336a1f-1400x934-jpg",
+            "_type": "reference"
+          }
+        },
+        "variant": "wide"
+      },
+      {
+        "_key": "apww584acd",
+        "_type": "bpRichTextSection",
+        "contentEn": [
+          {
+            "_key": "yd21xbuarc",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "eeimmo02xr",
+                "_type": "span",
+                "marks": [],
+                "text": "What does the custom software process look like?"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "c4pk3ruth2",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "6211bixq5g",
+                "_type": "span",
+                "marks": [],
+                "text": "Building custom software is not a leap of faith. A proven methodology reduces risk and lets you measure results within weeks."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "icjmjbwvlw",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "f5fnfgup3o",
+                "_type": "span",
+                "marks": [],
+                "text": "1. Discovery and business analysis"
+              }
+            ],
+            "markDefs": [],
+            "style": "h3"
+          },
+          {
+            "_key": "853y7jep9n",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "t2s4mrkcex",
+                "_type": "span",
+                "marks": [],
+                "text": "We start with workshops involving people who do the work the system will support every day. We map processes, identify bottlenecks, and define measurable business goals (e.g., reducing order handling from 14 to 3 minutes)."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "6hq50hnum1",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "mmpzyaic35",
+                "_type": "span",
+                "marks": [],
+                "text": "2. Prototype and validation"
+              }
+            ],
+            "markDefs": [],
+            "style": "h3"
+          },
+          {
+            "_key": "gzjdhtgm9",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "smlf2cmlpq",
+                "_type": "span",
+                "marks": [],
+                "text": "Before writing a single line of production code, we design an interactive UI/UX prototype. We test it with real users and iterate — this is the cheapest moment to make changes."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "c3tv8rv8ly",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "wb6pr8re36",
+                "_type": "span",
+                "marks": [],
+                "text": "3. Iterative development in sprints"
+              }
+            ],
+            "markDefs": [],
+            "style": "h3"
+          },
+          {
+            "_key": "q95ld8o1np",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "l30qu96sil",
+                "_type": "span",
+                "marks": [],
+                "text": "We work in 2-week sprints. After each one, you get a working version of the product to see, touch, and evaluate. Priorities can shift along the way — flexibility that off-the-shelf SaaS doesn't offer."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "w3nstkhk9j",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "u47octkae2",
+                "_type": "span",
+                "marks": [],
+                "text": "4. Deployment, monitoring, and growth"
+              }
+            ],
+            "markDefs": [],
+            "style": "h3"
+          },
+          {
+            "_key": "p7yowarqf1",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "nzsp76a5y5",
+                "_type": "span",
+                "marks": [],
+                "text": "Once live, we observe real usage, measure KPIs, and plan the next features. The software evolves together with your business."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "contentPl": [
+          {
+            "_key": "983q33goqi",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "vuseoim9i8",
+                "_type": "span",
+                "marks": [],
+                "text": "Jak wygląda proces tworzenia custom software?"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "kdhce3qbsq",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "90e20d5axa",
+                "_type": "span",
+                "marks": [],
+                "text": "Wdrożenie dedykowanego oprogramowania nie jest skokiem w nieznane. Sprawdzona metodyka skraca ryzyko i pozwala mierzyć efekty już po kilku tygodniach."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "4l94xzd7eb",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "a7zbx4j2gr",
+                "_type": "span",
+                "marks": [],
+                "text": "1. Discovery i analiza biznesu"
+              }
+            ],
+            "markDefs": [],
+            "style": "h3"
+          },
+          {
+            "_key": "e85zghyehe",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "fg7qvvxht1",
+                "_type": "span",
+                "marks": [],
+                "text": "Zaczynamy od warsztatów z osobami, które codziennie wykonują pracę, jaką ma wspierać system. Mapujemy procesy, identyfikujemy „wąskie gardła” i ustalamy mierzalne cele biznesowe (np. skrócenie obsługi zamówienia z 14 do 3 minut)."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "w12kv09tll",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "tcexnym6wf",
+                "_type": "span",
+                "marks": [],
+                "text": "2. Prototyp i walidacja"
+              }
+            ],
+            "markDefs": [],
+            "style": "h3"
+          },
+          {
+            "_key": "8pgoly83r7",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "ducld3p9bk",
+                "_type": "span",
+                "marks": [],
+                "text": "Zanim napiszemy linię kodu produkcyjnego, projektujemy interaktywny prototyp UI/UX. Testujemy go z realnymi użytkownikami i wprowadzamy korekty — to najtańszy moment na zmiany."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "2ahk8jddpe",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "cltksq7o19",
+                "_type": "span",
+                "marks": [],
+                "text": "3. Iteracyjny development w sprintach"
+              }
+            ],
+            "markDefs": [],
+            "style": "h3"
+          },
+          {
+            "_key": "ui9vhprlyk",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "hhhnxwzpst",
+                "_type": "span",
+                "marks": [],
+                "text": "Pracujemy w 2-tygodniowych sprintach. Po każdym dostajesz działającą wersję produktu, którą można pokazać, dotknąć, ocenić. Priorytety mogą zmieniać się w trakcie — to elastyczność, której gotowe SaaS nie oferują."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "ak7mjxmd6w",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "ovcf21yw7x",
+                "_type": "span",
+                "marks": [],
+                "text": "4. Wdrożenie, monitoring i rozwój"
+              }
+            ],
+            "markDefs": [],
+            "style": "h3"
+          },
+          {
+            "_key": "growccyrg4",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "xo2wyqgyyc",
+                "_type": "span",
+                "marks": [],
+                "text": "Po uruchomieniu na produkcji obserwujemy realne użycie, mierzymy KPI i planujemy kolejne funkcjonalności. Software ewoluuje razem z biznesem."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "variant": "standard"
+      },
+      {
+        "_key": "45pi8iosq2",
+        "_type": "bpGallerySection",
+        "items": [
+          {
+            "_key": "7v0h6t62v2",
+            "alt": {
+              "_type": "localeString",
+              "en": "Custom dashboard",
+              "pl": "Custom dashboard"
+            },
+            "caption": {
+              "_type": "localeString",
+              "en": "Dashboards tailored to your company's KPIs.",
+              "pl": "Dashboardy szyte na miarę KPI Twojej firmy."
+            },
+            "image": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-3d1929c2ef37a29f02d728adfeaf9ff00b07b19c-1000x712-jpg",
+                "_type": "reference"
+              }
+            }
+          },
+          {
+            "_key": "djqasclvmg",
+            "alt": {
+              "_type": "localeString",
+              "en": "Discovery workshop",
+              "pl": "Warsztaty discovery"
+            },
+            "caption": {
+              "_type": "localeString",
+              "en": "Discovery workshops with the client team.",
+              "pl": "Warsztaty discovery z zespołem klienta."
+            },
+            "image": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-2d172350b69a042d92690563118d1ab69816edf0-1000x562-jpg",
+                "_type": "reference"
+              }
+            }
+          },
+          {
+            "_key": "j5i0i8g05k",
+            "alt": {
+              "_type": "localeString",
+              "en": "Data visualizations",
+              "pl": "Wizualizacje danych"
+            },
+            "caption": {
+              "_type": "localeString",
+              "en": "Data visualizations tailored to the decisions you actually make.",
+              "pl": "Wizualizacje danych dopasowane do decyzji, które realnie podejmujesz."
+            },
+            "image": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-77678fb88c1fd922807b7a569d005b91a38a26a6-1000x667-jpg",
+                "_type": "reference"
+              }
+            }
+          }
+        ],
+        "sectionTitle": {
+          "_type": "localeString",
+          "en": "What good custom software looks like in practice",
+          "pl": "Jak wygląda dobre custom software w praktyce?"
+        },
+        "variant": "grid"
+      },
+      {
+        "_key": "4vuc30wgy4",
+        "_type": "bpCalloutSection",
+        "body": {
+          "_type": "localeText",
+          "en": "The biggest risks are: lack of a clearly defined business problem, a \"golden cage\" of exotic technology with no community, and multi-month phases without a working product. Best practice: every 2-3 weeks should end with something runnable.",
+          "pl": "Największe ryzyka to: brak jasno zdefiniowanego problemu biznesowego, „złota klatka” technologii (egzotyczny stack bez społeczności), oraz wielomiesięczne fazy bez działającej wersji produktu. Sprawdzona praktyka: każde 2-3 tygodnie powinny kończyć się czymś, co da się uruchomić."
+        },
+        "title": {
+          "_type": "localeString",
+          "en": "Pitfalls to avoid in custom software projects",
+          "pl": "Czego unikać w projektach custom software?"
+        },
+        "tone": "warning"
+      },
+      {
+        "_key": "wccbm43pw6",
+        "_type": "bpListSection",
+        "items": {
+          "_type": "localeStringArray",
+          "en": [
+            "Your process is standard and identical to 1,000 other companies (e.g., B2C invoicing).",
+            "Budget can't sustain product maintenance (dev + DevOps + support).",
+            "You need to launch in a week, not a quarter.",
+            "There's no decision mandate or business-side product owner."
+          ],
+          "pl": [
+            "Twój proces jest standardowy i identyczny jak u 1000 innych firm (np. fakturowanie B2C).",
+            "Budżet nie pozwala na utrzymanie produktu (dev + DevOps + support).",
+            "Potrzebujesz uruchomienia w tydzień, a nie w kwartał.",
+            "Nie masz mandatu decyzyjnego ani osoby, która będzie product ownerem po stronie biznesu."
+          ]
+        },
+        "sectionTitle": {
+          "_type": "localeString",
+          "en": "When custom software is NOT the right choice",
+          "pl": "Kiedy custom software NIE ma sensu?"
+        },
+        "variant": "numbered"
+      },
+      {
+        "_key": "5shixquxgu",
+        "_type": "bpImageSection",
+        "alt": {
+          "_type": "localeString",
+          "en": "Pair programming",
+          "pl": "Pair programming"
+        },
+        "caption": {
+          "_type": "localeString",
+          "en": "A pair-programming session on a microservice.",
+          "pl": "Sesja pair-programming nad mikroserwisem."
+        },
+        "image": {
+          "_type": "image",
+          "asset": {
+            "_ref": "image-f9c9bcbf8e4d29fb404cdf0c69efc591558aedb1-1600x1067-jpg",
+            "_type": "reference"
+          }
+        },
+        "variant": "contained"
+      },
+      {
+        "_key": "87jqlqvz4s",
+        "_type": "bpRichTextSection",
+        "contentEn": [
+          {
+            "_key": "t0h7pqhrcr",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "py8kju7dee",
+                "_type": "span",
+                "marks": [],
+                "text": "How much does custom software cost and when does it pay back?"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "skqtw7doc1",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "zq9noogucu",
+                "_type": "span",
+                "marks": [],
+                "text": "Realistic budget ranges for SMB-Enterprise projects in Poland: from ~€18k for an MVP up to €100k-€450k for full-scale platforms. Sounds big — but licensing off-the-shelf systems for 50 users often costs €25-55k per year, forever."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "x3nkndjoi8",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "tw31w89ejd",
+                "_type": "span",
+                "marks": [],
+                "text": "ROI typically lands in 12-24 months — or faster, if the software replaces several FTEs of work or unlocks a new sales channel."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "contentPl": [
+          {
+            "_key": "xkexrtn2im",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "86mefzv4kd",
+                "_type": "span",
+                "marks": [],
+                "text": "Ile kosztuje custom software i kiedy się zwraca?"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "rzbe8jyj0m",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "aqbyun05af",
+                "_type": "span",
+                "marks": [],
+                "text": "Realny zakres budżetów dla projektów SMB-Enterprise w Polsce: od 80 000 zł dla MVP po 500 000-2 000 000 zł dla pełnoskalowych platform. Brzmi dużo — ale licencje gotowych systemów dla 50 użytkowników to często 120-250 tys. zł rocznie, w nieskończoność."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "v5wzekrfc9",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "s81m92607x",
+                "_type": "span",
+                "marks": [],
+                "text": "Zwrot z inwestycji liczy się zwykle w 12-24 miesiące — albo szybciej, jeśli software zastępuje pracę kilku FTE lub odblokowuje nowy kanał sprzedaży."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "variant": "standard"
+      },
+      {
+        "_key": "qf7uxc1oxn",
+        "_type": "bpCtaSection",
+        "buttonHref": "/kontakt",
+        "buttonLabel": {
+          "_type": "localeString",
+          "en": "Book a consultation",
+          "pl": "Umów konsultację"
+        },
+        "description": {
+          "_type": "localeText",
+          "en": "Book a free 30-minute consultation. We'll analyze your case, give a recommendation (sometimes it's just better configuration of an off-the-shelf tool!), and outline a realistic budget range.",
+          "pl": "Umów bezpłatną 30-minutową konsultację. Przeanalizujemy Twój przypadek, przedstawimy rekomendację (czasem to po prostu lepsza konfiguracja gotowca!) i powiemy, jakiego rzędu nakłady warto rozważyć."
+        },
+        "heading": {
+          "_type": "localeString",
+          "en": "Wondering if custom software is the right direction for your business?",
+          "pl": "Zastanawiasz się, czy custom software to dobry kierunek dla Twojej firmy?"
+        },
+        "variant": "banner"
+      }
+    ],
+    "seoDescription": {
+      "_type": "localeText",
+      "en": "Custom software is software built specifically for a single business. We explain how it differs from off-the-shelf SaaS, when it pays off, what the implementation process looks like, and which long-term benefits it brings.",
+      "pl": "Custom software to oprogramowanie tworzone „na miarę” konkretnego biznesu. W tym artykule wyjaśniamy, czym różni się od gotowych rozwiązań SaaS, kiedy się opłaca, jak wygląda proces wdrożenia oraz jakie korzyści daje firmie w długim okresie."
+    },
+    "seoTitle": {
+      "_type": "localeString",
+      "en": "What is Custom Software? Complete guide — CetusPro",
+      "pl": "Czym jest Custom Software? Kompletny przewodnik — CetusPro"
+    },
+    "slug": {
+      "_type": "slug",
+      "current": "czym-jest-custom-software"
+    },
+    "tags": [
+      "custom-software",
+      "saas",
+      "biznes",
+      "wdrozenia"
+    ],
+    "title": {
+      "_type": "localeString",
+      "en": "What is Custom Software and when should you choose it?",
+      "pl": "Czym jest Custom Software i kiedy warto go wybrać?"
+    }
+  },
+  {
+    "_createdAt": "2026-06-30T18:36:42Z",
+    "_id": "blogPost-staze-praktyki-wakacyjne-2026",
+    "_rev": "EfB2kIrJQHDYmeHefqogms",
+    "_system": {
+      "base": {
+        "id": "blogPost-staze-praktyki-wakacyjne-2026",
+        "rev": "EfB2kIrJQHDYmeHefqoMcA"
+      }
+    },
+    "_type": "blogPost",
+    "_updatedAt": "2026-08-21T07:32:25Z",
+    "author": {
+      "name": "CetusPro",
+      "role": {
+        "_type": "localeString",
+        "en": "CetusPro Team",
+        "pl": "Zespół CetusPro"
+      }
+    },
+    "category": {
+      "_type": "localeString",
+      "en": "Recruitment",
+      "pl": "Rekrutacja"
+    },
+    "coverImage": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-b82d184acdf6540c6f743e4b13830173d7f88023-1034x678-jpg",
+        "_type": "reference"
+      }
+    },
+    "excerpt": {
+      "_type": "localeText",
+      "en": "Recruitment for internships and traineeships at CetusPro involves interns and apprentices participating in real projects.",
+      "pl": "Rekrutacja na staże i praktyki wakacyjne w CetusPro się zakończyła, a stażyści i praktykanci zaczynają pracę przy realnych projektach. "
+    },
+    "publishedAt": "2026-08-21T08:00:00.000Z",
+    "sections": [
+      {
+        "_key": "jwx027ffx2",
+        "_type": "bpHeroSection",
+        "category": {
+          "_type": "localeString",
+          "en": "Recruitment recap · Cetus Elevate",
+          "pl": "Podsumowanie rekrutacji · Cetus Elevate"
+        },
+        "excerpt": {
+          "_type": "localeText",
+          "en": "Summer at CetusPro isn't a time of downtime - it's when our team grows. Recruitment for summer internships has wrapped up, and the selected candidates are already working on real, commercial tasks under the guidance of mentors.",
+          "pl": "Wakacje w CetusPro to nie czas przestoju - to czas, w którym nasz zespół rośnie. Rekrutacja na staże i praktyki wakacyjne dobiegła końca, a wybrani kandydaci pracują już przy prawdziwych, komercyjnych zadaniach pod okiem mentorów."
+        },
+        "image": {
+          "_type": "image",
+          "asset": {
+            "_ref": "image-b82d184acdf6540c6f743e4b13830173d7f88023-1034x678-jpg",
+            "_type": "reference"
+          }
+        },
+        "title": {
+          "_type": "localeString",
+          "en": "Summer internships at CetusPro ",
+          "pl": "Staże i praktyki wakacyjne w CetusPro "
+        },
+        "variant": "centered"
+      },
+      {
+        "_key": "jhw8oa7y1j",
+        "_type": "bpRichTextSection",
+        "contentEn": [
+          {
+            "_key": "tvejj5bmyw",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "3u2b9un173",
+                "_type": "span",
+                "marks": [],
+                "text": "Summer is a great time to break into IT"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "f41d6ad132f6",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "0acb0757cb40",
+                "_type": "span",
+                "marks": [],
+                "text": "At CetusPro, we've long believed in people who want to learn by doing. Summer internships are part of our Cetus Elevate initiative - real recruitment, real work on commercial projects, and a mentor by your side instead of theory disconnected from reality."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "f8f41b25c0af",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "ebea75b3abc9",
+                "_type": "span",
+                "marks": [],
+                "text": "Recruitment ran in two stages. The first was a short application survey, where candidates described their experience and interests. The second was a practical recruitment task - candidates could choose the area they wanted to be tested in themselves: frontend, backend, full stack, mobile, QA, DevOps, or electronics/IoT. This format let us assess real skills and problem-solving approach in the field closest to each candidate's interests."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "96ee00bbb40b",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "31ac74c9ad7d",
+                "_type": "span",
+                "marks": [],
+                "text": "The team was joined by those who performed best in the recruitment task - regardless of prior commercial experience. They're the ones we're now working with on real projects."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "contentPl": [
+          {
+            "_key": "i2z0cc256s",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "py1mgmv3sm",
+                "_type": "span",
+                "marks": [],
+                "text": "Wakacje to dobry moment, żeby wejść do IT"
+              }
+            ],
+            "markDefs": [],
+            "style": "h2"
+          },
+          {
+            "_key": "6d9a7f93965d",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "34af8d77b609",
+                "_type": "span",
+                "marks": [],
+                "text": "W CetusPro od lat stawiamy na ludzi, którzy chcą się uczyć w praktyce. Staże i praktyki wakacyjne to część inicjatywy Cetus Elevate - realna rekrutacja, prawdziwe zadania w komercyjnych projektach i mentor u boku, zamiast oderwanej od rzeczywistości teorii."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "9c32cbf8616e",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "7d2e1ea4178b",
+                "_type": "span",
+                "marks": [],
+                "text": "Rekrutacja przebiegała w dwóch etapach. Pierwszym była krótka ankieta zgłoszeniowa, w której kandydaci opisywali swoje doświadczenie i zainteresowania. Drugim etapem było praktyczne zadanie rekrutacyjne - kandydaci mogli samodzielnie wybrać obszar, w którym chcieli się sprawdzić: frontend, backend, fullstack, mobile, QA, DevOps lub elektronika/IoT. Taka formuła pozwoliła nam ocenić realne umiejętności i podejście do rozwiązywania problemów w dziedzinie najbliższej zainteresowaniom każdego kandydata.\n\nDo zespołu trafiły osoby, które najlepiej wypadły w zadaniu rekrutacyjnym - bez względu na wcześniejsze doświadczenie komercyjne. To właśnie z nimi teraz pracujemy nad realnymi projektami."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "variant": "standard"
+      },
+      {
+        "_key": "44hl8r3o3f",
+        "_type": "bpCalloutSection",
+        "body": {
+          "_type": "localeText",
+          "en": "Thank you to everyone who took part in the recruitment - the interest exceeded our expectations. To our selected interns: we wish you a great time working on your projects!",
+          "pl": "Dziękujemy wszystkim, którzy wzięli udział w rekrutacji - zainteresowanie przerosło nasze oczekiwania. Wybranym stażystom i praktykantom życzymy udanej pracy nad projektami!"
+        },
+        "title": {
+          "_type": "localeString",
+          "en": "Recruitment closed",
+          "pl": "Rekrutacja zakończona"
+        },
+        "tone": "success"
+      },
+      {
+        "_key": "hbuy3jgl6t",
+        "_type": "bpListSection",
+        "items": {
+          "_type": "localeStringArray",
+          "en": [
+            "Work on real, commercial projects – not throwaway exercises",
+            "A dedicated mentor and the support of an experienced team",
+            "A flexible approach that fits your summer schedule",
+            "A genuine chance to continue working together after the internship"
+          ],
+          "pl": [
+            "Pracę przy realnych, komercyjnych projektach – nie nad zadaniami „do szuflady”",
+            "Dedykowanego mentora i wsparcie doświadczonego zespołu",
+            "Elastyczne podejście dopasowane do wakacyjnego grafiku",
+            "Realną szansę na dalszą współpracę po stażu"
+          ]
+        },
+        "sectionTitle": {
+          "_type": "localeString",
+          "en": "What you get",
+          "pl": "Co Ci dajemy"
+        },
+        "variant": "checklist"
+      },
+      {
+        "_key": "h73i2c5poe",
+        "_type": "bpRichTextSection",
+        "contentEn": [
+          {
+            "_key": "ktrok5b20v",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "hqq07duqcv",
+                "_type": "span",
+                "marks": [],
+                "text": "You'll find all the details about the internships and the GDPR privacy notice on the Cetus Elevate initiative page."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "contentPl": [
+          {
+            "_key": "nybfnmx238",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "8vt3ep12aa",
+                "_type": "span",
+                "marks": [],
+                "text": "Wszystkie szczegóły o stażach i praktykach oraz klauzulę informacyjną RODO znajdziesz na stronie inicjatywy Cetus Elevate."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "variant": "standard"
+      },
+      {
+        "_key": "io8vqqg9tm",
+        "_type": "bpButtonSection",
+        "align": "center",
+        "blank": true,
+        "buttonHref": "https://elevate.cetuspro.com/",
+        "buttonLabel": {
+          "_type": "localeString",
+          "en": "Details and GDPR notice",
+          "pl": "Szczegóły i klauzula RODO"
+        },
+        "image": {
+          "_type": "image",
+          "asset": {
+            "_ref": "image-12f930adc8d9650729a5f76d8740783fdc960088-2000x591-png",
+            "_type": "reference"
+          }
+        },
+        "variant": "secondary"
+      }
+    ],
+    "seoDescription": {
+      "_type": "localeText",
+      "en": "Recruitment for internships and summer placements at CetusPro has ended. See what the two-stage selection process was like and what our new interns are up to.",
+      "pl": "Rekrutacja na staże i praktyki wakacyjne w CetusPro dobiegła końca. Zobacz, jak wyglądała dwuetapowa selekcja i czym zajmują się nasi nowi stażyści."
+    },
+    "seoTitle": {
+      "_type": "localeString",
+      "en": "Summer internships at CetusPro – apply by 10 July",
+      "pl": "Staże i praktyki wakacyjne w CetusPro – aplikuj do 10 lipca"
+    },
+    "slug": {
+      "_type": "slug",
+      "current": "staze-praktyki-wakacyjne-2026"
+    },
+    "tags": [
+      "staze",
+      "praktyki",
+      "rekrutacja",
+      "cetus-elevate",
+      "wakacje"
+    ],
+    "title": {
+      "_type": "localeString",
+      "en": "Internships and traineeships at CetusPro - we are in full swing",
+      "pl": "Staże i praktyki wakacyjne w CetusPro - jesteśmy w pełni akcji"
+    }
+  },
+  {
+    "_createdAt": "2026-06-18T12:32:47Z",
+    "_id": "blogPost-vibe-the-future",
+    "_rev": "XIcS3BJZg6p9LbLDN8Uq8J",
+    "_type": "blogPost",
+    "_updatedAt": "2026-06-18T14:53:13Z",
+    "author": {
+      "name": "CetusPro",
+      "role": {
+        "_type": "localeString",
+        "en": "CetusPro Team",
+        "pl": "Zespół CetusPro"
+      }
+    },
+    "category": {
+      "_type": "localeString",
+      "en": "Hackathon",
+      "pl": "Hackathon"
+    },
+    "coverImage": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-78d0be7538b229f9c069f37c85180ae385836094-2000x1333-jpg",
+        "_type": "reference"
+      }
+    },
+    "excerpt": {
+      "_type": "localeText",
+      "en": "VibeTheFuture is our original hackathon under the Cetus Elevate umbrella. The Spring 2026 edition took place on 23–24 May at the University of Rzeszów – 24 hours of intense work, real challenges and a 24,000 PLN voucher as the grand prize.",
+      "pl": "VibeTheFuture to nasz autorski hackathon w ramach Cetus Elevate. Wiosenna edycja 2026 odbyła się 23–24 maja na Uniwersytecie Rzeszowskim – 24 godziny intensywnej pracy, realne wyzwania i nagroda główna – voucher o wartości 24 000 zł."
+    },
+    "publishedAt": "2026-06-17T09:00:00.000Z",
+    "sections": [
+      {
+        "_key": "5h45yvq9gk",
+        "_type": "bpHeroSection",
+        "category": {
+          "_type": "localeString",
+          "en": "VibeTheFuture 2026 · Spring",
+          "pl": "VibeTheFuture 2026 · Wiosna"
+        },
+        "excerpt": {
+          "_type": "localeText",
+          "en": "VibeTheFuture is our original hackathon under the Cetus Elevate umbrella. The Spring 2026 edition took place on 23–24 May at the University of Rzeszów – 24 hours of intense work, real challenges and a 24,000 PLN voucher as the grand prize.",
+          "pl": "VibeTheFuture to nasz autorski hackathon w ramach Cetus Elevate. Wiosenna edycja 2026 odbyła się 23–24 maja na Uniwersytecie Rzeszowskim – 24 godziny intensywnej pracy, realne wyzwania i nagroda główna – voucher o wartości 24 000 zł."
+        },
+        "image": {
+          "_type": "image",
+          "asset": {
+            "_ref": "image-78d0be7538b229f9c069f37c85180ae385836094-2000x1333-jpg",
+            "_type": "reference"
+          }
+        },
+        "title": {
+          "_type": "localeString",
+          "en": "Vibe The Future 2026 – a 24-hour hackathon where the future takes shape",
+          "pl": "Vibe The Future 2026 – 24-godzinny hackathon, w którym liczy się przyszłość"
+        },
+        "variant": "centered"
+      },
+      {
+        "_key": "8zyakygfmy",
+        "_type": "bpRichTextSection",
+        "contentEn": [
+          {
+            "_key": "jrm80qaeyi",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "o2hy6j7295",
+                "_type": "span",
+                "marks": [],
+                "text": "Vibe The Future is an event where participants turn an idea into a working prototype within a single day. This isn't a textbook exercise – it's work under conditions close to a real IT project, with mentors at your side and a clearly defined challenge."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "kyi880xvzt",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "x2us9u60no",
+                "_type": "span",
+                "marks": [],
+                "text": "The Spring 2026 edition took place on 23–24 May at the University of Rzeszów. The challenge's expert partner was LOT Aircraft Maintenance Services."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "contentPl": [
+          {
+            "_key": "wlv4hg9w1q",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "vywej36ivm",
+                "_type": "span",
+                "marks": [],
+                "text": "Vibe The Future to wydarzenie, w którym uczestnicy w ciągu jednej doby zamieniają pomysł w działający prototyp. To nie są ćwiczenia z podręcznika – to praca w warunkach zbliżonych do prawdziwego projektu IT, z mentorami u boku i jasno postawionym wyzwaniem."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "gek0pxhb6l",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "v2uhibc243",
+                "_type": "span",
+                "marks": [],
+                "text": "Wiosenna edycja 2026 odbyła się 23–24 maja na Uniwersytecie Rzeszowskim. Partnerem merytorycznym wyzwania był LOT Aircraft Maintenance Services."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "variant": "standard"
+      },
+      {
+        "_key": "skgs5veh85",
+        "_type": "bpButtonSection",
+        "align": "center",
+        "blank": true,
+        "buttonHref": "https://vibethelimit.pl/",
+        "buttonLabel": {
+          "_type": "localeString",
+          "en": "Visit the event site",
+          "pl": "Zobacz stronę wydarzenia"
+        },
+        "image": {
+          "_type": "image",
+          "asset": {
+            "_ref": "image-87e2a3549cb891c0a1fc4440e9ee872b465f5a57-2000x1045-png",
+            "_type": "reference"
+          }
+        },
+        "variant": "primary"
+      },
+      {
+        "_key": "yo6w49ucl3",
+        "_type": "bpListSection",
+        "items": {
+          "_type": "localeStringArray",
+          "en": [
+            "80 applicants",
+            "40 qualified to compete",
+            "24 hours of non-stop teamwork",
+            "1 grand prize – a voucher worth 24,000 PLN",
+            "Expert partner: LOT Aircraft Maintenance Services"
+          ],
+          "pl": [
+            "80 zgłoszonych uczestników",
+            "40 zakwalifikowanych do rywalizacji",
+            "24 godziny nieprzerwanej pracy zespołowej",
+            "1 nagroda główna – voucher o wartości 24 000 zł",
+            "Partner merytoryczny: LOT Aircraft Maintenance Services"
+          ]
+        },
+        "sectionTitle": {
+          "_type": "localeString",
+          "en": "Spring 2026 edition by the numbers",
+          "pl": "Edycja Wiosna 2026 w liczbach"
+        },
+        "variant": "numbered"
+      },
+      {
+        "_key": "2jc1xzcby8",
+        "_type": "bpCalloutSection",
+        "body": {
+          "_type": "localeText",
+          "en": "The best team won a 24,000 PLN voucher – but above all they walked away with a real portfolio and contact with companies looking for exactly these people. It's often the first step before a first CV.",
+          "pl": "Najlepszy zespół otrzymał voucher o wartości 24 000 zł, ale przede wszystkim realne portfolio i kontakt z firmami, które szukają takich ludzi. To często pierwszy krok przed pierwszym CV."
+        },
+        "title": {
+          "_type": "localeString",
+          "en": "Grand prize: 24,000 PLN voucher",
+          "pl": "Nagroda główna: voucher 24 000 zł"
+        },
+        "tone": "success"
+      },
+      {
+        "_key": "qxa9awwzo5",
+        "_type": "bpGallerySection",
+        "items": [
+          {
+            "_key": "vpgys3d8bc",
+            "alt": {
+              "_type": "localeString",
+              "en": "Vibe The Future — CetusPro hackathon — photo 1",
+              "pl": "Vibe The Future — hackathon CetusPro — zdjęcie 1"
+            },
+            "image": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-0f68685e2f8005e606c8ce7262d571577f0f4d94-2000x1333-jpg",
+                "_type": "reference"
+              }
+            }
+          },
+          {
+            "_key": "3jrt0vb94u",
+            "alt": {
+              "_type": "localeString",
+              "en": "Vibe The Future — CetusPro hackathon — photo 2",
+              "pl": "Vibe The Future — hackathon CetusPro — zdjęcie 2"
+            },
+            "image": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-2e738a18e883c6844979e8cf42874c70d9cc6658-2000x1333-jpg",
+                "_type": "reference"
+              }
+            }
+          },
+          {
+            "_key": "zeyin9mqug",
+            "alt": {
+              "_type": "localeString",
+              "en": "Vibe The Future — CetusPro hackathon — photo 3",
+              "pl": "Vibe The Future — hackathon CetusPro — zdjęcie 3"
+            },
+            "image": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-9c41961eaddc3fd4e96e3e73c1d0848fdf0e24da-2000x1333-jpg",
+                "_type": "reference"
+              }
+            }
+          },
+          {
+            "_key": "ezkwmkqpol",
+            "alt": {
+              "_type": "localeString",
+              "en": "Vibe The Future — CetusPro hackathon — photo 4",
+              "pl": "Vibe The Future — hackathon CetusPro — zdjęcie 4"
+            },
+            "image": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-27ba2d6db383ac6872f31b4c0599a5a373e9a9f8-2000x1333-jpg",
+                "_type": "reference"
+              }
+            }
+          },
+          {
+            "_key": "rwqj4cfd9i",
+            "alt": {
+              "_type": "localeString",
+              "en": "Vibe The Future — CetusPro hackathon — photo 5",
+              "pl": "Vibe The Future — hackathon CetusPro — zdjęcie 5"
+            },
+            "image": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-ced17011f115e359dc6ca98aed5c42aa31bacd86-2000x1333-jpg",
+                "_type": "reference"
+              }
+            }
+          },
+          {
+            "_key": "ggwpub723i",
+            "alt": {
+              "_type": "localeString",
+              "en": "Vibe The Future — CetusPro hackathon — photo 6",
+              "pl": "Vibe The Future — hackathon CetusPro — zdjęcie 6"
+            },
+            "image": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-75950a52b14f80a236e4fd780ba33cf59dfc6fb6-2000x1333-jpg",
+                "_type": "reference"
+              }
+            }
+          },
+          {
+            "_key": "qyt72l7h7e",
+            "alt": {
+              "_type": "localeString",
+              "en": "Vibe The Future — CetusPro hackathon — photo 7",
+              "pl": "Vibe The Future — hackathon CetusPro — zdjęcie 7"
+            },
+            "image": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-90516fdbe117e9e62d3734d3c45a83afbdebe9ae-2000x1333-jpg",
+                "_type": "reference"
+              }
+            }
+          },
+          {
+            "_key": "qxagj4q64e",
+            "alt": {
+              "_type": "localeString",
+              "en": "Vibe The Future — CetusPro hackathon — photo 8",
+              "pl": "Vibe The Future — hackathon CetusPro — zdjęcie 8"
+            },
+            "image": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-977659f141fa4815992ab802d6f4974286b2630f-2000x1333-jpg",
+                "_type": "reference"
+              }
+            }
+          },
+          {
+            "_key": "6xrciploc9",
+            "alt": {
+              "_type": "localeString",
+              "en": "Vibe The Future — CetusPro hackathon — photo 9",
+              "pl": "Vibe The Future — hackathon CetusPro — zdjęcie 9"
+            },
+            "image": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-281fdb36feb9d4eba140814e712e27e1ee465c3b-2000x1333-jpg",
+                "_type": "reference"
+              }
+            }
+          },
+          {
+            "_key": "qri5ticqt",
+            "alt": {
+              "_type": "localeString",
+              "en": "Vibe The Future — CetusPro hackathon — photo 10",
+              "pl": "Vibe The Future — hackathon CetusPro — zdjęcie 10"
+            },
+            "image": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-9ad35486e313f3f04b2cfef514c1b5eedf0de4d8-2000x1333-jpg",
+                "_type": "reference"
+              }
+            }
+          },
+          {
+            "_key": "dhsrgwbz7u",
+            "alt": {
+              "_type": "localeString",
+              "en": "Vibe The Future — CetusPro hackathon — photo 11",
+              "pl": "Vibe The Future — hackathon CetusPro — zdjęcie 11"
+            },
+            "image": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-4975451f5d17f45b08f517a69b3ce0d4d30032f4-2000x1333-jpg",
+                "_type": "reference"
+              }
+            }
+          },
+          {
+            "_key": "emhihgtn5t",
+            "alt": {
+              "_type": "localeString",
+              "en": "Vibe The Future — CetusPro hackathon — photo 12",
+              "pl": "Vibe The Future — hackathon CetusPro — zdjęcie 12"
+            },
+            "image": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-1b5443427ce1605686f0da35ffb03aa68eb0937e-2000x1333-jpg",
+                "_type": "reference"
+              }
+            }
+          },
+          {
+            "_key": "b64pp6jezc",
+            "alt": {
+              "_type": "localeString",
+              "en": "Vibe The Future — CetusPro hackathon — photo 13",
+              "pl": "Vibe The Future — hackathon CetusPro — zdjęcie 13"
+            },
+            "image": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-eff6fb0c31482c1f3c9194b1f35cd263ed185c9e-2000x1333-jpg",
+                "_type": "reference"
+              }
+            }
+          },
+          {
+            "_key": "ddxc4zebto",
+            "alt": {
+              "_type": "localeString",
+              "en": "Vibe The Future — CetusPro hackathon — photo 14",
+              "pl": "Vibe The Future — hackathon CetusPro — zdjęcie 14"
+            },
+            "image": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-2b61f96e5b2c70be2b571c345ea212ca75d8db88-1333x2000-jpg",
+                "_type": "reference"
+              }
+            }
+          },
+          {
+            "_key": "hy8oilds6r",
+            "alt": {
+              "_type": "localeString",
+              "en": "Vibe The Future — CetusPro hackathon — photo 15",
+              "pl": "Vibe The Future — hackathon CetusPro — zdjęcie 15"
+            },
+            "image": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-351d62a193c45315ccec30932cbc28ef752884bb-2000x1333-jpg",
+                "_type": "reference"
+              }
+            }
+          },
+          {
+            "_key": "muf5ghu1hg",
+            "alt": {
+              "_type": "localeString",
+              "en": "Vibe The Future — CetusPro hackathon — photo 16",
+              "pl": "Vibe The Future — hackathon CetusPro — zdjęcie 16"
+            },
+            "image": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-1def4e137f8ece0510f47b01a277dc180c781304-2000x1333-jpg",
+                "_type": "reference"
+              }
+            }
+          },
+          {
+            "_key": "dp2r3abexi",
+            "alt": {
+              "_type": "localeString",
+              "en": "Vibe The Future — CetusPro hackathon — photo 17",
+              "pl": "Vibe The Future — hackathon CetusPro — zdjęcie 17"
+            },
+            "image": {
+              "_type": "image",
+              "asset": {
+                "_ref": "image-06701939880659b6f9a39fc00aed2202415fe9df-2000x1333-jpg",
+                "_type": "reference"
+              }
+            }
+          }
+        ],
+        "sectionTitle": {
+          "_type": "localeString",
+          "en": "Inside Vibe The Future",
+          "pl": "Tak wyglądał Vibe The Future"
+        },
+        "variant": "masonry"
+      },
+      {
+        "_key": "a2i9e2boui",
+        "_type": "bpCtaSection",
+        "blank": true,
+        "buttonHref": "https://vibethelimit.pl/",
+        "buttonLabel": {
+          "_type": "localeString",
+          "en": "Open the event site",
+          "pl": "Wejdź na stronę wydarzenia"
+        },
+        "description": {
+          "_type": "localeText",
+          "en": "All the details, agenda and registration are waiting on the official event site.",
+          "pl": "Wszystkie szczegóły, agenda i rejestracja czekają na oficjalnej stronie wydarzenia."
+        },
+        "heading": {
+          "_type": "localeString",
+          "en": "Want to join the next edition?",
+          "pl": "Chcesz wziąć udział w kolejnej edycji?"
+        },
+        "variant": "banner"
+      }
+    ],
+    "seoDescription": {
+      "_type": "localeText",
+      "en": "VibeTheFuture is our original hackathon under the Cetus Elevate umbrella. The Spring 2026 edition took place on 23–24 May at the University of Rzeszów – 24 hours of intense work, real challenges and a 24,000 PLN voucher as the grand prize.",
+      "pl": "VibeTheFuture to nasz autorski hackathon w ramach Cetus Elevate. Wiosenna edycja 2026 odbyła się 23–24 maja na Uniwersytecie Rzeszowskim – 24 godziny intensywnej pracy, realne wyzwania i nagroda główna – voucher o wartości 24 000 zł."
+    },
+    "seoTitle": {
+      "_type": "localeString",
+      "en": "Vibe The Future 2026 – CetusPro hackathon in Rzeszów",
+      "pl": "Vibe The Future 2026 – hackathon CetusPro w Rzeszowie"
+    },
+    "slug": {
+      "_type": "slug",
+      "current": "vibe-the-future"
+    },
+    "tags": [
+      "vibe-the-future",
+      "hackathon",
+      "cetus-elevate",
+      "wydarzenie"
+    ],
+    "title": {
+      "_type": "localeString",
+      "en": "Vibe The Future 2026 – a 24-hour hackathon where the future takes shape",
+      "pl": "Vibe The Future 2026 – 24-godzinny hackathon, w którym liczy się przyszłość"
+    }
+  },
+  {
+    "_createdAt": "2026-08-17T08:39:32Z",
+    "_id": "funding",
+    "_rev": "r28TzkBHMVqgFkprzd4H7Q",
+    "_type": "funding",
+    "_updatedAt": "2026-08-27T11:18:37Z",
+    "enabled": true,
+    "hashtags": "#FunduszeUE #FunduszeEuropejskie",
+    "heading": {
+      "_type": "localeString",
+      "en": "European Funds",
+      "pl": "Fundusze Europejskie"
+    },
+    "intro": {
+      "_type": "localeText",
+      "en": "CetusPro is carrying out a project co-financed by the European Regional Development Fund under the Operational Programme Eastern Poland 2014-2020.",
+      "pl": "CetusPro realizuje projekt współfinansowany ze środków Europejskiego Funduszu Rozwoju Regionalnego w ramach Programu Operacyjnego Polska Wschodnia 2014-2020."
+    },
+    "projects": [
+      {
+        "_key": "popw-1-2-internacjonalizacja",
+        "_type": "fundingProject",
+        "contractNumber": "",
+        "effects": {
+          "_type": "localeText",
+          "en": "",
+          "pl": ""
+        },
+        "euContribution": "544 680,00 zł",
+        "fund": {
+          "_type": "localeString",
+          "en": "European Regional Development Fund",
+          "pl": "Europejski Fundusz Rozwoju Regionalnego"
+        },
+        "name": {
+          "_type": "localeString",
+          "en": "Development of CETUSPRO through increased export of services to foreign markets",
+          "pl": "Rozwój przedsiębiorstwa CETUSPRO poprzez zwiększenie eksportu usług na rynki zagraniczne"
+        },
+        "objective": {
+          "_type": "localeText",
+          "en": "The aim of the project is to strengthen CETUSPRO's competitive position and to start selling IT services on new foreign markets: the United States, the United Kingdom and Sweden.\n\nThe scope of the project covers:\n1. developing a new business model for internationalisation,\n2. specialist advisory and expert services,\n3. complementary services (promotional and supporting),\n4. participation in foreign economic missions.\n\nThe internationalisation business model was developed in the first half of June 2022 with the support of external advisors.",
+          "pl": "Celem projektu jest wzmocnienie pozycji konkurencyjnej CETUSPRO i rozpoczęcie sprzedaży usług IT na nowych rynkach zagranicznych - w Stanach Zjednoczonych, Wielkiej Brytanii i Szwecji.\n\nZakres projektu obejmuje:\n1. opracowanie nowego modelu biznesowego związanego z internacjonalizacją działalności,\n2. realizację specjalistycznych usług doradczych i eksperckich,\n3. realizację usług komplementarnych (reklamowych i wspomagających),\n4. udział w zagranicznych misjach gospodarczych.\n\nModel biznesowy internacjonalizacji opracowano w pierwszej połowie czerwca 2022 r. we współpracy z zewnętrznymi doradcami."
+        },
+        "programName": {
+          "_type": "localeString",
+          "en": "Operational Programme Eastern Poland 2014-2020, measure 1.2 Internationalisation of SMEs",
+          "pl": "Program Operacyjny Polska Wschodnia 2014-2020, działanie 1.2 Internacjonalizacja MŚP"
+        },
+        "projectValue": "843 165,00 zł"
+      }
+    ]
+  },
+  {
+    "_createdAt": "2026-04-24T11:37:34Z",
+    "_id": "servicePage-akademia-i-szkolenia",
+    "_rev": "mxoR6fnJzOXTuzOn2jZE4K",
+    "_type": "servicePage",
+    "_updatedAt": "2026-08-26T08:29:04Z",
+    "heroButtonLink": "/kontakt",
+    "heroButtonText": {
+      "_type": "localeString",
+      "en": "Enroll in a course",
+      "pl": "Zapisz się na kurs"
+    },
+    "heroDescription": {
+      "_type": "localeText",
+      "en": "Comprehensive training and courses in programming, AI, IT project management. We teach practical skills that are needed in today's job market.",
+      "pl": "Kompleksowe szkolenia i kursy z zakresu programowania, AI, zarządzania projektami IT. Uczymy praktycznych umiejętności, które są potrzebne w dzisiejszym rynku pracy."
+    },
+    "heroTitle": {
+      "_type": "localeString",
+      "en": "Develop your skills with CetusPro Academy",
+      "pl": "Rozwijaj swoje umiejętności z CetusPro Academy"
+    },
+    "sections": [
+      {
+        "_key": "hl36x3i7",
+        "_type": "gridSection",
+        "description": {
+          "_type": "localeText",
+          "en": "",
+          "pl": ""
+        },
+        "items": [
+          {
+            "_key": "d71jskvf",
+            "description": {
+              "_type": "localeText",
+              "en": "We teach through practice - each course includes real projects and tasks that will prepare you for work in the IT industry.",
+              "pl": "Uczymy przez praktykę - każdy kurs zawiera realne projekty i zadania, które przygotują Cię do pracy w branży IT."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Practical skills",
+              "pl": "Praktyczne umiejętności"
+            }
+          },
+          {
+            "_key": "d0astono",
+            "description": {
+              "_type": "localeText",
+              "en": "Our trainers are practitioners with many years of experience who share knowledge from real projects.",
+              "pl": "Nasi trenerzy to praktycy z wieloletnim doświadczeniem, którzy dzielą się wiedzą z prawdziwych projektów."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Experienced mentors",
+              "pl": "Doświadczeni mentorzy"
+            }
+          },
+          {
+            "_key": "rntu6ox9",
+            "description": {
+              "_type": "localeText",
+              "en": "We adapt to your pace - you can learn at a time and place convenient for you.",
+              "pl": "Dostosowujemy się do Twojego tempa - możesz uczyć się w dogodnym dla siebie czasie i miejscu."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Flexible schedule",
+              "pl": "Elastyczny harmonogram"
+            }
+          },
+          {
+            "_key": "khu3bms9",
+            "description": {
+              "_type": "localeText",
+              "en": "You receive a certificate after the course, and your team gets support in applying what they learned in their own projects.",
+              "pl": "Po ukończeniu kursu otrzymujesz certyfikat, a zespół - wsparcie we wdrożeniu poznanych narzędzi w swoich projektach."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "A certificate and post-training support",
+              "pl": "Certyfikat i wsparcie po szkoleniu"
+            }
+          }
+        ],
+        "sectionKey": "benefits",
+        "title": {
+          "_type": "localeString",
+          "en": "Why CetusPro Academy?",
+          "pl": "Dlaczego CetusPro Academy?"
+        }
+      },
+      {
+        "_key": "p0m9u71z",
+        "_type": "gridSection",
+        "description": {
+          "_type": "localeText",
+          "en": "",
+          "pl": ""
+        },
+        "items": [
+          {
+            "_key": "2dfrxbhe",
+            "description": {
+              "_type": "localeText",
+              "en": "Comprehensive programming courses from basics to advanced techniques. We teach the most popular languages and frameworks such as JavaScript, Python, React, Node.js and many others. Each course includes practical projects and tasks that will help you build a portfolio.",
+              "pl": "Kompleksowe kursy programowania od podstaw do zaawansowanych technik. Uczymy najpopularniejszych języków i frameworków, takich jak JavaScript, Python, React, Node.js i wiele innych. Każdy kurs zawiera praktyczne projekty i zadania, które pomogą Ci zbudować portfolio."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Programming",
+              "pl": "Programowanie"
+            }
+          },
+          {
+            "_key": "idkoo4lw",
+            "description": {
+              "_type": "localeText",
+              "en": "Learn the secrets of artificial intelligence and machine learning. Learn to build AI models, analyze data and create intelligent solutions. Courses cover both theoretical foundations and practical business applications.",
+              "pl": "Poznaj tajniki sztucznej inteligencji i uczenia maszynowego. Naucz się budować modele AI, analizować dane i tworzyć inteligentne rozwiązania. Kursy obejmują zarówno podstawy teoretyczne, jak i praktyczne zastosowania w biznesie."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "AI and Machine Learning",
+              "pl": "AI i Machine Learning"
+            }
+          },
+          {
+            "_key": "cuwfzqxm",
+            "description": {
+              "_type": "localeText",
+              "en": "Master IT project management methodologies such as Agile, Scrum and Kanban. Learn to effectively plan, organize and implement technology projects. Courses prepare you to work as a Product Owner, Scrum Master or Project Manager.",
+              "pl": "Opanuj metodyki zarządzania projektami IT, takie jak Agile, Scrum i Kanban. Naucz się efektywnie planować, organizować i realizować projekty technologiczne. Kursy przygotowują do pracy jako Product Owner, Scrum Master lub Project Manager."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "IT project management",
+              "pl": "Zarządzanie projektami IT"
+            }
+          }
+        ],
+        "sectionKey": "categories",
+        "title": {
+          "_type": "localeString",
+          "en": "Course categories",
+          "pl": "Kategorie kursów"
+        }
+      },
+      {
+        "_key": "utp4a1lg",
+        "_type": "gridSection",
+        "description": {
+          "_type": "localeText",
+          "en": "",
+          "pl": ""
+        },
+        "items": [
+          {
+            "_key": "8tzhvn40",
+            "description": {
+              "_type": "localeText",
+              "en": "Training for teams adopting new technologies that need a shared level of skill.",
+              "pl": "Szkolenia dla zespołów, które wdrażają nowe technologie i potrzebują wspólnego poziomu kompetencji."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Companies and teams",
+              "pl": "Firmy i zespoły"
+            }
+          },
+          {
+            "_key": "1for27fh",
+            "description": {
+              "_type": "localeText",
+              "en": "For people who are just starting their adventure with programming and want to gain solid foundations.",
+              "pl": "Dla osób, które dopiero zaczynają przygodę z programowaniem i chcą zdobyć solidne fundamenty."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Beginners",
+              "pl": "Początkujący"
+            }
+          },
+          {
+            "_key": "ffcn4biv",
+            "description": {
+              "_type": "localeText",
+              "en": "For programmers who want to expand their skills and learn new technologies.",
+              "pl": "Dla programistów, którzy chcą poszerzyć swoje umiejętności i nauczyć się nowych technologii."
+            },
+            "title": {
+              "_type": "localeString",
+              "en": "Intermediate",
+              "pl": "Średnio zaawansowani"
+            }
+          }
+        ],
+        "sectionKey": "audience",
+        "title": {
+          "_type": "localeString",
+          "en": "For whom",
+          "pl": "Dla kogo"
+        }
+      },
+      {
+        "_key": "wr413602",
+        "_type": "checklistSection",
+        "description": {
+          "_type": "localeText",
+          "en": "",
+          "pl": ""
+        },
+        "items": {
+          "_type": "localeStringArray",
+          "en": [
+            "Practical projects in every course",
+            "Lifetime access to materials",
+            "Mentor support throughout the course",
+            "Active student community",
+            "Updated content in line with trends",
+            "Individual consultation option",
+            "Job interview preparation",
+            "Portfolio building assistance",
+            "Access to a closed group on the platform"
+          ],
+          "pl": [
+            "Praktyczne projekty w każdym kursie",
+            "Dostęp do materiałów na zawsze",
+            "Wsparcie mentora przez cały czas trwania kursu",
+            "Społeczność aktywnych studentów",
+            "Aktualizowane treści zgodne z trendami",
+            "Możliwość konsultacji indywidualnych",
+            "Przygotowanie do rozmów rekrutacyjnych",
+            "Pomoc w budowaniu portfolio",
+            "Dostęp do zamkniętej grupy na platformie"
+          ]
+        },
+        "sectionKey": "distinctive",
+        "title": {
+          "_type": "localeString",
+          "en": "What sets us apart",
+          "pl": "Co nas wyróżnia"
+        }
+      },
+      {
+        "_key": "ctazkolenia",
+        "_type": "ctaBlock",
+        "buttonLink": "/kontakt",
+        "buttonText": {
+          "_type": "localeString",
+          "en": "Book a call",
+          "pl": "Umów rozmowę"
+        },
+        "description": {
+          "_type": "localeText",
+          "en": "We will tailor the programme to the technologies you use and to your team level.",
+          "pl": "Dopasujemy program do technologii, z których korzystacie, i do poziomu zespołu."
+        },
+        "email": "contact@cetuspro.com",
+        "sectionKey": "cta",
+        "title": {
+          "_type": "localeString",
+          "en": "Let's plan training for your team",
+          "pl": "Zaplanujmy szkolenie dla Twojego zespołu"
+        }
+      }
+    ],
+    "slug": {
+      "_type": "slug",
+      "current": "akademia-i-szkolenia"
+    },
+    "title": {
+      "_type": "localeString",
+      "en": "Academy and training",
+      "pl": "Akademia i szkolenia"
+    }
+  }
+]

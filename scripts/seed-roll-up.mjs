@@ -116,7 +116,8 @@ const doc = {
         "Architecture and integrations for SMBs and enterprises.",
       ),
       icon: "network",
-      link: "/oferta/transformacja-technologiczna",
+      // transformacja technologiczna zdjęta z oferty (2026-08-28)
+      link: "/oferta/aplikacje-webowe",
     },
     {
       _key: _key(),

@@ -10,9 +10,9 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'home' });
 
-  const title = t('metadata.title', { defaultValue: 'CetusPro - Nowoczesne rozwiązania IT' });
-  const description = t('metadata.description', { defaultValue: 'CetusPro - Tworzymy nowoczesne aplikacje webowe, mobilne i rozwiązania IT.' });
-  const ogTitle = t('metadata.ogTitle', { defaultValue: 'CetusPro - Nowoczesne rozwiązania IT i aplikacje webowe' });
+  const title = t('metadata.title', { defaultValue: 'CETUSPRO - Nowoczesne rozwiązania IT' });
+  const description = t('metadata.description', { defaultValue: 'CETUSPRO - Tworzymy nowoczesne aplikacje webowe, mobilne i rozwiązania IT.' });
+  const ogTitle = t('metadata.ogTitle', { defaultValue: 'CETUSPRO - Nowoczesne rozwiązania IT i aplikacje webowe' });
   const ogDescription = t('metadata.ogDescription', { defaultValue: 'Tworzymy nowoczesne aplikacje webowe, mobilne i rozwiązania IT.' });
 
   return {
@@ -22,12 +22,11 @@ export async function generateMetadata({
       "aplikacje webowe",
       "aplikacje mobilne",
       "rozwój oprogramowania",
-      "UX/UI design",
+      "fast prototyping",
       "cyberbezpieczeństwo",
       "AI i automatyzacja",
       "outsourcing programistów",
-      "transformacja technologiczna",
-      "CetusPro",
+      "CETUSPRO",
       "aplikacje na zamówienie"
     ],
     openGraph: {

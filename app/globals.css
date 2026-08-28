@@ -1,7 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  /* Jedno tło całego serwisu - hero, sekcje środkowe i CTA nad stopką
+     mają ten sam odcień, żeby na styku nie było widać przejścia. */
+  --background: #f3f4f6;
   --foreground: #0f172a; /* slate-900 */
   /* Jedno, wspólne tło sekcji „przygaszonych" (hero, galeria zespołu,
      zachęta nad stopką). Wcześniej te sekcje miały trzy różne szarości
@@ -435,7 +437,7 @@ html::-webkit-scrollbar-thumb:hover {
   clip-path: inset(100% 0 0 0);
 }
 .pv-in .pv-grow {
-  animation: pvGrow 700ms var(--ease-reveal) var(--d, 0ms) both;
+  animation: pvGrow 520ms var(--ease-reveal) var(--d, 0ms) both;
 }
 @keyframes pvGrow {
   from {
@@ -454,7 +456,7 @@ html::-webkit-scrollbar-thumb:hover {
   opacity: 0;
 }
 .pv-in .pv-fade {
-  animation: pvFade 420ms var(--ease-reveal) var(--d, 0ms) both;
+  animation: pvFade 320ms var(--ease-reveal) var(--d, 0ms) both;
 }
 @keyframes pvFade {
   from {
@@ -528,7 +530,7 @@ html::-webkit-scrollbar-thumb:hover {
   opacity: 0;
 }
 .cs-in .cs-tile {
-  animation: csTile 560ms var(--ease-reveal) var(--d, 0ms) both;
+  animation: csTile 420ms var(--ease-reveal) var(--d, 0ms) both;
 }
 @keyframes csTile {
   from {
@@ -620,11 +622,29 @@ html::-webkit-scrollbar-thumb:hover {
   .cs-card:hover,
   .cs-card-shot,
   .cs-card:hover .cs-card-shot,
-  .cs-card-glow {
+  .cs-card-glow,
+  .cp-phone,
+  .cs-card:hover .cp-phone {
     transition: none;
     transform: none;
   }
 }
+
+/* Telefon na karcie realizacji - stoi bliżej widza niż zrzut webowy, więc na
+   hoverze podnosi się odrobinę wyżej niż on. To daje paralaksę zamiast
+   płaskiego przesunięcia całego bloku. Tylko transform, krzywa projektu,
+   wejście dłuższe niż wyjście - tak jak reszta karty. */
+.cp-phone {
+  transition: transform 260ms var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) and (min-width: 768px) {
+  .cs-card:hover .cp-phone {
+    transform: translateY(-14px);
+    transition: transform 380ms var(--ease-out);
+  }
+}
+
 
 /* Rytm pionowy sekcji - jedna miara dla całej strony.
    Wcześniej każda sekcja miała własne py (5, 6, 8 rem, a FAQ pb 2.5 rem),
@@ -632,4 +652,16 @@ html::-webkit-scrollbar-thumb:hover {
 .section-y {
   padding-top: clamp(3.5rem, 7vw, 6rem);
   padding-bottom: clamp(3.5rem, 7vw, 6rem);
+}
+
+/* Tailwind v4 zmienił preflight: przyciski dostają `cursor: default`,
+   więc strzałki karuzeli, zamknięcia lightboxa itd. nie pokazywały łapki.
+   Przywracamy wskaźnik dla elementów klikalnych (poza wyłączonymi). */
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  summary,
+  label[for] {
+    cursor: pointer;
+  }
 }
