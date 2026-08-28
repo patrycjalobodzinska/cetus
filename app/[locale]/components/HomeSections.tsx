@@ -5,8 +5,10 @@ import ProcessSection from "./ProcessSection";
 import CaseStudiesSection from "./CaseStudiesSection";
 import HomepageModulesSection from "./HomepageModulesSection";
 import PartnersSection from "./PartnersSection";
-import SponsorsSection from "./SponsorsSection";
-import FAQSection from "./FAQSection";
+import InitiativesSection from "./InitiativesSection";
+// Sekcja „Dumny sponsor" jest chwilowo ukryta (decyzja klienta 2026-08-28) -
+// komponent i dane w CMS zostają, żeby dało się ją włączyć jedną linijką.
+// import SponsorsSection from "./SponsorsSection";
 
 /**
  * Układ strony głównej - jedno źródło kolejności sekcji.
@@ -31,10 +33,9 @@ export default function HomeSections() {
         <HomepageModulesSection />
         {/* Zaufali nam - logotypy klientów */}
         <PartnersSection />
-        {/* Dumny sponsor */}
-        <SponsorsSection />
-        {/* FAQ dużych klientów */}
-        <FAQSection />
+        {/* Nasze inicjatywy - hackathon, Academy, Elevate */}
+        <InitiativesSection />
+        {/* Dumny sponsor - ukryte: {<SponsorsSection />} */}
         {/* CTA jest teraz wspólne dla całego serwisu - PreFooterCTA w layoucie */}
       </div>
     </div>

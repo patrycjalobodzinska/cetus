@@ -104,6 +104,12 @@ const ctaBlock = (sectionKey, titlePl, titleEn, descPl, descEn, btnPl, btnEn, li
   email: email || '',
 });
 
+// UWAGA (2026-08-28): ten skrypt nie seeduje już trzech podstron:
+//  - `ui-ux-design` i `transformacja-technologiczna` zostały zdjęte z oferty,
+//  - `fast-prototyping` (następca UX/UI) i przepisana `akademia-i-szkolenia`
+//    mają swoją treść w scripts/update-offer-2026-08-28.mjs.
+// Bez tego ponowne uruchomienie seeda przywracałoby stare, nieaktualne teksty.
+
 const docs = [];
 
 // =====================================================
@@ -214,44 +220,6 @@ const docs = [];
 }
 
 // =====================================================
-// 4) ui-ux-design (extracted from hardcoded JSX)
-// =====================================================
-docs.push({
-  _id: 'servicePage-ui-ux-design',
-  _type: 'servicePage',
-  slug: { _type: 'slug', current: 'ui-ux-design' },
-  title: ls('UX/UI Design', 'UX/UI Design'),
-  heroTitle: ls('Projektujemy interfejsy, które użytkownicy kochają', 'We design interfaces users love'),
-  heroDescription: lt('Tworzymy nowoczesne, intuicyjne i estetyczne projekty UX/UI, które łączą design z funkcjonalnością.', 'We create modern, intuitive and aesthetic UX/UI designs that combine design with functionality.'),
-  heroButtonText: ls('Porozmawiajmy o projekcie', "Let's talk about the project"),
-  heroButtonLink: '/kontakt',
-  sections: [
-    gridSection('howWeHelp', 'Jak możemy pomóc', 'How we can help', '', '', [
-      { titlePl: 'Projektowanie szyte na miarę', titleEn: 'Tailored design', descPl: 'Tworzymy unikalne interfejsy dopasowane do Twojej marki i potrzeb użytkowników, zapewniając spójność wizualną i funkcjonalną na wszystkich platformach.', descEn: 'We create unique interfaces tailored to your brand and user needs, ensuring visual and functional consistency across all platforms.' },
-      { titlePl: 'Intuicyjne i przyjazne interfejsy', titleEn: 'Intuitive and user-friendly interfaces', descPl: 'Projektujemy interfejsy z myślą o użytkowniku, zapewniając łatwą nawigację, czytelność i przyjemne doświadczenie podczas korzystania z aplikacji.', descEn: 'We design interfaces with the user in mind, ensuring easy navigation, readability and pleasant experience while using the application.' },
-      { titlePl: 'Estetyczne i nowoczesne rozwiązania', titleEn: 'Aesthetic and modern solutions', descPl: 'Tworzymy wizualnie atrakcyjne projekty wykorzystujące najnowsze trendy w designie, zachowując przy tym funkcjonalność i użyteczność.', descEn: 'We create visually appealing designs using the latest design trends while maintaining functionality and usability.' },
-    ]),
-    gridSection('whyFeatures', 'Dlaczego warto wybrać nasze rozwiązania?', 'Why choose our solutions?', '', '', [
-      { titlePl: 'Projektowanie szyte na miarę', titleEn: 'Tailored design', descPl: 'Każdy projekt jest tworzony indywidualnie z myślą o Twojej marce, użytkownikach i celach biznesowych. Nie używamy szablonów - każdy interfejs jest unikalny.', descEn: 'Each project is created individually with your brand, users and business goals in mind. We do not use templates - each interface is unique.' },
-      { titlePl: 'Intuicyjne i przyjazne interfejsy', titleEn: 'Intuitive and user-friendly interfaces', descPl: 'Projektujemy z myślą o użytkowniku, zapewniając łatwą nawigację, czytelność i przyjemne doświadczenie podczas korzystania z aplikacji.', descEn: 'We design with the user in mind, ensuring easy navigation, readability and pleasant experience while using the application.' },
-      { titlePl: 'Estetyczne i nowoczesne rozwiązania', titleEn: 'Aesthetic and modern solutions', descPl: 'Tworzymy wizualnie atrakcyjne projekty wykorzystujące najnowsze trendy w designie, zachowując przy tym funkcjonalność i użyteczność.', descEn: 'We create visually appealing designs using the latest design trends while maintaining functionality and usability.' },
-      { titlePl: 'Efektywne procesy projektowe', titleEn: 'Effective design processes', descPl: 'Stosujemy sprawdzone metodyki projektowe (Design Thinking, User-Centered Design), które zapewniają szybkie iteracje i wysoką jakość rozwiązań.', descEn: 'We use proven design methodologies (Design Thinking, User-Centered Design) that ensure fast iterations and high quality solutions.' },
-      { titlePl: 'Optymalizacja doświadczenia użytkownika', titleEn: 'User experience optimization', descPl: 'Analizujemy zachowania użytkowników i optymalizujemy interfejsy, aby zapewnić najlepsze możliwe doświadczenie i osiągnąć cele biznesowe.', descEn: 'We analyze user behavior and optimize interfaces to provide the best possible experience and achieve business goals.' },
-    ]),
-    gridSection('whyUs', 'Dlaczego my?', 'Why us?', '', '', [
-      { titlePl: 'Doświadczenie w różnych branżach', titleEn: 'Experience in various industries', descPl: 'Mamy doświadczenie w projektowaniu interfejsów dla różnych branż - od e-commerce po finanse, zdrowie i edukację.', descEn: 'We have experience in designing interfaces for various industries - from e-commerce to finance, health and education.' },
-      { titlePl: 'Pełny cykl projektowy', titleEn: 'Full design cycle', descPl: 'Oferujemy kompleksową obsługę od researchu i analizy potrzeb, przez wireframy, prototypy, aż po finalne projekty wizualne.', descEn: 'We offer comprehensive service from research and needs analysis, through wireframes, prototypes, to final visual designs.' },
-      { titlePl: 'Współpraca z zespołem deweloperskim', titleEn: 'Collaboration with development team', descPl: 'Pracujemy w ścisłej współpracy z zespołem deweloperskim, zapewniając płynne przejście od projektu do implementacji.', descEn: 'We work in close cooperation with the development team, ensuring a smooth transition from project to implementation.' },
-      { titlePl: 'Wsparcie po wdrożeniu', titleEn: 'Post-implementation support', descPl: 'Zapewniamy ciągłe wsparcie w zakresie designu, aktualizacji interfejsów i optymalizacji doświadczenia użytkownika.', descEn: 'We provide continuous support for design, interface updates and user experience optimization.' },
-    ]),
-    caseStudyBlock('caseStudy1', 'Redesign platformy e-commerce', 'E-commerce platform redesign',
-      'Poprawa konwersji i doświadczenia użytkownika w sklepie internetowym', 'Improve conversion and user experience in an online store',
-      'Kompleksowy redesign interfejsu z nowoczesnym designem, uproszczoną nawigacją i zoptymalizowanym procesem zakupów', 'Comprehensive interface redesign with modern design, simplified navigation and optimized purchase process',
-      ['40% wzrost konwersji w pierwszym kwartale'], ['40% increase in conversion in the first quarter']),
-  ],
-});
-
-// =====================================================
 // 5) cybersecurity (extracted from hardcoded JSX)
 // =====================================================
 docs.push({
@@ -330,81 +298,6 @@ docs.push({
       ['React Native', 'Flutter', 'iOS Native', 'Android Native'], ['React Native', 'Flutter', 'iOS Native', 'Android Native']),
     checklistSection('technologies-devops', 'Technologie: DevOps & Cloud', 'Technologies: DevOps & Cloud', '', '',
       ['AWS', 'Azure', 'Docker', 'Kubernetes', 'CI/CD'], ['AWS', 'Azure', 'Docker', 'Kubernetes', 'CI/CD']),
-  ],
-});
-
-// =====================================================
-// 7) transformacja-technologiczna
-// =====================================================
-docs.push({
-  _id: 'servicePage-transformacja-technologiczna',
-  _type: 'servicePage',
-  slug: { _type: 'slug', current: 'transformacja-technologiczna' },
-  title: ls('Transformacja technologiczna', 'Technological transformation'),
-  heroTitle: ls('Transformacja technologiczna Twojej firmy', 'Technological transformation of your company'),
-  heroDescription: lt('Przeprowadzimy Twoją firmę przez kompleksową transformację cyfrową. Od audytu po wdrożenie nowoczesnych rozwiązań.', 'We will guide your company through a comprehensive digital transformation. From audit to implementation of modern solutions.'),
-  heroButtonText: ls('Porozmawiajmy o projekcie', "Let's talk about the project"),
-  heroButtonLink: '/kontakt',
-  sections: [
-    gridSection('benefits', 'Korzyści z transformacji', 'Benefits of transformation', '', '', [
-      { titlePl: 'Zwiększona efektywność', titleEn: 'Increased efficiency', descPl: 'Nowoczesne technologie automatyzują procesy i eliminują powtarzalne zadania, zwiększając produktywność zespołu.', descEn: 'Modern technologies automate processes and eliminate repetitive tasks, increasing team productivity.' },
-      { titlePl: 'Konkurencyjność rynkowa', titleEn: 'Market competitiveness', descPl: 'Transformacja technologiczna pozwala wyprzedzić konkurencję i lepiej odpowiadać na potrzeby klientów.', descEn: 'Technological transformation allows you to stay ahead of the competition and better respond to customer needs.' },
-      { titlePl: 'Skalowalność biznesu', titleEn: 'Business scalability', descPl: 'Elastyczna infrastruktura IT umożliwia płynny rozwój firmy bez ograniczeń technicznych.', descEn: 'Flexible IT infrastructure enables smooth company development without technical limitations.' },
-      { titlePl: 'Obniżenie kosztów', titleEn: 'Cost reduction', descPl: 'Optymalizacja systemów i migracja do chmury znacząco redukują wydatki operacyjne.', descEn: 'System optimization and cloud migration significantly reduce operational expenses.' },
-    ]),
-    gridSection('services', 'Nasze usługi', 'Our services', '', '', [
-      { titlePl: 'Audyt technologiczny', titleEn: 'Technology audit', descPl: 'Kompleksowa analiza obecnej infrastruktury IT, identyfikacja wąskich gardeł i obszarów wymagających modernizacji.', descEn: 'Comprehensive analysis of the current IT infrastructure, identification of bottlenecks and areas requiring modernization.' },
-      { titlePl: 'Migracja do chmury', titleEn: 'Cloud migration', descPl: 'Bezpieczne przeniesienie aplikacji i danych do środowiska chmurowego z zapewnieniem ciągłości działania.', descEn: 'Secure migration of applications and data to the cloud environment while ensuring business continuity.' },
-      { titlePl: 'Modernizacja aplikacji', titleEn: 'Application modernization', descPl: 'Refaktoryzacja legacy code, aktualizacja frameworków i wdrożenie nowoczesnych architektur.', descEn: 'Legacy code refactoring, framework updates and implementation of modern architectures.' },
-      { titlePl: 'Automatyzacja procesów', titleEn: 'Process automation', descPl: 'Implementacja CI/CD, automatyzacja deploymentów i wprowadzenie praktyk DevOps.', descEn: 'CI/CD implementation, deployment automation and introduction of DevOps practices.' },
-      { titlePl: 'Bezpieczeństwo IT', titleEn: 'IT security', descPl: 'Wzmocnienie zabezpieczeń, implementacja najlepszych praktyk i zapewnienie zgodności z regulacjami.', descEn: 'Strengthening security, implementing best practices and ensuring regulatory compliance.' },
-    ]),
-    stepsSection('process', 'Proces transformacji', 'Transformation process', '', '', [
-      { titlePl: 'Audyt i analiza', titleEn: 'Audit and analysis', descPl: 'Dokładna ocena obecnej infrastruktury i zidentyfikowanie obszarów do poprawy', descEn: 'Thorough assessment of the current infrastructure and identification of areas for improvement' },
-      { titlePl: 'Strategia transformacji', titleEn: 'Transformation strategy', descPl: 'Opracowanie szczegółowego planu działania dostosowanego do celów biznesowych', descEn: 'Development of a detailed action plan tailored to business goals' },
-      { titlePl: 'Implementacja', titleEn: 'Implementation', descPl: 'Stopniowe wdrażanie zmian z zachowaniem ciągłości działania systemów', descEn: 'Gradual implementation of changes while maintaining systems continuity' },
-      { titlePl: 'Optymalizacja', titleEn: 'Optimization', descPl: 'Monitorowanie wydajności i ciągłe doskonalenie wdrożonych rozwiązań', descEn: 'Performance monitoring and continuous improvement of implemented solutions' },
-    ]),
-    caseStudyBlock('caseStudy', 'Case study: Firma produkcyjna', 'Case study: Manufacturing company',
-      'Modernizacja infrastruktury IT i poprawa efektywności operacyjnej', 'IT infrastructure modernization and improvement of operational efficiency',
-      'Kompleksowa transformacja: migracja do chmury, modernizacja aplikacji, automatyzacja procesów', 'Comprehensive transformation: cloud migration, application modernization, process automation',
-      ['60% redukcja kosztów infrastruktury IT', '3x szybsze wdrażanie nowych funkcjonalności', '99.9% dostępność systemów krytycznych', 'Pełna automatyzacja procesów deployment'],
-      ['60% reduction in IT infrastructure costs', '3x faster deployment of new features', '99.9% availability of critical systems', 'Full deployment process automation']),
-  ],
-});
-
-// =====================================================
-// 8) akademia-i-szkolenia
-// =====================================================
-docs.push({
-  _id: 'servicePage-akademia-i-szkolenia',
-  _type: 'servicePage',
-  slug: { _type: 'slug', current: 'akademia-i-szkolenia' },
-  title: ls('Akademia i szkolenia', 'Academy and training'),
-  heroTitle: ls('Rozwijaj swoje umiejętności z CetusPro Academy', 'Develop your skills with CetusPro Academy'),
-  heroDescription: lt('Kompleksowe szkolenia i kursy z zakresu programowania, AI, zarządzania projektami IT. Uczymy praktycznych umiejętności, które są potrzebne w dzisiejszym rynku pracy.', 'Comprehensive training and courses in programming, AI, IT project management. We teach practical skills that are needed in today\'s job market.'),
-  heroButtonText: ls('Zapisz się na kurs', 'Enroll in a course'),
-  heroButtonLink: '/kontakt',
-  sections: [
-    gridSection('benefits', 'Dlaczego CetusPro Academy?', 'Why CetusPro Academy?', '', '', [
-      { titlePl: 'Praktyczne umiejętności', titleEn: 'Practical skills', descPl: 'Uczymy przez praktykę - każdy kurs zawiera realne projekty i zadania, które przygotują Cię do pracy w branży IT.', descEn: 'We teach through practice - each course includes real projects and tasks that will prepare you for work in the IT industry.' },
-      { titlePl: 'Doświadczeni mentorzy', titleEn: 'Experienced mentors', descPl: 'Nasi trenerzy to praktycy z wieloletnim doświadczeniem, którzy dzielą się wiedzą z prawdziwych projektów.', descEn: 'Our trainers are practitioners with many years of experience who share knowledge from real projects.' },
-      { titlePl: 'Elastyczny harmonogram', titleEn: 'Flexible schedule', descPl: 'Dostosowujemy się do Twojego tempa - możesz uczyć się w dogodnym dla siebie czasie i miejscu.', descEn: 'We adapt to your pace - you can learn at a time and place convenient for you.' },
-      { titlePl: 'Certyfikaty i wsparcie', titleEn: 'Certificates and support', descPl: 'Po ukończeniu kursu otrzymujesz certyfikat oraz wsparcie w znalezieniu pierwszej pracy w branży IT.', descEn: 'After completing the course, you receive a certificate and support in finding your first job in the IT industry.' },
-    ]),
-    gridSection('categories', 'Kategorie kursów', 'Course categories', '', '', [
-      { titlePl: 'Programowanie', titleEn: 'Programming', descPl: 'Kompleksowe kursy programowania od podstaw do zaawansowanych technik. Uczymy najpopularniejszych języków i frameworków, takich jak JavaScript, Python, React, Node.js i wiele innych. Każdy kurs zawiera praktyczne projekty i zadania, które pomogą Ci zbudować portfolio.', descEn: 'Comprehensive programming courses from basics to advanced techniques. We teach the most popular languages and frameworks such as JavaScript, Python, React, Node.js and many others. Each course includes practical projects and tasks that will help you build a portfolio.' },
-      { titlePl: 'AI i Machine Learning', titleEn: 'AI and Machine Learning', descPl: 'Poznaj tajniki sztucznej inteligencji i uczenia maszynowego. Naucz się budować modele AI, analizować dane i tworzyć inteligentne rozwiązania. Kursy obejmują zarówno podstawy teoretyczne, jak i praktyczne zastosowania w biznesie.', descEn: 'Learn the secrets of artificial intelligence and machine learning. Learn to build AI models, analyze data and create intelligent solutions. Courses cover both theoretical foundations and practical business applications.' },
-      { titlePl: 'Zarządzanie projektami IT', titleEn: 'IT project management', descPl: 'Opanuj metodyki zarządzania projektami IT, takie jak Agile, Scrum i Kanban. Naucz się efektywnie planować, organizować i realizować projekty technologiczne. Kursy przygotowują do pracy jako Product Owner, Scrum Master lub Project Manager.', descEn: 'Master IT project management methodologies such as Agile, Scrum and Kanban. Learn to effectively plan, organize and implement technology projects. Courses prepare you to work as a Product Owner, Scrum Master or Project Manager.' },
-    ]),
-    gridSection('audience', 'Dla kogo', 'For whom', '', '', [
-      { titlePl: 'Początkujący', titleEn: 'Beginners', descPl: 'Dla osób, które dopiero zaczynają przygodę z programowaniem i chcą zdobyć solidne fundamenty.', descEn: 'For people who are just starting their adventure with programming and want to gain solid foundations.' },
-      { titlePl: 'Średnio zaawansowani', titleEn: 'Intermediate', descPl: 'Dla programistów, którzy chcą poszerzyć swoje umiejętności i nauczyć się nowych technologii.', descEn: 'For programmers who want to expand their skills and learn new technologies.' },
-      { titlePl: 'Firmy i zespoły', titleEn: 'Companies and teams', descPl: 'Szkolenia dedykowane dla firm, które chcą podnieść kompetencje swojego zespołu technicznego.', descEn: 'Training dedicated to companies that want to raise the competence of their technical team.' },
-    ]),
-    checklistSection('distinctive', 'Co nas wyróżnia', 'What sets us apart', '', '',
-      ['Praktyczne projekty w każdym kursie', 'Dostęp do materiałów na zawsze', 'Wsparcie mentora przez cały czas trwania kursu', 'Społeczność aktywnych studentów', 'Aktualizowane treści zgodne z trendami', 'Możliwość konsultacji indywidualnych', 'Przygotowanie do rozmów rekrutacyjnych', 'Pomoc w budowaniu portfolio', 'Dostęp do zamkniętej grupy na platformie'],
-      ['Practical projects in every course', 'Lifetime access to materials', 'Mentor support throughout the course', 'Active student community', 'Updated content in line with trends', 'Individual consultation option', 'Job interview preparation', 'Portfolio building assistance', 'Access to a closed group on the platform']),
   ],
 });
 

@@ -51,3 +51,6 @@ scripts/.partners-assets.json
 
 # lokalna konfiguracja edytora (zawiera absolutne sciezki uzytkownika)
 .cursor/
+
+# cache narzedzia impeccable (lokalne, per maszyna)
+.impeccable/

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { urlFor } from "@/sanity/lib/image";
 import { useTranslations } from "next-intl";
 import Slider from "@/app/components/Slider";
+import PhoneFrame from "@/app/[locale]/components/PhoneFrame";
 import {
   ArrowLeft,
   ArrowRight,
@@ -62,34 +63,57 @@ function img(src: any, w = 1400) {
 
 // ─── ramki makiet ───────────────────────────────────────────────────────────
 
+/** Proporcje zrzutu z adresu Sanity (`...-1920x1080.png`) - rezerwacja miejsca. */
+function ratioOf(url: string) {
+  const m = /-(\d+)x(\d+)\.[a-z]+/i.exec(url);
+  if (!m) return undefined;
+  const w = Number(m[1]);
+  const h = Number(m[2]);
+  return w > 0 && h > 0 ? w / h : undefined;
+}
+
+/**
+ * Najwyższa dopuszczalna ramka - zrzut długiej strony ma proporcje w stylu
+ * 1 : 3 i bez ograniczenia rozpychał sekcję na kilka ekranów.
+ */
+const MIN_FRAME_RATIO = 16 / 10;
+
 function BrowserFrame({
   src,
   className = "",
   dark = false,
+  crop = true,
 }: {
   src: string;
   className?: string;
   dark?: boolean;
+  /** false = ramka oplywa caly zrzut, bez przycinania wysokosci. */
+  crop?: boolean;
 }) {
+  const natural = ratioOf(src);
+  // Ramka nigdy nie jest wezsza niz zrzut - obraz zawsze wchodzi na pelna
+  // szerokosc, wiec po bokach nic nie ginie i nie ma pasow tla. Wysokosc
+  // przycinamy do MIN_FRAME_RATIO, czyli zrzut dlugiej strony urywa sie
+  // u dolu zamiast rozpychac sekcje. Proporcje bierzemy z nazwy pliku
+  // w Sanity, zeby miejsce bylo zarezerwowane od razu i uklad nie skakal.
+  const frame = crop && natural ? Math.max(natural, MIN_FRAME_RATIO) : natural;
   return (
     <div
       className={`overflow-hidden shadow-xl ${
         dark ? "rounded-xl ring-[6px] ring-slate-500" : "rounded-2xl ring-1 ring-black/5"
       } bg-white ${className}`}
     >
-      <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
-        {src && <img src={src} alt="" className="absolute inset-0 h-full w-full object-cover object-top" />}
-      </div>
-    </div>
-  );
-}
-
-function PhoneFrame({ src, className = "" }: { src: string; className?: string }) {
-  return (
-    <div className={`overflow-hidden rounded-[1.4rem] bg-slate-900 p-1 shadow-2xl ring-1 ring-black/20 ${className}`}>
-      <div className="relative aspect-[9/19] overflow-hidden rounded-[1.1rem] bg-slate-100">
-        {src && <img src={src} alt="" className="absolute inset-0 h-full w-full object-cover object-top" />}
-      </div>
+      {src && (
+        <div style={frame ? { aspectRatio: frame } : undefined} className="overflow-hidden">
+          <img
+            src={src}
+            alt=""
+            loading="lazy"
+            style={natural ? { aspectRatio: natural } : undefined}
+            className="block h-auto w-full"
+          />
+        </div>
+      )}
     </div>
   );
 }
@@ -325,7 +349,7 @@ function CsHero({ section, backToList }: { section: any; backToList: string }) {
       <div className="relative px-4 py-6">
         <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-300/30 blur-3xl" />
         {web && <BrowserFrame src={web} dark className="w-full" />}
-        {phone && <PhoneFrame src={phone} className="absolute -bottom-2 -right-1 w-24 sm:w-36 lg:w-44" />}
+        {phone && <PhoneFrame src={phone} bezel="sm" className="absolute -bottom-2 -right-1 w-24 sm:w-36 lg:w-44" />}
       </div>
     </section>
   );
@@ -356,8 +380,8 @@ function CsFeatures({ section }: { section: any }) {
 
         {/* DESKTOP */}
         <div className="relative mx-auto hidden h-[46rem] max-w-6xl lg:block">
-          {screenA && <BrowserFrame src={screenA} dark className="absolute left-0 top-0 z-0 w-[54%] -rotate-2 shadow-2xl" />}
-          {screenB && <BrowserFrame src={screenB} dark className="absolute bottom-0 right-0 z-0 w-[54%] rotate-2 shadow-2xl" />}
+          {screenA && <BrowserFrame crop={false} src={screenA} dark className="absolute left-0 top-0 z-0 w-[54%] -rotate-2 shadow-2xl" />}
+          {screenB && <BrowserFrame crop={false} src={screenB} dark className="absolute bottom-0 right-0 z-0 w-[54%] rotate-2 shadow-2xl" />}
           {items[2] && (
             <FeatureCard icon={ic(2)} title={items[2].title} text={items[2].text} className="absolute right-0 top-2 z-20 w-[38%]" />
           )}
@@ -374,11 +398,11 @@ function CsFeatures({ section }: { section: any }) {
 
         {/* MOBILE: na przemian zdjęcie / treść, potem reszta kart */}
         <div className="space-y-6 lg:hidden">
-          {screenA && <BrowserFrame src={screenA} dark className="w-full shadow-xl" />}
+          {screenA && <BrowserFrame crop={false} src={screenA} dark className="w-full shadow-xl" />}
           {items[0] && (
             <FeatureCard icon={items[0].icon ? iconMap[items[0].icon] : undefined} title={items[0].title} text={items[0].text} />
           )}
-          {screenB && <BrowserFrame src={screenB} dark className="w-full shadow-xl" />}
+          {screenB && <BrowserFrame crop={false} src={screenB} dark className="w-full shadow-xl" />}
           {items[1] && (
             <FeatureCard icon={items[1].icon ? iconMap[items[1].icon] : undefined} title={items[1].title} text={items[1].text} />
           )}

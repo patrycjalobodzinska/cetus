@@ -39,6 +39,8 @@ export const csHeroSection = defineType({
       name: "phoneImage",
       title: "Zrzut mobile (ramka telefonu)",
       type: "image",
+      description:
+        "Jedno zdjęcie w dwóch miejscach: w hero tej strony i w telefonie na karcie realizacji na stronie głównej. Wgraj sam zrzut ekranu, bez ramki urządzenia - obudowę i pasek stanu (godzina, zasięg, bateria) dorysowujemy sami. Bez tego pola telefon na karcie po prostu się nie pojawia.",
       options: { hotspot: true },
     }),
   ],

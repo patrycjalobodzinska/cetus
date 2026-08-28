@@ -23,6 +23,7 @@ interface BlogPost {
   excerpt?: string;
   category?: string;
   coverImage?: any;
+  publishedAt?: string;
 }
 
 // Ujednolicony kształt karty dla wpisów z bloga i modułów strony głównej.
@@ -34,6 +35,20 @@ interface Card {
   description?: string;
   link?: string;
   linkText?: string;
+  publishedAt?: string;
+}
+
+function formatDate(iso: string | undefined, locale: string) {
+  if (!iso) return '';
+  try {
+    return new Date(iso).toLocaleDateString(locale === 'pl' ? 'pl-PL' : 'en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+  } catch {
+    return '';
+  }
 }
 
 const MODULES_QUERY = `*[_type == "homepageModule"] | order(order asc) {
@@ -53,7 +68,8 @@ const POSTS_QUERY = `*[_type == "blogPost" && defined(slug.current)] | order(pub
   slug,
   "excerpt": coalesce(excerpt[$locale], excerpt.pl),
   "category": coalesce(category[$locale], category.pl),
-  coverImage
+  coverImage,
+  publishedAt
 }`;
 
 export default async function HomepageModulesSection() {
@@ -85,6 +101,7 @@ export default async function HomepageModulesSection() {
       description: post.excerpt,
       link: `/${locale}/blog/${post.slug?.current ?? ''}`,
       linkText: readMore,
+      publishedAt: post.publishedAt,
     })),
     ...modules.map((module) => ({
       key: module._id,
@@ -134,10 +151,20 @@ export default async function HomepageModulesSection() {
                 )}
 
                 <div className="space-y-4">
-                  {card.label && (
-                    <p className="text-sm text-gray-600 uppercase tracking-wider">
-                      {card.label}
-                    </p>
+                  {(card.label || card.publishedAt) && (
+                    <div className="flex items-center gap-3 text-sm text-gray-600 uppercase tracking-wider">
+                      {card.label && <span>{card.label}</span>}
+                      {card.label && card.publishedAt && (
+                        <span aria-hidden="true" className="text-gray-400">
+                          ·
+                        </span>
+                      )}
+                      {card.publishedAt && (
+                        <time dateTime={card.publishedAt} className="normal-case tracking-normal">
+                          {formatDate(card.publishedAt, locale)}
+                        </time>
+                      )}
+                    </div>
                   )}
 
                   {card.title && (

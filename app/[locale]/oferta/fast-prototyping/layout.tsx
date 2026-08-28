@@ -7,9 +7,9 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  return buildPageMetadata({ locale, key: "uiUx", path: "/oferta/ui-ux-design" });
+  return buildPageMetadata({ locale, key: "fastPrototyping", path: "/oferta/fast-prototyping" });
 }
 
-export default function UiUxLayout({ children }: { children: React.ReactNode }) {
+export default function FastPrototypingLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

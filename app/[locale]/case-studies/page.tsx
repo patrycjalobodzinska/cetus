@@ -1,5 +1,4 @@
 import { client } from '@/sanity/lib/client';
-import ProcessSection from '@/app/[locale]/components/ProcessSection';
 import CaseStudyItem from './components/CaseStudyItem';
 import { getTranslations } from 'next-intl/server';
 
@@ -40,16 +39,21 @@ export default async function CaseStudiesPage({
   }
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <ProcessSection />
+    <div className="relative flex min-h-screen flex-col items-center">
+      <div className="w-full max-w-7xl">
+        {/* ── Hero - poświaty jak w hero strony głównej; tło niesie body ── */}
+        <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen overflow-hidden">
+          <div className="relative mx-auto w-full max-w-7xl px-4 pb-16 pt-[var(--page-top-offset)] sm:px-6 sm:pb-20 lg:px-8 lg:pb-24">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -left-16 top-10 z-0 h-80 w-80 rounded-full bg-blue-400/15 blur-3xl"
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute right-0 top-1/3 z-0 h-[30rem] w-[30rem] rounded-full bg-sky-300/20 blur-3xl"
+            />
 
-
-
-      {/* Methodology Section */}
-
-    <div className="flex flex-col z-30 pt-12 items-center justify-center relative">
-            <div className="relative">
+            <div className="relative z-10 flex flex-col items-center justify-center">
               <h1
                 className="heading-hero tracking-tighter text-slate-900 text-center"
                 style={{ fontFamily: "var(--font-michroma)" }}
@@ -57,32 +61,31 @@ export default async function CaseStudiesPage({
                 <span>{t('hero.titlePrefix')} </span>
                 <span className="text-blue-600">{t('hero.titleHighlight')}</span>
               </h1>
-            </div>
 
-            <div className="space-y-2 items-center justify-center flex flex-col max-w-xl relative w-full px-4 mt-8">
-              <p className="text-lg lg:text-xl text-slate-600 leading-relaxed text-center">
+              <p className="mt-8 max-w-xl text-center text-lg leading-relaxed text-slate-600 lg:text-xl">
                 {t('hero.description')}
               </p>
             </div>
           </div>
-
-      {/* Case Studies List */}
-      {caseStudies && caseStudies.length > 0 ? (
-        <>
-          {caseStudies.map((study, index) => (
-            <CaseStudyItem key={study._id} caseStudy={study} index={index} />
-          ))}
-        </>
-      ) : (
-        <section className="py-24 ">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center py-20">
-              <p className="text-slate-600 text-lg">{t('noCaseStudies')}</p>
-            </div>
-          </div>
         </section>
-      )}
 
+        {/* Case Studies List */}
+        {caseStudies && caseStudies.length > 0 ? (
+          <>
+            {caseStudies.map((study, index) => (
+              <CaseStudyItem key={study._id} caseStudy={study} index={index} />
+            ))}
+          </>
+        ) : (
+          <section className="py-24">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center py-20">
+                <p className="text-slate-600 text-lg">{t('noCaseStudies')}</p>
+              </div>
+            </div>
+          </section>
+        )}
+      </div>
     </div>
   );
 }

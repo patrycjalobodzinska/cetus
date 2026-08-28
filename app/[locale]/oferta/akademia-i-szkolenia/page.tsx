@@ -9,7 +9,7 @@ export default async function Page() {
     <ServicePageView
       data={data}
       heroImageSrc="/DSC_3998.JPEG"
-      heroImageAlt="Hackathon i szkolenia CetusPro"
+      heroImageAlt="Praktykanci i stażyści CETUSPRO Academy przy pracy"
     />
   )
 }

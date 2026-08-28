@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { Fragment } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { PortableText, type PortableTextComponents } from "@portabletext/react";
@@ -865,6 +865,39 @@ export default function BlogPostDetail({
   locale: string;
 }) {
   const hasCustomHero = post.sections?.some((s) => s._type === "bpHeroSection");
+  // Data i autor idą zaraz pod nagłówkiem wpisu. Gdy wpis ma własne hero
+  // z Sanity, ten pasek musi wylądować PO nim - wcześniej renderował się
+  // przed sekcjami, czyli nad hero i pod przyklejonym menu, więc daty
+  // praktycznie nie było widać.
+  const heroIndex = post.sections?.findIndex((s) => s._type === "bpHeroSection") ?? -1;
+
+  const meta = (post.author?.name || post.publishedAt) && (
+    <div className="mx-auto mb-10 flex max-w-5xl flex-wrap items-center justify-center gap-3 px-4 text-sm text-slate-600 sm:px-6 lg:px-8">
+      {post.author?.avatar && (
+        <div className="relative h-9 w-9 overflow-hidden rounded-full">
+          <Image
+            src={urlFor(post.author.avatar).width(72).height(72).url()}
+            alt={post.author.name || ""}
+            fill
+            sizes="36px"
+            className="object-cover"
+          />
+        </div>
+      )}
+      {post.author?.name && (
+        <span>
+          <span className="font-medium text-slate-700">{post.author.name}</span>
+          {post.author.role && <span> · {post.author.role}</span>}
+        </span>
+      )}
+      {post.author?.name && post.publishedAt && <span aria-hidden="true">·</span>}
+      {post.publishedAt && (
+        <time dateTime={post.publishedAt} className="font-medium text-slate-700">
+          {formatDate(post.publishedAt, locale)}
+        </time>
+      )}
+    </div>
+  );
 
   return (
     <article className="min-h-screen">
@@ -891,37 +924,17 @@ export default function BlogPostDetail({
         </section>
       )}
 
-      {(post.author?.name || post.publishedAt) && (
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-4 flex items-center gap-3 text-sm text-slate-600">
-          {post.author?.avatar && (
-            <div className="relative w-9 h-9 rounded-full overflow-hidden">
-              <Image
-                src={urlFor(post.author.avatar).width(72).height(72).url()}
-                alt={post.author.name || ""}
-                fill
-                sizes="36px"
-                className="object-cover"
-              />
-            </div>
-          )}
-          {post.author?.name && (
-            <span>
-              <span className="font-medium text-slate-700">{post.author.name}</span>
-              {post.author.role && <span> · {post.author.role}</span>}
-            </span>
-          )}
-          {post.publishedAt && (
-            <>
-              <span aria-hidden="true">·</span>
-              <time dateTime={post.publishedAt}>{formatDate(post.publishedAt, locale)}</time>
-            </>
-          )}
-        </div>
-      )}
+      {heroIndex < 0 && meta}
 
-      {post.sections?.map((section) => {
+      {post.sections?.map((section, i) => {
         const Component = sectionComponents[section._type];
-        return Component ? <Component key={section._key} {...section} /> : null;
+        if (!Component) return null;
+        return (
+          <Fragment key={section._key}>
+            <Component {...section} />
+            {i === heroIndex && meta}
+          </Fragment>
+        );
       })}
 
       {post.tags && post.tags.length > 0 && (

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useLocale } from 'next-intl';
 import StarGradientButton from '@/app/components/ui/gradientBackground';
 import type { CTASectionProps } from '@/types/components';
+import ObfuscatedEmail from '@/app/components/ObfuscatedEmail';
 
 export default function CTASection({
   title,
@@ -47,12 +48,10 @@ export default function CTASection({
           {emailLabel && email && (
             <div className="flex flex-col items-center gap-3">
               <p className="text-slate-500 text-sm">{emailLabel}</p>
-              <a
-                href={`mailto:${email}`}
+              <ObfuscatedEmail
+                email={email}
                 className="text-lg font-semibold text-blue-600 hover:opacity-70 transition-opacity"
-              >
-                {email}
-              </a>
+              />
             </div>
           )}
         </div>

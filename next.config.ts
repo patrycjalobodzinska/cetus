@@ -18,10 +18,14 @@ const legacyMap: Record<string, string> = {
   '/services': '/oferta',
   '/service/web-apps': '/oferta/aplikacje-webowe',
   '/service/mobile-apps': '/oferta/aplikacje-mobilne',
-  '/service/ui-ux': '/oferta/ui-ux-design',
+  '/service/ui-ux': '/oferta/fast-prototyping',
   '/service/mvp-startups': '/oferta/cetus-venture-capital',
   '/service/outsourcing': '/oferta/outsourcing-programistow',
-  '/service/product-design': '/oferta/ui-ux-design',
+  '/service/product-design': '/oferta/fast-prototyping',
+  // UX/UI Design zastąpiony usługą Fast Prototyping, transformacja
+  // technologiczna zdjęta z oferty (2026-08-28).
+  '/oferta/ui-ux-design': '/oferta/fast-prototyping',
+  '/oferta/transformacja-technologiczna': '/oferta',
   '/service/marketing-startups': '/oferta',
   '/career': '/o-nas',
   '/industries': '/oferta',

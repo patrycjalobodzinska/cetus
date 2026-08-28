@@ -48,7 +48,7 @@ export default function CaseFeatureSection() {
             />
             <Image
               src="/new_hero.png"
-              alt="Beer-o-Meter - urządzenie IoT zaprojektowane i wdrożone przez CetusPro"
+              alt="Beer-o-Meter - urządzenie IoT zaprojektowane i wdrożone przez CETUSPRO"
               width={520}
               height={520}
               className="relative z-10 w-auto max-h-[340px] object-contain drop-shadow-2xl"

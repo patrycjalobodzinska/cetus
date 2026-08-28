@@ -29,10 +29,9 @@ export default function OfferPage() {
   const projectKeys = [
     "webApps",
     "mobileApps",
-    "uiUx",
+    "fastPrototyping",
     "ai",
     "cybersecurity",
-    "transformation",
     "outsourcing",
     "academy",
   ];

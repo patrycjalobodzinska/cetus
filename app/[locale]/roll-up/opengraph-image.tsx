@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
-export const alt = "CetusPro - Technologia, która napędza Twój biznes";
+export const alt = "CETUSPRO - Technologia, która napędza Twój biznes";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -63,7 +63,7 @@ export default async function Image() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={logoBase64}
-          alt="CetusPro"
+          alt="CETUSPRO"
           width={780}
           height={244}
           style={{ objectFit: "contain" }}

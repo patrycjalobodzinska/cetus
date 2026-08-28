@@ -73,7 +73,7 @@ export default function HeroCurosora() {
               <PaintReveal
                 sketchSrc="/Norbert2.png"
                 paintedSrc="/Norbert3.png"
-                alt="Norbert - CetusPro"
+                alt="Norbert - CETUSPRO"
                 aspect="1 / 1"
               />
             </div>

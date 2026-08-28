@@ -6,7 +6,7 @@ import NavigationProvider from './components/NavigationProvider'
 import messages from '../messages/pl.json'
 
 export const metadata: Metadata = {
-  title: 'Nie znaleziono strony | CetusPro',
+  title: 'Nie znaleziono strony | CETUSPRO',
   description: 'Strona, której szukasz, nie istnieje lub została przeniesiona.',
   robots: { index: false, follow: false },
 }

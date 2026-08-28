@@ -387,10 +387,9 @@ const Skiper16 = () => {
   const projectKeys = [
     "webApps",
     "mobileApps",
-    "uiUx",
+    "fastPrototyping",
     "ai",
     "cybersecurity",
-    "transformation",
     "outsourcing",
     "academy",
   ];

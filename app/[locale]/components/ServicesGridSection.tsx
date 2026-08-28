@@ -11,12 +11,11 @@ const CONTENT = {
     title: "Co robimy",
     sub: "Pełen zakres inżynierii oprogramowania - od produktu, przez rozwój, po utrzymanie systemów krytycznych.",
     items: [
-      { title: "Aplikacje webowe", desc: "Skalowalne platformy dla procesów krytycznych - wydajne, bezpieczne i gotowe na wzrost.", chips: [".NET Core", "React", "Azure"] },
+      { title: "Aplikacje webowe", desc: "Skalowalne platformy dla procesów krytycznych - wydajne, bezpieczne i gotowe na wzrost.", chips: [".NET Core", "React", "Azure", "AWS", "Google Cloud"] },
       { title: "Aplikacje mobilne", desc: "iOS i Android klasy produkcyjnej, spójne z ekosystemem systemów." },
-      { title: "UX/UI Design", desc: "Warsztaty, prototypy i projekt interfejsu przed linijką kodu." },
+      { title: "Fast Prototyping", desc: "Klikalny prototyp i projekt interfejsu w kilka dni - zanim powstanie pierwsza linijka kodu." },
       { title: "AI i automatyzacja", desc: "Agenci, integracje LLM i automatyzacja pracy tam, gdzie realnie skraca koszt procesu." },
-      { title: "Cybersecurity", desc: "Audyty, hardening i zgodność z wymogami regulacyjnymi.", chips: ["Pentesty", "RODO", "SOC"] },
-      { title: "Transformacja technologiczna", desc: "Modernizacja legacy i migracje do chmury - bez przestojów." },
+      { title: "Cybersecurity", desc: "Audyty, testy i zgodność z wymogami regulacyjnymi." },
       { title: "Outsourcing programistów", desc: "Doświadczone zespoły w Waszym procesie, z governance." },
       { title: "Akademia i szkolenia", desc: "Rozwój kompetencji technologicznych dla zespołów." },
     ],
@@ -26,12 +25,11 @@ const CONTENT = {
     title: "What we do",
     sub: "The full scope of software engineering - from product, through growth, to maintaining critical systems.",
     items: [
-      { title: "Web applications", desc: "Scalable platforms for critical processes - performant, secure and ready to grow.", chips: [".NET Core", "React", "Azure"] },
+      { title: "Web applications", desc: "Scalable platforms for critical processes - performant, secure and ready to grow.", chips: [".NET Core", "React", "Azure", "AWS", "Google Cloud"] },
       { title: "Mobile applications", desc: "Production-grade iOS and Android, aligned with your systems ecosystem." },
-      { title: "UX/UI Design", desc: "Workshops, prototypes and interface design before a line of code." },
+      { title: "Fast Prototyping", desc: "A clickable prototype and interface design in days - before the first line of code." },
       { title: "AI & automation", desc: "Agents, LLM integrations and automation where it truly cuts process cost." },
-      { title: "Cybersecurity", desc: "Audits, hardening and regulatory compliance.", chips: ["Pentests", "GDPR", "SOC"] },
-      { title: "Technology transformation", desc: "Legacy modernization and cloud migration - no downtime." },
+      { title: "Cybersecurity", desc: "Audits, tests and regulatory compliance." },
       { title: "Developer outsourcing", desc: "Experienced teams in your process, with governance." },
       { title: "Academy & training", desc: "Technology skill development for teams." },
     ],
@@ -62,7 +60,9 @@ export default function ServicesGridSection() {
         {/* Desktop: bento. Każdy kafel prowadzi do swojej podstrony /oferta/*,
             tak samo jak siatka na /oferta - kolejność usług jest identyczna,
             więc indeks kafla wskazuje jego slug. */}
-        <div className="hidden md:grid grid-cols-12 gap-4 auto-rows-auto [grid-template-rows:190px_190px_auto]">
+        {/* Wiersze rosną z treścią (`minmax`), bo sztywne 190 px ucinało opisy
+            w wąskich kaflach na md - kafel ma `overflow-hidden`. */}
+        <div className="hidden auto-rows-[minmax(150px,auto)] grid-cols-12 gap-4 md:grid">
           {t.items.map((c, i) => (
             <Link
               key={i}

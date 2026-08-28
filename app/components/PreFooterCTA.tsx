@@ -159,6 +159,8 @@ export default function PreFooterCTA() {
                 {t("description")}
               </p>
 
+              {/* Sam przycisk - adres e-mail jest w stopce kilka pikseli
+                  niżej, więc powtarzanie go tutaj tylko dublowało treść. */}
               <div className="mt-6 flex flex-col gap-4">
                 <Link
                   href={`/${locale}/kontakt`}
@@ -166,13 +168,6 @@ export default function PreFooterCTA() {
                 >
                   {t("linkText")}
                 </Link>
-
-                <a
-                  href="mailto:contact@cetuspro.com"
-                  className="text-sm font-medium text-slate-500 transition-colors hover:text-blue-600 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
-                >
-                  contact@cetuspro.com
-                </a>
               </div>
             </div>
           </div>
