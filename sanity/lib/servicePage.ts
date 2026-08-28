@@ -1,4 +1,5 @@
 import { client } from './client'
+import { cloakEmail } from '@/lib/emailCloak'
 
 export type Locale = 'pl' | 'en'
 
@@ -34,7 +35,10 @@ export type Section =
   | { _key: string; _type: 'stepsSection'; sectionKey?: string; title?: LocaleString; description?: LocaleText; steps?: StepItem[] }
   | { _key: string; _type: 'checklistSection'; sectionKey?: string; title?: LocaleString; description?: LocaleText; items?: LocaleStringArray }
   | { _key: string; _type: 'caseStudyBlock'; sectionKey?: string; title?: LocaleString; clientName?: LocaleString; goal?: LocaleText; solution?: LocaleText; results?: LocaleStringArray }
-  | { _key: string; _type: 'ctaBlock'; sectionKey?: string; title?: LocaleString; description?: LocaleText; buttonText?: LocaleString; buttonLink?: string; email?: string }
+  // `emailToken` zamiast `email`: ServicePageView jest komponentem klienckim,
+  // więc czysty adres wylądowałby w payloadzie RSC w HTML. Zaciemniamy go tu,
+  // zaraz po pobraniu z CMS-u, żeby dalej w drzewie nie było już czego zgubić.
+  | { _key: string; _type: 'ctaBlock'; sectionKey?: string; title?: LocaleString; description?: LocaleText; buttonText?: LocaleString; buttonLink?: string; emailToken?: string }
 
 export type ServicePageData = {
   _id: string
@@ -48,11 +52,26 @@ export type ServicePageData = {
 }
 
 export async function fetchServicePage(slug: string): Promise<ServicePageData | null> {
-  const data = await client.fetch<ServicePageData>(
+  // Sekcje z CMS-u przychodzą „surowe" (z polem `email`), a na wyjściu mają
+  // już tylko `emailToken` - dlatego fetch jest typowany luźniej niż zwrotka.
+  type RawSection = Record<string, unknown> & { _type?: string; email?: string }
+  const data = await client.fetch<
+    (Omit<ServicePageData, 'sections'> & { sections?: RawSection[] }) | null
+  >(
     `*[_type == "servicePage" && slug.current == $slug][0]`,
     { slug },
   )
-  return data || null
+  if (!data) return null
+
+  const sections = data.sections?.map((section) => {
+    if (section._type !== 'ctaBlock' || typeof section.email !== 'string' || !section.email) {
+      return section
+    }
+    const { email, ...rest } = section
+    return { ...rest, emailToken: cloakEmail(email) }
+  })
+
+  return { ...data, sections } as ServicePageData
 }
 
 export function L(value: LocaleString | LocaleText | undefined, locale: Locale): string {

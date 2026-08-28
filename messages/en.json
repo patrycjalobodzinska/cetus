@@ -40,7 +40,8 @@
     "getStarted": "Let's talk about your project",
     "letsTalk": "Book a consultation",
     "loading": "Loading...",
-    "noData": "No data"
+    "noData": "No data",
+    "showEmail": "Show email address"
   },
   "hero": {
     "title": "We create",

@@ -28,7 +28,8 @@ export interface CTASectionProps {
   buttonText: string;
   buttonLink?: string;
   emailLabel?: string;
-  email?: string;
+  /** Adres zaciemniony przez `cloakEmail()` po stronie serwera. */
+  emailToken?: string;
   showDivider?: boolean;
   className?: string;
 }

@@ -1,7 +1,12 @@
 import { Clock, Mail, MapPin } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import ObfuscatedEmail from '@/app/components/ObfuscatedEmail';
+import { cloakEmail } from '@/lib/emailCloak';
 import SectionHeading from '@/app/components/SectionHeading';
+
+// Adres nie idzie do przeglądarki otwartym tekstem - nawet jako props
+// komponentu klienckiego (wylądowałby w payloadzie RSC w HTML).
+const CONTACT_EMAIL_TOKEN = cloakEmail('contact@cetuspro.com');
 
 /**
  * Kontakt w języku wizualnym reszty serwisu po przebudowie: hero z poświatami
@@ -55,8 +60,7 @@ export default async function ContactPage({
               </p>
 
               <ObfuscatedEmail
-                user="contact"
-                domain="cetuspro.com"
+                token={CONTACT_EMAIL_TOKEN}
                 className="mt-10 inline-flex items-center gap-2 rounded-2xl bg-blue-600 px-8 py-4 text-base font-semibold text-white shadow-md shadow-blue-600/25 transition-[translate,background-color] duration-200 ease-out hover:-translate-y-0.5 hover:bg-blue-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
               >
                 <span>{t('writeToUs')}</span>
@@ -85,9 +89,8 @@ export default async function ContactPage({
                   {t('email')}
                 </h3>
                 <ObfuscatedEmail
-                  user="contact"
-                  domain="cetuspro.com"
-                  className="mt-2 block font-semibold text-blue-600 transition-opacity hover:opacity-70"
+                  token={CONTACT_EMAIL_TOKEN}
+                  className="mt-2 block text-left font-semibold text-blue-600 transition-opacity hover:opacity-70"
                 />
                 <p className="mt-3 text-sm leading-relaxed text-slate-500">
                   {t('emailResponse')}
@@ -151,8 +154,7 @@ export default async function ContactPage({
                 {t('freeConsultationDescription')}
               </p>
               <ObfuscatedEmail
-                user="contact"
-                domain="cetuspro.com"
+                token={CONTACT_EMAIL_TOKEN}
                 subject="Consultation"
                 className="mt-8 inline-flex items-center gap-2 rounded-2xl bg-blue-600 px-8 py-4 text-base font-semibold text-white shadow-md shadow-blue-600/25 transition-[translate,background-color] duration-200 ease-out hover:-translate-y-0.5 hover:bg-blue-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
               >

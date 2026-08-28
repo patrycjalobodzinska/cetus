@@ -477,9 +477,9 @@ function CtaBlockView({
                 </span>
               </StarGradientButton>
             </Link>
-            {section.email && (
+            {section.emailToken && (
               <ObfuscatedEmail
-                email={section.email}
+                token={section.emailToken}
                 className="text-blue-600 hover:underline"
               />
             )}

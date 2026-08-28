@@ -1,115 +1,89 @@
 "use client";
 
-import { useEffect, useState, type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
+import { useTranslations } from "next-intl";
+import { uncloakEmail } from "@/lib/emailCloak";
 
 interface ObfuscatedEmailProps {
-  /** Część adresu przed „@" (np. „contact"). Pomiń, gdy podajesz `email`. */
-  user?: string;
-  /** Domena (np. „cetuspro.com"). Pomiń, gdy podajesz `email`. */
-  domain?: string;
   /**
-   * Cały adres, gdy przychodzi z CMS albo z propsów („contact@cetuspro.com").
-   * Rozbijamy go wewnątrz komponentu - pomocnik wołany w komponencie
-   * serwerowym byłby wywołaniem funkcji z modułu „use client", czego React
-   * nie pozwala zrobić przez granicę serwer/klient.
+   * Adres zaciemniony przez `cloakEmail()` na serwerze. To jedyna forma,
+   * w jakiej adres ma prawo przejść przez granicę serwer/klient - patrz
+   * komentarz w `lib/emailCloak.ts`.
    */
-  email?: string;
+  token: string;
   /** Temat wiadomości dopisywany do mailto (opcjonalny). */
   subject?: string;
   className?: string;
-  /** Treść linku, gdy ma być inna niż sam adres (np. „Umów konsultację"). */
+  /**
+   * Treść przycisku, gdy ma być inna niż domyślne „Pokaż adres e-mail"
+   * (np. „Napisz do nas" przy przycisku akcji). W tym wariancie adres nigdy
+   * nie pojawia się na ekranie - kliknięcie od razu otwiera program pocztowy.
+   */
   children?: ReactNode;
 }
 
 /**
- * Adres e-mail odporny na najprostsze harvestery spamowe.
+ * Adres e-mail, którego nie da się zebrać automatem.
  *
- * Jak to działa: w HTML z serwera adres NIGDY nie występuje jako jeden ciąg
- * znaków ani w atrybucie `href` - lokalna część i domena idą w osobnych
- * elementach - między nimi stoi tag, więc regexp typu
- * `[\w.]+@[\w.]+\.\w+` puszczony po źródle strony nic nie znajdzie
- * (przed „@" jest `</span>`, a po nim `<span>`).
+ * Zasada: dopóki użytkownik nie kliknie, adresu NIE MA nigdzie - ani w HTML
+ * z serwera, ani w payloadzie RSC, ani w DOM, ani w żadnym `href`. Jest tylko
+ * token (odwrócony ROT13, bez „@") i przycisk. Adres powstaje w pamięci
+ * przeglądarki dopiero w obsłudze kliknięcia.
  *
- * Dodatkowo przed „@" siedzi przynęta: kawałek tekstu ukryty `display: none`.
- * Harvester, który najpierw zdejmuje tagi, a potem szuka adresu regexpem
- * (tak działa większość), dostaje `contact.usun-to@...` - adres nieistniejący.
- * Człowiek go nie widzi (CSS go chowa), czytnik ekranu nie czyta (poza drzewem
- * dostępności, dodatkowo `aria-hidden`), a kopiowanie i tak dotyczy już
- * podmienionej, czystej wersji.
+ * Co to zatrzymuje:
+ * - skanery zasysające HTML i szukające regexpem `[\w.]+@[\w.]+\.\w+`,
+ * - boty czytające `href="mailto:..."`,
+ * - crawlery uruchamiające przeglądarkę (headless Chrome), które ładują stronę
+ *   i czytają DOM, ale nie klikają w przyciski - a tak działa ich większość.
  *
- * Dopiero po hydracji (czyli w przeglądarce, nie w crawlerze) JavaScript
- * składa adres i podmienia treść na normalny link `mailto:`.
+ * Czego nie zatrzyma: bota napisanego specjalnie pod tę stronę, który kliknie
+ * przycisk albo odwróci `uncloakEmail` z bundla. Ochrona kryptograficzna
+ * wymagałaby zrezygnowania z adresu na stronie w ogóle (formularz kontaktowy).
  *
- * Dlaczego tak, a nie obrazek albo formularz:
- * - bez JS i dla czytnika ekranu adres nadal czyta się normalnie,
- * - kliknięcie działa jak zwykły mailto, bez pośredników,
- * - nie trzeba utrzymywać backendu formularza ani captchy.
- *
- * Ograniczenie, o którym warto wiedzieć: bot uruchamiający przeglądarkę
- * (headless Chrome) i tak zobaczy adres. To zapora na masowe skanery HTML,
- * nie ochrona kryptograficzna - te zbierają grubą większość spamu.
+ * Koszt dla użytkownika: jedno kliknięcie. Bez JavaScriptu adres nie jest
+ * dostępny - dlatego przyciski „napisz do nas" prowadzące do formularza czy
+ * strony kontaktu zostają zwykłymi linkami, a nie tym komponentem.
  */
-/**
- * Przynęta wstrzykiwana w adres w HTML z serwera. Ukryta przez `display: none`
- * (Tailwind `hidden`), więc widzi ją tylko ten, kto czyta surowe źródło albo
- * zdejmuje tagi - czyli dokładnie spamerski skaner.
- */
-const DECOY = ".usun-to-jesli-nie-jestes-botem.";
-
 export default function ObfuscatedEmail({
-  user,
-  domain,
-  email,
+  token,
   subject,
   className,
   children,
 }: ObfuscatedEmailProps) {
-  const parts = splitEmail(email, user, domain);
+  const t = useTranslations("common");
   const [address, setAddress] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (!parts.user || !parts.domain) return;
-    setAddress(`${parts.user}@${parts.domain}`);
-  }, [parts.user, parts.domain]);
+  const hrefFor = (value: string) =>
+    subject ? `mailto:${value}?subject=${encodeURIComponent(subject)}` : `mailto:${value}`;
 
-  if (!address) {
-    // Wariant serwerowy / bez JS: czytelny dla człowieka i dla czytnika
-    // ekranu, ale nie do wyłuskania regexpem - „@" sąsiaduje z tagami,
-    // a tuż przed nim stoi ukryta przynęta psująca adres po zdjęciu tagów.
+  // Adres już odsłonięty: normalny link, zachowuje się jak każdy inny mailto.
+  if (address) {
     return (
-      <span className={className}>
-        {children ?? (
-          <>
-            <span>{parts.user}</span>
-            <span aria-hidden="true" className="hidden">
-              {DECOY}
-            </span>
-            @<span>{parts.domain}</span>
-          </>
-        )}
-      </span>
+      <a href={hrefFor(address)} className={className}>
+        {children ?? address}
+      </a>
     );
   }
 
-  const href = subject
-    ? `mailto:${address}?subject=${encodeURIComponent(subject)}`
-    : `mailto:${address}`;
-
   return (
-    <a href={href} className={className}>
-      {children ?? address}
-    </a>
+    <button
+      type="button"
+      // `cursor-pointer` dopisujemy tu, żeby przycisk zachowywał się na oko
+      // jak link, którym był wcześniej - reset Tailwinda tego nie robi.
+      className={className ? `${className} cursor-pointer` : "cursor-pointer"}
+      onClick={() => {
+        const value = uncloakEmail(token);
+        // Wariant z własną treścią (przycisk akcji) nie ma gdzie pokazać
+        // adresu, więc od razu otwieramy program pocztowy. Wariant tekstowy
+        // odsłania adres na miejscu - użytkownik może go skopiować.
+        if (children) {
+          window.location.href = hrefFor(value);
+          return;
+        }
+        setAddress(value);
+      }}
+    >
+      {children ?? t("showEmail")}
+    </button>
   );
-}
-
-/**
- * Ustala lokalną część i domenę na podstawie tego, co przyszło w propsach:
- * albo gotowe `user`/`domain`, albo cały adres do rozbicia.
- */
-function splitEmail(email?: string, user?: string, domain?: string) {
-  if (user && domain) return { user, domain };
-  const value = email ?? "";
-  const at = value.lastIndexOf("@");
-  if (at < 0) return { user: value, domain: "" };
-  return { user: value.slice(0, at), domain: value.slice(at + 1) };
 }

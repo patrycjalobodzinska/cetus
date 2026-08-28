@@ -40,7 +40,8 @@
     "getStarted": "Porozmawiajmy o Twoim projekcie",
     "letsTalk": "Umów konsultację",
     "loading": "Ładowanie...",
-    "noData": "Brak danych"
+    "noData": "Brak danych",
+    "showEmail": "Pokaż adres e-mail"
   },
   "hero": {
     "title": "Tworzymy",

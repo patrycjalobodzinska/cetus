@@ -7,6 +7,7 @@ import { getLocale, getTranslations } from 'next-intl/server';
 import StarGradientButton from './ui/gradientBackground';
 import Image from 'next/image';
 import ObfuscatedEmail from './ObfuscatedEmail';
+import { cloakEmail } from '@/lib/emailCloak';
 
 interface FooterData {
   contactTitle?: string;
@@ -187,7 +188,7 @@ export default async function Footer() {
                 <div className="flex items-center gap-3">
                   <Mail className="w-5 h-5 text-blue-400 shrink-0" />
                   <ObfuscatedEmail
-                    email={data.email}
+                    token={cloakEmail(data.email)}
                     className="text-slate-300 hover:text-white transition-colors"
                   />
                 </div>

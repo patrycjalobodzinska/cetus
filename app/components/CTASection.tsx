@@ -12,7 +12,7 @@ export default function CTASection({
   buttonText,
   buttonLink = '/kontakt',
   emailLabel,
-  email,
+  emailToken,
   showDivider = true,
   className = '',
 }: CTASectionProps) {
@@ -45,11 +45,11 @@ export default function CTASection({
             </Link>
           </div>
 
-          {emailLabel && email && (
+          {emailLabel && emailToken && (
             <div className="flex flex-col items-center gap-3">
               <p className="text-slate-500 text-sm">{emailLabel}</p>
               <ObfuscatedEmail
-                email={email}
+                token={emailToken}
                 className="text-lg font-semibold text-blue-600 hover:opacity-70 transition-opacity"
               />
             </div>
