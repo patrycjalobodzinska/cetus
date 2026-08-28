@@ -93,15 +93,6 @@ const PARTNERS = [
     source: "plik od klienta (wklejony w rozmowie 2026-08-26)",
     order: 17,
   },
-  {
-    id: "partner-aquares",
-    name: "AQUARes",
-    file: "aquares.png",
-    url: "http://aquares.pl/",
-    source:
-      "http://aquares.pl/wp-content/uploads/2021/11/cropped-cropped-aquares3.png (obcięta flaga UE z lewej)",
-    order: 15,
-  },
 ];
 
 const CACHE_PATH = resolve(__dirname, ".partners-assets.json");

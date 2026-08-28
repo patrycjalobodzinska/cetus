@@ -29,6 +29,14 @@ interface ObfuscatedEmailProps {
  * elementach - między nimi stoi tag, więc regexp typu
  * `[\w.]+@[\w.]+\.\w+` puszczony po źródle strony nic nie znajdzie
  * (przed „@" jest `</span>`, a po nim `<span>`).
+ *
+ * Dodatkowo przed „@" siedzi przynęta: kawałek tekstu ukryty `display: none`.
+ * Harvester, który najpierw zdejmuje tagi, a potem szuka adresu regexpem
+ * (tak działa większość), dostaje `contact.usun-to@...` - adres nieistniejący.
+ * Człowiek go nie widzi (CSS go chowa), czytnik ekranu nie czyta (poza drzewem
+ * dostępności, dodatkowo `aria-hidden`), a kopiowanie i tak dotyczy już
+ * podmienionej, czystej wersji.
+ *
  * Dopiero po hydracji (czyli w przeglądarce, nie w crawlerze) JavaScript
  * składa adres i podmienia treść na normalny link `mailto:`.
  *
@@ -41,6 +49,13 @@ interface ObfuscatedEmailProps {
  * (headless Chrome) i tak zobaczy adres. To zapora na masowe skanery HTML,
  * nie ochrona kryptograficzna - te zbierają grubą większość spamu.
  */
+/**
+ * Przynęta wstrzykiwana w adres w HTML z serwera. Ukryta przez `display: none`
+ * (Tailwind `hidden`), więc widzi ją tylko ten, kto czyta surowe źródło albo
+ * zdejmuje tagi - czyli dokładnie spamerski skaner.
+ */
+const DECOY = ".usun-to-jesli-nie-jestes-botem.";
+
 export default function ObfuscatedEmail({
   user,
   domain,
@@ -59,12 +74,17 @@ export default function ObfuscatedEmail({
 
   if (!address) {
     // Wariant serwerowy / bez JS: czytelny dla człowieka i dla czytnika
-    // ekranu, ale nie do wyłuskania regexpem - „@" sąsiaduje z tagami.
+    // ekranu, ale nie do wyłuskania regexpem - „@" sąsiaduje z tagami,
+    // a tuż przed nim stoi ukryta przynęta psująca adres po zdjęciu tagów.
     return (
       <span className={className}>
         {children ?? (
           <>
-            <span>{parts.user}</span>@<span>{parts.domain}</span>
+            <span>{parts.user}</span>
+            <span aria-hidden="true" className="hidden">
+              {DECOY}
+            </span>
+            @<span>{parts.domain}</span>
           </>
         )}
       </span>

@@ -11,6 +11,7 @@ import { ChevronDown } from "lucide-react";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { EuFlag } from "./FundingSigns";
 import { cn } from "@/lib/utils";
+import { SHOW_CASE_STUDIES } from "@/lib/featureFlags";
 
 const OFFER_LINKS = [
   { titleKey: "webApps", slug: "aplikacje-webowe" },
@@ -441,22 +442,29 @@ export default function NavbarCurosora() {
                 /
               </span>
 
-              <NavigationLink
-                href={`/${locale}/case-studies`}
-                className={navLinkClass(
-                  pathname?.startsWith(`/${locale}/case-studies`) ?? false,
-                )}
-                aria-current={
-                  pathname?.startsWith(`/${locale}/case-studies`)
-                    ? "page"
-                    : undefined
-                }
-              >
-                {t("caseStudies")}
-              </NavigationLink>
-              <span className="text-slate-300 text-xs" aria-hidden="true">
-                /
-              </span>
+              {/* Realizacje - ukryte na produkcji (SHOW_CASE_STUDIES).
+                  Razem z linkiem znika ukośnik, żeby w pasku nie został
+                  wiszący separator. */}
+              {SHOW_CASE_STUDIES && (
+                <>
+                  <NavigationLink
+                    href={`/${locale}/case-studies`}
+                    className={navLinkClass(
+                      pathname?.startsWith(`/${locale}/case-studies`) ?? false,
+                    )}
+                    aria-current={
+                      pathname?.startsWith(`/${locale}/case-studies`)
+                        ? "page"
+                        : undefined
+                    }
+                  >
+                    {t("caseStudies")}
+                  </NavigationLink>
+                  <span className="text-slate-300 text-xs" aria-hidden="true">
+                    /
+                  </span>
+                </>
+              )}
 
               <NavigationLink
                 href={`/${locale}/blog`}
@@ -578,23 +586,25 @@ export default function NavbarCurosora() {
                 onNavigate={() => setIsMobileMenuOpen(false)}
               />
 
-              <NavigationLink
-                href={`/${locale}/case-studies`}
-                className={cn(
-                  "text-lg font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 rounded-sm",
-                  pathname?.startsWith(`/${locale}/case-studies`)
-                    ? "text-blue-600 font-semibold"
-                    : "text-slate-900 hover:text-blue-600",
-                )}
-                aria-current={
-                  pathname?.startsWith(`/${locale}/case-studies`)
-                    ? "page"
-                    : undefined
-                }
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {t("caseStudies")}
-              </NavigationLink>
+              {SHOW_CASE_STUDIES && (
+                <NavigationLink
+                  href={`/${locale}/case-studies`}
+                  className={cn(
+                    "text-lg font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 rounded-sm",
+                    pathname?.startsWith(`/${locale}/case-studies`)
+                      ? "text-blue-600 font-semibold"
+                      : "text-slate-900 hover:text-blue-600",
+                  )}
+                  aria-current={
+                    pathname?.startsWith(`/${locale}/case-studies`)
+                      ? "page"
+                      : undefined
+                  }
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {t("caseStudies")}
+                </NavigationLink>
+              )}
 
               <NavigationLink
                 href={`/${locale}/blog`}

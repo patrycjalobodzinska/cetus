@@ -6,6 +6,7 @@ import CaseStudiesSection from "./CaseStudiesSection";
 import HomepageModulesSection from "./HomepageModulesSection";
 import PartnersSection from "./PartnersSection";
 import InitiativesSection from "./InitiativesSection";
+import { SHOW_CASE_STUDIES } from "@/lib/featureFlags";
 // Sekcja „Dumny sponsor" jest chwilowo ukryta (decyzja klienta 2026-08-28) -
 // komponent i dane w CMS zostają, żeby dało się ją włączyć jedną linijką.
 // import SponsorsSection from "./SponsorsSection";
@@ -27,8 +28,8 @@ export default function HomeSections() {
         <ReelsMarqueeSection />
         {/* Proces - przewidywalność */}
         <ProcessSection />
-        {/* Realizacje */}
-        <CaseStudiesSection />
+        {/* Realizacje - na produkcji ukryte (SHOW_CASE_STUDIES) */}
+        {SHOW_CASE_STUDIES && <CaseStudiesSection />}
         {/* Dlaczego klienci nam ufają */}
         <HomepageModulesSection />
         {/* Zaufali nam - logotypy klientów */}
