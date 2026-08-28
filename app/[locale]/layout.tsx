@@ -5,6 +5,9 @@ import Footer from "../components/Footer";
 import NavbarCurosora from "../components/NavbarCurosora";
 import NavigationProvider from "../components/NavigationProvider";
 import HiddenCaseStudiesAccess from "../components/HiddenCaseStudiesAccess";
+import { ConsentProvider } from "@/app/components/consent/ConsentProvider";
+import CookieBanner from "@/app/components/consent/CookieBanner";
+import ClarityScript from "@/app/components/consent/ClarityScript";
 import { NextIntlClientProvider } from "next-intl";
 import {
   getMessages,
@@ -210,6 +213,9 @@ export default async function RootLayout({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <NextIntlClientProvider locale={locale} messages={messages}>
+        {/* Zgody muszą obejmować cały dokument: Clarity i osadzone ramki
+            pytają o nie z różnych miejsc drzewa. */}
+        <ConsentProvider>
         <NavigationProvider>
           <SmoothScroll>
             <a
@@ -227,6 +233,9 @@ export default async function RootLayout({
             <HiddenCaseStudiesAccess />
           </SmoothScroll>
         </NavigationProvider>
+        <CookieBanner />
+        <ClarityScript />
+        </ConsentProvider>
       </NextIntlClientProvider>
     </>
   );

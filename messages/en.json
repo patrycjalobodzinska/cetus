@@ -19,7 +19,8 @@
       "link": "Quality policy"
     },
     "taxIdLabel": "EU VAT",
-    "taxIdValue": "PL8133850782"
+    "taxIdValue": "PL8133850782",
+    "privacyPolicy": "Privacy policy"
   },
   "nav": {
     "home": "Home",
@@ -485,6 +486,11 @@
       "title": "CETUSPRO - technology that drives your business",
       "description": "We design, build and grow dedicated IT systems. See our offer for business or join the CETUSPRO team.",
       "keywords": "CETUSPRO, IT solutions, custom software, IT careers"
+    },
+    "privacyPolicy": {
+      "title": "Privacy policy",
+      "description": "How CETUSPRO processes personal data of site visitors, which cookies we use and how to manage consent.",
+      "keywords": "privacy policy, GDPR, cookies, personal data, CETUSPRO"
     }
   },
   "preFooter": {
@@ -494,5 +500,168 @@
     "personRole": "CEO, CETUSPRO",
     "description": "Book a free consultation - we will talk about your project, the scope of work and the engagement model.",
     "linkText": "Free consultation"
+  },
+  "cookies": {
+    "title": "Your privacy, your choice",
+    "lead": "This site uses cookies. The necessary ones are always on, because the site will not work without them. Statistics (Microsoft Clarity) and embedded content from Facebook, YouTube or Vimeo run only with your consent. Details are in our",
+    "policyLinkInline": "privacy policy",
+    "policyLink": "Read the privacy policy",
+    "acceptAll": "Accept all",
+    "rejectAll": "Necessary only",
+    "manage": "Customise",
+    "bannerLabel": "Cookie consent",
+    "settingsTitle": "Cookie settings",
+    "settingsLead": "Decide what you agree to. You can change your choice at any time through the link in the footer.",
+    "settingsLink": "Cookie settings",
+    "necessaryTitle": "Necessary",
+    "alwaysOn": "Always active",
+    "necessaryDescription": "They remember your cookie decision and keep the site secure and basically functional. They are not used for analytics or marketing and cannot be turned off.",
+    "analyticsTitle": "Statistics (Microsoft Clarity)",
+    "analyticsDescription": "They show us how you use the site: which sections you read, where you click, where something breaks. That is how we improve the service. Without this consent the Clarity script is never loaded.",
+    "embedsTitle": "Embedded content",
+    "embedsDescription": "Facebook, YouTube and Vimeo players on the home page and in articles. Once enabled, those services may set their own cookies and can see that you visited this page. Without consent we show a tile with a button instead.",
+    "saveChoice": "Save choice",
+    "close": "Close",
+    "embedBlockedTitle": "{provider} content is blocked",
+    "embedBlockedDescription": "Playing it connects you to {provider} servers, which may set their own cookies. You can withdraw consent in the cookie settings in the footer.",
+    "embedAllow": "Enable embedded content"
+  },
+  "privacyPolicy": {
+    "title": "Privacy",
+    "titleHighlight": "policy",
+    "subtitle": "How CETUSPRO Sp. z o.o. processes personal data of cetuspro.com visitors and what rights you have.",
+    "updatedLabel": "Last updated",
+    "updatedValue": "28 August 2026",
+    "tocTitle": "Contents",
+    "sections": [
+      {
+        "id": "administrator",
+        "title": "Data controller",
+        "paragraphs": [
+          "The controller of your personal data within the meaning of Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 (GDPR) is CETUSPRO Sp. z o.o., seated in Rzeszow (35-083), ul. Adama Matuszczaka 14, Poland, KRS 0000877163, NIP 8133850782, REGON 387860607.",
+          "For any matter concerning personal data, including exercising your rights, write to our email address (the button below, or the Contact page) or to our registered address. We have not appointed a data protection officer, so correspondence is handled directly by the controller.",
+          "A user is any person visiting cetuspro.com on any device with a web browser."
+        ]
+      },
+      {
+        "id": "zakres",
+        "title": "What data we collect",
+        "paragraphs": [
+          "The site has no contact form and no user accounts, so there is no data you have to type in. Data reaches us in three situations:"
+        ],
+        "items": [
+          "Email contact: when you write to the address published on the site we receive your email address, the content of your message and anything you include in it (for example name, job title, phone number, company).",
+          "Technical data in server logs: IP address, date and time of the request, browser and system type, referring page. The server hosting the site records this automatically.",
+          "Cookie and analytics data: only to the extent you consent to - see the cookies section."
+        ]
+      },
+      {
+        "id": "cele",
+        "title": "Purposes and legal bases",
+        "items": [
+          "Replying to your message and handling correspondence - our legitimate interest in responding to enquiries (Art. 6(1)(f) GDPR) and, where the exchange concerns a contract, steps prior to entering into it (Art. 6(1)(b) GDPR).",
+          "Keeping the site secure and working correctly, including server logs - our legitimate interest (Art. 6(1)(f) GDPR).",
+          "Usage statistics in Microsoft Clarity - solely on the basis of your consent (Art. 6(1)(a) GDPR), which you may withhold or withdraw at any time.",
+          "Displaying embedded content from Facebook, YouTube and Vimeo - solely on the basis of your consent (Art. 6(1)(a) GDPR).",
+          "Archiving correspondence and pursuing or defending against claims - our legitimate interest (Art. 6(1)(f) GDPR)."
+        ]
+      },
+      {
+        "id": "cookies",
+        "title": "Cookies and similar technologies",
+        "paragraphs": [
+          "Cookies are small text files stored on your device. They can be read by our site (first-party cookies) or by an external service embedded on the page (third-party cookies). Some disappear when you close the browser (session cookies), others stay longer (persistent cookies).",
+          "We group them into three categories:"
+        ],
+        "items": [
+          "Necessary - your cookie decision stored in the browser's local storage (key cetuspro.cookieConsent) and technical data required to display the site securely. Always active, because without them we cannot remember what you agreed to. No consent required.",
+          "Statistics - Microsoft Clarity. Consent required. Without it the Clarity script is never loaded into the page.",
+          "Embedded content - Facebook, YouTube (youtube-nocookie mode) and Vimeo players. Consent required. Without it we show a tile with a button instead of the player and no connection to those services is made."
+        ],
+        "afterParagraphs": [
+          "We ask for consent on your first visit. Refusing is as easy as accepting, and no optional category is enabled by default. You can change your decision at any time through the \"Cookie settings\" link in the footer. Withdrawing consent does not affect the lawfulness of processing carried out beforehand.",
+          "You can also delete or block cookies in your browser settings. Blocking all cookies may make this and many other sites harder to use."
+        ]
+      },
+      {
+        "id": "clarity",
+        "title": "Microsoft Clarity",
+        "paragraphs": [
+          "With your consent we use Microsoft Clarity, an analytics tool provided by Microsoft. Clarity collects data about how the site is used: pages visited, clicks, scrolling, approximate location derived from the IP address, device and browser type. It also builds click maps and session recordings, meaning a replay of cursor movement and scrolling on our site.",
+          "Recordings are used only to improve the site. We do not use them for profiling or for automated decisions about you. Clarity does not collect content you do not type on our site, and our site has no form fields.",
+          "Microsoft acts here as a processor on our behalf and may transfer data outside the European Economic Area on the basis of standard contractual clauses and the adequacy decision for the Data Privacy Framework. Microsoft's own rules are set out in the Microsoft Privacy Statement."
+        ]
+      },
+      {
+        "id": "embeds",
+        "title": "Embedded third-party content",
+        "paragraphs": [
+          "On the home page and in articles we embed videos from Facebook, YouTube and Vimeo. Once you enable such content, your browser connects directly to those companies' servers, passing them your IP address and the page you are viewing, and they may set their own cookies. If you are logged in to that service, it can link the visit to your account.",
+          "Processing on their side is the responsibility of their operators: Meta Platforms Ireland Limited (Facebook), Google Ireland Limited (YouTube) and Vimeo, under their own privacy policies. That is why we never load those frames without your consent."
+        ]
+      },
+      {
+        "id": "odbiorcy",
+        "title": "Who we share data with",
+        "paragraphs": [
+          "We share data only where it is needed for the purposes described above, and only to the extent necessary. The recipients are:"
+        ],
+        "items": [
+          "Google Ireland Limited - company email in Google Workspace, where we receive and store correspondence.",
+          "Microsoft Ireland Operations Limited - Microsoft Clarity statistics, subject to your consent.",
+          "Sanity - the content management system holding the content published on the site.",
+          "Infrastructure and IT providers maintaining the server that runs the site and our internal systems.",
+          "Accounting and legal advisers, and public authorities where the law requires it."
+        ],
+        "afterParagraphs": [
+          "Every processor acting on our behalf does so under a contract and strictly on our instructions. Where data goes outside the European Economic Area, it is transferred under standard contractual clauses approved by the European Commission or an adequacy decision."
+        ]
+      },
+      {
+        "id": "okres",
+        "title": "How long we keep data",
+        "items": [
+          "Email correspondence: for as long as needed to handle the matter, then in the mailbox archive until claims become time-barred, normally no longer than 6 years.",
+          "Server logs: up to 12 months, unless longer retention is needed to investigate a security incident.",
+          "Data in Microsoft Clarity: per the tool's retention period, no longer than 13 months from collection.",
+          "Your cookie decision: 12 months, after which we ask again. You can remove it earlier by clearing site data in your browser.",
+          "Data processed on the basis of consent: until you withdraw it."
+        ]
+      },
+      {
+        "id": "prawa",
+        "title": "Your rights",
+        "paragraphs": [
+          "In connection with the processing you have the right to:"
+        ],
+        "items": [
+          "access your data and obtain a copy of it,",
+          "rectify data that is inaccurate or incomplete,",
+          "erasure of your data,",
+          "restriction of processing,",
+          "object to processing based on our legitimate interest,",
+          "portability of data processed on the basis of consent or a contract,",
+          "withdraw consent at any time, without affecting the lawfulness of processing before withdrawal,",
+          "lodge a complaint with the President of the Personal Data Protection Office, ul. Stawki 2, 00-193 Warsaw, Poland."
+        ],
+        "afterParagraphs": [
+          "Send your request to our email address - the button below opens a message in your mail client. We respond without undue delay and no later than within one month. Providing data is voluntary, but without an email address we cannot reply to your message. We do not make decisions about you based solely on automated processing, including profiling."
+        ]
+      },
+      {
+        "id": "bezpieczenstwo",
+        "title": "Data security",
+        "paragraphs": [
+          "We apply technical and organisational measures appropriate to the risk: HTTPS transmission, restricted and named access to mailboxes and systems, multi-factor authentication in administrative tools and regular software updates. The email address is published in a form that makes automated harvesting difficult."
+        ]
+      },
+      {
+        "id": "zmiany",
+        "title": "Changes to this policy",
+        "paragraphs": [
+          "We update the policy when the law or the way the site works changes, for example when we add a new tool. The date of the last change is shown at the top of this page. If the scope of cookies requiring consent changes, we will ask you again."
+        ]
+      }
+    ]
   }
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { Fragment } from "react";
+import EmbedConsentGate from "@/app/components/consent/EmbedConsentGate";
 import Link from "next/link";
 import Image from "next/image";
 import { PortableText, type PortableTextComponents } from "@portabletext/react";
@@ -626,14 +627,16 @@ function BpVideo({ url, caption, title }: VideoSection) {
       <figure className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative aspect-video rounded-xl overflow-hidden bg-black">
           {embedSrc ? (
-            <iframe
-              src={embedSrc}
-              title={title || caption || "video"}
-              className="absolute inset-0 w-full h-full"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            />
+            <EmbedConsentGate provider={youTubeId ? "YouTube" : "Vimeo"}>
+              <iframe
+                src={embedSrc}
+                title={title || caption || "video"}
+                className="absolute inset-0 w-full h-full"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </EmbedConsentGate>
           ) : (
             <video src={url} controls className="absolute inset-0 w-full h-full" />
           )}

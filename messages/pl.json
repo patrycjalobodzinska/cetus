@@ -19,7 +19,8 @@
       "link": "Polityka jakości"
     },
     "taxIdLabel": "NIP",
-    "taxIdValue": "8133850782"
+    "taxIdValue": "8133850782",
+    "privacyPolicy": "Polityka prywatności"
   },
   "nav": {
     "home": "Strona główna",
@@ -46,7 +47,7 @@
   "hero": {
     "title": "Tworzymy",
     "titleHighlight": "nowoczesne oprogramowanie",
-    "titleAfterHighlight": "",
+    "titleAfterHighlight": ",",
     "titleThirdLine": "które pomaga firmom rosnąć",
     "subtitle": "Projektujemy, budujemy i utrzymujemy systemy krytyczne dla dużych organizacji.",
     "subtitleHighlight": "",
@@ -485,6 +486,11 @@
       "title": "CETUSPRO - technologia, która napędza Twój biznes",
       "description": "Projektujemy, budujemy i rozwijamy dedykowane systemy IT. Sprawdź ofertę dla biznesu lub dołącz do zespołu CETUSPRO.",
       "keywords": "CETUSPRO, rozwiązania IT, oprogramowanie dedykowane, kariera IT"
+    },
+    "privacyPolicy": {
+      "title": "Polityka prywatności",
+      "description": "Jak CETUSPRO przetwarza dane osobowe użytkowników strony, jakich cookies używamy i jak zarządzać zgodami.",
+      "keywords": "polityka prywatności, RODO, cookies, dane osobowe, CETUSPRO"
     }
   },
   "preFooter": {
@@ -494,5 +500,168 @@
     "personRole": "CEO, CETUSPRO",
     "description": "Umów bezpłatną konsultację - porozmawiamy o Twoim projekcie, zakresie prac i modelu współpracy.",
     "linkText": "Bezpłatna konsultacja"
+  },
+  "cookies": {
+    "title": "Twoja prywatność, Twoja decyzja",
+    "lead": "Strona używa plików cookies. Niezbędne działają zawsze, bo bez nich serwis nie zadziała. Statystyki (Microsoft Clarity) i osadzone treści z Facebooka, YouTube'a czy Vimeo uruchamiamy tylko za Twoją zgodą. Szczegóły opisaliśmy w",
+    "policyLinkInline": "polityce prywatności",
+    "policyLink": "Przeczytaj politykę prywatności",
+    "acceptAll": "Akceptuję wszystkie",
+    "rejectAll": "Tylko niezbędne",
+    "manage": "Dostosuj",
+    "bannerLabel": "Zgoda na pliki cookies",
+    "settingsTitle": "Ustawienia plików cookies",
+    "settingsLead": "Zdecyduj, na co się zgadzasz. Wybór możesz zmienić w każdej chwili, wracając tu przez link w stopce.",
+    "settingsLink": "Ustawienia cookies",
+    "necessaryTitle": "Niezbędne",
+    "alwaysOn": "Zawsze aktywne",
+    "necessaryDescription": "Pozwalają zapamiętać Twoją decyzję o cookies oraz utrzymać bezpieczeństwo i podstawowe działanie serwisu. Nie służą do analizy ani marketingu i nie da się ich wyłączyć.",
+    "analyticsTitle": "Statystyki (Microsoft Clarity)",
+    "analyticsDescription": "Pokazują nam, jak korzystasz ze strony: które sekcje czytasz, gdzie klikasz, w którym miejscu coś nie działa. Dzięki temu poprawiamy serwis. Bez tej zgody skrypt Clarity nie zostaje w ogóle wczytany.",
+    "embedsTitle": "Osadzone treści",
+    "embedsDescription": "Odtwarzacze Facebooka, YouTube'a i Vimeo na stronie głównej i w artykułach. Po włączeniu te serwisy mogą zapisywać własne pliki cookies i widzą, że odwiedziłeś tę stronę. Bez zgody pokazujemy w ich miejsce kafel z przyciskiem.",
+    "saveChoice": "Zapisz wybór",
+    "close": "Zamknij",
+    "embedBlockedTitle": "Treść z {provider} jest zablokowana",
+    "embedBlockedDescription": "Odtworzenie połączy Cię z serwerami {provider}, które mogą zapisać własne pliki cookies. Zgodę cofniesz w ustawieniach cookies w stopce.",
+    "embedAllow": "Włącz osadzone treści"
+  },
+  "privacyPolicy": {
+    "title": "Polityka",
+    "titleHighlight": "prywatności",
+    "subtitle": "Jak CETUSPRO Sp. z o.o. przetwarza dane osobowe użytkowników strony cetuspro.com i jakie masz z tym związane prawa.",
+    "updatedLabel": "Ostatnia aktualizacja",
+    "updatedValue": "28 sierpnia 2026",
+    "tocTitle": "Spis treści",
+    "sections": [
+      {
+        "id": "administrator",
+        "title": "Administrator danych",
+        "paragraphs": [
+          "Administratorem Twoich danych osobowych w rozumieniu Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 z 27 kwietnia 2016 r. (dalej: RODO) jest CETUSPRO Sp. z o.o. z siedzibą w Rzeszowie (35-083), ul. Adama Matuszczaka 14, KRS 0000877163, NIP 8133850782, REGON 387860607.",
+          "We wszystkich sprawach dotyczących danych osobowych, w tym w celu realizacji swoich praw, możesz napisać na nasz adres e-mail (przycisk poniżej albo strona Kontakt) lub listownie na adres siedziby. Nie powołaliśmy inspektora ochrony danych, więc korespondencję odbiera bezpośrednio administrator.",
+          "Użytkownik to każda osoba korzystająca ze strony cetuspro.com na dowolnym urządzeniu z przeglądarką internetową."
+        ]
+      },
+      {
+        "id": "zakres",
+        "title": "Jakie dane zbieramy",
+        "paragraphs": [
+          "Strona nie ma formularza kontaktowego ani konta użytkownika, więc nie zbieramy danych, które trzeba by wpisać w serwisie. Dane trafiają do nas w trzech sytuacjach:"
+        ],
+        "items": [
+          "Kontakt e-mailowy: gdy piszesz na adres podany na stronie, dostajemy Twój adres e-mail, treść wiadomości i wszystko, co sam w niej zawrzesz (na przykład imię, nazwisko, stanowisko, numer telefonu, nazwę firmy).",
+          "Dane techniczne z logów serwera: adres IP, data i godzina żądania, typ przeglądarki i systemu, adres strony odsyłającej. Zapisuje je automatycznie serwer, na którym stoi strona.",
+          "Dane z plików cookies i statystyk: wyłącznie w zakresie, na jaki wyrazisz zgodę - szczegóły w sekcji o cookies."
+        ]
+      },
+      {
+        "id": "cele",
+        "title": "Cele i podstawy prawne przetwarzania",
+        "items": [
+          "Odpowiedź na Twoją wiadomość i prowadzenie korespondencji - podstawą jest nasz prawnie uzasadniony interes polegający na obsłudze zapytań (art. 6 ust. 1 lit. f RODO), a jeśli rozmowa dotyczy zawarcia umowy, także niezbędność do podjęcia działań przed jej zawarciem (art. 6 ust. 1 lit. b RODO).",
+          "Zapewnienie bezpieczeństwa i poprawnego działania strony, w tym prowadzenie logów serwera - nasz prawnie uzasadniony interes (art. 6 ust. 1 lit. f RODO).",
+          "Statystyki korzystania ze strony w Microsoft Clarity - wyłącznie na podstawie Twojej zgody (art. 6 ust. 1 lit. a RODO), której możesz w każdej chwili nie udzielić albo ją wycofać.",
+          "Wyświetlanie osadzonych treści z Facebooka, YouTube'a i Vimeo - wyłącznie na podstawie Twojej zgody (art. 6 ust. 1 lit. a RODO).",
+          "Archiwizacja korespondencji oraz obrona przed roszczeniami i dochodzenie roszczeń - nasz prawnie uzasadniony interes (art. 6 ust. 1 lit. f RODO)."
+        ]
+      },
+      {
+        "id": "cookies",
+        "title": "Pliki cookies i podobne technologie",
+        "paragraphs": [
+          "Cookies to niewielkie pliki tekstowe zapisywane w Twoim urządzeniu. Odczytać je może nasz serwis (cookies własne) albo serwis zewnętrzny, którego treść jest osadzona na stronie (cookies podmiotów trzecich). Część znika po zamknięciu przeglądarki (cookies sesyjne), część zostaje na dłużej (cookies trwałe).",
+          "Podzieliliśmy je na trzy kategorie:"
+        ],
+        "items": [
+          "Niezbędne - Twoja decyzja o cookies zapisana w pamięci lokalnej przeglądarki (klucz cetuspro.cookieConsent) oraz dane techniczne konieczne do bezpiecznego wyświetlenia strony. Działają zawsze, bo bez nich nie umiemy zapamiętać, na co się zgodziłeś. Nie wymagają zgody.",
+          "Statystyki - Microsoft Clarity. Wymagają zgody. Bez niej skrypt Clarity nie jest w ogóle wczytywany do strony.",
+          "Osadzone treści - odtwarzacze Facebooka, YouTube'a (w wersji youtube-nocookie) i Vimeo. Wymagają zgody. Bez niej w miejscu odtwarzacza pokazujemy kafel z przyciskiem, a żadne połączenie z tymi serwisami nie następuje."
+        ],
+        "afterParagraphs": [
+          "Zgody pytamy przy pierwszej wizycie. Odrzucenie jest równie łatwe jak akceptacja, a żadna kategoria nieobowiązkowa nie jest domyślnie włączona. Decyzję zmienisz w każdej chwili przez link „Ustawienia cookies\" w stopce. Wycofanie zgody nie wpływa na zgodność z prawem przetwarzania, które odbyło się wcześniej.",
+          "Cookies możesz też usunąć albo zablokować w ustawieniach przeglądarki. Zablokowanie wszystkich cookies może utrudnić korzystanie z tej i wielu innych stron."
+        ]
+      },
+      {
+        "id": "clarity",
+        "title": "Microsoft Clarity",
+        "paragraphs": [
+          "Po Twojej zgodzie korzystamy z Microsoft Clarity - narzędzia analitycznego dostarczanego przez Microsoft. Clarity zbiera dane o sposobie korzystania ze strony: odwiedzone podstrony, kliknięcia, przewijanie, przybliżoną lokalizację na podstawie adresu IP, typ urządzenia i przeglądarki. Tworzy też mapy kliknięć oraz nagrania sesji, czyli odtworzenie ruchu kursora i przewijania na naszej stronie.",
+          "Nagrania służą wyłącznie poprawie strony. Nie używamy ich do profilowania ani do decyzji podejmowanych automatycznie wobec Ciebie. Clarity nie zbiera treści, których nie wpisujesz w naszym serwisie, a nasza strona nie ma pól formularzy.",
+          "Microsoft działa tu jako podmiot przetwarzający na naszą rzecz i może przekazywać dane poza Europejski Obszar Gospodarczy, w oparciu o standardowe klauzule umowne oraz decyzję o adekwatności dla Data Privacy Framework. Zasady Microsoftu opisuje Oświadczenie o ochronie prywatności firmy Microsoft."
+        ]
+      },
+      {
+        "id": "embeds",
+        "title": "Osadzone treści z serwisów zewnętrznych",
+        "paragraphs": [
+          "Na stronie głównej i w artykułach osadzamy materiały wideo z Facebooka, YouTube'a i Vimeo. Po włączeniu takiej treści Twoja przeglądarka łączy się bezpośrednio z serwerami tych firm, przekazuje im adres IP oraz informację o odwiedzanej stronie, a one mogą zapisać własne pliki cookies. Jeśli jesteś zalogowany w danym serwisie, może on powiązać tę wizytę z Twoim kontem.",
+          "Za przetwarzanie danych po stronie tych serwisów odpowiadają ich operatorzy: Meta Platforms Ireland Limited (Facebook), Google Ireland Limited (YouTube) i Vimeo. Zasady opisują ich własne polityki prywatności. Dlatego nie ładujemy tych ramek bez Twojej zgody."
+        ]
+      },
+      {
+        "id": "odbiorcy",
+        "title": "Komu przekazujemy dane",
+        "paragraphs": [
+          "Dane przekazujemy tylko wtedy, gdy jest to potrzebne do celów opisanych powyżej, i tylko w niezbędnym zakresie. Odbiorcami są:"
+        ],
+        "items": [
+          "Google Ireland Limited - poczta firmowa w Google Workspace, w której odbieramy i przechowujemy korespondencję.",
+          "Microsoft Ireland Operations Limited - statystyki Microsoft Clarity, po Twojej zgodzie.",
+          "Sanity - system zarządzania treścią, w którym trzymamy treści publikowane na stronie.",
+          "Dostawcy infrastruktury i usług IT obsługujący serwer, na którym działa strona, oraz nasze systemy wewnętrzne.",
+          "Podmioty świadczące nam usługi księgowe i prawne oraz organy publiczne - gdy wymagają tego przepisy."
+        ],
+        "afterParagraphs": [
+          "Każdy podmiot przetwarzający dane na nasze zlecenie robi to na podstawie umowy i wyłącznie zgodnie z naszymi instrukcjami. Jeśli dane trafiają poza Europejski Obszar Gospodarczy, odbywa się to na podstawie standardowych klauzul umownych zatwierdzonych przez Komisję Europejską albo decyzji o adekwatności."
+        ]
+      },
+      {
+        "id": "okres",
+        "title": "Jak długo przechowujemy dane",
+        "items": [
+          "Korespondencja e-mailowa: przez czas potrzebny do obsługi sprawy, a następnie w archiwum poczty do upływu terminu przedawnienia ewentualnych roszczeń, zwykle nie dłużej niż 6 lat.",
+          "Logi serwera: do 12 miesięcy, chyba że dłuższe przechowywanie jest konieczne do wyjaśnienia incydentu bezpieczeństwa.",
+          "Dane w Microsoft Clarity: zgodnie z okresem retencji narzędzia, nie dłużej niż 13 miesięcy od zebrania.",
+          "Zapis Twojej decyzji o cookies: 12 miesięcy, po czym pytamy ponownie. Możesz go usunąć wcześniej, czyszcząc dane strony w przeglądarce.",
+          "Dane przetwarzane na podstawie zgody: do jej wycofania."
+        ]
+      },
+      {
+        "id": "prawa",
+        "title": "Twoje prawa",
+        "paragraphs": [
+          "W związku z przetwarzaniem danych masz prawo do:"
+        ],
+        "items": [
+          "dostępu do swoich danych i uzyskania ich kopii,",
+          "sprostowania danych, które są nieprawidłowe lub niekompletne,",
+          "usunięcia danych,",
+          "ograniczenia przetwarzania,",
+          "wniesienia sprzeciwu wobec przetwarzania opartego na naszym prawnie uzasadnionym interesie,",
+          "przenoszenia danych przetwarzanych na podstawie zgody lub umowy,",
+          "wycofania zgody w każdej chwili - bez wpływu na zgodność z prawem przetwarzania sprzed wycofania,",
+          "wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych, ul. Stawki 2, 00-193 Warszawa."
+        ],
+        "afterParagraphs": [
+          "Żądanie wystarczy wysłać na nasz adres e-mail - przycisk poniżej otwiera wiadomość w Twoim programie pocztowym. Odpowiadamy bez zbędnej zwłoki, najpóźniej w ciągu miesiąca. Podanie danych jest dobrowolne, ale bez adresu e-mail nie odpowiemy na wiadomość. Nie podejmujemy wobec Ciebie decyzji opartych wyłącznie na automatycznym przetwarzaniu, w tym profilowaniu."
+        ]
+      },
+      {
+        "id": "bezpieczenstwo",
+        "title": "Bezpieczeństwo danych",
+        "paragraphs": [
+          "Stosujemy środki techniczne i organizacyjne odpowiednie do ryzyka: transmisję przez HTTPS, ograniczony i imienny dostęp do skrzynek oraz systemów, uwierzytelnianie wieloskładnikowe w narzędziach administracyjnych i regularne aktualizacje oprogramowania. Adres e-mail publikujemy w formie utrudniającej jego automatyczne zbieranie."
+        ]
+      },
+      {
+        "id": "zmiany",
+        "title": "Zmiany polityki",
+        "paragraphs": [
+          "Politykę aktualizujemy, gdy zmieniają się przepisy albo sposób działania strony, na przykład gdy dodajemy nowe narzędzie. Datę ostatniej zmiany podajemy na górze tej strony. Jeśli zmieni się zakres cookies wymagających zgody, zapytamy Cię o nią ponownie."
+        ]
+      }
+    ]
   }
 }

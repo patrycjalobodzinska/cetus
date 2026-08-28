@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import EmbedConsentGate from "./consent/EmbedConsentGate";
 
 interface ReelPlayerProps {
   src: string;
@@ -42,7 +43,12 @@ export default function ReelPlayer({
   }, [active]);
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div className="relative overflow-hidden rounded-t-2xl" style={{ width, height }}>
+      {/* Odtwarzacz Facebooka zapisuje cookies od momentu wczytania ramki,
+          więc bez zgody na osadzone treści w ogóle go nie renderujemy.
+          Skeleton siedzi wewnątrz bramki - inaczej przykrywałby kafel
+          z pytaniem o zgodę, bo `loaded` nigdy by się nie zapaliło. */}
+      <EmbedConsentGate provider="Facebook">
       {(!loaded || !mounted) && (
         <div className="absolute inset-0 animate-pulse rounded-t-2xl bg-gradient-to-b from-slate-100 to-slate-200" />
       )}
@@ -64,6 +70,7 @@ export default function ReelPlayer({
           className={`transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
         />
       )}
+      </EmbedConsentGate>
     </div>
   );
 }

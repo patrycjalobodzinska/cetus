@@ -33,6 +33,8 @@ const legacyMap: Record<string, string> = {
   '/accelerator': '/oferta/cetus-venture-capital',
   '/academy': '/oferta/akademia-i-szkolenia',
   '/our-clients': '/case-studies',
+  // Stara polityka prywatnosci byla zaindeksowana pod /privacy-policy.
+  '/privacy-policy': '/polityka-prywatnosci',
 };
 
 const legacyRedirects = [

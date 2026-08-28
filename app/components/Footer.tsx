@@ -8,6 +8,7 @@ import StarGradientButton from './ui/gradientBackground';
 import Image from 'next/image';
 import ObfuscatedEmail from './ObfuscatedEmail';
 import { cloakEmail } from '@/lib/emailCloak';
+import CookieSettingsLink from './consent/CookieSettingsLink';
 
 interface FooterData {
   contactTitle?: string;
@@ -285,9 +286,19 @@ export default async function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href={`/${locale}/polityka-prywatnosci`} className="text-slate-300 hover:text-white transition-colors">
+                  {t('privacyPolicy')}
+                </Link>
+              </li>
+              <li>
                 <Link href={`/${locale}/dofinansowanie`} className="text-slate-300 hover:text-white transition-colors">
                   {t('euFunding')}
                 </Link>
+              </li>
+              <li>
+                {/* Wejście do zgód cookies musi być dostępne w każdej chwili,
+                    inaczej zgody nie da się realnie wycofać. */}
+                <CookieSettingsLink />
               </li>
               {data.documentLinks && data.documentLinks.map((link, index) => (
                 <li key={index}>

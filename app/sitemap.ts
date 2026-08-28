@@ -10,6 +10,7 @@ const staticPages = [
   { path: "/kontakt", priority: 0.8, changeFrequency: "monthly" as const },
   { path: "/blog", priority: 0.8, changeFrequency: "weekly" as const },
   { path: "/polityka-jakosci", priority: 0.3, changeFrequency: "yearly" as const },
+  { path: "/polityka-prywatnosci", priority: 0.3, changeFrequency: "yearly" as const },
   { path: "/oferta/aplikacje-webowe", priority: 0.7, changeFrequency: "monthly" as const },
   { path: "/oferta/aplikacje-mobilne", priority: 0.7, changeFrequency: "monthly" as const },
   { path: "/oferta/fast-prototyping", priority: 0.7, changeFrequency: "monthly" as const },
