@@ -19,3 +19,12 @@
  */
 export const SHOW_CASE_STUDIES =
   process.env.NEXT_PUBLIC_SHOW_CASE_STUDIES === "1" || process.env.NODE_ENV !== "production";
+
+/**
+ * Galeria „Zespół w jednym ujęciu" na /o-nas (DomeGallery na desktopie,
+ * marquee na mobile).
+ *
+ * Ukryta na życzenie klienta (2026-08-28). Komponenty i zapytanie do CMS-u
+ * zostają - włączenie to zmiana tej stałej na `true`.
+ */
+export const SHOW_TEAM_GALLERY = false;

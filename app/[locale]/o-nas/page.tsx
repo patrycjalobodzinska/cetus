@@ -10,6 +10,7 @@ import DomeGallery from '@/app/components/DomeGallery';
 import TeamMarquee from '@/app/components/TeamMarquee';
 import { useLocale, useTranslations } from 'next-intl';
 import SectionHeading from '@/app/components/SectionHeading';
+import { SHOW_TEAM_GALLERY } from '@/lib/featureFlags';
 
 interface AboutUsData {
   title: string;
@@ -283,7 +284,7 @@ export default function AboutUsPage() {
         </section>
 
         {/* ── Zespół - pełnoekranowa sekcja z galerią, jak Proces na home ── */}
-        {teamImages.length > 0 && (
+        {SHOW_TEAM_GALLERY && teamImages.length > 0 && (
           <section className="section-y relative left-1/2 right-1/2 -mx-[50vw] w-screen overflow-hidden bg-surface-muted">
             {/* Symetrycznie do sekcji historii: wejście w przygaszone tło też
                 jest gradientem, a nie twardą krawędzią. */}
