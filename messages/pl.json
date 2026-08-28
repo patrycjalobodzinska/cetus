@@ -46,8 +46,8 @@
   },
   "hero": {
     "title": "Tworzymy",
-    "titleHighlight": "nowoczesne oprogramowanie",
-    "titleAfterHighlight": ",",
+    "titleHighlight": "nowoczesne oprogramowanie,",
+    "titleAfterHighlight": "",
     "titleThirdLine": "które pomaga firmom rosnąć",
     "subtitle": "Projektujemy, budujemy i utrzymujemy systemy krytyczne dla dużych organizacji.",
     "subtitleHighlight": "",

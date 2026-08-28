@@ -41,10 +41,11 @@ export default function HeroCurosora() {
               className="font-bold tracking-tight text-slate-900 text-4xl sm:text-6xl lg:text-[5rem] leading-[1.05]"
               style={{ fontFamily: "var(--font-space-grotesk)" }}>
               <span className="block">{t("title")}</span>
-              {/* Bez automatycznej spacji po wyróżnieniu: `titleAfterHighlight`
-                  nosi teraz przecinek domykający „nowoczesne oprogramowanie",
-                  a spacja przed przecinkiem byłaby błędem. Gdyby kiedyś miało
-                  tu stanąć słowo, wpisuje się je w tłumaczeniu ze spacją. */}
+              {/* Przecinek domykający „nowoczesne oprogramowanie" siedzi
+                  w `titleHighlight`, więc jest niebieski jak całe wyróżnienie.
+                  `titleAfterHighlight` renderujemy bez automatycznej spacji -
+                  gdyby miało tu stanąć słowo, wpisuje się je w tłumaczeniu
+                  razem ze spacją. */}
               <span className="block">
                 <span className="text-blue-600">{t("titleHighlight")}</span>
                 {t("titleAfterHighlight")}
