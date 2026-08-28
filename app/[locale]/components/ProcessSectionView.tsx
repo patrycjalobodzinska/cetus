@@ -122,13 +122,13 @@ export default function ProcessSectionView({ data }: { data: ProcessData | null 
                       <span
                         aria-hidden="true"
                         className="pv-tick absolute -right-1.5 w-px border-l border-dashed border-blue-300/70"
-                        style={{ top: -RISE, height: RISE, ["--d" as string]: `${620 + i * 110}ms` }}
+                        style={{ top: -RISE, height: RISE, ["--d" as string]: `${380 + i * 70}ms` }}
                       />
                     )}
 
                     <article
                       className="pv-grow pv-card relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white px-5 pb-7 pt-7 shadow-sm"
-                      style={{ ["--d" as string]: `${i * 110}ms` }}>
+                      style={{ ["--d" as string]: `${i * 70}ms` }}>
                       {/* pasek postępu - narasta z każdym krokiem */}
                       <span
                         aria-hidden="true"
@@ -160,7 +160,7 @@ export default function ProcessSectionView({ data }: { data: ProcessData | null 
                       {/* stopień - to on nadaje karcie schodkową wysokość */}
                       <span aria-hidden="true" className="shrink-0" style={{ height: i * RISE }} />
 
-                      <StepBody step={step} delay={i * 110 + 400} />
+                      <StepBody step={step} delay={i * 70 + 260} />
                     </article>
                   </li>
                 );
@@ -172,7 +172,7 @@ export default function ProcessSectionView({ data }: { data: ProcessData | null 
           <ol className="hidden gap-4 sm:grid sm:grid-cols-2 lg:hidden">
             {steps.map((step, i) => (
               <li key={step._key} className="relative">
-                <StepCard step={step} index={i} count={count} delay={i * 110} />
+                <StepCard step={step} index={i} count={count} delay={i * 70} />
               </li>
             ))}
           </ol>
@@ -180,7 +180,7 @@ export default function ProcessSectionView({ data }: { data: ProcessData | null 
           {/* Mobile - slider */}
           <Slider className="sm:hidden" slideWidth="80%" ariaLabel="Kroki procesu">
             {steps.map((step, i) => (
-              <StepCard key={step._key} step={step} index={i} count={count} delay={i * 110} />
+              <StepCard key={step._key} step={step} index={i} count={count} delay={i * 70} />
             ))}
           </Slider>
         </div>
@@ -218,7 +218,7 @@ function StepCard({
         style={{ fontFamily: "var(--font-michroma)" }}>
         {index + 1}
       </span>
-      <StepBody step={step} delay={delay + 400} />
+      <StepBody step={step} delay={delay + 260} />
     </article>
   );
 }

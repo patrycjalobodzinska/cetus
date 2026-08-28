@@ -71,20 +71,20 @@ export default function CaseStudiesMosaic({
         </p>
         <h2
           className="cs-tile section-title text-slate-900"
-          style={{ ["--d" as string]: "60ms" }}
+          style={{ ["--d" as string]: "40ms" }}
         >
           {t("title")}
         </h2>
         <p
           className="cs-tile mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-600 text-pretty"
-          style={{ ["--d" as string]: "120ms" }}
+          style={{ ["--d" as string]: "80ms" }}
         >
           {t("lead")}
         </p>
         <Link
           href={`/${locale}/case-studies`}
           className="cs-tile group mt-6 inline-flex items-center gap-2 text-sm font-semibold text-slate-900 transition-colors duration-150 ease-out hover:text-blue-600"
-          style={{ ["--d" as string]: "180ms" }}
+          style={{ ["--d" as string]: "120ms" }}
         >
           {t("allLink")}
           <ArrowRight className="h-4 w-4 transition-transform duration-200 ease-out group-hover:translate-x-1" />
@@ -105,7 +105,7 @@ export default function CaseStudiesMosaic({
             key={c.id}
             href={`/${locale}/case-studies/${c.slug}`}
             className="cs-tile cs-card group relative flex flex-col overflow-hidden rounded-3xl border bg-white border-slate-200"
-            style={{ ["--d" as string]: `${240 + i * 80}ms` }}
+            style={{ ["--d" as string]: `${140 + i * 55}ms` }}
           >
             {/* Tło karty: delikatny gradient + siatka kropek. Zrzut ma własny
                 cień i obwódkę, więc na tonowanym tle odcina się jak osobny

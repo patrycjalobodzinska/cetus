@@ -437,7 +437,7 @@ html::-webkit-scrollbar-thumb:hover {
   clip-path: inset(100% 0 0 0);
 }
 .pv-in .pv-grow {
-  animation: pvGrow 700ms var(--ease-reveal) var(--d, 0ms) both;
+  animation: pvGrow 520ms var(--ease-reveal) var(--d, 0ms) both;
 }
 @keyframes pvGrow {
   from {
@@ -456,7 +456,7 @@ html::-webkit-scrollbar-thumb:hover {
   opacity: 0;
 }
 .pv-in .pv-fade {
-  animation: pvFade 420ms var(--ease-reveal) var(--d, 0ms) both;
+  animation: pvFade 320ms var(--ease-reveal) var(--d, 0ms) both;
 }
 @keyframes pvFade {
   from {
@@ -530,7 +530,7 @@ html::-webkit-scrollbar-thumb:hover {
   opacity: 0;
 }
 .cs-in .cs-tile {
-  animation: csTile 560ms var(--ease-reveal) var(--d, 0ms) both;
+  animation: csTile 420ms var(--ease-reveal) var(--d, 0ms) both;
 }
 @keyframes csTile {
   from {

@@ -26,8 +26,11 @@ export function useReveal<T extends HTMLElement>(
    * Ile okna musi „zjeść” sekcja, zanim się odsłoni
    * (0.42 = górna krawędź mija 58% ekranu). Wartość ujemna działa odwrotnie -
    * poszerza kadr, czyli odpala wcześniej, jeszcze przed wjazdem na ekran.
+   *
+   * Domyślnie ujemna: sekcja odsłania się chwilę PRZED wjazdem na ekran, więc
+   * użytkownik nie widzi pustego kadru czekającego na animację.
    */
-  bottomMargin = 0.42,
+  bottomMargin = -0.1,
 ) {
   const ref = useRef<T>(null);
   const [seen, setSeen] = useState(false);
